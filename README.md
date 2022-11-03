@@ -1,8 +1,8 @@
-# Commbase
+# Commbase 🤖️💬️
 
 Conversational AI Assistant and AI Hub for Computers and Droids
 
-<img alt="Neovim" src="./screenshots/commbase.png?raw=true" width="500" height="320" />
+<img alt="Neovim" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
 
 <!--
 **mydroidandi/commbase** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
