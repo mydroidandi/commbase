@@ -1,4 +1,4 @@
-# Commbase 🤖️💬️
+# Commbase 🤖️
 
 Conversational AI Assistant and AI Hub for Computers and Droids
 
