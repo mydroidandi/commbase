@@ -1,7 +1,11 @@
-### EvilTwins
+# Commbase
+
+Conversational AI Assistant and AI Hub for Computers and Droids
+
+<img alt="Neovim" src="./screenshots/commbase.png?raw=true" width="500" height="320" />
 
 <!--
-**mydroidandi/mydroidandi** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**mydroidandi/commbase** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
 
@@ -14,3 +18,4 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
