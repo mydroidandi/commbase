@@ -1,0 +1,227 @@
+#!/bin/bash
+# Copyright (c) 2022-2023 Esteban Herrera
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+
+# File: commbase, usually put in /usr/bin
+# Description: Starts and stops commbase-vosk-start.sh.
+
+# The command options start, teleport, stop, *), and else don't output logs in the pane 1. The other
+# output in their respective functions, otherwise, in their correspondent scripts.
+
+# Starting application:
+# $ commbase start
+# Or run it like this:
+# $ ./commbase start
+# Run Commbase commands:
+# $ commbase 'tell me about yourself'
+# Or replace single quotes by double quotes in the parameter
+
+# The Commbase directory:
+# Due to the loss of the Commbase application scope here, it must be re-assigned
+COMMBASE=$HOME/Developer
+#COMMBASE=$HOME
+
+# The Commbase processing file for this device:
+COMMBASE_PROCESS_FILE="$COMMBASE/Commbase/commbase/base-vosk/commbase-process-vosk-pc-default.sh"
+
+# The only Commbase tmux session
+SESSIONNAME="Commbase-0"
+
+case "$1" in
+
+  'start' | 'teleport')
+    if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
+      echo "Session '$SESSIONNAME' exists."
+      tmux attach-session -t Commbase-0
+    else
+      echo "Starting application"
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      (bash commbase-vosk-start.sh) &> /dev/null
+    fi
+    ;;
+esac
+
+# All the Commbase commands can be added to this case after the cases stop, and restart.
+# Follow the same order used in the section "Commbase commands" of the file 
+# commbase-process-vosk-pc-default.sh to keep them well organized.
+# Try not to add more than two aliases to every case option in this file at least
+
+if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
+  echo "Session '$SESSIONNAME' exists."
+
+  case "$1" in
+
+    'stop')
+      echo "Stopping application"
+      tmux kill-session -t Commbase-0
+      ;;
+    'okay stop' | 'ok stop')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "okay stop" | tee .result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'tell me about yourself' | 'introduce yourself')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "tell me about yourself" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'stop capturing sound' | 'stop listening')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "stop capturing sound" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'reload recognition' | 'reload speech recognition')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "reload recognition" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null &> /dev/null
+      ;;
+    'disconnect yourself')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "disconnect yourself" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'wake up' | 'wake-up')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "wake up" | tee  .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'update applications')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "update applications" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'open the brave browser')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "open the brave browser" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'open my linux documentation')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "open my linux documentation" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'show me my location')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "show me my location" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'open the network browser')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "open the network browser" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'g i t status')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "g i t status" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'open a new terminal')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "open a new terminal" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'open a simple browser' | 'open the simple browser')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "open a simple browser" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'kill the simple browser' | 'close the simple browser')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "kill the simple browser" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'reproduce a chapter of robinson crusoe' | 'reproduce robinson crusoe')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "reproduce a chapter of robinson crusoe" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'open the terminal editor')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "open the terminal editor" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'show me basic system information')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "show me basic system information" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'connect me to the development server')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "connect me to the development server" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'let me know when the internet is back' | 'tell me when the internet is back')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "let me know when the internet is back" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'list the addresses in the local network')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "list the addresses in the local network" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'verify the internet connection')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "verify the internet connection" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'connect me to the private network')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "connect me to the private network" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'disconnect me from the private network')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "disconnect me from the private network" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'push to the local web server')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "push to the local web server" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'synchronize development from desktop')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "synchronize development from desktop" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'set a timer of')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "set a timer of" "$2" "$3" | tee .result.data .previous_result.data > /dev/null && sleep 0.5
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    'open my current editor workspace' | 'open my current code workspace')
+      cd $COMMBASE/Commbase/commbase/base-vosk
+      echo "open my current editor workspace" | tee .result.data .previous_result.data > /dev/null
+      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      ;;
+    *)
+      total=4
+      amixer set Capture nocap &>/dev/null
+      reply=$((1 + $RANDOM % $total)) # Generates a random number between 1 and $total (inclusive)
+      case $reply in 1) echo "no waaaay" | festival --tts ;; 2) echo "i can't do that" | festival --tts ;; 3) echo "repeat" | festival --tts ;; 4) echo "invalid choice" $USER | festival --tts ;; esac
+      tmux select-window -t 1 && tmux select-pane -t 1 && echo "Commbase: ""I don't understand that command."
+      tmux select-window -t 1 && tmux select-pane -t 4
+      amixer set Capture cap &>/dev/null
+      ;;
+  esac
+else
+  echo "Session '$SESSIONNAME' does not exists. Usage: /usr/bin/commbase [start|stop]"
+fi
