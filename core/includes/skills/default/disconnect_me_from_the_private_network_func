@@ -1,0 +1,11 @@
+function disconnect_me_from_the_private_network_func {
+ tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+ tmux send-keys "(sudo ipsec down test)" C-m
+ #tmux send-keys "sudo ipsec down test" C-m
+ amixer set Capture nocap &>/dev/null
+ internal_random_yes_func 6  && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""disconnect me from the private network"
+ echo "disconnect me from the private network" >> .commbase_history
+ tmux select-window -t 1 && tmux select-pane -t 4
+ amixer set Capture cap &>/dev/null
+ exit 99
+}

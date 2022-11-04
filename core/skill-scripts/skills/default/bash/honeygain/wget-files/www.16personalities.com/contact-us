@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+<meta property="fb:app_id" content="326516237427150">
+
+<meta name="csrf-token" content="M9lsoA8ZnUxnOp9L7BFUc1Wjw7Ydgmdgu4PtUsJb">
+<meta name="app-version" content="v2.2.4">
+<meta name="app-jscdn" content="https://static.neris-assets.com/">
+<meta name="app-bs-uid" content="0">
+<meta name="api-token" content="">
+<meta name="app-locale" content="en">
+
+
+<title>
+
+    Contact Us
+
+ | 16Personalities</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="apple-touch-icon" sizes="57x57"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-32x32.png"
+      sizes="32x32">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-194x194.png"
+      sizes="194x194">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-96x96.png"
+      sizes="96x96">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/android-chrome-192x192.png"
+      sizes="192x192">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-16x16.png"
+      sizes="16x16">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="https://static.neris-assets.com/images/favicons/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="https://static.neris-assets.com/css/main-core--9d1e59.css">
+<link rel="stylesheet" href="/css/fonts--141580.css">
+
+    <link rel="stylesheet" href="https://static.neris-assets.com/css/main-noncore--83aebf.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,600&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/font-awesome--0d9504.css">
+
+
+ <link href="https://static.neris-assets.com/css/large--f003e7.css" rel="stylesheet" media="screen and (min-width: 768px)">
+ 
+<link href="https://static.neris-assets.com/css/print--f081cc.css" rel="stylesheet" media="print">
+
+
+    <link rel="canonical" href="https://www.16personalities.com/contact-us">
+
+
+
+    
+        <link rel="alternate" hreflang="ar" href="https://www.16personalities.com/ar/%D8%A7%D9%84%D8%A7%D8%AA%D8%B5%D8%A7%D9%84">
+        <link rel="alternate" hreflang="bg" href="https://www.16personalities.com/bg/%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B8">
+        <link rel="alternate" hreflang="ch" href="https://www.16personalities.com/ch/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC">
+        <link rel="alternate" hreflang="cs" href="https://www.16personalities.com/cs/kontakt">
+        <link rel="alternate" hreflang="da" href="https://www.16personalities.com/da/kontakt-os">
+        <link rel="alternate" hreflang="de" href="https://www.16personalities.com/de/kontaktiere-uns">
+        <link rel="alternate" hreflang="ee" href="https://www.16personalities.com/ee/kontakt">
+        <link rel="alternate" hreflang="es" href="https://www.16personalities.com/es/contacto">
+        <link rel="alternate" hreflang="el" href="https://www.16personalities.com/el/%CE%B5%CF%80%CE%B9%CE%BA%CE%BF%CE%B9%CE%BD%CF%89%CE%BD%CE%AF%CE%B1">
+        <link rel="alternate" hreflang="fa" href="https://www.16personalities.com/fa/%D8%A7%D8%B7%D9%84%D8%A7%D8%B9%D8%A7%D8%AA%20%D8%AA%D9%85%D8%A7%D8%B3">
+        <link rel="alternate" hreflang="fi" href="https://www.16personalities.com/fi/yhteystiedot">
+        <link rel="alternate" hreflang="fr" href="https://www.16personalities.com/fr/contact">
+        <link rel="alternate" hreflang="he" href="https://www.16personalities.com/he/%D7%A6%D7%A8%D7%95-%D7%A7%D7%A9%D7%A8">
+        <link rel="alternate" hreflang="hi" href="https://www.16personalities.com/hi/%E0%A4%B9%E0%A4%AE%E0%A4%B8%E0%A5%87-%E0%A4%B8%E0%A4%82%E0%A4%AA%E0%A4%B0%E0%A5%8D%E0%A4%95-%E0%A4%95%E0%A4%B0%E0%A5%87%E0%A4%82">
+        <link rel="alternate" hreflang="hr" href="https://www.16personalities.com/hr/kontakt">
+        <link rel="alternate" hreflang="hu" href="https://www.16personalities.com/hu/kapcsolat">
+        <link rel="alternate" hreflang="id" href="https://www.16personalities.com/id/hubungi">
+        <link rel="alternate" hreflang="is" href="https://www.16personalities.com/is/hafa-samband">
+        <link rel="alternate" hreflang="it" href="https://www.16personalities.com/it/contatti">
+        <link rel="alternate" hreflang="ja" href="https://www.16personalities.com/ja/%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B">
+        <link rel="alternate" hreflang="ko" href="https://www.16personalities.com/ko/%EC%97%B0%EB%9D%BD%EC%B2%98">
+        <link rel="alternate" hreflang="nl" href="https://www.16personalities.com/nl/contact">
+        <link rel="alternate" hreflang="no" href="https://www.16personalities.com/no/kontakt-oss">
+        <link rel="alternate" hreflang="pl" href="https://www.16personalities.com/pl/kontakt">
+        <link rel="alternate" hreflang="br" href="https://www.16personalities.com/br/contato">
+        <link rel="alternate" hreflang="ro" href="https://www.16personalities.com/ro/contact">
+        <link rel="alternate" hreflang="ru" href="https://www.16personalities.com/ru/svyazatsya">
+        <link rel="alternate" hreflang="sk" href="https://www.16personalities.com/sk/kontaktujte-nas">
+        <link rel="alternate" hreflang="sl" href="https://www.16personalities.com/sl/kontaktirajte-nas">
+        <link rel="alternate" hreflang="sr" href="https://www.16personalities.com/sr/kontaktirajte-nas">
+        <link rel="alternate" hreflang="sv" href="https://www.16personalities.com/sv/kontakt">
+        <link rel="alternate" hreflang="sw" href="https://www.16personalities.com/sw/wasiliana">
+        <link rel="alternate" hreflang="th" href="https://www.16personalities.com/th/%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD">
+        <link rel="alternate" hreflang="tr" href="https://www.16personalities.com/tr/bizimle-ileti%C5%9Fime-ge%C3%A7in">
+        <link rel="alternate" hreflang="uk" href="https://www.16personalities.com/uk/kontaktni-dani">
+        
+    
+
+
+<script>
+
+    (function(w,d,n){w.jscdn=function(){return(d.head.querySelector('meta[name="'+n+'"]')||{}).content||'/'}}(window,document,'app-jscdn'))
+
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+    ga('create', 'UA-27031617-1', 'auto');
+    ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7YT1C03C8C"></script>
+
+    <script>
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-7YT1C03C8C', { 'anonymize_ip': true });
+
+    </script>
+
+
+
+<style>[v-cloak]{display:none !important;}</style>
+</head>
+
+    <body role="document" class="">
+
+        <div class="main-wrapper" id="main-app">
+            <div class="navbar sticky   ">
+
+    <a href="https://www.16personalities.com" class="logo ">
+        <img src="https://static.neris-assets.com/images/system/logo.svg" alt="16Personalities">
+    </a>
+
+    <app-navbar
+        v-cloak
+        label="Main"
+        class="middle-section anonymous">
+
+        
+        
+            <app-nav-item class=" test-link"
+                          href="https://www.16personalities.com/free-personality-test"
+                          label="Take the Test"></app-nav-item>
+
+            <app-nav-item class=""
+                          href="https://www.16personalities.com/personality-types"
+                          label="Personality Types"
+                          :is-type-list="true"
+                          dropdown>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#analysts"
+                              label="Analysts"
+                              subtitle="Intuitive (<strong>N</strong>) and Thinking (<strong>T</strong>) personality types, known for their rationality, impartiality, and intellectual excellence.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/intj-personality">Architect <span>INTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/intp-personality">Logician <span>INTP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/entj-personality">Commander <span>ENTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/entp-personality">Debater <span>ENTP</span></a>
+                        </li>
+                    </ul>
+
+                </app-nav-item>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#diplomats"
+                              label="Diplomats"
+                              subtitle="Intuitive (<strong>N</strong>) and Feeling (<strong>F</strong>) personality types, known for their empathy, diplomatic skills, and passionate idealism.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/infj-personality">Advocate <span>INFJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/infp-personality">Mediator <span>INFP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/enfj-personality">Protagonist <span>ENFJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/enfp-personality">Campaigner <span>ENFP</span></a>
+                        </li>
+                    </ul>
+
+                </app-nav-item>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#sentinels"
+                              label="Sentinels"
+                              subtitle="Observant (<strong>S</strong>) and Judging (<strong>J</strong>) personality types, known for their practicality and focus on order, security, and stability.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/istj-personality">Logistician <span>ISTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/isfj-personality">Defender <span>ISFJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/estj-personality">Executive <span>ESTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/esfj-personality">Consul <span>ESFJ</span></a>
+                        </li>
+                    </ul>
+                </app-nav-item>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#explorers"
+                              label="Explorers"
+                              subtitle="Observant (<strong>S</strong>) and Prospecting (<strong>P</strong>) personality types, known for their spontaneity, ingenuity, and flexibility.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/istp-personality">Virtuoso <span>ISTP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/isfp-personality">Adventurer <span>ISFP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/estp-personality">Entrepreneur <span>ESTP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/esfp-personality">Entertainer <span>ESFP</span></a>
+                        </li>
+                    </ul>
+                </app-nav-item>
+
+            </app-nav-item>
+
+            <app-nav-item class=""
+                          href="https://www.16personalities.com/academy"
+                          label="Premium Profiles"></app-nav-item>
+
+            <app-nav-item class=""
+                          href="https://www.16personalities.com/tools"
+                          label="Toolkits"
+                          dropdown>
+
+                <app-nav-item href="https://www.16personalities.com/tools/personal-growth"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/personal-growth.svg"
+                              label="Personal Growth"
+                              subtitle="Discover and understand your strengths and weaknesses."></app-nav-item>
+                <app-nav-item href="https://www.16personalities.com/tools/relationships"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/romantic-relationships.svg"
+                              label="Relationships"
+                              subtitle="Deepen your relationships, both romantic and otherwise."></app-nav-item>
+
+                <app-nav-item href="https://www.16personalities.com/tools/career"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/careers.svg"
+                              label="Career"
+                              subtitle="Kick-start your career or get better at navigating it."></app-nav-item>
+
+            </app-nav-item>
+
+            <app-nav-item class=""
+                          href="https://www.16personalities.com/tools/teams"
+                          label="Teams"></app-nav-item>
+
+            <app-nav-item class=""
+                          label="Resources"
+                          href="https://www.16personalities.com/articles?category=list"
+                          dropdown>
+
+                <app-nav-item label="Articles"
+                              href="https://www.16personalities.com/articles?category=list"
+                              img="https://static.neris-assets.com/images/system/articles.svg"
+                              subtitle="Get tips, advice, and deep insights into various topics."></app-nav-item>
+
+                <app-nav-item label="Surveys"
+                              href="https://www.16personalities.com/insights"
+                              img="https://static.neris-assets.com/images/system/insights.svg"
+                              subtitle="Explore and participate in hundreds of our studies."></app-nav-item>
+
+                <app-nav-item label="Theory"
+                              href="https://www.16personalities.com/articles/our-theory"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/theory.svg"
+                              subtitle="Understand the meaning and impact of personality traits."></app-nav-item>
+
+                <app-nav-item label="Country Profiles"
+                              href="https://www.16personalities.com/country-profiles"
+                              img="https://static.neris-assets.com/images/system/country-profiles-menu.svg"
+                              subtitle="Examine our regional and country personality profiles."></app-nav-item>
+
+            </app-nav-item>
+
+        
+    </app-navbar>
+
+    <div class="right-section ">
+
+        <a class="search-toggle" href="#" @click.prevent="openModal('search')" title="search">
+            <icon-search></icon-search>
+        </a>
+
+        <a class="language-toggle" href="https://www.16personalities.com/languages" title="Change language"><span class="f16 f16-globe"></span></a>
+
+        
+            <a class="no-formatting with-border login-link" href="javascript:" @click.prevent="openModal('login')">Log In</a>
+
+                            <a href="https://www.16personalities.com/free-personality-test" class="btn btn-action test-button" v-reports-click-to-ga="'take-the-test-navbar'">Take the Test</a>
+            
+        
+    </div>
+
+    <nav-mobile-toggle></nav-mobile-toggle>
+
+</div>
+
+<nav-mobile v-cloak>
+    <div class="menu anonymous">
+
+        <nav-mobile-toggle opened></nav-mobile-toggle>
+
+        <span autofocus></span>
+
+        
+            <div class="part padded test-button">
+                <a href="https://www.16personalities.com/free-personality-test" class="btn btn-action">Take the Test</a>
+            </div>
+
+            <div class="scrollable">
+
+                <div class="part">
+
+                    <a class="no-formatting " href="https://www.16personalities.com/free-personality-test">Free Personality Test</a>
+                    <a class="no-formatting " href="https://www.16personalities.com/personality-types">Personality Types</a>
+
+                </div>
+
+                <div class="part">
+
+                    <a class="no-formatting item " href="https://www.16personalities.com/academy">Premium Personality Profiles</a>
+
+                    <nav-mobile-dropdown class="no-formatting item" :show="false" label="Self-Discovery Toolkits">
+                        <a class="no-formatting item " href="https://www.16personalities.com/tools/personal-growth">Personal Growth</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/tools/relationships">Relationships</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/tools/career">Career</a>
+                    </nav-mobile-dropdown>
+
+                    <a class="no-formatting item " href="https://www.16personalities.com/tools/teams">Team Assessments</a>
+
+                </div>
+
+                <div class="part">
+
+                    <nav-mobile-dropdown class="no-formatting item" :show="false" label="Resources">
+
+                        <a class="no-formatting item " href="https://www.16personalities.com/articles?category=list">Articles</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/insights">Surveys</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/articles/our-theory">Theory</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/country-profiles">Country Profiles</a>
+
+                    </nav-mobile-dropdown>
+
+                    <a class="no-formatting item " href="https://www.16personalities.com/languages">Languages</a>
+                    <a class="no-formatting item active" href="https://www.16personalities.com/contact-us">Contact Us</a>
+
+                </div>
+
+                <div class="part">
+                    <a class="no-formatting item search" href="javascript:;" @click="openModal('search')">
+                        <icon-search-alt></icon-search-alt>
+                        Search
+                    </a>
+                </div>
+
+                <div class="part no-border auth">
+                    <button class="btn btn-white" href="javascript:;" @click="openModal('login')">Log In</button>
+                </div>
+
+            </div>
+
+        
+    </div>
+</nav-mobile>
+
+<nav class="bottom" data-chunk="animation-chunk">
+
+    
+        
+            <a href="https://www.16personalities.com/free-personality-test">
+                <span class="f16 f16-additional-tests"></span>
+                <span class="title">Test</span>
+            </a>
+
+            <a href="https://www.16personalities.com/personality-types" class="">
+                <span class="f16 f16-friends"></span>
+                <span class="title">Types</span>
+            </a>
+
+            <a href="https://www.16personalities.com/premium-analysis" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><polygon class="cls-1" points="56.71 -0.11 40.69 4.71 43.03 6.94 53.49 5.61 38.5 20.23 21.67 16.13 23.5 11.35 18.19 7.36 10.59 10.18 12.14 16.97 7.64 27.95 3.58 27.82 -0.13 32.45 3.93 38.49 10.33 38.27 13.53 31.66 10.04 29.46 14.47 19.25 19.99 19.41 33.04 21.58 31.13 23.62 32.24 28.96 39.19 30.3 43.79 26.66 41.14 22.86 57.27 5.55 54.79 18.17 60.13 15.12 60.13 -0.11 56.71 -0.11"/><polygon class="cls-1" points="1.6 59.89 -0.13 44.52 8.15 43.16 10.46 59.89 1.6 59.89"/><polygon class="cls-1" points="15.27 59.89 24.51 59.89 23.55 31.75 16.81 31.75 15.27 59.89"/><polygon class="cls-1" points="29.52 59.89 27.59 36.24 37.6 37.19 36.84 59.89 29.52 59.89"/><polygon class="cls-1" points="41.84 59.89 43 43.21 48.39 43.21 48.39 59.89 41.84 59.89"/><polygon class="cls-1" points="52.43 59.89 51.66 22.55 60.13 20.93 60.13 59.89 52.43 59.89"/></svg>
+                <span class="title">Premium</span>
+            </a>
+
+            <a href="https://www.16personalities.com/articles?category=list" class="">
+                <span class="f16 f16-academy"></span>
+                <span class="title">Resources</span>
+            </a>
+
+            <a href="javascript:;" @click="openModal('login')">
+                <span class="f16 f16-profile"></span>
+                <span class="title">Log In</span>
+            </a>
+
+        
+    
+</nav>
+            
+    <main class="contact-us">
+
+        <header>
+
+            <div class="scene" data-chunk="animation-chunk">
+                <img class="image static" src="https://animations.neris-assets.com/team.svg" v-delayed-animation data-animation="team">
+                <animation
+                    animation-file="https://animations.neris-assets.com/team.json"
+                    delayed
+                    static-copy
+                    :min-screen-width="768"
+                    loop="always"
+                    data-animation="team"
+                ></animation>
+            </div>
+
+            <div class="caption">
+                <h1>Contact Us</h1>
+                <p>Please send us your questions, comments, or suggestions – we’d love to hear from you! We’ve also included a short FAQ below for your convenience.</p>
+                <div class="email">
+                    <a class="no-color with-border" href="mailto:support@16personalities.com">support@16personalities.com</a>
+                </div>
+                <div class="company-info">
+                    <div class="name">NERIS Analytics Limited</div>
+                    <div class="address">Nine Hills Road, Cambridge, CB2 1GE, United Kingdom</div>
+                    <div class="registration">Registered in England and Wales, #8646330</div>
+                </div>
+                <div class="social-cta comp">
+                    <div class="wrapper">
+                        <div class="social-icons">
+                            <a class="icon facebook" href="https://www.facebook.com/16Personalities">
+                                <span class="fab fa-facebook-f"></span>
+                            </a>
+                            <a class="icon twitter" href="https://twitter.com/16personalities">
+                                <span class="fab fa-twitter"></span>
+                            </a>
+                            <a class="icon instagram" href="https://www.instagram.com/16personalitiesofficial/">
+                                <span class="fab fa-instagram"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+        
+        <faq-page
+            data-chunk="faq-chunk"
+            :categories="[
+    {
+        title: &#039;Personality Test and Results&#039;,
+        questions: [
+            {
+                expanded: false,
+                title: &#039;I have not received an e-mail with my test results. What should I do?&#039;,
+                answer: &#039;&lt;p&gt;First, please check your Spam folder – it is possible that your e-mail provider put our message there. If you still cannot see the message, please go to &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/profile&quot;&gt;Your Profile&lt;/a&gt; – you will be able to see your results there.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;The personality type I got after completing your test differs from the one I got on a different website. Why?&#039;,
+                answer: &#039;&lt;p&gt;The type codes &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/articles/our-theory&quot; title=&quot;Our Theory&quot;&gt;used by us&lt;/a&gt; are similar to those shared by a number of diverse theories and approaches such as &lt;a class=&quot;with-border&quot; href=&quot;http://en.wikipedia.org/wiki/Socionics&quot; rel=&quot;external&quot; target=&quot;_blank&quot;&gt;Socionics&lt;/a&gt;, &lt;a class=&quot;with-border&quot; href=&quot;http://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator&quot; rel=&quot;external&quot; target=&quot;_blank&quot;&gt;Myers-Briggs Type Indicator&lt;/a&gt;, &lt;a class=&quot;with-border&quot; href=&quot;http://en.wikipedia.org/wiki/Keirsey_Temperament_Sorter&quot; rel=&quot;external&quot; target=&quot;_blank&quot;&gt;Keirsey Temperament Sorter&lt;/a&gt;, Linda Berens’ &lt;a class=&quot;with-border&quot; href=&quot;http://en.wikipedia.org/wiki/Interaction_Styles&quot; rel=&quot;external&quot; target=&quot;_blank&quot;&gt;Interaction Styles&lt;/a&gt; and many others. However, while the acronyms adopted by different theories may be identical or very similar, their meanings do not always overlap – consequently, you should not assume that, for instance, INTj in Socionics is identical to INTJ-A as defined and described by us, or to the INTJ definition on a different website.&lt;/p&gt;&lt;p&gt;To use an analogy, taxis and Formula 1 racers both drive ‘cars’ – but what each of them considers a car can look pretty different depending on where they’re driving. Make sure you review the theoretical model that a specific website relies on before comparing your results. You can find more information about our theoretical approach &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/articles/our-theory&quot; title=&quot;Our Theory&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Do I need to register to take your personality test?&#039;,
+                answer: &#039;&lt;p&gt;No! Simply click &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/free-personality-test&quot;&gt;Take the Test&lt;/a&gt; in the menu above.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;I got a different result when I took the personality test again after a while. Why?&#039;,
+                answer: &#039;&lt;p&gt;We are continuously refining the test questions, trying to make our algorithm more accurate and reliable – consequently, you may be assigned a slightly different personality type if your original scores were very low (&lt;55%). If you are unsure which personality type is truly yours, please see our &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/articles/our-theory&quot; title=&quot;Our Theory&quot;&gt;main theoretical article&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Additionally, don’t underestimate the power of your mood. Taking the test when you are well-rested, feeling good, and full of energy can cause you to answer questions with more “positive” responses than if you’re totally exhausted at the end of a long week. Rather than thinking of the best of times or the worst of times, or just how you’ve behaved this past month, or how you used to behave when you were younger, (or how you would &lt;em&gt;like&lt;/em&gt; to behave...) answer the questions considering how you’ve actually responded to situations &lt;em&gt;most often&lt;/em&gt;, during the course of your lifetime.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Can I send my results to several e-mail addresses?&#039;,
+                answer: &#039;&lt;p&gt;Not at the moment, sorry.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Can several people send their results to my e-mail address?&#039;,
+                answer: &#039;&lt;p&gt;No, test results may only be associated with a unique e-mail address.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Do you offer team reports or workshops?&#039;,
+                answer: &#039;&lt;p&gt;Yes – we’ve just launched our &lt;a href=&quot;https://www.16personalities.com/tools/teams&quot; class=&quot;with-border&quot;&gt;Teams&lt;/a&gt; tool. Please check it out!&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Do you sell any personal data to other companies, advertisers, political parties etc.?&#039;,
+                answer: &#039;&lt;p&gt;No, and we won’t ever do that. Our mission is to understand how our personality traits shape us and our relationships, and to help you use that information for personal growth. You won’t see any external ads on our pages, and your favorite shampoo manufacturer won’t suddenly start sending you “So we heard you are...” letters either.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Is there an offline version of your personality test?&#039;,
+                answer: &#039;&lt;p&gt;Not at the moment.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Is your personality test reliable and valid?&#039;,
+                answer: &#039;&lt;p&gt;Yes. You can read more about its reliability and validity &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/articles/our-theory#intro-reliability&quot;&gt;here&lt;/a&gt; and &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/articles/reliability-and-validity&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Can I use your personality test to screen potential job applicants?&#039;,
+                answer: &#039;&lt;p&gt;No. The main purpose of our test and type descriptions is to encourage personal development and improve understanding of one’s self and others. We do not believe that someone’s personality type is a reliable indicator of professional success – so neither the test nor articles available on this website should be used for any kind of selection or assessment.&lt;/p&gt;&lt;p&gt;Ethics issues aside, forcing someone to take the test is also very likely to lead to “&lt;em&gt;garbage in, garbage out&lt;/em&gt;”, with most participants getting the same 1-2 personality types. Just don’t do that.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;I need a personality test for my app / service / website. Do you offer a public API?&#039;,
+                answer: &#039;&lt;p&gt;Not at the moment, sorry. We suggest using scales and items available at &lt;a class=&quot;with-border&quot; href=&quot;http://ipip.ori.org/&quot; rel=&quot;external&quot; target=&quot;_blank&quot;&gt;International Personality Item Pool&lt;/a&gt; to build your own assessment.&lt;/p&gt;&#039;
+            }
+        ]
+    },
+    {
+        title: &#039;Premium Profiles and Toolkits&#039;,
+        questions: [
+            {
+                expanded: false,
+                title: &#039;How secure is your checkout process?&#039;,
+                answer: &#039;&lt;p&gt;First of all, our site uses the HTTPS protocol (you can verify that by clicking on the padlock in the address bar), which means that all data sent to our server goes through a secure and encrypted channel. Furthermore, we don’t record any of your card details – they are encrypted and sent directly to the payment processor for a single charge.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Do you offer hard copies of premium profiles?&#039;,
+                answer: &#039;&lt;p&gt;No, sorry. Most of our readers are from outside the UK, so shipping costs and times would be too high. Furthermore, we love trees. That said, our premium profiles are in PDF format, so you should have no difficulties reading them on your iPad, Kindle or a similar device.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;I have bought one profile, and would now like to get another one / upgrade to the full set. Would you be able to offer any discounts?&#039;,
+                answer: &#039;&lt;p&gt;Of course! Please simply drop us a message at &lt;a class=&quot;with-border&quot; href=&quot;mailto:support@16personalities.com&quot;&gt;support@16personalities.com&lt;/a&gt; and we’ll give you a discount code.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Can I buy a premium profile or toolkit access as a gift for someone else?&#039;,
+                answer: &#039;&lt;p&gt;Yes – please see the &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/profile/gifts&quot;&gt;gift codes&lt;/a&gt; section. You will need to &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/profile&quot;&gt;log in&lt;/a&gt; or &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/auth/sign-up&quot;&gt;sign up&lt;/a&gt; if you don’t already have an account.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;I paid with PayPal and have not yet received the confirmation e-mail. How long will it take?&#039;,
+                answer: &#039;&lt;p&gt;There may be a slight delay between you making a PayPal payment and our server getting a notification from PayPal. If the e-mail doesn’t arrive right away, please wait 5-10 minutes and also check your Spam folder. If there’s still no sign of an e-mail, please contact us and we’ll look into it.&lt;/p&gt;&lt;p&gt;Please bear in mind that if you pay using the eCheque method (a withdrawal from your bank account as opposed to a credit card or the PayPal balance), it may take 3-5 working days for your payment to be processed. You should see the estimated clearing date in the PayPal confirmation e-mail. In that case, the confirmation e-mail will be sent out once the eCheque clears.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Can I print a copy of the premium profile for my personal use?&#039;,
+                answer: &#039;&lt;p&gt;Sure! We would suggest using one of the online printing services – they may also be able to bind the pages or make a hardcover version, for example.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Are premium profiles or toolkits available in French, German, Spanish...?&#039;,
+                answer: &#039;&lt;p&gt;Our premium materials are only available in English at the moment, unfortunately. We would love to translate them eventually, but that is &lt;em&gt;a lot&lt;/em&gt; of content, and we are a very small company.&lt;/p&gt;&lt;p&gt;As an alternative, you could use a web browser with auto-translation functionality (e.g., Google Chrome) to read premium materials in your preferred language.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;I lost my copy of the premium profile, can I get another one?&#039;,
+                answer: &#039;&lt;p&gt;First, please try locating the original order confirmation e-mail and then simply using the download link within. If you have lost that e-mail or the link no longer works, please e-mail us at &lt;a class=&quot;with-border&quot; href=&quot;mailto:support@16personalities.com&quot;&gt;support@16personalities.com&lt;/a&gt; and we will send you another copy, provided you purchased the profile less than a year ago. Orders placed more than a year ago may require a top-up fee depending on the order date and the number of updates since then.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Do you have an affiliate program?&#039;,
+                answer: &#039;&lt;p&gt;Not at the moment, sorry.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;How can I request a refund?&#039;,
+                answer: &#039;&lt;p&gt;If you didn’t find your premium profile(-s) or toolkits useful, you can request a refund by e-mailing us at &lt;a class=&quot;with-border&quot; href=&quot;mailto:support@16personalities.com&quot;&gt;support@16personalities.com&lt;/a&gt; within 30 days of purchase.&lt;/p&gt;&lt;p&gt;You don’t need to request a refund if you’ve lost your premium profile, would like to exchange it, or are looking to upgrade. In such and similar scenarios, please simply drop us an e-mail at &lt;a class=&quot;with-border&quot; href=&quot;mailto:support@16personalities.com&quot;&gt;support@16personalities.com&lt;/a&gt;, and we’ll do our best to help.&lt;/p&gt;&#039;
+            }
+        ]
+    },
+    {
+        title: &#039;Theory and Type Descriptions&#039;,
+        questions: [
+            {
+                expanded: false,
+                title: &#039;What do the letters in the type code (e.g. ENFP-A) mean?&#039;,
+                answer: &#039;&lt;p&gt;Please see our &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/articles/our-theory&quot; title=&quot;Our Theory&quot;&gt;main theoretical article&lt;/a&gt;.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Is your test based on a specific theory?&#039;,
+                answer: &#039;&lt;p&gt;Please see &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/articles/our-theory&quot; title=&quot;Our Theory&quot;&gt;this article&lt;/a&gt; for more information about our theoretical model.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Why do you keep misspelling extr&lt;u&gt;o&lt;/u&gt;version as extr&lt;u&gt;a&lt;/u&gt;version?&#039;,
+                answer: &#039;&lt;p&gt;Extr&lt;u&gt;a&lt;/u&gt;version is actually the right way to spell this term. The prefix “extra” has its roots in Latin, and means “outside (of)”. Extr&lt;u&gt;o&lt;/u&gt;version is a more popular variant, but it is an incorrect adaptation of its opposite term, intr&lt;u&gt;o&lt;/u&gt;version. Extr&lt;u&gt;a&lt;/u&gt;version is the technically correct spelling, and is the version used most often in scientific literature, so we stick to it.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Why are there no (language) versions of additional subsections, e.g. Strengths and Weaknesses or Romantic Relationships?&#039;,
+                answer: &#039;&lt;p&gt;As is the case with premium profiles, those articles are only available in English right now. We hope to translate them as well at a later date.&lt;/p&gt;&#039;
+            }
+        ]
+    },
+    {
+        title: &#039;Membership&#039;,
+        questions: [
+            {
+                expanded: false,
+                title: &#039;How do I become a member?&#039;,
+                answer: &#039;&lt;p&gt;If you complete our personality test, you will be able to save your results and create a profile in the results screen – or join later in the &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/profile&quot;&gt;Your Profile&lt;/a&gt; page. If you already know your personality type and trait scores, you can also create an account &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/auth/sign-up&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;What is the point of registering?&#039;,
+                answer: &#039;&lt;p&gt;There are tons of useful features and resources in our member areas. As a very quick overview, you will be able to get a unique (encrypted) profile link, invite friends and compare your results to theirs, discuss various topics and get advice from other members, complete dozens of surveys and see if your opinions are shared by other people with your personality type, take a number of additional tests, review our studies... And much more.&lt;/p&gt;&lt;p&gt;Seriously, do spend a few seconds and register. It’s free, and you won’t regret it. The initial test and type overviews are just the tip of the iceberg.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Where can I chat with other people belonging to my personality type?&#039;,
+                answer: &#039;&lt;p&gt;Please try the &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/community/discussions&quot;&gt;Discussions&lt;/a&gt; section in the Community section. It is quite active and you will likely receive an answer to your question very quickly. You can also send someone a private message by visiting their profile.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Is your newsletter free?&#039;,
+                answer: &#039;&lt;p&gt;Of course!&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;How frequent are your newsletters? What do you write about?&#039;,
+                answer: &#039;&lt;p&gt;We send an e-mail every 3-4 weeks. Topics range from romantic relationships to dealing with stress, with all information and advice being specific to your personality type.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;Can I update my profile after retaking the test?&#039;,
+                answer: &#039;&lt;p&gt;Yes. Please make sure you are logged in, retake the test, and look for the “Update your profile” button in the results screen. You will not receive an e-mail with your new results though – if you need a copy, you can request it in the &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/profile/preferences&quot;&gt;Preferences&lt;/a&gt; section in your profile.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;How do I delete my profile?&#039;,
+                answer: &#039;&lt;p&gt;You can do that in the &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/profile/preferences&quot;&gt;Preferences&lt;/a&gt; section in your profile.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;I am looking for some career ideas. Are there any relevant premium resources?&#039;,
+answer: &#039;&lt;p&gt;Besides the very extensive &lt;em&gt;Career and Professional Growth&lt;/em&gt; section in the premium profile, we also have a number of tools and assessments in our &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/tools/career&quot;&gt;Career&lt;/a&gt; toolkit – they can help you explore your career values, leadership styles, job burnout, and more.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;How can I compare my results with friends?&#039;,
+                answer: &#039;&lt;p&gt;Please see the &lt;a class=&quot;with-border&quot; href=&quot;https://www.16personalities.com/community/friends&quot;&gt;Friends&lt;/a&gt; section. It will have an invitation link that you can share with your friends – if they agree to share their results with you after completing the personality test, you will see them in the same section.&lt;/p&gt;&#039;
+            }
+        ]
+    },
+    {
+        title: &#039;Other&#039;,
+        questions: [
+            {
+                expanded: false,
+                title: &#039;Can I add a link to your website to my blog / project / course etc.?&#039;,
+                answer: &#039;&lt;p&gt;Of course, as long as you are linking to a public page (e.g. the personality test). No need to ask for our explicit permission.&lt;/p&gt;&#039;
+            },
+            {
+                expanded: false,
+                title: &#039;I need to cite one of your articles. Can I do that?&#039;,
+                answer: &#039;&lt;p&gt;Sure, just please make sure to cite us properly – see &lt;a class=&quot;with-border&quot; href=&quot;http://www.chicagomanualofstyle.org/tools_citationguide.html&quot; rel=&quot;external&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt; or &lt;a class=&quot;with-border&quot; href=&quot;http://www.apastyle.org/learn/quick-guide-on-references.aspx&quot; rel=&quot;external&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt; for guidelines.&lt;/p&gt;&#039;
+            }
+        ]
+    }
+]"
+        ></faq-page>
+
+    </main>
+
+            <share-highlighter></share-highlighter>
+    
+    <div class="modal__container">
+        
+                    <search-modal action="https://www.16personalities.com/search"></search-modal>
+        
+        
+            
+                <auth-login-modal data-chunk="guest-chunk"></auth-login-modal>
+                <auth-forgot-password data-chunk="guest-chunk"></auth-forgot-password>
+
+                
+            
+        
+        <app-errors></app-errors>
+
+        <div id="portal--modal"></div>
+        <div id="portal--modalbg"></div>
+    </div>
+    <div class="scrollbar-measure"></div>
+
+            </div>
+
+        <footer id="footer" class="footer--original ">
+
+    <div class="footer__copyright">
+        ©2011-2022 NERIS Analytics Limited
+    </div>
+    <nav class="footer__links">
+        <a class="with-border" href="https://www.16personalities.com/contact-us">Contact</a>
+        <a class="with-border" href="https://www.16personalities.com/orders/testimonials">Testimonials</a>
+        <a class="with-border" href="https://www.16personalities.com/terms">Terms & Conditions</a>
+        <a class="with-border" href="https://www.16personalities.com/terms/privacy">Privacy Policy</a>
+        <a class="with-border" href="https://www.16personalities.com/tools/teams">For Teams</a>
+    </nav>
+        <div class="footer__social">
+        <a class="no-formatting" href="https://www.facebook.com/16Personalities/" target="_blank" rel="noreferrer"><span class="fab fa-facebook"></span></a>
+        <a class="no-formatting" href="https://www.instagram.com/16personalitiesofficial/" target="_blank" rel="noreferrer"><span class="fab fa-instagram"></span></a>
+        <a class="no-formatting" href="https://twitter.com/16personalities" target="_blank" rel="noreferrer"><span class="fab fa-twitter"></span></a>
+    </div>
+    
+    <!-- version v2.2.4 -->
+
+    
+</footer>
+
+<div class="svg-icons">
+    <svg id="spin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M460.115 373.846l-6.941-4.008c-5.546-3.202-7.564-10.177-4.661-15.886 32.971-64.838 31.167-142.731-5.415-205.954-36.504-63.356-103.118-103.876-175.8-107.701C260.952 39.963 256 34.676 256 28.321v-8.012c0-6.904 5.808-12.337 12.703-11.982 83.552 4.306 160.157 50.861 202.106 123.67 42.069 72.703 44.083 162.322 6.034 236.838-3.14 6.149-10.75 8.462-16.728 5.011z"></path></svg>
+</div>
+
+<script src="https://static.neris-assets.com/js/manifest--1f2b7c.js"></script>
+<script src="https://static.neris-assets.com/js/vendor--35436e.js"></script>
+
+<script src="https://static.neris-assets.com/js/app--053735.js"></script>
+
+<script async defer src="https://static.neris-assets.com/js/vendor-polyfills--bf70b4.js"></script>
+
+
+        <script>
+
+    
+        ga('send', 'pageview', {
+            'dimension5' : 'anonymous',
+            'dimension11': 'en',
+            'dimension12': 'sales_pages_new_v2_unknown'
+        });
+
+    
+    gtag('set', 'user_properties', {
+        locale    : 'en',
+        authStatus: 'anonymous',
+        userId    : '',
+        cookieId  : '626c945c30a3c4.79099283',
+        abTest1   : 'sales_pages_new_v2_unknown'
+    });
+
+</script>
+
+    </body>
+</html>

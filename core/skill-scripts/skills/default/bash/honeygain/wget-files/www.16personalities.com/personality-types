@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Extensive, research-backed profiles of 16 personality types: learn how different personalities approach romantic relationships, career choices, friendships, parenthood, and more.">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+<meta property="fb:app_id" content="326516237427150">
+
+<meta name="csrf-token" content="M9lsoA8ZnUxnOp9L7BFUc1Wjw7Ydgmdgu4PtUsJb">
+<meta name="app-version" content="v2.2.4">
+<meta name="app-jscdn" content="https://static.neris-assets.com/">
+<meta name="app-bs-uid" content="0">
+<meta name="api-token" content="">
+<meta name="app-locale" content="en">
+
+
+<title>
+
+    Personality Types
+
+ | 16Personalities</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="apple-touch-icon" sizes="57x57"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-32x32.png"
+      sizes="32x32">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-194x194.png"
+      sizes="194x194">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-96x96.png"
+      sizes="96x96">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/android-chrome-192x192.png"
+      sizes="192x192">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-16x16.png"
+      sizes="16x16">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="https://static.neris-assets.com/images/favicons/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="https://static.neris-assets.com/css/main-core--9d1e59.css">
+<link rel="stylesheet" href="/css/fonts--141580.css">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,600&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/font-awesome--0d9504.css">
+
+
+ <link href="https://static.neris-assets.com/css/large--f003e7.css" rel="stylesheet" media="screen and (min-width: 768px)">
+ 
+<link href="https://static.neris-assets.com/css/print--f081cc.css" rel="stylesheet" media="print">
+
+
+    <link rel="canonical" href="https://www.16personalities.com/personality-types">
+
+
+
+    
+        <link rel="alternate" hreflang="ar" href="https://www.16personalities.com/ar/%D8%A3%D9%86%D9%88%D8%A7%D8%B9-%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A%D8%A9">
+        <link rel="alternate" hreflang="bg" href="https://www.16personalities.com/bg/%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D1%81%D1%82%D0%BD%D0%B8-%D1%82%D0%B8%D0%BF%D0%BE%D0%B2%D0%B5">
+        <link rel="alternate" hreflang="ch" href="https://www.16personalities.com/ch/%E7%B1%BB%E5%9E%8B%E6%8F%8F%E8%BF%B0">
+        <link rel="alternate" hreflang="cs" href="https://www.16personalities.com/cs/osobnostni-typy">
+        <link rel="alternate" hreflang="da" href="https://www.16personalities.com/da/personlighedstyper">
+        <link rel="alternate" hreflang="de" href="https://www.16personalities.com/de/personlichkeitstypen">
+        <link rel="alternate" hreflang="ee" href="https://www.16personalities.com/ee/isiksuse-t%C3%BC%C3%BCbid">
+        <link rel="alternate" hreflang="es" href="https://www.16personalities.com/es/descripcion-de-los-tipos">
+        <link rel="alternate" hreflang="el" href="https://www.16personalities.com/el/%CF%84%CF%8D%CF%80%CE%BF%CE%B9-%CF%80%CF%81%CE%BF%CF%83%CF%89%CF%80%CE%B9%CE%BA%CF%8C%CF%84%CE%B7%CF%84%CE%B1%CF%82">
+        <link rel="alternate" hreflang="fa" href="https://www.16personalities.com/fa/%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%B4%D8%AE%D8%B5%DB%8C%D8%AA">
+        <link rel="alternate" hreflang="fi" href="https://www.16personalities.com/fi/persoonallisuustyypit">
+        <link rel="alternate" hreflang="fr" href="https://www.16personalities.com/fr/types-de-personnalite">
+        <link rel="alternate" hreflang="he" href="https://www.16personalities.com/he/%D7%98%D7%99%D7%A4%D7%95%D7%A1%D7%99-%D7%90%D7%99%D7%A9%D7%99%D7%95%D7%AA">
+        <link rel="alternate" hreflang="hi" href="https://www.16personalities.com/hi/%E0%A4%B5%E0%A5%8D%E0%A4%AF%E0%A4%95%E0%A5%8D%E0%A4%A4%E0%A4%BF%E0%A4%A4%E0%A5%8D%E0%A4%B5-%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%95%E0%A4%BE%E0%A4%B0">
+        <link rel="alternate" hreflang="hr" href="https://www.16personalities.com/hr/tipovi-osobnosti">
+        <link rel="alternate" hreflang="hu" href="https://www.16personalities.com/hu/szem%C3%A9lyis%C3%A9gt%C3%ADpusok">
+        <link rel="alternate" hreflang="id" href="https://www.16personalities.com/id/tipe-kepribadian">
+        <link rel="alternate" hreflang="is" href="https://www.16personalities.com/is/pers%C3%B3nuleikager%C3%B0ir">
+        <link rel="alternate" hreflang="it" href="https://www.16personalities.com/it/tipi-di-personalita">
+        <link rel="alternate" hreflang="ja" href="https://www.16personalities.com/ja/%E6%80%A7%E6%A0%BC%E3%82%BF%E3%82%A4%E3%83%97">
+        <link rel="alternate" hreflang="ko" href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95">
+        <link rel="alternate" hreflang="nl" href="https://www.16personalities.com/nl/persoonlijkheidstypen">
+        <link rel="alternate" hreflang="no" href="https://www.16personalities.com/no/personlighetstyper">
+        <link rel="alternate" hreflang="pl" href="https://www.16personalities.com/pl/typy-osobowosci">
+        <link rel="alternate" hreflang="br" href="https://www.16personalities.com/br/descricoes-dos-tipos">
+        <link rel="alternate" hreflang="ro" href="https://www.16personalities.com/ro/tipuri-de-personalitate">
+        <link rel="alternate" hreflang="ru" href="https://www.16personalities.com/ru/tipy-lichnosti">
+        <link rel="alternate" hreflang="sk" href="https://www.16personalities.com/sk/typy-osobnosti">
+        <link rel="alternate" hreflang="sl" href="https://www.16personalities.com/sl/tipi-osebnosti">
+        <link rel="alternate" hreflang="sr" href="https://www.16personalities.com/sr/tipovi-licnosti">
+        <link rel="alternate" hreflang="sv" href="https://www.16personalities.com/sv/personlighetstyper">
+        <link rel="alternate" hreflang="sw" href="https://www.16personalities.com/sw/aina-za-nafsi">
+        <link rel="alternate" hreflang="th" href="https://www.16personalities.com/th/%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%B4%E0%B8%81%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A0%E0%B8%97%E0%B8%95%E0%B9%88%E0%B8%B2%E0%B8%87">
+        <link rel="alternate" hreflang="tr" href="https://www.16personalities.com/tr/ki%C5%9Filik-tipleri">
+        <link rel="alternate" hreflang="uk" href="https://www.16personalities.com/uk/typy-osobystosti">
+        
+    
+
+
+<script>
+
+    (function(w,d,n){w.jscdn=function(){return(d.head.querySelector('meta[name="'+n+'"]')||{}).content||'/'}}(window,document,'app-jscdn'))
+
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+    ga('create', 'UA-27031617-1', 'auto');
+    ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7YT1C03C8C"></script>
+
+    <script>
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-7YT1C03C8C', { 'anonymize_ip': true });
+
+    </script>
+
+
+
+<style>[v-cloak]{display:none !important;}</style>
+        
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "ItemList",
+            "name": "Personality Types",
+            "itemListOrder": "http://schema.org/ItemListOrderAscending",
+            "description": "Personality Types",
+            "numberOfItems": 16,
+            "itemListElement": [
+                                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "url": "https://www.16personalities.com/intj-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "url": "https://www.16personalities.com/intp-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "url": "https://www.16personalities.com/entj-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "url": "https://www.16personalities.com/entp-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 5,
+                    "url": "https://www.16personalities.com/infj-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 6,
+                    "url": "https://www.16personalities.com/infp-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 7,
+                    "url": "https://www.16personalities.com/enfj-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 8,
+                    "url": "https://www.16personalities.com/enfp-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 9,
+                    "url": "https://www.16personalities.com/istj-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 10,
+                    "url": "https://www.16personalities.com/isfj-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 11,
+                    "url": "https://www.16personalities.com/estj-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 12,
+                    "url": "https://www.16personalities.com/esfj-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 13,
+                    "url": "https://www.16personalities.com/istp-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 14,
+                    "url": "https://www.16personalities.com/isfp-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 15,
+                    "url": "https://www.16personalities.com/estp-personality"
+                },
+                                {
+                    "@type": "ListItem",
+                    "position": 16,
+                    "url": "https://www.16personalities.com/esfp-personality"
+                }
+                            ]
+        }
+    </script>
+
+    </head>
+
+    <body role="document" class="">
+
+        <div class="main-wrapper" id="main-app">
+            <div class="navbar sticky   ">
+
+    <a href="https://www.16personalities.com" class="logo ">
+        <img src="https://static.neris-assets.com/images/system/logo.svg" alt="16Personalities">
+    </a>
+
+    <app-navbar
+        v-cloak
+        label="Main"
+        class="middle-section anonymous">
+
+        
+        
+            <app-nav-item class=" test-link"
+                          href="https://www.16personalities.com/free-personality-test"
+                          label="Take the Test"></app-nav-item>
+
+            <app-nav-item class="active"
+                          href="https://www.16personalities.com/personality-types"
+                          label="Personality Types"
+                          :is-type-list="true"
+                          dropdown>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#analysts"
+                              label="Analysts"
+                              subtitle="Intuitive (<strong>N</strong>) and Thinking (<strong>T</strong>) personality types, known for their rationality, impartiality, and intellectual excellence.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/intj-personality">Architect <span>INTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/intp-personality">Logician <span>INTP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/entj-personality">Commander <span>ENTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/entp-personality">Debater <span>ENTP</span></a>
+                        </li>
+                    </ul>
+
+                </app-nav-item>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#diplomats"
+                              label="Diplomats"
+                              subtitle="Intuitive (<strong>N</strong>) and Feeling (<strong>F</strong>) personality types, known for their empathy, diplomatic skills, and passionate idealism.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/infj-personality">Advocate <span>INFJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/infp-personality">Mediator <span>INFP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/enfj-personality">Protagonist <span>ENFJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/enfp-personality">Campaigner <span>ENFP</span></a>
+                        </li>
+                    </ul>
+
+                </app-nav-item>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#sentinels"
+                              label="Sentinels"
+                              subtitle="Observant (<strong>S</strong>) and Judging (<strong>J</strong>) personality types, known for their practicality and focus on order, security, and stability.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/istj-personality">Logistician <span>ISTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/isfj-personality">Defender <span>ISFJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/estj-personality">Executive <span>ESTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/esfj-personality">Consul <span>ESFJ</span></a>
+                        </li>
+                    </ul>
+                </app-nav-item>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#explorers"
+                              label="Explorers"
+                              subtitle="Observant (<strong>S</strong>) and Prospecting (<strong>P</strong>) personality types, known for their spontaneity, ingenuity, and flexibility.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/istp-personality">Virtuoso <span>ISTP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/isfp-personality">Adventurer <span>ISFP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/estp-personality">Entrepreneur <span>ESTP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/esfp-personality">Entertainer <span>ESFP</span></a>
+                        </li>
+                    </ul>
+                </app-nav-item>
+
+            </app-nav-item>
+
+            <app-nav-item class=""
+                          href="https://www.16personalities.com/academy"
+                          label="Premium Profiles"></app-nav-item>
+
+            <app-nav-item class=""
+                          href="https://www.16personalities.com/tools"
+                          label="Toolkits"
+                          dropdown>
+
+                <app-nav-item href="https://www.16personalities.com/tools/personal-growth"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/personal-growth.svg"
+                              label="Personal Growth"
+                              subtitle="Discover and understand your strengths and weaknesses."></app-nav-item>
+                <app-nav-item href="https://www.16personalities.com/tools/relationships"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/romantic-relationships.svg"
+                              label="Relationships"
+                              subtitle="Deepen your relationships, both romantic and otherwise."></app-nav-item>
+
+                <app-nav-item href="https://www.16personalities.com/tools/career"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/careers.svg"
+                              label="Career"
+                              subtitle="Kick-start your career or get better at navigating it."></app-nav-item>
+
+            </app-nav-item>
+
+            <app-nav-item class=""
+                          href="https://www.16personalities.com/tools/teams"
+                          label="Teams"></app-nav-item>
+
+            <app-nav-item class=""
+                          label="Resources"
+                          href="https://www.16personalities.com/articles?category=list"
+                          dropdown>
+
+                <app-nav-item label="Articles"
+                              href="https://www.16personalities.com/articles?category=list"
+                              img="https://static.neris-assets.com/images/system/articles.svg"
+                              subtitle="Get tips, advice, and deep insights into various topics."></app-nav-item>
+
+                <app-nav-item label="Surveys"
+                              href="https://www.16personalities.com/insights"
+                              img="https://static.neris-assets.com/images/system/insights.svg"
+                              subtitle="Explore and participate in hundreds of our studies."></app-nav-item>
+
+                <app-nav-item label="Theory"
+                              href="https://www.16personalities.com/articles/our-theory"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/theory.svg"
+                              subtitle="Understand the meaning and impact of personality traits."></app-nav-item>
+
+                <app-nav-item label="Country Profiles"
+                              href="https://www.16personalities.com/country-profiles"
+                              img="https://static.neris-assets.com/images/system/country-profiles-menu.svg"
+                              subtitle="Examine our regional and country personality profiles."></app-nav-item>
+
+            </app-nav-item>
+
+        
+    </app-navbar>
+
+    <div class="right-section ">
+
+        <a class="search-toggle" href="#" @click.prevent="openModal('search')" title="search">
+            <icon-search></icon-search>
+        </a>
+
+        <a class="language-toggle" href="https://www.16personalities.com/languages" title="Change language"><span class="f16 f16-globe"></span></a>
+
+        
+            <a class="no-formatting with-border login-link" href="javascript:" @click.prevent="openModal('login')">Log In</a>
+
+                            <a href="https://www.16personalities.com/free-personality-test" class="btn btn-action test-button" v-reports-click-to-ga="'take-the-test-navbar'">Take the Test</a>
+            
+        
+    </div>
+
+    <nav-mobile-toggle></nav-mobile-toggle>
+
+</div>
+
+<nav-mobile v-cloak>
+    <div class="menu anonymous">
+
+        <nav-mobile-toggle opened></nav-mobile-toggle>
+
+        <span autofocus></span>
+
+        
+            <div class="part padded test-button">
+                <a href="https://www.16personalities.com/free-personality-test" class="btn btn-action">Take the Test</a>
+            </div>
+
+            <div class="scrollable">
+
+                <div class="part">
+
+                    <a class="no-formatting " href="https://www.16personalities.com/free-personality-test">Free Personality Test</a>
+                    <a class="no-formatting active" href="https://www.16personalities.com/personality-types">Personality Types</a>
+
+                </div>
+
+                <div class="part">
+
+                    <a class="no-formatting item " href="https://www.16personalities.com/academy">Premium Personality Profiles</a>
+
+                    <nav-mobile-dropdown class="no-formatting item" :show="false" label="Self-Discovery Toolkits">
+                        <a class="no-formatting item " href="https://www.16personalities.com/tools/personal-growth">Personal Growth</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/tools/relationships">Relationships</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/tools/career">Career</a>
+                    </nav-mobile-dropdown>
+
+                    <a class="no-formatting item " href="https://www.16personalities.com/tools/teams">Team Assessments</a>
+
+                </div>
+
+                <div class="part">
+
+                    <nav-mobile-dropdown class="no-formatting item" :show="false" label="Resources">
+
+                        <a class="no-formatting item " href="https://www.16personalities.com/articles?category=list">Articles</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/insights">Surveys</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/articles/our-theory">Theory</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/country-profiles">Country Profiles</a>
+
+                    </nav-mobile-dropdown>
+
+                    <a class="no-formatting item " href="https://www.16personalities.com/languages">Languages</a>
+                    <a class="no-formatting item " href="https://www.16personalities.com/contact-us">Contact Us</a>
+
+                </div>
+
+                <div class="part">
+                    <a class="no-formatting item search" href="javascript:;" @click="openModal('search')">
+                        <icon-search-alt></icon-search-alt>
+                        Search
+                    </a>
+                </div>
+
+                <div class="part no-border auth">
+                    <button class="btn btn-white" href="javascript:;" @click="openModal('login')">Log In</button>
+                </div>
+
+            </div>
+
+        
+    </div>
+</nav-mobile>
+
+<nav class="bottom" data-chunk="animation-chunk">
+
+    
+        
+            <a href="https://www.16personalities.com/free-personality-test">
+                <span class="f16 f16-additional-tests"></span>
+                <span class="title">Test</span>
+            </a>
+
+            <a href="https://www.16personalities.com/personality-types" class="active">
+                <span class="f16 f16-friends"></span>
+                <span class="title">Types</span>
+            </a>
+
+            <a href="https://www.16personalities.com/premium-analysis" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><polygon class="cls-1" points="56.71 -0.11 40.69 4.71 43.03 6.94 53.49 5.61 38.5 20.23 21.67 16.13 23.5 11.35 18.19 7.36 10.59 10.18 12.14 16.97 7.64 27.95 3.58 27.82 -0.13 32.45 3.93 38.49 10.33 38.27 13.53 31.66 10.04 29.46 14.47 19.25 19.99 19.41 33.04 21.58 31.13 23.62 32.24 28.96 39.19 30.3 43.79 26.66 41.14 22.86 57.27 5.55 54.79 18.17 60.13 15.12 60.13 -0.11 56.71 -0.11"/><polygon class="cls-1" points="1.6 59.89 -0.13 44.52 8.15 43.16 10.46 59.89 1.6 59.89"/><polygon class="cls-1" points="15.27 59.89 24.51 59.89 23.55 31.75 16.81 31.75 15.27 59.89"/><polygon class="cls-1" points="29.52 59.89 27.59 36.24 37.6 37.19 36.84 59.89 29.52 59.89"/><polygon class="cls-1" points="41.84 59.89 43 43.21 48.39 43.21 48.39 59.89 41.84 59.89"/><polygon class="cls-1" points="52.43 59.89 51.66 22.55 60.13 20.93 60.13 59.89 52.43 59.89"/></svg>
+                <span class="title">Premium</span>
+            </a>
+
+            <a href="https://www.16personalities.com/articles?category=list" class="">
+                <span class="f16 f16-academy"></span>
+                <span class="title">Resources</span>
+            </a>
+
+            <a href="javascript:;" @click="openModal('login')">
+                <span class="f16 f16-profile"></span>
+                <span class="title">Log In</span>
+            </a>
+
+        
+    
+</nav>
+            
+    <main class="q-tl" data-chunk="animation-chunk">
+
+        <div class="hero">
+            <h1>Personality Types</h1>
+        </div>
+
+                    <div class="action-row top">
+                <a href="https://www.16personalities.com/free-personality-test" class="btn btn-action" v-reports-click-to-ga="'take-the-test-types-list-1'">Find Your Type <span class="fal fa-arrow-right"></span></a>
+            </div>
+        
+        <div class="type-group analysts">
+
+            <svg class="background" viewBox="0 0 1920 155" preserveAspectRatio="none"><polygon class="c1" points="1920 823 0 823 0 0 396 101 835 31 1574 149 1920 17 1920 823"></polygon></svg>
+
+            <h2 id="analysts">Analysts</h2>
+
+            <div class="types">
+
+                <a class="type" href="https://www.16personalities.com/intj-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/intj-architect.svg?v=1" v-delayed-animation data-animation="architect">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/architect.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/intj-architect.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="architect"
+                    ></animation>
+
+                    <h4>Architect</h4>
+                    <h5>INTJ-A / INTJ-T</h5>
+                    <div class="snippet">Imaginative and strategic thinkers, with a plan for everything.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/intp-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/intp-logician.svg?v=1" v-delayed-animation data-animation="logician">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/logician.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/intp-logician.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="logician"
+                    ></animation>
+
+                    <h4>Logician</h4>
+                    <h5>INTP-A / INTP-T</h5>
+                    <div class="snippet">Innovative inventors with an unquenchable thirst for knowledge.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/entj-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/entj-commander.svg?v=1" v-delayed-animation data-animation="commander">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/commander.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/entj-commander.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="commander"
+                    ></animation>
+
+                    <h4>Commander</h4>
+                    <h5>ENTJ-A / ENTJ-T</h5>
+                    <div class="snippet">Bold, imaginative and strong-willed leaders, always finding a way – or making one.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/entp-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/entp-debater.svg?v=1" v-delayed-animation data-animation="debater">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/debater.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/entp-debater.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="debater"
+                    ></animation>
+
+                    <h4>Debater</h4>
+                    <h5>ENTP-A / ENTP-T</h5>
+                    <div class="snippet">Smart and curious thinkers who cannot resist an intellectual challenge.</div>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="type-group diplomats">
+
+            <h2 id="diplomats">Diplomats</h2>
+
+            <div class="types">
+
+                <a class="type" href="https://www.16personalities.com/infj-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/infj-advocate.svg?v=1" v-delayed-animation data-animation="advocate">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/advocate.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/infj-advocate.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="advocate"
+                    ></animation>
+
+                    <h4>Advocate</h4>
+                    <h5>INFJ-A / INFJ-T</h5>
+                    <div class="snippet">Quiet and mystical, yet very inspiring and tireless idealists.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/infp-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/infp-mediator.svg?v=1" v-delayed-animation data-animation="mediator">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/mediator.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/infp-mediator.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="mediator"
+                    ></animation>
+
+                    <h4>Mediator</h4>
+                    <h5>INFP-A / INFP-T</h5>
+                    <div class="snippet">Poetic, kind and altruistic people, always eager to help a good cause.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/enfj-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/enfj-protagonist.svg?v=1" v-delayed-animation data-animation="protagonist">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/protagonist.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/enfj-protagonist.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="protagonist"
+                    ></animation>
+
+                    <h4>Protagonist</h4>
+                    <h5>ENFJ-A / ENFJ-T</h5>
+                    <div class="snippet">Charismatic and inspiring leaders, able to mesmerize their listeners.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/enfp-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/enfp-campaigner.svg?v=1" v-delayed-animation data-animation="campaigner">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/campaigner.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/enfp-campaigner.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="campaigner"
+                    ></animation>
+
+                    <h4>Campaigner</h4>
+                    <h5>ENFP-A / ENFP-T</h5>
+                    <div class="snippet">Enthusiastic, creative and sociable free spirits, who can always find a reason to smile.</div>
+                </a>
+
+            </div>
+
+                            <div class="action-row middle">
+                    <a href="https://www.16personalities.com/free-personality-test" class="btn btn-action" v-reports-click-to-ga="'take-the-test-types-list-2'">Find Your Type <span class="fal fa-arrow-right"></span></a>
+                </div>
+            
+        </div>
+
+        <div class="type-group sentinels">
+
+            <h2 id="sentinels">Sentinels</h2>
+
+            <div class="types">
+
+                <a class="type" href="https://www.16personalities.com/istj-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/istj-logistician.svg?v=1" v-delayed-animation data-animation="logistician">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/logistician.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/istj-logistician.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="logistician"
+                    ></animation>
+
+                    <h4>Logistician</h4>
+                    <h5>ISTJ-A / ISTJ-T</h5>
+                    <div class="snippet">Practical and fact-minded individuals, whose reliability cannot be doubted.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/isfj-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/isfj-defender.svg?v=1" v-delayed-animation data-animation="defender">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/defender.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/isfj-defender.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="defender"
+                    ></animation>
+
+                    <h4>Defender</h4>
+                    <h5>ISFJ-A / ISFJ-T</h5>
+                    <div class="snippet">Very dedicated and warm protectors, always ready to defend their loved ones.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/estj-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/estj-executive.svg?v=1" v-delayed-animation data-animation="executive">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/executive.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/estj-executive.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="executive"
+                    ></animation>
+
+                    <h4>Executive</h4>
+                    <h5>ESTJ-A / ESTJ-T</h5>
+                    <div class="snippet">Excellent administrators, unsurpassed at managing things – or people.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/esfj-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/esfj-consul.svg?v=1" v-delayed-animation data-animation="consul">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/consul.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/esfj-consul.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="consul"
+                    ></animation>
+
+                    <h4>Consul</h4>
+                    <h5>ESFJ-A / ESFJ-T</h5>
+                    <div class="snippet">Extraordinarily caring, social and popular people, always eager to help.</div>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="type-group explorers">
+
+            <h2 id="explorers">Explorers</h2>
+
+            <div class="types">
+
+                <a class="type" href="https://www.16personalities.com/istp-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/istp-virtuoso.svg?v=1" v-delayed-animation data-animation="virtuoso">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/virtuoso.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/istp-virtuoso.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="virtuoso"
+                    ></animation>
+
+                    <h4>Virtuoso</h4>
+                    <h5>ISTP-A / ISTP-T</h5>
+                    <div class="snippet">Bold and practical experimenters, masters of all kinds of tools.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/isfp-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/isfp-adventurer.svg?v=1" v-delayed-animation data-animation="adventurer">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/adventurer.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/isfp-adventurer.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="adventurer"
+                    ></animation>
+
+                    <h4>Adventurer</h4>
+                    <h5>ISFP-A / ISFP-T</h5>
+                    <div class="snippet">Flexible and charming artists, always ready to explore and experience something new.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/estp-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/estp-entrepreneur.svg?v=1" v-delayed-animation data-animation="entrepreneur">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/entrepreneur.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/estp-entrepreneur.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="entrepreneur"
+                    ></animation>
+
+                    <h4>Entrepreneur</h4>
+                    <h5>ESTP-A / ESTP-T</h5>
+                    <div class="snippet">Smart, energetic and very perceptive people, who truly enjoy living on the edge.</div>
+                </a>
+
+                <a class="type" href="https://www.16personalities.com/esfp-personality">
+
+                    <img class="image" loading="lazy" src="https://static.neris-assets.com/images/personality-types/avatars/esfp-entertainer.svg?v=1" v-delayed-animation data-animation="entertainer">
+                    <animation
+                        animation-file="https://animations.neris-assets.com/avatars/defaults/entertainer.json"
+                        image-file="https://static.neris-assets.com/images/personality-types/avatars/esfp-entertainer.svg"
+                        trigger="hover"
+                        loop="hover"
+                        delayed
+                        data-animation="entertainer"
+                    ></animation>
+
+                    <h4>Entertainer</h4>
+                    <h5>ESFP-A / ESFP-T</h5>
+                    <div class="snippet">Spontaneous, energetic and enthusiastic people – life is never boring around them.</div>
+                </a>
+
+            </div>
+
+        </div>
+
+                    <div class="action-row bottom">
+                <a href="https://www.16personalities.com/free-personality-test" class="btn btn-action" v-reports-click-to-ga="'take-the-test-types-list-3'">Find Your Type <span class="fal fa-arrow-right"></span></a>
+            </div>
+        
+    </main>
+
+            <share-highlighter></share-highlighter>
+    
+    <div class="modal__container">
+        
+                    <search-modal action="https://www.16personalities.com/search"></search-modal>
+        
+        
+            
+                <auth-login-modal data-chunk="guest-chunk"></auth-login-modal>
+                <auth-forgot-password data-chunk="guest-chunk"></auth-forgot-password>
+
+                
+            
+        
+        <app-errors></app-errors>
+
+        <div id="portal--modal"></div>
+        <div id="portal--modalbg"></div>
+    </div>
+    <div class="scrollbar-measure"></div>
+
+            </div>
+
+        <footer id="footer" class="footer--original ">
+
+    <div class="footer__copyright">
+        ©2011-2022 NERIS Analytics Limited
+    </div>
+    <nav class="footer__links">
+        <a class="with-border" href="https://www.16personalities.com/contact-us">Contact</a>
+        <a class="with-border" href="https://www.16personalities.com/orders/testimonials">Testimonials</a>
+        <a class="with-border" href="https://www.16personalities.com/terms">Terms & Conditions</a>
+        <a class="with-border" href="https://www.16personalities.com/terms/privacy">Privacy Policy</a>
+        <a class="with-border" href="https://www.16personalities.com/tools/teams">For Teams</a>
+    </nav>
+        <div class="footer__social">
+        <a class="no-formatting" href="https://www.facebook.com/16Personalities/" target="_blank" rel="noreferrer"><span class="fab fa-facebook"></span></a>
+        <a class="no-formatting" href="https://www.instagram.com/16personalitiesofficial/" target="_blank" rel="noreferrer"><span class="fab fa-instagram"></span></a>
+        <a class="no-formatting" href="https://twitter.com/16personalities" target="_blank" rel="noreferrer"><span class="fab fa-twitter"></span></a>
+    </div>
+    
+    <!-- version v2.2.4 -->
+
+    
+</footer>
+
+<div class="svg-icons">
+    <svg id="spin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M460.115 373.846l-6.941-4.008c-5.546-3.202-7.564-10.177-4.661-15.886 32.971-64.838 31.167-142.731-5.415-205.954-36.504-63.356-103.118-103.876-175.8-107.701C260.952 39.963 256 34.676 256 28.321v-8.012c0-6.904 5.808-12.337 12.703-11.982 83.552 4.306 160.157 50.861 202.106 123.67 42.069 72.703 44.083 162.322 6.034 236.838-3.14 6.149-10.75 8.462-16.728 5.011z"></path></svg>
+</div>
+
+<script src="https://static.neris-assets.com/js/manifest--1f2b7c.js"></script>
+<script src="https://static.neris-assets.com/js/vendor--35436e.js"></script>
+
+<script src="https://static.neris-assets.com/js/app--053735.js"></script>
+
+<script async defer src="https://static.neris-assets.com/js/vendor-polyfills--bf70b4.js"></script>
+
+
+        <script>
+
+    
+        ga('send', 'pageview', {
+            'dimension5' : 'anonymous',
+            'dimension11': 'en',
+            'dimension12': 'sales_pages_new_v2_unknown'
+        });
+
+    
+    gtag('set', 'user_properties', {
+        locale    : 'en',
+        authStatus: 'anonymous',
+        userId    : '',
+        cookieId  : '',
+        abTest1   : 'sales_pages_new_v2_unknown'
+    });
+
+</script>
+
+    </body>
+</html>
