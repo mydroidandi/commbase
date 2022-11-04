@@ -128,8 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Ignore bundled Model
-#bundled/vosk/model/
+# Ignore bundled models
+bundled/vosk/model/
 
 # Ignore Logs
 logs
