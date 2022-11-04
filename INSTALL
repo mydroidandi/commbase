@@ -1,0 +1,460 @@
+File: INSTALL
+Description: Commbase installation steps.
+Notice that this file contains the Commbase version with Vosk, which allows Commbase to work locally 
+without requiring any Internet connection to process the voice-recognition. However many commands 
+will fail without connection. Any other installation requirement for alternative voice-recognition 
+methods will be placed in their respective method directory as it is added to the Commbase 
+application and tested.
+
+---------
+Content:
+---------
+
+1. Installation
+1.1. Set up your system repository sources
+1.2. Update the system
+1.3. Make the $COMMBASE directory
+1.4. Install Commbase
+2. Requisites and dependencies
+2.1. Install Python
+2.2. Install Python packages
+2.3. Install the Vosk model
+2.4. Install the required system dependency packages
+2.5. Install VU-meter
+2.6. Install Oh My Tmux
+2.7. Install the default Commbase voice commands dependencies
+2.8. Install Desktop Environments
+3. Installations for Developers
+4. Testing the Vosk model
+5. Make the scripts executable
+6. How to apply directory and file permissions recursively
+7. Add the Commbase executable command
+8. Key bindings
+9. Run Commbase at system boot up
+10. Setup a network of multiple Commbase devices
+
+----------------
+1. Installation
+----------------
+
+Set up your system repository sources:
+---------------------------------------
+For example, in GNU/Debian Linux, add the sources contrib and non-free in the file
+/etc/apt/sources
+$ sudo nano /etc/apt/sources
+
+Update the system:
+-------------------
+$ sudo apt-get update
+You can also upgrade it like this:
+$ sudo apt-get -u upgrade
+
+Make the $COMMBASE directory:
+------------------------------
+Create the Commbase directory in your user home directory, usually /home/<USER-NAME>:
+$ mkdir $HOME/Developer
+
+By default, Commbase is made to reside in the directory "Developer". In that way, the Commbase users
+are able to: 1. re-coding the existent voice command functions and/or the Commbase bash scripts to
+adjust the application to their own needs and accelerate the user voice recognition and 2. coding new
+voice command functions or bash scripts specific for the Commbase application.
+
+To know more on how to make Commbase commands, checkout the section "The $COMMBASE directory" in the
+section "Commands setup" in the User's Guide.
+
+Install Commbase:
+------------------
+Visit: COMMBASE GITHUB
+Download and extract/Clone the repository from github.com and place it in the $COMMBASE directory:
+$ echo $HOME
+$ cd $HOME
+$ git clone COMMBASE
+
+-------------------------------
+2. Requisites and dependencies
+-------------------------------
+
+Install Python:
+----------------
+python3.7
+$ sudo apt-get update
+$ apt-cache search python 3.7
+$ sudo apt-get install python3.7
+
+pip3.7:
+$ /usr/bin/python3 -m pip install --upgrade pip
+$ /usr/bin/python3 -m pip3 install --upgrade pip
+$ /usr/bin/python3.7 -m pip3.7 install --upgrade pip
+Prints a list of installed pip packages:
+$ pip list | more
+$ pip3 list | more
+$ pip3.7 list | more
+
+Alternatively, you can replace Python 3.7 with Anaconda. Anaconda's Python versions are well
+optimized, so the speech recognition AI is supposed to work faster than the official Python packages.
+More information: https://www.anaconda.com/
+
+After the installation of Anaconda you should see the base "(base)" in the foobar.
+
+In case of that your system has a single Python installation using Anaconda if it set up for running
+only in the Bash shell, you must enter the Bash shell before start Commbase, anaconda-navigator, or
+any other Python script/program uncapable of running using the current Python's runtime that is
+preinstalled within your Operating System distribution:
+Example of foobar before entering Bash:
+USER-NAME@shark:~$ bash
+Example of foobar with Anaconda's Python, identified by the string "(base)", after entering Bash:
+(base) USER-NAME@shark:~$
+
+To install PyPi packages in the (base) in Anaconda, use the command "conda":
+(base) USER-NAME@shark:~$ conda install PACKAGE-NAME
+
+If you want to create a new Anaconda environment just for Commbase:
+First, go to my repo dir (Commbase, in our case) and run:
+$ conda create -n commbase_env python=3.7
+$ conda activate commbase_env
+Now, (commbase_env) appears in the foobar.
+To install PyPi packages in the (commbase) environment in Anaconda, use the command "pip", for example:
+(commbase_env) USER-NAME@shark:~$ pip install ipython
+
+Note: Environments defined with python=3.9 works percectly and probably faster than python=3.7, but
+3.7 is still the version requirement. This document would be updated for future version releases of
+Python compatible with Commbase.
+
+To deactive any repo use "deactivate":
+$ conda deactivate commbase_env
+
+Install Python packages:
+-------------------------
+Vosk:
+$ pip3.7 install vosk
+Or use:
+$ python3.7 -m pip install vosk
+If you can't install, check the output messages. For example, I have vosk already in the system from
+a previous Kdenlive application installation (installed as a flatpak from flathub), which does not
+allow me to re-installing vosk. 
+OUTPUT:
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: vosk in /home/esteban/.local/lib/python3.7/site-packages (0.3.22)
+END OF OUTPUT:
+In such case the messages reference the current python vosk package installation. In the OUTPUT case,
+python is already installed in a directory of the current local user "esteban",  instead of system
+wide, so there is use re-installing python3, pip3, or vosk.
+
+PyAudio‑0.2.11:
+$ pip3.7 install PyAudio‑0.2.11
+Or download from pypi.org:
+$ tar xvzf tar xvzf PyAudio-0.2.11.tar.gz
+$ cp PyAudio-0.2.11.tar.gz $HOME/Commbase/commbase/base-vosk
+$ Set up permissions for the directory:
+$ chmod 755 PyAudio‑0.2.11
+PyAudio‑0.2.11 requires Portaudio19 to install:
+$ apt-cache search portaudio
+$ sudo apt-get install portaudio19-dev
+Information here: https://packages.debian.org/bullseye/portaudio19-dev
+Install PyAudio using its simple instruction in its file INSTALL:
+$ sudo python3.7 setup.py install
+
+Subprocess.run:
+Information: https://pypi.org/project/subprocess.run/
+$ pip install subprocess.run
+Or:
+$ pip3 install subprocess.run
+
+Sounddevice:
+This package allows us to run the test test_microphone.py
+$ pip3 install sounddevice
+
+colorama-0.4.4:
+$ pip install colorama
+Or:
+$ pip3 install colorama
+
+Install the Vosk model:
+------------------------
+Currently, Commbase works only in English.
+Visit: https://alphacephei.com/vosk/models
+Download the model manually or using commands:
+$ cd ~/Commbase/commbase/base-vosk/voice-recognition
+$ wget https://alphacephei.com/vosk/models/vosk-model-en-us-0.22.zip
+Extract the model:
+$ unzip vosk-model-en-us-0.22.zip
+Rename vosk-model-en-us-0.22 as model:
+$ mv vosk-model-en-us-0.22 model
+$ Set up permissions for the directory:
+$ chmod 755 model
+Delete the big zip file:
+$ rm -rf vosk-model-en-us-0.22.zip
+
+Install the required system dependency packages:
+-------------------------------------------------
+Package Names and commands should be verified after during the Commbase installation. To verify
+packages you can use:
+$ whereis <PACKAGE>
+$ whereis <COMMAND>.
+
+I explain it because names and commands could change from distro to distro or even from release to a
+newer release of the same distro):
+alsamixer
+aplay
+awk
+bash
+curl
+ecsound
+festival
+git
+mpv
+mplayer
+nmap
+openssh-server (server and client)
+pkill
+rsync
+sed
+sh
+sox
+sudo
+tasksel
+tmux
+uuid-runtime
+wget
+
+In Debian, the DPKG packages that contain all the required commands can be installed using apt. Apt
+manages and installs the package dependencies automatically:
+bash
+curl
+festival
+ffmpeg
+git
+mpv
+mplayer
+nmap
+openssh-server
+rsync
+sed
+sox
+sudo
+tasksel
+tmux
+uuid-runtime
+wget
+
+** Packages unfound by their given names can be replaced in the source by their respective command
+line versions your favorite OS distribution.
+
+Use APT to install packages from the official repositories for your distro, I.e.:
+$ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
+
+To verify that a package is present in the system:
+$ dpkg -l | grep <PACKAGE-NAME>
+Example:
+$ dpkg -l | grep bash
+
+More information on packages installation and configuration:
+https://drive.google.com/drive/folders/1FyXI0XZmpVmEEPXrT1beBs8HI6i6ioOB
+TODO: PERSONAL NFT WEBSITE
+
+Install VU-meter:
+------------------
+Download/clone it from github and install it:
+$ cd $HOME/Commbase/commbase/base-vosk
+$ git clone https://github.com/kmein/vu-meter.git
+Rename the directory:
+$ mv vu-meter-master vu-meter
+Change directory permissions:
+$ ls -hal vu-meter
+$ chmod 755 vu-meter
+
+Install Oh My Tmux:
+--------------------
+Download/clone it from github and install it:
+$ cd
+$ git clone https://github.com/gpakosz/.tmux.git
+$ ln -s -f .tmux/.tmux.conf
+$ cp .tmux/.tmux.conf.local .
+
+Install the default Commbase voice commands dependencies:
+----------------------------------------------------------
+The applications to run by voice commands can be replaced at any moment and grow by a commands'
+creator, or in other words, a Commbase Instructor. For example replace VS Code by Gedit, VIM, etc.,
+but having installed these as a minimum to test all teh commmands available in the initial Commbase
+installation.
+Here is the little list:
+Brave browser
+Etherape
+Gnome terminal
+Midori
+Nano
+Neofetch
+ProtonVPN
+VS Code
+
+Install Desktop Environments:
+------------------------------
+Install a Desktop Environments such as Cinnamon, which can save you some time installing applications
+automatically. However, you need free space on disk to do so, so its complete installation is not
+recommended on IoTs with low hard drive space available.
+Check free space like this:
+$ df -h
+To install/Remove Desktop Environments:
+$ sudo tasksel
+
+--------------------------------
+3. Installations for Developers
+--------------------------------
+
+Install the Vosk-API (x86_64 / AMD64):
+---------------------------------------
+** This is not required, but its download could be useful for developers:
+Visit: https://github.com/alphacep/vosk-api
+Download and extract/clone the repository from github.com and place it in
+$HOME/Commbase/commbase/base-vosk/:
+$ cd $HOME/Commbase/commbase/base-vosk/
+$ git clone git@github.com:alphacep/vosk-api.git
+Rename the directory:
+$ mv vosk-api-master vosk-api
+$ Set up permissions for the directory:
+$ chmod 755 vosk-api
+
+--------------------------
+4. Testing the Vosk model
+--------------------------
+
+Go to $HOME/Commbase/commbase/base-vosk/voice-recognition:
+$ cd ~/Commbase/commbase/base-vosk/voice-recognition
+
+$ Set up permissions for the files:
+$ chmod 755 test_ffmpeg.py
+$ chmod +x test_ffmpeg.py
+$ chmod 755 test_microphone.py
+$ chmod +x test_microphone.py
+$ chmod 444 test.wav
+
+Run the test file test_ffmpeg.py:
+$ python3 test_ffmpeg.py test.wav
+CORRECT OUTPUT ENDS WITH:
+"text" : "zero one eight zero three"
+}
+END OF OUTPUT.
+
+Run the test file test_microphone.py:
+$ python3 test_microphone.py
+Practice your speaking accuracy.
+
+-------------------------------
+5. Make the scripts executable
+-------------------------------
+$ ls -hal +x $HOME/Commbase/commbase/base-vosk/commbase*
+$ chmod +x $HOME/Commbase/commbase/base-vosk/commbase*
+$ ls -hal $HOME/Commbase/commbase/base-vosk/process-templates/commbase*
+$ chmod +x $HOME/Commbase/commbase/base-vosk/process-templates/commbase*
+
+-----------------------------------------------------------
+6. How to apply directory and file permissions recursively
+-----------------------------------------------------------
+This command applies 755 permissions to every directory and file inside the given directory, except
+for those that you don't have permissions on, for example, files owned by the root user. That command
+would throw a list of the files with permissions that could not be changed in the output.
+$ chmod 755 -R chmod -R 755 <DIRECTORY-NAME>
+
+Run that command once to apply 755 directory and file permissions on the initial Commbase directory:
+$ chmod 755 -R chmod -R 755 $HOME/Commbase
+Or whenever the Commbase directory is:
+$ chmod 755 -R chmod -R 755 $HOME/Developer/Commbase
+
+AVOID running the command after the initial Commbase installation as per our Commbase bash directory
+database grows and the command would change permissions on files you don't want to change the
+permissions to. To know more on how to make Commbase commands, checkout the section "Commands setup"
+in the User's Guide.
+
+---------------------------------------
+7. Add the Commbase executable command
+---------------------------------------
+As user root, paste the file 'commbase' in /usr/bin
+$ su -
+And then enter your root user's password
+Give file permissions:
+# sudo chmod 755 commbase
+The owner and group of the file must be set to root
+Make it executable:
+$ sudo chmod +x commbase
+
+Close and reopen the terminal and run from the terminal as user:
+$ commbase start|stop
+
+To run existent terminal commands, for example:
+$ commbase 'tell me about yourself'
+$ commbase "introduce yourself"
+
+Remember that the command 'commbase' is a script that opens an enhanced tmux session named as 
+Commbase-0 by tmux. To avoid duplicate instances of Commbase running on the system, you need to
+completely close the program before rerun it once more. Check out the section "1. Start and Stop
+Commbase application" of the file User's Guide for more details regarding this topic.
+
+----------------
+8. Key bindings
+----------------
+
+A key binding is an association between a physical key on a keyboard and a parameter.
+
+Commbase comes with a number of key binding files you can use for setting up key bindings in your
+custom system configuration.
+
+The Commbase key bindings are allocated in the directory Commbase/commbase/key-bindings.
+Commbase recommends using a key binding to toggle ON/OFF the sound capture as a minimum. The file
+used for that purpose is toggle-capture-on-off.sh. To set up the key binding using this file you must
+use your current Desktop Environment or Window Manager key binding configuration.
+
+For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
+Go to Menu -> System Settings -> Keyboard -> shortcuts -> Categories -> Sound and Media -> Add custom
+shortcut. 
+Next, give the new shortcut a new name like "toggle capture ON or OFF".
+Next, select the route to this file.
+Next, click or tap on the button Add the keyboard shortcut. The shortcut appears in the list.
+Next, click on unassigned to pick an accelerator.
+Next, press the keys CTRL + SHIFT + c (all together) and then release them at a time.
+Then the new key binding appears on the list.
+Finally, verify that the key binding works.
+Note: The choice to use or avoid this key binding would depend on a variety of facts. For example, you
+would choose not to use the key binding if you have a headset, ear-set or any other microphone with a
+built-in mute/unmute control button.  
+
+Check out the directory key-bindings for alternative keybinding options.
+
+----------------------------------
+9. Run Commbase at system boot up
+----------------------------------
+
+Add the command 'commbase' with parameter 'commbase start' pointing to the file
+commbase-vosk-start.sh to the proper system runlevels as a Init or Systemd script.
+Add the command 'commbase' with parameter 'commbase stop' pointing to the file
+commbase-vosk-start.sh to the proper system runlevels as a Init or Systemd script.
+
+------------------------------------------------
+10. Setup a network of multiple Commbase devices
+------------------------------------------------
+
+A Commbase network can be described as a decentralized operating system network. A default Commbase
+device network is composed by independent nodes (devices). Every Commbase network host runs its own
+tasks, configured in a local copy of the Commbase software with individual setup just to make sure
+that: 1. the setup works for the specific node hardware, 2. every node can communicate one another
+without depending on the network or any other Commbase network member, and 3. every node runs a
+custom Commbase application and setup that allows the node receiving external Commbase commands based
+on the node role and nature, through the node network, what it means that a specified Commbase copy
+can work as the Commbase manager, "master", or main Commbase entity.
+
+A network requires every node setup with OpenSSH tunneling communication among all the Commbase
+network members. It is a good idea to setup OpenVPN for the nodes to avoid being attacked.
+
+If your setup includes the Commbase manager or main node in a Commbase network and you have improved
+security, you can manage nodes passwords in the Commbase .env file and use them in your scripts
+passing them as parameters or flags with arguments, for example, with ssh and something like:
+$ command -p PASS-STRING -m 20 --verbose
+
+Check out the section "The Commbase processing file" of the User's Guide for more information on how
+to setup specific node hardware such as intelligent home appliances or any other IoT like device. 
+
+References:
+Topic: Distribuited systems examples
+Web: https://en.wikipedia.org/wiki/Jini
+
+
+
