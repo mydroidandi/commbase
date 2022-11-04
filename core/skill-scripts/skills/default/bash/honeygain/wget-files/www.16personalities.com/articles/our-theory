@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        
+        
+        
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+
+<meta property="fb:app_id" content="326516237427150">
+
+<meta name="csrf-token" content="M9lsoA8ZnUxnOp9L7BFUc1Wjw7Ydgmdgu4PtUsJb">
+<meta name="app-version" content="v2.2.4">
+<meta name="app-jscdn" content="https://static.neris-assets.com/">
+<meta name="app-bs-uid" content="0">
+<meta name="api-token" content="">
+<meta name="app-locale" content="en">
+
+
+<title>
+
+    Our Framework
+
+ | 16Personalities</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="apple-touch-icon" sizes="57x57"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180"
+      href="https://static.neris-assets.com/images/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-32x32.png"
+      sizes="32x32">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-194x194.png"
+      sizes="194x194">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-96x96.png"
+      sizes="96x96">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/android-chrome-192x192.png"
+      sizes="192x192">
+<link rel="icon" type="image/png" href="https://static.neris-assets.com/images/favicons/favicon-16x16.png"
+      sizes="16x16">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="https://static.neris-assets.com/images/favicons/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="https://static.neris-assets.com/css/main-core--9d1e59.css">
+<link rel="stylesheet" href="/css/fonts--141580.css">
+
+    <link rel="stylesheet" href="https://static.neris-assets.com/css/main-noncore--83aebf.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,600&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/font-awesome--0d9504.css">
+
+                    
+ <link href="https://static.neris-assets.com/css/large--f003e7.css" rel="stylesheet" media="screen and (min-width: 768px)">
+ 
+<link href="https://static.neris-assets.com/css/print--f081cc.css" rel="stylesheet" media="print">
+
+
+    <link rel="canonical" href="https://www.16personalities.com/articles/our-theory">
+
+
+
+    
+
+
+<script>
+
+    (function(w,d,n){w.jscdn=function(){return(d.head.querySelector('meta[name="'+n+'"]')||{}).content||'/'}}(window,document,'app-jscdn'))
+
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+    ga('create', 'UA-27031617-1', 'auto');
+    ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7YT1C03C8C"></script>
+
+    <script>
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-7YT1C03C8C', { 'anonymize_ip': true });
+
+    </script>
+
+
+
+<style>[v-cloak]{display:none !important;}</style>
+        
+            <link rel="amphtml" href="https://www.16personalities.com/articles/our-theory/amp">
+    
+    <script type="application/ld+json">
+    [
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name": "16Personalities",
+            "url": "https://www.16personalities.com"
+        },
+        {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "name": "NERIS Analytics Limited",
+            "url": "https://www.16personalities.com",
+            "logo": "https://static.neris-assets.com/images/AMP/logo_simple.png",
+            "sameAs": [
+                "https://www.facebook.com/16Personalities",
+                "https://twitter.com/16Personalities"
+            ]
+        },
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.16personalities.com/articles/our-theory"
+            },
+            "headline": "Our Framework",
+            "datePublished": "2013-10-17 23:00:00",
+            "dateModified": "2013-10-17 23:00:00",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://static.neris-assets.com/images/AMP/illustration.png",
+                "height": 1739,
+                "width": 2499
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "NERIS Analytics Limited",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://static.neris-assets.com/images/AMP/logo.png",
+                    "width": 600,
+                    "height": 60
+                }
+            },
+            "copyrightHolder": {
+                "@type": "Organization",
+                "name": "NERIS Analytics Limited"
+            },
+            "author": {
+                "@type": "Organization",
+                "name": "NERIS Analytics Limited"
+            }
+        }
+    ]
+</script>
+    </head>
+
+    <body role="document" class="">
+
+        <div id="fb-root"></div>
+
+        <div class="main-wrapper" id="main-app">
+
+            <div class="navbar sticky   ">
+
+    <a href="https://www.16personalities.com" class="logo ">
+        <img src="https://static.neris-assets.com/images/system/logo.svg" alt="16Personalities">
+    </a>
+
+    <app-navbar
+        v-cloak
+        label="Main"
+        class="middle-section anonymous">
+
+        
+        
+            <app-nav-item class=" test-link"
+                          href="https://www.16personalities.com/free-personality-test"
+                          label="Take the Test"></app-nav-item>
+
+            <app-nav-item class=""
+                          href="https://www.16personalities.com/personality-types"
+                          label="Personality Types"
+                          :is-type-list="true"
+                          dropdown>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#analysts"
+                              label="Analysts"
+                              subtitle="Intuitive (<strong>N</strong>) and Thinking (<strong>T</strong>) personality types, known for their rationality, impartiality, and intellectual excellence.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/intj-personality">Architect <span>INTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/intp-personality">Logician <span>INTP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/entj-personality">Commander <span>ENTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/entp-personality">Debater <span>ENTP</span></a>
+                        </li>
+                    </ul>
+
+                </app-nav-item>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#diplomats"
+                              label="Diplomats"
+                              subtitle="Intuitive (<strong>N</strong>) and Feeling (<strong>F</strong>) personality types, known for their empathy, diplomatic skills, and passionate idealism.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/infj-personality">Advocate <span>INFJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/infp-personality">Mediator <span>INFP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/enfj-personality">Protagonist <span>ENFJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/enfp-personality">Campaigner <span>ENFP</span></a>
+                        </li>
+                    </ul>
+
+                </app-nav-item>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#sentinels"
+                              label="Sentinels"
+                              subtitle="Observant (<strong>S</strong>) and Judging (<strong>J</strong>) personality types, known for their practicality and focus on order, security, and stability.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/istj-personality">Logistician <span>ISTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/isfj-personality">Defender <span>ISFJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/estj-personality">Executive <span>ESTJ</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/esfj-personality">Consul <span>ESFJ</span></a>
+                        </li>
+                    </ul>
+                </app-nav-item>
+
+                <app-nav-item class="types"
+                              href="https://www.16personalities.com/personality-types#explorers"
+                              label="Explorers"
+                              subtitle="Observant (<strong>S</strong>) and Prospecting (<strong>P</strong>) personality types, known for their spontaneity, ingenuity, and flexibility.">
+                    <ul>
+                        <li>
+                            <a href="https://www.16personalities.com/istp-personality">Virtuoso <span>ISTP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/isfp-personality">Adventurer <span>ISFP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/estp-personality">Entrepreneur <span>ESTP</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/esfp-personality">Entertainer <span>ESFP</span></a>
+                        </li>
+                    </ul>
+                </app-nav-item>
+
+            </app-nav-item>
+
+            <app-nav-item class=""
+                          href="https://www.16personalities.com/academy"
+                          label="Premium Profiles"></app-nav-item>
+
+            <app-nav-item class=""
+                          href="https://www.16personalities.com/tools"
+                          label="Toolkits"
+                          dropdown>
+
+                <app-nav-item href="https://www.16personalities.com/tools/personal-growth"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/personal-growth.svg"
+                              label="Personal Growth"
+                              subtitle="Discover and understand your strengths and weaknesses."></app-nav-item>
+                <app-nav-item href="https://www.16personalities.com/tools/relationships"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/romantic-relationships.svg"
+                              label="Relationships"
+                              subtitle="Deepen your relationships, both romantic and otherwise."></app-nav-item>
+
+                <app-nav-item href="https://www.16personalities.com/tools/career"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/careers.svg"
+                              label="Career"
+                              subtitle="Kick-start your career or get better at navigating it."></app-nav-item>
+
+            </app-nav-item>
+
+            <app-nav-item class=""
+                          href="https://www.16personalities.com/tools/teams"
+                          label="Teams"></app-nav-item>
+
+            <app-nav-item class="active"
+                          label="Resources"
+                          href="https://www.16personalities.com/articles?category=list"
+                          dropdown>
+
+                <app-nav-item label="Articles"
+                              href="https://www.16personalities.com/articles?category=list"
+                              img="https://static.neris-assets.com/images/system/articles.svg"
+                              subtitle="Get tips, advice, and deep insights into various topics."></app-nav-item>
+
+                <app-nav-item label="Surveys"
+                              href="https://www.16personalities.com/insights"
+                              img="https://static.neris-assets.com/images/system/insights.svg"
+                              subtitle="Explore and participate in hundreds of our studies."></app-nav-item>
+
+                <app-nav-item label="Theory"
+                              href="https://www.16personalities.com/articles/our-theory"
+                              img="https://static.neris-assets.com/images/academy/sentinels/icons/theory.svg"
+                              subtitle="Understand the meaning and impact of personality traits."></app-nav-item>
+
+                <app-nav-item label="Country Profiles"
+                              href="https://www.16personalities.com/country-profiles"
+                              img="https://static.neris-assets.com/images/system/country-profiles-menu.svg"
+                              subtitle="Examine our regional and country personality profiles."></app-nav-item>
+
+            </app-nav-item>
+
+        
+    </app-navbar>
+
+    <div class="right-section ">
+
+        <a class="search-toggle" href="#" @click.prevent="openModal('search')" title="search">
+            <icon-search></icon-search>
+        </a>
+
+        <a class="language-toggle" href="https://www.16personalities.com/languages" title="Change language"><span class="f16 f16-globe"></span></a>
+
+        
+            <a class="no-formatting with-border login-link" href="javascript:" @click.prevent="openModal('login')">Log In</a>
+
+                            <a href="https://www.16personalities.com/free-personality-test" class="btn btn-action test-button" v-reports-click-to-ga="'take-the-test-navbar'">Take the Test</a>
+            
+        
+    </div>
+
+    <nav-mobile-toggle></nav-mobile-toggle>
+
+</div>
+
+<nav-mobile v-cloak>
+    <div class="menu anonymous">
+
+        <nav-mobile-toggle opened></nav-mobile-toggle>
+
+        <span autofocus></span>
+
+        
+            <div class="part padded test-button">
+                <a href="https://www.16personalities.com/free-personality-test" class="btn btn-action">Take the Test</a>
+            </div>
+
+            <div class="scrollable">
+
+                <div class="part">
+
+                    <a class="no-formatting " href="https://www.16personalities.com/free-personality-test">Free Personality Test</a>
+                    <a class="no-formatting " href="https://www.16personalities.com/personality-types">Personality Types</a>
+
+                </div>
+
+                <div class="part">
+
+                    <a class="no-formatting item " href="https://www.16personalities.com/academy">Premium Personality Profiles</a>
+
+                    <nav-mobile-dropdown class="no-formatting item" :show="false" label="Self-Discovery Toolkits">
+                        <a class="no-formatting item " href="https://www.16personalities.com/tools/personal-growth">Personal Growth</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/tools/relationships">Relationships</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/tools/career">Career</a>
+                    </nav-mobile-dropdown>
+
+                    <a class="no-formatting item " href="https://www.16personalities.com/tools/teams">Team Assessments</a>
+
+                </div>
+
+                <div class="part">
+
+                    <nav-mobile-dropdown class="no-formatting item" :show="true" label="Resources">
+
+                        <a class="no-formatting item " href="https://www.16personalities.com/articles?category=list">Articles</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/insights">Surveys</a>
+                        <a class="no-formatting item active" href="https://www.16personalities.com/articles/our-theory">Theory</a>
+                        <a class="no-formatting item " href="https://www.16personalities.com/country-profiles">Country Profiles</a>
+
+                    </nav-mobile-dropdown>
+
+                    <a class="no-formatting item " href="https://www.16personalities.com/languages">Languages</a>
+                    <a class="no-formatting item " href="https://www.16personalities.com/contact-us">Contact Us</a>
+
+                </div>
+
+                <div class="part">
+                    <a class="no-formatting item search" href="javascript:;" @click="openModal('search')">
+                        <icon-search-alt></icon-search-alt>
+                        Search
+                    </a>
+                </div>
+
+                <div class="part no-border auth">
+                    <button class="btn btn-white" href="javascript:;" @click="openModal('login')">Log In</button>
+                </div>
+
+            </div>
+
+        
+    </div>
+</nav-mobile>
+
+<nav class="bottom" data-chunk="animation-chunk">
+
+    
+        
+            <a href="https://www.16personalities.com/free-personality-test">
+                <span class="f16 f16-additional-tests"></span>
+                <span class="title">Test</span>
+            </a>
+
+            <a href="https://www.16personalities.com/personality-types" class="">
+                <span class="f16 f16-friends"></span>
+                <span class="title">Types</span>
+            </a>
+
+            <a href="https://www.16personalities.com/premium-analysis" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><polygon class="cls-1" points="56.71 -0.11 40.69 4.71 43.03 6.94 53.49 5.61 38.5 20.23 21.67 16.13 23.5 11.35 18.19 7.36 10.59 10.18 12.14 16.97 7.64 27.95 3.58 27.82 -0.13 32.45 3.93 38.49 10.33 38.27 13.53 31.66 10.04 29.46 14.47 19.25 19.99 19.41 33.04 21.58 31.13 23.62 32.24 28.96 39.19 30.3 43.79 26.66 41.14 22.86 57.27 5.55 54.79 18.17 60.13 15.12 60.13 -0.11 56.71 -0.11"/><polygon class="cls-1" points="1.6 59.89 -0.13 44.52 8.15 43.16 10.46 59.89 1.6 59.89"/><polygon class="cls-1" points="15.27 59.89 24.51 59.89 23.55 31.75 16.81 31.75 15.27 59.89"/><polygon class="cls-1" points="29.52 59.89 27.59 36.24 37.6 37.19 36.84 59.89 29.52 59.89"/><polygon class="cls-1" points="41.84 59.89 43 43.21 48.39 43.21 48.39 59.89 41.84 59.89"/><polygon class="cls-1" points="52.43 59.89 51.66 22.55 60.13 20.93 60.13 59.89 52.43 59.89"/></svg>
+                <span class="title">Premium</span>
+            </a>
+
+            <a href="https://www.16personalities.com/articles?category=list" class="active">
+                <span class="f16 f16-academy"></span>
+                <span class="title">Resources</span>
+            </a>
+
+            <a href="javascript:;" @click="openModal('login')">
+                <span class="f16 f16-profile"></span>
+                <span class="title">Log In</span>
+            </a>
+
+        
+    
+</nav>
+
+            <nav class="mobile-only top-tabs">
+
+                                <a href="https://www.16personalities.com/articles?category=list" class="tab ">
+                    <span class="title">Articles</span>
+                </a>
+                <a href="https://www.16personalities.com/insights" class="tab ">
+                    <span class="title">Surveys</span>
+                </a>
+                <a href="https://www.16personalities.com/articles/our-theory" class="tab active">
+                    <span class="title">Theory</span>
+                </a>
+                <a href="https://www.16personalities.com/country-profiles" class="tab ">
+                    <span class="title">Country Profiles</span>
+                </a>
+                
+            </nav>
+
+            <nav class="desktop-only top-tabs">
+
+                                <a href="https://www.16personalities.com/articles?category=list" class="tab tab--articles
+                    
+                    purple">
+                    <img class="tab__icon" src="https://static.neris-assets.com/images/system/articles.svg" alt="" width="28" height="28" aria-hidden="true">
+                    <span class="title">Articles</span>
+                </a>
+                <a href="https://www.16personalities.com/insights" class="tab tab--insights ">
+                    <img class="tab__icon" src="https://static.neris-assets.com/images/system/insights.svg" alt="" width="28" height="28" aria-hidden="true">
+                    <span class="title">Surveys</span>
+                </a>
+                <a href="https://www.16personalities.com/articles/our-theory" class="tab tab--theory active">
+                    <img class="tab__icon" src="https://static.neris-assets.com/images/academy/sentinels/icons/theory.svg" alt="" width="28" height="28" aria-hidden="true">
+                    <span class="title">Theory</span>
+                </a>
+                <a href="https://www.16personalities.com/country-profiles" class="tab tab--country last ">
+                    <img class="tab__icon" src="https://static.neris-assets.com/images/system/country-profiles-menu.svg" alt="" width="28" height="28" aria-hidden="true">
+                    <span class="title">
+                        <span class="sm-only">Countries</span>
+                        <span class="lg-only">Country Profiles</span>
+                    </span>
+                </a>
+                
+            </nav>
+
+            
+    <main class="articles view">
+
+        <header class="article-header purple">
+
+                            <div class="type">
+                    <a class="with-border" href="https://www.16personalities.com/articles?category=core-theory">
+                        Core Theory
+                    </a>
+                </div>
+            
+            <h1>Our Framework</h1>
+
+            
+            
+            <svg class="background" viewBox="0 0 1920 164" preserveAspectRatio="none"><polygon class="c1" points="1920 206 0 206 0 38 382 164 1147 99 1573 164 1920 46 1920 206"></polygon></svg>
+
+            
+        </header>
+
+        <div class="with-sidebars">
+
+            <sticky-sidebar class="sidebar left" data-chunk="sticky-sidebar-chunk">
+
+    <template v-cloak>
+        <nav class="sections">
+            <ul class="collapsible">
+
+                <sticky-sidebar-header expanded title="Introduction" href="#intro">
+                    <li><link-spy href="#intro-detour">The Historical Detour</link-spy></li>
+                    <li><link-spy href="#intro-types">Types vs. Traits</link-spy></li>
+                    <li><link-spy href="#intro-approach">Our Approach</link-spy></li>
+                    <li><link-spy href="#intro-reliability">Reliability and Validity</link-spy></li>
+                </sticky-sidebar-header>
+
+                <sticky-sidebar-header title="Five Personality Aspects" href="#aspects">
+                    <li><link-spy href="#aspects-mind">Introverted vs. Extraverted</link-spy></li>
+                    <li><link-spy href="#aspects-energy">Intuitive vs. Observant</link-spy></li>
+                    <li><link-spy href="#aspects-nature">Thinking vs. Feeling</link-spy></li>
+                    <li><link-spy href="#aspects-tactics">Judging vs. Prospecting</link-spy></li>
+                    <li><link-spy href="#aspects-identity">Assertive vs. Turbulent</link-spy></li>
+                </sticky-sidebar-header>
+
+                <sticky-sidebar-header title="Type Groups" href="#groups">
+                    <sticky-sidebar-header title="Roles" href="#roles">
+                        <li><link-spy href="#roles-analysts">Analysts</link-spy></li>
+                        <li><link-spy href="#roles-diplomats">Diplomats</link-spy></li>
+                        <li><link-spy href="#roles-sentinels">Sentinels</link-spy></li>
+                        <li><link-spy href="#roles-explorers">Explorers</link-spy></li>
+                    </sticky-sidebar-header>
+
+                    <sticky-sidebar-header title="Strategies" href="#strategies">
+                        <li><link-spy href="#strategies-confident">Confident Individualism</link-spy></li>
+                        <li><link-spy href="#strategies-people">People Mastery</link-spy></li>
+                        <li><link-spy href="#strategies-constant">Constant Improvement</link-spy></li>
+                        <li><link-spy href="#strategies-social">Social Engagement</link-spy></li>
+                    </sticky-sidebar-header>
+
+                    <li><link-spy href="#table">Type Table</link-spy></li>
+
+                </sticky-sidebar-header>
+
+            </ul>
+        </nav>
+    </template>
+
+</sticky-sidebar>
+            <article>
+
+                <div class="article-content">
+                    <div class="theory-article">
+
+	<div class="toc fixed">
+		<a class="entry level-1" href="#intro">Introduction</a>
+			<a class="entry level-2" href="#intro-detour">The Historical Detour</a>
+			<a class="entry level-2" href="#intro-types">Types vs. Traits</a>
+			<a class="entry level-2" href="#intro-approach">Our Approach</a>
+			<a class="entry level-2" href="#intro-reliability">Reliability and Validity</a>
+		<a class="entry level-1" href="#aspects">Five Personality Aspects</a>
+			<a class="entry level-2" href="#aspects-mind">Mind</a>
+			<a class="entry level-2" href="#aspects-energy">Energy</a>
+			<a class="entry level-2" href="#aspects-nature">Nature</a>
+			<a class="entry level-2" href="#aspects-tactics">Tactics</a>
+			<a class="entry level-2" href="#aspects-identity">Identity</a>
+		<a class="entry level-1" href="#groups">Type Groups</a>
+			<a class="entry level-2" href="#roles">Roles</a>
+				<a class="entry level-3" href="#roles-analysts">Analysts</a>
+				<a class="entry level-3" href="#roles-diplomats">Diplomats</a>
+				<a class="entry level-3" href="#roles-sentinels">Sentinels</a>
+				<a class="entry level-3" href="#roles-explorers">Explorers</a>
+			<a class="entry level-2" href="#strategies">Strategies</a>
+				<a class="entry level-3" href="#strategies-confident">Confident Individualism</a>
+				<a class="entry level-3" href="#strategies-people">People Mastery</a>
+				<a class="entry level-3" href="#strategies-constant">Constant Improvement</a>
+				<a class="entry level-3" href="#strategies-social">Social Engagement</a>
+		<a class="entry level-1" href="#table">Type Table</a>
+	</div>
+
+	<div class="toc bottom">
+		<span>Jump to: </span>
+		<select id="toc-jumper">
+			<option value="#intro">Introduction</option>
+			<option value="#intro-detour">--- The Historical Detour</option>
+			<option value="#intro-types">--- Types vs. Traits</option>
+			<option value="#intro-approach">--- Our Approach</option>
+			<option value="#intro-reliability">--- Reliability and Validity</option>
+			<option value="#aspects">Five Personality Aspects</option>
+			<option value="#aspects-mind">--- Mind</option>
+			<option value="#aspects-energy">--- Energy</option>
+			<option value="#aspects-nature">--- Nature</option>
+			<option value="#aspects-tactics">--- Tactics</option>
+			<option value="#aspects-identity">--- Identity</option>
+			<option value="#groups">Type Groups</option>
+			<option value="#roles">--- Roles</option>
+			<option value="#roles-analysts">------ Analysts</option>
+			<option value="#roles-diplomats">------ Diplomats</option>
+			<option value="#roles-sentinels">------ Sentinels</option>
+			<option value="#roles-explorers">------ Explorers</option>
+			<option value="#strategies">--- Strategies</option>
+			<option value="#strategies-confident">------ Confident Individualism</option>
+			<option value="#strategies-people">------ People Mastery</option>
+			<option value="#strategies-constant">------ Constant Improvement</option>
+			<option value="#strategies-social">------ Social Engagement</option>
+			<option value="#table">Type Table</option>
+		</select>
+	</div>
+
+    <h2 class="toc-item" id="intro">Introduction</h2>
+
+    <p>Often the very first question people ask after completing our personality test is “What do these letters mean?” We are of course referring to those mysterious acronyms like INTJ-A, ENFP-T, or ESTJ-A. As you may have already learned from the <a href="/personality-types">Type Descriptions</a> or articles on the website, the five letters of these acronyms each refer to a specific trait, with certain trait combinations forming various types and type groups. But before we discuss those traits in depth, let’s explore their historical foundations.</p>
+
+    <h3 class="toc-item" id="intro-detour">The Historical Detour</h3>
+
+    <p>Since the dawn of time, humans have drawn up schematics to describe and categorize our personalities. From the four temperaments of the ancient civilizations to the latest advances in psychology, we have been driven to fit the variables and complexities of human personality into well-defined models. Although we are still some time away from being able to do that, the current models account for our most important personality traits and can predict our behavior with a high degree of accuracy.</p>
+
+    <p>Personality is just one of many factors that guide our behavior, however. Our actions are also influenced by our environment, our experiences, and our individual goals. On our website, we describe how people belonging to a specific personality type are likely to behave. We outline indicators and tendencies, however, not definitive guidelines or answers. Significant differences can exist even among people who share a personality type. The information on this website is meant to inspire personal growth and an improved understanding of yourself and your relationships – not to be taken as gospel.</p>
+
+    <p>Our approach has its roots in two different philosophies. One dates back to early 20<sup>th</sup> century and was the brainchild of Carl Gustav Jung, the father of analytical psychology. Jung’s <a href="http://en.wikipedia.org/wiki/Psychological_Types" rel="external" target="_blank">theory of psychological types</a> is perhaps the most influential creation in personality typology, and it has inspired a number of different theories. One of Jung’s key contributions was the development of the concept of <em>Introversion</em> and <em>Extraversion</em> – he theorized that each of us falls into one of these two categories, either focusing on the internal world (Introvert) or the outside world (Extravert). Besides Introversion and Extraversion, Jung coined the concept of so-called cognitive functions, separated into Judging or Perceiving categories. According to Jung, each person prefers one of these cognitive functions and may most naturally rely on it in everyday situations.</p>
+
+    <p>In the 1920s, Jung’s theory was noticed by Katharine Cook Briggs, who later co-authored a personality indicator still used today, the <a href="http://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator" rel="external" target="_blank">Myers-Briggs Type Indicator<sup>®</sup> (MBTI<sup>®</sup>)</a>. Briggs was a teacher with an avid interest in personality typing, having developed her own type theory before learning of Jung’s writings. Together with her daughter, Isabel Briggs Myers, they developed a convenient way to describe the order of each person’s Jungian preferences – this is how four-letter acronyms were born.</p>
+
+    <p>Of course, this is just a very simplified description of the Myers-Briggs theory. Readers interested in learning more should read <em>Gifts Differing: Understanding Personality Type</em> by Isabel Briggs Myers. As we define personality traits and types differently in our model, we will not go deeper into Jungian concepts or related theories in this article.</p>
+
+    <p>Due to its simplicity and ease of use, the four-letter naming model has been embraced by a number of diverse theories and approaches over the last few decades, including frameworks such as <a href="http://en.wikipedia.org/wiki/Socionics" rel="external" target="_blank">Socionics</a>, <a href="http://en.wikipedia.org/wiki/Keirsey_Temperament_Sorter" rel="external" target="_blank">Keirsey Temperament Sorter</a>, Linda Berens’ <a href="http://en.wikipedia.org/wiki/Interaction_Styles" rel="external" target="_blank">Interaction Styles</a>, and many others. While the acronyms used by these theories may be identical or very similar, however, their meanings do not always overlap. One of the reasons behind such a lengthy introduction is that we want to make it clear that there is no single definition assigned to these type acronyms – each theory defines them in their own way and it is entirely possible that if you meet five people who all say “I am an INFJ”, their definitions of what INFJ <em>means</em> are going to differ.</p>
+
+    <h3 class="toc-item" id="intro-types">Types vs. Traits</h3>
+
+    <p>Regardless of its structure, any type-based theory will struggle to describe or characterize people whose scores lie near the dividing line. A different way to look at personalities is through the lens of a trait-based rather than a type-based model. What do we mean by that? Instead of creating an arbitrary number of categories and attempting to fit people within them, a trait-based model simply studies the degree to which people exhibit certain traits.</p>
+
+    <p>You may have heard the term Ambivert, which is a perfect example in this case. Ambiversion means that someone falls in the middle of the Introversion-Extraversion scale, being neither too outgoing nor too withdrawn. Trait-based theories would simply say that an Ambivert is moderately Extraverted or moderately Introverted and leave it at that, without assigning a personality type.</p>
+
+    <p>A trait-based approach makes it easier to reliably measure correlations between personality traits and other characteristics – for example, political attitudes. This is why trait-based approaches dominate psychometric research, but that’s more or less the only area where these approaches are dominant. Because they don’t offer types or categorizations, trait-based theories don’t translate as well as type-based theories into specific recommendations and takeaways. Assigned categories such as Extravert or Introvert may be limiting, but they allow us to conceptualize human personality and create theories about why we do what we do – something that a more scientifically reliable but colorless statement, such as you are 37% Extraverted, simply cannot do.</p>
+
+    <h3 class="toc-item" id="intro-approach">Our Approach</h3>
+
+    <p>With our NERIS<sup>®</sup> model, we’ve combined the best of both worlds. We use the acronym format introduced by Myers-Briggs for its simplicity and convenience, with an extra letter to accommodate five rather than four scales. However, unlike Myers-Briggs or other theories based on the Jungian model, we have not incorporated Jungian concepts such as cognitive functions, or their prioritization. Jungian concepts are very difficult to measure and validate scientifically, so we’ve instead chosen to rework and rebalance the dimensions of personality called the <a href="http://en.wikipedia.org/wiki/Big_Five_personality_traits" rel="external" target="_blank">Big Five personality traits</a>, a model that dominates modern psychological and social research.</p>
+
+    <p>Our personality types are based on five independent spectrums, with all letters in the type code (e.g. INFJ-A) referring to one of the two sides of the corresponding spectrum. You can see where you fall on each scale by completing our free personality assessment, <a href="/free-personality-test">NERIS Type Explorer<sup>®</sup></a>. This approach has allowed us to achieve high test accuracy while also retaining the ability to define and describe distinct personality types.</p>
+
+    <h3 class="toc-item" id="intro-reliability">Reliability and Validity</h3>
+
+	<p>The social sciences, personality research included, have a problem: when looking at individual human beings, it’s hard to find anything consistent. <em>Reliability</em> and <em>validity</em> – consistent results and measuring what we think we’re measuring – are the two biggest challenges any organization in this field has to contend with. Let’s talk about that.</p>
+
+	<p>There are two ways to handle hard questions about reliability and validity. An organization can protect itself from scrutiny by making itself <em>appear</em> reliable, usually by making you pay to even take their assessment, with the claim that cost = quality. This doesn’t stop them from having a quality product, and it doesn’t mean that what they offer won’t impact your life for the better. But you can’t know until you pay – and it’s also easier to convince someone that what they’ve bought is good enough once they’ve already parted with their money.</p>
+
+	<p>The other method is for an organization to open itself to the community, making its tools and information accessible and accepting feedback from many sources. Such an organization works to refine itself out in the open. It gives you the grand tour, then lets you decide for yourself whether this is a space in which you can grow.</p>
+
+	<p>Yes, anyone can take our assessment, NERIS Type Explorer<sup>®</sup>, for free. You don’t have to register, sign up for a “free” trial, hire a consultant, or anything like that. But it’s this openness that gives our work strength – because this isn’t just about you. We firmly believe that the more people are aware of strengths and weaknesses related to their personality traits, the better and more understanding this world will be for everyone. </p>
+
+	<p>This is why our assessment is available in <a href="/languages">30 languages</a> – again, completely for free. Thanks to this accessibility, our assessment has already been taken nearly 100 million times, a humbling yet motivating milestone in our effort to reach the world. We offer plenty of exciting resources for those who wish to go deeper, but we don’t make you pay just so you can glimpse behind the curtain.</p>
+
+	<p>Not charging for our assessment is precisely why we were able to make it highly reliable and accurate, across many cultures and languages – as you’ll see from the article linked below, NERIS Type Explorer<sup>®</sup> has excellent statistical characteristics that set us apart. The assessment’s value is also reinforced by numerous complementary surveys we’ve conducted, analyzed, and published. The thousands of comments people have left on our website are the best testament to the accuracy of our methods. </p>
+
+	<p>Not all of our insights will make you smile, but our goal is to give you the truth – because that’s what our research shows, and that’s what you deserve to hear. We’re proud to be able to share such insights, as opposed to flooding your screen with cheesy stock photos and empty buzzwords that you’ll so often see elsewhere. We don’t offer anything we don’t truly believe in – personality testing in job interviews, for instance – and we work very hard to make sure everything that does make it to you is thoroughly verified and validated.</p>
+
+	<p>Openness and accessibility issues aside, paid assessments also tend to have much smaller respondent samples, and consequently, are more likely to struggle when it comes to improving or expanding their theoretical framework or ensuring cultural validity. Our philosophy opens us up to more criticism, but that’s exactly why we’re able to grow and improve. There have been many cases, especially with translated versions of our assessment, where we went through multiple iterations in a matter of hours, achieving major accuracy improvements on the same day – a feat that any paid assessment would struggle to compare to. </p>
+
+	<p>So, it’s a myth that a personality assessment cannot be free, reliable, and valid. If you’re interested in going into the nitty gritty of statistics and how we’ve verified reliability and validity of NERIS Type Explorer<sup>®</sup>, please continue to <a href="/articles/reliability-and-validity">this article</a>.</p>
+
+    <p>Let us now go through our five personality aspects one by one, and then move on to the type groups.</p>
+
+    <h2 class="toc-item" id="aspects">Five Personality Aspects</h2>
+    
+    <p>This section will describe five personality aspects that, when combined, define the personality type: <strong>Mind</strong>, <strong>Energy</strong>, <strong>Nature</strong>, <strong>Tactics</strong> and <strong>Identity</strong>. Each of these aspects should be seen as a two-sided continuum, with the “neutral” option placed in the middle. The percentages you would have seen after completing the test are meant to show which categories you fall under, and how strong your preferences are.</p>
+    
+    <p>Let us now go through the personality aspects one by one:</p>
+
+    <h3 class="toc-item" id="aspects-mind"><a href="/articles/mind-introverted-vs-extraverted">Mind</a></h3>
+    
+    <p>This aspect shows how we interact with our surroundings:</p>
+    
+    <div class="row">
+
+        <div class="col-sm-6 trait-comparison">
+            <div class="illustration">
+                <img src="https://static.neris-assets.com/images/theory/traits/16personalities_trait_introverted.svg">
+            </div>
+            <p><span class="type_letter">I</span>ntroverted individuals prefer solitary activities and get exhausted by social interaction. They tend to be quite sensitive to external stimulation (e.g. sound, sight or smell) in general. </p>
+        </div>
+        <div class="col-sm-6 trait-comparison">
+            <div class="illustration">
+                <img src="https://static.neris-assets.com/images/theory/traits/16personalities_trait_extraverted.svg?v=1">
+            </div>
+            <p><span class="type_letter">E</span>xtraverted individuals prefer group activities and get energized by social interaction. They tend to be more enthusiastic and more easily excited than Introverts.</p>
+        </div>
+
+    </div>
+
+    <p><a href="/articles/mind-introverted-vs-extraverted">Read more</a> about the Mind aspect.</p>
+
+    <h3 class="toc-item" id="aspects-energy"><a href="/articles/energy-intuitive-vs-observant">Energy</a></h3>
+    
+    <p>The second aspect determines how we see the world and process information:</p>
+
+    <div class="row">
+
+        <div class="col-sm-6 trait-comparison">
+            <div class="illustration">
+                <img src="https://static.neris-assets.com/images/theory/traits/16personalities_trait_observant.svg">
+            </div>
+            <p>Ob<span class="type_letter">s</span>ervant individuals are highly practical, pragmatic and down-to-earth. They tend to have strong habits and focus on what is happening or has already happened.</p>
+        </div>
+        <div class="col-sm-6 trait-comparison">
+            <div class="illustration">
+                <img src="https://static.neris-assets.com/images/theory/traits/16personalities_trait_intuitive.svg">
+            </div>
+            <p>I<span class="type_letter">n</span>tuitive individuals are very imaginative, open-minded and curious. They prefer novelty over stability and focus on hidden meanings and future possibilities.</p>
+        </div>
+
+    </div>
+
+    <p><a href="/articles/energy-intuitive-vs-observant">Read more</a> about the Energy aspect.</p>
+
+    <h3 class="toc-item" id="aspects-nature"><a href="/articles/nature-thinking-vs-feeling">Nature</a></h3>
+    
+    <p>This aspect determines how we make decisions and cope with emotions:</p>
+
+    <div class="row">
+
+        <div class="col-sm-6 trait-comparison">
+            <div class="illustration">
+                <img src="https://static.neris-assets.com/images/theory/traits/16personalities_trait_thinking.svg">
+            </div>
+            <p><span class="type_letter">T</span>hinking individuals focus on objectivity and rationality, prioritizing logic over emotions. They tend to hide their feelings and see efficiency as more important than cooperation.</p>
+        </div>
+        <div class="col-sm-6 trait-comparison">
+            <div class="illustration">
+                <img src="https://static.neris-assets.com/images/theory/traits/16personalities_trait_feeling.svg">
+            </div>
+            <p><span class="type_letter">F</span>eeling individuals are sensitive and emotionally expressive. They are more empathic and less competitive than Thinking types, and focus on social harmony and cooperation.</p>
+        </div>
+
+    </div>
+
+    <p><a href="/articles/nature-thinking-vs-feeling">Read more</a> about the Nature aspect.</p>
+
+    <h3 class="toc-item" id="aspects-tactics"><a href="/articles/tactics-judging-vs-prospecting">Tactics</a></h3>
+    
+    <p>This aspect reflects our approach to work, planning and decision-making:</p>
+
+    <div class="row">
+
+        <div class="col-sm-6 trait-comparison">
+            <div class="illustration">
+                <img src="https://static.neris-assets.com/images/theory/traits/16personalities_trait_judging.svg">
+            </div>
+            <p><span class="type_letter">J</span>udging individuals are decisive, thorough and highly organized. They value clarity, predictability and closure, preferring structure and planning to spontaneity.</p>
+        </div>
+        <div class="col-sm-6 trait-comparison">
+            <div class="illustration">
+                <img src="https://static.neris-assets.com/images/theory/traits/16personalities_trait_prospecting.svg">
+            </div>
+            <p><span class="type_letter">P</span>rospecting individuals are very good at improvising and spotting opportunities. They tend to be flexible, relaxed nonconformists who prefer keeping their options open.</p>
+        </div>
+
+    </div>
+
+    <p><a href="/articles/tactics-judging-vs-prospecting">Read more</a> about the Tactics aspect.</p>
+
+    <h3 class="toc-item" id="aspects-identity"><a href="/articles/identity-assertive-vs-turbulent">Identity</a></h3>
+    
+    <p>Finally, the Identity aspect underpins all others, showing how confident we are in our abilities and decisions:</p>
+
+    <div class="row">
+
+        <div class="col-sm-6 trait-comparison">
+            <div class="illustration">
+                <img src="https://static.neris-assets.com/images/theory/traits/16personalities_trait_assertive.svg?v=1">
+            </div>
+            <p>Assertive (<span class="type_letter">-A</span>) individuals are self-assured, even-tempered and resistant to stress. They refuse to worry too much and do not push themselves too hard when it comes to achieving goals.</p>
+        </div>
+        <div class="col-sm-6 trait-comparison">
+            <div class="illustration">
+                <img src="https://static.neris-assets.com/images/theory/traits/16personalities_trait_turbulent.svg">
+            </div>
+            <p>Turbulent (<span class="type_letter">-T</span>) individuals are self-conscious and sensitive to stress. They are likely to experience a wide range of emotions and to be success-driven, perfectionistic and eager to improve.</p>
+        </div>
+
+    </div>
+
+    <p><a href="/articles/identity-assertive-vs-turbulent">Read more</a> about the Identity aspect.</p>
+
+    <h2 class="toc-item" id="groups">Type Groups</h2>
+    
+    <p>Now you know what each type consists of. But how do they fit together?</p>
+    
+    <p>Our system has two layers: the first (inner) one defines our <strong>Roles</strong>, the second (outer) one – our <strong>Strategies</strong>.</p>
+
+    <h3 class="toc-item" id="roles">Roles</h3>
+    
+    <p>The Role layer determines our goals, interests, and preferred activities. There are four roles:</p>
+    
+    <h4 class="toc-item" id="roles-analysts"><a href="/articles/roles-analysts">Analysts</a> (Intuitive and Thinking [ _NT_ ] types, both Assertive and Turbulent variants)</h4>
+    
+    <p>These personality types embrace rationality and impartiality, excelling in intellectual debates and scientific or technological fields. They are fiercely independent, open-minded, strong-willed and imaginative, approaching many things from a utilitarian perspective and being far more interested in what works than what satisfies everybody. These traits make Analysts excellent strategic thinkers, but also cause difficulties when it comes to social or romantic pursuits.</p>
+	
+	<p><a href="/articles/roles-analysts">Read more</a> about the Analyst Role.</p>
+    
+    <h4 class="toc-item" id="roles-diplomats"><a href="/articles/roles-diplomats">Diplomats</a> (Intuitive and Feeling [ _NF_ ] types, both Assertive and Turbulent variants)</h4>
+    
+    <p>Diplomats focus on empathy and cooperation, shining in diplomacy and counselling. People belonging to this type group are cooperative and imaginative, often playing the role of harmonizers in their workplace or social circles. These traits make Diplomats warm, empathic and influential individuals, but also cause issues when there is a need to rely exclusively on cold rationality or make difficult decisions.</p>
+	
+	<p><a href="/articles/roles-diplomats">Read more</a> about the Diplomat Role.</p>
+    
+    <h4 class="toc-item" id="roles-sentinels"><a href="/articles/roles-sentinels">Sentinels</a> (Observant and Judging [ _S_J ] types, both Assertive and Turbulent variants)</h4>
+    
+    <p>Sentinels are cooperative and highly practical, embracing and creating order, security and stability wherever they go. People belonging to one of these types tend to be hard working, meticulous and traditional, and excel in logistical or administrative fields, especially those that rely on clear hierarchies and rules. These personality types stick to their plans and do not shy away from difficult tasks – however, they can also be very inflexible and reluctant to accept different points of view.</p>
+	
+	<p><a href="/articles/roles-sentinels">Read more</a> about the Sentinel Role.</p>
+    
+    <h4 class="toc-item" id="roles-explorers"><a href="/articles/roles-explorers">Explorers</a> (Observant and Prospecting [ _S_P ] types, both Assertive and Turbulent variants)</h4>
+    
+    <p>These types are the most spontaneous of all and they also share the ability to connect with their surroundings in a way that is beyond reach of other types. Explorers are utilitarian and practical, shining in situations that require quick reaction and ability to think on your feet. They are masters of tools and techniques, using them in many different ways – ranging from mastering physical tools to convincing other people. Unsurprisingly, these personality types are irreplaceable in crises, crafts and sales – however, their traits can also push them towards undertaking risky endeavors or focusing solely on sensual pleasures.</p>
+	
+	<p><a href="/articles/roles-explorers">Read more</a> about the Explorer Role.</p>
+    
+    <h3 class="toc-item" id="strategies">Strategies</h3>
+    
+    <p>The Strategy layer shows our preferred ways of doing things and achieving goals. There are four strategies:</p>
+    
+    <h4 class="toc-item" id="strategies-confident"><a href="/articles/strategies-confident-individualism">Confident Individualism</a> (Introverted and Assertive [ I___-A ] types)</h4>
+    
+    <p>Confident Individualists prefer doing things alone, choosing to rely on their own skills and instincts as opposed to seeking contact with other people. They know what they are good at and have high self-confidence. These personality types firmly believe that personal responsibility and trust in yourself are very important values. Confident Individualists do not pay much attention to other people’s opinions and prefer to rely on themselves.</p>
+	
+	<p><a href="/articles/strategies-confident-individualism">Read more</a> about the Confident Individualism Strategy.</p>
+    
+    <h4 class="toc-item" id="strategies-people"><a href="/articles/strategies-people-mastery">People Mastery</a> (Extraverted and Assertive [ E___-A ] types)</h4>
+    
+    <p>People Masters seek social contact and tend to have very good communication skills, feeling at ease in social events or in situations where they need to rely on or direct other people. These types are confident in their abilities and do not hesitate to express their opinions. Playing an active role in the society and knowing what makes other people tick mean a lot for People Masters; however, they are not too concerned about what other people think about them.</p>
+	
+	<p><a href="/articles/strategies-people-mastery">Read more</a> about the People Mastery Strategy.</p>
+    
+    <h4 class="toc-item" id="strategies-constant"><a href="/articles/strategies-constant-improvement">Constant Improvement</a> (Introverted and Turbulent [ I___-T ] types)</h4>
+    
+    <p>Constant Improvers are quiet, individualistic people. They tend to be perfectionistic and success-driven, often spending a lot of time and effort making sure that the result of their work is the best it can be. As their name says, Constant Improvers are high achieving individuals dedicated to their craft – however, they also tend to worry too much about their performance.</p>
+	
+	<p><a href="/articles/strategies-constant-improvement">Read more</a> about the Constant Improvement Strategy.</p>
+    
+    <h4 class="toc-item" id="strategies-social"><a href="/articles/strategies-social-engagement">Social Engagement</a> (Extraverted and Turbulent [ E___-T ] types)</h4>
+    
+    <p>The last strategy is adopted by sociable, energetic and success-driven types. Social Engagers tend to be restless, perfectionistic individuals, prone to experiencing both very positive and very negative emotions. Their curiosity and willingness to work hard also mean that they are usually high-achieving, even if quite sensitive people. Types favoring this strategy also tend to place a lot of importance on other people’s opinions; they value their social status and are eager to succeed in everything they do.</p>
+	
+	<p><a href="/articles/strategies-social-engagement">Read more</a> about the Social Engagement Strategy.</p>
+    
+    <h2 class="toc-item" id="table">Type Table</h2>
+    
+    <p>This table shows all possible types along with their roles and strategies:</p>
+
+	<div class="table-responsive">
+	    <table class="type-table">
+	    <tbody><tr>
+	    <td rowspan="4"><strong>Analysts</strong></td>
+	    <td>Confident Individualism</td>
+	    <td><a href="/intj-personality">Architect</a> (Assertive), <a href="/intp-personality">Logician</a> (Assertive)</td>
+	    </tr>
+	    <tr>
+	    <td>People Mastery</td>
+	    <td><a href="/entj-personality">Commander</a> (Assertive), <a href="/entp-personality">Debater</a> (Assertive)</td>
+	    </tr>
+	    <tr>
+	    <td>Constant Improvement</td>
+	    <td><a href="/intj-personality">Architect</a> (Turbulent), <a href="/intp-personality">Logician</a> (Turbulent)</td>
+	    </tr>
+	    <tr>
+	    <td>Social Engagement</td>
+	    <td><a href="/entj-personality">Commander</a> (Turbulent), <a href="/entp-personality">Debater</a> (Turbulent)</td>
+	    </tr>
+	    <tr>
+	    <td rowspan="4"><strong>Diplomats</strong></td>
+	    <td>Confident Individualism</td>
+	    <td><a href="/infj-personality">Advocate</a> (Assertive), <a href="/infp-personality">Mediator</a> (Assertive)</td>
+	    </tr>
+	    <tr>
+	    <td>People Mastery</td>
+	    <td><a href="/enfj-personality">Protagonist</a> (Assertive), <a href="/enfp-personality">Campaigner</a> (Assertive)</td>
+	    </tr>
+	    <tr>
+	    <td>Constant Improvement</td>
+	    <td><a href="/infj-personality">Advocate</a> (Turbulent), <a href="/infp-personality">Mediator</a> (Turbulent)</td>
+	    </tr>
+	    <tr>
+	    <td>Social Engagement</td>
+	    <td><a href="/enfj-personality">Protagonist</a> (Turbulent), <a href="/enfp-personality">Campaigner</a> (Turbulent)</td>
+	    </tr>
+	    <tr>
+	    <td rowspan="4"><strong>Sentinels</strong></td>
+	    <td>Confident Individualism</td>
+	    <td><a href="/istj-personality">Logistician</a> (Assertive), <a href="/isfj-personality">Defender</a> (Assertive)</td>
+	    </tr>
+	    <tr>
+	    <td>People Mastery</td>
+	    <td><a href="/estj-personality">Executive</a> (Assertive), <a href="/esfj-personality">Consul</a> (Assertive)</td>
+	    </tr>
+	    <tr>
+	    <td>Constant Improvement</td>
+	    <td><a href="/istj-personality">Logistician</a> (Turbulent), <a href="/isfj-personality">Defender</a> (Turbulent)</td>
+	    </tr>
+	    <tr>
+	    <td>Social Engagement</td>
+	    <td><a href="/estj-personality">Executive</a> (Turbulent), <a href="/esfj-personality">Consul</a> (Turbulent)</td>
+	    </tr>
+	    <tr>
+	    <td rowspan="4"><strong>Explorers</strong></td>
+	    <td>Confident Individualism</td>
+	    <td><a href="/istp-personality">Virtuoso</a> (Assertive), <a href="/isfp-personality">Adventurer</a> (Assertive)</td>
+	    </tr>
+	    <tr>
+	    <td>People Mastery</td>
+	    <td><a href="/estp-personality">Entrepreneur</a> (Assertive), <a href="/esfp-personality">Entertainer</a> (Assertive)</td>
+	    </tr>
+	    <tr>
+	    <td>Constant Improvement</td>
+	    <td><a href="/istp-personality">Virtuoso</a> (Turbulent), <a href="/isfp-personality">Adventurer</a> (Turbulent)</td>
+	    </tr>
+	    <tr>
+	    <td>Social Engagement</td>
+	    <td><a href="/estp-personality">Entrepreneur</a> (Turbulent), <a href="/esfp-personality">Entertainer</a> (Turbulent)</td>
+	    </tr>
+	    </tbody></table>
+	</div>
+
+</div>
+                </div>
+
+                
+                
+            </article>
+
+            <div class="sidebar right"></div>
+        </div>
+
+    </main>
+
+
+            
+                <div class="social-cta comp" data-chunk="social-chunk">
+    <div class="wrapper">
+        <div class="social-count">
+            <div class="number">3.2K</div>
+            <div class="title">Shares</div>
+        </div>
+        <div class="social-icons">
+
+            
+            <share-messenger ga-event="Description" page="our-theory" record></share-messenger>
+
+            <share-whatsapp ga-event="Description" page="our-theory" text="Our Framework" record></share-whatsapp>
+
+            <share-facebook ga-event="Description" page="our-theory" record></share-facebook>
+
+            <share-twitter ga-event="Description" page="our-theory" text="Our Framework" record></share-twitter>
+
+            <share-pinterest ga-event="Description" page="our-theory" text="Our Framework" record></share-pinterest>
+
+            <share-email ga-event="Description" page="our-theory" text="Our Framework" record></share-email>
+
+        </div>
+    </div>
+</div>
+                <div class="comments-wrapper comp" id="comments" data-chunk="comment-chunk">
+    <svg class="shape top" viewBox="0 0 600 71" preserveAspectRatio="none"><polygon class="c1" points="600 71 0 71 0 50 600 0 600 71"></polygon></svg>
+    <div class="comments">
+
+        <comment-list
+            class="panel other"
+            :is-premium="false"
+            :auth="false"
+            :comments="[{&quot;id&quot;:65761,&quot;hasPublicProfile&quot;:false,&quot;profileUrl&quot;:null,&quot;avatar&quot;:&quot;https:\/\/static.neris-assets.com\/images\/personality-types\/avatars\/faces\/infp-mediator-s2-v1-female.svg?v=1&quot;,&quot;own&quot;:false,&quot;name&quot;:&quot;Yoyo&quot;,&quot;type&quot;:&quot;Turbulent Mediator&quot;,&quot;typeCode&quot;:&quot;INFP-T&quot;,&quot;date&quot;:&quot;Fri, Apr 8, 2022 7:11 PM&quot;,&quot;dateDiff&quot;:&quot;3 weeks ago&quot;,&quot;content&quot;:&quot;accurate! Also, the avatars are amazing.&quot;,&quot;hasResponses&quot;:0,&quot;subComments&quot;:[],&quot;reputation&quot;:5,&quot;upvotedByUser&quot;:false,&quot;states&quot;:{&quot;beingUpvoted&quot;:false}},{&quot;id&quot;:64963,&quot;hasPublicProfile&quot;:true,&quot;profileUrl&quot;:&quot;ff873adba109a&quot;,&quot;avatar&quot;:&quot;https:\/\/static.neris-assets.com\/images\/personality-types\/avatars\/faces\/infp-mediator-s10-v1-female.svg?v=1&quot;,&quot;own&quot;:false,&quot;name&quot;:&quot;Sofia&quot;,&quot;type&quot;:&quot;Turbulent Mediator&quot;,&quot;typeCode&quot;:&quot;INFP-T&quot;,&quot;date&quot;:&quot;Sun, Apr 3, 2022 7:24 AM&quot;,&quot;dateDiff&quot;:&quot;3 weeks ago&quot;,&quot;content&quot;:&quot;this is amazing, because it helps to figure out who we are, but also helps to see other types&quot;,&quot;hasResponses&quot;:1,&quot;subComments&quot;:[],&quot;reputation&quot;:9,&quot;upvotedByUser&quot;:false,&quot;states&quot;:{&quot;beingUpvoted&quot;:false}},{&quot;id&quot;:64440,&quot;hasPublicProfile&quot;:true,&quot;profileUrl&quot;:&quot;3c6d0c734a971&quot;,&quot;avatar&quot;:&quot;https:\/\/static.neris-assets.com\/images\/personality-types\/avatars\/faces\/entp-debater-s3-v1-female.svg?v=1&quot;,&quot;own&quot;:false,&quot;name&quot;:&quot;Becky&quot;,&quot;type&quot;:&quot;Turbulent Debater&quot;,&quot;typeCode&quot;:&quot;ENTP-T&quot;,&quot;date&quot;:&quot;Wed, Mar 30, 2022 7:13 PM&quot;,&quot;dateDiff&quot;:&quot;4 weeks ago&quot;,&quot;content&quot;:&quot;I love this.&quot;,&quot;hasResponses&quot;:0,&quot;subComments&quot;:[],&quot;reputation&quot;:3,&quot;upvotedByUser&quot;:false,&quot;states&quot;:{&quot;beingUpvoted&quot;:false}},{&quot;id&quot;:64351,&quot;hasPublicProfile&quot;:true,&quot;profileUrl&quot;:&quot;213e4d4d1f30a&quot;,&quot;avatar&quot;:&quot;https:\/\/static.neris-assets.com\/images\/personality-types\/avatars\/faces\/entp-debater-s3-v3-female.svg?v=1&quot;,&quot;own&quot;:false,&quot;name&quot;:&quot;Abeeha&quot;,&quot;type&quot;:&quot;Assertive Debater&quot;,&quot;typeCode&quot;:&quot;ENTP-A&quot;,&quot;date&quot;:&quot;Wed, Mar 30, 2022 9:14 AM&quot;,&quot;dateDiff&quot;:&quot;4 weeks ago&quot;,&quot;content&quot;:&quot;i love just randomly reading these articles&quot;,&quot;hasResponses&quot;:0,&quot;subComments&quot;:[],&quot;reputation&quot;:11,&quot;upvotedByUser&quot;:false,&quot;states&quot;:{&quot;beingUpvoted&quot;:false}},{&quot;id&quot;:64187,&quot;hasPublicProfile&quot;:true,&quot;profileUrl&quot;:&quot;12580cab979c9&quot;,&quot;avatar&quot;:&quot;https:\/\/static.neris-assets.com\/images\/personality-types\/avatars\/faces\/entj-commander-s3-v1-male.svg?v=1&quot;,&quot;own&quot;:false,&quot;name&quot;:&quot;Senesie Mansaray&quot;,&quot;type&quot;:&quot;Assertive Commander&quot;,&quot;typeCode&quot;:&quot;ENTJ-A&quot;,&quot;date&quot;:&quot;Tue, Mar 29, 2022 10:56 AM&quot;,&quot;dateDiff&quot;:&quot;1 month ago&quot;,&quot;content&quot;:&quot;Nice piece, I have figured out who I am. Thanks &quot;,&quot;hasResponses&quot;:0,&quot;subComments&quot;:[],&quot;reputation&quot;:3,&quot;upvotedByUser&quot;:false,&quot;states&quot;:{&quot;beingUpvoted&quot;:false}}]"
+            :total="138"
+            content-type="article"
+            content-id="1"
+            :show-like-button="true"
+            :show-private-users="false"
+            :create-in-modal="true"
+            subcomments-key="subComments">
+
+            <template v-slot:pagination>
+
+                                    <div class="comment-links">
+                        <nav role="navigation" aria-label="Pagination">
+        <ul class="pagination">
+            
+                            <li class="arrow left disabled" aria-disabled="true" aria-label="pagination.previous">
+                    <span class="far fa-long-arrow-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous page</span>
+                </li>
+            
+            
+                            
+                
+                
+                                                                                        <li class="active" aria-current="page" tabindex="0">
+                                <span class="sr-only">Page</span> <span>1</span>
+                            </li>
+                                                                                                <li><a href="https://www.16personalities.com/articles/our-theory?page=2#comments" tabindex="-1"><span class="sr-only">Page</span> <span>2</span></a></li>
+                                                                                                <li><a href="https://www.16personalities.com/articles/our-theory?page=3#comments" tabindex="-1"><span class="sr-only">Page</span> <span>3</span></a></li>
+                                                                                                <li><a href="https://www.16personalities.com/articles/our-theory?page=4#comments" tabindex="-1"><span class="sr-only">Page</span> <span>4</span></a></li>
+                                                                                                <li><a href="https://www.16personalities.com/articles/our-theory?page=5#comments" tabindex="-1"><span class="sr-only">Page</span> <span>5</span></a></li>
+                                                                                                <li><a href="https://www.16personalities.com/articles/our-theory?page=6#comments" tabindex="-1"><span class="sr-only">Page</span> <span>6</span></a></li>
+                                                                                                <li><a href="https://www.16personalities.com/articles/our-theory?page=7#comments" tabindex="-1"><span class="sr-only">Page</span> <span>7</span></a></li>
+                                                                                                <li><a href="https://www.16personalities.com/articles/our-theory?page=8#comments" tabindex="-1"><span class="sr-only">Page</span> <span>8</span></a></li>
+                                                                                                <li><a href="https://www.16personalities.com/articles/our-theory?page=9#comments" tabindex="-1"><span class="sr-only">Page</span> <span>9</span></a></li>
+                                                                                                <li><a href="https://www.16personalities.com/articles/our-theory?page=10#comments" tabindex="-1"><span class="sr-only">Page</span> <span>10</span></a></li>
+                                                                                        
+                                    <li class="disabled" aria-disabled="true"><span class="page-link">...</span></li>
+                
+                
+                                            
+                
+                
+                                                                                        <li><a href="https://www.16personalities.com/articles/our-theory?page=27#comments" tabindex="-1"><span class="sr-only">Page</span> <span>27</span></a></li>
+                                                                                                <li><a href="https://www.16personalities.com/articles/our-theory?page=28#comments" tabindex="-1"><span class="sr-only">Page</span> <span>28</span></a></li>
+                                                                        
+            
+                            <li class="arrow right">
+                    <a href="https://www.16personalities.com/articles/our-theory?page=2#comments" rel="next" aria-label="pagination.next" tabindex="-1">
+                        <span class="far fa-long-arrow-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next page</span>
+                    </a>
+                </li>
+                    </ul>
+    </nav>
+
+                    </div>
+                
+            </template>
+        </comment-list>
+
+    </div>
+    <svg class="shape bottom" viewBox="0 0 600 71" preserveAspectRatio="none"><polygon class="c1" points="600 0 430 52 0 22 0 0 600 0"></polygon></svg>
+</div>
+
+            
+            <share-highlighter></share-highlighter>
+    
+    <div class="modal__container">
+        
+                    <search-modal action="https://www.16personalities.com/search"></search-modal>
+        
+        
+            
+                <auth-login-modal data-chunk="guest-chunk"></auth-login-modal>
+                <auth-forgot-password data-chunk="guest-chunk"></auth-forgot-password>
+
+                
+            
+        
+        <app-errors></app-errors>
+
+        <div id="portal--modal"></div>
+        <div id="portal--modalbg"></div>
+    </div>
+    <div class="scrollbar-measure"></div>
+
+            </div>
+
+        <footer id="footer" class="footer--original ">
+
+    <div class="footer__copyright">
+        ©2011-2022 NERIS Analytics Limited
+    </div>
+    <nav class="footer__links">
+        <a class="with-border" href="https://www.16personalities.com/contact-us">Contact</a>
+        <a class="with-border" href="https://www.16personalities.com/orders/testimonials">Testimonials</a>
+        <a class="with-border" href="https://www.16personalities.com/terms">Terms & Conditions</a>
+        <a class="with-border" href="https://www.16personalities.com/terms/privacy">Privacy Policy</a>
+        <a class="with-border" href="https://www.16personalities.com/tools/teams">For Teams</a>
+    </nav>
+        <div class="footer__social">
+        <a class="no-formatting" href="https://www.facebook.com/16Personalities/" target="_blank" rel="noreferrer"><span class="fab fa-facebook"></span></a>
+        <a class="no-formatting" href="https://www.instagram.com/16personalitiesofficial/" target="_blank" rel="noreferrer"><span class="fab fa-instagram"></span></a>
+        <a class="no-formatting" href="https://twitter.com/16personalities" target="_blank" rel="noreferrer"><span class="fab fa-twitter"></span></a>
+    </div>
+    
+    <!-- version v2.2.4 -->
+
+    
+</footer>
+
+<div class="svg-icons">
+    <svg id="spin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M460.115 373.846l-6.941-4.008c-5.546-3.202-7.564-10.177-4.661-15.886 32.971-64.838 31.167-142.731-5.415-205.954-36.504-63.356-103.118-103.876-175.8-107.701C260.952 39.963 256 34.676 256 28.321v-8.012c0-6.904 5.808-12.337 12.703-11.982 83.552 4.306 160.157 50.861 202.106 123.67 42.069 72.703 44.083 162.322 6.034 236.838-3.14 6.149-10.75 8.462-16.728 5.011z"></path></svg>
+</div>
+
+<script src="https://static.neris-assets.com/js/manifest--1f2b7c.js"></script>
+<script src="https://static.neris-assets.com/js/vendor--35436e.js"></script>
+
+<script src="https://static.neris-assets.com/js/app--053735.js"></script>
+
+<script async defer src="https://static.neris-assets.com/js/vendor-polyfills--bf70b4.js"></script>
+
+
+
+        <script>
+
+    
+        ga('send', 'pageview', {
+            'dimension5' : 'anonymous',
+            'dimension11': 'en',
+            'dimension12': 'sales_pages_new_v2_unknown'
+        });
+
+    
+    gtag('set', 'user_properties', {
+        locale    : 'en',
+        authStatus: 'anonymous',
+        userId    : '',
+        cookieId  : '626c945c30a3c4.79099283',
+        abTest1   : 'sales_pages_new_v2_unknown'
+    });
+
+</script>
+
+    </body>
+</html>
