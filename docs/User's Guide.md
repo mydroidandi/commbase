@@ -6,7 +6,10 @@
 
 # Content
 
-1. Introduction
+[Introduction]:#1-introduction
+
+
+1. [Introduction]
 2. Start, Stop, and Teleport Commbase application
 2.1. Commbase start
 2.2. Commbase stop
@@ -19,7 +22,7 @@
 5.2. Commbase Management Commands
 5.3. Commbase Common Commands
 6. Create new voice commands basics
-6.1. Verbosity Levels
+6.1. Verbosity Levels10.3. Keyboard Shortcuts
 6.2. Proposed Command Conventions
 6.2.1. Modes
 6.2.2. Step By Step Mode
@@ -46,20 +49,32 @@
 8.1. The $COMMBASE directory
 8.2. The Commbase processing file
 9. Training Commbase by Assembling Skillsets
-10. Commbase for Software Development
-10.1. Get Commbase up and running for development
-10.2. Input Remapper
-10.3. Create a Virtual Machine for Software Development
-10.4. Commbase Commands for Development with Neovim
+10. Keyboard Shortcuts
+10.1. Keyboard Shortcuts Cheat Sheet
+10.1.1. Commbase Key Bindings
+10.1.2. Desktop Environment and Operating System
+10.1.3. Gnome Terminal
+10.1.4. Neovim / Emacs
+10.1.5. OBS
+10.1.6. SimpleScreenRecorder
+10.1.7. Text Editors and IDEs
+10.1.8. Tmux
+10.1.9. VS Code
+10.1.10. Web Browser
+10.2 Input Remapper
+11. Commbase for Software Development
+11.1. Get Commbase up and running for development
+11.2. Create a Virtual Machine for Software Development
+11.3. Commbase Commands for Development with Neovim
 
-# Introduction
+# 1 Introduction <a name="introduction"></a>
 
 Commbase is a programmable assistant for computers and other appliances, originally developed by the
 Computer Scientist Esteban Herrera, in 2022. It works on general purpose operating systems without
 requiring internet connection. He/She can be improved, by using Natural Language Processing, Deep
 Learning, Artificial Intelligence, and programming languages as described in your User's Guide.
 
-# Start, Stop, and Teleport Commbase application
+# 2 Start, Stop, and Teleport Commbase application
 
 ## commbase start
 
@@ -99,7 +114,7 @@ ability to interact via voice with you, but incapable of running graphical appli
 case, just teleport and Commbase re-appears without requiring to stop it and start it once again.
 3. It can be used as a 3rd alternative to start commbase.
 
-# Useful system commands
+# 3 Useful system commands
 
 List all the active sessions:
 $ tmux list-sessions
@@ -128,7 +143,7 @@ $ pkill tmux
 Start Commbase again:
 $ ./commbase-vosk-start.sh
 
-# The Commbase user interface
+# 4 The Commbase user interface
 
 Commbase is composed by 5 panes in 2 windows:
 
@@ -158,7 +173,7 @@ Press CTRL + b, then press 2
 Return to the window Commbase:
 Press CTRL + b, then press 1
 
-# Default Commbase commands
+# 5 Default Commbase commands
 
 ## Commbase Commmands unique for the Command Line
 
@@ -235,7 +250,7 @@ $ commbase "set a timer of" "one" "minute"
 `"open my current editor workspace"` / `"open my current code workspace"` /
 `"open my current editor workspace that i am working on"`.
 
-# Create new voice commands basics
+# 6 Create new voice commands basics
 
 ## Verbosity Levels
 
@@ -395,7 +410,7 @@ For commands that must be verified before execution, due to their execution is r
 > open the development project <PROYECT-NAME>
 > open the current development project
 
-# Hints on saying and creating voice commands
+# 7 Hints on saying and creating voice commands
 
 Different output in well said command repetitions:
 Say a different phrase, or example "clear" before repeat a failed/non accurate phrase, so Vosk
@@ -419,7 +434,7 @@ get kind of confused and tend to display articles such as "the" and other words 
 phrase the most similar to two people talking to one another like in a movie. For that reason, Vosk
 is used as a part of audio file transcription software in the Linux world.
 
-# Commands setup
+# 8 Commands setup
 
 Run the test script test_microphone.py, as described in the section "4. Testing the Vosk model" of
 the file INSTALL, to test your new command accuracy until you feel comfortable with the command
@@ -685,7 +700,7 @@ commbase-process-vosk-suv-vehicle.sh
 commbase-process-vosk-spacecraft.sh
 commbase-process-vosk-virtual-mentor.sh
 
-# Training Commbase by Assembling Skillsets
+# 9 Training Commbase by Assembling Skillsets
 
 Commbase can be trained in a variety of manners. For example, you can train the AI Model, which would directly affect the existent commands precision, and would require to verify every command afterwards. Furthermore, you can train any preffered/specialized AI (added kind of as a plugin), to be used by Commbase in talkative mode. Also, we can train Commbase scripts that use sensors such as face recognition, voice recognition, etc., or move servos, and so on, and so forth, depending on the device where Commbase runs on.
 
@@ -847,7 +862,100 @@ Skillsets voice commands examples:
 
 "Help me identify who is attacking our network connection" / "Detect and trace the address of the intruder/attacker computer" (for example, someone who sends a  DDoS attack.)
 
-# Commbase for Software Development
+# 10 Keyboard Shortcuts
+
+## Keyboard Shortcuts Cheat Sheet
+
+### Commbase Key Bindings
+
+`CTRL` + `SHIFT` + `Z` : Stop sound capturing.
+<br />`CTRL` + `SHIFT` + `X` : Start sound capturing.
+<br />`CTRL` + `SHIFT` + `C` : Toggle ON/OFF sound capturing.
+
+These group of shortcuts are defined in the Commbase directory key-bindings/
+
+### Desktop Environment and Operating System
+
+`SHIFT` + `TAB` : Set focus.
+<br />`ALT` + `TAB` : Select any application and bring it to foreground.
+<br />`ALT` + `SHIFT` + `TAB` : Select any application and bring it to foreground.
+<br />`INSERT` Take a full screen screenshot.
+<br />`CTRL` + `ALT` + `F1-F12` : Switch among console terminals.
+<br />`CTRL` + `ALT` + `ARROWS` : Move through desktop workspaces.
+<br />`SUPER` + `Z` : Desktop search.
+<br />`CTRL` + `ALT` + `DEL` : Reboot computer.
+<br />`ALT` + `SYSRQ` + `R` : un**R**aw (take control of keyboard back from X11)
+<br />`ALT` + `SYSRQ` + `E` : t**E**rminate (send SIGTERM to all processes, allowing them to terminate gracefully)
+<br />`ALT` + `SYSRQ` + `I` : k**I**ll (send SIGILL to all processes, forcing them to terminate immediately)
+<br />`ALT` + `SYSRQ` : `S` : **S**ync (flush data to disk)
+<br />`ALT` + `SYSRQ` + `U` : **U**nmount (remount all filesystems read-only)
+<br />`ALT` + `SYSRQ` + `B` : re**B**oot.
+
+### Gnome Terminal
+
+`CTRL` + `-` : Resize terminal.
+<br />`CTRL` + `+` : Resize terminal.
+<br />`CTRL` + `SHIFT` + `C` : Copy highlighted text from terminal.
+<br />`CTRL` + `SHIFT` + `V` : Paste clipboard text into terminal.
+
+### Neovim / Emacs
+
+When using Neovim or Emacs, make sure that the custom keyboard shorcuts do not interfere one another in the complete list.
+
+### OBS
+
+`ALT` + `SHIFT` + `1` : Start streaming.
+<br />`ALT` + `SHIFT` + `2` : Stop streaming.
+<br />`ALT` + `SHIFT` + `3` : Start recording.
+<br />`ALT` + `SHIFT` + `4` : Stop recording.
+
+### SimpleScreenRecorder
+
+`SUPER` + `S` : Start recording.
+
+### Text Editors and IDEs
+
+CTRL	X	Cut.
+<br />`CTRL` + `C` : Copy.
+<br />`CTRL` + `V` : Paste.
+<br />`CTRL` + `F` : Find.
+<br />`CTRL` + `N` : Create new file.
+
+### Tmux
+
+`Prefix` + `B` , `1-9` : Switch window by its number id.
+<br />`Prefix` + `B` , `Q` : Display pane numbers.
+<br />`Prefix` + `B` , `SHIFT` : Split pane vertically.
+<br />`Prefix` + `B` , `ARROWS` : Resize active pane.
+<br />`Prefix` + `B` , `ARROWS` : Switch pane.
+
+Prefix = CTRL
+
+### VS Code
+
+`CTRL` + `SHIFT` + `P` : View Command Palette.
+<br />`CTRL` + `P` : Find file or expression.
+<br />`CTRL` + `B` : Open/Close side panel. Bold a word if editing a markdown file while using a markdown extension for VS Code.
+<br />`CTRL` + `BACKTICK SYMBOL` : Open VS Code Terminal.
+
+When using VS Code, make sure that the custom keyboard shorcuts do not interfere one another in the complete list.
+
+### Web Browser
+
+Click on a browser's tab and then use the roller to move through the tabs.
+
+## Input Remapper
+
+It's an easy to use tool to change the mapping of your input device buttons. It's kind of a Linux alternative to the popular Karabiner for MacOS.
+<br />Supports mice, keyboards, gamepads, X11, Wayland, combined buttons and programmable macros.
+<br />Allows mapping non-keyboard events (click, joystick, wheel) to keys of keyboard devices.
+<br />Web: <https://github.com/sezanzeb/input-remapper>
+
+This application can help other Apps such as the AI Assitant "Commbase" execute voice commands based on Commbase scripts that run custom keyboard shortcuts created with Input Remapper instead of Cinnamon which can make Commbase independant of Gnome/Cinnamon, but still dependent of the powerful Gnome terminal.
+
+Consider Input Remmaper to create new custom Commbase commands or, for example, replace our chosen Development editor with another editor or IDE enhanced with Commbase with this type of mappings. Include and document a back and restore procedure of your custom mapping files.
+
+# 11 Commbase for Software Development
 
 ## Get Commbase up and running for development
 
@@ -908,7 +1016,7 @@ For exiting to (base):
 $ bash
 ```
 
-Restore previous Tmux sessions, which inclues Commbase sessions:
+Restore previous Tmux sessions, which includes Commbase sessions:
 
 ```shell
 $ tmux list-sessions
@@ -987,17 +1095,6 @@ In the meantime, order Commbase to run Neovim keyboard shortcuts, Neovim command
 
 Also, in future Commbase releases, there will be a Neovim plugin for Commbase to allow him/her to collaborate together with Code Copilots such as GitHub's Copilot in INSERT (dictation) mode. If you are interested in becoming a Commbase contributor, you can send an email or pull request your tested new featured branch to the project.
 
-## Input Remapper
-
-It's an easy to use tool to change the mapping of your input device buttons. It's kind of a Linux alternative to the popular Karabiner for MacOS.
-<br />Supports mice, keyboards, gamepads, X11, Wayland, combined buttons and programmable macros.
-<br />Allows mapping non-keyboard events (click, joystick, wheel) to keys of keyboard devices.
-<br />Web: <https://github.com/sezanzeb/input-remapper>
-
-This application can help other Apps such as the AI Assitant "Commbase" execute voice commands based on Commbase scripts that run custom keyboard shortcuts created with Input Remapper instead of Cinnamon which can make Commbase independant of Gnome/Cinnamon, but still dependent of the powerful Gnome terminal.
-
-Consider Input Remmaper to create new custom Commbase commands or, for example, replace our chosen Development editor with another editor or IDE enhanced with Commbase with this type of mappings. Include and document a back and restore procedure of your custom mapping files.
-
 ## Create a Virtual Machine for Software Development
 
 In general, VMs (Virtual Machines) and Containers can be useful for preserving workign copies of complex installations such as the Commbase one.
@@ -1009,4 +1106,3 @@ A computer dedicated for Development can be virtualized in KVM or VirtualBox. Bo
 A good installation would be a Minimal GNU/Debian Linux with Cinnamon for Gnome Terminal, and use Awesome as the Window Manager in order for the system to save resources. A minimun graphical environment is a requirement for Commbase. Ligatures and Tranaparency cannot be used from Gnome Terminal + Commbase, but they are not required and would be a step onto a next level. However, gpu is required for the Copilots plugins to work. A solution to more or less ceed the GPU power to the VM would be use a light Window Manager rather than Desktop Environments.
 
 ## Commbase Commands for Development with Neovim
-
