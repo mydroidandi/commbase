@@ -1,7 +1,7 @@
-Commbase User's Guide
-======================
+# Commbase <img align="center" alt="Visual Studio Code" width="10%" src="../commbase.png" /> User's Guide
+
 <p>
-<img align="center" alt="Visual Studio Code" width="100%" src="commbase.gif" />
+<img align="center" alt="Visual Studio Code" width="100%" src="../commbase.png" />
 </p>
 
 # Content
