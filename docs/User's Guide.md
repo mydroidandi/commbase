@@ -6,68 +6,65 @@
 
 # Content
 
-[Introduction]:#1-introduction
++ [1 Introduction](#1-introduction)
++ [2 Start, Stop, and Teleport Commbase application](#2-start-stop-and-teleport-commbase-application)
+	+ [2.1 Commbase start](#commbase-start)
+	+ [2.2 Commbase stop](#commbase-stop)
+	+ [2.3. Commbase teleport](#commbase-teleport)
+[3. Useful system commands]
+[4. The Commbase user interface]
+[4.1. The window Extension]
+[5. Default Commbase commands]
+[5.1. Commbase Commmands unique for the Command Line]
+[5.2. Commbase Management Commands]
+[5.3. Commbase Common Commands]
+[6. Create new voice commands basics]
+[6.1. Verbosity Levels10.3. Keyboard Shortcuts]
+[6.2. Proposed Command Conventions]
+[6.2.1. Modes]
+[6.2.2. Step By Step Mode]
+[6.2.3. Normal Mode]
+[6.2.3.1. Cancel Commands Already Ordered]
+[6.2.3.2. Verify/Modify Commbase Status]
+[6.2.3.3. Activate/Deactivate Local Hardware or Things]
+[6.2.3.4. Open/Close Applications]
+[6.2.3.5. Star/Stop Services]
+[6.2.3.6. Install Applications]
+[6.2.3.7. System Clipboard]
+[6.2.3.8. File Operations]
+[6.2.3.9. Search Web Pages]
+[6.2.3.10. Translate]
+[6.2.3.11. Calendar]
+[6.2.3.12. Entertainment]
+[6.2.3.13. System Status]
+[6.2.3.14. Security]
+[6.2.3.15. Networking]
+[6.2.3.16. Remote Access]
+[6.2.3.17. Development]
+[7. Hints on saying and creating voice commands]
+[8. Commands setup]
+[8.1. The $COMMBASE directory]
+[8.2. The Commbase processing file]
+[9. Training Commbase by Assembling Skillsets]
+[10. Keyboard Shortcuts]
+[10.1. Keyboard Shortcuts Cheat Sheet]
+[10.1.1. Commbase Key Bindings]
+[10.1.2. Desktop Environment and Operating System]
+[10.1.3. Gnome Terminal]
+[10.1.4. Neovim / Emacs]
+[10.1.5. OBS]
+[10.1.6. SimpleScreenRecorder]
+[10.1.7. Text Editors and IDEs]
+[10.1.8. Tmux]
+[10.1.9. VS Code]
+[10.1.10. Web Browser]
+[10.2 Input Remapper]
+[11. Commbase for Software Development]
+[11.1. Get Commbase up and running for development]
+[11.2. Create a Virtual Machine for Software Development]
+[11.3. Commbase Commands for Development with Neovim]
 
-
-1. [Introduction]
-2. Start, Stop, and Teleport Commbase application
-2.1. Commbase start
-2.2. Commbase stop
-2.3. Commbase teleport
-3. Useful system commands
-4. The Commbase user interface
-4.1. The window Extension
-5. Default Commbase commands
-5.1. Commbase Commmands unique for the Command Line
-5.2. Commbase Management Commands
-5.3. Commbase Common Commands
-6. Create new voice commands basics
-6.1. Verbosity Levels10.3. Keyboard Shortcuts
-6.2. Proposed Command Conventions
-6.2.1. Modes
-6.2.2. Step By Step Mode
-6.2.3. Normal Mode
-6.2.3.1. Cancel Commands Already Ordered
-6.2.3.2. Verify/Modify Commbase Status
-6.2.3.3. Activate/Deactivate Local Hardware or Things
-6.2.3.4. Open/Close Applications
-6.2.3.5. Star/Stop Services
-6.2.3.6. Install Applications
-6.2.3.7. System Clipboard
-6.2.3.8. File Operations
-6.2.3.9. Search Web Pages
-6.2.3.10. Translate
-6.2.3.11. Calendar
-6.2.3.12. Entertainment
-6.2.3.13. System Status
-6.2.3.14. Security
-6.2.3.15. Networking
-6.2.3.16. Remote Access
-6.2.3.17. Development
-7. Hints on saying and creating voice commands
-8. Commands setup
-8.1. The $COMMBASE directory
-8.2. The Commbase processing file
-9. Training Commbase by Assembling Skillsets
-10. Keyboard Shortcuts
-10.1. Keyboard Shortcuts Cheat Sheet
-10.1.1. Commbase Key Bindings
-10.1.2. Desktop Environment and Operating System
-10.1.3. Gnome Terminal
-10.1.4. Neovim / Emacs
-10.1.5. OBS
-10.1.6. SimpleScreenRecorder
-10.1.7. Text Editors and IDEs
-10.1.8. Tmux
-10.1.9. VS Code
-10.1.10. Web Browser
-10.2 Input Remapper
-11. Commbase for Software Development
-11.1. Get Commbase up and running for development
-11.2. Create a Virtual Machine for Software Development
-11.3. Commbase Commands for Development with Neovim
-
-# 1 Introduction <a name="introduction"></a>
+# 1 Introduction
 
 Commbase is a programmable assistant for computers and other appliances, originally developed by the
 Computer Scientist Esteban Herrera, in 2022. It works on general purpose operating systems without
