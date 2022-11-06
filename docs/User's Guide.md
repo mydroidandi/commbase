@@ -6,63 +6,63 @@
 
 # Content
 
-+ [1 Introduction](#1-introduction)
-+ [2 Start, Stop, and Teleport Commbase application](#2-start-stop-and-teleport-commbase-application)
-	+ [2.1 Commbase start](#commbase-start)
-	+ [2.2 Commbase stop](#commbase-stop)
-	+ [2.3. Commbase teleport](#commbase-teleport)
-[3. Useful system commands]
-[4. The Commbase user interface]
-[4.1. The window Extension]
-[5. Default Commbase commands]
-[5.1. Commbase Commmands unique for the Command Line]
-[5.2. Commbase Management Commands]
-[5.3. Commbase Common Commands]
-[6. Create new voice commands basics]
-[6.1. Verbosity Levels10.3. Keyboard Shortcuts]
-[6.2. Proposed Command Conventions]
-[6.2.1. Modes]
-[6.2.2. Step By Step Mode]
-[6.2.3. Normal Mode]
-[6.2.3.1. Cancel Commands Already Ordered]
-[6.2.3.2. Verify/Modify Commbase Status]
-[6.2.3.3. Activate/Deactivate Local Hardware or Things]
-[6.2.3.4. Open/Close Applications]
-[6.2.3.5. Star/Stop Services]
-[6.2.3.6. Install Applications]
-[6.2.3.7. System Clipboard]
-[6.2.3.8. File Operations]
-[6.2.3.9. Search Web Pages]
-[6.2.3.10. Translate]
-[6.2.3.11. Calendar]
-[6.2.3.12. Entertainment]
-[6.2.3.13. System Status]
-[6.2.3.14. Security]
-[6.2.3.15. Networking]
-[6.2.3.16. Remote Access]
-[6.2.3.17. Development]
-[7. Hints on saying and creating voice commands]
-[8. Commands setup]
-[8.1. The $COMMBASE directory]
-[8.2. The Commbase processing file]
-[9. Training Commbase by Assembling Skillsets]
-[10. Keyboard Shortcuts]
-[10.1. Keyboard Shortcuts Cheat Sheet]
-[10.1.1. Commbase Key Bindings]
-[10.1.2. Desktop Environment and Operating System]
-[10.1.3. Gnome Terminal]
-[10.1.4. Neovim / Emacs]
-[10.1.5. OBS]
-[10.1.6. SimpleScreenRecorder]
-[10.1.7. Text Editors and IDEs]
-[10.1.8. Tmux]
-[10.1.9. VS Code]
-[10.1.10. Web Browser]
-[10.2 Input Remapper]
-[11. Commbase for Software Development]
-[11.1. Get Commbase up and running for development]
-[11.2. Create a Virtual Machine for Software Development]
-[11.3. Commbase Commands for Development with Neovim]
+- [1 Introduction](#1-introduction)
+- [2 Start, Stop, and Teleport Commbase application](#2-start-stop-and-teleport-commbase-application)
+	- [commbase start](#commbase-start)
+	- [commbase stop](#commbase-stop)
+	- [commbase teleport](#commbase-teleport)
+- [3 Useful system commands](#3-useful-system-commands)
+- [4 The Commbase user interface](#4-the-commbase-user-interface)
+	- [The window Extension](#the-window-extension)
+- [5 Default Commbase commands](#5-default-commbase-commands)
+	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
+	- [Commbase Management Commands](#commbase-management-commands)
+	- [Commbase Common Commands](#commbase-common-commands)
+- [6 Create new voice commands basics](#6-create-new-voice-commands-basics)
+	- [Verbosity Levels](#verbosity-levels)
+	- [Proposed Command Conventions](#proposed-command-conventions)
+		- [Modes](#modes)
+		- [Step by Step Mode](#step-by-step-mode)
+		- [Normal Mode](#normal-mode)
+			- [Cancel Commands Already Ordered](#cancel-commands-already-ordered)
+			- [Verify/Modify Commbase Status](#verifymodify-commbase-status)
+			- [Activate/Deactivate Local Hardware or Things](#activatedeactivate-local-hardware-or-things)
+			- [Open/Close Applications](#openclose-applications)
+			- [Star/Stop Services](#starstop-services)
+			- [Install Applications](#install-applications)
+			- [System Clipboard](#system-clipboard)
+			- [File Operations](#file-operations)
+			- [Search Web Pages](#search-web-pages)
+			- [Translate](#translate)
+			- [Calendar](#calendar)
+			- [Entertainment](#entertainment)
+			- [System Status](#system-status)
+			- [Security](#security)
+			- [Networking](#networking)
+			- [Remote Access](#remote-access)
+			- [Development](#development)
+- [7 Hints on saying and creating voice commands](#7-hints-on-saying-and-creating-voice-commands)
+- [8 Commands setup](#8-commands-setup)
+	- [The $COMMBASE directory](#the-commbase-directory)
+	- [The Commbase processing file](#the-commbase-processing-file)
+- [9 Training Commbase by Assembling Skillsets](#9-training-commbase-by-assembling-skillsets)
+- [10 Keyboard Shortcuts](#10-keyboard-shortcuts)
+	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
+		- [Commbase Key Bindings](#commbase-key-bindings)
+		- [Desktop Environment and Operating System](#desktop-environment-and-operating-system)
+		- [Gnome Terminal](#gnome-terminal)
+		- [Neovim / Emacs](#neovim--emacs)
+		- [OBS](#obs)
+		- [SimpleScreenRecorder](#simplescreenrecorder)
+		- [Text Editors and IDEs](#text-editors-and-ides)
+		- [Tmux](#tmux)
+		- [VS Code](#vs-code)
+		- [Web Browser](#web-browser)
+	- [Input Remapper](#input-remapper)
+- [11 Commbase for Software Development](#11-commbase-for-software-development)
+	- [Get Commbase up and running for development](#get-commbase-up-and-running-for-development)
+	- [Create a Virtual Machine for Software Development](#create-a-virtual-machine-for-software-development)
+	- [Commbase Commands for Development with Neovim](#commbase-commands-for-development-with-neovim)
 
 # 1 Introduction
 
@@ -78,16 +78,16 @@ Learning, Artificial Intelligence, and programming languages as described in you
 You can start the Commbase session in any terminal's command line, by using one of two
 methods:
 1. Just by running this command:
-$ commbase start
+`$ commbase start`
 To run Commbase as a command:
 The command must be set up. Checkout how to set up the command in the file "INSTALL."
 2. Exotic, or probably considered awkward alternatives to get Commbase up and running:
-$ cd $HOME/Commbase/commbase/base-vosk
-$ bash commbase-vosk-start.sh
+`$ cd $HOME/Commbase/commbase/base-vosk`
+`$ bash commbase-vosk-start.sh`
 Or use:
-$ ./commbase-vosk-start.sh
+`$ ./commbase-vosk-start.sh`
 Or wherever you are in the file system, do run:
-.$HOME/Commbase/commbase/base-vosk/commbase-vosk-start.sh
+`.$HOME/Commbase/commbase/base-vosk/commbase-vosk-start.sh`
 
 ## commbase stop
 
