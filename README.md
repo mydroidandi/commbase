@@ -1,4 +1,4 @@
-# Commbase 🤖️
+# Commbase <img align="center" alt="Visual Studio Code" width="10%" src="commbase.png" />
 
 Conversational AI Assistant and AI Hub for Computers and Droids
 
@@ -18,4 +18,3 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-
