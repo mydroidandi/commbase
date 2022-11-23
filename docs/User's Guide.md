@@ -562,19 +562,25 @@ even your system's root from a remote server machine. Those commands and other c
 could create containing passwords, passphrases, private keys and other secrets are better kept typed
 in an external list and managed carefully as a part of the security policy for your systems. Commbase
 proposes a default place to put the list of bash scripts' logins, usernames with passwords, and APIs
-credentials in the $COMMBASE's root location into the file Commbase/.env, which is described in the
-file Commbase/.gitignore. So, you should set up your .env file and create your own environment
-variables values if you are gonna connect Commbase through sign ins.
+credentials in the $COMMBASE's root location into the file ENV/.env, which is listed in the
+file Commbase/.gitignore. So, you should set up your .env file with your own environment
+variables values.
+
+You can even give values for allowing Commbase to connect through sign ins, using technologies such as
+Secure SHell (SSH).
+
+Create your .env file based on the file ENV/.env.custom in the same directory.
 
 To setup the permission on the file .env. It also applies to certificates such as .pem files:
 $ chmod 600 .env
 $ chown $USER .env
 $ chgrp $USER .env
 
-For example, a simple .env containing a single user and password should look like this:
+After you copied the content of .env.custom into .env, the default file should look like this, before you customize
+its values:
 
 ```code
-PROTONVPN_CLI_USERNAME="Tony_Stark"
+PROTONVPN_CLI_USERNAME="Tony_St4rk"
 PROTONVPN_CLI_PASSWORD="PASSWORD-NOT-REQUIRED-ONCE-REGISTERED"
 PROTONVPN_API_USERNAME="USERNAME-IN-CONFIG-FILE-IN-/ETC/"
 PROTONVPN_API_PASSWORD="PASSWORD-IN-CONFIG-FILE-IN-/ETC/"
