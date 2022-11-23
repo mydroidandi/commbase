@@ -56,7 +56,8 @@ coverage.xml
 *.pot
 
 # Django stuff:
-*.log
+# Do not ignore skill-script log-files
+#*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
