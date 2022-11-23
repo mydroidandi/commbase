@@ -613,8 +613,9 @@ and pull request a new feature on the official Commbase repository copy, which i
 
 ## The $COMMBASE directory
 
-Commbase avoids using an environment constant $COMMBASE set up for the user environment/session. For
-example, in GNU/Linux Debian this type of variables can be exported in $HOME/.bashrc.
+Commbase uses an environment constant $COMMBASE set up for the user environment/session. For
+example, in GNU/Linux Debian this type of variables can be exported in $HOME/.bashrc, .zshrc
+or any other custom shell rc configuration file.
 
 Example of the custom lines added to a bashrc file:
 
@@ -625,33 +626,23 @@ export NVM_DIR="$HOME/.nvm"
 
 ```
 
-It will help us understand that:
-
-A. To use bash as a command inside a Commbase function requires using the constant $COMMBASE, which is internally assigned as a part of the Commbase source code, not exported.
-
-Example:
+Example of usage of the variable:
 
 ```bash
 
-tmux send-keys "bash $COMMBASE/Commbase/brave/desktop-shark-browser-brave.sh &"
+tmux send-keys "bash $COMMBASE/core/<PATH/TO/SCRIPT/FILE/script.sh> &"
 
 ```
 
-So, the external limit of the internal constant defined in the file 'commbase-process-vosk-pc-default.sh' and its variants, ends with the functions' directory.
-
-B. Whether a bash script requires to run or execute any file (including scripts), the bash must 
-contain the $COMMBASE directory constant declared in the script headers to help users remembering
-that: 1. this specific script is used by Commbase, so it must not be modified unless the modification
-works in favor of the commbase command and 2. the script is properly reorganized and/or recycled, etc. in a single bash script directory database.
+The variable can be used in any custom script file inside the Commbase root directory
+and its subdirectories.
 
 Example in a script header:
 
 ```bash
 
-# The Commbase directory:
-# Due to the loss of the Commbase application scope here, it must be re-assigned
-COMMBASE=$HOME/Developer
-#COMMBASE=$HOME
+# The root Commbase directory is set as environment variable in ~/.bashrc and/or ~/.zshrc
+source $COMMBASE/commbase/ENV/.env
 
 ```
 
@@ -659,11 +650,9 @@ Example of use of the constant in the same bash script:
 
 ```bash
 
-mpv $COMMBASE/Commbase/mpv/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
+mpv $COMMBASE/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
 
 ```
-
-An alternative approach the declaration of the $COMMBASE cosntant thought during the application development was to declare the constant and assing the complete path to the Commbase directory once in the file .env, and source theat file in all the other files requiring the constant, but the method used helps better understand variables and constants scopes and how they work, and that is great for allowing novices program better bash script, generally, and Commbase voice commands, particularly. 
 
 ## The Commbase processing file
 
