@@ -133,7 +133,8 @@ bundled/vosk/model/
 
 # Ignore Logs
 logs
-*.log
+# Do not ignore skill-script log files
+#*.log
 
 # Ignore IDE specific files
 .idea/
