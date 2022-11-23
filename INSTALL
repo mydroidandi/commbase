@@ -75,6 +75,10 @@ fi
 
 ```
 
+In the file, written in Bash language:
+~/.bashrc and ~/.zshrc: They are the routes of the bash and Z shell configuration files.
+"$HOME": It is the value of the variable $COMMBASE
+
 Save the file changes and then execute the script to set the $COMMBASE directory variable
 for your bash shell:
 $ bash set-commbase-environment-variable.sh
