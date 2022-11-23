@@ -51,13 +51,36 @@ $ sudo apt-get -u upgrade
 
 Make the $COMMBASE directory:
 ------------------------------
-Create the Commbase directory in your user home directory, usually /home/<USER-NAME>:
-$ mkdir $HOME/Developer
 
-By default, Commbase is made to reside in the directory "Developer". In that way, the Commbase users
-are able to: 1. re-coding the existent voice command functions and/or the Commbase bash scripts to
-adjust the application to their own needs and accelerate the user voice recognition and 2. coding new
-voice command functions or bash scripts specific for the Commbase application.
+Go to the directory where commbase has been cloned or downloaded and unzipped,
+for example, /home/<user>/:
+$ cd $HOME/
+
+Go to the directory commbase/core, and open the file set-commbase-environment-variable.sh
+to setup your $COMMBASE directory.
+
+The section to update in the file will look like this:
+
+```shell
+[...]
+if [[ ! -d "$COMMBASE" ]]; then 
+    echo "" >> ~/.bashrc
+    echo "# The Commbase directory for the Bash shell" >> ~/.bashrc
+    echo 'export COMMBASE="$HOME"' >> ~/.bashrc
+    echo "" >> ~/.zshrc
+    echo "# The Commbase directory for the Z shell" >> ~/.zshrc
+    echo 'export COMMBASE="$HOME"' >> ~/.zshrc
+fi
+[...]
+
+```
+
+Save the file changes and then execute the script to set the $COMMBASE directory variable
+for your bash shell:
+$ bash set-commbase-environment-variable.sh
+
+Commbase users who want to develop or customize the application would prefer putting Commbase
+in a "Developer" directory such as $HOME/Developer
 
 To know more on how to make Commbase commands, checkout the section "The $COMMBASE directory" in the
 section "Commands setup" in the User's Guide.

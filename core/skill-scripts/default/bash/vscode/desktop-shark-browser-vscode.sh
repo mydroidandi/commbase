@@ -11,8 +11,8 @@ COMMBASE=$HOME"/Developer"
 source $COMMBASE/Commbase/.env
 
 # Path to the current project that I am currently working on
-PATH_TO_PROJECT=$COMMBASE/$PROJECT_DIRECTORY_NAME
+PATH_TO_PROJECT=$COMMBASE/$DEFAULT_DEV_PROJECT_DIRECTORY_NAME
 
 # Open the project
 cd $PATH_TO_PROJECT
-(code-insiders $PROJECT_DIRECTORY_NAME.code-workspace --disable-gpu)
+(code-insiders $DEFAULT_DEV_PROJECT_DIRECTORY_NAME.code-workspace --disable-gpu)

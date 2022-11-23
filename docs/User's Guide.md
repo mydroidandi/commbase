@@ -562,33 +562,40 @@ even your system's root from a remote server machine. Those commands and other c
 could create containing passwords, passphrases, private keys and other secrets are better kept typed
 in an external list and managed carefully as a part of the security policy for your systems. Commbase
 proposes a default place to put the list of bash scripts' logins, usernames with passwords, and APIs
-credentials in the $COMMBASE's root location into the file Commbase/.env, which is described in the
-file Commbase/.gitignore. So, you should set up your .env file and create your own environment
-variables values if you are gonna connect Commbase through sign ins.
+credentials in the $COMMBASE's root location into the file ENV/.env, which is listed in the
+file Commbase/.gitignore. So, you should set up your .env file with your own environment
+variables values.
+
+You can even give values for allowing Commbase to connect through sign ins, using technologies such as
+Secure SHell (SSH).
+
+Create your .env file based on the file ENV/.env.custom in the same directory.
 
 To setup the permission on the file .env. It also applies to certificates such as .pem files:
 $ chmod 600 .env
 $ chown $USER .env
 $ chgrp $USER .env
 
-For example, a simple .env containing a single user and password should look like this:
+After you copied the content of .env.custom into .env, the default file should look like this, before you customize
+its values:
 
 ```code
-
-PROTONVPN_CLI_USERNAME="Tony_Stark"
+PROTONVPN_CLI_USERNAME="Tony_St4rk"
 PROTONVPN_CLI_PASSWORD="PASSWORD-NOT-REQUIRED-ONCE-REGISTERED"
 PROTONVPN_API_USERNAME="USERNAME-IN-CONFIG-FILE-IN-/ETC/"
 PROTONVPN_API_PASSWORD="PASSWORD-IN-CONFIG-FILE-IN-/ETC/"
-REMOTE_USER_NAME="TonyStark"
+REMOTE_USER_NAME="tonystark"
 DESKTOP_SHARK_IP_ADDRESS="192.168.100.13"
 DESKTOP_SHARK_HOSTNAME="shark"
 DESKTOP_SHARK_UUID="5ba8f927-d331-471c-b640-812d4680e310"
-DESKTOP_SHARK_USER_PASSWD="IronMan"
+DESKTOP_SHARK_USER_PASSWD="VARIABLE-UNUSED"
 SERVER_SHARK2_IP_ADDRESS="192.168.100.45"
 SERVER_SHARK2_HOSTNAME="shark2"
 SERVER_SHARK2_UUID="27475487-cab6-4050-9047-9a565e22d2b0"
-SERVER_SHARK2_USER_PASSWD="IronMan"
-PROJECT_DIRECTORY_NAME="JSLanguage"
+SERVER_SHARK2_USER_PASSWD="VARIABLE-UNUSED"
+DEFAULT_DEV_PROJECT_DIRECTORY_NAME="JSLanguage"
+EXTERNAL_STORAGE_DRIVE_01_TAG="WD1"
+EXTERNAL_STORAGE_DRIVE_02_TAG="WD2"
 
 ```
 
@@ -606,8 +613,9 @@ and pull request a new feature on the official Commbase repository copy, which i
 
 ## The $COMMBASE directory
 
-Commbase avoids using an environment constant $COMMBASE set up for the user environment/session. For
-example, in GNU/Linux Debian this type of variables can be exported in $HOME/.bashrc.
+Commbase uses an environment constant $COMMBASE set up for the user environment/session. For
+example, in GNU/Linux Debian this type of variables can be exported in $HOME/.bashrc, .zshrc
+or any other custom shell rc configuration file.
 
 Example of the custom lines added to a bashrc file:
 
@@ -618,33 +626,23 @@ export NVM_DIR="$HOME/.nvm"
 
 ```
 
-It will help us understand that:
-
-A. To use bash as a command inside a Commbase function requires using the constant $COMMBASE, which is internally assigned as a part of the Commbase source code, not exported.
-
-Example:
+Example of usage of the variable:
 
 ```bash
 
-tmux send-keys "bash $COMMBASE/Commbase/brave/desktop-shark-browser-brave.sh &"
+tmux send-keys "bash $COMMBASE/core/<PATH/TO/SCRIPT/FILE/script.sh> &"
 
 ```
 
-So, the external limit of the internal constant defined in the file 'commbase-process-vosk-pc-default.sh' and its variants, ends with the functions' directory.
-
-B. Whether a bash script requires to run or execute any file (including scripts), the bash must 
-contain the $COMMBASE directory constant declared in the script headers to help users remembering
-that: 1. this specific script is used by Commbase, so it must not be modified unless the modification
-works in favor of the commbase command and 2. the script is properly reorganized and/or recycled, etc. in a single bash script directory database.
+The variable can be used in any custom script file inside the Commbase root directory
+and its subdirectories.
 
 Example in a script header:
 
 ```bash
 
-# The Commbase directory:
-# Due to the loss of the Commbase application scope here, it must be re-assigned
-COMMBASE=$HOME/Developer
-#COMMBASE=$HOME
+# The root Commbase directory is set as environment variable in ~/.bashrc and/or ~/.zshrc
+source $COMMBASE/commbase/ENV/.env
 
 ```
 
@@ -652,11 +650,9 @@ Example of use of the constant in the same bash script:
 
 ```bash
 
-mpv $COMMBASE/Commbase/mpv/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
+mpv $COMMBASE/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
 
 ```
-
-An alternative approach the declaration of the $COMMBASE cosntant thought during the application development was to declare the constant and assing the complete path to the Commbase directory once in the file .env, and source theat file in all the other files requiring the constant, but the method used helps better understand variables and constants scopes and how they work, and that is great for allowing novices program better bash script, generally, and Commbase voice commands, particularly. 
 
 ## The Commbase processing file
 
