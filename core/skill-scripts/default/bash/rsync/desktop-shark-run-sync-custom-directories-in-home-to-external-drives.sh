@@ -16,14 +16,8 @@
 # Alternatively, add some code to create the custom directories
 # "if not exist" and setup their permissions.
 
-# The Commbase directory.
-# Due to the loss of the Commbase application scope here, it must be
-# re-assigned.
-COMMBASE=$HOME"/Developer"
-#COMMBASE=$HOME
-
-# Imports
-source $COMMBASE/Commbase/.env
+# The root Commbase directory is set as environment variable in ~/.bashrc and/or ~/.zshrc
+source $COMMBASE/commbase/ENV/.env
 
 # Assign the current local IP address to a constant
 MY_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}')
@@ -32,7 +26,7 @@ MY_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}')
 MY_HOST_NAME=$(hostname | awk '{print $1}')
 
 # Syncing logs file
-LOG_FILE=rsync-custom-home-dirs.log
+LOG_FILE=$COMMBASE/commbase/log/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.log
 
 # Clean up a back-up path for every external drive to be used
 external_storage_drive_01_backup_path=""
@@ -93,8 +87,8 @@ echo "" > $LOG_FILE
 if [ "$MY_HOST_IP_ADDRESS" != "$DESKTOP_SHARK_IP_ADDRESS" ]; then
 	(echo "<> Do not sync from the server. This is only for the Development computer.")
 elif [ "$MY_HOST_NAME" == "$DESKTOP_SHARK_HOSTNAME" ]; then
-	(echo "<> Press CTRL-c to interrupt")
-	(echo "<> Press CTRL-c to interrupt" >> $LOG_FILE)
+	(echo "<> Press CTRL-C to interrupt")
+	(echo "<> Press CTRL-C to interrupt" >> $LOG_FILE)
 	(echo "<> Synchronizing custom $HOME directories ...")
 	(echo "<> Synchronizing custom $HOME directories ..." >> $LOG_FILE)
 	# Set up your custom back-up syncs here
