@@ -1,5 +1,5 @@
 #!/bin/env bash
-# set-commbase-environment-variable-for-the-current-user.sh
+# set-commbase-root-directory.sh
 
 # Set environment variable permanently, making each user to have a
 # separate setting

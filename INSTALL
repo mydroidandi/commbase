@@ -13,8 +13,8 @@ Content:
 1. Installation
 1.1. Set up your system repository sources
 1.2. Update the system
-1.3. Make the $COMMBASE directory
-1.4. Install Commbase
+1.3. Install Commbase
+1.4. Set up the $COMMBASE directory
 2. Requisites and dependencies
 2.1. Install Python
 2.2. Install Python packages
@@ -49,46 +49,6 @@ $ sudo apt-get update
 You can also upgrade it like this:
 $ sudo apt-get -u upgrade
 
-Make the $COMMBASE directory:
-------------------------------
-
-Go to the directory where commbase has been cloned or downloaded and unzipped,
-for example, /home/<user>/:
-$ cd $HOME/
-
-Go to the directory commbase/core, and open the file set-commbase-environment-variable.sh
-to setup your $COMMBASE directory.
-
-The section to update in the file will look like this:
-
-```shell
-[...]
-if [[ ! -d "$COMMBASE" ]]; then 
-    echo "" >> ~/.bashrc
-    echo "# The Commbase directory for the Bash shell" >> ~/.bashrc
-    echo 'export COMMBASE="$HOME"' >> ~/.bashrc
-    echo "" >> ~/.zshrc
-    echo "# The Commbase directory for the Z shell" >> ~/.zshrc
-    echo 'export COMMBASE="$HOME"' >> ~/.zshrc
-fi
-[...]
-
-```
-
-In the file, written in Bash language:
-~/.bashrc and ~/.zshrc: They are the routes of the bash and Z shell configuration files.
-"$HOME": It is the value of the variable $COMMBASE
-
-Save the file changes and then execute the script to set the $COMMBASE directory variable
-for your bash shell:
-$ bash set-commbase-environment-variable.sh
-
-Commbase users who want to develop or customize the application would prefer putting Commbase
-in a "Developer" directory such as $HOME/Developer
-
-To know more on how to make Commbase commands, checkout the section "The $COMMBASE directory" in the
-section "Commands setup" in the User's Guide.
-
 Install Commbase:
 ------------------
 Visit: COMMBASE GITHUB
@@ -96,6 +56,27 @@ Download and extract/Clone the repository from github.com and place it in the $C
 $ echo $HOME
 $ cd $HOME
 $ git clone COMMBASE
+
+Set up the $COMMBASE directory:
+--------------------------------
+Go to the directory commbase/config-scripts/ and open the file set-commbase-root-directory.sh.
+Written in Bash language, your will see ~/.bashrc and ~/.zshrc, which are the routes to the bash and Z shell configuration files.
+$HOME is the default value of the variable $COMMBASE.
+The variable $COMMBASE stores the Commbase's root directory.
+You can update the content of $COMMBASE to a custom value, such as $HOME/Developer. It must be updated for both sections, ~/.bashrc and ~/.zshrc, but if you don't have Z shell in your operating system, you can comment out the ~/.zshrc section before running ths script, like this:
+
+Section of set-commbase-root-directory:
+
+    #echo "" >> ~/.zshrc
+    #echo "# The Commbase directory for the Z shell" >> ~/.zshrc
+    #echo 'export COMMBASE="$HOME"' >> ~/.zshrc
+
+Save the file changes and then execute the file:
+$ bash set-commbase-environment-variable.sh
+
+The script is going to append the variable $COMMBASE in the files $HOME/.bashrc and $HOME/.zshrc
+
+To know more on how to make Commbase commands, checkout the section "The $COMMBASE directory" in the document User's Guide.
 
 -------------------------------
 2. Requisites and dependencies
