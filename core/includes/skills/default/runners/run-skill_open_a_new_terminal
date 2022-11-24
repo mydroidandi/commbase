@@ -1,9 +1,0 @@
-function run-skill_open_a_new_terminal {
- tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
- tmux send-keys "(gnome-terminal &) &>/dev/null" C-m
- amixer set Capture nocap &>/dev/null
- internal_random_yes 6 tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""open a new terminal" && amixer set Capture cap &>/dev/null
- echo "open a new terminal" >> .commbase_history
- tmux select-window -t 1 && tmux select-pane -t 4
- exit 99
-}
