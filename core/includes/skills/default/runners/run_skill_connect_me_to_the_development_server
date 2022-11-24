@@ -1,4 +1,4 @@
-function run-skill_connect_me_to_the_development_server {
+function run_skill_connect_me_to_the_development_server {
  echo "loaoding" | festival --tts
  tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
  tmux send-keys "gnome-terminal -- bash -c '($COMMBASE/Commbase/openssh/desktop-shark-open-server-shark2-with-xserver.sh); exec bash'" C-m

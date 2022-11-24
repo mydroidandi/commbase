@@ -1,4 +1,4 @@
-function run-skill_let_me_know_when_the_internet_is_back {
+function run_skill_let_me_know_when_the_internet_is_back {
  tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
  tmux send-keys "gnome-terminal -- bash -c '($COMMBASE/Commbase/ping/desktop-shark-continuously-check-internet-connection.sh); exec bash'" C-m
  #tmux send-keys "gnome-terminal --command='bash $COMMBASE/Commbase/ping/desktop-shark-continuously-check-internet-connection.sh'" C-m

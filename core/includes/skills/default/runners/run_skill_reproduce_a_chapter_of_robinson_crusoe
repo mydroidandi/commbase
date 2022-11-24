@@ -1,4 +1,4 @@
-function run-skill_reproduce_a_chapter_of_robinson_crusoe {
+function run_skill_reproduce_a_chapter_of_robinson_crusoe {
  tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
  #tmux send-keys "bash $COMMBASE/Commbase/mpv/Robinson-Crusoe/desktop-shark-reproduce-a-random-chapter-of-robinson-crusoe.sh" C-m
  tmux send-keys "gnome-terminal -- bash -c '($COMMBASE/Commbase/mpv/Robinson-Crusoe/desktop-shark-reproduce-a-random-chapter-of-robinson-crusoe.sh); exec bash'" C-m

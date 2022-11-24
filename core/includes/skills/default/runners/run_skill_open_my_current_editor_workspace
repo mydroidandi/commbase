@@ -1,4 +1,4 @@
-function run-skill_open_my_current_editor_workspace {
+function run_skill_open_my_current_editor_workspace {
  echo "loaoding" | festival --tts
  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
  #tmux send-keys "bash $COMMBASE/Commbase/brave/desktop-shark-browser-brave.sh &" C-m && sleep 20

@@ -1,4 +1,4 @@
-function run-skill_open_a_simple_browser {
+function run_skill_open_a_simple_browser {
  echo "loaoding" | festival --tts
  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
  tmux send-keys "(/usr/bin/midori &) &>/dev/null" C-m && sleep 5

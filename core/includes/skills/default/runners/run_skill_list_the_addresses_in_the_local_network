@@ -1,4 +1,4 @@
-function run-skill_list_the_addresses_in_the_local_network {
+function run_skill_list_the_addresses_in_the_local_network {
  tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
  tmux send-keys "gnome-terminal -- bash -c '($COMMBASE/Commbase/ping/desktop-shark-neighbors-hosts.sh); exec bash'" C-m
  #tmux send-keys "bash $COMMBASE/Commbase/ping/desktop-shark-neighbors-hosts.sh" C-m

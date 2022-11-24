@@ -1,4 +1,4 @@
-function run-skill_set_a_timer_of_1_to_129_minutes {
+function run_skill_set_a_timer_of_1_to_129_minutes {
  # Looks for the 5th, 6th, 7th, and the 8th words in the string "set a timer of x minute(s)"
  mins_str_pos_4=$(echo $trim_str | awk '{print $4}')
  mins_str_pos_5=$(echo $trim_str | awk '{print $5}')

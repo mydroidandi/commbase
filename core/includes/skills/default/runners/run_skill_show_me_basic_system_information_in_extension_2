@@ -1,4 +1,4 @@
-function run-skill_show_me_basic_system_information {
+function run_skill_show_me_basic_system_information {
  tmux select-window -t 2
  tmux send-keys "clear" C-m ; tmux send-keys "clear" C-m
  tmux send-keys "neofetch" C-m

@@ -1,4 +1,4 @@
-function run-skill_kill_the_simple_browser {
+function run_skill_kill_the_simple_browser {
  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
  tmux send-keys "(pkill midori) &>/dev/null" C-m
  #tmux send-keys "pkill midori" C-m 

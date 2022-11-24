@@ -1,4 +1,4 @@
-function run-skill_show_me_my_location {
+function run_skill_show_me_my_location {
  echo "loaoding" | festival --tts
  tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
  tmux send-keys "bash $COMMBASE/Commbase/brave/desktop-shark-locate-my-current-internet-ip.sh &" C-m && sleep 5

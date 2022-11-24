@@ -1,4 +1,4 @@
-function run-skill_verify_the_internet_connection {
+function run_skill_verify_the_internet_connection {
  tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
  tmux send-keys "(bash $COMMBASE/Commbase/ping/desktop-shark-check-internet-connection-one-time.sh)" C-m
  #tmux send-keys "bash $COMMBASE/Commbase/ping/desktop-shark-check-internet-connection-one-time.sh" C-m

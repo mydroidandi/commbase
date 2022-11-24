@@ -1,4 +1,4 @@
-function run-skill_synchronize_development_from_desktop {
+function run_skill_synchronize_development_from_desktop {
  echo "loaoding" | festival --tts
  tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
  tmux send-keys "(bash $COMMBASE/Commbase/rsync/server-shark2-run-sync-development-from-desktop-shark.sh)" C-m && sleep 1

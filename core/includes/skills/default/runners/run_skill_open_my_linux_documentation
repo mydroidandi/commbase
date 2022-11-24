@@ -1,4 +1,4 @@
-function run-skill_open_my_linux_documentation {
+function run_skill_open_my_linux_documentation {
  echo "loaoding" | festival --tts
  tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
  tmux send-keys "(bash $COMMBASE/Commbase/brave/desktop-shark-open-linux-documentation-on-mega.nz.sh &) &>/dev/null" C-m && sleep 5

@@ -1,4 +1,4 @@
-function run-skill_open_a_new_terminal {
+function run_skill_open_a_new_terminal {
  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
  tmux send-keys "(gnome-terminal &) &>/dev/null" C-m
  amixer set Capture nocap &>/dev/null

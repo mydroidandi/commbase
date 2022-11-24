@@ -1,4 +1,4 @@
-function run-skill_connect_me_to_the_private_network {
+function run_skill_connect_me_to_the_private_network {
  tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
  #tmux send-keys "clear" C-m ; tmux send-keys "clear" C-m
  tmux send-keys "gnome-terminal -- bash -c '(bash $COMMBASE/Commbase/protonvpn/desktop-shark-run-protonvpn-no-CLI-prompts.sh | less -F); exec bash'" C-m
