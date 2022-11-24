@@ -25,9 +25,9 @@ tmux rename-window "Commbase" && tmux split-window -v && tmux select-pane -t 1
 tmux split-window -h && tmux select-pane -t 1 && sleep $time
 # Splits horizontally the pane 0 
 tmux split-window -v && tmux select-pane -t 1 && sleep $time
-# Creates window 1 , name it "Extension", sleeps, runs a command, sends enter key, and sleeps
-tmux new-window -t Commbase-0:1 -n "Extension" && sleep $time
-#tmux new-window -t Commbase-0:1 -n "Extension" && tmux send-keys "cd $COMMBASE/Commbase ; clear" C-m && sleep $time
+# Creates window 1 , name it "Ext" (for extension), sleeps, runs a command, sends enter key, and sleeps
+tmux new-window -t Commbase-0:1 -n "Ext" && sleep $time
+#tmux new-window -t Commbase-0:1 -n "Ext" && tmux send-keys "cd $COMMBASE/Commbase ; clear" C-m && sleep $time
 # Focuses the cursor on the window 0, "Commbase" and selects the pane 1 (by default), runs any shell command, sends enter key and presses enter, and sleeps
 tmux select-window -t 1 && tmux send-keys "python3.7 $COMMBASE/Commbase/commbase/base-vosk/commbase-speech-recognition-vosk.py" C-m && sleep $time
 tmux select-pane -t 2 && tmux send-keys "python3.7 $COMMBASE/Commbase/commbase/base-vosk/vu-meter/vu_meter.py" C-m && sleep $time
