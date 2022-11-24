@@ -614,8 +614,7 @@ and pull request a new feature on the official Commbase repository copy, which i
 ## The $COMMBASE directory
 
 Commbase uses an environment constant $COMMBASE set up for the user environment/session. For
-example, in GNU/Linux Debian this type of variables can be exported in $HOME/.bashrc, .zshrc
-or any other custom shell rc configuration file.
+example, in some Linux distributions, this type of variables can be exported in $HOME/.bashrc, $HOME/.zshrc or any other custom shell rc configuration file.
 
 Example of the custom lines added to a bashrc file:
 
@@ -623,15 +622,12 @@ Example of the custom lines added to a bashrc file:
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 ```
 
-Example of usage of the variable:
+Example of use of the variable:
 
 ```bash
-
 tmux send-keys "bash $COMMBASE/core/<PATH/TO/SCRIPT/FILE/script.sh> &"
-
 ```
 
 The variable can be used in any custom script file inside the Commbase root directory
@@ -640,18 +636,14 @@ and its subdirectories.
 Example in a script header:
 
 ```bash
-
 # The root Commbase directory is set as environment variable in ~/.bashrc and/or ~/.zshrc
 source $COMMBASE/commbase/ENV/.env
-
 ```
 
 Example of use of the constant in the same bash script:
 
 ```bash
-
 mpv $COMMBASE/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
-
 ```
 
 ## The Commbase processing file
