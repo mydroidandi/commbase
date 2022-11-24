@@ -1,6 +1,6 @@
-function show_me_basic_system_information_func {
+function run-skill_show_me_basic_system_information {
  amixer set Capture nocap &>/dev/null
- internal_random_yes_func 6 && tmux select-window -t 1 && tmux select-pane -t 1
+ internal_random_yes 6 && tmux select-window -t 1 && tmux select-pane -t 1
  echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""show me basic system information"
  echo "show me basic system information" >> .commbase_history
  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m

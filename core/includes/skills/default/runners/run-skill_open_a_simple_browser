@@ -1,10 +1,10 @@
-function open_a_simple_browser_func {
+function run-skill_open_a_simple_browser {
  echo "loaoding" | festival --tts
  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
  tmux send-keys "(/usr/bin/midori &) &>/dev/null" C-m && sleep 5
  #tmux send-keys '/usr/bin/midori &' C-m 
  amixer set Capture nocap &>/dev/null
- internal_random_yes_func 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""open a simple browser / open the simple browser"
+ internal_random_yes 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""open a simple browser / open the simple browser"
  echo "open a simple browser" >> .commbase_history
  tmux select-window -t 1 && tmux select-pane -t 4
  amixer set Capture cap &>/dev/null

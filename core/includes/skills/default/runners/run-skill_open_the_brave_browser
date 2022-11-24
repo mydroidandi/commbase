@@ -1,11 +1,11 @@
-function open_the_brave_browser_func {
+function run-skill_open_the_brave_browser {
  echo "loaoding" | festival --tts
  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
  #tmux send-keys "bash $COMMBASE/Commbase/brave/desktop-shark-browser-brave.sh &" C-m && sleep 20
  tmux send-keys "(bash $COMMBASE/Commbase/brave/desktop-shark-browser-brave.sh &) &>/dev/null" C-m && sleep 5
  tmux send-keys "clear" C-m
  amixer set Capture nocap &>/dev/null
- internal_random_yes_func 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""open the brave browser"
+ internal_random_yes 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""open the brave browser"
  echo "open the brave browser" >> .commbase_history
  tmux select-window -t 1 && tmux select-pane -t 4
  amixer set Capture cap &>/dev/null

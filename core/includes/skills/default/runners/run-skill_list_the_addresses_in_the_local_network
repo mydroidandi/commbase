@@ -1,10 +1,10 @@
-function list_the_addresses_in_the_local_network_func {
+function run-skill_list_the_addresses_in_the_local_network {
  tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
  tmux send-keys "gnome-terminal -- bash -c '($COMMBASE/Commbase/ping/desktop-shark-neighbors-hosts.sh); exec bash'" C-m
  #tmux send-keys "bash $COMMBASE/Commbase/ping/desktop-shark-neighbors-hosts.sh" C-m
  tmux send-keys "clear" C-m
  amixer set Capture nocap &>/dev/null
- internal_random_yes_func 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""list the addresses in the local network"
+ internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""list the addresses in the local network"
  echo "list the addresses in the local network" >> .commbase_history
  tmux select-window -t 1 && tmux select-pane -t 4
  amixer set Capture cap &>/dev/null

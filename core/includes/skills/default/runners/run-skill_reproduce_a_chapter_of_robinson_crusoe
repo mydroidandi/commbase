@@ -1,10 +1,10 @@
-function reproduce_a_chapter_of_robinson_crusoe_func {
+function run-skill_reproduce_a_chapter_of_robinson_crusoe {
  tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
  #tmux send-keys "bash $COMMBASE/Commbase/mpv/Robinson-Crusoe/desktop-shark-reproduce-a-random-chapter-of-robinson-crusoe.sh" C-m
  tmux send-keys "gnome-terminal -- bash -c '($COMMBASE/Commbase/mpv/Robinson-Crusoe/desktop-shark-reproduce-a-random-chapter-of-robinson-crusoe.sh); exec bash'" C-m
  tmux send-keys "clear" C-m
  amixer set Capture nocap &>/dev/null
- internal_random_yes_func 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""reproduce a chapter of robinson crusoe / reproduce robinson crusoe"
+ internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""reproduce a chapter of robinson crusoe / reproduce robinson crusoe"
  echo "reproduce a chapter of robinson crusoe" >> .commbase_history
  tmux select-window -t 1 && tmux select-pane -t 4
  #amixer set Capture cap &>/dev/null
