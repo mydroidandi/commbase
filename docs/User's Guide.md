@@ -557,59 +557,41 @@ $ su -
 
 ```
 
+If you need, you should set up your .env file with your own environment variable values.
+
+This file, in  commbase/ENV/.env, was created during the Commbase installation, as is described in the
+document INSTALL.
+If you want or require to re-create it from scratch, checkout the section "Set up the .env file" in the
+mentioned document.
+
+Commbase proposes this file as to store the list of bash scripts' logins, usernames with passwords,
+and APIs credentials.
+
 Some custom commands could run a local or remote command using another user rather than yours, or
 even your system's root from a remote server machine. Those commands and other commands that you
 could create containing passwords, passphrases, private keys and other secrets are better kept typed
-in an external list and managed carefully as a part of the security policy for your systems. Commbase
-proposes a default place to put the list of bash scripts' logins, usernames with passwords, and APIs
-credentials in the $COMMBASE's root location into the file ENV/.env, which is listed in the
-file Commbase/.gitignore. So, you should set up your .env file with your own environment
-variables values.
+in an external list and managed carefully as a part of the security policy for your systems.
 
-You can even give values for allowing Commbase to connect through sign ins, using technologies such as
-Secure SHell (SSH).
-
-Create your .env file based on the file ENV/.env.custom in the same directory.
+Within this file you can even create variables for allowing Commbase to connect through networks, using
+sign ins and technologies such as Secure SHell (SSH).
 
 To setup the permission on the file .env. It also applies to certificates such as .pem files:
 $ chmod 600 .env
 $ chown $USER .env
 $ chgrp $USER .env
 
-After you copied the content of .env.custom into .env, the default file should look like this, before you customize
-its values:
-
-```code
-PROTONVPN_CLI_USERNAME="Tony_St4rk"
-PROTONVPN_CLI_PASSWORD="PASSWORD-NOT-REQUIRED-ONCE-REGISTERED"
-PROTONVPN_API_USERNAME="USERNAME-IN-CONFIG-FILE-IN-/ETC/"
-PROTONVPN_API_PASSWORD="PASSWORD-IN-CONFIG-FILE-IN-/ETC/"
-REMOTE_USER_NAME="tonystark"
-DESKTOP_SHARK_IP_ADDRESS="192.168.100.13"
-DESKTOP_SHARK_HOSTNAME="shark"
-DESKTOP_SHARK_UUID="5ba8f927-d331-471c-b640-812d4680e310"
-DESKTOP_SHARK_USER_PASSWD="VARIABLE-UNUSED"
-SERVER_SHARK2_IP_ADDRESS="192.168.100.45"
-SERVER_SHARK2_HOSTNAME="shark2"
-SERVER_SHARK2_UUID="27475487-cab6-4050-9047-9a565e22d2b0"
-SERVER_SHARK2_USER_PASSWD="VARIABLE-UNUSED"
-DEFAULT_DEV_PROJECT_DIRECTORY_NAME="JSLanguage"
-EXTERNAL_STORAGE_DRIVE_01_TAG="WD1"
-EXTERNAL_STORAGE_DRIVE_02_TAG="WD2"
-
-```
+By the way, the .env file is listed in the file commbase/.gitignore.
 
 Note: If you want to generate new uuid for any purpose, for example, create one unique id for every
 device in your Commbase device network, you can use uuid-runtime:
 $ uuidgen
 
 Occasionally, more commands will be merged in the official Commbase source repository. Don't forget
-to backup your commbase-process-vosk.sh file before download a new version to upgrade your Commbase
-or you will loose your custom commands because none is in the official source repo.
+to backup your data-processing.sh file before download a new version to upgrade your Commbase
+or you will loose your custom commands because none of them is in the official source repo.
 
-To propose a new command for the repository, read carefully and agree the current file conventions
-and pull request a new feature on the official Commbase repository copy, which is currently:
-<https://github.com/alvaroestebanherrera/Commbase>
+To propose a new command for the Commbase repository, checkout the information on how to contribute
+to the project in the README document.
 
 ## The $COMMBASE directory
 
@@ -639,7 +621,6 @@ Example in a script header:
 # The root Commbase directory is set as environment variable in ~/.bashrc and/or ~/.zshrc
 source $COMMBASE/commbase/ENV/.env
 ```
-
 Example of use of the constant in the same bash script:
 
 ```bash
@@ -980,7 +961,7 @@ Identify the computer (shark) and local server (shark2) IP a address:
 $ ping  ip-address
 ```
 
-Compare the addresses and update them in the file: **Commbase/.env** if required:
+Compare the addresses and update them in the file: **commbase/ENV/.env** if required:
 
 ```
 $ nvim .env
