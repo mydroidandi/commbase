@@ -31,3 +31,6 @@ elif echo $amixer_status | grep -q 'on'; then
 else
   echo "I perceive an issue with the sound capture" | festival --tts
 fi
+
+exit 99
+
