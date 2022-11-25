@@ -1,3 +1,11 @@
+#!/bin/env bash
+# install-env.sh
+# Creates a default file .env.
+
+# Copy the content of cat to commbase/ENV/.env
+cd ../ENV
+touch .env
+cat <<EOT > .env
 PROTONVPN_CLI_USERNAME="Tony_St4rk"
 PROTONVPN_CLI_PASSWORD="PASSWORD-NOT-REQUIRED-ONCE-REGISTERED"
 PROTONVPN_API_USERNAME="USERNAME-IN-CONFIG-FILE-IN-/ETC/"
@@ -14,3 +22,9 @@ SERVER_SHARK2_USER_PASSWD="VARIABLE-UNUSED"
 DEFAULT_DEV_PROJECT_DIRECTORY_NAME="JSLanguage"
 EXTERNAL_STORAGE_DRIVE_01_TAG="WD1"
 EXTERNAL_STORAGE_DRIVE_02_TAG="WD2"
+EOT
+
+cd ..
+
+exit 99
+

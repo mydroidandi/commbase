@@ -12,3 +12,5 @@ if [[ ! -d "$COMMBASE" ]]; then
     echo 'export COMMBASE="$HOME/Developer/mydroidandi"' >> ~/.zshrc
 fi
 
+exit 99
+
