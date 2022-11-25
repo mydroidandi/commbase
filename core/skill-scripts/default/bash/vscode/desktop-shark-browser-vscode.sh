@@ -10,9 +10,9 @@ COMMBASE=$HOME"/Developer"
 # Files to import:
 source $COMMBASE/Commbase/.env
 
-# Path to the current project that I am currently working on
-PATH_TO_PROJECT=$COMMBASE/$DEFAULT_DEV_PROJECT_DIRECTORY_NAME
+# Path to the current/custom project that I am currently working on
+PATH_TO_PROJECT=$COMMBASE/$DEV_PROJECT_DIRECTORY_NAME
 
 # Open the project
 cd $PATH_TO_PROJECT
-(code-insiders $DEFAULT_DEV_PROJECT_DIRECTORY_NAME.code-workspace --disable-gpu)
+(code-insiders $DEV_PROJECT_DIRECTORY_NAME.code-workspace --disable-gpu)
