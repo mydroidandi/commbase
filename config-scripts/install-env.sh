@@ -5,7 +5,7 @@
 # Copy the content of cat to commbase/ENV/.env
 cd ../ENV
 touch .env
-cat <<EOT >> .env
+cat <<EOT > .env
 PROTONVPN_CLI_USERNAME="Tony_St4rk"
 PROTONVPN_CLI_PASSWORD="PASSWORD-NOT-REQUIRED-ONCE-REGISTERED"
 PROTONVPN_API_USERNAME="USERNAME-IN-CONFIG-FILE-IN-/ETC/"
