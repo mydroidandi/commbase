@@ -19,3 +19,6 @@
 # Start capturing sound that the Commbase recognition requires to work.
 # Uses the keyboard binding CTRL-SHIFT-X
 (amixer set Capture cap &>/dev/null)
+
+exit 99
+

@@ -19,3 +19,6 @@
 # Stop capturing sound that alters Commbase recognition.
 # Uses the keyboard binding CTRL-SHIFT-Z
 (amixer set Capture nocap &>/dev/null)
+
+exit 99
+
