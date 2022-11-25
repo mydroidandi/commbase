@@ -6,3 +6,5 @@
 # Copy commbase to /usr/bin
 cp commbase.default /usr/bin/commbase
 
+exit 99
+
