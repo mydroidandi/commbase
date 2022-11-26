@@ -561,11 +561,14 @@ If you need, you should set up your .env file with your own environment variable
 
 This file, in  commbase/ENV/.env, was created during the Commbase installation, as is described in the
 document INSTALL.
+
 If you want or require to re-create it from scratch, checkout the section "Set up the .env file" in the
 mentioned document.
 
-Commbase proposes this file as to store the list of bash scripts' logins, usernames with passwords,
+Commbase uses this file to store the list of bash scripts' logins, usernames with passwords,
 and APIs credentials.
+
+The variables are strictly ordered. They are grouped by host, beginning with the UUID variable.
 
 Some custom commands could run a local or remote command using another user rather than yours, or
 even your system's root from a remote server machine. Those commands and other commands that you
