@@ -3,10 +3,6 @@
 # Description: Reads and processes the commands written by commbase-speech-recognition-vosk.py to
 # .result.data
 
-# The Commbase directory:
-#COMMBASE=$HOME
-COMMBASE=$HOME"/Developer"
-
 # $(<FILE-NAME) is used in bash or zsh, to read a whole file into a variable without invoking cat
 trim_str=$(<.result.data)
 trim_previous_str=$(<.previous_result.data)
