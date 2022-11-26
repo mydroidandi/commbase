@@ -12,13 +12,17 @@
 # Next, select the route to this file.
 # Next, click or tap on the button Add the keyboard shortcut. The shortcut appears in the list.
 # Next, click on unassigned to pick an accelerator.
-# Next, press the keys CTRL + SHIFT + Z (all together) and then release them at a time.
+# Next, press the keys ALT + SHIFT + 2 (all together) and then release them at a time.
 # Then the new key binding appears on the list.
 # Finally, verify that the key binding works.
 
-# Stop capturing sound that alters Commbase recognition.
-# Uses the keyboard binding CTRL-SHIFT-Z
-(amixer set Capture nocap &>/dev/null)
+# Stops capturing sound to avoid confusing the Commbase recognition.
+# Uses the keyboard binding ALT-SHIFT-2.
+capture_mute (){
+  (amixer set Capture nocap &>/dev/null || exit 99);
+}
+
+capture_mute || exit 99;
 
 exit 99
 

@@ -402,10 +402,12 @@ A key binding is an association between a physical key on a keyboard and a param
 Commbase comes with a number of key binding files you can use for setting up key bindings in your
 custom system configuration.
 
-The Commbase key bindings are allocated in the directory Commbase/commbase/key-bindings.
-Commbase recommends using a key binding to toggle ON/OFF the sound capture as a minimum. The file
-used for that purpose is toggle-capture-on-off.sh. To set up the key binding using this file you must
-use your current Desktop Environment or Window Manager key binding configuration.
+Commbase recommends using as a minimum the key binding file toggle-active-capture-device.sh to toggle
+and activate the current active and default capture device to another device in a group of two devices,
+turning it active and default.
+
+The Commbase key bindings are allocated in the directory config-scripts/key-bindings.
+To set up the key binding using these files you must use your current Desktop Environment or Window Manager key binding configuration.
 
 For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
 Go to Menu -> System Settings -> Keyboard -> shortcuts -> Categories -> Sound and Media -> Add custom
@@ -420,6 +422,8 @@ Finally, verify that the key binding works.
 Note: The choice to use or avoid this key binding would depend on a variety of facts. For example, you
 would choose not to use the key binding if you have a headset, ear-set or any other microphone with a
 built-in mute/unmute control button.  
+
+Every key binding file includes information on what it does and how to set it up when necessary.
 
 Check out the directory key-bindings for alternative keybinding options.
 
