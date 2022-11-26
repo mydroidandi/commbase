@@ -87,6 +87,8 @@ $ bash install-env.sh
 
 A new .env file should appear in the directory commbase/ENV. This file contains all the default Commbase environment variables and assignments.
 
+The variables are strictly ordered. They are grouped by host, beginning with the UUID variable.
+
 Set up the Commbase executable:
 --------------------------------
 Go to the directory commbase/config-scripts/ and execute the file install-commbase-executable.sh:
