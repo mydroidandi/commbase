@@ -612,7 +612,7 @@ The constant can be used in any custom script file inside the Commbase root dire
 Example in a script header:
 
 ```bash
-# The configuration constants file.
+# The configuration constants.
 source $COMMBASE/commbase/config/commbase.conf
 ```
 Example of use of the constant in the same bash script:
