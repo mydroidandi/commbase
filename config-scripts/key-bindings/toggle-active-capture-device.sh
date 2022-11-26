@@ -105,8 +105,8 @@ turn_capture_on () {
   fi
 }
 
-toggle_active_capture_device;
-turn_capture_on;
+toggle_active_capture_device || exit 99;
+turn_capture_on || exit 99;
 
 exit 99
 
