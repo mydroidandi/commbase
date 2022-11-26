@@ -84,7 +84,7 @@
 # Then the new key binding appears on the list.
 # Finally, verify that the key binding works.
 
-# The configuration constants.
+# The configuration file.
 source $COMMBASE/commbase/config/commbase.conf
 
 # Toggle and activate the current active and default capture device to another device in
