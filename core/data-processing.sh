@@ -1,7 +1,6 @@
 #!/bin/bash
-# File: commbase-process-vosk-pc-default.sh
-# Description: Reads and processes the commands written by commbase-speech-recognition-vosk.py to
-# .result.data
+# data-processing.sh
+# Reads and processes the commands written by voice-recognition.py to data.dat
 
 # $(<FILE-NAME) is used in bash or zsh, to read a whole file into a variable without invoking cat
 trim_str=$(<.result.data)
@@ -117,30 +116,30 @@ elif echo $trim_str | grep -q "stop capturing sound" || echo $trim_str | grep -q
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
   tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""stop listening / stop capturing sound"
   echo "stop capturing sound" >> .commbase_history
-  tmux select-pane -t 4 && tmux send-keys "(/usr/bin/aplay -q $COMMBASE/Commbase/commbase/base-vosk/beep-down.wav &) &>/dev/null" C-m
+  tmux select-pane -t 4 && tmux send-keys "(/usr/bin/aplay -q $COMMBASE/commbase/bundled/sounds/beep-down.wav &) &>/dev/null" C-m
   tmux select-pane -t 4 && tmux send-keys "clear" C-m
 # commbase reload recognition:
 elif echo $trim_str | grep -q "reload recognition" || echo $trim_str | grep -q "reload speech recognition" || echo $trim_str | grep -q "reload your speech recognition" || echo $trim_str | grep -q "reload your recognition"; then
   amixer set Capture nocap &>/dev/null
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
   tmux select-window -t 1 && tmux select-pane -t 4 && sleep 1
-  (pkill --full $COMMBASE/Commbase/commbase/base-vosk/commbase-speech-recognition-vosk.py) &>/dev/null
-  tmux select-pane -t 1 && tmux send-keys "python3.7 $COMMBASE/Commbase/commbase/base-vosk/commbase-speech-recognition-vosk.py" C-m && sleep 4
+  (pkill --full $COMMBASE/commbase/core/commbase-speech-recognition-vosk.py) &>/dev/null
+  tmux select-pane -t 1 && tmux send-keys "python3.7 $COMMBASE/commbase/core/voice-recognition.py" C-m && sleep 4
   amixer set Capture cap &>/dev/null
   echo "reload recognition" >> .commbase_history
-  tmux select-pane -t 4 && tmux send-keys "(aplay -q $COMMBASE/Commbase/commbase/base-vosk/beep-up.wav) &>/dev/null" C-m
+  tmux select-pane -t 4 && tmux send-keys "(aplay -q $COMMBASE/commbase/bundled/sounds/beep-up.wav) &>/dev/null" C-m
   tmux select-pane -t 4 && tmux send-keys "clear" C-m
 # commbase turn off:
 elif echo $trim_str | grep -q "disconnect yourself"; then
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
   echo "disconnect yourself" >> .commbase_history
-  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "aplay -q $COMMBASE/Commbase/commbase/base-vosk/beep-down.wav" C-m && sleep 1
+  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "aplay -q $COMMBASE/commbase/bundled/sounds/beep-down.wav" C-m && sleep 1
   tmux kill-session -t Commbase-0
 # commbase wake up:
 elif echo $trim_str | grep -q "wake up" || echo $trim_str | grep -q "wake-up"; then
   amixer set Capture nocap &>/dev/null
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
-  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "(aplay -q $COMMBASE/Commbase/commbase/base-vosk/beep-up.wav) &>/dev/null" C-m
+  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "(aplay -q $COMMBASE/commbase/bundled/sounds/beep-up.wav) &>/dev/null" C-m
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
   amixer set Capture cap &>/dev/null
   echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""wake up / wake-up"
@@ -149,7 +148,7 @@ elif echo $trim_str | grep -q "wake up" || echo $trim_str | grep -q "wake-up"; t
 elif echo $trim_str | grep -q "list your command history" || echo $trim_str | grep -q "list your learning history" || echo $trim_str | grep -q "list you're learning history"; then
   amixer set Capture nocap &>/dev/null
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
-  gnome-terminal -- bash -c "(cat $COMMBASE/Commbase/commbase/base-vosk/.commbase_history | less); exec bash" C-m
+  gnome-terminal -- bash -c "(cat $COMMBASE/commbase/history/.commbase_history | less); exec bash" C-m
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
   amixer set Capture cap &>/dev/null
   echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""list your command history / list your learning history"
@@ -157,7 +156,7 @@ elif echo $trim_str | grep -q "list your command history" || echo $trim_str | gr
   #(do not save to history file)
 # commbase_learning save history as skillset:
   #echo "save this as a new skillset" >> .commbase_history
-  #gnome-terminal -- bash -c "(nano $COMMBASE/Commbase/commbase/base-vosk/.commbase_history); exec bash" C-m
+  #gnome-terminal -- bash -c "(nano $COMMBASE/commbase/history/.commbase_history); exec bash" C-m
 # -----------------------------------------------SYMBOLS---------------------------------------------
 # 
 # --------------------------------------------------A------------------------------------------------

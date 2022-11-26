@@ -1,6 +1,6 @@
 #!/bin/bash
-# File: commbase-vosk-start.sh
-# Description: Creates the Commbase application interface
+# ui.sh
+# Creates the Commbase application interface
 
 # Set this environmental variable in a single step
 #export TRIM_STR=""
@@ -26,7 +26,7 @@ tmux new-window -t Commbase-0:1 -n "Ext" && sleep $time
 #tmux new-window -t Commbase-0:1 -n "Ext" && tmux send-keys "cd $COMMBASE/Commbase ; clear" C-m && sleep $time
 # Focuses the cursor on the window 0, "Commbase" and selects the pane 1 (by default), runs any shell command, sends enter key and presses enter, and sleeps
 tmux select-window -t 1 && tmux send-keys "python3.7 $COMMBASE/commbase/core/voice-recognition.py" C-m && sleep $time
-tmux select-pane -t 2 && tmux send-keys "python3.7 $COMMBASE/commbase/commbase/bundled/vu-meter/vu_meter.py" C-m && sleep $time
+tmux select-pane -t 2 && tmux send-keys "python3.7 $COMMBASE/commbase/bundled/vu-meter/vu_meter.py" C-m && sleep $time
 tmux select-pane -t 3 && tmux send-keys "alsamixer --view all" C-m && sleep $time
 tmux select-pane -t 4 && tmux send-keys "cd $COMMBASE/commbase ; clear" C-m && sleep $time
 # Supports resizing the terminal window

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3.7
-# File: commbase-speech-recognition-vosk.py
-# Description: Returns a speech recognition as a string for commbase-process-vosk-pc-default.sh or
-# any other of its current versions.
+# voice-recognition.py
+# Returns a speech recognition as a string for data-processing.sh.
 
 import argparse
 import os
@@ -22,15 +21,8 @@ import colorama
 
 # Get environment variables
 # The Commbase directory + the path to the model:
-COMMBASE_MODEL = '$HOME/Developer/Commbase/commbase/base-vosk/voice-recognition/model'
-#COMMBASE_MODEL = '$HOME/Commbase/commbase/base-vosk/voice-recognition/model'
+COMMBASE_MODEL = '$COMMBASE/commbase/bundled/vosk/model'
 #print (string.Template(COMMBASE_MODEL).substitute(os.environ))
-
-# Update the path to .result.data in the function 'writetofile'
-# Update the path to .previous_result.data in the function 'writetofiletwo'
-# Update the path to .result_list in the function 'append_new_line'
-# Update the path to commbase-process-vosk-pc-default.sh in the if statement that follows the
-# function 'append_new_line'
 
 q = queue.Queue()
 
@@ -107,22 +99,19 @@ def print_result():
 	# Write strings to files
 
 	def writetofile():
-		RESULT_DATA_FILE = os.environ["HOME"] + '/Developer/Commbase/commbase/base-vosk/.result.data'
-		#RESULT_DATA_FILE = os.environ["HOME"] + '/Commbase/commbase/base-vosk/.result.data'
+		RESULT_DATA_FILE = os.environ["COMMBASE"] + '/commbase/data/.data.dat'
 		outputfile = open(RESULT_DATA_FILE, 'w')  # 'w' overwrites the file or creates it and writes in it
 		outputfile.write(trim_string)
 		outputfile.close()
 
 	def writetofiletwo():
-		RESULT_DATA_FILE = os.environ["HOME"] + '/Developer/Commbase/commbase/base-vosk/.previous_result.data'
-		#RESULT_DATA_FILE = os.environ["HOME"] + '/Commbase/commbase/base-vosk/.previous_result.data'
+		RESULT_DATA_FILE = os.environ["COMMBASE"] + '/commbase/data/.prev_data.dat'
 		outputfile = open(RESULT_DATA_FILE, 'w')  # 'w' overwrites the file or creates it and writes in it
 		outputfile.write(trim_string)
 		outputfile.close()
 
 	def append_new_line():
-		COMMBASE_HISTORY = os.environ["HOME"] + '/Developer/Commbase/commbase/base-vosk/.result_list'
-		#RESULT_DATA_FILE = os.environ["HOME"] + '/Commbase/commbase/base-vosk/.result_list'
+		COMMBASE_HISTORY = os.environ["COMMBASE"] + '/commbase/history/.commbase_history'
 		outputfile = open(COMMBASE_HISTORY, 'a')  # 'wa' the file or creates it and writes in it
 		outputfile.write(trim_string)
 		outputfile.write("\n")
@@ -139,8 +128,7 @@ def print_result():
 			writetofiletwo()
 			#append_new_line()
 
-		COMMBASE_PROCESS_FILE = 'bash ' + os.environ["HOME"] + '/Developer/Commbase/commbase/base-vosk/commbase-process-vosk-pc-default.sh'
-		#COMMBASE_PROCESS_FILE = 'bash ' + os.environ["HOME"] + '/Commbase/commbase/base-vosk/commbase-process-vosk-pc-default.sh'
+		COMMBASE_PROCESS_FILE = 'bash ' + os.environ["COMMBASE"] + '/commbase/core/data-processing.sh'
 		o = subprocess.run (COMMBASE_PROCESS_FILE, shell=True, capture_output=True)
 		# Prints clean, as text:
 		print(o.stdout.decode())
@@ -173,7 +161,6 @@ args = parser.parse_args(remaining)
 try:
     if args.model is None:
         args.model = string.Template(COMMBASE_MODEL).substitute(os.environ)
-        #args.model = "voice-recognition/model"
     if not os.path.exists(args.model):
         print ("Please download a model for your language from https://alphacephei.com/vosk/models")
         print ("and unpack as 'model' in the current folder.")
