@@ -834,9 +834,10 @@ Skillsets voice commands examples:
 
 ### Commbase Key Bindings
 
-`CTRL` + `SHIFT` + `Z` : Stop sound capturing.
-<br />`CTRL` + `SHIFT` + `X` : Start sound capturing.
-<br />`CTRL` + `SHIFT` + `C` : Toggle ON/OFF sound capturing.
+`CTRL` + `SHIFT` + `Z` : Toggle active capture device.
+<br />`ALT` + `SHIFT` + `1` : Toggle ON/OFF sound capturing.
+<br />`ALT` + `SHIFT` + `2` : Stop sound capturing.
+<br />`ALT` + `SHIFT` + `3` : Start sound capturing.
 
 These group of shortcuts are defined in the Commbase directory key-bindings/
 
@@ -861,6 +862,7 @@ These group of shortcuts are defined in the Commbase directory key-bindings/
 
 `CTRL` + `-` : Resize terminal.
 <br />`CTRL` + `+` : Resize terminal.
+<br />`CTRL` + `SHIFT` + `X` + `X` : Selects a portion of the terminal text typed in.
 <br />`CTRL` + `SHIFT` + `C` : Copy highlighted text from terminal.
 <br />`CTRL` + `SHIFT` + `V` : Paste clipboard text into terminal.
 
@@ -870,10 +872,10 @@ When using Neovim or Emacs, make sure that the custom keyboard shorcuts do not i
 
 ### OBS
 
-`ALT` + `SHIFT` + `1` : Start streaming.
-<br />`ALT` + `SHIFT` + `2` : Stop streaming.
-<br />`ALT` + `SHIFT` + `3` : Start recording.
-<br />`ALT` + `SHIFT` + `4` : Stop recording.
+`ALT` + `SHIFT` + `4` : Start recording.
+<br />`ALT` + `SHIFT` + `5` : Stop recording.
+<br />`ALT` + `SHIFT` + `6` : Start streaming.
+<br />`ALT` + `SHIFT` + `7` : Stop streaming.
 
 ### SimpleScreenRecorder
 
