@@ -76,7 +76,7 @@ if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
 
     'stop')
       echo "Stopping application"
-i      tmux kill-session -t Commbase-0
+      tmux kill-session -t Commbase-0
       ;;
     'okay stop' | 'ok stop')
       cd $COMMBASE/commbase/data
