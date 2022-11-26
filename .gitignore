@@ -133,6 +133,11 @@ dmypy.json
 # Ignore bundled models
 bundled/vosk/model/
 
+# Configs
+#commbase.conf
+commbase.conf.bak
+#configs/
+
 # Ignore Logs
 logs
 # Do not ignore skill-script log files
