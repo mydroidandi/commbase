@@ -557,49 +557,41 @@ $ su -
 
 ```
 
-If you need, you should set up your .env file with your own environment variable values.
+If you need, you should set up your commbase.conf file with your own constant values.
 
-This file, in  commbase/ENV/.env, was created during the Commbase installation, as is described in the
-document INSTALL.
+This file, in  the directory commbase/config/, was created during the Commbase installation,
+as is described in the document INSTALL.
 
-If you want or require to re-create it from scratch, checkout the section "Set up the .env file" in the
-mentioned document.
+If you want or require to re-create it from scratch, checkout the section "Set up the file
+commbase.conf" in the mentioned document.
 
-Commbase uses this file to store the list of bash scripts' logins, usernames with passwords,
+Commbase uses this file to store the list of skill-scripts' logins, usernames with passwords,
 and APIs credentials.
-
-The variables are strictly ordered. They are grouped by host, beginning with the UUID variable.
 
 Some custom commands could run a local or remote command using another user rather than yours, or
 even your system's root from a remote server machine. Those commands and other commands that you
 could create containing passwords, passphrases, private keys and other secrets are better kept typed
 in an external list and managed carefully as a part of the security policy for your systems.
 
-Within this file you can even create variables for allowing Commbase to connect through networks, using
-sign ins and technologies such as Secure SHell (SSH).
+Within this file you can even create constants for allowing Commbase to connect through networks,
+using sign ins and technologies such as Secure SHell (SSH).
 
-To setup the permission on the file .env. It also applies to certificates such as .pem files:
-$ chmod 600 .env
-$ chown $USER .env
-$ chgrp $USER .env
-
-By the way, the .env file is listed in the file commbase/.gitignore.
+By the way, commbase.conf file is listed in the file commbase/.gitignore.
 
 Note: If you want to generate new uuid for any purpose, for example, create one unique id for every
 device in your Commbase device network, you can use uuid-runtime:
 $ uuidgen
 
 Occasionally, more commands will be merged in the official Commbase source repository. Don't forget
-to backup your data-processing.sh file before download a new version to upgrade your Commbase
-or you will loose your custom commands because none of them is in the official source repo.
+to backup your customized Commbase files before download a new version and upgrade your Commbase
+or you will loose your customizations because none of them is in the official source repo.
 
 To propose a new command for the Commbase repository, checkout the information on how to contribute
-to the project in the README document.
+to the project in the document README.md.
 
 ## The $COMMBASE directory
 
-Commbase uses an environment constant $COMMBASE set up for the user environment/session. For
-example, in some Linux distributions, this type of variables can be exported in $HOME/.bashrc, $HOME/.zshrc or any other custom shell rc configuration file.
+Commbase uses an environment constant $COMMBASE set up for the user environment/session. Such as in many Linux distributions, this type of constants can be exported in $HOME/.bashrc, $HOME/.zshrc or any other custom shell rc configuration file.
 
 Example of the custom lines added to a bashrc file:
 
@@ -609,25 +601,24 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
-Example of use of the variable:
+Example of use of the constant:
 
 ```bash
-tmux send-keys "bash $COMMBASE/core/<PATH/TO/SCRIPT/FILE/script.sh> &"
+tmux send-keys "bash $COMMBASE/commbase/core/<PATH/TO/SCRIPT/FILE/script.sh> &"
 ```
 
-The variable can be used in any custom script file inside the Commbase root directory
-and its subdirectories.
+The constant can be used in any custom script file inside the Commbase root directory and its subdirectories.
 
 Example in a script header:
 
 ```bash
-# The root Commbase directory is set as environment variable in ~/.bashrc and/or ~/.zshrc
-source $COMMBASE/commbase/ENV/.env
+# The configuration file.
+source $COMMBASE/commbase/config/commbase.conf
 ```
 Example of use of the constant in the same bash script:
 
 ```bash
-mpv $COMMBASE/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
+mpv $COMMBASE/commbase/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
 ```
 
 ## The Commbase processing file
@@ -966,10 +957,11 @@ Identify the computer (shark) and local server (shark2) IP a address:
 $ ping  ip-address
 ```
 
-Compare the addresses and update them in the file: **commbase/ENV/.env** if required:
+Compare the addresses and update them in the file: **commbase/config/commbase.conf** if required:
 
-```
-$ nvim .env
+```shell
+$ nvim commbase.conf
+$ nano commbase.conf
 ```
 
 But, do not access any server yet, to be able to keep the server connections in Commbase Windows that we will create later on.

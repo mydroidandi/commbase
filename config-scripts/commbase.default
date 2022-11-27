@@ -37,10 +37,6 @@
 # the pane 1 of the tmux session. The other output in their respective functions,
 # otherwise, in their correspondent scripts.
 
-# The root Commbase directory is set as environment variable in ~/.bashrc and/or
-# ~/.zshrc.
-source $COMMBASE/commbase/ENV/.env
-
 # The data processing file.
 COMMBASE_PROCESS_FILE="$COMMBASE/commbase/core/data-processing.sh"
 

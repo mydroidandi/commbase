@@ -15,7 +15,7 @@ Content:
 1.2. Update the system
 1.3. Install Commbase
 1.4. Set up the $COMMBASE directory
-1.5. Set up the .env file
+1.5. Set up the file commbase.conf
 1.6. Set up the Commbase executable
 2. Requisites and dependencies
 2.1. Install Python
@@ -79,15 +79,45 @@ The script is going to append the variable $COMMBASE in the files $HOME/.bashrc 
 
 To know more on how to make Commbase commands, checkout the section "The $COMMBASE directory" in the document User's Guide.
 
-Set up the .env file:
-----------------------
-Go to the directory commbase/config-scripts/ and execute the file install-env.sh:
+Set up the file commbase.conf:
+-------------------------------
+
+Go to the directory config/ and open the file commbase.conf
+$ nano config/commbase.conf
+
+This is a CONSTANTS file that you can edit following certain rules:
+Constants must be declared in uppercase.
+The constants are strictly ordered. They are grouped by host, beginning with the UUID variable.
+All the values assigned to constants must be quoted.
+You can add more CONSTANTS with values, but their names can not be duplicated in the file or match Commbase or system environment constants such as $COMMBASE or $HOME.
+There should not be empty lines or spaces.
+
+The default file version contains the next values:
+
+LOCAL_HOST_UUID="5ba8f927-d331-471c-b640-812d4680e310"
+HOSTNAME="shark"
+HOST_IP_ADDRESS="192.168.100.13"
+REMOTE_USER_NAME="tonystark"
+REMOTE_USER_PASSWD="USE-KEY-PAIRS"
+COMMBASE_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback"
+ALTERNATIVE_CAPTURE_DEVICE_NAME="alsa_input.pci-0000_00_1b.0.analog-stereo"
+EXTERNAL_STORAGE_DRIVE_01_TAG="WD1"
+EXTERNAL_STORAGE_DRIVE_02_TAG="WD2"
+DEV_PROJECT_DIRECTORY_NAME="Commbase"
+PROTONVPN_CLI_USERNAME="Tony_St4rk"
+PROTONVPN_CLI_PASSWORD="NOT-REQUIRED-ONCE-REGISTERED"
+PROTONVPN_API_USERNAME="USERNAME-IN-CONFIG-FILE-IN-/ETC/"
+PROTONVPN_API_PASSWORD="PASSWORD-IN-CONFIG-FILE-IN-/ETC/"
+SERVER_HOST_001_UUID="27475487-cab6-4050-9047-9a565e22d2b0"
+SERVER_HOST_001_HOSTNAME="shark2"
+SERVER_HOST_001_IP_ADDRESS="192.168.100.45"
+SERVER_HOST_001_USER_PASSWD="USE-KEY-PAIRS"
+
+Reset the configuraion file:
+It restores the file to its inital status.
+Go to the directory commbase/config-scripts/ and execute the file reset-commbase.conf.sh:
 $ cd config-scripts
-$ bash install-env.sh
-
-A new .env file should appear in the directory commbase/ENV. This file contains all the default Commbase environment variables and assignments.
-
-The variables are strictly ordered. They are grouped by host, beginning with the UUID variable.
+$ bash reset-commbase.conf.sh
 
 Set up the Commbase executable:
 --------------------------------
@@ -457,8 +487,9 @@ A network requires every node setup with OpenSSH tunneling communication among a
 network members. It is a good idea to setup OpenVPN for the nodes to avoid being attacked.
 
 If your setup includes the Commbase manager or main node in a Commbase network and you have improved
-security, you can manage nodes passwords in the Commbase .env file and use them in your scripts
-passing them as parameters or flags with arguments, for example, with ssh and something like:
+security, you can manage nodes passwords in the Commbase configuration file commbase.conf and use them
+in your scripts passing them as parameters or flags with arguments, for example, with ssh and something 
+like:
 $ command -p PASS-STRING -m 20 --verbose
 
 Check out the section "The Commbase processing file" of the User's Guide for more information on how
@@ -467,6 +498,4 @@ to setup specific node hardware such as intelligent home appliances or any other
 References:
 Topic: Distribuited systems examples
 Web: https://en.wikipedia.org/wiki/Jini
-
-
 
