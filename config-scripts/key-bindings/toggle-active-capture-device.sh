@@ -84,9 +84,8 @@
 # Then the new key binding appears on the list.
 # Finally, verify that the key binding works.
 
-# The root Commbase directory is set as environment variable in ~/.bashrc and/or
-# ~/.zshrc.
-source $COMMBASE/commbase/ENV/.env
+# The configuration file.
+source $COMMBASE/commbase/config/commbase.conf
 
 # Toggle and activate the current active and default capture device to another device in
 # a group of two devices, turning it active and default.
