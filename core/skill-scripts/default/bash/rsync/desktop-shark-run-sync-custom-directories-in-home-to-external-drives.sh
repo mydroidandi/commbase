@@ -16,8 +16,8 @@
 # Alternatively, add some code to create the custom directories
 # "if not exist" and setup their permissions.
 
-# The root Commbase directory is set as environment variable in ~/.bashrc and/or ~/.zshrc
-source $COMMBASE/commbase/ENV/.env
+# The configuration file.
+source $COMMBASE/commbase/config/commbase.conf
 
 # Assign the current local IP address to a constant
 MY_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}')
@@ -26,7 +26,9 @@ MY_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}')
 MY_HOST_NAME=$(hostname | awk '{print $1}')
 
 # Syncing logs file
-LOG_FILE=$COMMBASE/commbase/log/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.log
+LOG_FILE=$COMMBASE/commbase/log/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.sh.log
+
+SCRIPT_FILE=$COMMBASE/commbase/core/skill-scripts/default/bash/rsync/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.sh
 
 # Clean up a back-up path for every external drive to be used
 external_storage_drive_01_backup_path=""
@@ -46,18 +48,20 @@ echo "" > $LOG_FILE
 (echo "--------------" >> $LOG_FILE)
 (echo "My host ip address:" $MY_HOST_IP_ADDRESS)
 (echo "My host ip address:" $MY_HOST_IP_ADDRESS >> $LOG_FILE)
-(echo "Desktop Shark ip address:" $DESKTOP_SHARK_IP_ADDRESS)
-(echo "Desktop Shark ip address:" $DESKTOP_SHARK_IP_ADDRESS >> $LOG_FILE)
+(echo "Desktop Shark ip address:" $HOST_IP_ADDRESS)
+(echo "Desktop Shark ip address:" $HOST_IP_ADDRESS >> $LOG_FILE)
 (echo "My host name:" $MY_HOST_NAME)
 (echo "My host name:" $MY_HOST_NAME >> $LOG_FILE)
-(echo "Desktop Shark hostname:" $DESKTOP_SHARK_HOSTNAME)
-(echo "Desktop Shark hostname:" $DESKTOP_SHARK_HOSTNAME >> $LOG_FILE)
+(echo "Desktop Shark hostname:" $HOSTNAME)
+(echo "Desktop Shark hostname:" $HOSTNAME >> $LOG_FILE)
 (echo "External storage drive 01 tag:" $EXTERNAL_STORAGE_DRIVE_01_TAG)
 (echo "External storage drive 02 tag:" $EXTERNAL_STORAGE_DRIVE_01_TAG >> $LOG_FILE)
 (echo "External storage drive 01 tag:" $EXTERNAL_STORAGE_DRIVE_02_TAG)
 (echo "External storage drive 02 tag:" $EXTERNAL_STORAGE_DRIVE_02_TAG >> $LOG_FILE)
 (echo "Log file:" $LOG_FILE)
 (echo "Log file:" $LOG_FILE >> $LOG_FILE)
+(echo "Script file:" $SCRIPT_FILE)
+(echo "Script file:" $SCRIPT_FILE >> $LOG_FILE)
 (echo "Directories to sync:")
 (echo "Directories to sync:" >> $LOG_FILE)
 (echo "~/.config/BraveSoftware/")
@@ -86,7 +90,7 @@ echo "" > $LOG_FILE
 # is executed from the development computer defined in .env.
 if [ "$MY_HOST_IP_ADDRESS" != "$DESKTOP_SHARK_IP_ADDRESS" ]; then
 	(echo "<> Do not sync from the server. This is only for the Development computer.")
-elif [ "$MY_HOST_NAME" == "$DESKTOP_SHARK_HOSTNAME" ]; then
+elif [ "$MY_HOST_NAME" == "$HOSTNAME" ]; then
 	(echo "<> Press CTRL-C to interrupt")
 	(echo "<> Press CTRL-C to interrupt" >> $LOG_FILE)
 	(echo "<> Synchronizing custom $HOME directories ...")

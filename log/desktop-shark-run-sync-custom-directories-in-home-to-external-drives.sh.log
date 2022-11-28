@@ -1,0 +1,20 @@
+
+--------------
+SYNC DETAILS:
+--------------
+My host ip address: 192.168.100.13
+Desktop Shark ip address: 192.168.100.13
+My host name: shark
+Desktop Shark hostname: shark
+External storage drive 02 tag: WD1
+External storage drive 02 tag: WD2
+Log file: /home/esteban/Developer/mydroidandi/commbase/log/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.sh.log
+Script file: /home/esteban/Developer/mydroidandi/commbase/core/skill-scripts/default/bash/rsync/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.sh
+Directories to sync:
+~/.config/BraveSoftware/
+~/config/
+~/Developer/
+~/Documents/
+~/Downloads/
+/etc/
+
