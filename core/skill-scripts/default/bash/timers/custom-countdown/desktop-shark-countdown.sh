@@ -19,11 +19,6 @@
 # Stop the alarm:
 # Press CTRL + C two times to exit the program
 
-# The Commbase directory:
-# Due to the loss of the Commbase application scope here, it must be re-assigned
-COMMBASE=$HOME/Developer
-#COMMBASE=$HOME
-
 if [ "$#" -lt "2" ] ; then 
 	echo "Incorrect usage ! Example:" 
 	echo './countdown.sh -d  "Jun 10 2011 16:06"' 
