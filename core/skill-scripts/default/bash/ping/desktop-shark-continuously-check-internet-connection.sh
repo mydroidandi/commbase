@@ -12,7 +12,7 @@ then
    pingtimetwo=$(ping -w 1 www.google.com | grep ttl) 
    if [ "$pingtimetwo" = "" ] 
    then 
-       clear ; echo 'Offline' #; echo 'Offline' | festiva --tts
+       clear ; echo 'Offline' #; echo 'Offline' | festival --tts
    else
        clear ; echo 'Online' ; echo 'Online' | festival --tts
    fi 

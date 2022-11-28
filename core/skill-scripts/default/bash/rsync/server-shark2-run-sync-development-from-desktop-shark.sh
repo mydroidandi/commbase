@@ -13,15 +13,12 @@
 # $ sudo chmod 755 ~/Developer
 # $ ls -hal $HOME
 
-# The Commbase directory:
-# Due to the loss of the Commbase application scope here, it must be re-assigned
-COMMBASE=$HOME/Developer
-#COMMBASE=$HOME
+# The configuration file.
+source $COMMBASE/commbase/config/commbase.conf
 
-# Files to import:
-source $COMMBASE/Commbase/.env
-
-REMOTE_HOST_IP_ADDRESS=$DESKTOP_SHARK_IP_ADDRESS
+# In this case, use the remote IP address is the one named as the local host
+# in commbase.conf
+REMOTE_HOST_IP_ADDRESS=$HOST_IP_ADDRESS
 
 # This will get you the private IP address of your interfaces, plus assigned to a constant
 MY_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}')
@@ -36,10 +33,10 @@ REMOTE_USER=$REMOTE_USER_NAME
 # time is up.
 if [ "$MY_HOST_IP_ADDRESS" == "$REMOTE_HOST_IP_ADDRESS" ]; then
   echo "Something but Spoofing! Not proceeding."
-elif [ "$MY_HOST_NAME" == "$SERVER_SHARK2_HOSTNAME" ]; then
+elif [ "$MY_HOST_NAME" == "$SERVER_HOST_001_HOSTNAME" ]; then
   echo "Connecting and Syncing from the remote host: "$REMOTE_HOST_IP_ADDRESS". Otherwise, verify the remote IP address in your .env file."
   rsync -a --delete --quiet -e ssh $REMOTE_USER@$REMOTE_HOST_IP_ADDRESS:~/Developer/* $COMMBASE/
   echo "Sync finished. Check out the new changes!"
 else
-  echo "Something went wrong! Verify the remote IP address and hostname in your .env file"
+  echo "Something went wrong! Verify the remote IP address and hostname in your configuration file"
 fi

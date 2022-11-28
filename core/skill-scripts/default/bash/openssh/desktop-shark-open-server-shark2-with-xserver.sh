@@ -7,15 +7,10 @@
 # Requires previously established SSH configuration in both, the client and the server.
 # Requires 'rsync' already installed in both, server and client.
 
-# The Commbase directory:
-# Due to the loss of the Commbase application scope here, it must be re-assigned
-COMMBASE=$HOME/Developer
-#COMMBASE=$HOME
+# The configuration file.
+source $COMMBASE/commbase/config/commbase.conf;
 
-# Files to import:
-source $COMMBASE/Commbase/.env
-
-REMOTE_HOST_IP_ADDRESS=$SERVER_SHARK2_IP_ADDRESS
+REMOTE_HOST_IP_ADDRESS=$SERVER_HOST_001_IP_ADDRESS;
 
 # This will get you the private IP address of your interfaces, plus assigned to a constant
 MY_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}')
