@@ -17,7 +17,7 @@
 # "if not exist" and setup their permissions.
 
 # The configuration file.
-source $COMMBASE/commbase/config/commbase.conf
+source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 
 # Assign the current local IP address to a constant
 MY_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}')
@@ -26,9 +26,9 @@ MY_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}')
 MY_HOST_NAME=$(hostname | awk '{print $1}')
 
 # Syncing logs file
-LOG_FILE=$COMMBASE/commbase/log/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.sh.log
+LOG_FILE=$COMMBASE_ROOT_DIR/commbase/log/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.sh.log
 
-SCRIPT_FILE=$COMMBASE/commbase/core/skill-scripts/default/bash/rsync/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.sh
+SCRIPT_FILE=$COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/rsync/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.sh
 
 # Clean up a back-up path for every external drive to be used
 external_storage_drive_01_backup_path=""

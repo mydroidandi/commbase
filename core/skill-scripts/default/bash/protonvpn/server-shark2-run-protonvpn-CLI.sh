@@ -16,14 +16,8 @@
 # packages, cert, and setup for ipsec and connection to the IKEv2 protocol
 # without authentication. 
 
-# The Commbase directory:
-# Due to the loss of the Commbase application scope here, it must be re-assigned
-COMMBASE=$HOME/Developer
-#COMMBASE=$HOME
-
-# The ProtonVPN user:
-source $COMMBASE/Commbase/.env
-#PROTONVPNUSER="PROTONVPN-USERNAME"
+# The configuration file.
+source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 
 # A connection to the VPN server will now be established. To check your connection status, enter:
 #protonvpn-cli status (or protonvpn-cli s)
@@ -56,7 +50,7 @@ protonvpn-cli login $PROTONVPN_CLI_USERNAME
 # credentials
 #sudo openvpn ~/ProtonVPN_server_configs/jp-free-04.protonvpn.com.tcp.ovpn
 #sudo openvpn ./ProtonVPN_server_configs/jp-free-04.protonvpn.com.tcp.ovpn
-sudo openvpn $COMMBASE/Commbase/protonvpn/ProtonVPN_server_configs/jp-free-04.protonvpn.com.udp.ovpn
+sudo openvpn $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/protonvpn/ProtonVPN_server_configs/jp-free-04.protonvpn.com.udp.ovpn
 # If you connect well you see the message "Sequence completed"
 
 # Test connection:

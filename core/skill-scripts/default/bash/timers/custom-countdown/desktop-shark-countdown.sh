@@ -77,6 +77,7 @@ while [ $sec_rem -gt 0 ]; do
 	echo "Days:    " $days 
 	echo "Weeks:   " $weeks 
 	echo "Press CTRL-C to stop the alarm"
+  echo ""
 
 	echo -n "["
 
