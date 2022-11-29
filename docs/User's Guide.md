@@ -43,7 +43,7 @@
 			- [Development](#development)
 - [7 Hints on saying and creating voice commands](#7-hints-on-saying-and-creating-voice-commands)
 - [8 Commands setup](#8-commands-setup)
-	- [The $COMMBASE_ROOT_DIR directory](#the-commbase-root-dir-directory)
+	- [The $COMMBASE_ROOT_DIR directory](#the-$commbase_root_dir-directory)
 	- [The Commbase processing file](#the-commbase-processing-file)
 - [9 Training Commbase by Assembling Skillsets](#9-training-commbase-by-assembling-skillsets)
 - [10 Keyboard Shortcuts](#10-keyboard-shortcuts)
