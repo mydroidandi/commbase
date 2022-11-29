@@ -589,7 +589,7 @@ or you will loose your customizations because none of them is in the official so
 To propose a new command for the Commbase repository, checkout the information on how to contribute
 to the project in the document README.md.
 
-## The $COMMBASE_ROOT_DIR directory
+## The Commbase root directory
 
 Commbase uses an environment constant $COMMBASE_ROOT_DIR set up for the user environment/session. Such as in many Linux distributions, this type of constants can be exported in $HOME/.bashrc, $HOME/.zshrc or any other custom shell rc configuration file.
 
