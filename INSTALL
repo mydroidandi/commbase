@@ -14,7 +14,7 @@ Content:
 1.1. Set up your system repository sources
 1.2. Update the system
 1.3. Install Commbase
-1.4. Set up the $COMMBASE directory
+1.4. Set up the $COMMBASE_ROOT_DIR directory
 1.5. Set up the file commbase.conf
 1.6. Set up the Commbase executable
 2. Requisites and dependencies
@@ -53,18 +53,18 @@ $ sudo apt-get -u upgrade
 Install Commbase:
 ------------------
 Visit: COMMBASE GITHUB
-Download and extract/Clone the repository from github.com and place it in the $COMMBASE directory:
+Download and extract/Clone the repository from github.com and place it in the $COMMBASE_ROOT_DIR directory:
 $ echo $HOME
 $ cd $HOME
 $ git clone COMMBASE
 
-Set up the $COMMBASE directory:
---------------------------------
+Set up the $COMMBASE_ROOT_DIR directory:
+-----------------------------------------
 Go to the directory commbase/config-scripts/ and open the file set-commbase-root-directory.sh.
 Written in Bash language, your will see ~/.bashrc and ~/.zshrc, which are the routes to the bash and Z shell configuration files.
-$HOME is the default value of the variable $COMMBASE.
-The variable $COMMBASE stores the Commbase's root directory.
-You can update the content of $COMMBASE to a custom value, such as $HOME/Developer. It must be updated for both sections, ~/.bashrc and ~/.zshrc, but if you don't have Z shell in your operating system, you can comment out the ~/.zshrc section before running ths script, like this:
+$HOME is the default value of the variable $COMMBASE_ROOT_DIR.
+The variable $COMMBASE_ROOT_DIR stores the Commbase's root directory.
+You can update the content of $COMMBASE_ROOT_DIR to a custom value, such as $HOME/Developer. It must be updated for both sections, ~/.bashrc and ~/.zshrc, but if you don't have Z shell in your operating system, you can comment out the ~/.zshrc section before running ths script, like this:
 
 Section of set-commbase-root-directory:
 
@@ -75,9 +75,9 @@ Section of set-commbase-root-directory:
 Save the file changes and then execute the file:
 $ bash set-commbase-environment-variable.sh
 
-The script is going to append the variable $COMMBASE in the files $HOME/.bashrc and $HOME/.zshrc
+The script is going to append the variable $COMMBASE_ROOT_DIR in the files $HOME/.bashrc and $HOME/.zshrc
 
-To know more on how to make Commbase commands, checkout the section "The $COMMBASE directory" in the document User's Guide.
+To know more on how to make Commbase commands, checkout the section "The $COMMBASE_ROOT_DIR directory" in the document User's Guide.
 
 Set up the file commbase.conf:
 -------------------------------
@@ -89,7 +89,7 @@ This is a CONSTANTS file that you can edit following certain rules:
 Constants must be declared in uppercase.
 The constants are strictly ordered. They are grouped by host, beginning with the UUID variable.
 All the values assigned to constants must be quoted.
-You can add more CONSTANTS with values, but their names can not be duplicated in the file or match Commbase or system environment constants such as $COMMBASE or $HOME.
+You can add more CONSTANTS with values, but their names can not be duplicated in the file or match Commbase or system environment constants such as $COMMBASE_ROOT_DIR or $HOME.
 There should not be empty lines or spaces.
 
 The default file version contains the next values:

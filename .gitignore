@@ -133,10 +133,14 @@ dmypy.json
 # Ignore bundled models
 bundled/vosk/model/
 
-# Configs
+# Configs for devel
 #commbase.conf
 commbase.conf.bak
 #configs/
+
+# config-scripts/ for devel
+.bak
+set-commbase-root-directory.sh.bak
 
 # Ignore Logs
 logs

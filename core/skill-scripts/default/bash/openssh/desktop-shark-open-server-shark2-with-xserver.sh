@@ -8,7 +8,7 @@
 # Requires 'rsync' already installed in both, server and client.
 
 # The configuration file.
-source $COMMBASE/commbase/config/commbase.conf;
+source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf;
 
 REMOTE_HOST_IP_ADDRESS=$SERVER_HOST_001_IP_ADDRESS;
 

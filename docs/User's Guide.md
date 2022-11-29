@@ -43,7 +43,7 @@
 			- [Development](#development)
 - [7 Hints on saying and creating voice commands](#7-hints-on-saying-and-creating-voice-commands)
 - [8 Commands setup](#8-commands-setup)
-	- [The $COMMBASE directory](#the-commbase-directory)
+	- [The $COMMBASE_ROOT_DIR directory](#the-commbase-root-dir-directory)
 	- [The Commbase processing file](#the-commbase-processing-file)
 - [9 Training Commbase by Assembling Skillsets](#9-training-commbase-by-assembling-skillsets)
 - [10 Keyboard Shortcuts](#10-keyboard-shortcuts)
@@ -589,9 +589,9 @@ or you will loose your customizations because none of them is in the official so
 To propose a new command for the Commbase repository, checkout the information on how to contribute
 to the project in the document README.md.
 
-## The $COMMBASE directory
+## The $COMMBASE_ROOT_DIR directory
 
-Commbase uses an environment constant $COMMBASE set up for the user environment/session. Such as in many Linux distributions, this type of constants can be exported in $HOME/.bashrc, $HOME/.zshrc or any other custom shell rc configuration file.
+Commbase uses an environment constant $COMMBASE_ROOT_DIR set up for the user environment/session. Such as in many Linux distributions, this type of constants can be exported in $HOME/.bashrc, $HOME/.zshrc or any other custom shell rc configuration file.
 
 Example of the custom lines added to a bashrc file:
 
@@ -604,7 +604,7 @@ export NVM_DIR="$HOME/.nvm"
 Example of use of the constant:
 
 ```bash
-tmux send-keys "bash $COMMBASE/commbase/core/<PATH/TO/SCRIPT/FILE/script.sh> &"
+tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/core/<PATH/TO/SCRIPT/FILE/script.sh> &"
 ```
 
 The constant can be used in any custom script file inside the Commbase root directory and its subdirectories.
@@ -613,12 +613,12 @@ Example in a script header:
 
 ```bash
 # The configuration file.
-source $COMMBASE/commbase/config/commbase.conf
+source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 ```
 Example of use of the constant in the same bash script:
 
 ```bash
-mpv $COMMBASE/commbase/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
+mpv $COMMBASE_ROOT_DIR/commbase/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
 ```
 
 ## The Commbase processing file

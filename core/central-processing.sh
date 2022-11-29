@@ -1,10 +1,10 @@
 #!/bin/bash
-# data-processing.sh
-# Reads and processes the commands written by voice-recognition.py to data.dat
+# central-processing.sh
+# Reads and processes every new data stored in .data.dat and .prev_data
 
 # $(<FILE-NAME) is used in bash or zsh, to read a whole file into a variable without invoking cat
-trim_str=$(<.result.data)
-trim_previous_str=$(<.previous_result.data)
+trim_str=$(<$COMMBASE_ROOT_DIR/commbase/data/.data.dat)
+trim_previous_str=$(<$COMMBASE_ROOT_DIR/commbase/data/prev_data.dat)
 
 # Validate the signal to run/stop the current voice command
 if echo $trim_str | grep -q "okay stop"; then
@@ -103,9 +103,9 @@ if echo $trim_previous_str | grep -q "tell me about yourself" || echo $trim_prev
       # Disables capture to prevent feedback loops of command > answer > command
       amixer set Capture nocap &>/dev/null && sleep 0.5
       tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
-      echo "$(<./talks/a-little-bit-about-myself.txt)" | festival --tts
+      echo "$(<$COMMBASE_ROOT_DIR/commbase/core/talks/a-little-bit-about-myself_talk)" | festival --tts
       tmux select-window -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: a little bit about myself"
-      echo "tell me about yourself" >> .commbase_history
+      echo "tell me about yourself" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
       #/usr/bin/amixer set Master 50%
       amixer set Capture cap &>/dev/null
       ;; 
@@ -115,48 +115,48 @@ elif echo $trim_str | grep -q "stop capturing sound" || echo $trim_str | grep -q
   amixer set Capture nocap &>/dev/null
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
   tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""stop listening / stop capturing sound"
-  echo "stop capturing sound" >> .commbase_history
-  tmux select-pane -t 4 && tmux send-keys "(/usr/bin/aplay -q $COMMBASE/commbase/bundled/sounds/beep-down.wav &) &>/dev/null" C-m
+  echo "stop capturing sound" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
+  tmux select-pane -t 4 && tmux send-keys "(/usr/bin/aplay -q $COMMBASE_ROOT_DIR/commbase/bundled/sounds/beep-down.wav &) &>/dev/null" C-m
   tmux select-pane -t 4 && tmux send-keys "clear" C-m
 # commbase reload recognition:
 elif echo $trim_str | grep -q "reload recognition" || echo $trim_str | grep -q "reload speech recognition" || echo $trim_str | grep -q "reload your speech recognition" || echo $trim_str | grep -q "reload your recognition"; then
   amixer set Capture nocap &>/dev/null
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
   tmux select-window -t 1 && tmux select-pane -t 4 && sleep 1
-  (pkill --full $COMMBASE/commbase/core/commbase-speech-recognition-vosk.py) &>/dev/null
-  tmux select-pane -t 1 && tmux send-keys "python3.7 $COMMBASE/commbase/core/voice-recognition.py" C-m && sleep 4
+  (pkill --full $COMMBASE_ROOT_DIR/commbase/core/voice-recognition.py) &>/dev/null
+  tmux select-pane -t 1 && tmux send-keys "python3.7 $COMMBASE_ROOT_DIR/commbase/core/voice-recognition.py" C-m && sleep 4
   amixer set Capture cap &>/dev/null
-  echo "reload recognition" >> .commbase_history
-  tmux select-pane -t 4 && tmux send-keys "(aplay -q $COMMBASE/commbase/bundled/sounds/beep-up.wav) &>/dev/null" C-m
+  echo "reload recognition" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
+  tmux select-pane -t 4 && tmux send-keys "(aplay -q $COMMBASE_ROOT_DIR/commbase/bundled/sounds/beep-up.wav) &>/dev/null" C-m
   tmux select-pane -t 4 && tmux send-keys "clear" C-m
 # commbase turn off:
 elif echo $trim_str | grep -q "disconnect yourself"; then
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
-  echo "disconnect yourself" >> .commbase_history
-  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "aplay -q $COMMBASE/commbase/bundled/sounds/beep-down.wav" C-m && sleep 1
+  echo "disconnect yourself" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
+  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "aplay -q $COMMBASE_ROOT_DIR/commbase/bundled/sounds/beep-down.wav" C-m && sleep 1
   tmux kill-session -t Commbase-0
 # commbase wake up:
 elif echo $trim_str | grep -q "wake up" || echo $trim_str | grep -q "wake-up"; then
   amixer set Capture nocap &>/dev/null
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
-  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "(aplay -q $COMMBASE/commbase/bundled/sounds/beep-up.wav) &>/dev/null" C-m
+  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "(aplay -q $COMMBASE_ROOT_DIR/commbase/bundled/sounds/beep-up.wav) &>/dev/null" C-m
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
   amixer set Capture cap &>/dev/null
   echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""wake up / wake-up"
-  echo "wake up" >> .commbase_history
+  echo "wake up" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
 # commbase_learning list command history:
 elif echo $trim_str | grep -q "list your command history" || echo $trim_str | grep -q "list your learning history" || echo $trim_str | grep -q "list you're learning history"; then
   amixer set Capture nocap &>/dev/null
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
-  gnome-terminal -- bash -c "(cat $COMMBASE/commbase/history/.commbase_history | less); exec bash" C-m
+  gnome-terminal -- bash -c "(cat $COMMBASE_ROOT_DIR/commbase/history/.commbase_history | less); exec bash" C-m
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
   amixer set Capture cap &>/dev/null
   echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""list your command history / list your learning history"
 # commbase_learning clean up command history:
   #(do not save to history file)
 # commbase_learning save history as skillset:
-  #echo "save this as a new skillset" >> .commbase_history
-  #gnome-terminal -- bash -c "(nano $COMMBASE/commbase/history/.commbase_history); exec bash" C-m
+  #echo "save this as a new skillset" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
+  #gnome-terminal -- bash -c "(nano $COMMBASE_ROOT_DIR/commbase/history/.commbase_history); exec bash" C-m
 # -----------------------------------------------SYMBOLS---------------------------------------------
 # 
 # --------------------------------------------------A------------------------------------------------
@@ -166,7 +166,7 @@ elif echo $trim_str | grep -q "update applications"; then
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
   tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "sudo apt update" C-m
   internal_random_yes_func 6 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""update applications"
-  echo "update applications" >> .commbase_history  
+  echo "update applications" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history  
   amixer set Capture cap &>/dev/null
 # --------------------------------------------------B------------------------------------------------
 # brave:

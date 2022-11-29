@@ -16,7 +16,7 @@
 # real fully set up live server.
 
 # The configuration file.
-source $COMMBASE/commbase/config/commbase.conf
+source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 
 # In this case, use the remote IP address is the one named as the local host
 # in commbase.conf
