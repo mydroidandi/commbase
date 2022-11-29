@@ -38,7 +38,7 @@
 # otherwise, in their correspondent scripts.
 
 # The data processing file.
-COMMBASE_PROCESS_FILE="$COMMBASE/commbase/core/data-processing.sh"
+COMMBASE_PROCESS_FILE="$COMMBASE_ROOT_DIR/commbase/core/central-processing.sh"
 
 # The only Commbase tmux session.
 SESSIONNAME="Commbase-0"
@@ -51,7 +51,7 @@ case "$1" in
       tmux attach-session -t Commbase-0
     else
       echo "Starting application"
-      cd $COMMBASE/commbase/core
+      cd $COMMBASE_ROOT_DIR/commbase/core
       (bash ui.sh) &> /dev/null
     fi
     ;;
@@ -71,149 +71,66 @@ if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
   case "$1" in
 
     'stop')
-      echo "Stopping application"
-      tmux kill-session -t Commbase-0
-      ;;
+      echo "Stopping application"; tmux kill-session -t Commbase-0;;
     'okay stop' | 'ok stop')
-      cd $COMMBASE/commbase/data
-      echo "okay stop" | tee .data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "okay stop" | tee .data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'tell me about yourself' | 'introduce yourself')
-      cd $COMMBASE/commbase/data
-      echo "tell me about yourself" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data
+      echo "tell me about yourself" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'stop capturing sound' | 'stop listening')
-      cd $COMMBASE/commbase/data
-      echo "stop capturing sound" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "stop capturing sound" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'reload recognition' | 'reload speech recognition')
-      cd $COMMBASE/commbase/data
-      echo "reload recognition" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "reload recognition" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null &> /dev/null;;
     'disconnect yourself')
-      cd $COMMBASE/commbase/data
-      echo "disconnect yourself" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "disconnect yourself" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'wake up' | 'wake-up')
-      cd $COMMBASE/commbase/data
-      echo "wake up" | tee  .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "wake up" | tee  .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'update applications')
-      cd $COMMBASE/commbase/data
-      echo "update applications" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "update applications" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'open the brave browser')
-      cd $COMMBASE/commbase/data
-      echo "open the brave browser" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open the brave browser" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'open my linux documentation')
-      cd $COMMBASE/commbase/data
-      echo "open my linux documentation" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open my linux documentation" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'show me my location')
-      cd $COMMBASE/commbase/data
-      echo "show me my location" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "show me my location" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'open the network browser')
-      cd $COMMBASE/commbase/data
-      echo "open the network browser" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open the network browser" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'g i t status')
-      cd $COMMBASE/commbase/data
-      echo "g i t status" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "g i t status" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'open a new terminal')
-      cd $COMMBASE/commbase/data
-      echo "open a new terminal" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open a new terminal" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'open a simple browser' | 'open the simple browser')
-      cd $COMMBASE/commbase/data
-      echo "open a simple browser" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open a simple browser" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'kill the simple browser' | 'close the simple browser')
-      cd $COMMBASE/commbase/data
-      echo "kill the simple browser" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "kill the simple browser" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'reproduce a chapter of robinson crusoe' | 'reproduce robinson crusoe')
-      cd $COMMBASE/commbase/data
-      echo "reproduce a chapter of robinson crusoe" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "reproduce a chapter of robinson crusoe" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'open the terminal editor')
-      cd $COMMBASE/commbase/data
-      echo "open the terminal editor" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open the terminal editor" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'show me basic system information')
-      cd $COMMBASE/commbase/data
-      echo "show me basic system information" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "show me basic system information" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'connect me to the development server')
-      cd $COMMBASE/commbase/data
-      echo "connect me to the development server" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "connect me to the development server" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'let me know when the internet is back' | 'tell me when the internet is back')
-      cd $COMMBASE/commbase/data
-      echo "let me know when the internet is back" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "let me know when the internet is back" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'list the addresses in the local network')
-      cd $COMMBASE/commbase/data
-      echo "list the addresses in the local network" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "list the addresses in the local network" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'verify the internet connection')
-      cd $COMMBASE/commbase/data
-      echo "verify the internet connection" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "verify the internet connection" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'connect me to the private network')
-      cd $COMMBASE/commbase/data
-      echo "connect me to the private network" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "connect me to the private network" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'disconnect me from the private network')
-      cd $COMMBASE/commbase/data
-      echo "disconnect me from the private network" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "disconnect me from the private network" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'push to the local web server')
-      cd $COMMBASE/commbase/data
-      echo "push to the local web server" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "push to the local web server" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null
       ;;
     'synchronize development from desktop')
-      cd $COMMBASE/commbase/data
-      echo "synchronize development from desktop" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "synchronize development from desktop" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     'set a timer of')
-      cd $COMMBASE/commbase/data
-      echo "set a timer of" "$2" "$3" | tee .data.dat .prev_data.dat > /dev/null && sleep 0.5
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "set a timer of" "$2" "$3" | tee .data.dat .prev_data.dat > /dev/null && sleep 0.5; (bash $COMMBASE_PROCESS_FILE) &> /dev/null
       ;;
     'open my current editor workspace' | 'open my current code workspace')
-      cd $COMMBASE/commbase/data
-      echo "open my current editor workspace" | tee .data.dat .prev_data.dat > /dev/null
-      (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
+      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open my current editor workspace" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
     *)
       total=4
       amixer set Capture nocap &>/dev/null
@@ -227,3 +144,4 @@ if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
 else
   echo "Session '$SESSIONNAME' does not exists. Usage: /usr/bin/commbase [start|stop]"
 fi
+

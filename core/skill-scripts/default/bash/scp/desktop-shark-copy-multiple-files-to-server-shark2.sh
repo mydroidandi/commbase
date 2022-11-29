@@ -3,8 +3,11 @@
 # Description: Script to ssh copy multiple files to the server in the user's home directory
 # from the relative directory (from source to destiny.)
 
-REMOTEUSER="esteban"
-REMOTEHOST="192.168.100.45"
+# The configuration file.
+source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
+
+REMOTEUSER=$REMOTE_USER_NAME
+REMOTEHOST=$SERVER_HOST_001_IP_ADDRESS
 #REMOTEHOST="shark2"
 
 WILDCARD="server*.sh"

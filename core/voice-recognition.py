@@ -21,7 +21,7 @@ import colorama
 
 # Get environment variables
 # The Commbase directory + the path to the model:
-COMMBASE_MODEL = '$COMMBASE/commbase/bundled/vosk/model'
+COMMBASE_MODEL = '$COMMBASE_ROOT_DIR/commbase/bundled/vosk/model'
 #print (string.Template(COMMBASE_MODEL).substitute(os.environ))
 
 q = queue.Queue()
@@ -99,19 +99,19 @@ def print_result():
 	# Write strings to files
 
 	def writetofile():
-		RESULT_DATA_FILE = os.environ["COMMBASE"] + '/commbase/data/.data.dat'
+		RESULT_DATA_FILE = os.environ["COMMBASE_ROOT_DIR"] + '/commbase/data/.data.dat'
 		outputfile = open(RESULT_DATA_FILE, 'w')  # 'w' overwrites the file or creates it and writes in it
 		outputfile.write(trim_string)
 		outputfile.close()
 
 	def writetofiletwo():
-		RESULT_DATA_FILE = os.environ["COMMBASE"] + '/commbase/data/.prev_data.dat'
+		RESULT_DATA_FILE = os.environ["COMMBASE_ROOT_DIR"] + '/commbase/data/.prev_data.dat'
 		outputfile = open(RESULT_DATA_FILE, 'w')  # 'w' overwrites the file or creates it and writes in it
 		outputfile.write(trim_string)
 		outputfile.close()
 
 	def append_new_line():
-		COMMBASE_HISTORY = os.environ["COMMBASE"] + '/commbase/history/.commbase_history'
+		COMMBASE_HISTORY = os.environ["COMMBASE_ROOT_DIR"] + '/commbase/history/.commbase_history'
 		outputfile = open(COMMBASE_HISTORY, 'a')  # 'wa' the file or creates it and writes in it
 		outputfile.write(trim_string)
 		outputfile.write("\n")
@@ -128,7 +128,7 @@ def print_result():
 			writetofiletwo()
 			#append_new_line()
 
-		COMMBASE_PROCESS_FILE = 'bash ' + os.environ["COMMBASE"] + '/commbase/core/data-processing.sh'
+		COMMBASE_PROCESS_FILE = 'bash ' + os.environ["COMMBASE_ROOT_DIR"] + '/commbase/core/central-processing.sh'
 		o = subprocess.run (COMMBASE_PROCESS_FILE, shell=True, capture_output=True)
 		# Prints clean, as text:
 		print(o.stdout.decode())
