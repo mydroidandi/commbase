@@ -141,17 +141,17 @@ route_option () {
 		  ;;
 	esac
 
-	# Make sure that the the tmux session is running.
+	# Make sure that the the tmux session is running
 	if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
 		echo "Session '$SESSIONNAME' exists." > /dev/null;
 
 		case "$1" in
 
-		  '-g')
+		  '-g' | '--license')
 		  	display_license;;
 		  '-h' | '--help')
 		  	display_help;;
-		  '-V')
+		  '-V' | '--version')
 		  	display_version;;
 		  'stop')
 		    echo "Stopping application"; tmux kill-session -t Commbase-0;;
