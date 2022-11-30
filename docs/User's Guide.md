@@ -43,7 +43,7 @@
 			- [Development](#development)
 - [7 Hints on saying and creating voice commands](#7-hints-on-saying-and-creating-voice-commands)
 - [8 Commands setup](#8-commands-setup)
-	- [The $COMMBASE_ROOT_DIR directory](#the-commbase-root-dir-directory)
+	- [The Commbase root directory](#the-commbase-root-directory)
 	- [The Commbase processing file](#the-commbase-processing-file)
 - [9 Training Commbase by Assembling Skillsets](#9-training-commbase-by-assembling-skillsets)
 - [10 Keyboard Shortcuts](#10-keyboard-shortcuts)
@@ -589,7 +589,7 @@ or you will loose your customizations because none of them is in the official so
 To propose a new command for the Commbase repository, checkout the information on how to contribute
 to the project in the document README.md.
 
-## The $COMMBASE_ROOT_DIR directory
+## The Commbase root directory
 
 Commbase uses an environment constant $COMMBASE_ROOT_DIR set up for the user environment/session. Such as in many Linux distributions, this type of constants can be exported in $HOME/.bashrc, $HOME/.zshrc or any other custom shell rc configuration file.
 
