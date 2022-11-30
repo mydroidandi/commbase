@@ -33,7 +33,7 @@
 # commbase
 # Starts, stops, teleports, and executes terminal versions of the Commbase
 # voice commands.
-# Runs the tmux user interface file ui.sh.
+# Runs the tmux user interface ui.sh.
 #
 # To start the application:
 # $ commbase start
@@ -131,12 +131,12 @@ route_option () {
 
 		'start' | 'teleport')
 		  if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-		    echo "Session '$SESSIONNAME' exists."
-		    tmux attach-session -t Commbase-0
+		    echo "Session '$SESSIONNAME' exists.";
+		    tmux attach-session -t Commbase-0;
 		  else
-		    echo "Starting application"
-		    cd $COMMBASE_ROOT_DIR/commbase/core
-		    (bash ui.sh) &> /dev/null
+		    echo "Starting application";
+		    cd $COMMBASE_ROOT_DIR/commbase/core;
+		    (bash ui.sh) &> /dev/null;
 		  fi
 		  ;;
 	esac
@@ -161,7 +161,7 @@ route_option () {
 		  	cd $COMMBASE_ROOT_DIR/commbase/data; echo "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
 		esac
 	else
-		echo "Session '$SESSIONNAME' does not exists. Usage: /usr/bin/commbase [start|stop]"
+		echo "Session '$SESSIONNAME' does not exists. Usage: /usr/bin/commbase [start|stop]";
 	fi
 }
 
