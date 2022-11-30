@@ -1,23 +1,34 @@
 #!/bin/env bash
-# Copyright (c) 2022-present Esteban Herrera
-# 
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to
-# deal in the Software without restriction, including without limitation the
-# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-# sell copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-# IN THE SOFTWARE.
+################################################################################
+#                                   Commbase                                   #
+#                                                                              #
+# Conversational AI Assistant and AI Hub for Computers and Droids              #
+#                                                                              #
+# Change History                                                               #
+# 11/30/2022  Esteban Herrera Original code. 				                           #
+#                           Add new history entries as needed.                 #
+#                                                                              #
+#                                                                              #
+################################################################################
+################################################################################
+################################################################################
+#                                                                              #
+#  Copyright (c) 2022-present Esteban Herrera                                  #
+#  stv.herrera@gmail.com                                                       #
+#                                                                              #
+#  This program is free software; you can redistribute it and/or modify        #
+#  it under the terms of the GNU General Public License as published by        #
+#  the Free Software Foundation; either version 3 of the License, or           #
+#  (at your option) any later version.                                         #
+#                                                                              #
+#  This program is distributed in the hope that it will be useful,             #
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of              #
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               #
+#  GNU General Public License for more details.                                #
+#                                                                              #
+#  You should have received a copy of the GNU General Public License           #
+#  along with this program; if not, write to the Free Software                 #
+#  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # commbase
 # Starts, stops, teleports, and executes terminal versions of the Commbase
@@ -37,111 +48,126 @@
 # the pane 1 of the tmux session. The other output in their respective functions,
 # otherwise, in their correspondent scripts.
 
-# The data processing file.
-COMMBASE_PROCESS_FILE="$COMMBASE_ROOT_DIR/commbase/core/central-processing.sh"
+# Prints license.
+display_license () {
+cat <<EOT
+Coyright (c) 2022-present Esteban Herrera                                  
+stv.herrera@gmail.com                                                       
+                                                                            
+This program is free software; you can redistribute it and/or modify        
+it under the terms of the GNU General Public License as published by        
+the Free Software Foundation; either version 3 of the License, or           
+(at your option) any later version.                                         
+                                                                            
+This program is distributed in the hope that it will be useful,             
+but WITHOUT ANY WARRANTY; without even the implied warranty of              
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               
+GNU General Public License for more details.                                
+                                                                            
+You should have received a copy of the GNU General Public License           
+along with this program; if not, write to the Free Software                 
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   
+EOT
+}
 
-# The only Commbase tmux session.
-SESSIONNAME="Commbase-0"
+# Prints help.
+display_help () {
+cat <<EOT
+Commbase (v0.0.1)
 
-case "$1" in
+Print:
+  Syntax: commbase [-g|h|V]
+  options:
+    g	Print the GPL license notification.
+    h	Print this Help.
+    V	Print software version and exit.
 
-  'start' | 'teleport')
-    if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-      echo "Session '$SESSIONNAME' exists."
-      tmux attach-session -t Commbase-0
-    else
-      echo "Starting application"
-      cd $COMMBASE_ROOT_DIR/commbase/core
-      (bash ui.sh) &> /dev/null
-    fi
-    ;;
-esac
+Start/Stop:
+  Usage: commbase [options]
+  options:
+    start	Start Commbase
+    teleport	Teleport Commbase
+    stop	Stop Commbase
 
-# All the Commbase commands can be added to the next case after the signal cases
-# programmed in the section "Signals" of the file data-processing.sh, such as the
-# case 'okay stop'.
-# Follow the same order used in the section "Skills" of the file data-processing.sh
-# to keep the cases organized so they can be found easily.
-# Try not to add more than two aliases to every case option. Remember that Commbase
-# is primarily a conversational assistant, not a terminal command.
+Control:
+  Usage: commbase [options]
+  options:
+    "okay/ok stop"				Stop the previous command
+    "okay/ok accept"			Accept a Y/N question
+    "okay/ok deny"				Deny a Y/N question
+    "okay/ok enter/exit the conversation mode"	Enter/exit the conversation mode
+    "okay/ok enter/exit the expert mode xyz"	Enter/exit expert mode xyz
+    "okay/ok enter/exit the follow up mode"	Enter the follow up mode
+    "okay/ok which mode are you in"		Confirm the current mode
 
-if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-  echo "Session '$SESSIONNAME' exists."
+SKills and Skillsets:
+  Usage: commbase [options]
+  options:
+  	Checkout the User's Guide for a complete list of options
+  Examples:
+    "tell me about yourself"			Introduce Commbase
+    "let me know when the internet is back"	Receive an alert when the Internet service is up
+    "set a timer of" "[minutes] minutes"	Start a coutdown timer
+    	Example:
+    		"Set a timer of twenty five minutes"
+EOT
+}
 
-  case "$1" in
+# Prints version.
+display_version () {
+	echo "Commbase (v0.0.1)";
+}
 
-    'stop')
-      echo "Stopping application"; tmux kill-session -t Commbase-0;;
-    'okay stop' | 'ok stop')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "okay stop" | tee .data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'tell me about yourself' | 'introduce yourself')
-      cd $COMMBASE_ROOT_DIR/commbase/data
-      echo "tell me about yourself" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'stop capturing sound' | 'stop listening')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "stop capturing sound" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'reload recognition' | 'reload speech recognition')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "reload recognition" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null &> /dev/null;;
-    'disconnect yourself')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "disconnect yourself" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'wake up' | 'wake-up')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "wake up" | tee  .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'update applications')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "update applications" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'open the brave browser')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open the brave browser" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'open my linux documentation')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open my linux documentation" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'show me my location')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "show me my location" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'open the network browser')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open the network browser" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'g i t status')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "g i t status" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'open a new terminal')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open a new terminal" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'open a simple browser' | 'open the simple browser')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open a simple browser" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'kill the simple browser' | 'close the simple browser')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "kill the simple browser" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'reproduce a chapter of robinson crusoe' | 'reproduce robinson crusoe')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "reproduce a chapter of robinson crusoe" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'open the terminal editor')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open the terminal editor" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'show me basic system information')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "show me basic system information" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'connect me to the development server')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "connect me to the development server" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'let me know when the internet is back' | 'tell me when the internet is back')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "let me know when the internet is back" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'list the addresses in the local network')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "list the addresses in the local network" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'verify the internet connection')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "verify the internet connection" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'connect me to the private network')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "connect me to the private network" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'disconnect me from the private network')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "disconnect me from the private network" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'push to the local web server')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "push to the local web server" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
-    'synchronize development from desktop')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "synchronize development from desktop" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    'set a timer of')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "set a timer of" "$2" "$3" | tee .data.dat .prev_data.dat > /dev/null && sleep 0.5; (bash $COMMBASE_PROCESS_FILE) &> /dev/null
-      ;;
-    'open my current editor workspace' | 'open my current code workspace')
-      cd $COMMBASE_ROOT_DIR/commbase/data; echo "open my current editor workspace" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-    *)
-      total=4
-      amixer set Capture nocap &>/dev/null
-      reply=$((1 + $RANDOM % $total)) # Generates a random number between 1 and $total (inclusive)
-      case $reply in 1) echo "no waaaay" | festival --tts ;; 2) echo "i can't do that" | festival --tts ;; 3) echo "repeat" | festival --tts ;; 4) echo "invalid choice" $USER | festival --tts ;; esac
-      tmux select-window -t 1 && tmux select-pane -t 1 && echo "Commbase: ""I don't understand that command."
-      tmux select-window -t 1 && tmux select-pane -t 4
-      amixer set Capture cap &>/dev/null
-      ;;
-  esac
-else
-  echo "Session '$SESSIONNAME' does not exists. Usage: /usr/bin/commbase [start|stop]"
-fi
+# Routes options.
+route_option () {
+
+	# The data processing file.
+	COMMBASE_PROCESS_FILE="$COMMBASE_ROOT_DIR/commbase/core/central-processing.sh"
+
+	# The first tmux session.
+	SESSIONNAME="Commbase-0"
+
+	case "$1" in
+
+		'start' | 'teleport')
+		  if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
+		    echo "Session '$SESSIONNAME' exists."
+		    tmux attach-session -t Commbase-0
+		  else
+		    echo "Starting application"
+		    cd $COMMBASE_ROOT_DIR/commbase/core
+		    (bash ui.sh) &> /dev/null
+		  fi
+		  ;;
+	esac
+
+	# Make sure that the the tmux session is running
+	if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
+		echo "Session '$SESSIONNAME' exists." > /dev/null;
+
+		case "$1" in
+
+		  '-g')
+		  	display_license;;
+		  '-h' | '--help')
+		  	display_help;;
+		  '-V')
+		  	display_version;;
+		  'stop')
+		    echo "Stopping application"; tmux kill-session -t Commbase-0;;
+		  'okay stop' | 'ok stop')
+		    echo "okay stop" | tee $COMMBASE_ROOT_DIR/commbase/data/.data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
+		  *)
+		  	cd $COMMBASE_ROOT_DIR/commbase/data; echo "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
+		esac
+	else
+		echo "Session '$SESSIONNAME' does not exists. Usage: /usr/bin/commbase [start|stop]"
+	fi
+}
+
+main () {
+route_option $1 $2 $3 $4 $5 $6 $7 $8 $9;
+}
+
+main $1 $2 $3 $4 $5 $6 $7 $8 $9;
 
