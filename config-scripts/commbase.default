@@ -5,7 +5,7 @@
 # Conversational AI Assistant and AI Hub for Computers and Droids              #
 #                                                                              #
 # Change History                                                               #
-# 11/30/2022  Esteban Herrera Original code. 				                           #
+# 11/30/2022  Esteban Herrera Original code. 	                                 #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -13,7 +13,7 @@
 ################################################################################
 ################################################################################
 #                                                                              #
-#  Copyright (c) 2022-present Esteban Herrera                                  #
+#  Copyright (c) 2022-present Esteban Herrera C.                               #
 #  stv.herrera@gmail.com                                                       #
 #                                                                              #
 #  This program is free software; you can redistribute it and/or modify        #
@@ -31,14 +31,14 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # commbase
-# Starts, stops, teleports, and executes terminal versions of the Commbase
-# voice commands.
-# Runs the tmux user interface ui.sh.
-#
+# Prints command license, help and version.
+# Starts, teleports, and stops Commbase terminal versions of the commbase
+# voice commands for their processing.
+# 
 # To start the application:
-# $ commbase start
+# shell> commbase start
 # Or run it like this:
-# $ ./commbase start
+# shell> ./commbase start
 # 
 # To run Commbase commands:
 # $ commbase 'tell me about yourself'
@@ -50,20 +50,21 @@
 
 # Prints license.
 display_license () {
+
 cat <<EOT
 Coyright (c) 2022-present Esteban Herrera                                  
 stv.herrera@gmail.com                                                       
-                                                                            
+
 This program is free software; you can redistribute it and/or modify        
 it under the terms of the GNU General Public License as published by        
 the Free Software Foundation; either version 3 of the License, or           
 (at your option) any later version.                                         
-                                                                            
+
 This program is distributed in the hope that it will be useful,             
 but WITHOUT ANY WARRANTY; without even the implied warranty of              
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               
 GNU General Public License for more details.                                
-                                                                            
+
 You should have received a copy of the GNU General Public License           
 along with this program; if not, write to the Free Software                 
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   
@@ -72,96 +73,99 @@ EOT
 
 # Prints help.
 display_help () {
+
 cat <<EOT
 Commbase (v0.0.1)
 
 Print:
   Syntax: commbase [-g|h|V]
   options:
-    g	Print the GPL license notification.
-    h	Print this Help.
-    V	Print software version and exit.
+  	g, --license		Print the GPL license notification
+  	h, --help		Print this Help
+  	V, v, --version		Print software version and exit
 
 Start/Stop:
   Usage: commbase [options]
   options:
-    start	Start Commbase
-    teleport	Teleport Commbase
-    stop	Stop Commbase
+  	start		Start Commbase
+  	teleport	Teleport Commbase
+  	stop		Stop Commbase
 
 Control:
   Usage: commbase [options]
   options:
-    "okay/ok stop"				Stop the previous command
-    "okay/ok accept"			Accept a Y/N question
-    "okay/ok deny"				Deny a Y/N question
-    "okay/ok enter/exit the conversation mode"	Enter/exit the conversation mode
-    "okay/ok enter/exit the expert mode xyz"	Enter/exit expert mode xyz
-    "okay/ok enter/exit the follow up mode"	Enter the follow up mode
-    "okay/ok which mode are you in"		Confirm the current mode
+  	"okay/ok stop"					Stop the previous command
+  	"okay/ok accept"				Accept a Y/N question
+  	"okay/ok deny"					Deny a Y/N question
+  	"okay/ok enter/exit the conversation mode"	Enter/exit the conversation mode
+  	"okay/ok enter/exit the expert mode xyz"	Enter/exit expert mode xyz
+  	"okay/ok enter/exit the follow up mode"		Enter the follow up mode
+  	"okay/ok which mode are you in"			Confirm the current mode
 
-SKills and Skillsets:
+Skills and Skillsets:
   Usage: commbase [options]
   options:
   	Checkout the User's Guide for a complete list of options
   Examples:
-    "tell me about yourself"			Introduce Commbase
-    "let me know when the internet is back"	Receive an alert when the Internet service is up
-    "set a timer of" "[minutes] minutes"	Start a coutdown timer
-    	Example:
-    		"Set a timer of twenty five minutes"
+  	"tell me about yourself"			Introduce Commbase
+  	"let me know when the internet is back"		Receive an alert when the Internet service is up
+  	"set a timer of" "[minutes] minutes"		Start a countdown timer
+  		Example:
+  			"Set a timer of" "twenty five minutes"
 EOT
 }
 
 # Prints version.
 display_version () {
-	echo "Commbase (v0.0.1)";
+	(echo "Commbase (v0.0.1)";)
 }
 
 # Routes options.
 route_option () {
 
-	# The data processing file.
-	COMMBASE_PROCESS_FILE="$COMMBASE_ROOT_DIR/commbase/core/central-processing.sh"
+	# Imports.
+	source $COMMBASE_ROOT_DIR/commbase/core/includes/rudiments/render_ui;
 
-	# The first tmux session.
-	SESSIONNAME="Commbase-0"
+	# Data processing.
+	COMMBASE_PROCESS_FILE="$COMMBASE_ROOT_DIR/commbase/core/central-processing.sh";
+
+	# First tmux session.
+	SESSIONNAME="Commbase-0";
 
 	case "$1" in
 
 		'start' | 'teleport')
-		  if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-		    echo "Session '$SESSIONNAME' exists.";
-		    tmux attach-session -t Commbase-0;
-		  else
-		    echo "Starting application";
-		    cd $COMMBASE_ROOT_DIR/commbase/core;
-		    (bash ui.sh) &> /dev/null;
-		  fi
-		  ;;
+			if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
+				(echo "Session '$SESSIONNAME' exists.");
+				(tmux attach-session -t Commbase-0);
+			else
+				(echo "Starting application");
+				render_ui;
+			fi
+			;;
 	esac
 
-	# Make sure that the the tmux session is running
+	# Make sure that the tmux session is running.
 	if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-		echo "Session '$SESSIONNAME' exists." > /dev/null;
+		(echo "Session '$SESSIONNAME' exists." > /dev/null);
 
 		case "$1" in
 
-		  '-g' | '--license')
-		  	display_license;;
-		  '-h' | '--help')
-		  	display_help;;
-		  '-V' | '--version')
-		  	display_version;;
-		  'stop')
-		    echo "Stopping application"; tmux kill-session -t Commbase-0;;
-		  'okay stop' | 'ok stop')
-		    echo "okay stop" | tee $COMMBASE_ROOT_DIR/commbase/data/.data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
-		  *)
-		  	cd $COMMBASE_ROOT_DIR/commbase/data; echo "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" | tee .data.dat .prev_data.dat > /dev/null; (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
+			'-g' | '--license')
+				display_license;;
+			'-h' | '--help')
+				display_help;;
+			'-V' | '-v' | '--version')
+				display_version;;
+			'stop')
+				(echo "Stopping application"; tmux kill-session -t Commbase-0);;
+			'okay stop' | 'ok stop')
+				(echo "okay stop" | tee $COMMBASE_ROOT_DIR/commbase/data/.data.dat > /dev/null); (bash $COMMBASE_PROCESS_FILE) &> /dev/null;;
+			*)
+				(cd $COMMBASE_ROOT_DIR/commbase/data); (echo "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" | tee .data.dat .prev_data.dat > /dev/null); (bash $COMMBASE_PROCESS_FILE &> /dev/null);;
 		esac
 	else
-		echo "Session '$SESSIONNAME' does not exists. Usage: /usr/bin/commbase [start|stop]";
+		(echo "Session '$SESSIONNAME' does not exists. Usage: /usr/bin/commbase [start|stop]");
 	fi
 }
 
@@ -170,4 +174,6 @@ route_option $1 $2 $3 $4 $5 $6 $7 $8 $9;
 }
 
 main $1 $2 $3 $4 $5 $6 $7 $8 $9;
+
+exit 99
 
