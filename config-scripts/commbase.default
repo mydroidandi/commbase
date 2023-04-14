@@ -99,7 +99,7 @@ Control:
   	"okay/ok deny"					Deny a Y/N question
   	"okay/ok enter/exit the conversation mode"	Enter/exit the conversation mode
   	"okay/ok enter/exit the expert mode xyz"	Enter/exit the expert mode xyz
-  	"okay/ok enter/exit the follow up mode"		Enter the follow up mode
+  	"okay/ok enter/exit the follow up mode"		Enter/exit the follow up mode
   	"okay/ok which mode are you in"			Confirm the current mode
 
 Skills and Skillsets:
