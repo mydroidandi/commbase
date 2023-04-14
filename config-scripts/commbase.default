@@ -99,7 +99,7 @@ Control:
   	"okay/ok deny"					Deny a Y/N question
   	"okay/ok enter/exit the conversation mode"	Enter/exit the conversation mode
   	"okay/ok enter/exit the expert mode xyz"	Enter/exit the expert mode xyz
-  	"okay/ok enter/exit the follow up mode"		Enter the follow up mode
+  	"okay/ok enter/exit the follow up mode"		Enter/exit the follow up mode
   	"okay/ok which mode are you in"			Confirm the current mode
 
 Skills and Skillsets:
@@ -185,7 +185,6 @@ route_option () {
 				;;
 		  *)
 		    cd $COMMBASE_ROOT_DIR/commbase/data
-		    sleep 3
 		    echo "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" | tee .data.dat .prev_data.dat > /dev/null
 		    bash $COMMBASE_PROCESS_FILE &> /dev/null
 				;;
