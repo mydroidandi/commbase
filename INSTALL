@@ -20,12 +20,13 @@ Content:
 2. Requisites and dependencies
 2.1. Install Python
 2.2. Install Python packages
-2.3. Install the Vosk model
-2.4. Install the required system dependency packages
-2.5. Install VU-meter
-2.6. Install Oh My Tmux
-2.7. Install the default Commbase voice commands dependencies
-2.8. Install Desktop Environments
+2.3. Install Python in an Anaconda's environment
+2.4. Install the Vosk model
+2.5. Install the required system dependency packages
+2.6. Install VU-meter
+2.7. Install Oh My Tmux
+2.8. Install the default Commbase voice commands dependencies
+2.9. Install Desktop Environments
 3. Installations for Developers
 4. Testing the Vosk model
 5. Make the scripts executable
@@ -150,39 +151,6 @@ $ pip list | more
 $ pip3 list | more
 $ pip3.7 list | more
 
-Alternatively, you can replace Python 3.7 with Anaconda. Anaconda's Python versions are well
-optimized, so the speech recognition AI is supposed to work faster than the official Python packages.
-More information: https://www.anaconda.com/
-
-After the installation of Anaconda you should see the base "(base)" in the foobar.
-
-In case of that your system has a single Python installation using Anaconda if it set up for running
-only in the Bash shell, you must enter the Bash shell before start Commbase, anaconda-navigator, or
-any other Python script/program uncapable of running using the current Python's runtime that is
-preinstalled within your Operating System distribution:
-Example of foobar before entering Bash:
-USER-NAME@shark:~$ bash
-Example of foobar with Anaconda's Python, identified by the string "(base)", after entering Bash:
-(base) USER-NAME@shark:~$
-
-To install PyPi packages in the (base) in Anaconda, use the command "conda":
-(base) USER-NAME@shark:~$ conda install PACKAGE-NAME
-
-If you want to create a new Anaconda environment just for Commbase:
-First, go to my repo dir (Commbase, in our case) and run:
-$ conda create -n commbase_env python=3.7
-$ conda activate commbase_env
-Now, (commbase_env) appears in the foobar.
-To install PyPi packages in the (commbase) environment in Anaconda, use the command "pip", for example:
-(commbase_env) USER-NAME@shark:~$ pip install ipython
-
-Note: Environments defined with python=3.9 works percectly and probably faster than python=3.7, but
-3.7 is still the version requirement. This document would be updated for future version releases of
-Python compatible with Commbase.
-
-To deactive any repo use "deactivate":
-$ conda deactivate commbase_env
-
 Install Python packages:
 -------------------------
 Vosk:
@@ -228,6 +196,85 @@ colorama-0.4.4:
 $ pip install colorama
 Or:
 $ pip3 install colorama
+
+OpenCV:
+Steps to install opencv 4.5.1 in Debian 11 running Python 3.9:
+Verify the current Debian version (The version limits the higher version tht you can install
+of any package name):
+$ cat /etc/issue
+Verify the current Python version:
+$ python3
+Update the sources list for the official Debian repos:
+$ sudo apt-get update
+Search the package in the official Debian repos (main):
+apt-cache search python3-opencv
+Show the package version information:
+$ apt-cache show python3-opencv
+Install the package:
+$ sudo apt-get install python3-opencv
+
+
+Install Python in an Anaconda's environment:
+---------------------------------------------
+Alternatively, you can replace Python 3.7 with Anaconda. Anaconda's Python versions are well
+optimized, so the speech recognition AI is supposed to work faster than the official Python packages.
+More information: https://www.anaconda.com/
+
+After the installation of Anaconda you should see the base "(base)" in the foobar.
+
+In case of that your system has a single Python installation using Anaconda if it set up for running
+only in the Bash shell, you must enter the Bash shell before start Commbase, anaconda-navigator, or
+any other Python script/program uncapable of running using the current Python's runtime that is
+preinstalled within your Operating System distribution:
+Example of foobar before entering Bash:
+USER-NAME@shark:~$ bash
+Example of foobar with Anaconda's Python, identified by the string "(base)", after entering Bash:
+(base) USER-NAME@shark:~$
+
+To install PyPi like packages in the (base) in Anaconda, use the command "conda":
+(base) USER-NAME@shark:~$ conda install PACKAGE-NAME
+
+If you want to create a new Anaconda environment just for Commbase:
+First, go to my repo dir (Commbase, in our case) and run:
+$ conda create -n commbase_env python=3.7
+$ conda activate commbase_env
+Now, (commbase_env) appears in the foobar.
+
+Within the Anaconda's environment "commbase_env" you are able to install conda packages, instead of regular
+ones. Examples:
+Install OpenCV version 4.6.0 whether available from the defaults channel to a particular Anaconda environment:
+(commbase_env) mydroidandi/commbase $ conda install -c defaults opencv=4.6.0
+Install the latest version of OpenCV available from the conda-forge channel:
+(commbase_env) mydroidandi/commbase $ conda conda-forge -c defaults opencv
+Altenatively, in order to install PyPi like packages in the (commbase_env) environment in Anaconda, use the
+command "pip", for example:
+(commbase_env) mydroidandi/commbase $ pip install ipython
+To verify the package was installed, in your terminal window or an Anaconda Prompt, run:
+(commbase_env) mydroidandi/commbase $ conda list
+
+Note: Environments defined with python=3.9 or higher could work percectly and probably faster than python=3.7, but
+3.7 is still the version requirement. This document would be updated for future version releases of
+Python compatible with Commbase.
+
+To deactive any repo use "deactivate":
+(commbase_env) mydroidandi/commbase $ conda deactivate commbase_env
+
+To deactivate Anaconda use:
+(base) mydroidandi/commbase $
+
+Verify the Anaconda's environment Python version used:
+(base) mydroidandi/commbase $ python --version
+
+Some Anaconda packages are usually performing better than the packages for the OS distribution, that is the case
+of OpenCV. You can test and compare the performance between the OS distribution Python version and the 
+Anaconda's environment version, by running the file resizable-camera-capture.py from every independent
+environment. The file does not have to include the python version to be used in the first line of the script to be
+executed using the python version in/specified in the command line:
+In the system environment:
+$ cd path/to/commbase
+$ python3.9 commbase/core/skill-scripts/default/python/c/camera/resizable-camera-capture/resizable-camera-capture.py
+In the Anaconda's commbase_env environment:
+(commbase_env) mydroidandi/commbase $ python commbase/core/skill-scripts/default/python/c/camera/resizable-camera-capture/resizable-camera-capture.py
 
 Install the Vosk model:
 ------------------------
@@ -402,6 +449,7 @@ Practice your speaking accuracy.
 -------------------------------
 5. Make the scripts executable
 -------------------------------
+
 $ ls -hal +x $HOME/Commbase/commbase/base-vosk/commbase*
 $ chmod +x $HOME/Commbase/commbase/base-vosk/commbase*
 $ ls -hal $HOME/Commbase/commbase/base-vosk/process-templates/commbase*
@@ -410,6 +458,7 @@ $ chmod +x $HOME/Commbase/commbase/base-vosk/process-templates/commbase*
 -----------------------------------------------------------
 6. How to apply directory and file permissions recursively
 -----------------------------------------------------------
+
 This command applies 755 permissions to every directory and file inside the given directory, except
 for those that you don't have permissions on, for example, files owned by the root user. That command
 would throw a list of the files with permissions that could not be changed in the output.
