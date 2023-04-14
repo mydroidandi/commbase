@@ -28,7 +28,7 @@ MY_HOST_NAME=$(hostname | awk '{print $1}')
 # Syncing logs file
 LOG_FILE=$COMMBASE_ROOT_DIR/commbase/log/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.sh.log
 
-SCRIPT_FILE=$COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/rsync/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.sh
+SCRIPT_FILE=$COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/r/rsync/desktop-shark-run-sync-custom-directories-in-home-to-external-drives.sh
 
 # Clean up a back-up path for every external drive to be used
 external_storage_drive_01_backup_path=""
@@ -88,7 +88,7 @@ echo "" > $LOG_FILE
 # Synchronize the custom home directories.
 # The IP addresses and hostnames help to make sure that the script
 # is executed from the development computer defined in .env.
-if [ "$MY_HOST_IP_ADDRESS" != "$DESKTOP_SHARK_IP_ADDRESS" ]; then
+if [ "$MY_HOST_IP_ADDRESS" != "$HOST_IP_ADDRESS" ]; then
 	(echo "<> Do not sync from the server. This is only for the Development computer.")
 elif [ "$MY_HOST_NAME" == "$HOSTNAME" ]; then
 	(echo "<> Press CTRL-C to interrupt")
