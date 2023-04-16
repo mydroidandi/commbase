@@ -11,13 +11,6 @@ import sys
 import subprocess
 import string
 import os.path
-import colorama
-
-# Initialize colored prints
-#colorama.init()
-
-# Highlight text output
-#print (colorama.Back.GREEN + "")
 
 # Get environment variables
 # The Commbase directory + the path to the model:
