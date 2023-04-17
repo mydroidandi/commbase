@@ -20,13 +20,14 @@ Content:
 2. Requisites and dependencies
 2.1. Install Python
 2.2. Install Python packages
-2.3. Install Python in an Anaconda's environment
-2.4. Install the Vosk model
-2.5. Install the required system dependency packages
-2.6. Install VU-meter
-2.7. Install Oh My Tmux
-2.8. Install the default Commbase voice commands dependencies
-2.9. Install Desktop Environments
+2.3. Install Python in an Anaconda environment
+2.4  Build the Commbase Conda environment a from YAML file
+2.5. Install the Vosk model
+2.6. Install the required system dependency packages
+2.7. Install VU-meter
+2.8. Install Oh My Tmux
+2.9. Install the default Commbase voice commands dependencies
+2.10. Install Desktop Environments
 3. Installations for Developers
 4. Testing the Vosk model
 5. Make the scripts executable
@@ -159,7 +160,7 @@ Or use:
 $ python3.7 -m pip install vosk
 If you can't install, check the output messages. For example, I have vosk already in the system from
 a previous Kdenlive application installation (installed as a flatpak from flathub), which does not
-allow me to re-installing vosk. 
+allow me to re-installing vosk.
 OUTPUT:
 Defaulting to user installation because normal site-packages is not writeable
 Requirement already satisfied: vosk in /home/esteban/.local/lib/python3.7/site-packages (0.3.22)
@@ -192,14 +193,23 @@ Sounddevice:
 This package allows us to run the test test_microphone.py
 $ pip3 install sounddevice
 
-colorama-0.4.4:
-$ pip install colorama
-Or:
-$ pip3 install colorama
+Chardet:
+This resolves the error: "cannot import name 'COMMON_SAFE_ASCII_CHARACTERS'"
+$ pip install chardet
+Or use:
+$ pip3 install chardet
+
+Scikit-learn and scikit-lear-intelex:
+$ pip install scikit-learn
+Or use:
+$ pip3 install scikit-learn
+$ pip install scikit-lear-intelex
+Or use:
+$ pip3 install scikit-lear-intelex
 
 OpenCV:
 Steps to install opencv 4.5.1 in Debian 11 running Python 3.9:
-Verify the current Debian version (The version limits the higher version tht you can install
+Verify the current Debian version (The version limits the higher version that you can install
 of any package name):
 $ cat /etc/issue
 Verify the current Python version:
@@ -213,9 +223,8 @@ $ apt-cache show python3-opencv
 Install the package:
 $ sudo apt-get install python3-opencv
 
-
-Install Python in an Anaconda's environment:
----------------------------------------------
+Install Python in an Anacondas environment:
+--------------------------------------------
 Alternatively, you can replace Python 3.7 with Anaconda. Anaconda's Python versions are well
 optimized, so the speech recognition AI is supposed to work faster than the official Python packages.
 More information: https://www.anaconda.com/
@@ -256,11 +265,11 @@ Note: Environments defined with python=3.9 or higher could work percectly and pr
 3.7 is still the version requirement. This document would be updated for future version releases of
 Python compatible with Commbase.
 
-To deactive any repo use "deactivate":
-(commbase_env) mydroidandi/commbase $ conda deactivate commbase_env
+To deactivate the current envinronment and go back to (base) use:
+(base) mydroidandi/commbase $ conda deactivate
 
-To deactivate Anaconda use:
-(base) mydroidandi/commbase $
+To deactivate any environment use "deactivate" from another environment:
+(base) mydroidandi/commbase $ conda deactivate commbase_env
 
 Verify the Anaconda's environment Python version used:
 (base) mydroidandi/commbase $ python --version
@@ -276,65 +285,56 @@ $ python3.9 commbase/core/skill-scripts/default/python/c/camera/resizable-camera
 In the Anaconda's commbase_env environment:
 (commbase_env) mydroidandi/commbase $ python commbase/core/skill-scripts/default/python/c/camera/resizable-camera-capture/resizable-camera-capture.py
 
+Build the Commbase Conda environment a from YAML file:
+-------------------------------------------------------
+Using YAML files is the simplest and probably the best way to install Python and the Python Commbase environment dependencies.
+To simplify it even more, we put all together in a script you can run once.
+If the environment you want to remove is the current active environment, deactivate it before running the script.
+$ conda deactivate commbase_env
+Run the script:
+$ bash commbase/config-scripts/conda-environment/build-conda-environment-from-yaml-file.sh
+The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
+
 Install the Vosk model:
 ------------------------
 Currently, Commbase works only in English.
 Visit: https://alphacephei.com/vosk/models
 Download the model manually or using commands:
 $ cd ~/Commbase/commbase/base-vosk/voice-recognition
-$ wget https://alphacephei.com/vosk/models/vosk-model-en-us-0.22.zip
+$ wget https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip
 Extract the model:
-$ unzip vosk-model-en-us-0.22.zip
-Rename vosk-model-en-us-0.22 as model:
-$ mv vosk-model-en-us-0.22 model
+$ unzip vosk-model-en-us-0.22-lgraph.zip
+Rename vosk-model-en-us-0.22-lgraph.zip as model:
+$ mv vosk-model-en-us-0.22-lgraph.zip model
 $ Set up permissions for the directory:
 $ chmod 755 model
 Delete the big zip file:
-$ rm -rf vosk-model-en-us-0.22.zip
+$ rm -rf vosk-model-en-us-0.22-lgraph.zip
+
+Note: You can download and use a newer model version, but could/would affect the voice recognition accuracy. I would make you verify all the voices commands to make sure that the voice recognition matches your voice command.
 
 Install the required system dependency packages:
 -------------------------------------------------
-Package Names and commands should be verified after during the Commbase installation. To verify
-packages you can use:
-$ whereis <PACKAGE>
-$ whereis <COMMAND>.
+Names and commands for this section could change from OS distribuition to distribuition or even from realease to realease.
 
-I explain it because names and commands could change from distro to distro or even from release to a
-newer release of the same distro):
-alsamixer
-aplay
+For example, in Debian Linux, the DPKG packages that contain all the required commands can be installed using APT. Apt manages and installs the package dependencies automatically.
+
+List of required packages (based on Debian GNU/Linux):
+alsa-utils (contains the tools: alsamixer and aplay)
 awk
 bash
 curl
-ecsound
+csound
+dash (contains the sh command) 
 festival
+ffmpeg
+gdebi
 git
 mpv
 mplayer
 nmap
 openssh-server (server and client)
-pkill
-rsync
-sed
-sh
-sox
-sudo
-tasksel
-tmux
-uuid-runtime
-wget
-
-In Debian, the DPKG packages that contain all the required commands can be installed using apt. Apt
-manages and installs the package dependencies automatically:
-bash
-curl
-festival
-ffmpeg
-git
-mpv
-mplayer
-nmap
-openssh-server
+pkill (it comes installed with the base system sometimes, in a package with another name)
 rsync
 sed
 sox
@@ -344,20 +344,31 @@ tmux
 uuid-runtime
 wget
 
-** Packages unfound by their given names can be replaced in the source by their respective command
-line versions your favorite OS distribution.
-
-Use APT to install packages from the official repositories for your distro, I.e.:
+Use APT to install packages from the official repositories for your distro, like this:
 $ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
+
+For example, this is the actual one-liner command someone could require:
+$ sudo apt-get update; sudo apt-get install alsa-utils bash curl csound dash festival ffmpeg gdebi git mpv mplayer nmap openssh-server rsync sed sox sudo tasksel tmux uuid-runtime wget
+
+Installation troubleshooting:
+
+Packages unfound by their given names can be replaced in the source by their respective command line versions your favorite OS distribution.
+
+To verify that the command of a package is already in the system, type in the command and then press enter. For example:
+$ awk
+If you can list the command it means that the application is installed.
+
+Package Names and commands should be verified after during the Commbase installation. To verify packages you can use:
+$ whereis <PACKAGE>
+$ whereis <COMMAND>.
 
 To verify that a package is present in the system:
 $ dpkg -l | grep <PACKAGE-NAME>
 Example:
 $ dpkg -l | grep bash
 
-More information on packages installation and configuration:
-https://drive.google.com/drive/folders/1FyXI0XZmpVmEEPXrT1beBs8HI6i6ioOB
-TODO: PERSONAL NFT WEBSITE
+To search for particular package name or string in the official Debian repositories, considering that config file /etc/apt/sourcs.list includes the repositories "main" "contrib", and "non-free", use apt-cache, for example:
+$ apt-cache search dash | grep "dash"
 
 Install VU-meter:
 ------------------
@@ -434,13 +445,6 @@ $ chmod +x test_ffmpeg.py
 $ chmod 755 test_microphone.py
 $ chmod +x test_microphone.py
 $ chmod 444 test.wav
-
-Run the test file test_ffmpeg.py:
-$ python3 test_ffmpeg.py test.wav
-CORRECT OUTPUT ENDS WITH:
-"text" : "zero one eight zero three"
-}
-END OF OUTPUT.
 
 Run the test file test_microphone.py:
 $ python3 test_microphone.py
