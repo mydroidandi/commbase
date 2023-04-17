@@ -1,4 +1,6 @@
-#!/usr/bin/env python3.7
+"""#!/usr/bin/env python3.7"""
+# The minimun version for running this script, enable the previous line
+# if required
 # voice-recognition.py
 # Returns a speech recognition as a string for data-processing.sh.
 
@@ -11,13 +13,6 @@ import sys
 import subprocess
 import string
 import os.path
-import colorama
-
-# Initialize colored prints
-#colorama.init()
-
-# Highlight text output
-#print (colorama.Back.GREEN + "")
 
 # Get environment variables
 # The Commbase directory + the path to the model:
