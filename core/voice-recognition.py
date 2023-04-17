@@ -1,4 +1,6 @@
-#!/usr/bin/env python3.7
+"""#!/usr/bin/env python3.7"""
+# The minimun version for running this script, enable the previous line
+# if required
 # voice-recognition.py
 # Returns a speech recognition as a string for data-processing.sh.
 
