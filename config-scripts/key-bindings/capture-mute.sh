@@ -18,7 +18,7 @@
 
 # Stops capturing sound to avoid confusing the Commbase recognition.
 # Uses the keyboard binding ALT-SHIFT-2.
-capture_mute (){
+capture_mute(){
   (amixer set Capture nocap &>/dev/null || exit 99);
 }
 

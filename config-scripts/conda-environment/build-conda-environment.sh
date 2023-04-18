@@ -6,7 +6,7 @@
 # $ conda deactivate $CONDA_ENV_NAME
 
 # Recreates conda environment
-recreate_conda_env (){
+recreate_conda_env(){
 
 	# Environment
 	CONDA_ENV_NAME="commbase_env"

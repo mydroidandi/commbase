@@ -22,12 +22,13 @@ Content:
 2.2. Install Python packages
 2.3. Install Python in an Anaconda environment
 2.4  Build the Commbase Conda environment a from YAML file
-2.5. Install the Vosk model
-2.6. Install the required system dependency packages
-2.7. Install VU-meter
-2.8. Install Oh My Tmux
-2.9. Install the default Commbase voice commands dependencies
-2.10. Install Desktop Environments
+2.5. Set up the file voice-recognition.py
+2.6. Install the Vosk model
+2.7. Install the required system dependency packages
+2.8. Install VU-meter
+2.9. Install Oh My Tmux
+2.10. Install the default Commbase voice commands dependencies
+2.11. Install Desktop Environments
 3. Installations for Developers
 4. Testing the Vosk model
 5. Make the scripts executable
@@ -292,26 +293,32 @@ To simplify it even more, we put all together in a script you can run once.
 If the environment you want to remove is the current active environment, deactivate it before running the script.
 $ conda deactivate commbase_env
 Run the script:
-$ bash commbase/config-scripts/conda-environment/build-conda-environment-from-yaml-file.sh
+$ bash commbase/config-scripts/conda-environment/build-conda-environment.sh
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
+
+Set up the file voice-recognition.py:
+--------------------------------------
+
+If you are not using the Anaconda Python environment commbase_env for running Commbase, you could need to change the first line of the file, to a fixed Python version, mostly if you experience program errors, latency or low performance.
+
+Replace the first line for the second line:
+
+Anaconda Python:
+#!/usr/bin/env python
+##!/usr/bin/env python3.7
+
+Python3.7:
+#!/usr/bin/env python3.7
+##!/usr/bin/env python
 
 Install the Vosk model:
 ------------------------
 Currently, Commbase works only in English.
 Visit: https://alphacephei.com/vosk/models
-Download the model manually or using commands:
-$ cd ~/Commbase/commbase/base-vosk/voice-recognition
-$ wget https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip
-Extract the model:
-$ unzip vosk-model-en-us-0.22-lgraph.zip
-Rename vosk-model-en-us-0.22-lgraph.zip as model:
-$ mv vosk-model-en-us-0.22-lgraph.zip model
-$ Set up permissions for the directory:
-$ chmod 755 model
-Delete the big zip file:
-$ rm -rf vosk-model-en-us-0.22-lgraph.zip
+Download and  install the model manually or by running this command in commbase/config-scripts:
+$ bash install-vosk-model.sh
 
-Note: You can download and use a newer model version, but could/would affect the voice recognition accuracy. I would make you verify all the voices commands to make sure that the voice recognition matches your voice command.
+Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance bacause the bigger the model you use the bigger the momery required to load it. that change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
 
 Install the required system dependency packages:
 -------------------------------------------------
@@ -341,6 +348,7 @@ sox
 sudo
 tasksel
 tmux
+unzip
 uuid-runtime
 wget
 
