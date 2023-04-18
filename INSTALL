@@ -22,12 +22,13 @@ Content:
 2.2. Install Python packages
 2.3. Install Python in an Anaconda environment
 2.4  Build the Commbase Conda environment a from YAML file
-2.5. Install the Vosk model
-2.6. Install the required system dependency packages
-2.7. Install VU-meter
-2.8. Install Oh My Tmux
-2.9. Install the default Commbase voice commands dependencies
-2.10. Install Desktop Environments
+2.5. Set up the file voice-recognition.py
+2.6. Install the Vosk model
+2.7. Install the required system dependency packages
+2.8. Install VU-meter
+2.9. Install Oh My Tmux
+2.10. Install the default Commbase voice commands dependencies
+2.11. Install Desktop Environments
 3. Installations for Developers
 4. Testing the Vosk model
 5. Make the scripts executable
@@ -294,6 +295,21 @@ $ conda deactivate commbase_env
 Run the script:
 $ bash commbase/config-scripts/conda-environment/build-conda-environment-from-yaml-file.sh
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
+
+Set up the file voice-recognition.py:
+--------------------------------------
+
+If you are not using the Anaconda Python environment commbase_env for running Commbase, you could need to change the first line of the file, to a fixed Python version, mostly if you experience program errors, latency or low performance.
+
+Replace the first line for the second line:
+
+Anaconda Python:
+#!/usr/bin/env python
+##!/usr/bin/env python3.7
+
+Python3.7:
+#!/usr/bin/env python3.7
+##!/usr/bin/env python
 
 Install the Vosk model:
 ------------------------
