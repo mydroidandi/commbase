@@ -293,7 +293,7 @@ To simplify it even more, we put all together in a script you can run once.
 If the environment you want to remove is the current active environment, deactivate it before running the script.
 $ conda deactivate commbase_env
 Run the script:
-$ bash commbase/config-scripts/conda-environment/build-conda-environment-from-yaml-file.sh
+$ bash commbase/config-scripts/conda-environment/build-conda-environment.sh
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
 
 Set up the file voice-recognition.py:
