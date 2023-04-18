@@ -1,8 +1,10 @@
-"""#!/usr/bin/env python3.7"""
-# The minimun version for running this script, enable the previous line
-# if required
+#!/usr/bin/env python
+##!/usr/bin/env python3.7
 # voice-recognition.py
 # Returns a speech recognition as a string for data-processing.sh.
+# Requires the shebang "#!/usr/bin/env python" in the first line for
+# Anaconda Python enviroments.
+# Requires a minimun version of python3.7 for running the code correctly.
 
 import argparse
 import os
