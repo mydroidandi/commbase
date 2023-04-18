@@ -315,19 +315,10 @@ Install the Vosk model:
 ------------------------
 Currently, Commbase works only in English.
 Visit: https://alphacephei.com/vosk/models
-Download the model manually or using commands:
-$ cd ~/Commbase/commbase/base-vosk/voice-recognition
-$ wget https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip
-Extract the model:
-$ unzip vosk-model-en-us-0.22-lgraph.zip
-Rename vosk-model-en-us-0.22-lgraph.zip as model:
-$ mv vosk-model-en-us-0.22-lgraph.zip model
-$ Set up permissions for the directory:
-$ chmod 755 model
-Delete the big zip file:
-$ rm -rf vosk-model-en-us-0.22-lgraph.zip
+Download and  install the model manually or by running this command in commbase/config-scripts:
+$ bash install-vosk-model.sh
 
-Note: You can download and use a newer model version, but could/would affect the voice recognition accuracy. I would make you verify all the voices commands to make sure that the voice recognition matches your voice command.
+Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance bacause the bigger the model you use the bigger the momery required to load it. that change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
 
 Install the required system dependency packages:
 -------------------------------------------------
@@ -357,6 +348,7 @@ sox
 sudo
 tasksel
 tmux
+unzip
 uuid-runtime
 wget
 
