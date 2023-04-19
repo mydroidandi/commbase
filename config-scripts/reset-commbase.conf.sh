@@ -6,6 +6,7 @@
 cd ../config
 touch commbase.conf
 cat <<EOT > commbase.conf
+PYTHON_ENV_VERSION="python"
 LOCAL_HOST_UUID="5ba8f927-d331-471c-b640-812d4680e310"
 HOSTNAME="shark"
 HOST_IP_ADDRESS="192.168.100.13"
