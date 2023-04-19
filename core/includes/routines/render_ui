@@ -1,42 +1,103 @@
 render_ui () {
 
-# render_ui
-# Creates the Commbase application interface.
+	# render_ui
+	# Creates the Commbase application interface
 
-# Give .3 seconds to tmux to draw the pane and its content before continue.
-time=0.3;
+	# The configuration file
+	source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 
-# Kill any existent tmux Commbase session in order to avoid duplicates.
-tmux kill-session -t Commbase-0;
+	# Give .3 seconds to tmux to draw the pane and its content before continue
+	time=0.3;
 
-# Create a new session, detaches from it to continue, and sleeps.
-tmux new-session -d -t "Commbase" && sleep $time;
+	# Kill any existent tmux Commbase session in order to avoid duplicates
+	tmux kill-session -t Commbase-0;
 
-# Create windows and panels.
-# Rename the first tmux window (window 0), split it horizontally, and set focus the cursor on the pane 0 (above).
-tmux rename-window "Commbase" && tmux split-window -v && tmux select-pane -t 1;
-# Split vertically the pane 0.
-tmux split-window -h && tmux select-pane -t 1 && sleep $time;
-# Split horizontally the pane 0. 
-tmux split-window -v && tmux select-pane -t 1 && sleep $time;
-# Create window 1, name it "Ext" (for extension), sleep, run a command, send enter key, and sleep.
-tmux new-window -t Commbase-0:1 -n "Ext" && sleep $time;
-#tmux new-window -t Commbase-0:1 -n "Ext" && tmux send-keys "cd $COMMBASE_ROOT_DIR/commbase ; clear" C-m && sleep $time;
-# Focus the cursor on the window 0, "Commbase", and select the pane 1 (by default), run any shell command,
-# send the enter key (press enter), and sleep.
-tmux select-window -t 1 && tmux send-keys "python3.7 $COMMBASE_ROOT_DIR/commbase/core/voice-recognition.py" C-m && sleep $time;
-tmux select-pane -t 2 && tmux send-keys "python3.7 $COMMBASE_ROOT_DIR/commbase/bundled/vu-meter/vu_meter.py" C-m && sleep $time;
-tmux select-pane -t 3 && tmux send-keys "alsamixer --view all" C-m && sleep $time;
-tmux select-pane -t 4 && tmux send-keys "cd $COMMBASE_ROOT_DIR/commbase ; clear" C-m && sleep $time;
-# Support resizing the terminal window.
-#tmux resize-pane -R -t 1 50;
-# Provide extra processing power for loading the model faster here, but user could CTRL + C.
-#tmux select-pane -t 1;
+	# Create a new session, detaches from it to continue, and sleeps
+	tmux new-session -d -t "Commbase" && sleep $time;
 
-# Enter the Commbase session.
-tmux attach-session -t Commbase-0;
+	# Create windows and panels
 
-exit 99
+	# Window 0
+	# Rename the first tmux window (window 0), split it horizontally, and set
+	# focus the cursor on the pane 0 (above).
+	tmux rename-window "Commbase" && tmux split-window -v && tmux select-pane -t 1;
+
+	# Split vertically the pane 0
+	tmux split-window -h && tmux select-pane -t 1 && sleep $time;
+
+	# Split horizontally the pane 0 
+	tmux split-window -v && tmux select-pane -t 1 && sleep $time;
+
+	# Pane 1
+	# Focus the cursor on the window 0, "Commbase", select the pane 1 (by
+	# default), activate the conda environment if exists, send the enter key
+	# (press enter), and sleep.
+	tmux select-window -t 1 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
+
+	# On the window 0, "Commbase", select the pane 1 (by default), run any shell
+	# command, send the enter key (press enter), and sleep.
+	tmux send-keys "$PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/core/voice-recognition.py" C-m;
+
+	# Pane 2
+	# On the window 0, "Commbase", select the pane 2, activate the conda 
+	# environment if exists, send the enter key (press enter), and sleep.
+	tmux select-pane -t 2 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
+
+	# On the window 0, "Commbase", select the pane 2, run any shell command, send
+	# the enter key (press enter), and sleep.
+	tmux select-pane -t 2 && tmux send-keys "$PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/bundled/vu-meter/vu_meter.py" C-m;
+
+	# Pane 3
+	# On the window 0, "Commbase", select the pane 3, activate the conda 
+	# environment if exists, send the enter key (press enter), and sleep.
+	tmux select-pane -t 3 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
+
+	# On the window 0, "Commbase", select the pane 3, run any shell command, send
+	# the enter key (press enter), and sleep.
+	tmux select-pane -t 3 && tmux send-keys "alsamixer --view all" C-m;
+
+	# Pane 4
+	# On the window 0, "Commbase", select the pane 4, activate the conda 
+	# environment if exists, send the enter key (press enter), and sleep.
+	tmux select-pane -t 4 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
+
+	# On the window 0, "Commbase", select the pane 4, run any shell command, send
+	# the enter key (press enter), and sleep.
+	tmux select-pane -t 4 && tmux send-keys "cd $COMMBASE_ROOT_DIR/commbase ; clear" C-m;
+
+	# In this section, activate/deactivate or add custom extra windows
+	
+	# Window 1
+	# Auto create a new window 1 for the Neovim editor
+	tmux new-window -t Commbase-0:2 -n "Neovim" && tmux send-keys "conda activate commbase_env ; clear" C-m && sleep $time;
+	#tmux select-window -t 2 && tmux send-keys "nvim" C-m
+
+	# Window 2	
+	# Auto create a new windows for a countdown timer of 25 minutes and start it
+	tmux new-window -t Commbase-0:3 -n "Timer" && tmux send-keys "conda activate commbase_env ; clear" C-m && sleep $time;
+	tmux select-window -t 3 && tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 25" C-m;
+
+	# Window 3
+	# Auto create a new window for a ssh connection to a server
+	tmux new-window -t Commbase-0:4 -n "Server01" && tmux send-keys "conda activate commbase_env ; clear" C-m && sleep $time;
+
+	# Extra features section to activate/deactivate if required for any reason
+
+	# Support resizing the terminal window
+	#tmux resize-pane -R -t 1 50;
+
+	# Provide extra processing power for loading the model faster here, but user
+	# could CTRL + C.
+	#tmux select-pane -t 1;
+
+	# If extra windows 1, 2, 3, etc. were activated set again the cursor focus on
+	# the window 0, "Commbase", pane 4.
+	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "cd $COMMBASE_ROOT_DIR/commbase ; clear" C-m;
+
+	# Enter the Commbase session.
+	tmux attach-session -t Commbase-0;
+
+	exit 99
 
 }
 
