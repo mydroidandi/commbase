@@ -1,4 +1,4 @@
-render_ui () {
+render_ui() {
 
 	# render_ui
 	# Creates the Commbase application interface
@@ -68,8 +68,8 @@ render_ui () {
 	# In this section, activate/deactivate or add custom extra windows
 	
 	# Window 1
-	# Auto create a new window 1 for the Neovim editor
-	tmux new-window -t Commbase-0:2 -n "Neovim" && tmux send-keys "conda activate commbase_env ; clear" C-m && sleep $time;
+	# Auto create a new window 1 for a text editor
+	tmux new-window -t Commbase-0:2 -n "Editor" && tmux send-keys "conda activate commbase_env ; clear" C-m && sleep $time;
 	#tmux select-window -t 2 && tmux send-keys "nvim" C-m
 
 	# Window 2	
