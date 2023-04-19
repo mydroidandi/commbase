@@ -1,11 +1,10 @@
 #!/usr/bin/env python
-##!/usr/bin/env python3.7
 # voice-recognition.py
-# Returns a speech recognition as a string for data-processing.sh.
-# Requires the shebang "#!/usr/bin/env python" in the first line for
-# Anaconda Python enviroments.
+# Manages the speech recognition model, and saves outputs to data files for 
+# central-processing.sh.
 # Requires a minimun version of python3.7 for running the code correctly.
 
+# Imports
 import argparse
 import os
 import queue
