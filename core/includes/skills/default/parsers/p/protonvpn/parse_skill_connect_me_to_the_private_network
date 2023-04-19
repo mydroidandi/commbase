@@ -1,1 +1,1 @@
-function parse_skill_connect_me_to_the_private_network {}
+parse_skill_connect_me_to_the_private_network() {}

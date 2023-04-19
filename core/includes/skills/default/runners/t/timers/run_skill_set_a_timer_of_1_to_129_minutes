@@ -1,1046 +1,1047 @@
-function run_skill_set_a_timer_of_1_to_129_minutes {
- # Looks for the 5th, 6th, 7th, and the 8th words in the string "set a timer of x minute(s)"
- mins_str_pos_4=$(echo $trim_str | awk '{print $4}')
- mins_str_pos_5=$(echo $trim_str | awk '{print $5}')
- mins_str_pos_6=$(echo $trim_str | awk '{print $6}')
- mins_str_pos_7=$(echo $trim_str | awk '{print $7}')
- mins_str_pos_8=$(echo $trim_str | awk '{print $8}')
- mins_str_pos_9=$(echo $trim_str | awk '{print $9}')
- mins_str_pos_10=$(echo $trim_str | awk '{print $10}')
- mins_str=$mins_str_pos_4" "$mins_str_pos_5" "$mins_str_pos_6" "$mins_str_pos_7" "$mins_str_pos_8" "$mins_str_pos_9" "$mins_str_pos_10
- # Use ifs with 'of' beginning the patterns to avoid confusions such as the one between "two minutes" and "twenty two minutes"
- if echo $mins_str | grep -q "of one minute"; then
-	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 1); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one minute"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of two minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 2); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of two minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of three minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 3); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of four minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 4); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of four minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of five minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 5); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of five minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of six minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 6); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of six minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 7); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eight minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 8); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eight minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of nine minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 9); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of nine minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of ten minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 10); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ten minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eleven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 11); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eleven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of twelve minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 12); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twelve minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of thirteen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 13); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fourteen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 14); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fourteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fifteen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 15); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of sixteen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 16); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seventeen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 17); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventeen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eighteen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 18); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of nineteen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 19); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of nineteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of twenty minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 20); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of twenty one minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 21); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty one minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of twenty two minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 22); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty two minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of twenty three minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 23); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of twenty four minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 24); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty four minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of twenty five minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 25); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty five minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of twenty six minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 26); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty six minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of twenty seven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 27); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty seven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of twenty eight minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 28); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty eight minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of twenty nine minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 29); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty nine minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of thirty minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 30); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of thirty one minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 31); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty one minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of thirty two minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 32); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty two minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of thirty three minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 33); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of thirty four minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 34); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty four minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of thirty five minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 35); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty five minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of thirty six minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 36); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty six minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of thirty seven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 37); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty seven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of thirty eight minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 38); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty eight minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of thirty nine minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 39); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty nine minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of forty minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 40); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of forty one minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 41); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty one minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of forty two minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 42); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty two minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of forty three minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 43); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of forty four minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 44); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty four minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of forty five minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 45); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty five minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of forty six minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 46); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty six minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of forty seven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 47); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty seven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of forty eight minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 48); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty eight minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of forty nine minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 49); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty nine minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fifty minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 50); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fifty one minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 51); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty one minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fifty two minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 52); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty two minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fifty three minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 53); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fifty four minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 54); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty four minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fifty five minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 55); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty five minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fifty six minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 56); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty six minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fifty seven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 57); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty seven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fifty eight minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 58); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty eight minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of fifty nine minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 59); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty nine minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of sixty minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 60); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of sixty one minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 61); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty one minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of sixty two minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 62); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty two minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of sixty three minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 63); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of sixty four minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 64); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty four minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of sixty five minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 65); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty five minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of sixty six minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 66); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty six minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of sixty seven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 67); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty seven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of sixty eight minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 68); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty eight minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of sixty nine minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 69); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty nine minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seventy minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 70); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seventy one minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 71); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy one minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seventy two minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 72); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seventy three minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 73); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seventy four minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 74); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy four minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seventy five minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 75); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy five minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seventy six minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 76); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy six minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seventy seven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 77); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy seven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seventy eight minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 78); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy eight minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of seventy nine minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 79); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy nine minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eighty minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 80); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eighty one minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 81); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty one minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eighty two minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 82); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty two minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eighty three minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 83); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eighty four minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 84); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty four minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eighty five minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 85); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty five minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eighty six minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 86); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty six minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eighty seven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 87); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty seven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eighty eight minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 88); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty eight minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of eighty nine minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 89); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty nine minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of ninety minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 90); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of ninety one minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 91); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety one minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of ninety two minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 92); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety two minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of ninety three minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 93); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of ninety four minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 94); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety four minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of ninety five minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 95); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety five minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of ninety six minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 96); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety six minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of ninety seven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 97); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety seven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of ninety eight minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 98); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety eight minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of ninety nine minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 99); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety nine minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred minutes" || echo $mins_str | grep -q "of a hundred minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 100); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred one minutes" || echo $mins_str | grep -q "of one hundred and one minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 101); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred one minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred two minutes" || echo $mins_str | grep -q "of one hundred and two minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 102); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred two minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred three minutes" || echo $mins_str | grep -q "of one hundred and three minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 103); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred four minutes" || echo $mins_str | grep -q "of one hundred and four minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 104); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred four minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred five minutes" || echo $mins_str | grep -q "of one hundred and five minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 105); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred five minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred six minutes" || echo $mins_str | grep -q "of one hundred and six minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 106); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred six minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred seven minutes" || echo $mins_str | grep -q "of one hundred and seven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 107); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred seven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred eight minutes" || echo $mins_str | grep -q "of one hundred and eight minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 108); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred eight minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred nine minutes" || echo $mins_str | grep -q "of one hundred and nine minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 109); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred nine minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred ten minutes" || echo $mins_str | grep -q "of one hundred and ten minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 110); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred ten minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred eleven minutes" || echo $mins_str | grep -q "of one hundred and eleven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 111); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred eleven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred twelve minutes" || echo $mins_str | grep -q "of one hundred and twelve minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 112); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twelve minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred thirteen minutes" || echo $mins_str | grep -q "of one hundred and thirteen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 113); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred thirteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred fourteen minutes" || echo $mins_str | grep -q "of one hundred and fourteen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 114); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred fourteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred fifteen minutes" || echo $mins_str | grep -q "of one hundred and fifteen minutes"; then
- tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 115); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred fifteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred sixteen minutes" || echo $mins_str | grep -q "of one hundred and sixteen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 116); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred sixteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred seventeen minutes" || echo $mins_str | grep -q "of one hundred and seventeen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 117); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred seventeen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred eighteen minutes" || echo $mins_str | grep -q "of one hundred and eighteen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 118); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred eighteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred nineteen minutes" || echo $mins_str | grep -q "of one hundred and nineteen minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 119); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred nineteen minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred twenty minutes" || echo $mins_str | grep -q "of one hundred and twenty minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 120); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred twenty one minutes" || echo $mins_str | grep -q "of one hundred and twenty one minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 121); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty one minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred twenty two minutes" || echo $mins_str | grep -q "of one hundred and twenty two minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 122); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty two minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred twenty three minutes" || echo $mins_str | grep -q "of one hundred and twenty three minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 123); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty three minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred twenty four minutes" || echo $mins_str | grep -q "of one hundred and twenty four minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 124); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty four minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred twenty five minutes" || echo $mins_str | grep -q "of one hundred and twenty five minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 125); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty five minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred twenty six minutes" || echo $mins_str | grep -q "of one hundred and twenty six minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 126); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty six minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred twenty seven minutes" || echo $mins_str | grep -q "of one hundred and twenty seven minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 127); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty seven minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred twenty eight minutes" || echo $mins_str | grep -q "of one hundred and twenty eight minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 128); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty eight minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- elif echo $mins_str | grep -q "of one hundred twenty nine minutes" || echo $mins_str | grep -q "of one hundred and twenty nine minutes"; then
- 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 129); exec bash'" C-m
-	tmux send-keys "clear" C-m
- 	amixer set Capture nocap &>/dev/null
- 	internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty nine minutes"
-	tmux select-window -t 1 && tmux select-pane -t 4
- 	amixer set Capture cap &>/dev/null
- fi
- exit 99
+run_skill_set_a_timer_of_1_to_129_minutes() {
+	# Looks for the 5th, 6th, 7th, and the 8th words in the string "set a timer of x minute(s)"
+	mins_str_pos_4=$(echo $trim_str | awk '{print $4}')
+	mins_str_pos_5=$(echo $trim_str | awk '{print $5}')
+	mins_str_pos_6=$(echo $trim_str | awk '{print $6}')
+	mins_str_pos_7=$(echo $trim_str | awk '{print $7}')
+	mins_str_pos_8=$(echo $trim_str | awk '{print $8}')
+	mins_str_pos_9=$(echo $trim_str | awk '{print $9}')
+	mins_str_pos_10=$(echo $trim_str | awk '{print $10}')
+	mins_str=$mins_str_pos_4" "$mins_str_pos_5" "$mins_str_pos_6" "$mins_str_pos_7" "$mins_str_pos_8" "$mins_str_pos_9" "$mins_str_pos_10
+	# Use ifs with 'of' beginning the patterns to avoid confusions such as the one between "two minutes" and "twenty two minutes"
+	if echo $mins_str | grep -q "of one minute"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 1); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one minute"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of two minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 2); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of two minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of three minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 3); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of four minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 4); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of four minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of five minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 5); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of five minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of six minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 6); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of six minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 7); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eight minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 8); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eight minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of nine minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 9); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of nine minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of ten minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 10); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ten minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eleven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 11); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eleven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of twelve minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 12); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twelve minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of thirteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 13); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fourteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 14); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fourteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fifteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 15); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of sixteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 16); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seventeen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 17); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventeen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eighteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 18); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of nineteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 19); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of nineteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of twenty minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 20); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of twenty one minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 21); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty one minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of twenty two minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 22); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty two minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of twenty three minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 23); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of twenty four minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 24); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty four minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of twenty five minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 25); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty five minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of twenty six minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 26); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty six minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of twenty seven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 27); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty seven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of twenty eight minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 28); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty eight minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of twenty nine minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 29); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of twenty nine minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of thirty minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 30); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of thirty one minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 31); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty one minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of thirty two minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 32); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty two minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of thirty three minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 33); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of thirty four minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 34); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty four minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of thirty five minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 35); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty five minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of thirty six minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 36); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty six minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of thirty seven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 37); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty seven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of thirty eight minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 38); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty eight minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of thirty nine minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 39); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of thirty nine minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of forty minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 40); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of forty one minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 41); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty one minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of forty two minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 42); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty two minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of forty three minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 43); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of forty four minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 44); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty four minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of forty five minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 45); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty five minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of forty six minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 46); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty six minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of forty seven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 47); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty seven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of forty eight minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 48); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty eight minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of forty nine minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 49); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of forty nine minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fifty minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 50); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fifty one minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 51); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty one minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fifty two minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 52); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty two minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fifty three minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 53); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fifty four minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 54); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty four minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fifty five minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 55); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty five minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fifty six minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 56); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty six minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fifty seven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 57); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty seven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fifty eight minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 58); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty eight minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of fifty nine minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 59); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of fifty nine minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of sixty minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 60); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of sixty one minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 61); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty one minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of sixty two minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 62); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty two minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of sixty three minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 63); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of sixty four minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 64); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty four minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of sixty five minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 65); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty five minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of sixty six minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 66); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty six minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of sixty seven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 67); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty seven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of sixty eight minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 68); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty eight minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of sixty nine minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 69); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of sixty nine minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seventy minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 70); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seventy one minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 71); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy one minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seventy two minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 72); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seventy three minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 73); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seventy four minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 74); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy four minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seventy five minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 75); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy five minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seventy six minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 76); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy six minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seventy seven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 77); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy seven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seventy eight minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 78); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy eight minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of seventy nine minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 79); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of seventy nine minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eighty minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 80); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eighty one minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 81); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty one minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eighty two minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 82); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty two minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eighty three minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 83); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eighty four minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 84); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty four minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eighty five minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 85); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty five minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eighty six minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 86); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty six minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eighty seven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 87); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty seven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eighty eight minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 88); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty eight minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of eighty nine minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 89); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of eighty nine minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of ninety minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 90); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of ninety one minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 91); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety one minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of ninety two minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 92); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety two minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of ninety three minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 93); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of ninety four minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 94); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety four minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of ninety five minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 95); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety five minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of ninety six minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 96); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety six minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of ninety seven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 97); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety seven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of ninety eight minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 98); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety eight minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of ninety nine minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 99); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of ninety nine minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred minutes" || echo $mins_str | grep -q "of a hundred minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 100); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred one minutes" || echo $mins_str | grep -q "of one hundred and one minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 101); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred one minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred two minutes" || echo $mins_str | grep -q "of one hundred and two minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 102); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred two minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred three minutes" || echo $mins_str | grep -q "of one hundred and three minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 103); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred four minutes" || echo $mins_str | grep -q "of one hundred and four minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 104); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred four minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred five minutes" || echo $mins_str | grep -q "of one hundred and five minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 105); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred five minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred six minutes" || echo $mins_str | grep -q "of one hundred and six minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 106); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred six minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred seven minutes" || echo $mins_str | grep -q "of one hundred and seven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 107); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred seven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred eight minutes" || echo $mins_str | grep -q "of one hundred and eight minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 108); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred eight minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred nine minutes" || echo $mins_str | grep -q "of one hundred and nine minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 109); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred nine minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred ten minutes" || echo $mins_str | grep -q "of one hundred and ten minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 110); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred ten minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred eleven minutes" || echo $mins_str | grep -q "of one hundred and eleven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 111); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred eleven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred twelve minutes" || echo $mins_str | grep -q "of one hundred and twelve minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 112); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twelve minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred thirteen minutes" || echo $mins_str | grep -q "of one hundred and thirteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 113); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred thirteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred fourteen minutes" || echo $mins_str | grep -q "of one hundred and fourteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 114); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred fourteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred fifteen minutes" || echo $mins_str | grep -q "of one hundred and fifteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 115); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred fifteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred sixteen minutes" || echo $mins_str | grep -q "of one hundred and sixteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 116); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred sixteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred seventeen minutes" || echo $mins_str | grep -q "of one hundred and seventeen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 117); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred seventeen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred eighteen minutes" || echo $mins_str | grep -q "of one hundred and eighteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 118); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred eighteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred nineteen minutes" || echo $mins_str | grep -q "of one hundred and nineteen minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 119); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred nineteen minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred twenty minutes" || echo $mins_str | grep -q "of one hundred and twenty minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 120); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred twenty one minutes" || echo $mins_str | grep -q "of one hundred and twenty one minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 121); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty one minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred twenty two minutes" || echo $mins_str | grep -q "of one hundred and twenty two minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 122); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty two minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred twenty three minutes" || echo $mins_str | grep -q "of one hundred and twenty three minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 123); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty three minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred twenty four minutes" || echo $mins_str | grep -q "of one hundred and twenty four minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 124); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty four minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred twenty five minutes" || echo $mins_str | grep -q "of one hundred and twenty five minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 125); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty five minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred twenty six minutes" || echo $mins_str | grep -q "of one hundred and twenty six minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 126); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty six minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred twenty seven minutes" || echo $mins_str | grep -q "of one hundred and twenty seven minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 127); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty seven minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred twenty eight minutes" || echo $mins_str | grep -q "of one hundred and twenty eight minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 128); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty eight minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	elif echo $mins_str | grep -q "of one hundred twenty nine minutes" || echo $mins_str | grep -q "of one hundred and twenty nine minutes"; then
+		tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+		tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 129); exec bash'" C-m
+		tmux send-keys "clear" C-m
+		amixer set Capture nocap &>/dev/null
+		internal_random_yes 6 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: set a timer of one hundred twenty nine minutes"
+		tmux select-window -t 1 && tmux select-pane -t 4
+		amixer set Capture cap &>/dev/null
+	fi
+	exit 99
 }
+

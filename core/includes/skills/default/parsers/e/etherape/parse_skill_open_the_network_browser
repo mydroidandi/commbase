@@ -1,1 +1,1 @@
-function parse_skill_open_the_network_browser {}
+parse_skill_open_the_network_browser() {}

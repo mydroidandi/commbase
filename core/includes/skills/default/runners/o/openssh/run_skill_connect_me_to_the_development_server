@@ -1,13 +1,14 @@
-function run_skill_connect_me_to_the_development_server {
- echo "loaoding" | festival --tts
- tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
- tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/o/openssh/desktop-shark-open-server-shark2-with-xserver.sh); exec bash'" C-m
- #tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/o/openssh/desktop-shark-open-server-shark2-with-xserver.sh" C-m && sleep 1
- tmux send-keys "clear" C-m
- amixer set Capture nocap &>/dev/null
- internal_random_yes 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""connect me to the development server"
- echo "connect me to the development server" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
- tmux select-window -t 1 && tmux select-pane -t 4
- amixer set Capture cap &>/dev/null
- exit 99
+run_skill_connect_me_to_the_development_server() {
+	echo "loaoding" | festival --tts
+	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
+	tmux send-keys "gnome-terminal -- bash -c '($COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/o/openssh/desktop-shark-open-server-shark2-with-xserver.sh); exec bash'" C-m
+	#tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/o/openssh/desktop-shark-open-server-shark2-with-xserver.sh" C-m && sleep 1
+	tmux send-keys "clear" C-m
+	amixer set Capture nocap &>/dev/null
+	internal_random_yes 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""connect me to the development server"
+	echo "connect me to the development server" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
+	tmux select-window -t 1 && tmux select-pane -t 4
+	amixer set Capture cap &>/dev/null
+	exit 99
 }
+

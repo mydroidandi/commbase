@@ -1,1 +1,1 @@
-function parse_skill_synchronize_development_from_desktop {}
+parse_skill_synchronize_development_from_desktop() {}
