@@ -18,16 +18,18 @@ Content:
 1.5. Set up the file commbase.conf
 1.6. Set up the Commbase executable
 2. Requisites and dependencies
-2.1. Install Python
-2.2. Install Python packages
-2.3. Install Python in an Anaconda environment
-2.4  Build the Commbase Conda environment a from YAML file
-2.5. Install the Vosk model
-2.6. Install the required system dependency packages
-2.7. Install VU-meter
-2.8. Install Oh My Tmux
-2.9. Install the default Commbase voice commands dependencies
-2.10. Install Desktop Environments
+2.1. Decide which Python version to install
+2.2. Install Python
+2.3. Install Python packages
+2.4. Install Python in an Anaconda Python environment
+2.5  Build the Commbase Conda environment from a YAML file
+2.6. Set up the file voice-recognition.py
+2.7. Install the Vosk model
+2.8. Install the required system dependency packages
+2.9. Install VU-meter
+2.10. Install Oh My Tmux
+2.11. Install the default Commbase voice commands dependencies
+2.12. Install Desktop Environments
 3. Installations for Developers
 4. Testing the Vosk model
 5. Make the scripts executable
@@ -79,7 +81,7 @@ $ bash set-commbase-environment-variable.sh
 
 The script is going to append the variable $COMMBASE_ROOT_DIR in the files $HOME/.bashrc and $HOME/.zshrc
 
-To know more on how to make Commbase commands, checkout the section "The $COMMBASE_ROOT_DIR directory" in the document User's Guide.
+To know more on how to make Commbase commands, checkout the section "The $COMMBASE_ROOT_DIR directory" in the User's Guide.
 
 Set up the file commbase.conf:
 -------------------------------
@@ -96,6 +98,7 @@ There should not be empty lines or spaces.
 
 The default file version contains the next values:
 
+PYTHON_ENV_VERSION="python"
 LOCAL_HOST_UUID="5ba8f927-d331-471c-b640-812d4680e310"
 HOSTNAME="shark"
 HOST_IP_ADDRESS="192.168.100.13"
@@ -135,6 +138,36 @@ Do not the commbase command yet. Remember that the command commbase opens an enh
 -------------------------------
 2. Requisites and dependencies
 -------------------------------
+
+Decide which Python version to install:
+----------------------------------------
+
+In the next documentation sections, we present 3 alternatives to install the Commbase Python Environment:
+1. Install Python, Install Python packages.
+2. Install Python in an Anaconda Python environment.
+3. Build the Commbase Conda environment from a YAML file.
+
+From those alternatives, we recommend installing Python using the third option, Build the Commbase Conda environment from a YAML file, because of the following advantages:
+Some Anaconda Python packages are optimized for Data Science and AI.
+There is no need to manually create a new Commbase environment, in case of systems with multiple environments setups.
+You recreate and install all the Commbase environment, packages, and packaging dependencies all at once.
+You do not need to edit the file config/commbase.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version.
+
+In case of that you do not have Anaconda Python in your system but still want to use it to run Commbase, you can install Anaconda Python and then read the section "Install Python in an Anaconda Python environment" in order to choose if you are going to create the commbase_env yourself or build it later on as it is shown in the section "Build the Commbase Conda environment a from YAML file".
+The installation of Anaconda Python is beyond the scope of this documentation. For information on how to install Anaconda Python in your operating system, visit:
+https://docs.anaconda.com/free/anaconda/getting-started/install/
+
+After its installation, your Anaconda Python version should be capable of installing or building your commbase_env environment. Otherwise, try to install a newer or older version of Anaconda Python and verify the Python versions it is able to install, run, and work with.
+
+In case of that you want to use your system's, or any custom Python version, edit the file commbase/config/commbase.conf line: PYTHON_ENV_VERSION="python".
+For example:
+PYTHON_ENV_VERSION="python3.7"
+
+In that way, Commbase will attempt to run using python3.7 from your OS instead of the Anaconda Python environment commbase_env, which has and runs its own Python version.
+
+Remember that 3.7 is the minimum Python version required to run Commbase, no matter how.
+
+Note: A Python version higher than the one used for the commbase_env could affect any custom scripts or skill scripts you could make. In such cases, you should change the Python version or Python environment that would be used by your custom code to manage the errors.
 
 Install Python:
 ----------------
@@ -199,13 +232,13 @@ $ pip install chardet
 Or use:
 $ pip3 install chardet
 
-Scikit-learn and scikit-lear-intelex:
+Scikit-learn and scikit-learn-intelex:
 $ pip install scikit-learn
 Or use:
 $ pip3 install scikit-learn
-$ pip install scikit-lear-intelex
+$ pip install scikit-learn-intelex
 Or use:
-$ pip3 install scikit-lear-intelex
+$ pip3 install scikit-learn-intelex
 
 OpenCV:
 Steps to install opencv 4.5.1 in Debian 11 running Python 3.9:
@@ -223,95 +256,97 @@ $ apt-cache show python3-opencv
 Install the package:
 $ sudo apt-get install python3-opencv
 
-Install Python in an Anacondas environment:
---------------------------------------------
-Alternatively, you can replace Python 3.7 with Anaconda. Anaconda's Python versions are well
+Install Python in an Anaconda Python environment:
+-------------------------------------------------
+Alternatively, you can replace Python 3.7 with Anaconda Python. Anaconda Python versions are well
 optimized, so the speech recognition AI is supposed to work faster than the official Python packages.
 More information: https://www.anaconda.com/
 
-After the installation of Anaconda you should see the base "(base)" in the foobar.
+After the installation of Anaconda Python you should see the string "(base)" in the foobar.
 
-In case of that your system has a single Python installation using Anaconda if it set up for running
+In case of that your system has a single Python installation using Anaconda Python if it set up for running
 only in the Bash shell, you must enter the Bash shell before start Commbase, anaconda-navigator, or
 any other Python script/program uncapable of running using the current Python's runtime that is
 preinstalled within your Operating System distribution:
 Example of foobar before entering Bash:
-USER-NAME@shark:~$ bash
-Example of foobar with Anaconda's Python, identified by the string "(base)", after entering Bash:
+USER-NAME@HOSTNAME:~$ bash
+Example of foobar with Anaconda Python, identified by the string "(base)", after entering Bash:
 (base) USER-NAME@shark:~$
 
-To install PyPi like packages in the (base) in Anaconda, use the command "conda":
-(base) USER-NAME@shark:~$ conda install PACKAGE-NAME
+To install PyPi like packages in the (base) in Anaconda Python, use the command "conda":
+(base) USER-NAME@HOSTNAME:~$ conda install PACKAGE-NAME
 
-If you want to create a new Anaconda environment just for Commbase:
-First, go to my repo dir (Commbase, in our case) and run:
+If you want to create a new Anaconda Python (3.7) environment just for Commbase:
 $ conda create -n commbase_env python=3.7
 $ conda activate commbase_env
 Now, (commbase_env) appears in the foobar.
 
-Within the Anaconda's environment "commbase_env" you are able to install conda packages, instead of regular
-ones. Examples:
-Install OpenCV version 4.6.0 whether available from the defaults channel to a particular Anaconda environment:
-(commbase_env) mydroidandi/commbase $ conda install -c defaults opencv=4.6.0
+Within the Anaconda Python environment "commbase_env" you are able to install conda packages, instead of, for xample, pip packages. Examples:
+Install OpenCV version 4.6.0 whether available from the defaults channel to a particular Anaconda Python environment:
+(commbase_env) $ conda install -c defaults opencv=4.6.0
 Install the latest version of OpenCV available from the conda-forge channel:
-(commbase_env) mydroidandi/commbase $ conda conda-forge -c defaults opencv
-Altenatively, in order to install PyPi like packages in the (commbase_env) environment in Anaconda, use the
+(commbase_env) $ conda conda-forge -c defaults opencv
+Altenatively, in order to install PyPi like packages in the (commbase_env) environment in Anaconda Python, use the
 command "pip", for example:
-(commbase_env) mydroidandi/commbase $ pip install ipython
-To verify the package was installed, in your terminal window or an Anaconda Prompt, run:
-(commbase_env) mydroidandi/commbase $ conda list
+(commbase_env) $ pip install ipython
+To verify the package was installed, in your terminal window or an Anaconda Python prompt, run:
+(commbase_env) $ conda list
 
-Note: Environments defined with python=3.9 or higher could work percectly and probably faster than python=3.7, but
-3.7 is still the version requirement. This document would be updated for future version releases of
-Python compatible with Commbase.
+Note: Environments defined with python=3.9 or higher versions of Python could work perfectly and probably faster than python=3.7, but
+3.7 is still the version requirement. This documentation and Commbase code would be updated for future releases of Python to make everything Combmbase compatible.
 
 To deactivate the current envinronment and go back to (base) use:
-(base) mydroidandi/commbase $ conda deactivate
+(commbase_env) $ conda deactivate
 
 To deactivate any environment use "deactivate" from another environment:
-(base) mydroidandi/commbase $ conda deactivate commbase_env
+(base) $ conda deactivate commbase_env
+$ conda deactivate base
 
-Verify the Anaconda's environment Python version used:
-(base) mydroidandi/commbase $ python --version
+Verify the Anaconda Python's Python version used:
+(base) $ python --version
 
-Some Anaconda packages are usually performing better than the packages for the OS distribution, that is the case
+As stated, some Anaconda Python packages are usually performing better than the packages for the OS distribution, that is the case
 of OpenCV. You can test and compare the performance between the OS distribution Python version and the 
-Anaconda's environment version, by running the file resizable-camera-capture.py from every independent
-environment. The file does not have to include the python version to be used in the first line of the script to be
-executed using the python version in/specified in the command line:
-In the system environment:
+Anaconda Python environment version, by running the file resizable-camera-capture.py from every separate environment. The file does not have to include the python version to be used in the first line of the script to be executed using the python version in/specified in the command line:
+In the system environment, specifyng to use Python3.9:
 $ cd path/to/commbase
 $ python3.9 commbase/core/skill-scripts/default/python/c/camera/resizable-camera-capture/resizable-camera-capture.py
-In the Anaconda's commbase_env environment:
-(commbase_env) mydroidandi/commbase $ python commbase/core/skill-scripts/default/python/c/camera/resizable-camera-capture/resizable-camera-capture.py
+In the Anaconda Python commbase_env environment, using the environment's python version:
+(commbase_env) $ python commbase/core/skill-scripts/default/python/c/camera/resizable-camera-capture/resizable-camera-capture.py
 
-Build the Commbase Conda environment a from YAML file:
+Build the Commbase Conda environment from a YAML file:
 -------------------------------------------------------
 Using YAML files is the simplest and probably the best way to install Python and the Python Commbase environment dependencies.
 To simplify it even more, we put all together in a script you can run once.
 If the environment you want to remove is the current active environment, deactivate it before running the script.
-$ conda deactivate commbase_env
-Run the script:
-$ bash commbase/config-scripts/conda-environment/build-conda-environment-from-yaml-file.sh
+(commbase_env) $ conda deactivate commbase_env
+Run the config script:
+$ bash commbase/config-scripts/conda-environment/build-conda-environment.sh
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
+
+Set up the file voice-recognition.py:
+--------------------------------------
+
+If you are not using the Anaconda Python environment commbase_env for running Commbase, you could need to change the first line of the file, to a fixed Python version, mostly if you experience program errors, latency or low performance.
+
+Replace the first line for the second line:
+
+Anaconda Python:
+#!/usr/bin/env python
+##!/usr/bin/env python3.7
+
+Python3.7:
+#!/usr/bin/env python3.7
+##!/usr/bin/env python
 
 Install the Vosk model:
 ------------------------
 Currently, Commbase works only in English.
 Visit: https://alphacephei.com/vosk/models
-Download the model manually or using commands:
-$ cd ~/Commbase/commbase/base-vosk/voice-recognition
-$ wget https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip
-Extract the model:
-$ unzip vosk-model-en-us-0.22-lgraph.zip
-Rename vosk-model-en-us-0.22-lgraph.zip as model:
-$ mv vosk-model-en-us-0.22-lgraph.zip model
-$ Set up permissions for the directory:
-$ chmod 755 model
-Delete the big zip file:
-$ rm -rf vosk-model-en-us-0.22-lgraph.zip
+Download and  install the model manually or by running this command in commbase/config-scripts:
+$ bash install-vosk-model.sh
 
-Note: You can download and use a newer model version, but could/would affect the voice recognition accuracy. I would make you verify all the voices commands to make sure that the voice recognition matches your voice command.
+Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance bacause the bigger the model you use the bigger the momery required to load it. that change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
 
 Install the required system dependency packages:
 -------------------------------------------------
@@ -341,6 +376,7 @@ sox
 sudo
 tasksel
 tmux
+unzip
 uuid-runtime
 wget
 

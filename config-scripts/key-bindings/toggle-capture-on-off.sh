@@ -18,7 +18,7 @@
 
 # Toggles ON/OFF the sound capture.
 # Uses the keyboard binding ALT + SHIFT + 1.
-toggle_capture_on_off () {
+toggle_capture_on_off() {
   # Assume that the capture is mono, no matter the number of channels, which is correct
   # for registering the human voice.
   amixer_status=$(amixer get Capture | awk -F "[, ]+" '/on|off^/{print $NF ":", $1, $(NF-1)}' | tail -n+3 || exit 99);

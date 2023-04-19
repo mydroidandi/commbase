@@ -18,7 +18,7 @@
 
 # Starts capturing sound that the Commbase recognition requires to work.
 # Uses the keyboard binding ALT-SHIFT-3.
-capture_unmute () {
+capture_unmute() {
   (amixer set Capture cap &>/dev/null || exit 99);
 }
 

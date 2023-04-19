@@ -90,7 +90,7 @@ source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 # Toggle and activate the current active and default capture device to another device in
 # a group of two devices, turning it active and default.
 # Uses the keyboard binding CTRL-SHIFT-Z.
-toggle_active_capture_device () {
+toggle_active_capture_device() {
   active_device=$(pactl list sources short | grep RUNNING || exit 99);
 
   if (echo $active_device | grep -q $COMMBASE_CAPTURE_DEVICE_NAME || exit 99); then
@@ -101,7 +101,7 @@ toggle_active_capture_device () {
 }
 
 # Turn capture on whether it is off.
-turn_capture_on () {
+turn_capture_on() {
 # Assume that the capture is mono, no matter the number of channels, which is correct
   # for registering the human voice.
   amixer_status=$(amixer get Capture | awk -F "[, ]+" '/on|off^/{print $NF ":", $1, $(NF-1)}' | tail -n+3) || exit 99;
