@@ -68,7 +68,7 @@ Go to the directory commbase/config-scripts/ and open the file set-commbase-root
 Written in Bash language, your will see ~/.bashrc and ~/.zshrc, which are the routes to the bash and Z shell configuration files.
 $HOME is the default value of the variable $COMMBASE_ROOT_DIR.
 The variable $COMMBASE_ROOT_DIR stores the Commbase's root directory.
-You can update the content of $COMMBASE_ROOT_DIR to a custom value, such as $HOME/Developer. It must be updated for both sections, ~/.bashrc and ~/.zshrc, but if you don't have Z shell in your operating system, you can comment out the ~/.zshrc section before running ths script, like this:
+You can update the content of $COMMBASE_ROOT_DIR to a custom value, such as $HOME/Developer/my_commbase. It must be updated for both sections, ~/.bashrc and ~/.zshrc, but if you don't have Z shell in your operating system, you can comment out the ~/.zshrc section before running ths script, like this:
 
 Section of set-commbase-root-directory:
 
@@ -82,6 +82,12 @@ $ bash set-commbase-environment-variable.sh
 The script is going to append the variable $COMMBASE_ROOT_DIR in the files $HOME/.bashrc and $HOME/.zshrc
 
 To know more on how to make Commbase commands, checkout the section "The $COMMBASE_ROOT_DIR directory" in the User's Guide.
+
+Notes about the difference Between .bashrc and .bash_profile:
+.bash_profile is read and executed when Bash is invoked as an interactive login shell, while .bashrc is executed for an interactive non-login shell.
+When Bash is invoked as an interactive non-login shell, it reads and executes commands from ~/.bashrc, if that file exists, and it is readable.
+When invoked as an interactive login shell, Bash looks for the /etc/profile file, and if the file exists , it runs the commands listed in the file. Then Bash searches for ~/.bash_profile, ~/.bash_login, and ~/.profile files, in the listed order, and executes commands from the first readable file found.
+In case of that your OS distribution does not use ~/.bashrc, add manually the variable $COMMBASE_ROOT_DIR and its value to your Bash Startup File(s).
 
 Set up the file commbase.conf:
 -------------------------------
