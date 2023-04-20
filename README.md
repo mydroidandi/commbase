@@ -34,7 +34,7 @@ $ commbase start
 
 For information on how to install Commbase, follow the steps in the file INSTALL.
 
-* [`INSTALL`](/)
+* [`INSTALL`]
 
 ## User's Guide
 
