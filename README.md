@@ -25,7 +25,7 @@ Here are some ideas to get you started:
 path/to/commbase
 │		The directory commbase
 ├── bundled
-│		│		Stores the packaged software source
+│		│	Stores the packaged software source
 │   ├── audiobooks
 │   ├── distributed-ai
 │   │   └── x-conversation-mode-ai
