@@ -22,7 +22,7 @@ For information on how to install Commbase, follow the steps in the file [`INSTA
 
 ## User's Guide
 
-For information on how to use, set up, and programm Commbase read the User's Guide.
+For information on how to use, set up, and program Commbase read the User's Guide.
 
 * [`docs`](/docs) 
 
@@ -45,7 +45,7 @@ path/to/commbase  # The directory commbase
 │   │   └── model
 │   └── vu-meter
 ├── config  # Stores the configuration files
-├── data
+├── data  # Stores the voice recognition model results data
 ├── docs
 ├── history
 ├── log
