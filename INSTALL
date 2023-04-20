@@ -488,18 +488,18 @@ $ chmod 755 vosk-api
 4. Testing the Vosk model
 --------------------------
 
-Go to commbase/bundled/vosk-tests:
-$ cd ~/commbase/bundled/vosk-tests
+Go to commbase/bundled/scripts/utilities/vosk-api/python/example:
+$ cd ~/commbase/bundled/scripts/utilities/vosk-api/python/example
 
 $ Set up permissions for the file:
 $ chmod 755 test_microphone.py
 $ chmod +x test_microphone.py
 
 Copy the test file to commbase/bundled/vosk:
-$ cp test_microphone.py ../vosk/
+$ cp test_microphone.py ../../../../../vosk/
 
 Run the test file test_microphone.py:
-$ cd ../vosk/ 
+$ cd cp test_microphone.py ../../../../../vosk/ 
 $ python test_microphone.py
 Or use:
 $ python3 test_microphone.py
