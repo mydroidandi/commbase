@@ -21,7 +21,7 @@ Here are some ideas to get you started:
 
 
 
-```css
+```sh
 path/to/commbase	# The directory commbase
 ├── bundled 	# Stores the packaged software source
 │   ├── audiobooks
