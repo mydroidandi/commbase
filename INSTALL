@@ -365,15 +365,15 @@ Names and commands for this section could change from OS distribuition to distri
 
 For example, in Debian Linux, the DPKG packages that contain all the required commands can be installed using APT. Apt manages and installs the package dependencies automatically.
 
-List of required packages (based on Debian GNU/Linux):
+List of required packages/commands (based on Debian GNU/Linux):
 alsa-utils (contains the tools: alsamixer and aplay)
-awk
 bash
 curl
 csound
 dash (contains the sh command) 
 festival
 ffmpeg
+gawk
 gdebi
 git
 mpv
@@ -395,7 +395,7 @@ Use APT to install packages from the official repositories for your distro, like
 $ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
 
 For example, this is the actual one-liner command someone could require:
-$ sudo apt-get update; sudo apt-get install alsa-utils bash curl csound dash festival ffmpeg gdebi git mpv mplayer nmap openssh-server rsync sed sox sudo tasksel tmux uuid-runtime wget
+$ sudo apt-get update; sudo apt-get install alsa-utils bash curl csound dash festival ffmpeg gawk gdebi git mpv mplayer nmap openssh-server rsync sed sox sudo tasksel tmux uuid-runtime wget
 
 Installation troubleshooting:
 
@@ -404,6 +404,11 @@ Packages unfound by their given names can be replaced in the source by their res
 To verify that the command of a package is already in the system, type in the command and then press enter. For example:
 $ awk
 If you can list the command it means that the application is installed.
+
+If you want to know which alternative is currently set in case of meta packages with more then one alternative, for example awk:
+$ update-alternatives --list awk
+To change the alternative, use:
+$ update-alternatives --config awk
 
 Package Names and commands should be verified after during the Commbase installation. To verify packages you can use:
 $ whereis <PACKAGE>
