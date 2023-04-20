@@ -1,1 +1,1 @@
-function parse_skill_show_me_my_location {}
+parse_skill_show_me_my_location() {}

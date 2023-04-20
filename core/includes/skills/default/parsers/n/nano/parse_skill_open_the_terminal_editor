@@ -1,1 +1,1 @@
-function parse_skill_open_the_terminal_editor {}
+parse_skill_open_the_terminal_editor() {}

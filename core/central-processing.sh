@@ -20,8 +20,8 @@ dir="$(dirname "$0")"
 # ------------------------------------------COMMBASE-INTERNALS---------------------------------------
 # Commbase random affirmative reply. Receives the total of cases in $1:
 internal_random_yes_func() {
- reply_yes=$((1 + $RANDOM % $1)) # Generates a random number between 1 and $total_yes (inclusive)
- case $reply_yes in 1) echo "running" | festival --tts ;; 2) echo "all right" | festival --tts ;; 3) echo "yes ser" | festival --tts ;; 4) echo "affirmative" $USER | festival --tts ;; 5) echo "o kie dokie" $USER | festival --tts ;; 6) echo "okay" $USER | festival --tts ;; esac
+	reply_yes=$((1 + $RANDOM % $1)) # Generates a random number between 1 and $total_yes (inclusive)
+	case $reply_yes in 1) echo "running" | festival --tts ;; 2) echo "all right" | festival --tts ;; 3) echo "yes ser" | festival --tts ;; 4) echo "affirmative" $USER | festival --tts ;; 5) echo "o kie dokie" $USER | festival --tts ;; 6) echo "okay" $USER | festival --tts ;; esac
 }
 # -----------------------------------------------SYMBOLS---------------------------------------------
 # 
@@ -234,3 +234,4 @@ else
 fi
 
 exit 1
+

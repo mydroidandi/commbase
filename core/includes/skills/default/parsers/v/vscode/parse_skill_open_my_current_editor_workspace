@@ -1,1 +1,1 @@
-function parse_skill_open_my_current_editor_workspace {}
+parse_skill_open_my_current_editor_workspace() {}
