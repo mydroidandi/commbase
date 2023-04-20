@@ -68,7 +68,7 @@ Go to the directory commbase/config-scripts/ and open the file set-commbase-root
 Written in Bash language, your will see ~/.bashrc and ~/.zshrc, which are the routes to the bash and Z shell configuration files.
 $HOME is the default value of the variable $COMMBASE_ROOT_DIR.
 The variable $COMMBASE_ROOT_DIR stores the Commbase's root directory.
-You can update the content of $COMMBASE_ROOT_DIR to a custom value, such as $HOME/Developer. It must be updated for both sections, ~/.bashrc and ~/.zshrc, but if you don't have Z shell in your operating system, you can comment out the ~/.zshrc section before running ths script, like this:
+You can update the content of $COMMBASE_ROOT_DIR to a custom value, such as $HOME/Developer/my_commbase. It must be updated for both sections, ~/.bashrc and ~/.zshrc, but if you don't have Z shell in your operating system, you can comment out the ~/.zshrc section before running ths script, like this:
 
 Section of set-commbase-root-directory:
 
@@ -82,6 +82,12 @@ $ bash set-commbase-environment-variable.sh
 The script is going to append the variable $COMMBASE_ROOT_DIR in the files $HOME/.bashrc and $HOME/.zshrc
 
 To know more on how to make Commbase commands, checkout the section "The $COMMBASE_ROOT_DIR directory" in the User's Guide.
+
+Notes about the difference Between .bashrc and .bash_profile:
+.bash_profile is read and executed when Bash is invoked as an interactive login shell, while .bashrc is executed for an interactive non-login shell.
+When Bash is invoked as an interactive non-login shell, it reads and executes commands from ~/.bashrc, if that file exists, and it is readable.
+When invoked as an interactive login shell, Bash looks for the /etc/profile file, and if the file exists , it runs the commands listed in the file. Then Bash searches for ~/.bash_profile, ~/.bash_login, and ~/.profile files, in the listed order, and executes commands from the first readable file found.
+In case of that your OS distribution does not use ~/.bashrc, add manually the variable $COMMBASE_ROOT_DIR and its value to your Bash Startup File(s).
 
 Set up the file commbase.conf:
 -------------------------------
@@ -153,7 +159,7 @@ In the next documentation sections, we present 3 alternatives to install the Com
 3. Build the Commbase Conda environment from a YAML file.
 
 From those alternatives, we recommend installing Python using the third option, Build the Commbase Conda environment from a YAML file, because of the following advantages:
-Some Anaconda Python packages are optimized for Data Science and AI.
+Some Anaconda Python packages are optimized for AI (Machine Learning and Data Science) .
 There is no need to manually create a new Commbase environment, in case of systems with multiple environments setups.
 You recreate and install all the Commbase environment, packages, and packaging dependencies all at once.
 You do not need to edit the file config/commbase.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version.
@@ -359,15 +365,15 @@ Names and commands for this section could change from OS distribuition to distri
 
 For example, in Debian Linux, the DPKG packages that contain all the required commands can be installed using APT. Apt manages and installs the package dependencies automatically.
 
-List of required packages (based on Debian GNU/Linux):
+List of required packages/commands (based on Debian GNU/Linux):
 alsa-utils (contains the tools: alsamixer and aplay)
-awk
 bash
 curl
 csound
 dash (contains the sh command) 
 festival
 ffmpeg
+gawk
 gdebi
 git
 mpv
@@ -389,7 +395,7 @@ Use APT to install packages from the official repositories for your distro, like
 $ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
 
 For example, this is the actual one-liner command someone could require:
-$ sudo apt-get update; sudo apt-get install alsa-utils bash curl csound dash festival ffmpeg gdebi git mpv mplayer nmap openssh-server rsync sed sox sudo tasksel tmux uuid-runtime wget
+$ sudo apt-get update; sudo apt-get install alsa-utils bash curl csound dash festival ffmpeg gawk gdebi git mpv mplayer nmap openssh-server rsync sed sox sudo tasksel tmux uuid-runtime wget
 
 Installation troubleshooting:
 
@@ -398,6 +404,11 @@ Packages unfound by their given names can be replaced in the source by their res
 To verify that the command of a package is already in the system, type in the command and then press enter. For example:
 $ awk
 If you can list the command it means that the application is installed.
+
+If you want to know which alternative is currently set in case of meta packages with more then one alternative, for example awk:
+$ update-alternatives --list awk
+To change the alternative, use:
+$ update-alternatives --config awk
 
 Package Names and commands should be verified after during the Commbase installation. To verify packages you can use:
 $ whereis <PACKAGE>
@@ -477,19 +488,26 @@ $ chmod 755 vosk-api
 4. Testing the Vosk model
 --------------------------
 
-Go to $HOME/Commbase/commbase/base-vosk/voice-recognition:
-$ cd ~/Commbase/commbase/base-vosk/voice-recognition
+Go to commbase/bundled/vosk-tests:
+$ cd ~/commbase/bundled/vosk-tests
 
-$ Set up permissions for the files:
-$ chmod 755 test_ffmpeg.py
-$ chmod +x test_ffmpeg.py
+$ Set up permissions for the file:
 $ chmod 755 test_microphone.py
 $ chmod +x test_microphone.py
-$ chmod 444 test.wav
+
+Copy the test file to commbase/bundled/vosk:
+$ cp test_microphone.py ../vosk/
 
 Run the test file test_microphone.py:
+$ cd ../vosk/ 
+$ python test_microphone.py
+Or use:
 $ python3 test_microphone.py
 Practice your speaking accuracy.
+Vosk should return results on the screen.
+
+Remove the test file from vosk/:
+$ rm test_microphone.py
 
 -------------------------------
 5. Make the scripts executable
