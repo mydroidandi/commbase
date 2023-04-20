@@ -32,9 +32,7 @@ $ commbase start
 
 ## Installation
 
-For information on how to install Commbase, follow the steps in the file INSTALL.
-
-* [`Link Text`](./INSTALL)
+For information on how to install Commbase, follow the steps in the file [`INSTALL`](./INSTALL).
 
 ## User's Guide
 
