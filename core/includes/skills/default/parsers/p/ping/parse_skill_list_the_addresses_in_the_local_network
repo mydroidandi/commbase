@@ -1,1 +1,1 @@
-function parse_skill_list_the_addresses_in_the_local_network {}
+parse_skill_list_the_addresses_in_the_local_network() {}

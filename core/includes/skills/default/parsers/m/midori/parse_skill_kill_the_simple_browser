@@ -1,1 +1,1 @@
-function parse_skill_kill_the_simple_browser {}
+parse_skill_kill_the_simple_browser() {}

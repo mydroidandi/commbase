@@ -1,1 +1,1 @@
-function parse_skill_push_to_the_local_web_server {}
+parse_skill_push_to_the_local_web_server() {}
