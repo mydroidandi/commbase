@@ -21,7 +21,7 @@ Here are some ideas to get you started:
 
 
 
-
+```sh
 path/to/commbase
 │		The directory commbase
 ├── bundled
@@ -90,3 +90,4 @@ path/to/commbase
     │       ├── nodejs
     │       └── python
     └── talks
+```
