@@ -41,7 +41,7 @@ For information on how to install Commbase, follow the steps in the file INSTALL
 For information on how to use, set up, and programm Commbase read the User's Guide.
 
 
-* [`User's Guide`](/docs/User's Guide) 
+* [`User's Guide`](/docs/User's Guide,md) 
 
 Web site
 
