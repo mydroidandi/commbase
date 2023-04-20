@@ -369,7 +369,6 @@ List of required packages/commands (based on Debian GNU/Linux):
 alsa-utils (contains the tools: alsamixer and aplay)
 bash
 curl
-csound
 dash (contains the sh command) 
 festival
 ffmpeg
@@ -380,6 +379,7 @@ mpv
 mplayer
 nmap
 openssh-server (server and client)
+play
 pkill (it comes installed with the base system sometimes, in a package with another name)
 rsync
 sed
@@ -395,7 +395,7 @@ Use APT to install packages from the official repositories for your distro, like
 $ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
 
 For example, this is the actual one-liner command someone could require:
-$ sudo apt-get update; sudo apt-get install alsa-utils bash curl csound dash festival ffmpeg gawk gdebi git mpv mplayer nmap openssh-server rsync sed sox sudo tasksel tmux uuid-runtime wget
+$ sudo apt-get update; sudo apt-get install alsa-utils bash curl dash festival ffmpeg gawk gdebi git mpv mplayer nmap openssh-server rsync sed sox sudo tasksel tmux unzip uuid-runtime wget
 
 Installation troubleshooting:
 
