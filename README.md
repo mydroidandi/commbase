@@ -18,3 +18,75 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+
+
+
+path/to/commbase
+│		The directory commbase
+├── bundled
+│		│		Stores the packaged software source
+│   ├── audiobooks
+│   ├── distributed-ai
+│   │   └── x-conversation-mode-ai
+│   ├── PyAudio-0.2.11
+│   ├── scripts
+│   │   └── utilities
+│   ├── sounds
+│   ├── tensorf
+│   ├── vosk
+│   │   └── model
+│   └── vu-meter
+├── config
+├── data
+├── docs
+├── history
+├── log
+├── screenshots
+├── scripts
+│   ├── configuration
+│   ├── deployment
+│   └── utilities
+└── src
+    ├── distribuited-ai
+    │   └── x-conversation-mode-ai
+    ├── includes
+    │   ├── routines
+    │   ├── skills
+    │   │   ├── custom
+    │   │   │   ├── parsers
+    │   │   │   └── runners
+    │   │   ├── default
+    │   │   │   ├── parsers
+    │   │   │   └── runners
+    │   │   └── essential
+    │   │       ├── parsers
+    │   │       └── runners
+    │   ├── skillsets
+    │   │   ├── custom
+    │   │   │   ├── parsers
+    │   │   │   └── runners
+    │   │   └── default
+    │   │       ├── parsers
+    │   │       └── runners
+    │   └── skill-testing
+    ├── skill-patterns
+    │   ├── custom
+    │   ├── default
+    │   └── essential
+    ├── skill-scripts
+    │   ├── custom
+    │   │   ├── bash
+    │   │   ├── c
+    │   │   ├── java
+    │   │   ├── multi-lang
+    │   │   ├── nodejs
+    │   │   └── python
+    │   └── default
+    │       ├── bash
+    │       ├── c
+    │       ├── java
+    │       ├── multi-lang
+    │       ├── nodejs
+    │       └── python
+    └── talks
