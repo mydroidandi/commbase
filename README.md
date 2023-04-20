@@ -46,7 +46,7 @@ path/to/commbase  # The directory commbase
 │   └── vu-meter
 ├── config  # Stores the configuration files
 ├── data  # Stores the voice recognition model results
-├── docs
+├── docs  # Stores guides for Commbase users
 ├── history
 ├── log
 ├── screenshots
@@ -119,7 +119,7 @@ Thanks to the following people who have contributed to this project:
 
 ## Contact
 
-If you want to contact me you can reach me at <stv.herrera@gmail.comm>.
+If you want to contact us you can reach us at <stv.herrera@gmail.com>.
 
 ## License
 
