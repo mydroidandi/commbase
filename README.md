@@ -46,7 +46,7 @@ path/to/commbase  # The directory commbase
 │   └── vu-meter
 ├── config  # Stores the configuration files
 ├── data  # Stores the voice recognition model results
-├── docs  # Stores guides for Commbase users
+├── docs  # Stores the human-readable guides for Commbase users
 ├── history
 ├── log
 ├── screenshots
