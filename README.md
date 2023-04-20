@@ -12,7 +12,7 @@ Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed 
 
 To start using Commbase enter the commbase command in a terminal:
 
-```sh
+```bash
 $ commbase start
 ```
 
@@ -22,7 +22,7 @@ For information on how to install Commbase, follow the steps in the file [`INSTA
 
 ## User's Guide
 
-For information on how to use, set up, and program Commbase read the User's Guide.
+For information on how to set up, use, and program Commbase read the User's Guide.
 
 * [`docs`](/docs) 
 
@@ -47,7 +47,7 @@ path/to/commbase  # The directory commbase
 ├── config  # Stores the configuration files
 ├── data  # Stores the voice recognition model results
 ├── docs  # Stores the human-readable guides for Commbase users
-├── history
+├── history # Stores the Commbase command history file
 ├── log
 ├── screenshots
 ├── scripts
