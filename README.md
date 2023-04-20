@@ -22,13 +22,15 @@ Here are some ideas to get you started:
 
 ## Introduction
 
-Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or appliance, originally developed by the Computer Scientist Esteban Herrera, in 2022. It works on general-purpose operating systems without requiring an internet connection. He/She can by improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
+Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or appliance. It works on general-purpose operating systems without requiring an internet connection. He/She can by improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
 
 ## Usage
 
-To start using Commbase enter the commbase command in the terminal:
+To start using Commbase enter the commbase command in a terminal:
 
+```sh
 $ commbase start
+```
 
 ## Installation
 
@@ -38,10 +40,7 @@ For information on how to install Commbase, follow the steps in the file [`INSTA
 
 For information on how to use, set up, and programm Commbase read the User's Guide.
 
-
 * [`User's Guide`](/docs) 
-
-Web site
 
 ## Structure
 
@@ -115,4 +114,32 @@ path/to/commbase  # The directory commbase
     │       └── python
     └── talks
 ```
+
+## Contributing
+
+To contribute to <project_name>, follow these steps:
+
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch_name>`.
+3. Make your changes and commit them: `git commit -m '<commit_message>'`
+4. Push to the original branch: `git push origin <project_name>/<location>`
+5. Create the pull request.
+
+Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+## Contributors
+
+Thanks to the following people who have contributed to this project:
+
+* [@estebanways](https://github.com/estebanways) 📖
+
+You might want to consider using something like the [All Contributors](https://github.com/all-contributors/all-contributors) specification and its [emoji key](https://allcontributors.org/docs/en/emoji-key).
+
+## Contact
+
+If you want to contact me you can reach me at <stv.herrera@gmail.comm>.
+
+## License
+
+This project uses the following license: [<license_name>](<link>).
 
