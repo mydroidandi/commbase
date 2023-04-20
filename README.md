@@ -2,6 +2,7 @@
 
 Conversational AI Assistant and AI Hub for Computers and Droids
 
+
 <img alt="Neovim" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
 
 <!--
@@ -19,7 +20,32 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
+## Introduction
 
+Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or appliance, originally developed by the Computer Scientist Esteban Herrera, in 2022. It works on general-purpose operating systems without requiring an internet connection. He/She can by improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
+
+## Usage
+
+To start using Commbase enter the commbase command in the terminal:
+
+$ commbase start
+
+## Installation
+
+For information on how to install Commbase, follow the steps in the file INSTALL.
+
+## User's Guide
+
+For information on how to use, set up, and programm Commbase read the User's Guide.
+
+
+* [`docs`](/docs) 
+
+Web site
+
+## Structure
+
+This project is coded and organized like this:
 
 ```sh
 path/to/commbase  # The directory commbase
@@ -89,3 +115,4 @@ path/to/commbase  # The directory commbase
     │       └── python
     └── talks
 ```
+
