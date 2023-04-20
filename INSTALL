@@ -153,7 +153,7 @@ In the next documentation sections, we present 3 alternatives to install the Com
 3. Build the Commbase Conda environment from a YAML file.
 
 From those alternatives, we recommend installing Python using the third option, Build the Commbase Conda environment from a YAML file, because of the following advantages:
-Some Anaconda Python packages are optimized for Data Science and AI.
+Some Anaconda Python packages are optimized for AI (Machine Learning and Data Science) .
 There is no need to manually create a new Commbase environment, in case of systems with multiple environments setups.
 You recreate and install all the Commbase environment, packages, and packaging dependencies all at once.
 You do not need to edit the file config/commbase.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version.
