@@ -2,27 +2,11 @@
 
 Conversational AI Assistant and AI Hub for Computers and Droids
 
-
 <img alt="Neovim" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
-
-<!--
-**mydroidandi/commbase** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
 
 ## Introduction
 
-Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or appliance. It works on general-purpose operating systems without requiring an internet connection. He/She can by improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
+Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or appliance. It works on general-purpose operating systems without requiring an internet connection. He/She can by improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
 
 ## Usage
 
@@ -40,7 +24,7 @@ For information on how to install Commbase, follow the steps in the file [`INSTA
 
 For information on how to use, set up, and programm Commbase read the User's Guide.
 
-* [`User's Guide`](/docs) 
+* [`docs`](/docs) 
 
 ## Structure
 
@@ -117,7 +101,7 @@ path/to/commbase  # The directory commbase
 
 ## Contributing
 
-To contribute to <project_name>, follow these steps:
+To contribute to Commbase, follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <branch_name>`.
@@ -133,13 +117,11 @@ Thanks to the following people who have contributed to this project:
 
 * [@estebanways](https://github.com/estebanways) 📖
 
-You might want to consider using something like the [All Contributors](https://github.com/all-contributors/all-contributors) specification and its [emoji key](https://allcontributors.org/docs/en/emoji-key).
-
 ## Contact
 
 If you want to contact me you can reach me at <stv.herrera@gmail.comm>.
 
 ## License
 
-This project uses the following license: [<license_name>](<link>).
+This project uses the following license: [`License`](./COPYING).
 
