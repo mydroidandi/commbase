@@ -22,10 +22,8 @@ Here are some ideas to get you started:
 
 
 ```css
-path/to/commbase
-│		The directory commbase
-├── bundled
-│		│	Stores the packaged software source
+path/to/commbase	# The directory commbase
+├── bundled 	# Stores the packaged software source
 │   ├── audiobooks
 │   ├── distributed-ai
 │   │   └── x-conversation-mode-ai
