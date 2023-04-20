@@ -115,7 +115,7 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 
 Thanks to the following people who have contributed to this project:
 
-* [@estebanways](https://github.com/estebanways) 📖
+* [@estebanways](https://github.com/estebanways)
 
 ## Contact
 
