@@ -44,7 +44,7 @@ path/to/commbase  # The directory commbase
 │   ├── vosk
 │   │   └── model
 │   └── vu-meter
-├── config
+├── config  # Stores the configuration files
 ├── data
 ├── docs
 ├── history
