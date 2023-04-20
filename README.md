@@ -21,7 +21,7 @@ Here are some ideas to get you started:
 
 
 
-```sh
+```css
 path/to/commbase
 │		The directory commbase
 ├── bundled
