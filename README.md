@@ -34,7 +34,8 @@ This project is coded and organized like this:
 path/to/commbase  # The directory commbase
 ├── bundled  # Stores the packaged software source
 │   ├── agents
-│   │   └── x-conversation-mode-ai
+│   │   ├── x-conversation-mode-ai
+│		│   └── ...
 │   └── broker
 │       ├── audiobooks
 │		    ├── PyAudio-0.2.11
@@ -56,50 +57,51 @@ path/to/commbase  # The directory commbase
 │   ├── deployment
 │   └── utilities
 └── src  # Stores the source code files of the project
-    ├── distribuited-ai  #  
+    ├── agents  # Stores the source code for every distribuited-ai agent
     │   └── x-conversation-mode-ai
     │       ├── includes
     │       └── ...
-    ├── includes
-    │   ├── routines
-    │   ├── skills
-    │   │   ├── custom
-    │   │   │   ├── parsers
-    │   │   │   └── runners
-    │   │   ├── default
-    │   │   │   ├── parsers
-    │   │   │   └── runners
-    │   │   └── essential
-    │   │       ├── parsers
-    │   │       └── runners
-    │   ├── skillsets
-    │   │   ├── custom
-    │   │   │   ├── parsers
-    │   │   │   └── runners
-    │   │   └── default
-    │   │       ├── parsers
-    │   │       └── runners
-    │   └── skill-testing
-    ├── skill-patterns
-    │   ├── custom
-    │   ├── default
-    │   └── essential
-    ├── skill-scripts
-    │   ├── custom
-    │   │   ├── bash
-    │   │   ├── c
-    │   │   ├── java
-    │   │   ├── multi-lang
-    │   │   ├── nodejs
-    │   │   └── python
-    │   └── default
-    │       ├── bash
-    │       ├── c
-    │       ├── java
-    │       ├── multi-lang
-    │       ├── nodejs
-    │       └── python
-    └── talks
+    └── broker
+        ├── includes
+        │   ├── routines
+        │   ├── skills
+        │   │   ├── custom
+        │   │   │   ├── parsers
+        │   │   │   └── runners
+        │   │   ├── default
+        │   │   │   ├── parsers
+        │   │   │   └── runners
+        │   │   └── essential
+        │   │       ├── parsers
+        │   │       └── runners
+        │   ├── skillsets
+        │   │   ├── custom
+        │   │   │   ├── parsers
+        │   │   │   └── runners
+        │   │   └── default
+        │   │       ├── parsers
+        │   │       └── runners
+        │   └── skill-testing
+        ├── skill-patterns
+        │   ├── custom
+        │   ├── default
+        │   └── essential
+        ├── skill-scripts
+        │   ├── custom
+        │   │   ├── bash
+        │   │   ├── c
+        │   │   ├── java
+        │   │   ├── multi-lang
+        │   │   ├── nodejs
+        │   │   └── python
+        │   └── default
+        │       ├── bash
+        │       ├── c
+        │       ├── java
+        │       ├── multi-lang
+        │       ├── nodejs
+        │       └── python
+        └── talks
 ```
 
 ## Contributing
