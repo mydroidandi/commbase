@@ -34,7 +34,7 @@ This project is coded and organized like this:
 path/to/commbase  # The directory commbase
 ├── bundled  # Stores the packaged software source
 │   ├── agents  # Stores the packaged software of the distributed-ai agents
-│   │   ├── x-conversation-mode-ai # Stores the packaged software of the agent x-conversation-ai
+│   │   ├── x-conversation-mode-ai  # Stores the packaged software of the agent x-conversation-ai
 │   │   └── ...
 │   └── broker  # Stores the packaged software of the distributed-ai broker
 │       ├── audiobooks  # Stores licensed audio files used by a default Commbase command
@@ -51,7 +51,7 @@ path/to/commbase  # The directory commbase
 ├── docs  # Stores the human-readable guides of Commbase users
 ├── history  # Stores the Commbase command history file
 ├── log	 # Stores the Commbase log and the log required log files of particular skills
-├── screenshots  # Stores the Commbase image commbase.png
+├── screenshots  # Stores the image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
 │   ├── configuration
 │   ├── deployment
@@ -69,17 +69,17 @@ path/to/commbase  # The directory commbase
         │   │   │   ├── parsers  # Stores te parser functions ordered by app/name from a to z
         │   │   │   └── runners  # Stores the runner functions ordered by app/name from a to z
         │   │   ├── default  # Stores the library of skills distributed with the app
-        │   │   │   ├── parsers  # Stores te parser functions ordered by app/name from a to z
+        │   │   │   ├── parsers  # Stores the parser functions ordered by app/name from a to z
         │   │   │   └── runners  # Stores the runner functions ordered by app/name from a to z
         │   │   └── essential  # Stores the library of essential skills distributed with the app
-        │   │       ├── parsers  # Stores te parser functions ordered by app/name from a to z
+        │   │       ├── parsers  # Stores the parser functions ordered by app/name from a to z
         │   │       └── runners # Stores the runner functions ordered by app/name from a to z
         │   ├── skillsets  # Stores the broker skillsets
         │   │   ├── custom  # Stores the library of skillsets created by end users (skillset trainers)
-        │   │   │   ├── parsers  # Stores te parser functions ordered by app/name from a to z
+        │   │   │   ├── parsers  # Stores the parser functions ordered by app/name from a to z
         │   │   │   └── runners  # Stores the runner functions ordered by app/name from a to z
         │   │   └── default  # Stores the library of skillsets distributed with the app
-        │   │       ├── parsers  # Stores te parser functions ordered by app/name from a to z
+        │   │       ├── parsers  # Stores the parser functions ordered by app/name from a to z
         │   │       └── runners  # Stores the runner functions ordered by app/name from a to z
         │   └── skill-testing  # Stores the skills or skillsets under end user (programmer/trainer) testing
         ├── skill-patterns  # Stores all the language patterns of every broker skill
