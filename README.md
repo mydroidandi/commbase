@@ -34,16 +34,17 @@ This project is coded and organized like this:
 path/to/commbase  # The directory commbase
 ├── bundled  # Stores the packaged software source
 │   ├── audiobooks
-│   ├── distributed-ai
+│   ├── agents
 │   │   └── x-conversation-mode-ai
-│   ├── PyAudio-0.2.11
-│   ├── scripts
-│   │   └── utilities
-│   ├── sounds
-│   ├── tensorf
-│   ├── vosk
-│   │   └── model
-│   └── vu-meter
+│   └── broker
+│		    ├── PyAudio-0.2.11
+│		    ├── scripts
+│		    │   └── utilities
+│		    ├── sounds
+│		    ├── tensorf
+│		    ├── vosk
+│		    │   └── model
+│		    └── vu-meter
 ├── config  # Stores the configuration files
 ├── data  # Stores the voice recognition model results
 ├── docs  # Stores the human-readable guides for Commbase users
@@ -55,8 +56,10 @@ path/to/commbase  # The directory commbase
 │   ├── deployment
 │   └── utilities
 └── src  # Stores the source code files of the project
-    ├── distribuited-ai
+    ├── distribuited-ai  #  
     │   └── x-conversation-mode-ai
+    │       ├── includes
+    │       └── ...
     ├── includes
     │   ├── routines
     │   ├── skills
