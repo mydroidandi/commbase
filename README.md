@@ -12,7 +12,7 @@ Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed 
 
 To start using Commbase enter the commbase command in a terminal:
 
-```shell
+```bash
 $ commbase start
 ```
 
@@ -47,14 +47,14 @@ path/to/commbase  # The directory commbase
 ├── config  # Stores the configuration files
 ├── data  # Stores the voice recognition model results
 ├── docs  # Stores the human-readable guides for Commbase users
-├── history # Stores the Commbase command history file
-├── log	# Stores the Commbase log and the log required log files for particular skills
-├── screenshots
-├── scripts
+├── history  # Stores the Commbase command history file
+├── log	 # Stores the Commbase log and the log required log files for particular skills
+├── screenshots  # Stores the Commbase image commbase.png
+├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
 │   ├── configuration
 │   ├── deployment
 │   └── utilities
-└── src
+└── src  # Stores the source code files of the project
     ├── distribuited-ai
     │   └── x-conversation-mode-ai
     ├── includes
