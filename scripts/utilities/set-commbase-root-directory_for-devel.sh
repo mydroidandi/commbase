@@ -3,7 +3,8 @@
 # Sets the environment variable permanently, making each user to have a separate
 # setting.
 
-# Check whether the directory specified by the variable does not exist
+# This code checks whether the environment variable COMMBASE_ROOT_DIR is not set
+# or is empty.
 if [[ ! "$COMMBASE_ROOT_DIR" ]]; then 
 	echo "" >> ~/.bashrc
 	echo "# The Commbase directory for the Bash shell" >> ~/.bashrc
