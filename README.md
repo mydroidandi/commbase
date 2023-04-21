@@ -6,7 +6,7 @@ Conversational AI Assistant and AI Hub for Computers and Droids
 
 ## Introduction
 
-Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or appliance. It works on general-purpose operating systems without requiring an internet connection. He/She can by improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
+Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or appliance. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
 
 ## Usage
 
@@ -48,7 +48,7 @@ path/to/commbase  # The directory commbase
 ├── data  # Stores the voice recognition model results
 ├── docs  # Stores the human-readable guides for Commbase users
 ├── history # Stores the Commbase command history file
-├── log
+├── log	# Stores the Commbase log and the log required log files for particular skills
 ├── screenshots
 ├── scripts
 │   ├── configuration
