@@ -12,7 +12,7 @@ Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed 
 
 To start using Commbase enter the commbase command in a terminal:
 
-```bash
+```shell
 $ commbase start
 ```
 
