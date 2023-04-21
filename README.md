@@ -58,9 +58,10 @@ path/to/commbase  # The directory commbase
 │   └── utilities
 └── src  # Stores the source code files of the project
     ├── agents  # Stores the source code of the distributed-ai agents
-    │   └── x-conversation-mode-ai
-    │       ├── includes  # Stores the includes of the agent x-conversation-mode-ai
-    │       └── ...
+    │   ├── x-conversation-mode-ai
+    │   │   ├── includes  # Stores the includes of the agent x-conversation-mode-ai
+    │   │   └── ...
+    │   └── ...
     └── broker  # Stores the source code files of the distributed-ai broker
         ├── includes  # Stores the functions of the distributed-ai broker
         │   ├── routines  # Stores the broker routines
