@@ -6,7 +6,7 @@ Conversational AI Assistant and AI Hub for Computers and Droids
 
 ## Introduction
 
-Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or appliance. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
+Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
 
 ## Usage
 
@@ -33,75 +33,77 @@ This project is coded and organized like this:
 ```sh
 path/to/commbase  # The directory commbase
 ├── bundled  # Stores the packaged software source
-│   ├── agents
-│   │   ├── x-conversation-mode-ai
+│   ├── agents  # Stores the packaged software of the distributed-ai agents
+│   │   ├── x-conversation-mode-ai # Stores the packaged software of the agent x-conversation-ai 
 │		│   └── ...
-│   └── broker
-│       ├── audiobooks
-│		    ├── PyAudio-0.2.11
+│   └── broker  # Stores the packaged software of the distributed-ai broker
+│       ├── audiobooks  # Stores licensed audio files used by a default Commbase command
+│		    ├── PyAudio-0.2.11  # Stores the source to compile PyAudio for Python
 │		    ├── scripts
-│		    │   └── utilities
-│		    ├── sounds
-│		    ├── tensorf
+│		    │   └── utilities  # Stores scripts to verify or troubleshoot the Commbase installation
+│		    ├── sounds  # Stores the Commbase sound and alert audio files
+│		    ├── tensorf  # Stores the packaged tensorflow library
 │		    ├── vosk
-│		    │   └── model
+│		    │   └── model  # Stores the Vosk model
 │		    └── vu-meter
 ├── config  # Stores the configuration files
 ├── data  # Stores the voice recognition model results
-├── docs  # Stores the human-readable guides for Commbase users
+├── docs  # Stores the human-readable guides of Commbase users
 ├── history  # Stores the Commbase command history file
-├── log	 # Stores the Commbase log and the log required log files for particular skills
+├── log	 # Stores the Commbase log and the log required log files of particular skills
 ├── screenshots  # Stores the Commbase image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
 │   ├── configuration
 │   ├── deployment
 │   └── utilities
 └── src  # Stores the source code files of the project
-    ├── agents  # Stores the source code for every distribuited-ai agent
+    ├── agents  # Stores the source code of the distributed-ai agents
     │   └── x-conversation-mode-ai
-    │       ├── includes
+    │       ├── includes  # Stores the includes of the agent x-conversation-mode-ai
     │       └── ...
-    └── broker
-        ├── includes
-        │   ├── routines
-        │   ├── skills
-        │   │   ├── custom
-        │   │   │   ├── parsers
-        │   │   │   └── runners
-        │   │   ├── default
-        │   │   │   ├── parsers
-        │   │   │   └── runners
-        │   │   └── essential
-        │   │       ├── parsers
-        │   │       └── runners
-        │   ├── skillsets
-        │   │   ├── custom
-        │   │   │   ├── parsers
-        │   │   │   └── runners
-        │   │   └── default
-        │   │       ├── parsers
-        │   │       └── runners
-        │   └── skill-testing
-        ├── skill-patterns
-        │   ├── custom
-        │   ├── default
-        │   └── essential
-        ├── skill-scripts
-        │   ├── custom
-        │   │   ├── bash
+    └── broker  # Stores the source code files of the distributed-ai broker
+        ├── includes  # Stores the functions of the distributed-ai broker
+        │   ├── routines  # Stores the broker routines
+        │   ├── skills  # Stores the broker skills
+        │   │   ├── custom  # Stores the library of skills created by end users (skill programmers)
+        │   │   │   ├── parsers  # Stores te parser functions ordered by app/name from a to z
+        │   │   │   └── runners  # Stores the runner functions ordered by app/name from a to z
+        │   │   ├── default  # Stores the library of skills distributed with the app
+        │   │   │   ├── parsers  # Stores te parser functions ordered by app/name from a to z
+        │   │   │   └── runners  # Stores the runner functions ordered by app/name from a to z
+        │   │   └── essential  # Stores the library of essential skills distributed with the app
+        │   │       ├── parsers  # Stores te parser functions ordered by app/name from a to z
+        │   │       └── runners # Stores the runner functions ordered by app/name from a to z
+        │   ├── skillsets  # Stores the broker skillsets
+        │   │   ├── custom  # Stores the library of skillsets created by end users (skillset trainers)
+        │   │   │   ├── parsers  # Stores te parser functions ordered by app/name from a to z
+        │   │   │   └── runners  # Stores the runner functions ordered by app/name from a to z
+        │   │   └── default  # Stores the library of skillsets distributed with the app
+        │   │       ├── parsers  # Stores te parser functions ordered by app/name from a to z
+        │   │       └── runners  # Stores the runner functions ordered by app/name from a to z
+        │   └── skill-testing  # Stores the skills or skillsets under end user (programmer/trainer) testing
+        ├── skill-patterns  # Stores all the language patterns of every broker skill
+        │   ├── custom  # Stores the custom skill-patterns for the custom skills
+        │   ├── default  # Stores the default skill-patterns for the default skills
+        │   └── essential  # Stores the essential skill-patterns for the essential skills
+        ├── skill-scripts  # Stores the library of skill-scripts called from custom or default skills
+        │   ├── custom  # Stores the skill-scripts for the custom skills ordered by programming language
+        │   │   ├── bash  # Stores the bash skill-scripts for the custom skills
         │   │   ├── c
         │   │   ├── java
         │   │   ├── multi-lang
         │   │   ├── nodejs
-        │   │   └── python
-        │   └── default
-        │       ├── bash
+        │   │   ├── python  # Stores the python skill-scripts for the custom skills
+        │   │   └── ...
+        │   └── default  # Stores the skill-scripts for the default skills ordered by programming language
+        │       ├── bash  # Stores the bash skill-scripts for the default skills
         │       ├── c
         │       ├── java
         │       ├── multi-lang
         │       ├── nodejs
-        │       └── python
-        └── talks
+        │       ├── python  # Stores the python skill-scripts for the default skills
+        │       └── ...
+        └── talks  # Stores the Commbase introduction and any other custom talk
 ```
 
 ## Contributing
