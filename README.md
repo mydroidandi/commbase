@@ -37,15 +37,15 @@ path/to/commbase  # The directory commbase
 │   │   ├── x-conversation-mode-ai # Stores the packaged software of the agent x-conversation-ai
 │   │   └── ...
 │   └── broker  # Stores the packaged software of the distributed-ai broker
-│       ├── audiobooks  # Stores licensed audio files used by a default Commbase command
-│		    ├── PyAudio-0.2.11  # Stores the source to compile PyAudio for Python
-│		    ├── scripts
-│		    │   └── utilities  # Stores scripts to verify or troubleshoot the Commbase installation
-│		    ├── sounds  # Stores the Commbase sound and alert audio files
-│		    ├── tensorf  # Stores the packaged tensorflow library
-│		    ├── vosk
-│		    │   └── model  # Stores the Vosk model
-│		    └── vu-meter
+│       ├── audiobooks  # Stores licensed audio files used by a default Commbase command
+│       ├── PyAudio-0.2.11  # Stores the source to compile PyAudio for Python
+│       ├── scripts
+│       │   └── utilities  # Stores scripts to verify or troubleshoot the Commbase installation
+│       ├── sounds  # Stores the Commbase sound and alert audio files
+│       ├── tensorf  # Stores the packaged tensorflow library
+│       ├── vosk
+│       │   └── model  # Stores the Vosk model
+│       └── vu-meter
 ├── config  # Stores the configuration files
 ├── data  # Stores the voice recognition model results
 ├── docs  # Stores the human-readable guides of Commbase users
