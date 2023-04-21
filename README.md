@@ -33,10 +33,10 @@ This project is coded and organized like this:
 ```sh
 path/to/commbase  # The directory commbase
 ├── bundled  # Stores the packaged software source
-│   ├── audiobooks
 │   ├── agents
 │   │   └── x-conversation-mode-ai
 │   └── broker
+│       ├── audiobooks
 │		    ├── PyAudio-0.2.11
 │		    ├── scripts
 │		    │   └── utilities
