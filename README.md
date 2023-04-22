@@ -10,11 +10,17 @@ Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed 
 
 ## Usage
 
-To start using Commbase enter the commbase command in a terminal:
+After the [`installation`](./INSTALL, run the next command in a terminal to start Commbase:
 
-```bash
-$ commbase start
-```
+$ `commbase start`
+
+Commbase will be ready to receive terminal Commbase commands, voice Commbase commands, and assist you.
+
+For more terminal options, run:
+
+$ `commbase -h`
+
+Checkout the User's Guide for a complete list of options.
 
 ## Installation
 
