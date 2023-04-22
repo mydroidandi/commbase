@@ -36,7 +36,7 @@ render_ui() {
 
 	# On the window 0, "Commbase", select the pane 1 (by default), run any shell
 	# command, send the enter key (press enter), and sleep.
-	tmux send-keys "$PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/core/voice-recognition.py" C-m;
+	tmux send-keys "$PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/src/broker/voice-recognition.py" C-m;
 
 	# Pane 2
 	# On the window 0, "Commbase", select the pane 2, activate the conda 
@@ -45,7 +45,7 @@ render_ui() {
 
 	# On the window 0, "Commbase", select the pane 2, run any shell command, send
 	# the enter key (press enter), and sleep.
-	tmux select-pane -t 2 && tmux send-keys "$PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/bundled/vu-meter/vu_meter.py" C-m;
+	tmux select-pane -t 2 && tmux send-keys "$PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/bundled/broker/vu-meter/vu_meter.py" C-m;
 
 	# Pane 3
 	# On the window 0, "Commbase", select the pane 3, activate the conda 
@@ -79,7 +79,7 @@ render_ui() {
 			# Window 2	
 			# Auto create a new window for a countdown timer of 25 mins and start it
 			tmux new-window -t Commbase-0:3 -n "Timer" && tmux send-keys "conda activate commbase_env ; clear" C-m && sleep $time;
-			tmux select-window -t 3 && tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 25" C-m;
+			tmux select-window -t 3 && tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/src/broker/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 25" C-m;
 		fi
 		
 		if [ "$ENABLE_TMUX_EXTRA_WINDOW_SERVER1" = "true" ];then
