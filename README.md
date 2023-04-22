@@ -2,6 +2,8 @@
 
 Conversational AI Assistant and AI Hub for Computers and Droids
 
+[![python version](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue)](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue)
+
 <img alt="Neovim" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
 
 ## Introduction
