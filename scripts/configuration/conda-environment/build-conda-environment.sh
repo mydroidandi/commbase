@@ -16,7 +16,7 @@ recreate_conda_env(){
 	conda remove -n $CONDA_ENV_NAME --all
 
 	# Recreate a new environment commbase_env
-	conda env create -f "$COMMBASE_ROOT_DIR/commbase/config-scripts/conda-environment/$CONDA_ENV_FILENAME"
+	conda env create -f "$COMMBASE_ROOT_DIR/commbase/$CONDA_ENV_FILENAME"
 
 	# List the environment
 	conda info --envs
