@@ -216,7 +216,7 @@ wide, so there is use re-installing python3, pip3, or vosk.
 PyAudio‑0.2.11:
 $ pip3.7 install PyAudio‑0.2.11
 Or download from pypi.org:
-$ tar xvzf tar xvzf PyAudio-0.2.11.tar.gz
+$ tar xvzf PyAudio-0.2.11.tar.gz
 $ cp PyAudio-0.2.11.tar.gz $HOME/Commbase/commbase/base-vosk
 $ Set up permissions for the directory:
 $ chmod 755 PyAudio‑0.2.11
@@ -381,10 +381,13 @@ nmap
 openssh-server (server and client)
 play
 pkill (it comes installed with the base system sometimes, in a package with another name)
+portaudio19-dev (seen in the section of PyAudio)
+python3-opencv (seen in the installation of OpenCV)
 rsync
 sed
 sox
 sudo
+tar (seen in the section of PyAudio)
 tasksel
 tmux
 unzip
@@ -395,7 +398,7 @@ Use APT to install packages from the official repositories for your distro, like
 $ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
 
 For example, this is the actual one-liner command someone could require:
-$ sudo apt-get update; sudo apt-get install alsa-utils bash curl dash festival ffmpeg gawk gdebi git mpv mplayer nmap openssh-server rsync sed sox sudo tasksel tmux unzip uuid-runtime wget
+$ sudo apt-get update; sudo apt-get install alsa-utils bash curl dash festival ffmpeg gawk gdebi git mpv mplayer nmap openssh-server portaudio19-dev python3-opencv rsync sed sox sudo tar tasksel tmux unzip uuid-runtime wget
 
 Installation troubleshooting:
 

@@ -17,7 +17,7 @@ import os.path
 
 # Get environment variables
 # The Commbase directory + the path to the model:
-COMMBASE_MODEL = '$COMMBASE_ROOT_DIR/commbase/bundled/vosk/model'
+COMMBASE_MODEL = '$COMMBASE_ROOT_DIR/commbase/bundled/broker/vosk/model'
 #print (string.Template(COMMBASE_MODEL).substitute(os.environ))
 
 q = queue.Queue()
@@ -124,7 +124,7 @@ def print_result():
 			writetofiletwo()
 			#append_new_line()
 
-		COMMBASE_PROCESS_FILE = 'bash ' + os.environ["COMMBASE_ROOT_DIR"] + '/commbase/core/central-processing.sh'
+		COMMBASE_PROCESS_FILE = 'bash ' + os.environ["COMMBASE_ROOT_DIR"] + '/commbase/src/broker/central-processing.sh'
 		o = subprocess.run (COMMBASE_PROCESS_FILE, shell=True, capture_output=True)
 		# Prints clean, as text:
 		print(o.stdout.decode())
