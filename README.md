@@ -1,12 +1,12 @@
 # Commbase <img align="center" alt="Visual Studio Code" width="10%" src="commbase.png" />
 
-Conversational AI Assistant and AI Hub for Computers and Droids
+Programmable conversational AI assistant and distributed AI for single computers or droids
 
-[![python version](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue)](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue)
-
-<img alt="Neovim" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
+[![python version](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue)](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue)
 
 ## Introduction
+
+<img alt="Neovim" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
 
 Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
 
