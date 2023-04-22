@@ -20,7 +20,7 @@ For more terminal options, run:
 
 `commbase -h`
 
-Checkout the User's Guide for a complete list of options.
+Check out the User's Guide for a complete list of options.
 
 ## Installation
 
