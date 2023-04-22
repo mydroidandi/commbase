@@ -128,10 +128,10 @@ display_version() {
 route_option() {
 
 	# Imports
-	source $COMMBASE_ROOT_DIR/commbase/core/includes/routines/render_ui;
+	source $COMMBASE_ROOT_DIR/commbase/src/broker/includes/routines/render_ui;
 
 	# Data processing.
-	COMMBASE_PROCESS_FILE="$COMMBASE_ROOT_DIR/commbase/core/central-processing.sh";
+	COMMBASE_PROCESS_FILE="$COMMBASE_ROOT_DIR/commbase/src/broker/central-processing.sh";
 
 	# First tmux session
 	SESSIONNAME="Commbase-0";
