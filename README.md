@@ -14,7 +14,7 @@ After the [`installation`](./INSTALL, run the next command in a terminal to star
 
 $ `commbase start`
 
-Commbase will be ready to receive terminal Commbase commands, voice Commbase commands, and assist you.
+Commbase will be ready to receive terminal Commbase commands and voice Commbase commands to assist you.
 
 For more terminal options, run:
 
