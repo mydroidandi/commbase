@@ -10,7 +10,7 @@ Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed 
 
 ## Usage
 
-After the [`installation`](./INSTALL, run the next command in a terminal to start Commbase:
+[`INSTALL`](./INSTALL and then run the next command in a terminal to start Commbase:
 
 $ `commbase start`
 
