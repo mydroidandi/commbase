@@ -43,8 +43,9 @@ This project is coded and organized like this:
 path/to/commbase  # The directory commbase
 ├── bundled  # Stores the packaged software source
 │   ├── agents  # Stores the packaged software of the distributed-ai agents
-│   │   ├── x-conversation-mode-ai  # Stores the packaged software of the agent x-conversation-ai
-│   │   └── ...
+│   │   └── custom
+│   │       ├── x-conversation-mode-ai  # Stores the packaged software of the agent x-conversation-ai
+│   │       └── ...
 │   └── broker  # Stores the packaged software of the distributed-ai broker
 │       ├── audiobooks  # Stores licensed audio files used by a default Commbase command
 │       ├── PyAudio-0.2.11  # Stores the source to compile PyAudio for Python
@@ -67,10 +68,11 @@ path/to/commbase  # The directory commbase
 │   └── utilities
 └── src  # Stores the source code files of the project
     ├── agents  # Stores the source code of the distributed-ai agents
-    │   ├── x-conversation-mode-ai
-    │   │   ├── includes  # Stores the includes of the agent x-conversation-mode-ai
-    │   │   └── ...
-    │   └── ...
+    │   └── custom
+    │       ├── x-conversation-mode-ai
+    │       │   ├── includes  # Stores the includes of the agent x-conversation-mode-ai
+    │       │   └── ...
+    │       └── ...
     └── broker  # Stores the source code files of the distributed-ai broker
         ├── includes  # Stores the functions of the distributed-ai broker
         │   ├── routines  # Stores the broker routines
