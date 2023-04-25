@@ -179,8 +179,8 @@ try:
 
     with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
                             channels=1, callback=callback):
-            def avatar():
-            	commbase = '''
+            def display_avatar():
+            	avatar = '''
               ____  ________  _ ____ _________
               _ _ ___ __-___╔⌂_┐ __________ _
                __ _'_ ║⌂j░-╬]j` ▒╨¿r«Ñ__r- ___
@@ -204,8 +204,8 @@ try:
               ⁿ___  ________╚ _ ____`_________
 
             	'''
-            	print(commbase)
-            avatar()
+            	print(avatar)
+            display_avatar()
  	        	#print('Press Ctrl+C to stop the recording')
             print(f"\033[{color_code_start}COMMBASE:\033[{color_code_end} Mute the microphone to pause the recording ...\033[0m")
 
