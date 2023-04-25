@@ -20,6 +20,10 @@ import os.path
 COMMBASE_MODEL = '$COMMBASE_ROOT_DIR/commbase/bundled/broker/vosk/model'
 #print (string.Template(COMMBASE_MODEL).substitute(os.environ))
 
+# Define the commbase tag color codes
+color_code_start = "1;41m"
+color_code_end = "1;m"
+
 q = queue.Queue()
 
 def int_or_str(text):
@@ -175,10 +179,27 @@ try:
 
     with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
                             channels=1, callback=callback):
-            print('#' * 80)
- 	        #print('Press Ctrl+C to stop the recording')
-            print('Mute the Microphone to pause the recording')
-            print('#' * 80)
+            def appearance():
+            	commbase = '''
+              _____`,√²j╙▒╬▓▒▀╫▒╫φÑ╠H]d^_ _  ^
+              __   ÖKÖ5▒Ω7╬▌▄▓▀▒▒▀░«H«`r ⌐__ _
+              ___ _~-_²``rΩ"W╫6╬]î═''" ______ 
+              ,___ ╘_-____  │ÅÑ╩_  __ _ⁿ╧~__ ┌
+              ^%╟¿,««__,∩ _« ▒Ñ___╔__  ]æⁿjU'_
+              __ⁿ╨┤╢▄▒╟╜Q_ __╟ß__j½Φ░╫╢╫S╨╚` _
+              __ ~²╠▒▓▌▌ÑH __╫╕__`²D╫╨╫╜^^____
+              _____\8╫RÑÅ░___╟P___╠≤NΩⁿⁿ______
+              _____ __Ñ¼░H_  ╠M   ╦░_╘________
+              _____ _ "]ñ▄╪═,--."Y*╛___ _____ 
+              ___________  ______~  __________   	
+            	'''
+            	print(commbase)
+            appearance()
+            #print('#' * 80)
+ 	        	#print('Press Ctrl+C to stop the recording')
+            #print('Mute the microphone to pause the recording')
+            print(f"\033[{color_code_start}COMMBASE:\033[{color_code_end} Mute the microphone to pause the recording ...\033[0m")
+            #print('#' * 80)
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
