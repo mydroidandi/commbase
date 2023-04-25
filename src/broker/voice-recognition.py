@@ -195,11 +195,8 @@ try:
             	'''
             	print(commbase)
             appearance()
-            #print('#' * 80)
  	        	#print('Press Ctrl+C to stop the recording')
-            #print('Mute the microphone to pause the recording')
             print(f"\033[{color_code_start}COMMBASE:\033[{color_code_end} Mute the microphone to pause the recording ...\033[0m")
-            #print('#' * 80)
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
