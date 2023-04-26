@@ -652,7 +652,7 @@ $ top
 
 Press 'q' to exit.
 
-If you experience problems with the Python performance when running Commbase, you can yet change the value of the variable PYTHON_CPU_LIMIT_PERCENTAGE in the file commbase/config/commbase.conf from 1 to appropriately 400. Usually 1 - 100, but can be higher on multicore CPUs.
+If you experience problems with the Python performance when running Commbase, you can yet change the value of the variable PYTHON_CPU_LIMIT_PERCENTAGE in the file commbase/config/commbase.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
 
 Considerations on how to choose an optimal Python CPU limit percentage:
 
