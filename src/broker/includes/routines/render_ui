@@ -36,7 +36,7 @@ render_ui() {
 
 	# On the window 0, "Commbase", select the pane 1 (by default), run any shell
 	# command, send the enter key (press enter), and sleep.
-	tmux send-keys "$PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/src/broker/voice-recognition.py" C-m;
+	tmux send-keys "cpulimit --limit=$PYTHON_CPU_LIMIT_PERCENTAGE -- $PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/src/broker/voice-recognition.py" C-m;
 
 	# Pane 2
 	# On the window 0, "Commbase", select the pane 2, activate the conda 

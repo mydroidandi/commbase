@@ -41,6 +41,8 @@ Content
 
 3. Next steps
 
+4. CPU Limit
+
 
 1. Installation
 ================
@@ -637,4 +639,28 @@ The output should be the Commbase introduction, which means that the "demo skill
 From here, you should decide to start programming new "custom skills" from an initial Commbase installation with "demo skills" or proceed to install the "sample skills", before programming/editing existing "default skills" or new "custom skills" for Commbase.
 
 Check out the document User's Guide in the directory docs/ for a complete list of options.
+
+
+4. CPU limit
+=============
+
+Running Commbase can over stress the Central Process Unit (CPU) depending on your CPU and hardware.
+
+You can verify the Commbase performance on your computer in many ways, for example, run top and verify the Python process row:
+
+$ top
+
+Press 'q' to exit.
+
+If you experience problems with the Python performance when running Commbase, you can yet change the value of the variable PYTHON_CPU_LIMIT_PERCENTAGE in the file commbase/config/commbase.conf from 1 to appropriately 400. Usually 1 - 100, but can be higher on multicore CPUs.
+
+Considerations on how to choose an optimal Python CPU limit percentage:
+
+The maximum CPU percentage usage that is accepted before the CPU gets hot depends on several factors, including the CPU model, its thermal design power (TDP), cooling system, and workload.
+
+In general, most modern CPUs are designed to operate at 100% usage for extended periods without overheating, provided that the cooling system can keep the temperature within safe limits. However, sustained high CPU usage can increase the temperature of the CPU and the surrounding components, which can reduce their lifespan and cause stability issues.
+
+To prevent overheating and ensure the longevity of the CPU, it is recommended to keep the temperature below its maximum operating temperature, which is typically specified by the CPU manufacturer. This temperature varies depending on the model and can range from 60 °C to 100 °C or higher.
+
+In practical terms, if you notice that the temperature of your CPU is consistently above 80 °C or that your system is becoming unstable or unresponsive during high CPU usage, you may want to reduce the CPU load or optimize the cooling system to avoid damage to the hardware.
 
