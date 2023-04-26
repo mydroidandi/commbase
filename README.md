@@ -17,7 +17,7 @@ Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed 
 
 `commbase start`
 
-Commbase will be ready to receive terminal Commbase commands and voice Commbase commands to assist you.
+Commbase will be ready to receive Commbase voice commands and Commbase terminal commands to assist you.
 
 For more terminal options, run:
 

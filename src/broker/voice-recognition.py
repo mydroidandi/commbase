@@ -179,8 +179,16 @@ try:
 
     with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
                             channels=1, callback=callback):
-            def appearance():
-            	commbase = '''
+            def display_avatar():
+            	avatar = '''
+              ____  ________  _ ____ _________
+              _ _ ___ __-___╔⌂_┐ __________ _
+               __ _'_ ║⌂j░-╬]j` ▒╨¿r«Ñ__r- ___
+              ___  tU 7╩╫╫DÜ╨« ╓DÜ╫n╫]≥╫*_____
+              __ __]7X^╟*╗║▀╨ª╢▒▀▌ßBÜ>«"___«_'
+              ___*,"7Ü¼═▀#Ñ▌╫▒╫╬Q╫¼▌U╬░%.≡ ___
+              __ _`ju└╠╦j░╟▒╫▌▓▀╠Å▀╬╫Å¡╚n _ _ 
+               ___-«░τ╬Ñ▌≡╣▒╫▀╫M╬▄Å▀╬]Ü; ` __ 
               _____`,√²j╙▒╬▓▒▀╫▒╫φÑ╠H]d^_ _  ^
               __   ÖKÖ5▒Ω7╬▌▄▓▀▒▒▀░«H«`r ⌐__ _
               ___ _~-_²``rΩ"W╫6╬]î═''" ______ 
@@ -191,10 +199,13 @@ try:
               _____\8╫RÑÅ░___╟P___╠≤NΩⁿⁿ______
               _____ __Ñ¼░H_  ╠M   ╦░_╘________
               _____ _ "]ñ▄╪═,--."Y*╛___ _____ 
-              ___________  ______~  __________   	
+              ___________  ______~  __________
+              __  __________``,_______ -______
+              ⁿ___  ________╚ _ ____`_________
+
             	'''
-            	print(commbase)
-            appearance()
+            	print(avatar)
+            display_avatar()
  	        	#print('Press Ctrl+C to stop the recording')
             print(f"\033[{color_code_start}COMMBASE:\033[{color_code_end} Mute the microphone to pause the recording ...\033[0m")
 
