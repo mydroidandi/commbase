@@ -100,6 +100,7 @@ path/to/commbase  # The directory commbase
         │   └── essential  # Stores the essential skill-patterns for the essential skills
         ├── skill-scripts  # Stores the library of skill-scripts called from custom or default skills
         │   ├── custom  # Stores the skill-scripts for the custom skills ordered by programming language
+        │   │   ├── arduino        
         │   │   ├── bash  # Stores the bash skill-scripts for the custom skills
         │   │   ├── c
         │   │   ├── java
@@ -108,6 +109,7 @@ path/to/commbase  # The directory commbase
         │   │   ├── python  # Stores the python skill-scripts for the custom skills
         │   │   └── ...
         │   └── default  # Stores the skill-scripts for the default skills ordered by programming language
+        │       ├── arduino
         │       ├── bash  # Stores the bash skill-scripts for the default skills
         │       ├── c
         │       ├── java
