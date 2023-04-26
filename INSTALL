@@ -456,6 +456,8 @@ alsa-utils (contains the tools: alsamixer and aplay)
 
 bash
 
+cpulimit
+
 curl
 
 dash (contains the sh command) 
@@ -512,7 +514,7 @@ $ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
 
 For example, this is the actual one-liner command someone could require:
 
-$ sudo apt-get update; sudo apt-get install alsa-utils bash curl dash festival ffmpeg gawk gdebi git mpv mplayer nmap openssh-server portaudio19-dev python3-opencv rsync sed sox sudo tar tasksel tmux unzip uuid-runtime wget
+$ sudo apt-get update; sudo apt-get install alsa-utils bash cpulimit curl dash festival ffmpeg gawk gdebi git mpv mplayer nmap openssh-server portaudio19-dev python3-opencv rsync sed sox sudo tar tasksel tmux unzip uuid-runtime wget
 
 Troubleshooting the package installation:
 
