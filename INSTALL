@@ -1,22 +1,12 @@
-File: INSTALL
-Description: Commbase installation steps.
-Notice that this file contains the Commbase version with Vosk, which allows Commbase to work locally 
-without requiring any Internet connection to process the voice-recognition. However many commands 
-will fail without connection. Any other installation requirement for alternative voice-recognition 
-methods will be placed in their respective method directory as it is added to the Commbase 
-application and tested.
-
----------
-Content:
----------
+Content
+========
 
 1. Installation
 1.1. Set up your system repository sources
 1.2. Update the system
 1.3. Install Commbase
 1.4. Set up the $COMMBASE_ROOT_DIR directory
-1.5. Set up the file commbase.conf
-1.6. Set up the Commbase executable
+1.5. Set up the Commbase executable
 2. Requisites and dependencies
 2.1. Decide which Python version to install
 2.2. Install Python
@@ -30,47 +20,46 @@ Content:
 2.10. Install Oh My Tmux
 2.11. Install the default Commbase voice commands dependencies
 2.12. Install Desktop Environments
-3. Installations for Developers
-4. Testing the Vosk model
-5. Make the scripts executable
-6. How to apply directory and file permissions recursively
-7. Key bindings
-8. Run Commbase at system boot up
-9. Setup a network of multiple Commbase devices
+3. Next steps
 
-----------------
 1. Installation
-----------------
+================
 
-Set up your system repository sources:
----------------------------------------
-For example, in GNU/Debian Linux, add the sources contrib and non-free in the file
-/etc/apt/sources
+Set up your system repository sources
+--------------------------------------
+
+For example, in GNU/Debian Linux, add the sources contrib and non-free in the file /etc/apt/sources
 $ sudo nano /etc/apt/sources
 
-Update the system:
--------------------
+Update the system
+------------------
+
 $ sudo apt-get update
 You can also upgrade it like this:
 $ sudo apt-get -u upgrade
 
-Install Commbase:
-------------------
-Visit: COMMBASE GITHUB
-Download and extract/Clone the repository from github.com and place it in the $COMMBASE_ROOT_DIR directory:
+Install Commbase
+-----------------
+
+Visit: https://github.com/mydroidandi/commbase
+Download the repository to your $HOME directory:
 $ echo $HOME
 $ cd $HOME
-$ git clone COMMBASE
+Extract the zip file:
+$ unzip commbase-main.zip
+Rename the directory commbase-main as commbase:
+$ mv commbase-main commbase
 
-Set up the $COMMBASE_ROOT_DIR directory:
------------------------------------------
-Go to the directory commbase/config-scripts/ and open the file set-commbase-root-directory.sh.
-Written in Bash language, your will see ~/.bashrc and ~/.zshrc, which are the routes to the bash and Z shell configuration files.
+Set up the $COMMBASE_ROOT_DIR directory
+----------------------------------------
+
+Go to the directory commbase/scripts/configuration/ and open the file set-commbase-root-directory.sh.
+Written in Bash language, you will see ~/.bashrc and ~/.zshrc, which are the routes to the bash and Z shell configuration files.
 $HOME is the default value of the variable $COMMBASE_ROOT_DIR.
 The variable $COMMBASE_ROOT_DIR stores the Commbase's root directory.
-You can update the content of $COMMBASE_ROOT_DIR to a custom value, such as $HOME/Developer/my_commbase. It must be updated for both sections, ~/.bashrc and ~/.zshrc, but if you don't have Z shell in your operating system, you can comment out the ~/.zshrc section before running ths script, like this:
+You can update the content of $COMMBASE_ROOT_DIR to a custom value, such as $HOME/Developer/my_commbase. It must be updated for both sections, ~/.bashrc and ~/.zshrc, but if you don't have Z shell in your operating system, you can comment out the ~/.zshrc section before running the script, like this:
 
-Section of set-commbase-root-directory:
+Section of set-commbase-root-directory.sh:
 
     #echo "" >> ~/.zshrc
     #echo "# The Commbase directory for the Z shell" >> ~/.zshrc
@@ -81,77 +70,31 @@ $ bash set-commbase-environment-variable.sh
 
 The script is going to append the variable $COMMBASE_ROOT_DIR in the files $HOME/.bashrc and $HOME/.zshrc
 
-To know more on how to make Commbase commands, checkout the section "The $COMMBASE_ROOT_DIR directory" in the User's Guide.
+To know more about making Commbase commands, check out the section "The $COMMBASE_ROOT_DIR directory" in the User's Guide.
 
 Notes about the difference Between .bashrc and .bash_profile:
-.bash_profile is read and executed when Bash is invoked as an interactive login shell, while .bashrc is executed for an interactive non-login shell.
-When Bash is invoked as an interactive non-login shell, it reads and executes commands from ~/.bashrc, if that file exists, and it is readable.
+.bash_profile is read and executed when Bash is invoked as an interactive login shell, while .bashrc is executed as an interactive non-login shell.
+When Bash is invoked as an interactive non-login shell, it reads and executes commands from ~/.bashrc, if that file exists, and is readable.
 When invoked as an interactive login shell, Bash looks for the /etc/profile file, and if the file exists , it runs the commands listed in the file. Then Bash searches for ~/.bash_profile, ~/.bash_login, and ~/.profile files, in the listed order, and executes commands from the first readable file found.
 In case of that your OS distribution does not use ~/.bashrc, add manually the variable $COMMBASE_ROOT_DIR and its value to your Bash Startup File(s).
 
-Set up the file commbase.conf:
+Set up the Commbase executable
 -------------------------------
 
-Go to the directory config/ and open the file commbase.conf
-$ nano config/commbase.conf
-
-This is a CONSTANTS file that you can edit following certain rules:
-Constants must be declared in uppercase.
-The constants are strictly ordered. They are grouped by host, beginning with the UUID variable.
-All the values assigned to constants must be quoted.
-You can add more CONSTANTS with values, but their names can not be duplicated in the file or match Commbase or system environment constants such as $COMMBASE_ROOT_DIR or $HOME.
-There should not be empty lines or spaces.
-
-The default file version contains the next values:
-
-PYTHON_ENV_VERSION="python"
-LOCAL_HOST_UUID="5ba8f927-d331-471c-b640-812d4680e310"
-HOSTNAME="shark"
-HOST_IP_ADDRESS="192.168.100.13"
-REMOTE_USER_NAME="tonystark"
-REMOTE_USER_PASSWD="USE-KEY-PAIRS"
-COMMBASE_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback"
-ALTERNATIVE_CAPTURE_DEVICE_NAME="alsa_input.pci-0000_00_1b.0.analog-stereo"
-ENABLE_TMUX_EXTRA_WINDOWS="true"
-ENABLE_TMUX_EXTRA_WINDOW_EDITOR="true"
-ENABLE_TMUX_EXTRA_WINDOW_TIMER="true"
-ENABLE_TMUX_EXTRA_WINDOW_SERVER1="true"
-ENABLE_TMUX_EXTRA_WINDOW_SERVER2="false"
-EXTERNAL_STORAGE_DRIVE_01_TAG="WD1"
-EXTERNAL_STORAGE_DRIVE_02_TAG="WD2"
-DEV_PROJECT_DIRECTORY_NAME="commbase"
-PROTONVPN_CLI_USERNAME="Tony_St4rk"
-PROTONVPN_CLI_PASSWORD="NOT-REQUIRED-ONCE-REGISTERED"
-PROTONVPN_API_USERNAME="USERNAME-IN-CONFIG-FILE-IN-/ETC/"
-PROTONVPN_API_PASSWORD="PASSWORD-IN-CONFIG-FILE-IN-/ETC/"
-SERVER_HOST_001_UUID="27475487-cab6-4050-9047-9a565e22d2b0"
-SERVER_HOST_001_HOSTNAME="shark2"
-SERVER_HOST_001_IP_ADDRESS="192.168.100.45"
-SERVER_HOST_001_USER_PASSWD="USE-KEY-PAIRS"
-
-Reset the configuraion file:
-It restores the file to its inital status.
-Go to the directory commbase/config-scripts/ and execute the file reset-commbase.conf.sh:
-$ cd config-scripts
-$ bash reset-commbase.conf.sh
-
-Set up the Commbase executable:
---------------------------------
-Go to the directory commbase/config-scripts/ and execute the file install-commbase-executable.sh:
-$ cd config-scripts
+Go to the directory commbase/scripts/configuration/install-commbase-executable/ and execute the file install-commbase-executable.sh:
+$ cd commbase/scripts/configuration/install-commbase-executable/
 $ bash install-commbase-executable.sh
 
-A new commbase file should appear in the directory /usr/bin. This file contains all the terminal versions of the Commbase voice commands.
+A new commbase file should appear in the directory /usr/bin.
 $ ls /usr/bin/commbase
 
-Do not the commbase command yet. Remember that the command commbase opens an enhanced tmux session named as Commbase-0. To avoid duplicate instances of Commbase running on the system, you need to completely close the program before rerun it once more. Check out the section "2 Start, Stop, and Teleport Commbase application" of the file User's Guide for more details regarding this topic.
+Do not run the commbase command yet. Remember that the command commbase opens an enhanced tmux session named Commbase-0. To avoid duplicate instances of Commbase running on the system, you need to completely close the program before rerunning it once more. Check out the User's Guide for more details regarding this topic.
 
--------------------------------
 2. Requisites and dependencies
--------------------------------
+===============================
 
-Decide which Python version to install:
-----------------------------------------
+Decide which Python version to install
+---------------------------------------
 
 In the next documentation sections, we present 3 alternatives to install the Commbase Python Environment:
 1. Install Python, Install Python packages.
@@ -159,18 +102,18 @@ In the next documentation sections, we present 3 alternatives to install the Com
 3. Build the Commbase Conda environment from a YAML file.
 
 From those alternatives, we recommend installing Python using the third option, Build the Commbase Conda environment from a YAML file, because of the following advantages:
-Some Anaconda Python packages are optimized for AI (Machine Learning and Data Science) .
+Some Anaconda Python packages are optimized for AI (Machine Learning and Data Science.)
 There is no need to manually create a new Commbase environment, in case of systems with multiple environments setups.
-You recreate and install all the Commbase environment, packages, and packaging dependencies all at once.
-You do not need to edit the file config/commbase.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version.
+You recreate and install the Commbase environment, packages, and packaging dependencies all at once.
+You do not need to edit the file config/commbase.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version that Commbase is going to use.
 
-In case of that you do not have Anaconda Python in your system but still want to use it to run Commbase, you can install Anaconda Python and then read the section "Install Python in an Anaconda Python environment" in order to choose if you are going to create the commbase_env yourself or build it later on as it is shown in the section "Build the Commbase Conda environment a from YAML file".
+In case you do not have Anaconda Python in your system but still want to use it to run Commbase, you can install Anaconda Python and then read the section "Install Python in an Anaconda Python environment" to choose if you are going to create the commbase_env yourself or build it later on as it is shown in the section "Build the Commbase Conda environment a from YAML file".
 The installation of Anaconda Python is beyond the scope of this documentation. For information on how to install Anaconda Python in your operating system, visit:
 https://docs.anaconda.com/free/anaconda/getting-started/install/
 
-After its installation, your Anaconda Python version should be capable of installing or building your commbase_env environment. Otherwise, try to install a newer or older version of Anaconda Python and verify the Python versions it is able to install, run, and work with.
+After its installation, your Anaconda Python version should be capable of installing or building your commbase_env environment. Otherwise, try to install a newer or older version of Anaconda Python and verify the Python versions it can install, run, and work with.
 
-In case of that you want to use your system's, or any custom Python version, edit the file commbase/config/commbase.conf line: PYTHON_ENV_VERSION="python".
+In case you want to use your systems' or any custom Python version, edit the file commbase/config/commbase.conf line: PYTHON_ENV_VERSION="python".
 For example:
 PYTHON_ENV_VERSION="python3.7"
 
@@ -180,8 +123,9 @@ Remember that 3.7 is the minimum Python version required to run Commbase, no mat
 
 Note: A Python version higher than the one used for the commbase_env could affect any custom scripts or skill scripts you could make. In such cases, you should change the Python version or Python environment that would be used by your custom code to manage the errors.
 
-Install Python:
-----------------
+Install Python
+---------------
+
 python3.7
 $ sudo apt-get update
 $ apt-cache search python 3.7
@@ -196,35 +140,32 @@ $ pip list | more
 $ pip3 list | more
 $ pip3.7 list | more
 
-Install Python packages:
--------------------------
+Install Python packages
+------------------------
+
 Vosk:
 $ pip3.7 install vosk
 Or use:
 $ python3.7 -m pip install vosk
-If you can't install, check the output messages. For example, I have vosk already in the system from
-a previous Kdenlive application installation (installed as a flatpak from flathub), which does not
-allow me to re-installing vosk.
+If you can't install it, check the output messages. For example, I have Vosk already in the system from a previous Kdenlive application installation (installed as a flatpak from flathub), which does not allow me to re-install Vosk.
 OUTPUT:
-Defaulting to user installation because normal site-packages is not writeable
-Requirement already satisfied: vosk in /home/esteban/.local/lib/python3.7/site-packages (0.3.22)
-END OF OUTPUT:
-In such case the messages reference the current python vosk package installation. In the OUTPUT case,
-python is already installed in a directory of the current local user "esteban",  instead of system
-wide, so there is use re-installing python3, pip3, or vosk.
+Defaulting to user installation because normal site-packages is not writable
+Requirement already satisfied: vosk in /home/<USER>/.local/lib/python3.7/site-packages (0.3.22)
+END OF OUTPUT.
+In the OUTPUT case, the messages reference the current Python Vosk package installation. Python is already installed in a directory of the current local user <USER>, instead of system-wide, so it is helpful to re-install python3, pip3, or vosk.
 
 PyAudio‑0.2.11:
 $ pip3.7 install PyAudio‑0.2.11
 Or download from pypi.org:
 $ tar xvzf PyAudio-0.2.11.tar.gz
-$ cp PyAudio-0.2.11.tar.gz $HOME/Commbase/commbase/base-vosk
+$ cp PyAudio-0.2.11.tar.gz $HOME/commbase/bundled/broker/PyAudio
 $ Set up permissions for the directory:
 $ chmod 755 PyAudio‑0.2.11
 PyAudio‑0.2.11 requires Portaudio19 to install:
 $ apt-cache search portaudio
 $ sudo apt-get install portaudio19-dev
 Information here: https://packages.debian.org/bullseye/portaudio19-dev
-Install PyAudio using its simple instruction in its file INSTALL:
+Install PyAudio using the simple instruction in its file INSTALL:
 $ sudo python3.7 setup.py install
 
 Subprocess.run:
@@ -234,7 +175,7 @@ Or:
 $ pip3 install subprocess.run
 
 Sounddevice:
-This package allows us to run the test test_microphone.py
+This package allows us to run test_microphone.py
 $ pip3 install sounddevice
 
 Chardet:
@@ -252,9 +193,8 @@ Or use:
 $ pip3 install scikit-learn-intelex
 
 OpenCV:
-Steps to install opencv 4.5.1 in Debian 11 running Python 3.9:
-Verify the current Debian version (The version limits the higher version that you can install
-of any package name):
+Steps to install OpenCV 4.5.1 in Debian 11 running Python 3.9:
+Verify the current Debian version (The version limits the higher version that you can install of any package name):
 $ cat /etc/issue
 Verify the current Python version:
 $ python3
@@ -267,24 +207,21 @@ $ apt-cache show python3-opencv
 Install the package:
 $ sudo apt-get install python3-opencv
 
-Install Python in an Anaconda Python environment:
+Install Python in an Anaconda Python environment
 -------------------------------------------------
-Alternatively, you can replace Python 3.7 with Anaconda Python. Anaconda Python versions are well
-optimized, so the speech recognition AI is supposed to work faster than the official Python packages.
+
+Alternatively, you can replace Python 3.7 with Anaconda Python. Anaconda Python versions are well-optimized, so the speech recognition AI is supposed to work faster than the official Python packages.
 More information: https://www.anaconda.com/
 
-After the installation of Anaconda Python you should see the string "(base)" in the foobar.
+After the installation of Anaconda Python, you should see the string "(base)" in the foobar.
 
-In case of that your system has a single Python installation using Anaconda Python if it set up for running
-only in the Bash shell, you must enter the Bash shell before start Commbase, anaconda-navigator, or
-any other Python script/program uncapable of running using the current Python's runtime that is
-preinstalled within your Operating System distribution:
+In case your system has a single Python installation using Anaconda Python if it is set up for running only in the Bash shell, you must enter the Bash shell before start Commbase, anaconda-navigator, or any other Python script/program incapable of running using the current Python's runtime that is preinstalled within your Operating System distribution:
 Example of foobar before entering Bash:
 USER-NAME@HOSTNAME:~$ bash
 Example of foobar with Anaconda Python, identified by the string "(base)", after entering Bash:
 (base) USER-NAME@shark:~$
 
-To install PyPi like packages in the (base) in Anaconda Python, use the command "conda":
+To install PyPi-like packages in the (base) in Anaconda Python, use the command "conda":
 (base) USER-NAME@HOSTNAME:~$ conda install PACKAGE-NAME
 
 If you want to create a new Anaconda Python (3.7) environment just for Commbase:
@@ -292,55 +229,54 @@ $ conda create -n commbase_env python=3.7
 $ conda activate commbase_env
 Now, (commbase_env) appears in the foobar.
 
-Within the Anaconda Python environment "commbase_env" you are able to install conda packages, instead of, for xample, pip packages. Examples:
+Within the Anaconda Python environment "commbase_env" you can install Conda packages, instead of, for example, pip packages. Examples:
 Install OpenCV version 4.6.0 whether available from the defaults channel to a particular Anaconda Python environment:
 (commbase_env) $ conda install -c defaults opencv=4.6.0
-Install the latest version of OpenCV available from the conda-forge channel:
+Install the latest version of OpenCV, available from the conda-forge channel:
 (commbase_env) $ conda conda-forge -c defaults opencv
-Altenatively, in order to install PyPi like packages in the (commbase_env) environment in Anaconda Python, use the
+Alternatively, to install PyPi-like packages in the (commbase_env) environment in Anaconda Python, use the
 command "pip", for example:
 (commbase_env) $ pip install ipython
 To verify the package was installed, in your terminal window or an Anaconda Python prompt, run:
 (commbase_env) $ conda list
 
 Note: Environments defined with python=3.9 or higher versions of Python could work perfectly and probably faster than python=3.7, but
-3.7 is still the version requirement. This documentation and Commbase code would be updated for future releases of Python to make everything Combmbase compatible.
+3.7 is still the version requirement. This documentation and Commbase code would be updated for future releases of Python to make everything Commbase compatible.
 
-To deactivate the current envinronment and go back to (base) use:
+To deactivate the current environment and go back to (base) use:
 (commbase_env) $ conda deactivate
 
-To deactivate any environment use "deactivate" from another environment:
+To deactivate any environment, use "deactivate" from another environment:
 (base) $ conda deactivate commbase_env
 $ conda deactivate base
 
 Verify the Anaconda Python's Python version used:
 (base) $ python --version
 
-As stated, some Anaconda Python packages are usually performing better than the packages for the OS distribution, that is the case
-of OpenCV. You can test and compare the performance between the OS distribution Python version and the 
-Anaconda Python environment version, by running the file resizable-camera-capture.py from every separate environment. The file does not have to include the python version to be used in the first line of the script to be executed using the python version in/specified in the command line:
-In the system environment, specifyng to use Python3.9:
+As stated, some Anaconda Python packages are usually performing better than the packages for the OS distribution, that is the case of OpenCV. You can test and compare the performance between the OS distribution Python version and the Anaconda Python environment version, by running the file resizable-camera-capture.py from every separate environment. The file does not have to include the Python version to be used in the first line of the script to be executed using the Python version in/specified in the command line:
+In the system environment, specifying to use Python3.9:
 $ cd path/to/commbase
-$ python3.9 commbase/core/skill-scripts/default/python/c/camera/resizable-camera-capture/resizable-camera-capture.py
-In the Anaconda Python commbase_env environment, using the environment's python version:
-(commbase_env) $ python commbase/core/skill-scripts/default/python/c/camera/resizable-camera-capture/resizable-camera-capture.py
+$ python3.9 commbase/src/broker/skill-scripts/default/python/c/computer-vision/resizable-camera-capture/resizable-camera-capture.py
+In the Anaconda Python commbase_env environment, using the environment's Python version:
+(commbase_env) $ python commbase/src/broker/skill-scripts/default/python/c/computer-vision/resizable-camera-capture/resizable-camera-capture.py
 
-Build the Commbase Conda environment from a YAML file:
--------------------------------------------------------
+Build the Commbase Conda environment from a YAML file
+------------------------------------------------------
+
 Using YAML files is the simplest and probably the best way to install Python and the Python Commbase environment dependencies.
 To simplify it even more, we put all together in a script you can run once.
 If the environment you want to remove is the current active environment, deactivate it before running the script.
 (commbase_env) $ conda deactivate commbase_env
 Run the config script:
-$ bash commbase/config-scripts/conda-environment/build-conda-environment.sh
+$ bash commbase/scripts/configuration/build-conda-environment.sh
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
 
-Set up the file voice-recognition.py:
---------------------------------------
+Set up the file voice-recognition.py
+-------------------------------------
 
-If you are not using the Anaconda Python environment commbase_env for running Commbase, you could need to change the first line of the file, to a fixed Python version, mostly if you experience program errors, latency or low performance.
+If you are not using the Anaconda Python environment commbase_env for running Commbase, you could need to change the first line of the file, to a fixed Python version, mostly if you experience program errors, latency, or low performance.
 
-Replace the first line for the second line:
+Replace the first line with the second line:
 
 Anaconda Python:
 #!/usr/bin/env python
@@ -350,18 +286,20 @@ Python3.7:
 #!/usr/bin/env python3.7
 ##!/usr/bin/env python
 
-Install the Vosk model:
-------------------------
+Install the Vosk model
+-----------------------
+
 Currently, Commbase works only in English.
 Visit: https://alphacephei.com/vosk/models
-Download and  install the model manually or by running this command in commbase/config-scripts:
+Download and install the model manually or by running this command in commbase/scripts/configuration:
 $ bash install-vosk-model.sh
 
-Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance bacause the bigger the model you use the bigger the momery required to load it. that change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
+Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance because the bigger the model you use, the bigger the memory required to load it. That change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
 
-Install the required system dependency packages:
--------------------------------------------------
-Names and commands for this section could change from OS distribuition to distribuition or even from realease to realease.
+Install the required system dependency packages
+------------------------------------------------
+
+Names and commands for this section could change from OS distribution to distribution, or even from release to release.
 
 For example, in Debian Linux, the DPKG packages that contain all the required commands can be installed using APT. Apt manages and installs the package dependencies automatically.
 
@@ -400,20 +338,20 @@ $ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
 For example, this is the actual one-liner command someone could require:
 $ sudo apt-get update; sudo apt-get install alsa-utils bash curl dash festival ffmpeg gawk gdebi git mpv mplayer nmap openssh-server portaudio19-dev python3-opencv rsync sed sox sudo tar tasksel tmux unzip uuid-runtime wget
 
-Installation troubleshooting:
+Troubleshooting the package installation:
 
-Packages unfound by their given names can be replaced in the source by their respective command line versions your favorite OS distribution.
+Packages unfound by their given names can be replaced in the source by their respective command line versions for your favorite OS distribution.
 
 To verify that the command of a package is already in the system, type in the command and then press enter. For example:
 $ awk
-If you can list the command it means that the application is installed.
+If you can list the command, it means that the application is installed.
 
-If you want to know which alternative is currently set in case of meta packages with more then one alternative, for example awk:
+If you want to know which alternative is currently set in case of meta-packages with more than one alternative, for example, awk:
 $ update-alternatives --list awk
 To change the alternative, use:
 $ update-alternatives --config awk
 
-Package Names and commands should be verified after during the Commbase installation. To verify packages you can use:
+Package Names and commands should be verified after the Commbase installation, during the Commbase configuration. To verify packages, you can use:
 $ whereis <PACKAGE>
 $ whereis <COMMAND>.
 
@@ -422,13 +360,14 @@ $ dpkg -l | grep <PACKAGE-NAME>
 Example:
 $ dpkg -l | grep bash
 
-To search for particular package name or string in the official Debian repositories, considering that config file /etc/apt/sourcs.list includes the repositories "main" "contrib", and "non-free", use apt-cache, for example:
+To search for a particular package name or string in the official Debian repositories, considering that config file /etc/apt/sources.list includes the repositories "main", "contrib", and "non-free", use apt-cache, for example:
 $ apt-cache search dash | grep "dash"
 
-Install VU-meter:
-------------------
-Download/clone it from github and install it:
-$ cd $HOME/Commbase/commbase/base-vosk
+Install VU-meter
+-----------------
+
+Download/clone it from GitHub and install it:
+$ cd $HOME/commbase/bundled/broker
 $ git clone https://github.com/kmein/vu-meter.git
 Rename the directory:
 $ mv vu-meter-master vu-meter
@@ -436,21 +375,19 @@ Change directory permissions:
 $ ls -hal vu-meter
 $ chmod 755 vu-meter
 
-Install Oh My Tmux:
---------------------
-Download/clone it from github and install it:
+Install Oh My Tmux
+-------------------
+
+Download/clone it from GitHub and install it:
 $ cd
 $ git clone https://github.com/gpakosz/.tmux.git
 $ ln -s -f .tmux/.tmux.conf
 $ cp .tmux/.tmux.conf.local .
 
-Install the default Commbase voice commands dependencies:
-----------------------------------------------------------
-The applications to run by voice commands can be replaced at any moment and grow by a commands'
-creator, or in other words, a Commbase Instructor. For example replace VS Code by Gedit, VIM, etc.,
-but having installed these as a minimum to test all teh commmands available in the initial Commbase
-installation.
-Here is the little list:
+Install the default Commbase voice commands dependencies
+---------------------------------------------------------
+
+The applications to run by voice commands can be replaced at any moment and grow by users (skill programmers and skillset trainers). For example, replace VS Code by Gedit, VIM, etc. However, have installed these as a minimum to test all the commands available in the initial Commbase installation:
 Brave browser
 Etherape
 Gnome terminal
@@ -460,157 +397,32 @@ Neofetch
 ProtonVPN
 VS Code
 
-Install Desktop Environments:
-------------------------------
-Install a Desktop Environments such as Cinnamon, which can save you some time installing applications
-automatically. However, you need free space on disk to do so, so its complete installation is not
-recommended on IoTs with low hard drive space available.
+Install Desktop Environments
+-----------------------------
+
+Install a Desktop Environment such as Cinnamon, which can save you some time installing applications automatically. However, you need free space on the disk to do so, so its complete installation is not recommended on IoTs with low hard drive space available.
 Check free space like this:
 $ df -h
 To install/Remove Desktop Environments:
 $ sudo tasksel
 
---------------------------------
-3. Installations for Developers
---------------------------------
+3. Next steps
+==============
 
-Install the Vosk-API (x86_64 / AMD64):
----------------------------------------
-** This is not required, but its download could be useful for developers:
-Visit: https://github.com/alphacep/vosk-api
-Download and extract/clone the repository from github.com and place it in
-$HOME/Commbase/commbase/base-vosk/:
-$ cd $HOME/Commbase/commbase/base-vosk/
-$ git clone git@github.com:alphacep/vosk-api.git
-Rename the directory:
-$ mv vosk-api-master vosk-api
-$ Set up permissions for the directory:
-$ chmod 755 vosk-api
+If everything went well, now you can run the next command in a terminal to start the program:
+$ commbase start
 
---------------------------
-4. Testing the Vosk model
---------------------------
+At this point, Commbase will be ready to receive Commbase voice commands and Commbase terminal commands to assist you. However, the only command that works is "tell me about yourself".
 
-Go to commbase/bundled/scripts/utilities/vosk-api/python/example:
-$ cd ~/commbase/bundled/scripts/utilities/vosk-api/python/example
+Verify that the microphone is open and tell Commbase to introduce himself/herself:
+"tell me about yourself"
 
-$ Set up permissions for the file:
-$ chmod 755 test_microphone.py
-$ chmod +x test_microphone.py
+Optionally, type the command in the terminal:
+$ commbase "tell me about yourself"
 
-Copy the test file to commbase/bundled/vosk:
-$ cp test_microphone.py ../../../../../vosk/
+The output should be the Commbase introduction, which means that the "demo skills" are already installed.
 
-Run the test file test_microphone.py:
-$ cd cp test_microphone.py ../../../../../vosk/ 
-$ python test_microphone.py
-Or use:
-$ python3 test_microphone.py
-Practice your speaking accuracy.
-Vosk should return results on the screen.
+From here, you should decide to start programming new "custom" skills from the "demo" skills or proceed to install the "sample" skills, before programming existing "default" or new "custom" skills for Commbase.
 
-Remove the test file from vosk/:
-$ rm test_microphone.py
-
--------------------------------
-5. Make the scripts executable
--------------------------------
-
-$ ls -hal +x $HOME/Commbase/commbase/base-vosk/commbase*
-$ chmod +x $HOME/Commbase/commbase/base-vosk/commbase*
-$ ls -hal $HOME/Commbase/commbase/base-vosk/process-templates/commbase*
-$ chmod +x $HOME/Commbase/commbase/base-vosk/process-templates/commbase*
-
------------------------------------------------------------
-6. How to apply directory and file permissions recursively
------------------------------------------------------------
-
-This command applies 755 permissions to every directory and file inside the given directory, except
-for those that you don't have permissions on, for example, files owned by the root user. That command
-would throw a list of the files with permissions that could not be changed in the output.
-$ chmod 755 -R chmod -R 755 <DIRECTORY-NAME>
-
-Run that command once to apply 755 directory and file permissions on the initial Commbase directory:
-$ chmod 755 -R chmod -R 755 $HOME/Commbase
-Or whenever the Commbase directory is:
-$ chmod 755 -R chmod -R 755 $HOME/Developer/Commbase
-
-AVOID running the command after the initial Commbase installation as per our Commbase bash directory
-database grows and the command would change permissions on files you don't want to change the
-permissions to. To know more on how to make Commbase commands, checkout the section "Commands setup"
-in the User's Guide.
-
-----------------
-7. Key bindings
-----------------
-
-A key binding is an association between a physical key on a keyboard and a parameter.
-
-Commbase comes with a number of key binding files you can use for setting up key bindings in your
-custom system configuration.
-
-Commbase recommends using as a minimum the key binding file toggle-active-capture-device.sh to toggle
-and activate the current active and default capture device to another device in a group of two devices,
-turning it active and default.
-
-The Commbase key bindings are allocated in the directory config-scripts/key-bindings.
-To set up the key binding using these files you must use your current Desktop Environment or Window Manager key binding configuration.
-
-For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
-Go to Menu -> System Settings -> Keyboard -> shortcuts -> Categories -> Sound and Media -> Add custom
-shortcut. 
-Next, give the new shortcut a new name like "toggle capture ON or OFF".
-Next, select the route to this file.
-Next, click or tap on the button Add the keyboard shortcut. The shortcut appears in the list.
-Next, click on unassigned to pick an accelerator.
-Next, press the keys CTRL + SHIFT + c (all together) and then release them at a time.
-Then the new key binding appears on the list.
-Finally, verify that the key binding works.
-Note: The choice to use or avoid this key binding would depend on a variety of facts. For example, you
-would choose not to use the key binding if you have a headset, ear-set or any other microphone with a
-built-in mute/unmute control button.  
-
-Every key binding file includes information on what it does and how to set it up when necessary.
-
-Check out the directory key-bindings for alternative keybinding options.
-
-Check out the section Keyboard Shortcuts of the User's Guide for a complete list of the shortcuts available.
-
-----------------------------------
-8. Run Commbase at system boot up
-----------------------------------
-
-Add the command 'commbase' with parameter 'commbase start' pointing to the file
-commbase-vosk-start.sh to the proper system runlevels as a Init or Systemd script.
-Add the command 'commbase' with parameter 'commbase stop' pointing to the file
-commbase-vosk-start.sh to the proper system runlevels as a Init or Systemd script.
-
-------------------------------------------------
-9. Setup a network of multiple Commbase devices
-------------------------------------------------
-
-A Commbase network can be described as a decentralized operating system network. A default Commbase
-device network is composed by independent nodes (devices). Every Commbase network host runs its own
-tasks, configured in a local copy of the Commbase software with individual setup just to make sure
-that: 1. the setup works for the specific node hardware, 2. every node can communicate one another
-without depending on the network or any other Commbase network member, and 3. every node runs a
-custom Commbase application and setup that allows the node receiving external Commbase commands based
-on the node role and nature, through the node network, what it means that a specified Commbase copy
-can work as the Commbase manager, "master", or main Commbase entity.
-
-A network requires every node setup with OpenSSH tunneling communication among all the Commbase
-network members. It is a good idea to setup OpenVPN for the nodes to avoid being attacked.
-
-If your setup includes the Commbase manager or main node in a Commbase network and you have improved
-security, you can manage nodes passwords in the Commbase configuration file commbase.conf and use them
-in your scripts passing them as parameters or flags with arguments, for example, with ssh and something 
-like:
-$ command -p PASS-STRING -m 20 --verbose
-
-Check out the section "The Commbase processing file" of the User's Guide for more information on how
-to setup specific node hardware such as intelligent home appliances or any other IoT like device. 
-
-References:
-Topic: Distribuited systems examples
-Web: https://en.wikipedia.org/wiki/Jini
+Check out the User's Guide for a complete list of options.
 
