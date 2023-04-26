@@ -7,7 +7,7 @@ Programmable conversational AI assistant and distributed AI for single computers
 
 ## Introduction
 
-<img alt="Neovim" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
+<img alt="Commbase" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
 
 Commbase is a ✨ programmable ✨ conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
 
@@ -100,6 +100,7 @@ path/to/commbase  # The directory commbase
         │   └── essential  # Stores the essential skill-patterns for the essential skills
         ├── skill-scripts  # Stores the library of skill-scripts called from custom or default skills
         │   ├── custom  # Stores the skill-scripts for the custom skills ordered by programming language
+        │   │   ├── arduino        
         │   │   ├── bash  # Stores the bash skill-scripts for the custom skills
         │   │   ├── c
         │   │   ├── java
@@ -108,6 +109,7 @@ path/to/commbase  # The directory commbase
         │   │   ├── python  # Stores the python skill-scripts for the custom skills
         │   │   └── ...
         │   └── default  # Stores the skill-scripts for the default skills ordered by programming language
+        │       ├── arduino
         │       ├── bash  # Stores the bash skill-scripts for the default skills
         │       ├── c
         │       ├── java

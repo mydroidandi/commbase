@@ -2,25 +2,47 @@ Content
 ========
 
 1. Installation
+
 1.1. Set up your system repository sources
+
 1.2. Update the system
+
 1.3. Install Commbase
+
 1.4. Set up the $COMMBASE_ROOT_DIR directory
+
 1.5. Set up the Commbase executable
+
 2. Requisites and dependencies
+
 2.1. Decide which Python version to install
+
 2.2. Install Python
+
 2.3. Install Python packages
+
 2.4. Install Python in an Anaconda Python environment
-2.5  Build the Commbase Conda environment from a YAML file
+
+2.5. Build the Commbase Conda environment from a YAML file
+
 2.6. Set up the file voice-recognition.py
+
 2.7. Install the Vosk model
+
 2.8. Install the required system dependency packages
+
 2.9. Install VU-meter
+
 2.10. Install Oh My Tmux
+
 2.11. Install the default Commbase voice commands dependencies
+
 2.12. Install Desktop Environments
+
 3. Next steps
+
+4. CPU Limit
+
 
 1. Installation
 ================
@@ -29,43 +51,58 @@ Set up your system repository sources
 --------------------------------------
 
 For example, in GNU/Debian Linux, add the sources contrib and non-free in the file /etc/apt/sources
+
 $ sudo nano /etc/apt/sources
 
 Update the system
 ------------------
 
 $ sudo apt-get update
+
 You can also upgrade it like this:
+
 $ sudo apt-get -u upgrade
 
 Install Commbase
 -----------------
 
 Visit: https://github.com/mydroidandi/commbase
+
 Download the repository to your $HOME directory:
+
 $ echo $HOME
+
 $ cd $HOME
+
 Extract the zip file:
+
 $ unzip commbase-main.zip
+
 Rename the directory commbase-main as commbase:
+
 $ mv commbase-main commbase
 
 Set up the $COMMBASE_ROOT_DIR directory
 ----------------------------------------
 
 Go to the directory commbase/scripts/configuration/ and open the file set-commbase-root-directory.sh.
+
 Written in Bash language, you will see ~/.bashrc and ~/.zshrc, which are the routes to the bash and Z shell configuration files.
+
 $HOME is the default value of the variable $COMMBASE_ROOT_DIR.
+
 The variable $COMMBASE_ROOT_DIR stores the Commbase's root directory.
+
 You can update the content of $COMMBASE_ROOT_DIR to a custom value, such as $HOME/Developer/my_commbase. It must be updated for both sections, ~/.bashrc and ~/.zshrc, but if you don't have Z shell in your operating system, you can comment out the ~/.zshrc section before running the script, like this:
 
 Section of set-commbase-root-directory.sh:
 
-    #echo "" >> ~/.zshrc
-    #echo "# The Commbase directory for the Z shell" >> ~/.zshrc
-    #echo 'export COMMBASE="$HOME"' >> ~/.zshrc
+		#echo "" >> ~/.zshrc
+		#echo "# The Commbase directory for the Z shell" >> ~/.zshrc
+		#echo 'export COMMBASE="$HOME"' >> ~/.zshrc
 
 Save the file changes and then execute the file:
+
 $ bash set-commbase-environment-variable.sh
 
 The script is going to append the variable $COMMBASE_ROOT_DIR in the files $HOME/.bashrc and $HOME/.zshrc
@@ -73,22 +110,30 @@ The script is going to append the variable $COMMBASE_ROOT_DIR in the files $HOME
 To know more about making Commbase commands, check out the section "The $COMMBASE_ROOT_DIR directory" in the User's Guide.
 
 Notes about the difference Between .bashrc and .bash_profile:
+
 .bash_profile is read and executed when Bash is invoked as an interactive login shell, while .bashrc is executed as an interactive non-login shell.
+
 When Bash is invoked as an interactive non-login shell, it reads and executes commands from ~/.bashrc, if that file exists, and is readable.
+
 When invoked as an interactive login shell, Bash looks for the /etc/profile file, and if the file exists , it runs the commands listed in the file. Then Bash searches for ~/.bash_profile, ~/.bash_login, and ~/.profile files, in the listed order, and executes commands from the first readable file found.
+
 In case of that your OS distribution does not use ~/.bashrc, add manually the variable $COMMBASE_ROOT_DIR and its value to your Bash Startup File(s).
 
 Set up the Commbase executable
 -------------------------------
 
 Go to the directory commbase/scripts/configuration/install-commbase-executable/ and execute the file install-commbase-executable.sh:
+
 $ cd commbase/scripts/configuration/install-commbase-executable/
+
 $ bash install-commbase-executable.sh
 
 A new commbase file should appear in the directory /usr/bin.
+
 $ ls /usr/bin/commbase
 
 Do not run the commbase command yet. Remember that the command commbase opens an enhanced tmux session named Commbase-0. To avoid duplicate instances of Commbase running on the system, you need to completely close the program before rerunning it once more. Check out the User's Guide for more details regarding this topic.
+
 
 2. Requisites and dependencies
 ===============================
@@ -97,18 +142,27 @@ Decide which Python version to install
 ---------------------------------------
 
 In the next documentation sections, we present 3 alternatives to install the Commbase Python Environment:
+
 1. Install Python, Install Python packages.
+
 2. Install Python in an Anaconda Python environment.
+
 3. Build the Commbase Conda environment from a YAML file.
 
 From those alternatives, we recommend installing Python using the third option, Build the Commbase Conda environment from a YAML file, because of the following advantages:
-Some Anaconda Python packages are optimized for AI (Machine Learning and Data Science.)
-There is no need to manually create a new Commbase environment, in case of systems with multiple environments setups.
-You recreate and install the Commbase environment, packages, and packaging dependencies all at once.
-You do not need to edit the file config/commbase.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version that Commbase is going to use.
+
+1. Some Anaconda Python packages are optimized for AI (Machine Learning and Data Science.)
+
+2. There is no need to manually create a new Commbase environment, in case of systems with multiple environments setups.
+
+3. You recreate and install the Commbase environment, packages, and packaging dependencies all at once.
+
+4. You do not need to edit the file config/commbase.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version that Commbase is going to use.
 
 In case you do not have Anaconda Python in your system but still want to use it to run Commbase, you can install Anaconda Python and then read the section "Install Python in an Anaconda Python environment" to choose if you are going to create the commbase_env yourself or build it later on as it is shown in the section "Build the Commbase Conda environment a from YAML file".
+
 The installation of Anaconda Python is beyond the scope of this documentation. For information on how to install Anaconda Python in your operating system, visit:
+
 https://docs.anaconda.com/free/anaconda/getting-started/install/
 
 After its installation, your Anaconda Python version should be capable of installing or building your commbase_env environment. Otherwise, try to install a newer or older version of Anaconda Python and verify the Python versions it can install, run, and work with.
@@ -126,138 +180,219 @@ Note: A Python version higher than the one used for the commbase_env could affec
 Install Python
 ---------------
 
-python3.7
+python3.7:
+
 $ sudo apt-get update
+
 $ apt-cache search python 3.7
+
 $ sudo apt-get install python3.7
 
 pip3.7:
+
 $ /usr/bin/python3 -m pip install --upgrade pip
+
 $ /usr/bin/python3 -m pip3 install --upgrade pip
+
 $ /usr/bin/python3.7 -m pip3.7 install --upgrade pip
+
 Prints a list of installed pip packages:
+
 $ pip list | more
+
 $ pip3 list | more
+
 $ pip3.7 list | more
 
 Install Python packages
 ------------------------
 
 Vosk:
+
 $ pip3.7 install vosk
+
 Or use:
+
 $ python3.7 -m pip install vosk
+
 If you can't install it, check the output messages. For example, I have Vosk already in the system from a previous Kdenlive application installation (installed as a flatpak from flathub), which does not allow me to re-install Vosk.
-OUTPUT:
+
+Example of terminal OUTPUT:
 Defaulting to user installation because normal site-packages is not writable
 Requirement already satisfied: vosk in /home/<USER>/.local/lib/python3.7/site-packages (0.3.22)
-END OF OUTPUT.
-In the OUTPUT case, the messages reference the current Python Vosk package installation. Python is already installed in a directory of the current local user <USER>, instead of system-wide, so it is helpful to re-install python3, pip3, or vosk.
+End of OUTPUT.
+
+In the previous output, the messages reference the current Python Vosk package installation. Python is already installed in a directory of the current local user <USER>, instead of system-wide, so it is helpful to re-install python3, pip3, or vosk.
 
 PyAudio‑0.2.11:
+
 $ pip3.7 install PyAudio‑0.2.11
+
 Or download from pypi.org:
+
 $ tar xvzf PyAudio-0.2.11.tar.gz
+
 $ cp PyAudio-0.2.11.tar.gz $HOME/commbase/bundled/broker/PyAudio
+
 $ Set up permissions for the directory:
+
 $ chmod 755 PyAudio‑0.2.11
+
 PyAudio‑0.2.11 requires Portaudio19 to install:
+
 $ apt-cache search portaudio
+
 $ sudo apt-get install portaudio19-dev
+
 Information here: https://packages.debian.org/bullseye/portaudio19-dev
+
 Install PyAudio using the simple instruction in its file INSTALL:
+
 $ sudo python3.7 setup.py install
 
 Subprocess.run:
+
 Information: https://pypi.org/project/subprocess.run/
+
 $ pip install subprocess.run
+
 Or:
+
 $ pip3 install subprocess.run
 
 Sounddevice:
+
 This package allows us to run test_microphone.py
+
 $ pip3 install sounddevice
 
 Chardet:
+
 This resolves the error: "cannot import name 'COMMON_SAFE_ASCII_CHARACTERS'"
+
 $ pip install chardet
+
 Or use:
+
 $ pip3 install chardet
 
 Scikit-learn and scikit-learn-intelex:
+
 $ pip install scikit-learn
+
 Or use:
+
 $ pip3 install scikit-learn
+
 $ pip install scikit-learn-intelex
+
 Or use:
+
 $ pip3 install scikit-learn-intelex
 
 OpenCV:
+
 Steps to install OpenCV 4.5.1 in Debian 11 running Python 3.9:
+
 Verify the current Debian version (The version limits the higher version that you can install of any package name):
+
 $ cat /etc/issue
+
 Verify the current Python version:
+
 $ python3
+
 Update the sources list for the official Debian repos:
+
 $ sudo apt-get update
+
 Search the package in the official Debian repos (main):
+
 apt-cache search python3-opencv
+
 Show the package version information:
+
 $ apt-cache show python3-opencv
+
 Install the package:
+
 $ sudo apt-get install python3-opencv
 
 Install Python in an Anaconda Python environment
 -------------------------------------------------
 
 Alternatively, you can replace Python 3.7 with Anaconda Python. Anaconda Python versions are well-optimized, so the speech recognition AI is supposed to work faster than the official Python packages.
-More information: https://www.anaconda.com/
+
+More information on Anaconda: https://www.anaconda.com/
 
 After the installation of Anaconda Python, you should see the string "(base)" in the foobar.
 
 In case your system has a single Python installation using Anaconda Python if it is set up for running only in the Bash shell, you must enter the Bash shell before start Commbase, anaconda-navigator, or any other Python script/program incapable of running using the current Python's runtime that is preinstalled within your Operating System distribution:
+
 Example of foobar before entering Bash:
+
 USER-NAME@HOSTNAME:~$ bash
+
 Example of foobar with Anaconda Python, identified by the string "(base)", after entering Bash:
+
 (base) USER-NAME@shark:~$
 
 To install PyPi-like packages in the (base) in Anaconda Python, use the command "conda":
+
 (base) USER-NAME@HOSTNAME:~$ conda install PACKAGE-NAME
 
 If you want to create a new Anaconda Python (3.7) environment just for Commbase:
+
 $ conda create -n commbase_env python=3.7
+
 $ conda activate commbase_env
+
 Now, (commbase_env) appears in the foobar.
 
 Within the Anaconda Python environment "commbase_env" you can install Conda packages, instead of, for example, pip packages. Examples:
+
 Install OpenCV version 4.6.0 whether available from the defaults channel to a particular Anaconda Python environment:
+
 (commbase_env) $ conda install -c defaults opencv=4.6.0
+
 Install the latest version of OpenCV, available from the conda-forge channel:
+
 (commbase_env) $ conda conda-forge -c defaults opencv
-Alternatively, to install PyPi-like packages in the (commbase_env) environment in Anaconda Python, use the
-command "pip", for example:
+
+Alternatively, to install PyPi-like packages in the (commbase_env) environment in Anaconda Python, use the command "pip", for example:
+
 (commbase_env) $ pip install ipython
+
 To verify the package was installed, in your terminal window or an Anaconda Python prompt, run:
+
 (commbase_env) $ conda list
 
-Note: Environments defined with python=3.9 or higher versions of Python could work perfectly and probably faster than python=3.7, but
-3.7 is still the version requirement. This documentation and Commbase code would be updated for future releases of Python to make everything Commbase compatible.
+Note: Environments defined with python=3.9 or higher versions of Python could work perfectly and probably faster than python=3.7, but 3.7 is still the version requirement. This documentation and Commbase code would be updated for future releases of Python to make everything Commbase compatible.
 
 To deactivate the current environment and go back to (base) use:
+
 (commbase_env) $ conda deactivate
 
 To deactivate any environment, use "deactivate" from another environment:
+
 (base) $ conda deactivate commbase_env
+
 $ conda deactivate base
 
 Verify the Anaconda Python's Python version used:
+
 (base) $ python --version
 
 As stated, some Anaconda Python packages are usually performing better than the packages for the OS distribution, that is the case of OpenCV. You can test and compare the performance between the OS distribution Python version and the Anaconda Python environment version, by running the file resizable-camera-capture.py from every separate environment. The file does not have to include the Python version to be used in the first line of the script to be executed using the Python version in/specified in the command line:
+
 In the system environment, specifying to use Python3.9:
+
 $ cd path/to/commbase
+
 $ python3.9 commbase/src/broker/skill-scripts/default/python/c/computer-vision/resizable-camera-capture/resizable-camera-capture.py
+
 In the Anaconda Python commbase_env environment, using the environment's Python version:
+
 (commbase_env) $ python commbase/src/broker/skill-scripts/default/python/c/computer-vision/resizable-camera-capture/resizable-camera-capture.py
 
 Build the Commbase Conda environment from a YAML file
@@ -265,10 +400,15 @@ Build the Commbase Conda environment from a YAML file
 
 Using YAML files is the simplest and probably the best way to install Python and the Python Commbase environment dependencies.
 To simplify it even more, we put all together in a script you can run once.
+
 If the environment you want to remove is the current active environment, deactivate it before running the script.
+
 (commbase_env) $ conda deactivate commbase_env
+
 Run the config script:
+
 $ bash commbase/scripts/configuration/build-conda-environment.sh
+
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
 
 Set up the file voice-recognition.py
@@ -279,19 +419,26 @@ If you are not using the Anaconda Python environment commbase_env for running Co
 Replace the first line with the second line:
 
 Anaconda Python:
+
 #!/usr/bin/env python
+
 ##!/usr/bin/env python3.7
 
 Python3.7:
+
 #!/usr/bin/env python3.7
+
 ##!/usr/bin/env python
 
 Install the Vosk model
 -----------------------
 
 Currently, Commbase works only in English.
+
 Visit: https://alphacephei.com/vosk/models
+
 Download and install the model manually or by running this command in commbase/scripts/configuration:
+
 $ bash install-vosk-model.sh
 
 Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance because the bigger the model you use, the bigger the memory required to load it. That change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
@@ -304,38 +451,67 @@ Names and commands for this section could change from OS distribution to distrib
 For example, in Debian Linux, the DPKG packages that contain all the required commands can be installed using APT. Apt manages and installs the package dependencies automatically.
 
 List of required packages/commands (based on Debian GNU/Linux):
+
 alsa-utils (contains the tools: alsamixer and aplay)
+
 bash
+
 curl
+
 dash (contains the sh command) 
+
 festival
+
 ffmpeg
+
 gawk
+
 gdebi
+
 git
+
 mpv
+
 mplayer
+
 nmap
+
 openssh-server (server and client)
+
 play
+
 pkill (it comes installed with the base system sometimes, in a package with another name)
+
 portaudio19-dev (seen in the section of PyAudio)
+
 python3-opencv (seen in the installation of OpenCV)
+
 rsync
+
 sed
+
 sox
+
 sudo
+
 tar (seen in the section of PyAudio)
+
 tasksel
+
 tmux
+
 unzip
+
 uuid-runtime
+
 wget
 
 Use APT to install packages from the official repositories for your distro, like this:
+
 $ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
 
 For example, this is the actual one-liner command someone could require:
+
 $ sudo apt-get update; sudo apt-get install alsa-utils bash curl dash festival ffmpeg gawk gdebi git mpv mplayer nmap openssh-server portaudio19-dev python3-opencv rsync sed sox sudo tar tasksel tmux unzip uuid-runtime wget
 
 Troubleshooting the package installation:
@@ -343,86 +519,148 @@ Troubleshooting the package installation:
 Packages unfound by their given names can be replaced in the source by their respective command line versions for your favorite OS distribution.
 
 To verify that the command of a package is already in the system, type in the command and then press enter. For example:
+
 $ awk
+
 If you can list the command, it means that the application is installed.
 
 If you want to know which alternative is currently set in case of meta-packages with more than one alternative, for example, awk:
+
 $ update-alternatives --list awk
+
 To change the alternative, use:
+
 $ update-alternatives --config awk
 
 Package Names and commands should be verified after the Commbase installation, during the Commbase configuration. To verify packages, you can use:
+
 $ whereis <PACKAGE>
+
 $ whereis <COMMAND>.
 
 To verify that a package is present in the system:
+
 $ dpkg -l | grep <PACKAGE-NAME>
+
 Example:
+
 $ dpkg -l | grep bash
 
 To search for a particular package name or string in the official Debian repositories, considering that config file /etc/apt/sources.list includes the repositories "main", "contrib", and "non-free", use apt-cache, for example:
+
 $ apt-cache search dash | grep "dash"
 
 Install VU-meter
 -----------------
 
 Download/clone it from GitHub and install it:
+
 $ cd $HOME/commbase/bundled/broker
+
 $ git clone https://github.com/kmein/vu-meter.git
+
 Rename the directory:
+
 $ mv vu-meter-master vu-meter
+
 Change directory permissions:
+
 $ ls -hal vu-meter
+
 $ chmod 755 vu-meter
 
 Install Oh My Tmux
 -------------------
 
 Download/clone it from GitHub and install it:
+
 $ cd
+
 $ git clone https://github.com/gpakosz/.tmux.git
+
 $ ln -s -f .tmux/.tmux.conf
+
 $ cp .tmux/.tmux.conf.local .
 
 Install the default Commbase voice commands dependencies
 ---------------------------------------------------------
 
-The applications to run by voice commands can be replaced at any moment and grow by users (skill programmers and skillset trainers). For example, replace VS Code by Gedit, VIM, etc. However, have installed these as a minimum to test all the commands available in the initial Commbase installation:
+The applications to run by voice commands can be replaced at any moment and grow by users (skill programmers and skillset trainers). For example, replace VS Code by Gedit, VIM, etc. However, have installed these as a minimum to be able to run the Commbase commands available in the "sample skills" installation:
+
 Brave browser
+
 Etherape
+
 Gnome terminal
+
 Midori
+
 Nano
+
 Neofetch
+
 ProtonVPN
+
 VS Code
 
 Install Desktop Environments
 -----------------------------
 
 Install a Desktop Environment such as Cinnamon, which can save you some time installing applications automatically. However, you need free space on the disk to do so, so its complete installation is not recommended on IoTs with low hard drive space available.
+
 Check free space like this:
+
 $ df -h
+
 To install/Remove Desktop Environments:
+
 $ sudo tasksel
+
 
 3. Next steps
 ==============
 
 If everything went well, now you can run the next command in a terminal to start the program:
+
 $ commbase start
 
 At this point, Commbase will be ready to receive Commbase voice commands and Commbase terminal commands to assist you. However, the only command that works is "tell me about yourself".
 
-Verify that the microphone is open and tell Commbase to introduce himself/herself:
-"tell me about yourself"
+Verify that the microphone is open and tell Commbase to introduce himself/herself.
+
+Say: "tell me about yourself"
 
 Optionally, type the command in the terminal:
+
 $ commbase "tell me about yourself"
 
 The output should be the Commbase introduction, which means that the "demo skills" are already installed.
 
-From here, you should decide to start programming new "custom" skills from the "demo" skills or proceed to install the "sample" skills, before programming existing "default" or new "custom" skills for Commbase.
+From here, you should decide to start programming new "custom skills" from an initial Commbase installation with "demo skills" or proceed to install the "sample skills", before programming/editing existing "default skills" or new "custom skills" for Commbase.
 
-Check out the User's Guide for a complete list of options.
+Check out the document User's Guide in the directory docs/ for a complete list of options.
+
+
+4. CPU limit
+=============
+
+Running Commbase can over stress the Central Process Unit (CPU) depending on your CPU and hardware.
+
+You can verify the Commbase performance on your computer in many ways, for example, run top and verify the Python process row:
+
+$ top
+
+Press 'q' to exit.
+
+If you experience problems with the Python performance when running Commbase, you can yet change the value of the variable PYTHON_CPU_LIMIT_PERCENTAGE in the file commbase/config/commbase.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
+
+Considerations on how to choose an optimal Python CPU limit percentage:
+
+The maximum CPU percentage usage that is accepted before the CPU gets hot depends on several factors, including the CPU model, its thermal design power (TDP), cooling system, and workload.
+
+In general, most modern CPUs are designed to operate at 100% usage for extended periods without overheating, provided that the cooling system can keep the temperature within safe limits. However, sustained high CPU usage can increase the temperature of the CPU and the surrounding components, which can reduce their lifespan and cause stability issues.
+
+To prevent overheating and ensure the longevity of the CPU, it is recommended to keep the temperature below its maximum operating temperature, which is typically specified by the CPU manufacturer. This temperature varies depending on the model and can range from 60 °C to 100 °C or higher.
+
+In practical terms, if you notice that the temperature of your CPU is consistently above 80 °C or that your system is becoming unstable or unresponsive during high CPU usage, you may want to reduce the CPU load or optimize the cooling system to avoid damage to the hardware.
 
