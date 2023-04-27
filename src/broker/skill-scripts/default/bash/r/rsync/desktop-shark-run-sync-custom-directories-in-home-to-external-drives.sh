@@ -16,7 +16,7 @@
 # Alternatively, add some code to create the custom directories
 # "if not exist" and setup their permissions.
 
-# The configuration file.
+# The configuration file
 source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 
 # Assign the current local IP address to a constant
