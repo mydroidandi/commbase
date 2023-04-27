@@ -45,8 +45,8 @@
 # Or replace single quotes by double quotes in the parameter.
 #
 # The command options start, teleport, stop, *), and else don't output logs in
-# the pane 1 of the tmux session. The other output in their respective functions,
-# otherwise, in their correspondent scripts.
+# the pane 1 of the tmux session. The other output in their respective function
+# , otherwise, in their correspondent scripts.
 
 # Updates HOSTNAME and HOST_IP_ADDRESS
 update_host() {
