@@ -35,7 +35,7 @@ render_ui() {
 	tmux select-window -t 1 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
 
 	# On the window 0, "Commbase", select the pane 1 (by default), run any shell
-	# command, send the enter key (press enter), and sleep.
+	# command, and send the enter key (press enter).
 	tmux send-keys "cpulimit --limit=$PYTHON_CPU_LIMIT_PERCENTAGE -- $PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/src/broker/voice-recognition.py" C-m;
 
 	# Pane 2
@@ -43,8 +43,8 @@ render_ui() {
 	# environment if exists, send the enter key (press enter), and sleep.
 	tmux select-pane -t 2 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
 
-	# On the window 0, "Commbase", select the pane 2, run any shell command, send
-	# the enter key (press enter), and sleep.
+	# On the window 0, "Commbase", select the pane 2, run any shell command, and
+	# send the enter key (press enter).
 	tmux select-pane -t 2 && tmux send-keys "$PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/bundled/broker/vu-meter/vu_meter.py" C-m;
 
 	# Pane 3
@@ -52,8 +52,8 @@ render_ui() {
 	# environment if exists, send the enter key (press enter), and sleep.
 	tmux select-pane -t 3 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
 
-	# On the window 0, "Commbase", select the pane 3, run any shell command, send
-	# the enter key (press enter), and sleep.
+	# On the window 0, "Commbase", select the pane 3, run any shell command, and
+	# send the enter key (press enter), and sleep.
 	tmux select-pane -t 3 && tmux send-keys "alsamixer --view all" C-m;
 
 	# Pane 4
@@ -61,8 +61,8 @@ render_ui() {
 	# environment if exists, send the enter key (press enter), and sleep.
 	tmux select-pane -t 4 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
 
-	# On the window 0, "Commbase", select the pane 4, run any shell command, send
-	# the enter key (press enter), and sleep.
+	# On the window 0, "Commbase", select the pane 4, run any shell command, and
+	# send the enter key (press enter), and sleep.
 	tmux select-pane -t 4 && tmux send-keys "cd $COMMBASE_ROOT_DIR/commbase ; clear" C-m;
 
 	# In this section, activate/deactivate or add custom extra windows
