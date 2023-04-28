@@ -59,6 +59,7 @@ path/to/commbase  # The directory commbase
 ├── config  # Stores the configuration files
 ├── data  # Stores the voice recognition model results
 ├── docs  # Stores the human-readable guides of Commbase users
+├── env  # Stores the environment file
 ├── history  # Stores the Commbase command history file
 ├── log	 # Stores the Commbase log and the log required log files of particular skills
 ├── screenshots  # Stores the image commbase.png
