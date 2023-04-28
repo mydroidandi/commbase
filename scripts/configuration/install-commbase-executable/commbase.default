@@ -48,21 +48,6 @@
 # the pane 1 of the tmux session. The other output in their respective function
 # , otherwise, in their correspondent scripts.
 
-# Updates HOSTNAME and HOST_IP_ADDRESS
-update_host() {
-
-	# Path to the env file
-	ENV_FILE="$COMMBASE_ROOT_DIR/commbase/config/commbase.conf";
-
-	# Assign the host values from the operating system
-	NEW_HOST_NAME=$(hostname | awk '{print $1}');
-	NEW_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}');
-
-	# Replace the old values wuth the new ones in the env file
-	sed -i "s/^HOSTNAME=.*/HOSTNAME=$NEW_HOST_NAME/" $ENV_FILE;
-	sed -i "s/^HOST_IP_ADDRESS=.*/HOST_IP_ADDRESS=$NEW_HOST_IP_ADDRESS/" $ENV_FILE;
-}
-
 # Prints license
 display_license() {
 
@@ -161,7 +146,6 @@ route_option() {
 				tmux attach-session -t Commbase-0;
 			else
 				echo "Starting application";
-				update_host;
 				render_ui;
 			fi
 			;;
@@ -189,6 +173,17 @@ route_option() {
 		    echo "Stopping application" 
 		    sleep 1
 		    tmux kill-session -t Commbase-0
+				pkill -9 commbase
+				pkill -9 commbase
+				pkill -9 commbase
+				pkill -9 commbase
+				pkill -9 commbase
+				pkill -9 commbase
+				pkill -9 commbase
+				pkill -9 commbase
+				pkill -9 commbase
+				#PID=$(ps -aux | grep 'commbase' | grep -v grep | awk '{print $2}')
+				#kill $PID
 				exit 99
 				;;
 		esac
@@ -216,7 +211,7 @@ main() {
 route_option $1 $2 $3 $4 $5 $6 $7 $8 $9;
 }
 
-main $1 $2 $3 $4 $5 $6 $7 $8 $9;
+main $1 $2 $3 $4 $5 $6 $7 $8 $9 2> /dev/null;
 
 exit 99
 

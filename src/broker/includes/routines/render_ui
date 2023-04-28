@@ -3,6 +3,13 @@ render_ui() {
 	# render_ui
 	# Creates the Commbase application interface
 
+	# Path to the env file
+	ENV_FILE="$COMMBASE_ROOT_DIR/commbase/env/env";
+
+	# Assign the host values from the operating system
+	NEW_HOST_NAME=$(hostname | awk '{print $1}');
+	NEW_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}');
+
 	# The configuration file
 	source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 
@@ -106,12 +113,17 @@ render_ui() {
 
 	# If extra windows 1, 2, 3, etc. were activated set again the cursor focus on
 	# the window 0, "Commbase", pane 4.
-	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "cd $COMMBASE_ROOT_DIR/commbase ; clear" C-m;
+	#tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "cd $COMMBASE_ROOT_DIR/commbase ; clear" C-m;
+
+	# Set again the cursor focus on the window 0, "Commbase", pane 4, replace 
+	# hostname and host ip address values in the env file every
+	# IP_ADDRESS_UPDATE_IN_SECS, send the while to the background and then clean
+	# the pane prompt.
+	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "while true; do sed -i 's/^HOSTNAME=.*/HOSTNAME=$NEW_HOST_NAME/' $ENV_FILE; sed -i 's/^HOST_IP_ADDRESS=.*/HOST_IP_ADDRESS=$NEW_HOST_IP_ADDRESS/' $ENV_FILE; sleep $IP_ADDRESS_UPDATE_IN_SECS; done &; clear" C-m;
 
 	# Enter the Commbase session.
 	tmux attach-session -t Commbase-0;
 
 	exit 99
-
 }
 
