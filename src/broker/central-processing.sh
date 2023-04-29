@@ -228,7 +228,8 @@ else
   amixer set Capture nocap &>/dev/null
   reply_no=$((1 + $RANDOM % $total_no)) # Generates a random number between 1 and $total_no (inclusive)
   case $reply_no in 1) echo "no waaaay" | festival --tts ;; 2) echo "i can't do that" | festival --tts ;; 3) echo "repeat" | festival --tts ;; 4) echo "invalid choice" $USER | festival --tts ;; esac
-  tmux select-window -t 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m ""I don't understand:" $trim_str
+  #tmux select-window -t 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m ""I don't understand:" $trim_str
+  tmux select-window -t 1 && tmux select-pane -t 1 && printf "\e[1;41mCOMMBASE:\e[1;m I don't understand: %s" "$trim_str"
   tmux select-window -t 1 && tmux select-pane -t 4
   amixer set Capture cap &>/dev/null
 fi
