@@ -11,7 +11,9 @@ Content
 
 1.4. Set up the $COMMBASE_ROOT_DIR directory
 
-1.5. Set up the Commbase executable
+1.5. Set up the HISTCONTROL environment variable
+
+1.6. Set up the Commbase executable
 
 2. Requisites and dependencies
 
@@ -118,6 +120,25 @@ When Bash is invoked as an interactive non-login shell, it reads and executes co
 When invoked as an interactive login shell, Bash looks for the /etc/profile file, and if the file exists , it runs the commands listed in the file. Then Bash searches for ~/.bash_profile, ~/.bash_login, and ~/.profile files, in the listed order, and executes commands from the first readable file found.
 
 In case of that your OS distribution does not use ~/.bashrc, add manually the variable $COMMBASE_ROOT_DIR and its value to your Bash Startup File(s).
+
+Set up the HISTCONTROL environment variable
+--------------------------------------------
+
+The HISTCONTROL variable determines which commands are saved in the history file. If you set it to the value "ignoreboth", any command preceded by a space character will be excluded from the history.
+
+Commbase uses HISTCONTROL to keep clean the commands' history during the rendering of the Commbase UI.
+
+To set up the HISTCONTROL environment variable, run the script commbase/scripts/configuration/append-function-no-history-to-bashrc.sh:
+
+$ cd commbase/scripts/configuration
+
+$ sudo bash append-function-no-history-to-bashrc.sh
+
+$ source append-function-no-history-to-bashrc.sh
+
+$ exit
+
+Reopen the terminal. Otherwise, log out and log in.
 
 Set up the Commbase executable
 -------------------------------

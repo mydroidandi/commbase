@@ -39,38 +39,38 @@ render_ui() {
 	# Focus the cursor on the window 0, "Commbase", select the pane 1 (by
 	# default), activate the conda environment if exists, send the enter key
 	# (press enter), and sleep.
-	tmux select-window -t 1 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
+	tmux select-window -t 1 && tmux send-keys " conda activate commbase_env" C-m && sleep $time;
 
 	# On the window 0, "Commbase", select the pane 1 (by default), run any shell
 	# command, and send the enter key (press enter).
-	tmux send-keys "cpulimit --limit=$PYTHON_CPU_LIMIT_PERCENTAGE -- $PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/src/broker/voice-recognition.py" C-m;
+	tmux send-keys " cpulimit --limit=$PYTHON_CPU_LIMIT_PERCENTAGE -- $PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/src/broker/voice-recognition.py" C-m;
 
 	# Pane 2
 	# On the window 0, "Commbase", select the pane 2, activate the conda 
 	# environment if exists, send the enter key (press enter), and sleep.
-	tmux select-pane -t 2 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
+	tmux select-pane -t 2 && tmux send-keys " conda activate commbase_env" C-m && sleep $time;
 
 	# On the window 0, "Commbase", select the pane 2, run any shell command, and
 	# send the enter key (press enter).
-	tmux select-pane -t 2 && tmux send-keys "$PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/bundled/broker/vu-meter/vu_meter.py" C-m;
+	tmux select-pane -t 2 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/bundled/broker/vu-meter/vu_meter.py" C-m;
 
 	# Pane 3
 	# On the window 0, "Commbase", select the pane 3, activate the conda 
 	# environment if exists, send the enter key (press enter), and sleep.
-	tmux select-pane -t 3 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
+	tmux select-pane -t 3 && tmux send-keys " conda activate commbase_env" C-m && sleep $time;
 
 	# On the window 0, "Commbase", select the pane 3, run any shell command, and
 	# send the enter key (press enter), and sleep.
-	tmux select-pane -t 3 && tmux send-keys "alsamixer --view all" C-m;
+	tmux select-pane -t 3 && tmux send-keys " alsamixer --view all" C-m;
 
 	# Pane 4
 	# On the window 0, "Commbase", select the pane 4, activate the conda 
 	# environment if exists, send the enter key (press enter), and sleep.
-	tmux select-pane -t 4 && tmux send-keys "conda activate commbase_env" C-m && sleep $time;
+	tmux select-pane -t 4 && tmux send-keys " conda activate commbase_env" C-m && sleep $time;
 
 	# On the window 0, "Commbase", select the pane 4, run any shell command, and
 	# send the enter key (press enter), and sleep.
-	tmux select-pane -t 4 && tmux send-keys "cd $COMMBASE_ROOT_DIR/commbase ; clear" C-m;
+	tmux select-pane -t 4 && tmux send-keys " cd $COMMBASE_ROOT_DIR/commbase ; clear" C-m;
 
 	# In this section, activate/deactivate or add custom extra windows
 
@@ -78,27 +78,27 @@ render_ui() {
    	if [ "$ENABLE_TMUX_EXTRA_WINDOW_EDITOR" = "true" ]; then
 			# Window 1
 			# Auto create a new window 1 for a text editor
-			tmux new-window -t Commbase-0:2 -n "Editor" && tmux send-keys "conda activate commbase_env ; clear" C-m && sleep $time;
+			tmux new-window -t Commbase-0:2 -n "Editor" && tmux send-keys " conda activate commbase_env ; clear" C-m && sleep $time;
 			#tmux select-window -t 2 && tmux send-keys "nvim" C-m
 		fi
 		
 		if [ "$ENABLE_TMUX_EXTRA_WINDOW_TIMER" = "true" ]; then
 			# Window 2	
 			# Auto create a new window for a countdown timer of 25 mins and start it
-			tmux new-window -t Commbase-0:3 -n "Timer" && tmux send-keys "conda activate commbase_env ; clear" C-m && sleep $time;
-			tmux select-window -t 3 && tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/src/broker/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 25" C-m;
+			tmux new-window -t Commbase-0:3 -n "Timer" && tmux send-keys " conda activate commbase_env ; clear" C-m && sleep $time;
+			tmux select-window -t 3 && tmux send-keys " bash $COMMBASE_ROOT_DIR/commbase/src/broker/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 25" C-m;
 		fi
 		
 		if [ "$ENABLE_TMUX_EXTRA_WINDOW_SERVER1" = "true" ];then
 			# Window 3
 			# Auto create a new window for a ssh connection to a server (1)
-			tmux new-window -t Commbase-0:4 -n "Server1" && tmux send-keys "conda activate commbase_env ; clear" C-m && sleep $time;
+			tmux new-window -t Commbase-0:4 -n "Server1" && tmux send-keys " conda activate commbase_env ; clear" C-m && sleep $time;
 		fi
 		
 		if [ "$ENABLE_TMUX_EXTRA_WINDOW_SERVER2" = "true" ];then
 			# Window 4
 			# Auto create a new window for a ssh connection to a server (2)
-			tmux new-window -t Commbase-0:5 -n "Server2" && tmux send-keys "conda activate commbase_env ; clear" C-m && sleep $time;
+			tmux new-window -t Commbase-0:5 -n "Server2" && tmux send-keys " conda activate commbase_env ; clear" C-m && sleep $time;
 		fi
 	fi
 
@@ -119,11 +119,12 @@ render_ui() {
 	# hostname and host ip address values in the env file every
 	# IP_ADDRESS_UPDATE_IN_SECS, send the while to the background and then clean
 	# the pane prompt.
-	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "while true; do sed -i 's/^HOSTNAME=.*/HOSTNAME=$NEW_HOST_NAME/' $ENV_FILE; sed -i 's/^HOST_IP_ADDRESS=.*/HOST_IP_ADDRESS=$NEW_HOST_IP_ADDRESS/' $ENV_FILE; sleep $IP_ADDRESS_UPDATE_IN_SECS; done &; clear" C-m;
+	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys " while true; do sed -i 's/^HOSTNAME=.*/HOSTNAME=$NEW_HOST_NAME/' $ENV_FILE; sed -i 's/^HOST_IP_ADDRESS=.*/HOST_IP_ADDRESS=$NEW_HOST_IP_ADDRESS/' $ENV_FILE; sleep $IP_ADDRESS_UPDATE_IN_SECS; done &; clear" C-m;
+	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys " clear" C-m;
 
 	# Enter the Commbase session.
 	tmux attach-session -t Commbase-0;
 
 	exit 99
-}
+} 
 
