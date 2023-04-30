@@ -34,7 +34,7 @@
 # This is a speech recognition program that uses the Vosk library. It takes
 # audio input, processes it, and outputs the recognized text. The recognized
 # text is then cleaned up, and saved in a file.
-# Requires a minimun version of python3.7 for running the code correctly
+# Requires a minimun version of python3.7 for running the code correctly.
 
 # Imports
 import argparse
