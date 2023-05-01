@@ -9,7 +9,7 @@ Programmable conversational AI assistant and distributed AI for single computers
 
 <img alt="Commbase" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
 
-A ✨ module bundler ✨ that combines files for usage with libcommbase. It comes with several sample projects that demonstrate how to use it to build conversational AI assistants and "distributed AIs" or "multi-agent systems" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance.
+Commbase is a ✨ module bundler ✨ that combines files for usage with libcommbase. It comes with several sample projects that demonstrate how to use it to build conversational AI assistants and "distributed AIs" or "multi-agent systems" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance.
 
 ## Usage
 
