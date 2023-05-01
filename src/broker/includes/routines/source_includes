@@ -44,9 +44,9 @@ ENV_FILE="$COMMBASE_ROOT_DIR/$MY_APP_DIR/env/.env";
 source $COMMBASE_ROOT_DIR/$MY_APP_DIR/config/commbase.conf
 
 # Set the directory paths to source
-INCLUDE_DIR1="$COMMBASE_ROOT_DIR/$MY_APP_DIR/bundles/built-in/broker/libcommbase/includes"
-INCLUDE_DIR2="$COMMBASE_ROOT_DIR/$MY_APP_DIR/src/custom/broker/includes"
-INCLUDE_DIR3="$COMMBASE_ROOT_DIR/$MY_APP_DIR/src/default/broker/includes"
+INCLUDE_DIR1="$COMMBASE_ROOT_DIR/$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/includes"
+INCLUDE_DIR2="$COMMBASE_ROOT_DIR/$COMMBASE_APP_DIR/src/custom/broker/includes"
+INCLUDE_DIR3="$COMMBASE_ROOT_DIR/$COMMBASE_APP_DIR/src/default/broker/includes"
 
 # Find all shell script files in the directories and subdirectories
 for DIR in "$INCLUDE_DIR1" "$INCLUDE_DIR2" "$INCLUDE_DIR3"
