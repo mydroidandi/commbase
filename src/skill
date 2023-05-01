@@ -1,4 +1,4 @@
-#!/bin/bash
+
 # central-processing.sh
 # Reads and processes every new data stored in .data.dat and .prev_data
 
