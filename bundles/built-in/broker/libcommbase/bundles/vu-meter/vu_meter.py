@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 import pyaudio
 from amplitude import Amplitude
 from vu_constants import RATE, INPUT_FRAMES_PER_BLOCK
