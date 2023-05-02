@@ -1,6 +1,42 @@
+################################################################################
+#                                   Commbase                                   #
+#                                                                              #
+# Conversational AI Assistant and AI Hub for Computers and Droids              #
+#                                                                              #
+# Change History                                                               #
+# 04/29/2023  Esteban Herrera Original code.                                   #
+#                           Add new history entries as needed.                 #
+#                                                                              #
+#                                                                              #
+################################################################################
+################################################################################
+################################################################################
+#                                                                              #
+#  Copyright (c) 2022-present Esteban Herrera C.                               #
+#  stv.herrera@gmail.com                                                       #
+#                                                                              #
+#  This program is free software; you can redistribute it and/or modify        #
+#  it under the terms of the GNU General Public License as published by        #
+#  the Free Software Foundation; either version 3 of the License, or           #
+#  (at your option) any later version.                                         #
+#                                                                              #
+#  This program is distributed in the hope that it will be useful,             #
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of              #
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               #
+#  GNU General Public License for more details.                                #
+#                                                                              #
+#  You should have received a copy of the GNU General Public License           #
+#  along with this program; if not, write to the Free Software                 #
+#  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# central-processing.sh
-# Reads and processes every new data stored in .data.dat and .prev_data
+# skill
+# Reads every new data stored in the ".data.dat" and ".prev_data" files, parses
+# it, compares it against a list of known skills and skillsets, and executes the
+# corresponding skill or skillset if the data matches a skill or skillset
+# listed.
+
+# TODO: Put everything in a function
+skill() {}
 
 # $(<FILE-NAME) is used in bash or zsh, to read a whole file into a variable without invoking cat
 trim_str=$(<$COMMBASE_ROOT_DIR/commbase/data/.data.dat)

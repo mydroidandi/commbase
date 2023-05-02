@@ -32,8 +32,7 @@
 # app
 # Creates the Commbase application interface, replaces the hostname and host IP
 # address, and enters the Commbase session.
-
-render_ui() {
+app() {
 
 	# Path to the env file
 	ENV_FILE="$COMMBASE_ROOT_DIR/commbase/env/env";
@@ -121,13 +120,13 @@ render_ui() {
 		if [ "$ENABLE_TMUX_EXTRA_WINDOW_SERVER1" = "true" ];then
 			# Window 3
 			# Auto-create a new window 3 for a ssh connection to a server 1
-			tmux new-window -t Commbase-0:4 -n "Server1" && tmux send-keys " conda activate commbase_env ; clear" C-m && sleep $time;
+			tmux new-window -t Commbase-0:4 -n "Server 1" && tmux send-keys " conda activate commbase_env ; clear" C-m && sleep $time;
 		fi
 		
 		if [ "$ENABLE_TMUX_EXTRA_WINDOW_SERVER2" = "true" ];then
 			# Window 4
 			# Auto-create a new window for a ssh connection to a server 2
-			tmux new-window -t Commbase-0:5 -n "Server2" && tmux send-keys " conda activate commbase_env ; clear" C-m && sleep $time;
+			tmux new-window -t Commbase-0:5 -n "Server 2" && tmux send-keys " conda activate commbase_env ; clear" C-m && sleep $time;
 		fi
 	fi
 
