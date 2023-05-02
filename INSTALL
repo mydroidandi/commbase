@@ -592,6 +592,9 @@ $ ls -hal vu-meter
 
 $ chmod 755 vu-meter
 
+If you are using the Anaconda Python environment commbase_env, the file vu_meter.py, and change the first line like this:
+#!/usr/bin/env python
+
 Install Oh My Tmux
 -------------------
 

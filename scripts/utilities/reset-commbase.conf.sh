@@ -6,6 +6,7 @@
 cd ../../config/
 touch commbase.conf
 cat <<EOT > commbase.conf
+COMMBASE_APP_DIR="commbase"
 PYTHON_ENV_VERSION="python"
 PYTHON_CPU_LIMIT_PERCENTAGE="75"
 IP_ADDRESS_UPDATE_IN_SECS="300"
