@@ -131,7 +131,7 @@ dmypy.json
 .pyre/
 
 # Ignore bundled models
-bundled/broker/vosk/model/
+bundles/built-in/broker/libcommbase/bundles/vosk/
 
 # Configs for devel
 #commbase.conf
