@@ -32,29 +32,32 @@
 
 # source_includes
 # Sources each file in the includes directories and their subdirectories
+source_includes() {
+	# Path to the env file
+	ENV_FILE="$COMMBASE_ROOT_DIR/$MY_APP_DIR/env/.env";
+
+	# The configuration file
+	source $COMMBASE_ROOT_DIR/$MY_APP_DIR/config/commbase.conf
+
+	# Set the directory paths to source
+	INCLUDE_DIR1="$COMMBASE_ROOT_DIR/$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/includes"
+	INCLUDE_DIR2="$COMMBASE_ROOT_DIR/$COMMBASE_APP_DIR/src/custom/broker/includes"
+	INCLUDE_DIR3="$COMMBASE_ROOT_DIR/$COMMBASE_APP_DIR/src/default/broker/includes"
+
+	# Find all shell script files in the directories and subdirectories
+	for DIR in "$INCLUDE_DIR1" "$INCLUDE_DIR2" "$INCLUDE_DIR3"
+	do
+		find "$DIR" -type f -name "*.sh" | while read FILENAME
+		do
+		  # Source each file
+		  source "$FILENAME"
+		done
+	done
+	
+	exit 99
+}
 
 # How to source from a file:
 # # Source the directory and subdirectories
 # source path/to/source_includes
-
-# Path to the env file
-ENV_FILE="$COMMBASE_ROOT_DIR/$MY_APP_DIR/env/.env";
-
-# The configuration file
-source $COMMBASE_ROOT_DIR/$MY_APP_DIR/config/commbase.conf
-
-# Set the directory paths to source
-INCLUDE_DIR1="$COMMBASE_ROOT_DIR/$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/includes"
-INCLUDE_DIR2="$COMMBASE_ROOT_DIR/$COMMBASE_APP_DIR/src/custom/broker/includes"
-INCLUDE_DIR3="$COMMBASE_ROOT_DIR/$COMMBASE_APP_DIR/src/default/broker/includes"
-
-# Find all shell script files in the directories and subdirectories
-for DIR in "$INCLUDE_DIR1" "$INCLUDE_DIR2" "$INCLUDE_DIR3"
-do
-  find "$DIR" -type f -name "*.sh" | while read FILENAME
-  do
-    # Source each file
-    source "$FILENAME"
-  done
-done
 
