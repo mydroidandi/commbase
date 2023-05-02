@@ -1,0 +1,3 @@
+[submodule "bundles/built-in/broker/libcommbase/bundles/vu-meter"]
+	path = bundles/built-in/broker/libcommbase/bundles/vu-meter
+	url = https://github.com/kmein/vu-meter.git
