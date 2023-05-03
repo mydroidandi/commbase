@@ -139,9 +139,7 @@ commbase.conf.bak
 #configs/
 
 # .bak files used for devel
-*.bak
-set-commbase-root-directory.sh.bak
-skill.bak
+src/skill.bak
 
 # Ignore Logs
 logs
