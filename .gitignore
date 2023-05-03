@@ -139,9 +139,9 @@ commbase.conf.bak
 #configs/
 
 # config-scripts/ for devel
-.bak
+*.bak
 set-commbase-root-directory.sh.bak
-skill.bak
+
 
 # Ignore Logs
 logs
