@@ -138,10 +138,10 @@ bundles/built-in/broker/vosk/model/
 commbase.conf.bak
 #configs/
 
-# config-scripts/ for devel
+# .bak files used for devel
 *.bak
 set-commbase-root-directory.sh.bak
-
+skill.bak
 
 # Ignore Logs
 logs
