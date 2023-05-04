@@ -45,7 +45,6 @@ path/to/commbase
 │   ├── built-in
 │   │   └── broker
 │   │       ├── commbase-stt-vosk
-│   │       ├── includes
 │   │       ├── libcommbase
 │   │       │   ├── examples
 │   │       │   ├── libcommbase
