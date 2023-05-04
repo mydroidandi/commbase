@@ -62,11 +62,6 @@ path/to/commbase
 │   │       │   └── utilities
 │   │       ├── vosk
 │   │       │   └── model
-│   │       │       ├── am
-│   │       │       ├── conf
-│   │       │       ├── graph
-│   │       │       │   └── phones
-│   │       │       └── ivector
 │   │       └── vu-meter
 │   ├── custom
 │   │   └── agents
@@ -78,7 +73,6 @@ path/to/commbase
 │       └── broker
 │           ├── audiobooks
 │           │   └── Robinson-Crusoe
-│           ├── includes
 │           └── tensorflow
 ├── config  # Stores the configuration file
 ├── data  # Stores the voice recognition model results
@@ -98,6 +92,7 @@ path/to/commbase
     ├── custom
     │   ├── agents
     │   │   └── z
+    │   │       └── includes
     │   └── broker
     │       ├── includes
     │       │   ├── routines
@@ -123,6 +118,7 @@ path/to/commbase
         │   ├── x-conversation-mode-ai
         │   │   └── includes
         │   └── y
+        │       └── includes
         └── broker
             ├── includes
             │   ├── routines
