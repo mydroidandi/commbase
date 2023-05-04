@@ -133,13 +133,9 @@ dmypy.json
 # Ignore bundled models
 bundles/built-in/broker/vosk/model/
 
-# Configs for devel
-#commbase.conf
-commbase.conf.bak
-#configs/
-
 # .bak files used for devel
-src/skill.bak
+skill.bak
+commbase.conf.bak
 
 # Ignore Logs
 logs
