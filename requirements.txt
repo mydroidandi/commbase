@@ -1,48 +1,48 @@
-aiohttp @ file:///croot/aiohttp_1670009560265/work
-aiohttp-cors @ file:///tmp/build/80754af9/aiohttp-cors_1621432682906/work
-aiosignal @ file:///tmp/build/80754af9/aiosignal_1637843061372/work
-appdirs==1.4.4
-async-timeout @ file:///opt/conda/conda-bld/async-timeout_1664876359750/work
-attrs @ file:///croot/attrs_1668696182826/work
-brotlipy==0.7.0
-cchardet @ file:///croot/cchardet_1683043415468/work
-certifi @ file:///croot/certifi_1671487769961/work/certifi
-cffi @ file:///croot/cffi_1670423208954/work
-chardet @ file:///home/builder/ci_310/chardet_1640804867535/work
-charset-normalizer==2.1.1
-click @ file:///tmp/build/80754af9/click_1646056706450/work
-colorama @ file:///croot/colorama_1672386526460/work
-commonmark @ file:///Users/ktietz/demo/mc3/conda-bld/commonmark_1630649545323/work
-cryptography @ file:///croot/cryptography_1677533068310/work
-daal4py==2023.0.2
-frozenlist @ file:///croot/frozenlist_1670004507010/work
-future @ file:///croot/future_1677599870788/work
-idna @ file:///croot/idna_1666125576474/work
-joblib @ file:///croot/joblib_1666298844297/work
-multidict @ file:///croot/multidict_1665674239670/work
-numpy @ file:///croot/numpy_and_numpy_base_1672336185480/work
-openai==0.27.6
-packaging @ file:///croot/packaging_1678965309396/work
-pooch @ file:///tmp/build/80754af9/pooch_1623324770023/work
-PyAudio==0.2.11
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
-Pygments @ file:///opt/conda/conda-bld/pygments_1644249106324/work
-pyOpenSSL @ file:///croot/pyopenssl_1677607685877/work
-PySocks @ file:///home/builder/ci_310/pysocks_1640793678128/work
-requests==2.28.2
-rich @ file:///tmp/abs_f016wesp06/croots/recipe/rich_1659708287203/work
-scikit-learn @ file:///croot/scikit-learn_1680198742267/work
-scikit-learn-intelex==20230228.214242
-scipy==1.10.1
-shellingham @ file:///croot/shellingham_1669142169426/work
-sounddevice==0.4.6
-srt==3.5.3
-subprocess.run==0.0.8
-threadpoolctl @ file:///Users/ktietz/demo/mc3/conda-bld/threadpoolctl_1629802263681/work
-tqdm==4.65.0
-typer @ file:///opt/conda/conda-bld/typer_1651237163820/work
-typing_extensions @ file:///croot/typing_extensions_1681939499988/work
-urllib3 @ file:///croot/urllib3_1680254681959/work
-vosk==0.3.45
-websockets==11.0.1
-yarl @ file:///opt/conda/conda-bld/yarl_1661437085904/work
+aiohttp
+aiohttp-cors
+aiosignal
+appdirs
+async-timeout
+attrs
+brotlipy
+cchardet
+certifi
+cffi
+chardet
+charset-normalizer
+click
+colorama
+commonmark
+cryptography
+daal4py
+frozenlist
+future
+idna
+joblib
+multidict
+numpy
+openai
+packaging
+pooch
+PyAudio
+pycparser
+Pygments
+pyOpenSSL
+PySocks
+requests
+rich
+scikit-learn
+scikit-learn-intelex
+scipy
+shellingham
+sounddevice
+srt
+subprocess.run
+threadpoolctl
+tqdm
+typer
+typing_extensions
+urllib3
+vosk
+websockets
+yarl
