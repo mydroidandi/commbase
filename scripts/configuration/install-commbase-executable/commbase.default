@@ -1,11 +1,11 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 ################################################################################
 #                                   Commbase                                   #
 #                                                                              #
 # Conversational AI Assistant and AI Hub for Computers and Droids              #
 #                                                                              #
 # Change History                                                               #
-# 11/30/2022  Esteban Herrera Original code.                                   #
+# 04/29/2023  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -32,8 +32,8 @@
 
 # commbase
 # Prints command license, help and version.
-# Starts, teleports, and stops Commbase terminal versions of the commbase
-# voice commands for their processing.
+# Starts, teleports, and stops Commbase terminal versions of the commbase voice
+# commands for their processing.
 # 
 # To start the application:
 # shell> commbase start

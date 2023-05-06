@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 ################################################################################
 #                                   Commbase                                   #
 #                                                                              #
@@ -30,42 +30,41 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# set-app-root-dir-and-app-dir.sh
-# Prompts the user to enter the name of a new Commbase App directory and 
-# optionally the path of the App root directory. If the user enters an empty
-# string for the App directory name, it will keep asking until a non-empty 
-# string is provided. If the user does not provide a value for the App root
-# directory, the default value is set to the $HOME directory. Then the script
-# checks whether the directory specified by the variable COMMBASE_APP_DIR 
-# exists. If the directory does not exist, the script exports the path to the
-# directory to the Bash shell's and the Z shell's configuration files (.bashrc
-# and .zshrc). Finally, the script exits with a status code of 99.
-# Remove the lines from the files ~/.bashrc and ~/.zshrc before rerun this 
-# setup.
+# reset_commbase.conf.sh
+# Restores the file config/commbase.conf to its inital status.
 
-read -p "Enter the name of the App directory: " APP
+# Copy the content of cat
+cd ../../config/
+touch commbase.conf
+cat <<EOT > commbase.conf
+COMMBASE_APP_DIR="commbase"
+PYTHON_ENV_VERSION="python"
+PYTHON_CPU_LIMIT_PERCENTAGE="75"
+IP_ADDRESS_UPDATE_IN_SECS="300"
+LOCAL_HOST_UUID="5ba8f927-d331-471c-b640-812d4680e310"
+REMOTE_USER_NAME="tonystark"
+REMOTE_USER_PASSWD="USE-KEY-PAIRS"
+COMMBASE_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback"
+ALTERNATIVE_CAPTURE_DEVICE_NAME="alsa_input.pci-0000_00_1b.0.analog-stereo"
+ENABLE_TMUX_EXTRA_WINDOWS="true"
+ENABLE_TMUX_EXTRA_WINDOW_EDITOR="true"
+ENABLE_TMUX_EXTRA_WINDOW_TIMER="true"
+ENABLE_TMUX_EXTRA_WINDOW_SERVER1="true"
+ENABLE_TMUX_EXTRA_WINDOW_SERVER2="false"
+EXTERNAL_STORAGE_DRIVE_01_TAG="WD1"
+EXTERNAL_STORAGE_DRIVE_02_TAG="WD2"
+DEV_PROJECT_DIRECTORY_NAME="commbase"
+PROTONVPN_CLI_USERNAME="Tony_St4rk"
+PROTONVPN_CLI_PASSWORD="NOT-REQUIRED-ONCE-REGISTERED"
+PROTONVPN_API_USERNAME="USERNAME-IN-CONFIG-FILE-IN-/ETC/"
+PROTONVPN_API_PASSWORD="PASSWORD-IN-CONFIG-FILE-IN-/ETC/"
+SERVER_HOST_001_UUID="27475487-cab6-4050-9047-9a565e22d2b0"
+SERVER_HOST_001_HOSTNAME="shark2"
+SERVER_HOST_001_IP_ADDRESS="192.168.100.45"
+SERVER_HOST_001_USER_PASSWD="USE-KEY-PAIRS"
+CHATGPT_API_KEY="1234"
 
-while [[ -z "$APP" ]]; do
-    read -p "Please enter a non-empty name for the App directory: " APP
-done
-
-read -p "Enter the path of the App root directory (press enter for default '$HOME'): " APP_ROOT_DIR
-
-if [[ -z "$APP_ROOT_DIR" ]]; then
-    APP_ROOT_DIR="$HOME"
-fi
-
-# Check whether the directory specified by the variable does not exist
-if [[ ! -d "$COMMBASE_APP_DIR" ]]; then 
-    echo "" >> ~/.bashrc
-    echo "# The Commbase App directory for the Bash shell" >> ~/.bashrc
-    echo "export COMMBASE_APP_DIR=\"$APP_ROOT_DIR/$APP\"" >> ~/.bashrc
-    echo "" >> ~/.zshrc
-    echo "# The Commbase App directory for the Z shell" >> ~/.zshrc
-    echo "export COMMBASE_APP_DIR=\"$APP_ROOT_DIR/$APP\"" >> ~/.zshrc
-fi
-
-echo -e "Don't forget to rename the directory of the app as: \033[31m$APP\033[0m"
+EOT
 
 exit 99
 

@@ -91,9 +91,9 @@ Set up the COMMBASE_APP_DIR directory
 
 Go to the directory commbase/scripts/configuration/ 
 
-You will see the file set-app-root-dir-and-app-dir.sh there.
+You will see the file set_app_root_directory_and_app_directory.sh there.
 
-$ bash set-commbase-environment-variable.sh
+$ bash set_app_root_directory_and_app_directory.sh
 
 The script is going to append the variable COMMBASE_APP_DIR in the files $HOME/.bashrc and $HOME/.zshrc
 
@@ -116,13 +116,13 @@ The HISTCONTROL variable determines which commands are saved in the history file
 
 Commbase uses HISTCONTROL to keep clean the commands' history during the rendering of the Commbase UI.
 
-To set up the HISTCONTROL environment variable, run the script commbase/scripts/configuration/append-function-no-history-to-bashrc.sh:
+To set up the HISTCONTROL environment variable, run the script commbase/scripts/configuration/append_function_no_history_to_bashrc.sh:
 
 $ cd commbase/scripts/configuration
 
-$ sudo bash append-function-no-history-to-bashrc.sh
+$ sudo bash append_function_no_history_to_bashrc.sh
 
-$ source append-function-no-history-to-bashrc.sh
+$ source append_function_no_history_to_bashrc.sh
 
 $ exit
 
@@ -131,11 +131,11 @@ Reopen the terminal.
 Set up the Commbase executable
 -------------------------------
 
-Go to the directory commbase/scripts/configuration/install-commbase-executable/ and execute the file install-commbase-executable.sh:
+Go to the directory commbase/scripts/configuration/install-commbase-executable/ and execute the file install_commbase_executable.sh:
 
 $ cd commbase/scripts/configuration/install-commbase-executable/
 
-$ bash install-commbase-executable.sh
+$ bash install_commbase_executable.sh
 
 A new commbase file should appear in the directory /usr/bin.
 
@@ -438,7 +438,7 @@ If the environment you want to remove is the current active environment, deactiv
 
 Run the config script:
 
-$ bash commbase/scripts/configuration/build-conda-environment.sh
+$ bash commbase/scripts/configuration/build_conda_environment.sh
 
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
 
@@ -470,7 +470,7 @@ Visit: https://alphacephei.com/vosk/models
 
 Download and install the model manually or by running this command in commbase/scripts/configuration:
 
-$ bash install-vosk-model.sh
+$ bash install_vosk_model.sh
 
 Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance because the bigger the model you use, the bigger the memory required to load it. That change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
 
