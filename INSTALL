@@ -9,7 +9,7 @@ Content
 
 1.3. Install Commbase
 
-1.4. Set up the $COMMBASE_ROOT_DIR directory
+1.4. Set up the COMMBASE_APP_DIR directory
 
 1.5. Set up the HISTCONTROL environment variable
 
@@ -49,10 +49,12 @@ Content
 1. Installation
 ================
 
+In this guide, we will use Debian GNU/Linux to demonstrate the steps, but you can use any of your preferred distros and have the same result.
+
 Set up your system repository sources
 --------------------------------------
 
-For example, in GNU/Debian Linux, add the sources contrib and non-free in the file /etc/apt/sources
+Add the sources contrib and non-free in the file /etc/apt/sources
 
 $ sudo nano /etc/apt/sources
 
@@ -70,7 +72,7 @@ Install Commbase
 
 Visit: https://github.com/mydroidandi/commbase
 
-Download the repository to your $HOME directory:
+Download or clone the repository somewhere in your home directory:
 
 $ echo $HOME
 
@@ -80,38 +82,24 @@ Extract the zip file:
 
 $ unzip commbase-main.zip
 
-Rename the directory commbase-main as commbase:
+Rename the directory called "commbase-main" to something else that you get to choose. It can be any name you want, like "my-app". But just so we are all on the same page, we will call it "commbase" from now on.
 
 $ mv commbase-main commbase
 
-Set up the $COMMBASE_ROOT_DIR directory
-----------------------------------------
+Set up the COMMBASE_APP_DIR directory
+--------------------------------------
 
-Go to the directory commbase/scripts/configuration/ and open the file set-commbase-root-directory.sh.
+Go to the directory commbase/scripts/configuration/ 
 
-Written in Bash language, you will see ~/.bashrc and ~/.zshrc, which are the routes to the bash and Z shell configuration files.
-
-$HOME is the default value of the variable $COMMBASE_ROOT_DIR.
-
-The variable $COMMBASE_ROOT_DIR stores the Commbase's root directory.
-
-You can update the content of $COMMBASE_ROOT_DIR to a custom value, such as $HOME/Developer/my_commbase. It must be updated for both sections, ~/.bashrc and ~/.zshrc, but if you don't have Z shell in your operating system, you can comment out the ~/.zshrc section before running the script, like this:
-
-Section of set-commbase-root-directory.sh:
-
-		#echo "" >> ~/.zshrc
-		#echo "# The Commbase directory for the Z shell" >> ~/.zshrc
-		#echo 'export COMMBASE="$HOME"' >> ~/.zshrc
-
-Save the file changes and then execute the file:
+You will see the file set-app-root-dir-and-app-dir.sh there.
 
 $ bash set-commbase-environment-variable.sh
 
-The script is going to append the variable $COMMBASE_ROOT_DIR in the files $HOME/.bashrc and $HOME/.zshrc
+The script is going to append the variable COMMBASE_APP_DIR in the files $HOME/.bashrc and $HOME/.zshrc
 
-To know more about making Commbase commands, check out the section "The $COMMBASE_ROOT_DIR directory" in the User's Guide.
+To know more about making Commbase commands, check out the section "The Commbase root directory" in the User's Guide.
 
-Notes about the difference Between .bashrc and .bash_profile:
+Notes about the difference between .bashrc and .bash_profile:
 
 .bash_profile is read and executed when Bash is invoked as an interactive login shell, while .bashrc is executed as an interactive non-login shell.
 
@@ -201,7 +189,7 @@ Note: A Python version higher than the one used for the commbase_env could affec
 Install Python
 ---------------
 
-python3.7:
+- python3.7:
 
 $ sudo apt-get update
 
@@ -209,7 +197,7 @@ $ apt-cache search python 3.7
 
 $ sudo apt-get install python3.7
 
-pip3.7:
+- pip3.7:
 
 $ /usr/bin/python3 -m pip install --upgrade pip
 
@@ -228,7 +216,7 @@ $ pip3.7 list | more
 Install Python packages
 ------------------------
 
-Vosk:
+- Vosk:
 
 $ pip3.7 install vosk
 
@@ -245,7 +233,7 @@ End of OUTPUT.
 
 In the previous output, the messages reference the current Python Vosk package installation. Python is already installed in a directory of the current local user <USER>, instead of system-wide, so it is helpful to re-install python3, pip3, or vosk.
 
-PyAudio‑0.2.11:
+- PyAudio‑0.2.11:
 
 $ pip3.7 install PyAudio‑0.2.11
 
@@ -271,7 +259,7 @@ Install PyAudio using the simple instruction in its file INSTALL:
 
 $ sudo python3.7 setup.py install
 
-Subprocess.run:
+- Subprocess.run:
 
 Information: https://pypi.org/project/subprocess.run/
 
@@ -281,13 +269,13 @@ Or:
 
 $ pip3 install subprocess.run
 
-Sounddevice:
+- Sounddevice:
 
 This package allows us to run test_microphone.py
 
 $ pip3 install sounddevice
 
-Chardet:
+- Chardet:
 
 This resolves the error: "cannot import name 'COMMON_SAFE_ASCII_CHARACTERS'"
 
@@ -297,7 +285,7 @@ Or use:
 
 $ pip3 install chardet
 
-Scikit-learn and scikit-learn-intelex:
+- Scikit-learn and scikit-learn-intelex:
 
 $ pip install scikit-learn
 
@@ -311,7 +299,7 @@ Or use:
 
 $ pip3 install scikit-learn-intelex
 
-OpenCV:
+- OpenCV:
 
 Steps to install OpenCV 4.5.1 in Debian 11 running Python 3.9:
 
@@ -338,6 +326,28 @@ $ apt-cache show python3-opencv
 Install the package:
 
 $ sudo apt-get install python3-opencv
+
+The next packages are required by a Commbase skill to chat with ChatGPT (https://chat.openai.com/) in the terminal, and potentially by new terminal apps or skills that you can add to Commbase and that would require text enhancements in Python.
+
+Anaconda:
+
+- aiohttp-cors
+
+- cchardet
+
+- typer
+
+- rich
+
+These are already in the environment file commbase_env.yaml
+
+pip:
+
+- openai
+
+It can only be installed with pip. It has also been added to commbase_env.yaml as an auto-downloadable pip package.
+
+$ pip install openai
 
 Install Python in an Anaconda Python environment
 -------------------------------------------------
@@ -469,65 +479,65 @@ Install the required system dependency packages
 
 Names and commands for this section could change from OS distribution to distribution, or even from release to release.
 
-For example, in Debian Linux, the DPKG packages that contain all the required commands can be installed using APT. Apt manages and installs the package dependencies automatically.
+In Debian, the DPKG packages that contain all the required commands can be installed using APT. Apt manages and installs the package dependencies automatically.
 
-List of required packages/commands (based on Debian GNU/Linux):
+List of required packages/commands (some names may vary from distribution to distribution):
 
-alsa-utils (contains the tools: alsamixer and aplay)
+- alsa-utils (contains the tools: alsamixer and aplay)
 
-bash
+- bash
 
-cpulimit
+- cpulimit
 
-curl
+- curl
 
-dash (contains the sh command) 
+- dash (contains the sh command) 
 
-festival
+- festival
 
-ffmpeg
+- ffmpeg
 
-gawk
+- gawk
 
-gdebi
+- gdebi
 
-git
+- git
 
-mpv
+- mpv
 
-mplayer
+- mplayer
 
-nmap
+- nmap
 
-openssh-server (server and client)
+- openssh-server (server and client)
 
-play
+- play
 
-pkill (it comes installed with the base system sometimes, in a package with another name)
+- pkill (it comes installed with the base system sometimes, in a package with another name)
 
-portaudio19-dev (seen in the section of PyAudio)
+- portaudio19-dev (seen in the section of PyAudio)
 
-python3-opencv (seen in the installation of OpenCV)
+- python3-opencv (seen in the installation of OpenCV)
 
-rsync
+- rsync
 
-sed
+- sed
 
-sox
+- sox
 
-sudo
+- sudo
 
-tar (seen in the section of PyAudio)
+- tar (seen in the section of PyAudio)
 
-tasksel
+- tasksel
 
-tmux
+- tmux
 
-unzip
+- unzip
 
-uuid-runtime
+- uuid-runtime
 
-wget
+- wget
 
 Use APT to install packages from the official repositories for your distro, like this:
 
@@ -613,21 +623,21 @@ Install the default Commbase voice commands dependencies
 
 The applications to run by voice commands can be replaced at any moment and grow by users (skill programmers and skillset trainers). For example, replace VS Code by Gedit, VIM, etc. However, have installed these as a minimum to be able to run the Commbase commands available in the "sample skills" installation:
 
-Brave browser
+- Brave browser
 
-Etherape
+- Etherape
 
-Gnome terminal
+- Gnome terminal
 
-Midori
+- Midori
 
-Nano
+- Nano
 
-Neofetch
+- Neofetch
 
-ProtonVPN
+- ProtonVPN
 
-VS Code
+- VS Code
 
 Install Desktop Environments
 -----------------------------

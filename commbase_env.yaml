@@ -4,24 +4,36 @@ channels:
 dependencies:
   - _libgcc_mutex=0.1=main
   - _openmp_mutex=5.1=1_gnu
+  - aiohttp=3.8.3=py310h5eee18b_0
+  - aiohttp-cors=0.7.0=pyhd3eb1b0_0
+  - aiosignal=1.2.0=pyhd3eb1b0_0
   - appdirs=1.4.4=pyhd3eb1b0_0
+  - async-timeout=4.0.2=py310h06a4308_0
+  - attrs=22.1.0=py310h06a4308_0
   - blas=1.0=openblas
   - brotlipy=0.7.0=py310h7f8727e_1002
   - bzip2=1.0.8=h7b6447c_0
   - ca-certificates=2023.01.10=h06a4308_0
   - cairo=1.16.0=hb05425b_4
+  - cchardet=2.1.7=py310h6a678d5_0
   - certifi=2022.12.7=py310h06a4308_0
   - cffi=1.15.1=py310h5eee18b_3
   - chardet=4.0.0=py310h06a4308_1003
+  - click=8.0.4=py310h06a4308_0
+  - colorama=0.4.6=py310h06a4308_0
+  - commonmark=0.9.1=pyhd3eb1b0_0
   - cryptography=39.0.1=py310h9ce1e76_0
   - daal4py=2023.0.2=py310h3c18c91_0
   - dal=2023.0.1=hdb19cb5_26647
+  - dataclasses=0.8=pyh6d0b6a4_7
   - dbus=1.13.18=hb2f20db_0
   - eigen=3.3.7=hd09550d_1
   - expat=2.4.9=h6a678d5_0
   - ffmpeg=4.2.2=h20bf706_0
   - fontconfig=2.14.1=h4c34cd2_2
   - freetype=2.12.1=h4a9f257_0
+  - frozenlist=1.3.3=py310h5eee18b_0
+  - future=0.18.3=py310h06a4308_0
   - giflib=5.2.1=h5eee18b_3
   - glib=2.69.1=he621ea3_2
   - gmp=6.2.1=h295c915_3
@@ -71,6 +83,7 @@ dependencies:
   - lz4-c=1.9.4=h6a678d5_0
   - mpi=1.0=mpich
   - mpich=3.3.2=external_0
+  - multidict=6.0.2=py310h5eee18b_0
   - ncurses=6.4=h6a678d5_0
   - nettle=3.7.3=hbbd107a_1
   - nspr=4.33=h295c915_0
@@ -88,6 +101,7 @@ dependencies:
   - pooch=1.4.0=pyhd3eb1b0_0
   - portaudio=19.6.0=h7b6447c_4
   - pycparser=2.21=pyhd3eb1b0_0
+  - pygments=2.11.2=pyhd3eb1b0_0
   - pyopenssl=23.0.0=py310h06a4308_0
   - pysocks=1.7.1=py310h06a4308_0
   - python=3.10.9=h7a1cb2a_2
@@ -95,23 +109,29 @@ dependencies:
   - qt-webengine=5.15.9=hbbf29b9_6
   - qtwebkit=5.212=h3fafdc1_5
   - readline=8.2=h5eee18b_0
+  - rich=12.5.1=py310h06a4308_0
   - scikit-learn=1.2.2=py310h6a678d5_0
   - scikit-learn-intelex=2023.0.2=py310h06a4308_0
   - scipy=1.10.1=py310heeff2f4_0
   - setuptools=65.6.3=py310h06a4308_0
+  - shellingham=1.5.0=py310h06a4308_0
   - sqlite=3.41.1=h5eee18b_0
   - tbb=2021.8.0=hdb19cb5_0
   - threadpoolctl=2.2.0=pyh0d69192_0
   - tk=8.6.12=h1ccaba5_0
+  - typer=0.4.1=py310h06a4308_0
+  - typing_extensions=4.5.0=py310h06a4308_0
   - tzdata=2023c=h04d1e81_0
   - urllib3=1.26.15=py310h06a4308_0
   - wheel=0.38.4=py310h06a4308_0
   - x264=1!157.20191217=h7b6447c_0
   - xz=5.2.10=h5eee18b_1
+  - yarl=1.8.1=py310h5eee18b_0
   - zlib=1.2.13=h5eee18b_0
   - zstd=1.5.5=hc292b87_0
   - pip:
-      - charset-normalizer==3.1.0
+      - charset-normalizer==2.1.1
+      - openai==0.27.6
       - pyaudio==0.2.11
       - requests==2.28.2
       - sounddevice==0.4.6
