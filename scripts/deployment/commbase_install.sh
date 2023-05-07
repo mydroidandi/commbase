@@ -1,11 +1,11 @@
+#!/usr/bin/env bash
 ################################################################################
-#                                  libcommbase                                 #
+#                                   Commbase                                   #
 #                                                                              #
-# A collection of libraries to centralize common functions that can be shared  #
-# across multiple conversational AI assistant projects                         #
+# Conversational AI Assistant and AI Hub for Computers and Droids              #
 #                                                                              #
 # Change History                                                               #
-# 05/02/2023  Esteban Herrera Original code.                                   #
+# 04/29/2023  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -13,7 +13,7 @@
 ################################################################################
 ################################################################################
 #                                                                              #
-#  Copyright (c) 2023-present Esteban Herrera C.                               #
+#  Copyright (c) 2022-present Esteban Herrera C.                               #
 #  stv.herrera@gmail.com                                                       #
 #                                                                              #
 #  This program is free software; you can redistribute it and/or modify        #
@@ -30,7 +30,8 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# process_built-in_skills
-# TODO: Description
-process_built-in_skills() {}
+# commbase_install.sh
+# Executes a complete commbase installation in one step, by running config scripts.
+
+exit 99
 

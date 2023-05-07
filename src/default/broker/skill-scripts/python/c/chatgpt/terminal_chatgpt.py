@@ -30,8 +30,8 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# terminalchatgpt.py
-# A terminal version of ChatGPT. 
+# terminal_chatgpt.py
+# A terminal version of ChatGPT
 # ChatGPT is a chatbot built using the GPT (Generative Pre-trained Transformer)
 # architecture developed by OpenAI.
 # You can access ChatGPT by going to https://chat.openai.com/
