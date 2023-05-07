@@ -1,8 +1,8 @@
-#!/bin/bash
-# File: desktop-shark-check-internet-connection-one-time.sh
-# Description: Checks for Internet and makes a beep sound if the Internet is available.
+# localhost_check_internet_connection_one_time.sh
+# Checks for Internet and makes a beep sound if the Internet is available
 # This from the package sox:
 # play -n synth 0.3 sine 800 vol 0.75
+
 pingtime=$(ping -w 1 8.8.8.8 | grep ttl)
 sleep 0.5 # Allows Commbase to finish saying "yes ..."
 if [ "$pingtime" = "" ] 
@@ -18,3 +18,4 @@ else
     clear ; echo 'Internet Connection Status: Online' ; echo 'Internet Connection Status: Online' | festival --tts #; play a beep sound here
 fi
 sleep 1
+

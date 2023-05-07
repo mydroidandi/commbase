@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 ################################################################################
 #                                   Commbase                                   #
 #                                                                              #
@@ -30,42 +30,30 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# set-app-root-dir-and-app-dir.sh
-# Prompts the user to enter the name of a new Commbase App directory and 
-# optionally the path of the App root directory. If the user enters an empty
-# string for the App directory name, it will keep asking until a non-empty 
-# string is provided. If the user does not provide a value for the App root
-# directory, the default value is set to the $HOME directory. Then the script
-# checks whether the directory specified by the variable COMMBASE_APP_DIR 
-# exists. If the directory does not exist, the script exports the path to the
-# directory to the Bash shell's and the Z shell's configuration files (.bashrc
-# and .zshrc). Finally, the script exits with a status code of 99.
-# Remove the lines from the files ~/.bashrc and ~/.zshrc before rerun this 
-# setup.
+# capture_mute.sh
+# A key binding, or an association between a physical key on a keyboard and a parameter
+# to mute the sound capture.
 
-read -p "Enter the name of the App directory: " APP
+# Set up this file using your favorite Desktop Environment or Window Manager key binding
+# configuration.
+# For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
+# Go to Menu -> System Settings -> Keyboard -> shortcuts -> Categories -> Sound and Media ->
+# Add custom shortcut. 
+# Next, give the new shortcut a new name like "capture mute".
+# Next, select the route to this file.
+# Next, click or tap on the button Add the keyboard shortcut. The shortcut appears in the list.
+# Next, click on unassigned to pick an accelerator.
+# Next, press the keys ALT + SHIFT + 2 (all together) and then release them at a time.
+# Then the new key binding appears on the list.
+# Finally, verify that the key binding works.
 
-while [[ -z "$APP" ]]; do
-    read -p "Please enter a non-empty name for the App directory: " APP
-done
+# Stops capturing sound to avoid confusing the Commbase recognition.
+# Uses the keyboard binding ALT-SHIFT-2.
+capture_mute(){
+  (amixer set Capture nocap &>/dev/null || exit 99);
+}
 
-read -p "Enter the path of the App root directory (press enter for default '$HOME'): " APP_ROOT_DIR
-
-if [[ -z "$APP_ROOT_DIR" ]]; then
-    APP_ROOT_DIR="$HOME"
-fi
-
-# Check whether the directory specified by the variable does not exist
-if [[ ! -d "$COMMBASE_APP_DIR" ]]; then 
-    echo "" >> ~/.bashrc
-    echo "# The Commbase App directory for the Bash shell" >> ~/.bashrc
-    echo "export COMMBASE_APP_DIR=\"$APP_ROOT_DIR/$APP\"" >> ~/.bashrc
-    echo "" >> ~/.zshrc
-    echo "# The Commbase App directory for the Z shell" >> ~/.zshrc
-    echo "export COMMBASE_APP_DIR=\"$APP_ROOT_DIR/$APP\"" >> ~/.zshrc
-fi
-
-echo -e "Don't forget to rename the directory of the app as: \033[31m$APP\033[0m"
+capture_mute || exit 99;
 
 exit 99
 

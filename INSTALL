@@ -27,7 +27,7 @@ Content
 
 2.5. Build the Commbase Conda environment from a YAML file
 
-2.6. Set up the file voice-recognition.py
+2.6. Set up the file commbase-stt-vosk.py
 
 2.7. Install the Vosk model
 
@@ -91,13 +91,11 @@ Set up the COMMBASE_APP_DIR directory
 
 Go to the directory commbase/scripts/configuration/ 
 
-You will see the file set-app-root-dir-and-app-dir.sh there.
+You will see the file set_app_root_directory_and_app_directory.sh there.
 
-$ bash set-commbase-environment-variable.sh
+$ bash set_app_root_directory_and_app_directory.sh
 
 The script is going to append the variable COMMBASE_APP_DIR in the files $HOME/.bashrc and $HOME/.zshrc
-
-To know more about making Commbase commands, check out the section "The Commbase root directory" in the User's Guide.
 
 Notes about the difference between .bashrc and .bash_profile:
 
@@ -116,13 +114,13 @@ The HISTCONTROL variable determines which commands are saved in the history file
 
 Commbase uses HISTCONTROL to keep clean the commands' history during the rendering of the Commbase UI.
 
-To set up the HISTCONTROL environment variable, run the script commbase/scripts/configuration/append-function-no-history-to-bashrc.sh:
+To set up the HISTCONTROL environment variable, run the script commbase/scripts/configuration/append_function_no_history_to_bashrc.sh:
 
 $ cd commbase/scripts/configuration
 
-$ sudo bash append-function-no-history-to-bashrc.sh
+$ sudo bash append_function_no_history_to_bashrc.sh
 
-$ source append-function-no-history-to-bashrc.sh
+$ source append_function_no_history_to_bashrc.sh
 
 $ exit
 
@@ -131,11 +129,11 @@ Reopen the terminal.
 Set up the Commbase executable
 -------------------------------
 
-Go to the directory commbase/scripts/configuration/install-commbase-executable/ and execute the file install-commbase-executable.sh:
+Go to the directory commbase/scripts/configuration/install-commbase-executable/ and execute the file install_commbase_executable.sh:
 
 $ cd commbase/scripts/configuration/install-commbase-executable/
 
-$ bash install-commbase-executable.sh
+$ bash install_commbase_executable.sh
 
 A new commbase file should appear in the directory /usr/bin.
 
@@ -176,8 +174,10 @@ https://docs.anaconda.com/free/anaconda/getting-started/install/
 
 After its installation, your Anaconda Python version should be capable of installing or building your commbase_env environment. Otherwise, try to install a newer or older version of Anaconda Python and verify the Python versions it can install, run, and work with.
 
-In case you want to use your systems' or any custom Python version, edit the file commbase/config/commbase.conf line: PYTHON_ENV_VERSION="python".
+In case you want to use your systems' or any custom Python version, edit the file commbase/config/commbase.conf line with the variable PYTHON_ENV_VERSION="python"
+
 For example:
+
 PYTHON_ENV_VERSION="python3.7"
 
 In that way, Commbase will attempt to run using python3.7 from your OS instead of the Anaconda Python environment commbase_env, which has and runs its own Python version.
@@ -241,7 +241,7 @@ Or download from pypi.org:
 
 $ tar xvzf PyAudio-0.2.11.tar.gz
 
-$ cp PyAudio-0.2.11.tar.gz $HOME/commbase/bundled/broker/PyAudio
+$ cp PyAudio-0.2.11.tar.gz commbase/bundles/built-in/broker/PyAudio
 
 $ Set up permissions for the directory:
 
@@ -327,9 +327,7 @@ Install the package:
 
 $ sudo apt-get install python3-opencv
 
-The next packages are required by a Commbase skill to chat with ChatGPT (https://chat.openai.com/) in the terminal, and potentially by new terminal apps or skills that you can add to Commbase and that would require text enhancements in Python.
-
-Anaconda:
+The next packages are required by a Commbase skill to chat with ChatGPT (https://chat.openai.com/) in the terminal, and potentially required by new terminal apps or skills with text enhancements in Python that you can add to Commbase.
 
 - aiohttp-cors
 
@@ -339,15 +337,19 @@ Anaconda:
 
 - rich
 
-These are already in the environment file commbase_env.yaml
+Anaconda Python:
 
-pip:
+These are already in the environment file commbase_env.yaml.
+
+The next package can only be installed with pip. It has also been added to commbase_env.yaml as an auto-downloadable pip package.
 
 - openai
 
-It can only be installed with pip. It has also been added to commbase_env.yaml as an auto-downloadable pip package.
-
 $ pip install openai
+
+Finally, here is the installation of these packages with pip for OSs without Anaconda Python environments:
+
+$ pip install openai aiohttp-cors cchardet typer rich
 
 Install Python in an Anaconda Python environment
 -------------------------------------------------
@@ -432,34 +434,32 @@ Build the Commbase Conda environment from a YAML file
 Using YAML files is the simplest and probably the best way to install Python and the Python Commbase environment dependencies.
 To simplify it even more, we put all together in a script you can run once.
 
-If the environment you want to remove is the current active environment, deactivate it before running the script.
+If you want to remove a previous commbase environment, if the environment you want to remove is the current active environment, deactivate it before running the script.
 
-(commbase_env) $ conda deactivate commbase_env
+(commbase_env) $ conda deactivate
 
 Run the config script:
 
-$ bash commbase/scripts/configuration/build-conda-environment.sh
+$ bash commbase/scripts/configuration/build_conda_environment.sh
 
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
 
-Set up the file voice-recognition.py
+Set up the file commbase-stt-vosk.py
 -------------------------------------
 
 If you are not using the Anaconda Python environment commbase_env for running Commbase, you could need to change the first line of the file, to a fixed Python version, mostly if you experience program errors, latency, or low performance.
 
-Replace the first line with the second line:
+This file is in the directory commbase/bundles/built-in/broker/commbase-stt-vosk/
 
-Anaconda Python:
+Replace the first line, accordingly.
+
+For Anaconda Python, use:
 
 #!/usr/bin/env python
 
-##!/usr/bin/env python3.7
+For Python3.7, use:
 
-Python3.7:
-
-#!/usr/bin/env python3.7
-
-##!/usr/bin/env python
+#!/usr/bin/python3.7
 
 Install the Vosk model
 -----------------------
@@ -470,18 +470,18 @@ Visit: https://alphacephei.com/vosk/models
 
 Download and install the model manually or by running this command in commbase/scripts/configuration:
 
-$ bash install-vosk-model.sh
+$ bash install_vosk_model.sh
 
-Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance because the bigger the model you use, the bigger the memory required to load it. That change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
+Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance because the bigger the model you use, the bigger the memory required to load it and the bigger the cpu core usage (uses a single core). That change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
 
 Install the required system dependency packages
 ------------------------------------------------
 
-Names and commands for this section could change from OS distribution to distribution, or even from release to release.
+The names of the packages or the names of the commands mentioned in this section could change from OS distribution to distribution, or even from release to release.
 
-In Debian, the DPKG packages that contain all the required commands can be installed using APT. Apt manages and installs the package dependencies automatically.
+In Debian, the DPKG packages that contain all the required commands can be installed using APT. APT manages and installs the package dependencies automatically.
 
-List of required packages/commands (some names may vary from distribution to distribution):
+List of required packages/commands:
 
 - alsa-utils (contains the tools: alsamixer and aplay)
 
@@ -511,8 +511,6 @@ List of required packages/commands (some names may vary from distribution to dis
 
 - openssh-server (server and client)
 
-- play
-
 - pkill (it comes installed with the base system sometimes, in a package with another name)
 
 - portaudio19-dev (seen in the section of PyAudio)
@@ -523,7 +521,7 @@ List of required packages/commands (some names may vary from distribution to dis
 
 - sed
 
-- sox
+- sox (includes the command play)
 
 - sudo
 
@@ -588,7 +586,7 @@ Install VU-meter
 
 Download/clone it from GitHub and install it:
 
-$ cd $HOME/commbase/bundled/broker
+$ cd commbase/bundles/built-in/broker
 
 $ git clone https://github.com/kmein/vu-meter.git
 
@@ -602,7 +600,7 @@ $ ls -hal vu-meter
 
 $ chmod 755 vu-meter
 
-If you are using the Anaconda Python environment commbase_env, the file vu_meter.py, and change the first line like this:
+If you are using the Anaconda Python environment commbase_env, open the file vu_meter.py, and change the first line like this:
 #!/usr/bin/env python
 
 Install Oh My Tmux

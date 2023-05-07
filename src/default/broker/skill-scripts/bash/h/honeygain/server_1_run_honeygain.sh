@@ -1,7 +1,37 @@
-#!/bin/bash
-# File: server-shark2-run-honeygain.sh
-# Description: Script to run Honeygain in the server running xserver
+#!/usr/bin/env bash
+################################################################################
+#                                   Commbase                                   #
+#                                                                              #
+# Conversational AI Assistant and AI Hub for Computers and Droids              #
+#                                                                              #
+# Change History                                                               #
+# 04/29/2023  Esteban Herrera Original code.                                   #
+#                           Add new history entries as needed.                 #
+#                                                                              #
+#                                                                              #
+################################################################################
+################################################################################
+################################################################################
+#                                                                              #
+#  Copyright (c) 2022-present Esteban Herrera C.                               #
+#  stv.herrera@gmail.com                                                       #
+#                                                                              #
+#  This program is free software; you can redistribute it and/or modify        #
+#  it under the terms of the GNU General Public License as published by        #
+#  the Free Software Foundation; either version 3 of the License, or           #
+#  (at your option) any later version.                                         #
+#                                                                              #
+#  This program is distributed in the hope that it will be useful,             #
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of              #
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               #
+#  GNU General Public License for more details.                                #
+#                                                                              #
+#  You should have received a copy of the GNU General Public License           #
+#  along with this program; if not, write to the Free Software                 #
+#  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
+# server_1_run_honeygain.sh 
+# Script to run Honeygain in the server running xserver
 # Requires wine and Honeygain up and ready to re-run.
 # Requires ssh (Openssh) set up with xforwarding in both machines (client and server).
 # Because of the X is forwarded to the local machine, the status
