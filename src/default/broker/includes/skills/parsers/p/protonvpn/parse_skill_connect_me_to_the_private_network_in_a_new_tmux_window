@@ -29,19 +29,11 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# run_skill_open_my_current_editor_workspace
-# Executes a particular skill in accordance with its name
-run_skill_open_my_current_editor_workspace() {
-	echo "loaoding" | festival --tts
-	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
-	#tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/v/vscode/desktop-shark-browser-brave.sh &" C-m && sleep 20
-	tmux send-keys "(bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/v/vscode/desktop-shark-browser-vscode.sh &) &>/dev/null" C-m && sleep 5
-	tmux send-keys "clear" C-m
-	amixer set Capture nocap &>/dev/null
-	internal_random_yes 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""open my current editor workspace / open my current editor workspace that i am working on"
-	echo "open my current editor workspace" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
-	tmux select-window -t 1 && tmux select-pane -t 4
-	amixer set Capture cap &>/dev/null
-	exit 99
+# parse_skill_connect_me_to_the_private_network_in_a_new_tmux_window
+# Takes a string and a list of patterns as input. Searches the patterns to see
+# if any of them match the input string. If a match is found, the function
+# returns 0. Otherwise, the function returns 1.
+parse_skill_connect_me_to_the_private_network_in_a_new_tmux_window() {
+	
 }
 

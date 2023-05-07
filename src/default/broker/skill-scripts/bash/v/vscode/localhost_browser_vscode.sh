@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ################################################################################
 #                                   Commbase                                   #
 #                                                                              #
@@ -29,19 +30,16 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# run_skill_open_my_current_editor_workspace
-# Executes a particular skill in accordance with its name
-run_skill_open_my_current_editor_workspace() {
-	echo "loaoding" | festival --tts
-	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
-	#tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/v/vscode/desktop-shark-browser-brave.sh &" C-m && sleep 20
-	tmux send-keys "(bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/v/vscode/desktop-shark-browser-vscode.sh &) &>/dev/null" C-m && sleep 5
-	tmux send-keys "clear" C-m
-	amixer set Capture nocap &>/dev/null
-	internal_random_yes 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""open my current editor workspace / open my current editor workspace that i am working on"
-	echo "open my current editor workspace" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
-	tmux select-window -t 1 && tmux select-pane -t 4
-	amixer set Capture cap &>/dev/null
-	exit 99
-}
+# localhost_browser_vscode.sh
+# Opens a specified Project workspace in MS VS Code
+
+# The configuration file.
+source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
+
+# Path to the current/custom project that I am currently working on
+PATH_TO_PROJECT=$COMMBASE_ROOT_DIR/$DEV_PROJECT_DIRECTORY_NAME
+
+# Open the project
+cd $PATH_TO_PROJECT
+(code $DEV_PROJECT_DIRECTORY_NAME.code-workspace)
 

@@ -1,10 +1,11 @@
+#!/usr/bin/env python
 ################################################################################
 #                                   Commbase                                   #
 #                                                                              #
 # Conversational AI Assistant and AI Hub for Computers and Droids              #
 #                                                                              #
 # Change History                                                               #
-# 04/29/2023  Esteban Herrera Original code.                                   #
+# 05/05/2023  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -29,19 +30,38 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# run_skill_open_my_current_editor_workspace
-# Executes a particular skill in accordance with its name
-run_skill_open_my_current_editor_workspace() {
-	echo "loaoding" | festival --tts
-	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
-	#tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/v/vscode/desktop-shark-browser-brave.sh &" C-m && sleep 20
-	tmux send-keys "(bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/v/vscode/desktop-shark-browser-vscode.sh &) &>/dev/null" C-m && sleep 5
-	tmux send-keys "clear" C-m
-	amixer set Capture nocap &>/dev/null
-	internal_random_yes 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""open my current editor workspace / open my current editor workspace that i am working on"
-	echo "open my current editor workspace" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
-	tmux select-window -t 1 && tmux select-pane -t 4
-	amixer set Capture cap &>/dev/null
-	exit 99
-}
+# localhost_camera_capture.py
+# Opens a camera capture by its camera id
+
+import cv2
+
+# Open a camera capture object
+cap = cv2.VideoCapture(0)  # Use camera index 0 for the default camera
+
+# Check if camera opened successfully
+if not cap.isOpened():
+    print("Failed to open camera")
+    exit(1)
+
+while True:
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+
+    # Check if frame was captured successfully
+    if not ret:
+        print("Failed to capture frame")
+        break
+
+    # Display the frame
+    cv2.imshow("Camera", frame)
+
+    # Exit the loop if 'q' key is pressed
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# Release the camera capture object
+cap.release()
+
+# Close all OpenCV windows
+cv2.destroyAllWindows()
 

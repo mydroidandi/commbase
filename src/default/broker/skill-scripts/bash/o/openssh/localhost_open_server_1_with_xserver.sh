@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ################################################################################
 #                                   Commbase                                   #
 #                                                                              #
@@ -29,19 +30,29 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# run_skill_open_my_current_editor_workspace
-# Executes a particular skill in accordance with its name
-run_skill_open_my_current_editor_workspace() {
-	echo "loaoding" | festival --tts
-	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys "clear" C-m
-	#tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/v/vscode/desktop-shark-browser-brave.sh &" C-m && sleep 20
-	tmux send-keys "(bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/v/vscode/desktop-shark-browser-vscode.sh &) &>/dev/null" C-m && sleep 5
-	tmux send-keys "clear" C-m
-	amixer set Capture nocap &>/dev/null
-	internal_random_yes 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""open my current editor workspace / open my current editor workspace that i am working on"
-	echo "open my current editor workspace" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
-	tmux select-window -t 1 && tmux select-pane -t 4
-	amixer set Capture cap &>/dev/null
-	exit 99
-}
+# localhost_open_server_1_with_xserver.sh
+# Script to open remote server applications with GUI through the network. It requires to
+# forward X over SSH (OpenSSH installed). Once logged in the remote computer run an application
+# for testing, for example $ xeyes, from the local computer with any X server, commonly,
+# Xfree86, Xorg, or Wayland.
+# Requires previously established SSH configuration in both, the client and the server.
+# Requires 'rsync' already installed in both, server and client.
+
+# The configuration file.
+source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf;
+
+REMOTE_HOST_IP_ADDRESS=$SERVER_HOST_001_IP_ADDRESS;
+
+# This will get you the private IP address of your interfaces, plus assigned to a constant
+MY_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}')
+
+# Connect to the remote host by IP address. SSH will prompt for the user login password in the remote
+# machine. Once logged in use 'screen' to keep the terminal session accessible after the connection
+# time is up.
+if [ "$MY_HOST_IP_ADDRESS" == "$REMOTE_HOST_IP_ADDRESS" ]; then
+  echo "Something but Spoofing! Not proceeding."
+else
+  echo "Connecting to the remote host: "$REMOTE_HOST_IP_ADDRESS". Otherwise, verify the remote IP address in your .env file."
+  ssh -X $REMOTE_HOST_IP_ADDRESS
+fi
 
