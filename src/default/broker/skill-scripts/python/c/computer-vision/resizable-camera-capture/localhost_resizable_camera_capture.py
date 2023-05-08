@@ -31,44 +31,79 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # localhost_resizable_camera_capture.py
-# Opens a camera capture by its camera id
+# Opens the resizable camera 01 capture by its camera id
 
 import cv2
+import os
 
-# Open a camera capture object
-cap = cv2.VideoCapture(0)  # Use camera index 0 for the default camera
+def get_video_capture_device_index():
+	""" Gets the video capture device index from the config file """
+	# Specify the path of the env file containing the variable
+	file_path = os.environ["COMMBASE_APP_DIR"] + '/config/commbase.conf'
 
-# Check if camera opened successfully
-if not cap.isOpened():
-    print("Failed to open camera")
-    exit(1)
+	# Open the file and read its contents
+	with open(file_path, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
 
-# Define the desired window width and height
-window_width = 640
-window_height = 480
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'MY_APP_VIDEO_CAPTURE_DEVICE_01_INDEX':
+				# Remove the quotes from the value of the variable
+				VIDEO_CAPTURE_DEVICE_INDEX = value.strip()[1:-1]
+				return int(VIDEO_CAPTURE_DEVICE_INDEX)
 
-# Create a named window with the desired size
-cv2.namedWindow("Camera", cv2.WINDOW_NORMAL)
-cv2.resizeWindow("Camera", window_width, window_height)
+	# If the variable is not found, return None
+	return None
 
-while True:
-    # Capture frame-by-frame
-    ret, frame = cap.read()
 
-    # Check if frame was captured successfully
-    if not ret:
-        print("Failed to capture frame")
-        break
+def open_camera(VIDEO_CAPTURE_DEVICE_INDEX):
+	""" Opens the camera device capture """
+	# Open a camera capture object
+	cap = cv2.VideoCapture(VIDEO_CAPTURE_DEVICE_INDEX)  # Use camera index 0 for the default camera
 
-    # Display the frame
-    cv2.imshow("Camera", frame)
+	# Check if camera opened successfully
+	if not cap.isOpened():
+		print("Failed to open camera")
+		exit(1)
 
-    # Exit the loop if 'q' key is pressed
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+	# Define the desired window width and height
+	window_width = 640
+	window_height = 480
 
-# Release the camera capture object
-cap.release()
+	# Create a named window with the desired size
+	cv2.namedWindow("Camera", cv2.WINDOW_NORMAL)
+	cv2.resizeWindow("Camera", window_width, window_height)
 
-# Close all OpenCV windows
-cv2.destroyAllWindows()
+	while True:
+		# Capture frame-by-frame
+		ret, frame = cap.read()
+
+		# Check if frame was captured successfully
+		if not ret:
+			print("Failed to capture frame")
+			break
+
+		# Display the frame
+		cv2.imshow("Camera", frame)
+
+		# Exit the loop if 'q' key is pressed
+		if cv2.waitKey(1) & 0xFF == ord('q'):
+			break
+
+	# Release the camera capture object
+	cap.release()
+
+	# Close all OpenCV windows
+	cv2.destroyAllWindows()
+
+
+def local_host_camera_capture():
+	""" Main call """
+	# Get the video capture device index
+	video_capture_device = get_video_capture_device_index()
+
+	# Open the camera
+	open_camera(video_capture_device)
+
+local_host_camera_capture()
