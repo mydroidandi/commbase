@@ -124,10 +124,10 @@ source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 toggle_active_capture_device() {
   active_device=$(pactl list sources short | grep RUNNING || exit 99);
 
-  if (echo $active_device | grep -q $COMMBASE_CAPTURE_DEVICE_NAME || exit 99); then
-    (pacmd set-default-source "$ALTERNATIVE_CAPTURE_DEVICE_NAME" || exit 99);
+  if (echo $active_device | grep -q $MY_APP_AUDIO_CAPTURE_DEVICE_NAME || exit 99); then
+    (pacmd set-default-source "$SYSTEM_AUDIO_CAPTURE_DEVICE_NAME" || exit 99);
   else
-    (pacmd set-default-source "$COMMBASE_CAPTURE_DEVICE_NAME" || exit 99);
+    (pacmd set-default-source "$MY_APP_AUDIO_CAPTURE_DEVICE_NAME" || exit 99);
   fi
 }
 
