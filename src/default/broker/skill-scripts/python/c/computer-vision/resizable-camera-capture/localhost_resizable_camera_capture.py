@@ -36,6 +36,7 @@
 import cv2
 import os
 
+
 def get_video_capture_device_index():
 	""" Gets the video capture device index from the config file """
 	# Specify the path of the env file containing the variable
@@ -48,7 +49,7 @@ def get_video_capture_device_index():
 			variable_name, value = line.strip().split('=')
 
 			# Check if the variable we are looking for exists in the line
-			if variable_name == 'MY_APP_VIDEO_CAPTURE_DEVICE_01_INDEX':
+			if variable_name == 'VIDEO_CAPTURE_DEVICE_01_INDEX':
 				# Remove the quotes from the value of the variable
 				VIDEO_CAPTURE_DEVICE_INDEX = value.strip()[1:-1]
 				return int(VIDEO_CAPTURE_DEVICE_INDEX)
@@ -98,7 +99,7 @@ def open_camera(VIDEO_CAPTURE_DEVICE_INDEX):
 	cv2.destroyAllWindows()
 
 
-def local_host_camera_capture():
+def localhost_resizable_camera_capture():
 	""" Main call """
 	# Get the video capture device index
 	video_capture_device = get_video_capture_device_index()
@@ -106,4 +107,4 @@ def local_host_camera_capture():
 	# Open the camera
 	open_camera(video_capture_device)
 
-local_host_camera_capture()
+localhost_resizable_camera_capture()
