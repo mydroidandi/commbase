@@ -49,7 +49,7 @@ Content
 1. Installation
 ================
 
-In this guide, we will use Debian GNU/Linux to demonstrate the steps, but you can use any of your preferred distros and have the same result.
+In this document, we will use Debian GNU/Linux to demonstrate the installation steps, but you can use any of your preferred distros and have the same result.
 
 Set up your system repository sources
 --------------------------------------
@@ -619,7 +619,7 @@ $ cp .tmux/.tmux.conf.local .
 Install the default Commbase voice commands dependencies
 ---------------------------------------------------------
 
-The applications to run by voice commands can be replaced at any moment and grow by users (skill programmers and skillset trainers). For example, replace VS Code by Gedit, VIM, etc. However, have installed these as a minimum to be able to run the Commbase commands available in the "sample skills" installation:
+The applications to run by voice commands can be replaced at any moment and grow by users (skill programmers and skillset trainers). For example, replace VS Code by Gedit, Vim, etc. However, have installed these as a minimum to be able to run the Commbase commands available in the "sample skills" installation:
 
 - Brave browser
 
@@ -670,7 +670,9 @@ $ commbase "tell me about yourself"
 
 The output should be the Commbase introduction, which means that the "demo skills" are already installed.
 
-From here, you should decide to start programming new "custom skills" from an initial Commbase installation with "demo skills" or proceed to install the "sample skills", before programming/editing existing "default skills" or new "custom skills" for Commbase.
+From here, you should decide to start programming new "custom skills" from an initial Commbase installation with "demo skills" or proceed to use the "sample skills", before programming new "custom skills" for Commbase.
+
+You can program new custom skills to customize your voice assistant or to create J.A.R.V.I.S. from Iron Man.
 
 Check out the document User's Guide in the directory docs/ for a complete list of options.
 
