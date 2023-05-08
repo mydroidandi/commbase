@@ -56,7 +56,7 @@ def get_chatgpt_api_key(callback=None):
 			variable_name, value = line.strip().split('=')
 
 			# Check if the variable we are looking for exists in the line
-			if variable_name == 'OPENAI__API_KEY':
+			if variable_name == 'OPENAI_API_KEY':
 				# Remove the quotes from the value of the variable
 				API_KEY = value.strip()[1:-1]
 
