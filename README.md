@@ -79,7 +79,7 @@ This project is coded and organized like this:
 ├── docs  # Stores the human-readable guides of Commbase users
 ├── env  # Stores the environment file
 ├── history  # Stores the Commbase command history file
-├── log	 # Stores custom log files that are necessary by specific skills
+├── log	 # Stores custom log files of specific skills
 ├── screenshots  # Stores the image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
 │   ├── configuration
