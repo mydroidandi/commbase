@@ -32,13 +32,18 @@
 # run_skill_open_my_linux_documentation
 # Executes a particular skill in accordance with its name
 run_skill_open_my_linux_documentation() {
+
+	# Source the skill_script
+	source $COMMBASE_APP_DIR/src/default/broker/skill_scripts/bash/b/brave/skill_script_open_my_linux_documentation
+
 	echo "loaoding" | festival --tts
 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	tmux send-keys "(bash $COMMBASE_ROOT_DIR/commbase/core/skill-scripts/default/bash/b/brave/desktop-shark-open-linux-documentation-on-mega.nz.sh &) &>/dev/null" C-m && sleep 5
+	# Run the skill_script
+	tmux send-keys "(skill_script_open_my_linux_documentation &) &>/dev/null" C-m && sleep 5
 	tmux send-keys "clear" C-m
 	amixer set Capture nocap &>/dev/null
-	internal_random_yes 1 && tmux select-pane -t 1 && echo -e "\e[1;41mCOMMBASE:\e[1;m Run: ""open my linux documentation"
-	echo "open my linux documentation" >> $COMMBASE_ROOT_DIR/commbase/history/.commbase_history
+	internal_random_yes 1 && tmux select-pane -t 1 && echo -e "\e[1;41m$ASSISTANT_NAME_IN_CHAT_PANE:\e[1;m Run: ""open my linux documentation"
+	echo "open my linux documentation" >> $COMMBASE_APP_DIR/history/.commbase_history
 	tmux select-window -t 1 && tmux select-pane -t 4
 	amixer set Capture cap &>/dev/null
 	exit 99

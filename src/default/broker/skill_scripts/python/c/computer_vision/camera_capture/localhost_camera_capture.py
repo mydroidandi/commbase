@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python
 ################################################################################
 #                                   Commbase                                   #
 #                                                                              #
 # Conversational AI Assistant and AI Hub for Computers and Droids              #
 #                                                                              #
 # Change History                                                               #
-# 04/29/2023  Esteban Herrera Original code.                                   #
+# 05/05/2023  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -30,45 +30,76 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# reset_commbase.conf.sh
-# Restores the file config/commbase.conf to its inital status.
+# localhost_camera_capture.py
+# Opens the camera 01 capture by its camera id
 
-# Copy the content of cat
-cd ../../config/
-touch commbase.conf
-cat <<EOT > commbase.conf
-PYTHON_ENV_VERSION="python"
-PYTHON_CPU_LIMIT_PERCENTAGE="75"
-IP_ADDRESS_UPDATE_IN_SECS="600"
-LOCAL_HOST_UUID="5ba8f927-d331-471c-b640-812d4680e310"
-REMOTE_USER_NAME="tonystark"
-REMOTE_USER_PASSWD="USE-KEY-PAIRS"
-MY_APP_AUDIO_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback"
-SYSTEM_AUDIO_CAPTURE_DEVICE_NAME="alsa_input.pci-0000_00_1b.0.analog-stereo"
-VIDEO_CAPTURE_DEVICE_01_INDEX="0"
-VIDEO_CAPTURE_DEVICE_02_INDEX="1"
-TMUX_EXTRA_WINDOWS_ON="true"
-TMUX_EXTRA_WINDOW_EDITOR_ON="true"
-TMUX_EXTRA_WINDOW_TIMER=_ON"true"
-TMUX_EXTRA_WINDOW_SERVER1_ON="true"
-TMUX_EXTRA_WINDOW_SERVER2_ON="false"
-ASSISTANT_NAME_IN_CHAT_PANE="COMMBASE"
-SYSTEM_VISIBLE_IN_CHAT_PANE_ON="true"
-SYSTEM_NAME_IN_CHAT_PANE="SYSTEM"
-TTS_ENGINE_STRING="festival --tts"
-EXTERNAL_STORAGE_DRIVE_01_TAG="WD1"
-EXTERNAL_STORAGE_DRIVE_02_TAG="WD2"
-DEV_PROJECT_DIRECTORY_NAME="commbase"
-PROTONVPN_CLI_USERNAME="Tony_St4rk"
-PROTONVPN_CLI_PASSWORD="NOT-REQUIRED-ONCE-REGISTERED"
-PROTONVPN_API_USERNAME="USERNAME-IN-CONFIG-FILE-IN-/ETC/"
-PROTONVPN_API_PASSWORD="PASSWORD-IN-CONFIG-FILE-IN-/ETC/"
-SERVER_HOST_001_UUID="27475487-cab6-4050-9047-9a565e22d2b0"
-SERVER_HOST_001_HOSTNAME="shark2"
-SERVER_HOST_001_IP_ADDRESS="192.168.100.45"
-SERVER_HOST_001_USER_PASSWD="USE-KEY-PAIRS"
-OPENAI_API_KEY="1234"
-EOT
+# Requirements
+import cv2
+import os
 
-exit 99
+
+def get_video_capture_device_index():
+	""" Gets the video capture device index from the config file """
+	# Specify the path of the env file containing the variable
+	file_path = os.environ["COMMBASE_APP_DIR"] + '/config/commbase.conf'
+
+	# Open the file and read its contents
+	with open(file_path, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'VIDEO_CAPTURE_DEVICE_01_INDEX':
+				# Remove the quotes from the value of the variable
+				VIDEO_CAPTURE_DEVICE_INDEX = value.strip()[1:-1]
+				return int(VIDEO_CAPTURE_DEVICE_INDEX)
+
+	# If the variable is not found, return None
+	return None
+
+
+def open_camera(VIDEO_CAPTURE_DEVICE_INDEX):
+	""" Opens the camera device capture """
+	# Open a camera capture object
+	cap = cv2.VideoCapture(VIDEO_CAPTURE_DEVICE_INDEX)  # Use camera index 0 for the default camera
+	print(cap)
+	
+	# Check if camera opened successfully
+	if not cap.isOpened():
+		print("Failed to open camera")
+		exit(1)
+
+	while True:
+		# Capture frame-by-frame
+		ret, frame = cap.read()
+
+		# Check if frame was captured successfully
+		if not ret:
+			print("Failed to capture frame")
+			break
+
+		# Display the frame
+		cv2.imshow("Camera", frame)
+
+		# Exit the loop if 'q' key is pressed
+		if cv2.waitKey(1) & 0xFF == ord('q'):
+			break
+
+	# Release the camera capture object
+	cap.release()
+
+	# Close all OpenCV windows
+	cv2.destroyAllWindows()
+
+
+def local_host_camera_capture():
+	""" Main call """
+	# Get the video capture device index
+	video_capture_device = get_video_capture_device_index()
+
+	# Open the camera
+	open_camera(video_capture_device)
+
+local_host_camera_capture()
 
