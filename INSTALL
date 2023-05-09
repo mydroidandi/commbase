@@ -129,9 +129,9 @@ Reopen the terminal.
 Set up the Commbase executable
 -------------------------------
 
-Go to the directory commbase/scripts/configuration/install-commbase-executable/ and execute the file install_commbase_executable.sh:
+Go to the directory commbase/scripts/configuration/install_commbase_executable/ and execute the file install_commbase_executable.sh:
 
-$ cd commbase/scripts/configuration/install-commbase-executable/
+$ cd commbase/scripts/configuration/install_commbase_executable/
 
 $ bash install_commbase_executable.sh
 
