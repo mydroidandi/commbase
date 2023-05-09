@@ -34,6 +34,19 @@
 # if any of them match the input string. If a match is found, the function
 # returns 0. Otherwise, the function returns 1.
 parse_skill_open_my_linux_documentation() {
+
+	# Source the run_skill
+	source $COMMBASE_APP_DIR/src/default/broker/includes/skills/runners/b/brave/run_skill_open_my_linux_documentation
+
+	# TODO:
+
+	# Run the run_skill
+	(run_skill_open_my_linux_documentation)
 	
 }
+
+# Call the parse_skill if the script is run directly (not sourced)
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+	(parse_skill_open_my_linux_documentation)
+fi
 
