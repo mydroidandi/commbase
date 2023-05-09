@@ -55,7 +55,7 @@ This project is coded and organized like this:
 │   │       │   └── resources
 │   │       │       ├── bundles
 │   │       │       │   └── sounds
-│   │       │       ├── skill-patterns
+│   │       │       ├── skill_patterns
 │   │       │       └── talks
 │   │       ├── PyAudio
 │   │       ├── scripts
@@ -72,19 +72,19 @@ This project is coded and organized like this:
 │       │   └── y
 │       └── broker
 │           ├── audiobooks
-│           │   └── Robinson-Crusoe
+│           │   └── Robinson_Crusoe
 │           └── tensorflow
 ├── config  # Stores the configuration file
 ├── data  # Stores the voice recognition model results
 ├── docs  # Stores the human-readable guides of Commbase users
 ├── env  # Stores the environment file
 ├── history  # Stores the Commbase command history file
-├── log	 # Stores the log files that are necessary for specific skills
+├── log	 # Stores custom log files that are necessary by specific skills
 ├── screenshots  # Stores the image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
 │   ├── configuration
-│   │   ├── install-commbase-executable
-│   │   └── key-bindings
+│   │   ├── install_commbase_executable
+│   │   └── key_bindings
 │   ├── deployment
 │   └── utilities
 │       └── back-up
@@ -102,9 +102,9 @@ This project is coded and organized like this:
     │       │   ├── skillsets
     │       │   │   ├── parsers
     │       │   │   └── runners
-    │       │   └── skill-testing
-    │       ├── skill-patterns
-    │       ├── skill-scripts
+    │       │   └── skill_testing
+    │       ├── skill_patterns
+    │       ├── skill_scripts
     │       │   ├── arduino
     │       │   ├── bash
     │       │   ├── c
@@ -128,8 +128,8 @@ This project is coded and organized like this:
             │   └── skillsets
             │       ├── parsers
             │       └── runners
-            ├── skill-patterns
-            ├── skill-scripts
+            ├── skill_patterns
+            ├── skill_scripts
             │   ├── arduino
             │   ├── bash
             │   ├── c
