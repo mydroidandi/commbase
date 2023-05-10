@@ -32,6 +32,8 @@
 # localhost_open_linux_documentation_on_mega.nz.sh
 # Opens Linux documentation online on the Brave browser
 skill_script_open_my_linux_documentation() {
-	(/usr/bin/brave-browser-stable https://mega.nz/fm/WEIgkK5J)
+	(/usr/bin/brave-browser-stable https://github.com/estebanways/diy-linux-book)
+	
+	exit 99
 }
 

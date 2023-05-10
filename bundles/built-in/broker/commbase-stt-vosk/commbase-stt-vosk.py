@@ -46,10 +46,11 @@ import sys
 import subprocess
 import string
 import os.path
+import json
 
-# The Commbase environment directory and the path to the model:
-COMMBASE_MODEL = '$COMMBASE_ROOT_DIR/commbase/bundled/broker/vosk/model'
-#print (string.Template(COMMBASE_MODEL).substitute(os.environ))
+# The path to the model
+ML_MODEL = '$COMMBASE_APP_DIR/bundles/built-in/broker/vosk/model'
+#print (string.Template(ML_MODEL).substitute(os.environ))
 
 # Color codes for different background colors
 red_bg_color_code_start = "1;41m"
@@ -62,14 +63,65 @@ black_bg_color_code_start = "1;40m"
 
 color_code_end = "1;m"
 
-# Files
-RESULT_DATA_FILE = os.environ["COMMBASE_ROOT_DIR"] + '/commbase/data/.data.dat'
-PREV_DATA_FILE = os.environ["COMMBASE_ROOT_DIR"] + '/commbase/data/.prev_data.dat'
-COMMBASE_HISTORY_FILE = os.environ["COMMBASE_ROOT_DIR"] + '/commbase/history/.commbase_history'
+# Output files
+RESULT_DATA_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.data.dat'
+PREV_DATA_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.prev_data.dat'
+OUTPUT_HISTORY_FILE = os.environ["COMMBASE_APP_DIR"] + '/history/.app_history'
 
+# String used to process the 'okay stop' control command
 STOP_STR = "okay stop"
 
+# q is used to store a Queue object, which is then used to keep track of the
+# nodes that need to be visited during the breadth-first search algorithm.
 q = queue.Queue()
+
+
+def get_chat_names():
+	""" 
+	Gets the chat names from the config file.
+
+	Reads the 'ASSISTANT_NAME_IN_CHAT_PANE', 'SYSTEM_NAME_IN_CHAT_PANE', and 
+	'END_USER_NAME_IN_CHAT_PANE' variables from the environment configuration
+	file. Returns a tuple containing the string values of the variables if found,
+	or None if any of the variables are not present.
+
+	Returns:
+		  tuple or None: A tuple containing the assistant, system, and end user
+		  names in the chat pane, or None, if any of the variables are not found.
+	"""
+	# Specify the path of the env file containing the variables
+	file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
+
+	# Initialize variables for the chat names
+	assistant_name = None
+	system_name = None
+	end_user_name = None
+
+	# Open the file and read its contents
+	with open(file_path, 'r') as f:
+	  for line in f:
+		  # Split the line into variable name and value
+		  variable_name, value = line.strip().split('=')
+
+		  if variable_name == 'END_USER_NAME_IN_CHAT_PANE':
+		    # Remove the quotes from the value of the variable
+		    end_user_name = value.strip()[1:-1]
+		  
+		  # Check if the variable we are looking for exists in the line
+		  elif variable_name == 'ASSISTANT_NAME_IN_CHAT_PANE':
+		    # Remove the quotes from the value of the variable
+		    assistant_name = value.strip()[1:-1]
+		      
+		  elif variable_name == 'SYSTEM_NAME_IN_CHAT_PANE':
+		    # Remove the quotes from the value of the variable
+		    system_name = value.strip()[1:-1]
+
+	# Check if all three variables were found
+	if assistant_name is not None and system_name is not None and end_user_name is not None:
+		return end_user_name, assistant_name, system_name 
+
+	# If any of the variables are not found, return None
+	return None
 
 
 def int_or_str(text):
@@ -102,7 +154,8 @@ def callback(indata, frames, time, status):
   This function is called (from a separate thread) for each audio block.
 
   This function puts the input data into a queue for processing.
-  If the status parameter is not None, it prints an error message to the standard error stream.
+  If the status parameter is not None, it prints an error message to the
+  standard error stream.
 
   Parameters:
       indata : numpy.ndarray
@@ -138,38 +191,47 @@ def find_text(string):
 
 
 def strip_string(string):
-  """
-  Strip a given string of unwanted characters and whitespaces.
+	"""
+	Strip unwanted characters and whitespaces from the 'text' field of a JSON
+	string.
 
-  Args:
-      string (str): The input string to be processed.
+	Parameters:
+			string (str): The input string, assumed to be a valid JSON string with a
+			'text' field.
 
-  Returns:
-      str or None: The resulting string after being stripped of unwanted
-      characters and whitespaces. Returns None if the input string is None or
-      does not contain the 'text' substring.
-  """
-  if string is None:
-    return None
+	Returns:
+			str or None: The resulting string after being stripped of unwanted
+			characters and whitespaces.
+			Returns None if the input string is None, is not a valid JSON string, or
+			does not contain
+			a 'text' field.
+	"""
+	if string is None:
+		return None
 
-  # Get the substring containing the text
-  text_start = find_text(string)
-  if text_start is None:
-      return None
-  text = string[text_start+len('"text" : "'):]
+	# Load the JSON string into a dictionary
+	try:
+		data = json.loads(string)
+	except ValueError:
+		return None
 
-  # Replace unwanted characters and whitespaces
-  text = text.replace('"', '').replace('}', '').strip()
+	# Get the text field from the dictionary
+	if "text" not in data:
+		return None
+	text = data["text"]
 
-  # Remove 'the' from the beginning of the text, if present
-  if text.startswith('the'):
-    text = text[3:].strip()
+	# Replace unwanted characters and whitespaces
+	text = text.replace('"', '').strip()
 
-  # Remove 'the' from the end of the text, if present
-  if text.endswith('the'):
-    text = text[:-3].strip()
+	# Remove 'the' from the beginning of the text, if present
+	if text.startswith('the'):
+		text = text[3:].strip()
 
-  return text
+	# Remove 'the' from the end of the text, if present
+	if text.endswith('the'):
+		text = text[:-3].strip()
+
+	return text
 
 
 def print_result():
@@ -182,12 +244,15 @@ def print_result():
   Returns:
       None.
   """
+  # Assign the values returned by get_chat_names()
+  end_user_name, assistant_name, system_name = get_chat_names()
+
   string = rec.Result()
   trimmed_string = strip_string(string)
   if trimmed_string is None:
     return
 
-  print(f'\033[{black_bg_color_code_start}END USER:\033[{color_code_end} {trimmed_string} \033[0m')
+  print(f'\033[{black_bg_color_code_start}{end_user_name}:\033[{color_code_end} {trimmed_string} \033[0m')
 
   # Write to data files
   with open(RESULT_DATA_FILE, 'w') as f:
@@ -195,16 +260,20 @@ def print_result():
   with open(PREV_DATA_FILE, 'w') as f:
     f.write(trimmed_string)
 
-  # Append to history file
-  with open(COMMBASE_HISTORY_FILE, 'a') as f:
-    f.write(trimmed_string + "\n")
+	## This can be used for debugging
+  ## Append to history file
+  #with open(OUTPUT_HISTORY_FILE, 'a') as f:
+  #  f.write(trimmed_string + "\n")
 
   # Process the command if it doesn't contain the stop string
   if STOP_STR not in trimmed_string:
-    #subprocess.run(['bash', os.environ["COMMBASE_ROOT_DIR"] + '/commbase/src/broker/central-processing.sh'])
-    print(f'\033[{red_bg_color_code_start}COMMBASE:\033[{color_code_end} Processing ... {trimmed_string} \033[0m')
+  	# Execute a script written in a language other than Python to manage and
+  	# process the current result. (This functionality is disabled for debugging
+  	# purposes.)
+    #subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+    print(f'\033[{red_bg_color_code_start}{assistant_name}:\033[{color_code_end} Processing ... {trimmed_string} \033[0m')
   else:
-    print(f'\033[{red_bg_color_code_start}COMMBASE:\033[{color_code_end} Processing ... okay stop \033[0m')
+    print(f'\033[{red_bg_color_code_start}{assistant_name}:\033[{color_code_end} Processing ... okay stop \033[0m')
 
 
 def display_avatar():
@@ -250,8 +319,8 @@ parser = argparse.ArgumentParser(add_help=False)
 
 # Add a command-line argument for listing audio devices
 parser.add_argument(
-  '-l', '--list-devices', action='store_true', # store_true indicates that the argument does not require a value and sets it to True if present
-  help='show list of audio devices and exit'
+	'-l', '--list-devices', action='store_true', # store_true indicates that the argument does not require a value and sets it to True if present
+	help='show list of audio devices and exit'
 )
 
 # Parse the command-line arguments, with any unrecognized arguments returned as
@@ -261,32 +330,32 @@ args, remaining = parser.parse_known_args()
 # If the 'list-devices' argument was passed, print the list of audio devices and
 # exit the program.
 if args.list_devices:
-  print(sd.query_devices())
-  parser.exit(0) # exit the program with status code 0
+	print(sd.query_devices())
+	parser.exit(0) # exit the program with status code 0
 
 # create a new ArgumentParser object with a description and formatter
 parser = argparse.ArgumentParser(
-  description=__doc__, # use the script's docstring as the description
-  formatter_class=argparse.RawDescriptionHelpFormatter, # use a raw formatter for the description
-  parents=[parser] # inherit the 'list-devices' argument from the previous parser
+	description=__doc__, # use the script's docstring as the description
+	formatter_class=argparse.RawDescriptionHelpFormatter, # use a raw formatter for the description
+	parents=[parser] # inherit the 'list-devices' argument from the previous parser
 )
 
 # Add additional arguments for specifying a filename, model path, input device,
 # and sampling rate.
 parser.add_argument(
-  '-f', '--filename', type=str, metavar='FILENAME',
-  help='audio file to store recording to'
+	'-f', '--filename', type=str, metavar='FILENAME',
+	help='audio file to store recording to'
 )
 parser.add_argument(
-  '-m', '--model', type=str, metavar='MODEL_PATH',
-  help='Path to the model'
+	'-m', '--model', type=str, metavar='MODEL_PATH',
+	help='Path to the model'
 )
 parser.add_argument(
-  '-d', '--device', type=int_or_str,
-  help='input device (numeric ID or substring)'
+	'-d', '--device', type=int_or_str,
+	help='input device (numeric ID or substring)'
 )
 parser.add_argument(
-  '-r', '--samplerate', type=int, help='sampling rate'
+	'-r', '--samplerate', type=int, help='sampling rate'
 )
 
 # Parse the remaining command-line arguments
@@ -294,44 +363,48 @@ args = parser.parse_args(remaining)
 
 
 try:
-  if args.model is None:
-    args.model = string.Template(COMMBASE_MODEL).substitute(os.environ)
-  if not os.path.exists(args.model):
-    print ("Please download a model for your language from https://alphacephei.com/vosk/models")
-    print ("and unpack as 'model' in the current folder.")
-    parser.exit(0)
-  if args.samplerate is None:
-    device_info = sd.query_devices(args.device, 'input')
-    # soundfile expects an int, sounddevice provides a float:
-    args.samplerate = int(device_info['default_samplerate'])
+	if args.model is None:
+	  args.model = string.Template(ML_MODEL).substitute(os.environ)
+	if not os.path.exists(args.model):
+	  print ("Please download a model for your language from https://alphacephei.com/vosk/models")
+	  print ("and unpack as 'model' in the current folder.")
+	  parser.exit(0)
+	if args.samplerate is None:
+	  device_info = sd.query_devices(args.device, 'input')
+	  # soundfile expects an int, sounddevice provides a float:
+	  args.samplerate = int(device_info['default_samplerate'])
 
-  model = vosk.Model(args.model)
+	model = vosk.Model(args.model)
 
-  if args.filename:
-    dump_fn = open(args.filename, "wb")
-  else:
-    dump_fn = None
+	if args.filename:
+	  dump_fn = open(args.filename, "wb")
+	else:
+	  dump_fn = None
 
-  with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
+	with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
 channels=1, callback=callback):
-    display_avatar()
-    #print('Press Ctrl+C to stop the recording')
-    print(f'\033[{red_bg_color_code_start}COMMBASE:\033[{color_code_end} Mute the microphone to pause the recording ... \033[0m')
-    rec = vosk.KaldiRecognizer(model, args.samplerate)
+	  display_avatar()
+	  
+	  # Assign the values returned by get_chat_names()
+	  end_user_name, assistant_name, system_name = get_chat_names()
+	  
+	  #print('Press Ctrl+C to stop the recording')
+	  print(f'\033[{red_bg_color_code_start}{assistant_name}:\033[{color_code_end} Mute the microphone to pause the recording ... \033[0m')
+	  rec = vosk.KaldiRecognizer(model, args.samplerate)
 
-    while True:
-      data = q.get()
-      if rec.AcceptWaveform(data):
-        print_result()
-      #else:
-        #print(rec.PartialResult())
-      if dump_fn is not None:
-        dump_fn.write(data)
+	  while True:
+	    data = q.get()
+	    if rec.AcceptWaveform(data):
+	      print_result()
+	    #else:
+	      #print(rec.PartialResult())
+	    if dump_fn is not None:
+	      dump_fn.write(data)
 
 
 except KeyboardInterrupt:
-  print('\nDone')
-  parser.exit(0)
+	print('\nDone')
+	parser.exit(0)
 except Exception as e:
-  parser.exit(type(e).__name__ + ': ' + str(e))
+	parser.exit(type(e).__name__ + ': ' + str(e))
 

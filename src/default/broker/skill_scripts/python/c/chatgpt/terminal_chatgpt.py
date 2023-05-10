@@ -71,10 +71,10 @@ def get_chatgpt_api_key(callback=None):
 
 
 def main():
-	def process_api_key(API_KEY):
+	def process_api_key(api_key):
 		# Do something with the API key value
 		#print(f"Received API key: {API_KEY}")
-		openai.api_key = API_KEY
+		openai.api_key = api_key
 
 	# Get the API key value and pass it to the callback function
 	get_chatgpt_api_key(callback=process_api_key)

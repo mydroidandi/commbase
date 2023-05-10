@@ -128,10 +128,10 @@ display_version() {
 route_option() {
 
 	# Imports
-	source $COMMBASE_ROOT_DIR/commbase/src/broker/includes/routines/render_ui;
+	source $COMMBASE_APP_DIR/src/app;
 
 	# Data processing
-	COMMBASE_PROCESS_FILE="$COMMBASE_ROOT_DIR/commbase/src/broker/central-processing.sh";
+	APP_PROCESS_FILE="$COMMBASE_APP_DIR/skill";
 
 	# First tmux session
 	SESSIONNAME="Commbase-0";
@@ -146,7 +146,7 @@ route_option() {
 				tmux attach-session -t Commbase-0;
 			else
 				echo "Starting application";
-				render_ui;
+				app;
 			fi
 			;;
 	  '-g' | '--license')
@@ -191,14 +191,14 @@ route_option() {
 		case "$terminal_voice_command" in
 
 			'okay stop' | 'ok stop')
-		    cd $COMMBASE_ROOT_DIR/commbase/data
+		    cd $COMMBASE_APP_DIR/data
 		    echo "okay stop" | tee .data.dat > /dev/null
-		    bash $COMMBASE_PROCESS_FILE &> /dev/null
+		    bash $APP_PROCESS_FILE &> /dev/null
 				;;
 		  *)
-		    cd $COMMBASE_ROOT_DIR/commbase/data
+		    cd $COMMBASE_APP_DIR/data
 		    echo "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" | tee .data.dat .prev_data.dat > /dev/null
-		    bash $COMMBASE_PROCESS_FILE &> /dev/null
+		    bash $APP_PROCESS_FILE &> /dev/null
 				;;
 		esac
 
