@@ -135,7 +135,6 @@ bundles/built-in/broker/vosk/model/
 
 # .bak files used for devel
 skill.bak
-commbase.conf.bak
 
 # Ignore Logs
 logs

@@ -105,7 +105,7 @@ When Bash is invoked as an interactive non-login shell, it reads and executes co
 
 When invoked as an interactive login shell, Bash looks for the /etc/profile file, and if the file exists , it runs the commands listed in the file. Then Bash searches for ~/.bash_profile, ~/.bash_login, and ~/.profile files, in the listed order, and executes commands from the first readable file found.
 
-In case of that your OS distribution does not use ~/.bashrc, add manually the variable $COMMBASE_ROOT_DIR and its value to your Bash Startup File(s).
+In case of that your OS distribution does not use ~/.bashrc, add manually the variable $COMMBASE_APP_DIR and its value to your Bash Startup File(s).
 
 Set up the HISTCONTROL environment variable
 --------------------------------------------
@@ -125,6 +125,8 @@ $ source append_function_no_history_to_bashrc.sh
 $ exit
 
 Reopen the terminal.
+
+Note: Do not confuse this history file .bash_history with the file .app_history that is mentioned in the document User's Guide.
 
 Set up the Commbase executable
 -------------------------------
@@ -164,7 +166,7 @@ From those alternatives, we recommend installing Python using the third option, 
 
 3. You recreate and install the Commbase environment, packages, and packaging dependencies all at once.
 
-4. You do not need to edit the file config/commbase.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version that Commbase is going to use.
+4. You do not need to edit the file config/app.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version that Commbase is going to use.
 
 In case you do not have Anaconda Python in your system but still want to use it to run Commbase, you can install Anaconda Python and then read the section "Install Python in an Anaconda Python environment" to choose if you are going to create the commbase_env yourself or build it later on as it is shown in the section "Build the Commbase Conda environment a from YAML file".
 
@@ -174,7 +176,7 @@ https://docs.anaconda.com/free/anaconda/getting-started/install/
 
 After its installation, your Anaconda Python version should be capable of installing or building your commbase_env environment. Otherwise, try to install a newer or older version of Anaconda Python and verify the Python versions it can install, run, and work with.
 
-In case you want to use your systems' or any custom Python version, edit the file commbase/config/commbase.conf line with the variable PYTHON_ENV_VERSION="python"
+In case you want to use your systems' or any custom Python version, edit the file commbase/config/app.conf line with the variable PYTHON_ENV_VERSION="python"
 
 For example:
 
@@ -422,11 +424,11 @@ In the system environment, specifying to use Python3.9:
 
 $ cd path/to/commbase
 
-$ python3.9 commbase/src/broker/skill-scripts/default/python/c/computer-vision/resizable-camera-capture/resizable-camera-capture.py
+$ python3.9 commbase/src/default/broker/skill_scripts/python/c/computer_vision/resizable_camera_capture/skill_script_resizable_camera_capture.py
 
 In the Anaconda Python commbase_env environment, using the environment's Python version:
 
-(commbase_env) $ python commbase/src/broker/skill-scripts/default/python/c/computer-vision/resizable-camera-capture/resizable-camera-capture.py
+(commbase_env) $ python commbase/src/default/broker/skill_scripts/python/c/computer_vision/resizable_camera_capture/skill_script_resizable_camera_capture.py
 
 Build the Commbase Conda environment from a YAML file
 ------------------------------------------------------
@@ -688,7 +690,7 @@ $ top
 
 Press 'q' to exit.
 
-If you experience problems with the Python performance when running Commbase, you can yet change the value of the variable PYTHON_CPU_LIMIT_PERCENTAGE in the file commbase/config/commbase.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
+If you experience problems with the Python performance when running Commbase, you can yet change the value of the variable PYTHON_CPU_LIMIT_PERCENTAGE in the file commbase/config/app.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
 
 Considerations on how to choose an optimal Python CPU limit percentage:
 
