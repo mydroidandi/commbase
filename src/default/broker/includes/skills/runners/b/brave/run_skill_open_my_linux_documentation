@@ -30,22 +30,43 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # run_skill_open_my_linux_documentation
-# Executes a particular skill in accordance with its name
+# Runs a specific skill called 'open_my_linux_documentation'
 run_skill_open_my_linux_documentation() {
 
-	# Source the skill_script
+	# Import the skill_script_
 	source $COMMBASE_APP_DIR/src/default/broker/skill_scripts/bash/b/brave/skill_script_open_my_linux_documentation
 
-	echo "loaoding" | festival --tts
+	# Import the configuration file
+	source $COMMBASE_ROOT_DIR/commbase/config/app.conf
+	
+	# Warn the user that the script is loading by voice and in the chat pane
+	echo "loaoding" | $TTS_ENGINE_STRING
+	tmux select-window -t 1 && tmux select-pane -t 1 && echo -e "\e[1;41m$ASSISTANT_NAME_IN_CHAT_PANE:\e[1;m Run: ""open my linux documentation"
+	
+	# Move the cursor focus to window 1, pane 4, and clear the standard output
 	tmux select-window -t 1 && tmux select-pane -t 4 &&  tmux send-keys "clear" C-m
-	# Run the skill_script
+	
+	# Run the skill_script_
 	tmux send-keys "(skill_script_open_my_linux_documentation &) &>/dev/null" C-m && sleep 5
+	
+	# Clear the standard output
 	tmux send-keys "clear" C-m
+	
+	# Mute the app audio capture device
 	amixer set Capture nocap &>/dev/null
+	
+	# Warn the user that the script is run by voice and in the chat pane
 	internal_random_yes 1 && tmux select-pane -t 1 && echo -e "\e[1;41m$ASSISTANT_NAME_IN_CHAT_PANE:\e[1;m Run: ""open my linux documentation"
-	echo "open my linux documentation" >> $COMMBASE_APP_DIR/history/.commbase_history
+	
+	# Log the command that is run in the command history file
+	echo "open my linux documentation" >> $COMMBASE_APP_DIR/history/.app_history
+	
+	# Move the cursor focus to window 1, pane 4
 	tmux select-window -t 1 && tmux select-pane -t 4
+	
+	# Unmute the app audio capture device
 	amixer set Capture cap &>/dev/null
+	
 	exit 99
 }
 

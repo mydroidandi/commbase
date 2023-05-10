@@ -35,14 +35,14 @@
 app() {
 
 	# Path to the env file
-	ENV_FILE="$COMMBASE_ROOT_DIR/commbase/env/env";
+	ENV_FILE="$COMMBASE_APP_DIR/env/.env";
 
 	# Assign the host values from the operating system
 	NEW_HOST_NAME=$(hostname | awk '{print $1}');
 	NEW_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}');
 
 	# The configuration file
-	source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
+	source $COMMBASE_APP_DIR/config/app.conf
 
 	# Give .3 seconds to tmux to draw its content before continuing
 	time=0.3;
@@ -73,7 +73,7 @@ app() {
 
 	# On window 0, with pane 1 selected by default, run Python and then press the
 	# enter key.
-	tmux send-keys " cpulimit --limit=$PYTHON_CPU_LIMIT_PERCENTAGE -- $PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/src/broker/voice-recognition.py" C-m;
+	tmux send-keys " cpulimit --limit=$PYTHON_CPU_LIMIT_PERCENTAGE -- $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk/commbase-stt-vosk.py" C-m;
 
 	# Pane 2
 	# On window 0, select pane 2, activate the conda environment if it exists,
@@ -81,7 +81,7 @@ app() {
 	tmux select-pane -t 2 && tmux send-keys " conda activate commbase_env" C-m && sleep $time;
 
 	# On window 0, select pane 2, run Python and then send the enter key
-	tmux select-pane -t 2 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_ROOT_DIR/commbase/bundled/broker/vu-meter/vu_meter.py" C-m;
+	tmux select-pane -t 2 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/vu-meter/vu_meter.py" C-m;
 
 	# Pane 3
 	# On window 0, select pane 3, activate the conda environment if it exists,
@@ -98,7 +98,7 @@ app() {
 
 	# On window 0, select pane 4, cd the directory commbase, clear, send the enter
 	# key, and sleep.
-	tmux select-pane -t 4 && tmux send-keys " cd $COMMBASE_ROOT_DIR/commbase ; clear" C-m;
+	tmux select-pane -t 4 && tmux send-keys " cd $COMMBASE_APP_DIR ; clear" C-m;
 
 	# In this section, activate/deactivate or add custom extra windows
 
@@ -114,7 +114,7 @@ app() {
 			# Window 2	
 			# Auto-create a new window 2 for a countdown timer of 25 mins and start it
 			tmux new-window -t Commbase-0:3 -n "Timer" && tmux send-keys " conda activate commbase_env ; clear" C-m && sleep $time;
-			tmux select-window -t 3 && tmux send-keys " bash $COMMBASE_ROOT_DIR/commbase/src/broker/skill-scripts/default/bash/t/timers/custom-countdown/desktop-shark-countdown.sh -m 25" C-m;
+			tmux select-window -t 3 && tmux send-keys " bash $COMMBASE_APP_DIR/src/default/broker/skill_scripts/bash/t/timers/skill_script_set_a_timer_of_1_to_129_minutes/skill_script_set_a_timer_of_1_to_129_minutes -m 25" C-m;
 		fi
 		
 		if [ "$TMUX_EXTRA_WINDOW_SERVER1_ON" = "true" ];then
@@ -142,5 +142,5 @@ app() {
 	tmux attach-session -t Commbase-0;
 
 	exit 99
-} 
+}
 

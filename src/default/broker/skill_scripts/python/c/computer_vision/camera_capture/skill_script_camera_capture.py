@@ -30,9 +30,10 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# localhost_resizable_camera_capture.py
-# Opens the resizable camera 01 capture by its camera id
+# skill_script_camera_capture.py
+# Opens the camera 01 capture by its camera id
 
+# Requirements
 import cv2
 import os
 
@@ -58,23 +59,16 @@ def get_video_capture_device_index():
 	return None
 
 
-def open_camera(VIDEO_CAPTURE_DEVICE_INDEX):
+def open_camera(video_capture_device_index):
 	""" Opens the camera device capture """
 	# Open a camera capture object
-	cap = cv2.VideoCapture(VIDEO_CAPTURE_DEVICE_INDEX)  # Use camera index 0 for the default camera
-
+	cap = cv2.VideoCapture(video_capture_device_index)  # Use camera index 0 for the default camera
+	print(cap)
+	
 	# Check if camera opened successfully
 	if not cap.isOpened():
 		print("Failed to open camera")
 		exit(1)
-
-	# Define the desired window width and height
-	window_width = 640
-	window_height = 480
-
-	# Create a named window with the desired size
-	cv2.namedWindow("Camera", cv2.WINDOW_NORMAL)
-	cv2.resizeWindow("Camera", window_width, window_height)
 
 	while True:
 		# Capture frame-by-frame
@@ -99,7 +93,7 @@ def open_camera(VIDEO_CAPTURE_DEVICE_INDEX):
 	cv2.destroyAllWindows()
 
 
-def localhost_resizable_camera_capture():
+def skill_script_camera_capture():
 	""" Main call """
 	# Get the video capture device index
 	video_capture_device = get_video_capture_device_index()
@@ -107,5 +101,5 @@ def localhost_resizable_camera_capture():
 	# Open the camera
 	open_camera(video_capture_device)
 
-localhost_resizable_camera_capture()
+skill_script_camera_capture()
 
