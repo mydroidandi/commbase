@@ -329,7 +329,9 @@ Install the package:
 
 $ sudo apt-get install python3-opencv
 
-The next packages are required by a Commbase skill to chat with ChatGPT (https://chat.openai.com/) in the terminal, and potentially required by new terminal apps or skills with text enhancements in Python that you can add to Commbase.
+The next packages are required by a utility skill, skill_script_terminal_chatgpt.py, and potentially required by new terminal skills with text enhancements based on Python. They can be installed with pip, but they are already in the Anaconda Python environment commmbase_env distribuited with Commbase.
+
+- openai
 
 - aiohttp-cors
 
@@ -339,17 +341,7 @@ The next packages are required by a Commbase skill to chat with ChatGPT (https:/
 
 - rich
 
-Anaconda Python:
-
-These are already in the environment file commbase_env.yaml.
-
-The next package can only be installed with pip. It has also been added to commbase_env.yaml as an auto-downloadable pip package.
-
-- openai
-
-$ pip install openai
-
-Finally, here is the installation of these packages with pip for OSs without Anaconda Python environments:
+So, for users with Python directly installed on the OS:
 
 $ pip install openai aiohttp-cors cchardet typer rich
 
