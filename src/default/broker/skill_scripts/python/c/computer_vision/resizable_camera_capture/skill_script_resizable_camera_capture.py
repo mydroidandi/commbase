@@ -40,7 +40,7 @@ import os
 def get_video_capture_device_index():
 	""" Gets the video capture device index from the config file """
 	# Specify the path of the env file containing the variable
-	file_path = os.environ["COMMBASE_APP_DIR"] + '/config/commbase.conf'
+	file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
 
 	# Open the file and read its contents
 	with open(file_path, 'r') as f:

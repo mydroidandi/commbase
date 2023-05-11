@@ -303,6 +303,12 @@ $ pip3 install scikit-learn-intelex
 
 - OpenCV:
 
+It should be install as Python package abd also as a system package.
+
+To install it as Python package:
+
+$ pip install opencv
+
 Steps to install OpenCV 4.5.1 in Debian 11 running Python 3.9:
 
 Verify the current Debian version (The version limits the higher version that you can install of any package name):
@@ -486,6 +492,8 @@ List of required packages/commands:
 - curl
 
 - dash (contains the sh command) 
+
+- espeak (alternative to festival)
 
 - festival
 
