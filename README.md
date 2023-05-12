@@ -40,11 +40,11 @@ For information on how to set up, use, and program Commbase read the User's Guid
 This project is coded and organized like this:
 
 ```sh
-/path/to/commbase
+/path/to/my/commbase/app
 ├── bundles  # Stores the collection of software programs or applications that have been combined and distributed together
 │   ├── built-in
 │   │   └── broker
-│   │       ├── commbase-stt-vosk
+│   │       ├── commbase-stt-vosk-p
 │   │       ├── libcommbase
 │   │       │   ├── examples
 │   │       │   ├── libcommbase

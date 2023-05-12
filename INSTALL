@@ -27,7 +27,7 @@ Content
 
 2.5. Build the Commbase Conda environment from a YAML file
 
-2.6. Set up the file commbase-stt-vosk.py
+2.6. Set up the engine commbase-stt-vosk-p
 
 2.7. Install the Vosk model
 
@@ -89,7 +89,7 @@ $ mv commbase-main commbase
 Set up the COMMBASE_APP_DIR directory
 --------------------------------------
 
-Go to the directory commbase/scripts/configuration/ 
+Go to the directory scripts/configuration/ 
 
 You will see the file set_app_root_directory_and_app_directory.sh there.
 
@@ -114,9 +114,9 @@ The HISTCONTROL variable determines which commands are saved in the history file
 
 Commbase uses HISTCONTROL to keep clean the commands' history during the rendering of the Commbase UI.
 
-To set up the HISTCONTROL environment variable, run the script commbase/scripts/configuration/append_function_no_history_to_bashrc.sh:
+To set up the HISTCONTROL environment variable, run the script scripts/configuration/append_function_no_history_to_bashrc.sh:
 
-$ cd commbase/scripts/configuration
+$ cd scripts/configuration
 
 $ sudo bash append_function_no_history_to_bashrc.sh
 
@@ -131,9 +131,9 @@ Note: Do not confuse this history file .bash_history with the file .app_history 
 Set up the Commbase executable
 -------------------------------
 
-Go to the directory commbase/scripts/configuration/install_commbase_executable/ and execute the file install_commbase_executable.sh:
+Go to the directory scripts/configuration/install_commbase_executable/ and execute the file install_commbase_executable.sh:
 
-$ cd commbase/scripts/configuration/install_commbase_executable/
+$ cd scripts/configuration/install_commbase_executable/
 
 $ bash install_commbase_executable.sh
 
@@ -176,22 +176,140 @@ https://docs.anaconda.com/free/anaconda/getting-started/install/
 
 After its installation, your Anaconda Python version should be capable of installing or building your commbase_env environment. Otherwise, try to install a newer or older version of Anaconda Python and verify the Python versions it can install, run, and work with.
 
-In case you want to use your systems' or any custom Python version, edit the file commbase/config/app.conf line with the variable PYTHON_ENV_VERSION="python"
+In case you want to use your systems' or any custom Python version, edit the file config/app.conf line with the variable PYTHON_ENV_VERSION="python"
 
 For example:
 
-PYTHON_ENV_VERSION="python3.7"
+PYTHON_ENV_VERSION="python3.11"
 
-In that way, Commbase will attempt to run using python3.7 from your OS instead of the Anaconda Python environment commbase_env, which has and runs its own Python version.
+In that way, Commbase will attempt to run using python3.`` from your OS instead of the Anaconda Python environment commbase_env, which has and runs its own Python version.
 
-Remember that 3.7 is the minimum Python version required to run Commbase, no matter how.
-
-Note: A Python version higher than the one used for the commbase_env could affect any custom scripts or skill scripts you could make. In such cases, you should change the Python version or Python environment that would be used by your custom code to manage the errors.
+Python 3.11 is the minimum Python version required to run all the Commbase software properly, in the system or in a virtual environment. A Python version higher than the one used in commbase_env could affect any skill script or any custom scripts you could make. In such cases, you could keep your custom Python version or Python environment version  and manage the errors by yourself.
 
 Install Python
 ---------------
 
-- python3.7:
+In this section, we added an excellent alternative to standard Python installations. However, the method to install Python is your decision at the end of the day, and that choice is not going to affect how Commbase works. After the alternative "Build Python 3.11.1 on Debian 11 Bullseye", we put a subsection "Install Python 3.7" just for reference of installations of older Python versions.
+
+- Build Python 3.11.1 on Debian 11 Bullseye:
+
+Check the current version:
+
+$ apt info python3
+
+Info: https://www.python.org/downloads/release/python-3111/
+
+Download and extract the Python source code:
+
+$ cd /tmp/
+
+$ wget https://www.python.org/ftp/python/3.11.1/Python-3.11.1.tgz
+
+$ tar -xzvf Python-3.11.1.tgz
+
+$ cd Python-3.11.1/
+
+Install the build tools:
+
+$ sudo apt update
+
+$ sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev
+
+If you are prompted to install other dependencies, select yes.
+
+Configure, make and make install:
+
+$ ./configure --enable-optimizations
+
+Run make. You can make the build using nproc, which returns the number of CPUs.
+
+$ make -j `nproc`
+
+Make install.
+
+The default Python installation is /usr/bin. If you want to install Python under /usr/local/bin instead of overwriting the default, do this:
+
+$ sudo make altinstall
+
+This will install Python at /usr/local/bin/python3.11. To test the version, run this:
+
+$ python3.11 -V
+
+You will get this output:
+
+Python 3.11.1
+
+Make Python 3.11.1 the default version.
+
+To make the default version of Python 3.11.1, run this:
+
+$ sudo ln -s /usr/local/bin/python
+
+Output:
+
+ln: failed to create symbolic link './python': File exists
+
+$ sudo ln -s /usr/local/bin/python3.11 /usr/local/bin/python
+
+This creates a bunch of softlinks and links the latest Python to /usr/local/bin.
+
+Test whether Python 3.11.1 is the default version:
+
+$ ls -al /usr/local/bin/python
+
+Output:
+
+lrwxrwxrwx 1 root root 25 May 11 16:52 /usr/local/bin/python -> /usr/local/bin/python3.11
+
+$ ls -al /etc/alternatives/python
+
+Output:
+
+ls: cannot access '/etc/alternatives/python': No such file or directory
+
+$ /usr/local/bin/python3.11 -V
+
+Output:
+
+Python 3.11.1
+
+$ python -V
+
+The output will be:
+
+Python 3.11.1
+
+So, at this point, Python 3.11.1 has been set as the default version of Python.
+
+Verify the pip version:
+
+$ pip -V
+
+Output:
+
+[...] (python 3.9)
+
+Upgrade the pip version:
+
+$ whereis python
+
+$ /usr/local/bin/python3.11 -m pip install --upgrade pip
+
+$ pip3.11 install --upgrade pip
+
+$  whereis pip
+
+Check the new pip version:
+
+$ pip3.11 -V
+
+Output:
+
+pip: /usr/bin/pip /usr/local/bin/pip3.11 /usr/share/man/man1/pip.1.gz
+
+From now on, you can use this new command pip3.11 to install most of your pip packages.
+
+- Install Python 3.7:
 
 $ sudo apt-get update
 
@@ -199,7 +317,7 @@ $ apt-cache search python 3.7
 
 $ sudo apt-get install python3.7
 
-- pip3.7:
+pip3.7:
 
 $ /usr/bin/python3 -m pip install --upgrade pip
 
@@ -215,55 +333,7 @@ $ pip3 list | more
 
 $ pip3.7 list | more
 
-Install Python packages
-------------------------
-
-- Vosk:
-
-$ pip3.7 install vosk
-
-Or use:
-
-$ python3.7 -m pip install vosk
-
-If you can't install it, check the output messages. For example, I have Vosk already in the system from a previous Kdenlive application installation (installed as a flatpak from flathub), which does not allow me to re-install Vosk.
-
-Example of terminal OUTPUT:
-Defaulting to user installation because normal site-packages is not writable
-Requirement already satisfied: vosk in /home/<USER>/.local/lib/python3.7/site-packages (0.3.22)
-End of OUTPUT.
-
-In the previous output, the messages reference the current Python Vosk package installation. Python is already installed in a directory of the current local user <USER>, instead of system-wide, so it is helpful to re-install python3, pip3, or vosk.
-
-- PyAudio‑0.2.11:
-
-$ pip3.7 install PyAudio‑0.2.11
-
-Or download from pypi.org:
-
-$ tar xvzf PyAudio-0.2.11.tar.gz
-
-$ cp PyAudio-0.2.11.tar.gz commbase/bundles/built-in/broker/PyAudio
-
-$ Set up permissions for the directory:
-
-$ chmod 755 PyAudio‑0.2.11
-
-PyAudio‑0.2.11 requires Portaudio19 to install:
-
-$ apt-cache search portaudio
-
-$ sudo apt-get install portaudio19-dev
-
-Information here: https://packages.debian.org/bullseye/portaudio19-dev
-
-Install PyAudio using the simple instruction in its file INSTALL:
-
-$ sudo python3.7 setup.py install
-
-- Subprocess.run:
-
-Information: https://pypi.org/project/subprocess.run/
+Install many pip versions will allow you to choose a package version using the pip version. For example:
 
 $ pip install subprocess.run
 
@@ -271,39 +341,73 @@ Or:
 
 $ pip3 install subprocess.run
 
+Install Python packages
+------------------------
+
+- Vosk:
+
+$ pip3.11 install vosk
+
+Or use:
+
+$ python -m pip install vosk
+
+If you can't install it, check the output messages. For example, I have Vosk already in the system from a previous Kdenlive application installation (installed as a flatpak from flathub), which does not allow me to re-install Vosk.
+
+Example of terminal OUTPUT:
+
+Defaulting to user installation because normal site-packages is not writable
+Requirement already satisfied: vosk in /home/<USER>/.local/lib/python3.7/site-packages (0.3.22)
+
+End of OUTPUT.
+
+In the previous output, the messages references the current Python Vosk package installation. Python is already installed in a directory of the current local user <USER>, instead of system-wide, so it is helpful to re-install python3, pip3, or vosk.
+
+- Portaudio:
+
+PyAudio‑0.2.13 requires Portaudio19 to install:
+
+More information here: https://packages.debian.org/bullseye/portaudio19-dev
+
+$ sudo apt-get update
+
+$ apt-cache search portaudio
+
+$ sudo apt-get install portaudio19-dev portaudio19-doc
+
+- PyAudio‑0.2.13:
+
+$ pip3.11 install PyAudio
+
+- Subprocess.run:
+
+More information here: https://pypi.org/project/subprocess.run/
+
+$ pip3.11 install subprocess.run
+
 - Sounddevice:
 
 This package allows us to run test_microphone.py
 
-$ pip3 install sounddevice
+$ pip3.11 install sounddevice
 
 - Chardet:
 
-This resolves the error: "cannot import name 'COMMON_SAFE_ASCII_CHARACTERS'"
-
-$ pip install chardet
-
-Or use:
-
-$ pip3 install chardet
+$ pip3.11 install chardet
 
 - Scikit-learn and scikit-learn-intelex:
 
-$ pip install scikit-learn
-
-Or use:
-
-$ pip3 install scikit-learn
-
-$ pip install scikit-learn-intelex
-
-Or use:
-
-$ pip3 install scikit-learn-intelex
+$ pip3.11 install scikit-learn scikit-learn-intelex
 
 - OpenCV:
 
-Steps to install OpenCV 4.5.1 in Debian 11 running Python 3.9:
+It must be installed as Python package and also as a system package.
+
+To install the Python OpenCV package:
+
+$ pip3.11 install opencv-python
+
+Steps to install OpenCV in Debian 11:
 
 Verify the current Debian version (The version limits the higher version that you can install of any package name):
 
@@ -311,7 +415,7 @@ $ cat /etc/issue
 
 Verify the current Python version:
 
-$ python3
+$ python -V
 
 Update the sources list for the official Debian repos:
 
@@ -319,7 +423,7 @@ $ sudo apt-get update
 
 Search the package in the official Debian repos (main):
 
-apt-cache search python3-opencv
+apt-cache search opencv
 
 Show the package version information:
 
@@ -329,26 +433,36 @@ Install the package:
 
 $ sudo apt-get install python3-opencv
 
-The next packages are required by a utility skill, skill_script_terminal_chatgpt.py, and potentially required by new terminal skills with text enhancements based on Python. They can be installed with pip, but they are already in the Anaconda Python environment commmbase_env distribuited with Commbase.
+Verify the packge installation:
+
+$ dpkg -l | grep opencv
 
 - openai
 
+$ pip3.11 install openai
+
 - aiohttp-cors
 
-- cchardet
+$ pip3.11 install aiohttp-cors
 
 - typer
 
+$ pip3.11 install typer
+
 - rich
 
-So, for users with Python directly installed on the OS:
+pip3.11 install rich
 
-$ pip install openai aiohttp-cors cchardet typer rich
+- cchardet
+
+This is giving an error and was installed using pip3 instead of pip3.11, as follows:
+
+$ pip3 install cchardet
 
 Install Python in an Anaconda Python environment
 -------------------------------------------------
 
-Alternatively, you can replace Python 3.7 with Anaconda Python. Anaconda Python versions are well-optimized, so the speech recognition AI is supposed to work faster than the official Python packages.
+Alternatively, you can replace Python 3.11 with Anaconda Python. Anaconda Python versions are well-optimized, so the speech recognition AI is supposed to work faster than the official Python packages.
 
 More information on Anaconda: https://www.anaconda.com/
 
@@ -368,9 +482,9 @@ To install PyPi-like packages in the (base) in Anaconda Python, use the command 
 
 (base) USER-NAME@HOSTNAME:~$ conda install PACKAGE-NAME
 
-If you want to create a new Anaconda Python (3.7) environment just for Commbase:
+If you want to create a new Anaconda Python (3.11) environment just for Commbase:
 
-$ conda create -n commbase_env python=3.7
+$ conda create -n commbase_env python=3.11
 
 $ conda activate commbase_env
 
@@ -394,7 +508,7 @@ To verify the package was installed, in your terminal window or an Anaconda Pyth
 
 (commbase_env) $ conda list
 
-Note: Environments defined with python=3.9 or higher versions of Python could work perfectly and probably faster than python=3.7, but 3.7 is still the version requirement. This documentation and Commbase code would be updated for future releases of Python to make everything Commbase compatible.
+Note: This documentation and Commbase code would be updated for future releases of Python to make everything Commbase compatible.
 
 To deactivate the current environment and go back to (base) use:
 
@@ -412,15 +526,15 @@ Verify the Anaconda Python's Python version used:
 
 As stated, some Anaconda Python packages are usually performing better than the packages for the OS distribution, that is the case of OpenCV. You can test and compare the performance between the OS distribution Python version and the Anaconda Python environment version, by running the file resizable-camera-capture.py from every separate environment. The file does not have to include the Python version to be used in the first line of the script to be executed using the Python version in/specified in the command line:
 
-In the system environment, specifying to use Python3.9:
+In the system environment, specifying to use Python3.11:
 
-$ cd path/to/commbase
+$ cd /path/to/my/commbase/app
 
-$ python3.9 commbase/src/default/broker/skill_scripts/python/c/computer_vision/resizable_camera_capture/skill_script_resizable_camera_capture.py
+$ python3.11 src/default/broker/skill_scripts/python/c/computer_vision/resizable_camera_capture/skill_script_resizable_camera_capture.py
 
 In the Anaconda Python commbase_env environment, using the environment's Python version:
 
-(commbase_env) $ python commbase/src/default/broker/skill_scripts/python/c/computer_vision/resizable_camera_capture/skill_script_resizable_camera_capture.py
+(commbase_env) $ python src/default/broker/skill_scripts/python/c/computer_vision/resizable_camera_capture/skill_script_resizable_camera_capture.py
 
 Build the Commbase Conda environment from a YAML file
 ------------------------------------------------------
@@ -428,22 +542,22 @@ Build the Commbase Conda environment from a YAML file
 Using YAML files is the simplest and probably the best way to install Python and the Python Commbase environment dependencies.
 To simplify it even more, we put all together in a script you can run once.
 
-If you want to remove a previous commbase environment, if the environment you want to remove is the current active environment, deactivate it before running the script.
+If you want to remove a previous Commbase environment, if the environment you want to remove is the current active environment, deactivate it before running the script.
 
 (commbase_env) $ conda deactivate
 
 Run the config script:
 
-$ bash commbase/scripts/configuration/build_conda_environment.sh
+$ bash scripts/configuration/build_conda_environment.sh
 
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
 
-Set up the file commbase-stt-vosk.py
--------------------------------------
+Set up the engine commbase-stt-vosk-p
+--------------------------------------
 
-If you are not using the Anaconda Python environment commbase_env for running Commbase, you could need to change the first line of the file, to a fixed Python version, mostly if you experience program errors, latency, or low performance.
+If you are not using the Anaconda Python environment commbase_env for running your app, you could need to change the first line of the file commbase-stt-vosk-p.py, to a fixed Python version, mostly if you experience program errors, latency, or low performance.
 
-This file is in the directory commbase/bundles/built-in/broker/commbase-stt-vosk/
+This file is in the directory bundles/built-in/broker/commbase-stt-vosk-p/
 
 Replace the first line, accordingly.
 
@@ -451,9 +565,9 @@ For Anaconda Python, use:
 
 #!/usr/bin/env python
 
-For Python3.7, use:
+For Python3.11, use:
 
-#!/usr/bin/python3.7
+#!/usr/bin/python3.11
 
 Install the Vosk model
 -----------------------
@@ -486,6 +600,8 @@ List of required packages/commands:
 - curl
 
 - dash (contains the sh command) 
+
+- espeak (alternative to festival)
 
 - festival
 
@@ -580,7 +696,7 @@ Install VU-meter
 
 Download/clone it from GitHub and install it:
 
-$ cd commbase/bundles/built-in/broker
+$ cd bundles/built-in/broker
 
 $ git clone https://github.com/kmein/vu-meter.git
 
@@ -682,7 +798,7 @@ $ top
 
 Press 'q' to exit.
 
-If you experience problems with the Python performance when running Commbase, you can yet change the value of the variable PYTHON_CPU_LIMIT_PERCENTAGE in the file commbase/config/app.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
+If you experience problems with the Python performance when running Commbase, you can yet change the value of the variable PYTHON_CPU_LIMIT_PERCENTAGE in the file config/app.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
 
 Considerations on how to choose an optimal Python CPU limit percentage:
 
