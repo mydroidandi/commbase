@@ -44,7 +44,7 @@ This project is coded and organized like this:
 ├── bundles  # Stores the collection of software programs or applications that have been combined and distributed together
 │   ├── built-in
 │   │   └── broker
-│   │       ├── commbase-stt-vosk
+│   │       ├── commbase-stt-vosk-p
 │   │       ├── libcommbase
 │   │       │   ├── examples
 │   │       │   ├── libcommbase
