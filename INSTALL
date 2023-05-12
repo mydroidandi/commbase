@@ -9,7 +9,7 @@ Content
 
 1.3. Install Commbase
 
-1.4. Set up the COMMBASE_APP_DIR directory
+1.4. Set up your new app name and directory
 
 1.5. Set up the HISTCONTROL environment variable
 
@@ -82,12 +82,8 @@ Extract the zip file:
 
 $ unzip commbase-main.zip
 
-Rename the directory called "commbase-main" to something else that you get to choose. It can be any name you want, like "my-app". But just so we are all on the same page, we will call it "commbase" from now on.
-
-$ mv commbase-main commbase
-
-Set up the COMMBASE_APP_DIR directory
---------------------------------------
+Set up your new app name and directory
+---------------------------------------
 
 Go to the directory scripts/configuration/ 
 
@@ -95,7 +91,7 @@ You will see the file set_app_root_directory_and_app_directory.sh there.
 
 $ bash set_app_root_directory_and_app_directory.sh
 
-The script is going to append the variable COMMBASE_APP_DIR in the files $HOME/.bashrc and $HOME/.zshrc
+The script prompts the user to enter the current location and name of the directory they want to rename, and also to enter a new name and location for the directory. It also appends the variable COMMBASE_APP_DIR in the files $HOME/.bashrc and $HOME/.zshrc
 
 Notes about the difference between .bashrc and .bash_profile:
 

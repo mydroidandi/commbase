@@ -34,7 +34,7 @@
 # Allows the user to rename a directory and update the environment variables
 # accordingly. The script prompts the user to enter the current location and
 # name of the directory they want to rename, and also to enter a new name and
-# location for the directory. 
+# location for the directory.
 
 # Prompt user to enter the current location of the Commbase repository directory,
 # and set the default location to $HOME if no input is provided.
