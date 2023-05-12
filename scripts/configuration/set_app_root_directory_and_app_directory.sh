@@ -31,41 +31,69 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # set_app_root_directory_and_app_directory.sh
-# Prompts the user to enter the name of a new Commbase App directory and 
-# optionally the path of the App root directory. If the user enters an empty
-# string for the App directory name, it will keep asking until a non-empty 
-# string is provided. If the user does not provide a value for the App root
-# directory, the default value is set to the $HOME directory. Then the script
-# checks whether the directory specified by the variable COMMBASE_APP_DIR 
-# exists. If the directory does not exist, the script exports the path to the
-# directory to the Bash shell's and the Z shell's configuration files (.bashrc
-# and .zshrc). Finally, the script exits with a status code of 99.
-# Remove the lines from the files ~/.bashrc and ~/.zshrc before rerun this 
-# setup.
+# Allows the user to rename a directory and update the environment variables
+# accordingly. The script prompts the user to enter the current location and
+# name of the directory they want to rename, and also to enter a new name and
+# location for the directory. 
 
-read -p "Enter the name of the App directory: " APP
+# Prompt user to enter the current location of the Commbase repository directory,
+# and set the default location to $HOME if no input is provided.
+read -p "👉️ Enter the current location of the Commbase repository directory (press enter for default '$HOME'): " DIR_TO_RENAME_PATH
 
-while [[ -z "$APP" ]]; do
-    read -p "Please enter a non-empty name for the App directory: " APP
+if [[ -z "$DIR_TO_RENAME_PATH" ]]; then
+    DIR_TO_RENAME_PATH="$HOME"
+fi
+
+# Prompt user to enter the current name of the Commbase repository directory,
+# and repeat the prompt until a non-empty input is provided.
+read -p "👉️ Enter the current name of the Commbase repository directory (for example, commbase or commbase-main): " DIR_TO_RENAME
+
+while [[ -z "$DIR_TO_RENAME" ]]; do
+    read -p "👉️ Please enter a non-empty name of the Commbase repository directory: " DIR_TO_RENAME
 done
 
-read -p "Enter the path of the App root directory (press enter for default '$HOME'): " APP_ROOT_DIR
+# Prompt user to enter a new location for their app, and set the default
+# location to $HOME if no input is provided.
+read -p "👉️ Enter a new location for your app (press enter for default '$HOME'): " NEW_DIR_PATH
 
-if [[ -z "$APP_ROOT_DIR" ]]; then
-    APP_ROOT_DIR="$HOME"
+if [[ -z "$NEW_DIR_PATH" ]]; then
+    NEW_DIR_PATH="$HOME"
 fi
 
-# Check whether the directory specified by the variable does not exist
-if [[ ! -d "$COMMBASE_APP_DIR" ]]; then 
+# Prompt user to enter the name for their new app, and repeat the prompt until a
+# non-empty input is provided.
+read -p "👉️ Enter your new app's name: " NEW_DIR_NAME
+
+while [[ -z "$NEW_DIR_NAME" ]]; do
+    read -p "👉️ Please enter a non-empty name for the new app: " NEW_DIR_NAME
+done
+
+# Rename the app directory
+mv "$DIR_TO_RENAME_PATH/$DIR_TO_RENAME" "$NEW_DIR_PATH/$NEW_DIR_NAME"
+
+# Overwrite the line in .bashrc if it exists
+if grep -q "COMMBASE_APP_DIR" ~/.bashrc; then
+    sed -i "s#COMMBASE_APP_DIR=.*#COMMBASE_APP_DIR=\"$NEW_DIR_PATH\/$NEW_DIR_NAME\"#" ~/.bashrc
+else
     echo "" >> ~/.bashrc
     echo "# The Commbase App directory for the Bash shell" >> ~/.bashrc
-    echo "export COMMBASE_APP_DIR=\"$APP_ROOT_DIR/$APP\"" >> ~/.bashrc
-    echo "" >> ~/.zshrc
-    echo "# The Commbase App directory for the Z shell" >> ~/.zshrc
-    echo "export COMMBASE_APP_DIR=\"$APP_ROOT_DIR/$APP\"" >> ~/.zshrc
+    echo "export COMMBASE_APP_DIR=\"$NEW_DIR_PATH/$NEW_DIR_NAME\"" >> ~/.bashrc
 fi
 
-echo -e "Don't forget to rename the directory of the app as: \033[31m$APP\033[0m"
+# Overwrite the line in .zshrc if it exists
+if grep -q "COMMBASE_APP_DIR" ~/.zshrc; then
+    sed -i "s#COMMBASE_APP_DIR=.*#COMMBASE_APP_DIR=\"$NEW_DIR_PATH\/$NEW_DIR_NAME\"#" ~/.zshrc
+else
+    echo "" >> ~/.zshrc
+    echo "# The Commbase App directory for the Z shell" >> ~/.zshrc
+    echo "export COMMBASE_APP_DIR=\"$NEW_DIR_PATH/$NEW_DIR_NAME\"" >> ~/.zshrc
+fi
+
+# Set the APP_DIR variable to the new directory
+APP_DIR="$NEW_DIR_PATH/$NEW_DIR_NAME"
+
+# Print the new app directory path
+echo -e "🎉️ Yor new app directory is: \033[31m$APP_DIR\033[0m"
 
 exit 99
 
