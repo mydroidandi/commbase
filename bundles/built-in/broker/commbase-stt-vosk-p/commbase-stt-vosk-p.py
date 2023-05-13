@@ -52,17 +52,6 @@ import json
 ML_MODEL = '$COMMBASE_APP_DIR/bundles/built-in/broker/vosk/model'
 #print (string.Template(ML_MODEL).substitute(os.environ))
 
-# Color codes for different background colors
-red_bg_color_code_start = "1;41m"
-green_bg_color_code_start = "1;42m"
-yellow_bg_color_code_start = "1;43m"
-blue_bg_color_code_start = "1;44m"
-magenta_bg_color_code_start = "1;45m"
-cyan_bg_color_code_start = "1;46m"
-black_bg_color_code_start = "1;40m"
-
-color_code_end = "1;m"
-
 # Output files
 RESULT_DATA_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.data.dat'
 PREV_DATA_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.prev_data.dat'
@@ -76,9 +65,178 @@ STOP_STR = "okay stop"
 q = queue.Queue()
 
 
-def get_chat_names():
+def get_terminal_colors():
 	""" 
-	Gets the chat names from the config file.
+	Gets the terminal colors from the config file.
+
+	Reads the environment variables from the environment configuration file.
+	Returns a tuple containing the string values of the variables if found, or
+	None if any of the variables are not present.
+
+	Returns:
+		  tuple or None: A tuple containing the terminal colors, or None, if any of
+		  the variables are not found.
+	"""
+	# Specify the path of the env file containing the variables
+	file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
+
+	# Initialize variables for the background colors
+	red_bg_color_code_start = None
+	green_bg_color_code_start = None
+	yellow_bg_color_code_start = None
+	blue_bg_color_code_start = None
+	magenta_bg_color_code_start = None
+	cyan_bg_color_code_start = None
+	white_bg_color_code_start = None
+	black_bg_color_code_start = None
+	color_code_end = None
+
+	# Initialize variables for the text colors
+	red_text_color_code_start = None
+	green_text_color_code_start = None
+	yellow_text_color_code_start = None
+	blue_text_color_code_start = None
+	magenta_text_color_code_start = None
+	cyan_text_color_code_start = None
+	white_text_color_code_start = None
+	black_text_color_code_start = None
+	#color_code_end = None
+
+	# Open the file and read its contents
+	with open(file_path, 'r') as f:
+	  for line in f:
+		  # Split the line into variable name and value
+		  variable_name, value = line.strip().split('=')
+
+		  # Check if the variable we are looking for exists in the file
+		  if variable_name == 'TERMINAL_RED_BG_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    red_bg_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_GREEN_BG_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    green_bg_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_YELLOW_BG_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    yellow_bg_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_BLUE_BG_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    blue_bg_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_MAGENTA_BG_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    magenta_bg_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_CYAN_BG_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    cyan_bg_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_WHITE_BG_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    white_bg_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_BLACK_BG_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    black_bg_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_RED_TEXT_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    red_text_color_code_start = value.strip()[1:-1]
+
+		  # Check if the variable we are looking for exists in the line
+		  elif variable_name == 'TERMINAL_GREEN_TEXT_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    green_text_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_YELLOW_TEXT_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    yellow_text_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_BLUE_TEXT_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    blue_text_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_MAGENTA_TEXT_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    magenta_text_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_CYAN_TEXT_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    cyan_text_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_WHITE_TEXT_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    white_text_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_BLACK_TEXT_COLOR_CODE_START':
+		    # Remove the quotes from the value of the variable
+		    black_text_color_code_start = value.strip()[1:-1]
+
+		  elif variable_name == 'TERMINAL_COLOR_CODE_END':
+		    # Remove the quotes from the value of the variable
+		    color_code_end = value.strip()[1:-1]
+
+	# Check if all nine variables were found
+	if red_bg_color_code_start is not None and green_bg_color_code_start is not None and yellow_bg_color_code_start is not None and blue_bg_color_code_start is not None and magenta_bg_color_code_start is not None and cyan_bg_color_code_start is not None and white_bg_color_code_start is not None and black_bg_color_code_start is not None and red_text_color_code_start is not None and green_text_color_code_start is not None and yellow_text_color_code_start is not None and blue_text_color_code_start is not None and magenta_text_color_code_start is not None and cyan_text_color_code_start is not None and white_text_color_code_start is not None and black_text_color_code_start is not None and color_code_end is not None:
+		return red_bg_color_code_start, green_bg_color_code_start, yellow_bg_color_code_start, blue_bg_color_code_start, magenta_bg_color_code_start, cyan_bg_color_code_start, white_bg_color_code_start, black_bg_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end
+
+	# If any of the variables are not found, return None
+	return None
+
+
+def get_chat_participant_colors():
+	""" 
+	Gets the chat participant background and text colors from the config file.
+
+	Reads the assistant, system, and end user variables from the environment
+	configuration file. Returns a tuple containing the string values of the
+	variables if found, or None if any of the variables are not present.
+
+	Returns:
+		  tuple or None: A tuple containing the assistant, system, and end user
+		  background and text colors in the chat pane, or None, if any of the
+		  variables are not found.
+	"""
+	# Specify the path of the env file containing the variables
+	file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
+
+	# Initialize variables for the chat names
+	assistant_name = None
+	system_name = None
+	end_user_name = None
+
+	# Open the file and read its contents
+	with open(file_path, 'r') as f:
+	  for line in f:
+		  # Split the line into variable name and value
+		  variable_name, value = line.strip().split('=')
+
+		  if variable_name == 'END_USER_NAME_IN_CHAT_PANE':
+		    # Remove the quotes from the value of the variable
+		    end_user_name = value.strip()[1:-1]
+		  
+		  # Check if the variable we are looking for exists in the line
+		  elif variable_name == 'ASSISTANT_NAME_IN_CHAT_PANE':
+		    # Remove the quotes from the value of the variable
+		    assistant_name = value.strip()[1:-1]
+		      
+		  elif variable_name == 'SYSTEM_NAME_IN_CHAT_PANE':
+		    # Remove the quotes from the value of the variable
+		    system_name = value.strip()[1:-1]
+
+	# Check if all three variables were found
+	if assistant_name is not None and system_name is not None and end_user_name is not None:
+		return end_user_name, assistant_name, system_name 
+
+	# If any of the variables are not found, return None
+	return None
+
+
+def get_chat_participant_names():
+	""" 
+	Gets the chat participant names from the config file.
 
 	Reads the 'ASSISTANT_NAME_IN_CHAT_PANE', 'SYSTEM_NAME_IN_CHAT_PANE', and 
 	'END_USER_NAME_IN_CHAT_PANE' variables from the environment configuration
@@ -244,8 +402,11 @@ def print_result():
   Returns:
       None.
   """
-  # Assign the values returned by get_chat_names()
-  end_user_name, assistant_name, system_name = get_chat_names()
+	# Assign the values returned by get_terminal_colors()
+  red_bg_color_code_start, green_bg_color_code_start, yellow_bg_color_code_start, blue_bg_color_code_start, magenta_bg_color_code_start, cyan_bg_color_code_start, white_bg_color_code_start, black_bg_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
+
+  # Assign the values returned by get_chat_participant_names()
+  end_user_name, assistant_name, system_name = get_chat_participant_names()
 
   string = rec.Result()
   trimmed_string = strip_string(string)
@@ -385,11 +546,15 @@ try:
 channels=1, callback=callback):
 	  display_avatar()
 	  
-	  # Assign the values returned by get_chat_names()
-	  end_user_name, assistant_name, system_name = get_chat_names()
+	  # Assign the values returned by get_terminal_colors()
+	  red_bg_color_code_start, green_bg_color_code_start, yellow_bg_color_code_start, blue_bg_color_code_start, magenta_bg_color_code_start, cyan_bg_color_code_start, white_bg_color_code_start, black_bg_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
+
+	  # Assign the values returned by get_chat_participant_names()
+	  end_user_name, assistant_name, system_name = get_chat_participant_names()
 	  
 	  #print('Press Ctrl+C to stop the recording')
 	  print(f'\033[{red_bg_color_code_start}{assistant_name}:\033[{color_code_end} Mute the microphone to pause the recording ... \033[0m')
+	  print(f'\033[{red_bg_color_code_start}{assistant_name}:\033[{color_code_end} \033[{red_text_color_code_start}Mute the microphone to pause the recording ... \033[{color_code_end} \033[0m')
 	  rec = vosk.KaldiRecognizer(model, args.samplerate)
 
 	  while True:
