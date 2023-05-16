@@ -195,44 +195,58 @@ def get_chat_participant_colors():
 	variables if found, or None if any of the variables are not present.
 
 	Returns:
-		  tuple or None: A tuple containing the assistant, system, and end user
-		  background and text colors in the chat pane, or None, if any of the
-		  variables are not found.
+			tuple or None: A tuple containing the assistant, system, and end user
+			background and text colors in the chat pane, or None, if any of the
+			variables are not found.
 	"""
 	# Specify the path of the env file containing the variables
 	file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
 
-	# Initialize variables for the chat names
-	assistant_name = None
-	system_name = None
-	end_user_name = None
+	# Initialize variables for the colors of the chat participants
+	end_user_bg_color = None
+	assistant_bg_color = None
+	system_bg_color = None
+	end_user_text_color = None
+	assistant_text_color = None
+	system_text_color = None
 
 	# Open the file and read its contents
 	with open(file_path, 'r') as f:
-	  for line in f:
-		  # Split the line into variable name and value
-		  variable_name, value = line.strip().split('=')
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
 
-		  if variable_name == 'END_USER_NAME_IN_CHAT_PANE':
-		    # Remove the quotes from the value of the variable
-		    end_user_name = value.strip()[1:-1]
-		  
-		  # Check if the variable we are looking for exists in the line
-		  elif variable_name == 'ASSISTANT_NAME_IN_CHAT_PANE':
-		    # Remove the quotes from the value of the variable
-		    assistant_name = value.strip()[1:-1]
-		      
-		  elif variable_name == 'SYSTEM_NAME_IN_CHAT_PANE':
-		    # Remove the quotes from the value of the variable
-		    system_name = value.strip()[1:-1]
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'END_USER_BG_COLOR_IN_CHAT_PANE':
+				# Remove the quotes from the value of the variable
+				end_user_bg_color = value.strip()[1:-1]
+				
+			elif variable_name == 'ASSISTANT_BG_COLOR_IN_CHAT_PANE':
+				# Remove the quotes from the value of the variable
+				assistant_bg_color = value.strip()[1:-1]
+
+			elif variable_name == 'SYSTEM_BG_COLOR_IN_CHAT_PANE':
+				# Remove the quotes from the value of the variable
+				system_bg_color = value.strip()[1:-1]
+
+			elif variable_name == 'END_USER_TEXT_COLOR_IN_CHAT_PANE':
+				# Remove the quotes from the value of the variable
+				end_user_text_color = value.strip()[1:-1]
+
+			elif variable_name == 'ASSISTANT_TEXT_COLOR_IN_CHAT_PANE':
+				# Remove the quotes from the value of the variable
+				assistant_text_color = value.strip()[1:-1]
+
+			elif variable_name == 'SYSTEM_TEXT_COLOR_IN_CHAT_PANE':
+				# Remove the quotes from the value of the variable
+				system_text_color = value.strip()[1:-1]
 
 	# Check if all three variables were found
-	if assistant_name is not None and system_name is not None and end_user_name is not None:
-		return end_user_name, assistant_name, system_name 
+	if end_user_bg_color is not None and assistant_bg_color is not None and system_bg_color is not None and end_user_text_color is not None and assistant_text_color is not None and system_text_color is not None:
+		return end_user_bg_color, assistant_bg_color, system_bg_color, end_user_text_color, assistant_text_color, system_text_color
 
 	# If any of the variables are not found, return None
 	return None
-
 
 def get_chat_participant_names():
 	""" 
@@ -261,19 +275,19 @@ def get_chat_participant_names():
 		  # Split the line into variable name and value
 		  variable_name, value = line.strip().split('=')
 
+			# Check if the variable we are looking for exists in the line
 		  if variable_name == 'END_USER_NAME_IN_CHAT_PANE':
 		    # Remove the quotes from the value of the variable
 		    end_user_name = value.strip()[1:-1]
-		  
-		  # Check if the variable we are looking for exists in the line
+		    
 		  elif variable_name == 'ASSISTANT_NAME_IN_CHAT_PANE':
 		    # Remove the quotes from the value of the variable
 		    assistant_name = value.strip()[1:-1]
-		      
+		    
 		  elif variable_name == 'SYSTEM_NAME_IN_CHAT_PANE':
 		    # Remove the quotes from the value of the variable
 		    system_name = value.strip()[1:-1]
-
+		    
 	# Check if all three variables were found
 	if assistant_name is not None and system_name is not None and end_user_name is not None:
 		return end_user_name, assistant_name, system_name 
@@ -405,15 +419,126 @@ def print_result():
 	# Assign the values returned by get_terminal_colors()
   red_bg_color_code_start, green_bg_color_code_start, yellow_bg_color_code_start, blue_bg_color_code_start, magenta_bg_color_code_start, cyan_bg_color_code_start, white_bg_color_code_start, black_bg_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
 
+  # Assign the values returned by get_chat_participant_colors()
+  end_user_bg_color, assistant_bg_color, system_bg_color, end_user_text_color, assistant_text_color, system_text_color = get_chat_participant_colors()
+
   # Assign the values returned by get_chat_participant_names()
   end_user_name, assistant_name, system_name = get_chat_participant_names()
+
+  # Highlight the END USER with a background color
+  if end_user_bg_color == 'red':
+    end_user_background_color_start = red_bg_color_code_start
+  elif end_user_bg_color == 'green':
+    end_user_background_color_start = green_bg_color_code_start
+  elif end_user_bg_color == 'yellow':
+  	end_user_background_color_start = yellow_bg_color_code_start
+  elif end_user_bg_color == 'blue':
+    end_user_background_color_start = blue_bg_color_code_start
+  elif end_user_bg_color == 'magenta':
+    end_user_background_color_start = magenta_bg_color_code_start
+  elif end_user_bg_color == 'cyan':
+    end_user_background_color_start = cyan_bg_color_code_start
+  elif end_user_bg_color == 'white':
+    end_user_background_color_start = white_bg_color_code_start
+  elif end_user_bg_color == 'black':
+    end_user_background_color_start = black_bg_color_code_start
+
+  # Highlight the ASSISTANT with a background color
+  if assistant_bg_color == 'red':
+    assistant_background_color_start = red_bg_color_code_start
+  elif assistant_bg_color == 'green':
+    assistant_background_color_start = green_bg_color_code_start
+  elif assistant_bg_color == 'yellow':
+  	assistant_background_color_start = yellow_bg_color_code_start
+  elif assistant_bg_color == 'blue':
+    assistant_background_color_start = blue_bg_color_code_start
+  elif assistant_bg_color == 'magenta':
+    assistant_background_color_start = magenta_bg_color_code_start
+  elif assistant_bg_color == 'cyan':
+    assistant_background_color_start = cyan_bg_color_code_start
+  elif assistant_bg_color == 'white':
+    assistant_background_color_start = white_bg_color_code_start
+  elif assistant_bg_color == 'black':
+    assistant_background_color_start = black_bg_color_code_start
+
+  # Hightlight the SYSTEM with a ackground color
+  if system_bg_color == 'red':
+    system_background_color_start = red_bg_color_code_start
+  elif system_bg_color == 'green':
+    system_background_color_start = green_bg_color_code_start
+  elif system_bg_color == 'yellow':
+  	system_background_color_start = yellow_bg_color_code_start
+  elif system_bg_color == 'blue':
+    system_background_color_start = blue_bg_color_code_start
+  elif system_bg_color == 'magenta':
+    system_background_color_start = magenta_bg_color_code_start
+  elif system_bg_color == 'cyan':
+    system_background_color_start = cyan_bg_color_code_start
+  elif system_bg_color == 'white':
+    system_background_color_start = white_bg_color_code_start
+  elif system_bg_color == 'black':
+    system_background_color_start = black_bg_color_code_start
+
+  # Set the END USER text color
+  if end_user_bg_color == 'red':
+    end_user_background_color_start = red_bg_color_code_start
+  elif end_user_bg_color == 'green':
+    end_user_background_color_start = green_bg_color_code_start
+  elif end_user_bg_color == 'yellow':
+  	end_user_background_color_start = yellow_bg_color_code_start
+  elif end_user_bg_color == 'blue':
+    end_user_background_color_start = blue_bg_color_code_start
+  elif end_user_bg_color == 'magenta':
+    end_user_background_color_start = magenta_bg_color_code_start
+  elif end_user_bg_color == 'cyan':
+    end_user_background_color_start = cyan_bg_color_code_start
+  elif end_user_bg_color == 'white':
+    end_user_background_color_start = white_bg_color_code_start
+  elif end_user_bg_color == 'black':
+    end_user_background_color_start = black_bg_color_code_start
+
+  # Highlight the ASSISTANT with a background color
+  if assistant_bg_color == 'red':
+    assistant_background_color_start = red_bg_color_code_start
+  elif assistant_bg_color == 'green':
+    assistant_background_color_start = green_bg_color_code_start
+  elif assistant_bg_color == 'yellow':
+  	assistant_background_color_start = yellow_bg_color_code_start
+  elif assistant_bg_color == 'blue':
+    assistant_background_color_start = blue_bg_color_code_start
+  elif assistant_bg_color == 'magenta':
+    assistant_background_color_start = magenta_bg_color_code_start
+  elif assistant_bg_color == 'cyan':
+    assistant_background_color_start = cyan_bg_color_code_start
+  elif assistant_bg_color == 'white':
+    assistant_background_color_start = white_bg_color_code_start
+  elif assistant_bg_color == 'black':
+    assistant_background_color_start = black_bg_color_code_start
+
+  # Hightlight the SYSTEM with a ackground color
+  if system_bg_color == 'red':
+    system_background_color_start = red_bg_color_code_start
+  elif system_bg_color == 'green':
+    system_background_color_start = green_bg_color_code_start
+  elif system_bg_color == 'yellow':
+  	system_background_color_start = yellow_bg_color_code_start
+  elif system_bg_color == 'blue':
+    system_background_color_start = blue_bg_color_code_start
+  elif system_bg_color == 'magenta':
+    system_background_color_start = magenta_bg_color_code_start
+  elif system_bg_color == 'cyan':
+    system_background_color_start = cyan_bg_color_code_start
+  elif system_bg_color == 'white':
+    system_background_color_start = white_bg_color_code_start
+  elif system_bg_color == 'black':
+    system_background_color_start = black_bg_color_code_start
 
   string = rec.Result()
   trimmed_string = strip_string(string)
   if trimmed_string is None:
     return
 
-  print(f'\033[{black_bg_color_code_start}{end_user_name}:\033[{color_code_end} {trimmed_string} \033[0m')
+  print(f'\033[{end_user_background_color_start}{end_user_name}:\033[{color_code_end} {trimmed_string} \033[0m')
 
   # Write to data files
   with open(RESULT_DATA_FILE, 'w') as f:
@@ -432,9 +557,9 @@ def print_result():
   	# process the current result. (This functionality is disabled for debugging
   	# purposes.)
     #subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-    print(f'\033[{red_bg_color_code_start}{assistant_name}:\033[{color_code_end} Processing ... {trimmed_string} \033[0m')
+    print(f'\033[{assistant_background_color_start}{assistant_name}:\033[{color_code_end} Processing ... {trimmed_string} \033[0m')
   else:
-    print(f'\033[{red_bg_color_code_start}{assistant_name}:\033[{color_code_end} Processing ... okay stop \033[0m')
+    print(f'\033[{assistant_background_color_start}{assistant_name}:\033[{color_code_end} Processing ... okay stop \033[0m')
 
 
 def display_avatar():
@@ -549,12 +674,68 @@ channels=1, callback=callback):
 	  # Assign the values returned by get_terminal_colors()
 	  red_bg_color_code_start, green_bg_color_code_start, yellow_bg_color_code_start, blue_bg_color_code_start, magenta_bg_color_code_start, cyan_bg_color_code_start, white_bg_color_code_start, black_bg_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
 
+	  # Assign the values returned by get_chat_participant_colors()
+	  end_user_bg_color, assistant_bg_color, system_bg_color, end_user_text_color, assistant_text_color, system_text_color = get_chat_participant_colors()
+
 	  # Assign the values returned by get_chat_participant_names()
 	  end_user_name, assistant_name, system_name = get_chat_participant_names()
-	  
+
+	  # Highlight the END USER with a background color
+	  if end_user_bg_color == 'red':
+		  end_user_background_color_start = red_bg_color_code_start
+	  elif end_user_bg_color == 'green':
+		  end_user_background_color_start = green_bg_color_code_start
+	  elif end_user_bg_color == 'yellow':
+		  end_user_background_color_start = yellow_bg_color_code_start
+	  elif end_user_bg_color == 'blue':
+		  end_user_background_color_start = blue_bg_color_code_start
+	  elif end_user_bg_color == 'magenta':
+		  end_user_background_color_start = magenta_bg_color_code_start
+	  elif end_user_bg_color == 'cyan':
+		  end_user_background_color_start = cyan_bg_color_code_start
+	  elif end_user_bg_color == 'white':
+		  end_user_background_color_start = white_bg_color_code_start
+	  elif end_user_bg_color == 'black':
+		  end_user_background_color_start = black_bg_color_code_start
+
+	  # Highlight the ASSISTANT with a background color
+	  if assistant_bg_color == 'red':
+		  assistant_background_color_start = red_bg_color_code_start
+	  elif assistant_bg_color == 'green':
+		  assistant_background_color_start = green_bg_color_code_start
+	  elif assistant_bg_color == 'yellow':
+		  assistant_background_color_start = yellow_bg_color_code_start
+	  elif assistant_bg_color == 'blue':
+		  assistant_background_color_start = blue_bg_color_code_start
+	  elif assistant_bg_color == 'magenta':
+		  assistant_background_color_start = magenta_bg_color_code_start
+	  elif assistant_bg_color == 'cyan':
+		  assistant_background_color_start = cyan_bg_color_code_start
+	  elif assistant_bg_color == 'white':
+		  assistant_background_color_start = white_bg_color_code_start
+	  elif assistant_bg_color == 'black':
+	    assistant_background_color_start = black_bg_color_code_start
+
+	  # Hightlight the SYSTEM with a ackground color
+	  if system_bg_color == 'red':
+		  system_background_color_start = red_bg_color_code_start
+	  elif system_bg_color == 'green':
+		  system_background_color_start = green_bg_color_code_start
+	  elif system_bg_color == 'yellow':
+		  system_background_color_start = yellow_bg_color_code_start
+	  elif system_bg_color == 'blue':
+		  system_background_color_start = blue_bg_color_code_start
+	  elif system_bg_color == 'magenta':
+		  system_background_color_start = magenta_bg_color_code_start
+	  elif system_bg_color == 'cyan':
+		  system_background_color_start = cyan_bg_color_code_start
+	  elif system_bg_color == 'white':
+		  system_background_color_start = white_bg_color_code_start
+	  elif system_bg_color == 'black':
+		  system_background_color_start = black_bg_color_code_start
+
 	  #print('Press Ctrl+C to stop the recording')
-	  print(f'\033[{red_bg_color_code_start}{assistant_name}:\033[{color_code_end} Mute the microphone to pause the recording ... \033[0m')
-	  print(f'\033[{red_bg_color_code_start}{assistant_name}:\033[{color_code_end} \033[{red_text_color_code_start}Mute the microphone to pause the recording ... \033[{color_code_end} \033[0m')
+	  print(f'\033[{assistant_background_color_start}{assistant_name}:\033[{color_code_end} \033[{red_text_color_code_start}Mute the microphone to pause the recording ... \033[{color_code_end} \033[0m')
 	  rec = vosk.KaldiRecognizer(model, args.samplerate)
 
 	  while True:
