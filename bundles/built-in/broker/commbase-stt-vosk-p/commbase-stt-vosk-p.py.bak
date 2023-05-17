@@ -575,7 +575,7 @@ def get_assistant_avatar_color():
 		  srt or None: A string containing the assitant avatar color in the chat
 		  pane, or None, if the variable is not found.
 	"""
-	# Specify the path of the env file containing the variable
+	# Specify the path of the env file containing the variables
 	file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
 
 	# Initialize variable for the avatar color
@@ -600,63 +600,15 @@ def get_assistant_avatar_color():
 	return None
 
 
-def get_assistant_avatar():
-	"""
-  Retrieves the ASCII art avatar for the assistant.
-
-  This function reads the contents of an ASCII art file specified by the file
-  path and returns it as a string.
-
-  Returns:
-      str: The ASCII art avatar for the assistant.
-
-  Raises:
-      KeyError: If the 'COMMBASE_APP_DIR' environment variable is not set.
-      FileNotFoundError: If the ASCII art file specified by the file path does
-      not exist.
-      IOError: If there is an error while reading the file.
-
-  Example:
-      ASCII art file: /path/to/avatar.asc
-
-      >>> get_assistant_avatar()
-      'ASCII ART CONTENTS'
-  """
-		# Specify the path of the env file containing the variables
-	file_path = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'
-	file_variable = ""
-
-	# Open the file in read mode
-	with open(file_path, "r") as file:
-		# Read the entire contents of the file
-		file_variable = file.read()
-
-	# Return the variable with the file contents
-	return file_variable
-
-
 def display_avatar():
   """
-  Displays the assistant avatar in the terminal.
+  Prints the Commbase avatar.
 
-  This function retrieves the ASCII art avatar of the assistant, assigns the
-  appropriate color based on the configured avatar color, and then prints it to
-  the terminal.
+  Parameters:
+      None.
 
-  Note:
-      The color codes used in the avatar display are obtained from the
-      `get_terminal_colors()` function.
-      The avatar color is obtained from the `get_assistant_avatar_color()`
-      function.
-      The ASCII art avatar is obtained from the `get_assistant_avatar()`
-      function.
-
-  Example:
-      Terminal output:
-
-      >>> display_avatar()
-      [COLOR CODES] ASCII ART [RESET]
-
+  Returns:
+      None.
   """
   # Assign the values returned by get_terminal_colors()
   red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
@@ -682,11 +634,31 @@ def display_avatar():
   if avatar_color == "black":
     avatar_color_start = black_text_color_code_start
 
-	# Assign the value returned by get_assistant_avatar()
-  assistant_avatar = get_assistant_avatar()
+  avatar = '''
+  ____  ________  _ ____ _________
+  _ _ ___ __-___╔⌂_┐ __________ _
+  __ _'_ ║⌂j░-╬]j` ▒╨¿r«Ñ__r- ___
+  ___  tU 7╩╫╫DÜ╨« ╓DÜ╫n╫]≥╫*_____
+  __ __]7X^╟*╗║▀╨ª╢▒▀▌ßBÜ>«"___«_'
+  ___*,"7Ü¼═▀#Ñ▌╫▒╫╬Q╫¼▌U╬░%.≡ ___
+  __ _`ju└╠╦j░╟▒╫▌▓▀╠Å▀╬╫Å¡╚n _ _ 
+  ___-«░τ╬Ñ▌≡╣▒╫▀╫M╬▄Å▀╬]Ü; ` __ 
+  _____`,√²j╙▒╬▓▒▀╫▒╫φÑ╠H]d^_ _  ^
+  __   ÖKÖ5▒Ω7╬▌▄▓▀▒▒▀░«H«`r ⌐__ _
+  ___ _~-_²``rΩ"W╫6╬]î═''" ______ 
+  ,___ ╘_-____  │ÅÑ╩_  __ _ⁿ╧~__ ┌
+  ^%╟¿,««__,∩ _« ▒Ñ___╔__  ]æⁿjU'_
+  __ⁿ╨┤╢▄▒╟╜Q_ __╟ß__j½Φ░╫╢╫S╨╚` _
+  __ ~²╠▒▓▌▌ÑH __╫╕__`²D╫╨╫╜^^____
+  _____\8╫RÑÅ░___╟P___╠≤NΩⁿⁿ______
+  _____ __Ñ¼░H_  ╠M   ╦░_╘________
+  _____ _ "]ñ▄╪═,--."Y*╛___ _____ 
+  ___________  ______~  __________
+  __  __________``,_______ -______
+  ⁿ___  ________╚ _ ____`_________
 
-  # Display avatar
-  print(f'\033[{avatar_color_start}\033[{assistant_avatar}\033[{color_code_end}')
+  '''
+  print(f'\033[{avatar_color_start}\033[{avatar}\033[{color_code_end}')
 
 
 # Create ArgumentParser object with add_help=False to disable default help
