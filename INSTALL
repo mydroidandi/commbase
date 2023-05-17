@@ -164,7 +164,7 @@ From those alternatives, we recommend installing Python using the third option, 
 
 4. You do not need to edit the file config/app.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version that Commbase is going to use.
 
-In case you do not have Anaconda Python in your system but still want to use it to run Commbase, you can install Anaconda Python and then read the section "Install Python in an Anaconda Python environment" to choose if you are going to create the commbase_env yourself or build it later on as it is shown in the section "Build the Commbase Conda environment a from YAML file".
+In case you do not have Anaconda Python in your system but still want to use it to run Commbase, you can install Anaconda Python and then read the section "Install Python in an Anaconda Python environment" to choose if you are going to create any Anaconda Python Commbase environment such as "commbase_env" yourself or build it later on as it is shown in the section "Build the Commbase Conda environment a from YAML file".
 
 The installation of Anaconda Python is beyond the scope of this documentation. For information on how to install Anaconda Python in your operating system, visit:
 
@@ -178,9 +178,9 @@ For example:
 
 PYTHON_ENV_VERSION="python3.11"
 
-In that way, Commbase will attempt to run using python3.`` from your OS instead of the Anaconda Python environment commbase_env, which has and runs its own Python version.
+In that way, Commbase will attempt to run using python3.11 from your OS instead of using the Anaconda Python environment commbase_env, which has and runs its own Python version.
 
-Python 3.11 is the minimum Python version required to run all the Commbase software properly, in the system or in a virtual environment. A Python version higher than the one used in commbase_env could affect any skill script or any custom scripts you could make. In such cases, you could keep your custom Python version or Python environment version  and manage the errors by yourself.
+Python 3.11 is the minimum Python version required to run all the Commbase software properly, in the system or in a virtual environment. A Python version higher than the one used in commbase_env could affect any skill script or any custom scripts you could make. In such cases, you could keep your custom Python version or Python environment version and manage the errors by yourself.
 
 Install Python
 ---------------
@@ -458,13 +458,13 @@ $ pip3 install cchardet
 Install Python in an Anaconda Python environment
 -------------------------------------------------
 
-Alternatively, you can replace Python 3.11 with Anaconda Python. Anaconda Python versions are well-optimized, so the speech recognition AI is supposed to work faster than the official Python packages.
+Alternatively, you can replace Python 3.11 with Anaconda Python. Anaconda Python includes some well-optimized Python packages, so the speech recognition AI is supposed to work faster with Anaconda Python than with the official running Python, but everything depends on many factors, such as package versions and system resource availability.
 
 More information on Anaconda: https://www.anaconda.com/
 
 After the installation of Anaconda Python, you should see the string "(base)" in the foobar.
 
-In case your system has a single Python installation using Anaconda Python if it is set up for running only in the Bash shell, you must enter the Bash shell before start Commbase, anaconda-navigator, or any other Python script/program incapable of running using the current Python's runtime that is preinstalled within your Operating System distribution:
+In case your system has a single Python installation using Anaconda Python if it is set up for running only in the Bash shell, you must enter the Bash shell before starting Commbase, starting anaconda-navigator, or starting any other Python script/program incapable of starting with the current Python's runtime that is preinstalled within your Operating System distribution:
 
 Example of foobar before entering Bash:
 
@@ -478,7 +478,11 @@ To install PyPi-like packages in the (base) in Anaconda Python, use the command 
 
 (base) USER-NAME@HOSTNAME:~$ conda install PACKAGE-NAME
 
-If you want to create a new Anaconda Python (3.11) environment just for Commbase:
+If you want to create a new Anaconda Python (3.11) environment just for Commbase, you can use the default name commbase_env or customize it in the configuration file config/app.conf:
+
+CONDA_ENV_NAME_IF_EXISTS="commbase_env"
+
+To create the environment using the default name commbase_env do:
 
 $ conda create -n commbase_env python=3.11
 
@@ -577,6 +581,8 @@ Download and install the model manually or by running this command in commbase/s
 $ bash install_vosk_model.sh
 
 Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance because the bigger the model you use, the bigger the memory required to load it and the bigger the cpu core usage (uses a single core). That change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
+
+Note: If you are patient, you can change all the text patterns and code to make your Commbase app work in one of the languages supported by Vosk, but we do not recommend you to do so unless you need to, because it is a huge task.
 
 Install the required system dependency packages
 ------------------------------------------------
@@ -707,6 +713,7 @@ $ ls -hal vu-meter
 $ chmod 755 vu-meter
 
 If you are using the Anaconda Python environment commbase_env, open the file vu_meter.py, and change the first line like this:
+
 #!/usr/bin/env python
 
 Install Oh My Tmux
