@@ -41,6 +41,7 @@ This project is coded and organized like this:
 
 ```sh
 /path/to/my/commbase/app
+├── assets  # Stores different types of assets, such as images, fonts, and ASCII art
 ├── bundles  # Stores the collection of software programs or applications that have been combined and distributed together
 │   ├── built-in
 │   │   └── broker
