@@ -1,4 +1,4 @@
-# Commbase <img align="center" alt="Commbase" width="10%" src="commbase.png" />
+# Commbase <img align="center" alt="Commbase" width="10%" src="./assets/docs/images/commbase.png" />
 
 Programmable conversational AI assistant and distributed AI for single computers or droids
 
@@ -33,7 +33,7 @@ For information on how to install Commbase, follow the steps in the file [`INSTA
 
 For information on how to set up, use, and program Commbase read the User's Guide.
 
-* [`docs`](/docs) 
+* [`docs`](/assets/docs) 
 
 ## Structure
 
@@ -42,6 +42,12 @@ This project is coded and organized like this:
 ```sh
 /path/to/my/commbase/app
 ├── assets  # Stores different types of assets, such as images, fonts, and ASCII art
+│   ├── ascii
+│   ├── docs  # Stores the Commbase User's Guide document
+│   │   └── images
+│   ├── fonts
+│   ├── icons
+│   └── images
 ├── bundles  # Stores the collection of software programs or applications that have been combined and distributed together
 │   ├── built-in
 │   │   └── broker
@@ -77,7 +83,6 @@ This project is coded and organized like this:
 │           └── tensorflow
 ├── config  # Stores the configuration file
 ├── data  # Stores the voice recognition model results
-├── docs  # Stores the human-readable guides of Commbase users
 ├── env  # Stores the environment file
 ├── history  # Stores the Commbase command history file
 ├── log	 # Stores custom log files of specific skills

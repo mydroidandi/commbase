@@ -621,8 +621,8 @@ def get_assistant_avatar():
 
       >>> get_assistant_avatar()
       'ASCII ART CONTENTS'
-  """
-		# Specify the path of the env file containing the variables
+	"""
+	# Specify the path of the env file containing the variables
 	file_path = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'
 	file_variable = ""
 
