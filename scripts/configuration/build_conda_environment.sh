@@ -32,7 +32,7 @@
 
 # build_conda_environment.sh
 # Removes any existent environment called commbase_env, recreates it and 
-# installsits packages using the file commbase_env.yml.
+# installs its packages using the file commbase_env.yml.
 # If the environment you want to remove is the current environment, deactive
 # the environment before running the script like this:
 # $ conda deactivate $CONDA_ENV_NAME
@@ -48,7 +48,7 @@ recreate_conda_env(){
 	conda remove -n $CONDA_ENV_NAME --all
 
 	# Recreate a new environment commbase_env
-	conda env create -f "$COMMBASE_ROOT_DIR/commbase/$CONDA_ENV_FILENAME"
+	conda env create -f "$COMMBASE_APP_DIR/$CONDA_ENV_FILENAME"
 
 	# List the environment
 	conda info --envs
