@@ -50,10 +50,12 @@ import json
 
 
 def commbase_stt_vosk_p():
-	""" Takes audio input, processes it, and outputs the recognized text. The 
-	recognized text is then cleaned up, and saved in files. """
+	"""
+	Takes audio input, processes it, and outputs the recognized text. The 
+	recognized text is then cleaned up, and saved in files.
+	"""
 	
-	
+
 	def get_terminal_colors():
 		""" 
 		Gets the terminal colors from the config file.
@@ -553,6 +555,39 @@ def commbase_stt_vosk_p():
 		  print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... okay stop\033[{color_code_end}')
 
 
+	def get_tts_engine_string():
+		"""
+    Retrieves the TTS (Text-to-Speech) engine string from the configuration file.
+
+    Returns:
+        str or None: The TTS engine string if found in the configuration file,
+        otherwise None.
+    """
+		# Specify the path of the env file containing the variable
+		file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
+
+		# Initialize variable for the tts engine string
+		tts_engine_str = None
+
+		# Open the file and read its contents
+		with open(file_path, 'r') as f:
+			for line in f:
+				# Split the line into variable name and value
+				variable_name, value = line.strip().split('=')
+
+				# Check if the variable we are looking for exists in the line
+				if variable_name == 'TTS_ENGINE_STRING':
+					# Remove the quotes from the value of the variable
+					tts_engine_str = value.strip()[1:-1]
+					
+		# Check if the variable was found
+		if tts_engine_str is not None:
+			return tts_engine_str 
+
+		# If the variable was not found, return None
+		return None
+
+
 	def get_assistant_avatar_color():
 		""" 
 		Gets the assistant avatar color from the config file.
@@ -759,6 +794,9 @@ def commbase_stt_vosk_p():
 
 			# Assign the values returned by get_chat_participant_names()
 			end_user_name, assistant_name, system_name = get_chat_participant_names()
+			
+			# Assign the values returned by get_tts_engine_string()
+			tts_engine_str = get_tts_engine_string()
 
 			# Set the END USER user background color
 			if end_user_background_color == 'red':
@@ -868,8 +906,17 @@ def commbase_stt_vosk_p():
 			elif system_text_color == 'black':
 			  system_text_color_start = black_text_color_code_start
 
-			#print('Press Ctrl+C to stop the recording')
+			# Display a message for the end user to mute the microphone to pause the
+			# recording
 			print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Mute the microphone to pause the recording ...\033[{color_code_end}')
+			# Mute the microphone before the assistant speaks
+			subprocess.run('amixer set Capture nocap', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
+			# Tell the end user to mute the microphone to pause the recording
+			subprocess.run(f'echo "Mute the microphone to pause the recording ..." | {tts_engine_str}', shell=True)
+			# Unmute the microphone after the assistant speaks
+			subprocess.run('amixer set Capture cap', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
+
+			# Create a new instance of the KaldiRecognizer class from the Vosk library
 			rec = vosk.KaldiRecognizer(model, args.samplerate)
 
 			while True:
