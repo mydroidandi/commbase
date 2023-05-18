@@ -913,7 +913,7 @@ def commbase_stt_vosk_p():
 			subprocess.run('amixer set Capture nocap', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 			# Tell the end user to mute the microphone to pause the recording
 			subprocess.run(f'echo "Mute the microphone to pause the recording ..." | {tts_engine_str}', shell=True)
-			# Unmute the microphone after the assistant spoke
+			# Unmute the microphone after the assistant speaks
 			subprocess.run('amixer set Capture cap', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 
 			# Create a new instance of the KaldiRecognizer class from the Vosk library
