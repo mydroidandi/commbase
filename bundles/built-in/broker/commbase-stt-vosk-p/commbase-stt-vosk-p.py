@@ -38,14 +38,13 @@
 
 # Requirements
 import argparse
-import os
+import os.path
 import queue
 import sounddevice as sd
 import vosk
 import sys
 import subprocess
 import string
-import os.path
 import json
 from functions import get_instruction_to_mute_microphone, get_assistant_avatar
 from terminal_colors import get_terminal_colors, get_chat_participant_colors, get_assistant_avatar_color
