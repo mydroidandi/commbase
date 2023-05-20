@@ -978,5 +978,7 @@ def main():
 	commbase_stt_vosk_p()
 	
 
-# Main call
-main()
+# Ensure that the main() function is executed only when the script is run
+# directly as the main program.
+if __name__ == '__main__':
+	main()
