@@ -9,3 +9,7 @@ commbase-stt-vosk-p is an ASR (Automatic Speech Recognition) engine. It is capab
 
 <img alt="commbase-stt-vosk-p" src="commbase-stt-vosk-p.jpg?raw=true" width="512" height="512" />
 
+## Examples
+
+Detailed information about examples can be found in the corresponding [`examples`](./examples) directory.
+

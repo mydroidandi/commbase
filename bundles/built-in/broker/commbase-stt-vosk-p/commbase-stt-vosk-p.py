@@ -910,11 +910,11 @@ def commbase_stt_vosk_p():
 			# recording
 			print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Mute the microphone to pause the recording ...\033[{color_code_end}')
 			# Mute the microphone before the assistant speaks
-			subprocess.run('amixer set Capture nocap', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
+			subprocess.run('(amixer set Capture nocap)', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 			# Tell the end user to mute the microphone to pause the recording
-			subprocess.run(f'echo "Mute the microphone to pause the recording ..." | {tts_engine_str}', shell=True)
+			subprocess.run(f'(echo "Mute the microphone to pause the recording ..." | {tts_engine_str})', shell=True)
 			# Unmute the microphone after the assistant speaks
-			subprocess.run('amixer set Capture cap', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
+			subprocess.run('(amixer set Capture cap)', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 
 			# Create a new instance of the KaldiRecognizer class from the Vosk library
 			rec = vosk.KaldiRecognizer(model, args.samplerate)
@@ -978,5 +978,7 @@ def main():
 	commbase_stt_vosk_p()
 	
 
-# Main call
-main()
+# Ensure that the main() function is executed only when the script is run
+# directly as the main program.
+if __name__ == '__main__':
+	main()
