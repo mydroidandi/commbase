@@ -63,17 +63,6 @@ This project is coded and organized like this:
 │   │       │       ├── bundles
 │   │       │       │   └── sounds
 │   │       │       ├── discourses
-│   │       │       │   ├── answers
-│   │       │       │   ├── greetings
-│   │       │       │   ├── instructions
-│   │       │       │   ├── introductions
-│   │       │       │   ├── jokes
-│   │       │       │   ├── phrases
-│   │       │       │   ├── questions
-│   │       │       │   ├── quotations
-│   │       │       │   ├── speeches
-│   │       │       │   ├── statements
-│   │       │       │   └── talks
 │   │       │       └── skill_patterns
 │   │       ├── PyAudio
 │   │       ├── scripts
