@@ -37,72 +37,24 @@
 import os.path
 
 
-def get_instruction_to_mute_microphone(file_path):
+def read_plain_text_file(file_path):
 	"""
-	Retrieves the ASCII art avatar for the assistant.
+	Read the contents of a plain text file and return it as a string.
 
-	This function reads the contents of an ASCII art file specified by the file
-	path and returns it as a string.
+	Parameters:
+		  file_path (str): The path to the plain text file.
 
 	Returns:
-	    str: The ASCII art avatar for the assistant.
+		  str: The content of the file as a string.
 
-	Raises:
-	    KeyError: If the 'COMMBASE_APP_DIR' environment variable is not set.
-	    FileNotFoundError: If the ASCII art file specified by the file path does
-	    not exist.
-	    IOError: If there is an error while reading the file.
-
-	Example:
-	    ASCII art file: /path/to/avatar.asc
-
-	    >>> get_assistant_avatar()
-	    'ASCII ART CONTENTS'
 	"""
-	# Specify the path of the env file containing the variables
-	#file_path = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction'
 	file_variable = ""
 
 	# Open the file in read mode
 	with open(file_path, "r") as file:
 		# Read the entire contents of the file
-		file_variable = file.read()
+		file_variable = file.read().rstrip()
 
 	# Return the variable with the file contents
 	return file_variable
 
-
-
-def get_assistant_avatar():
-	"""
-	Retrieves the ASCII art avatar for the assistant.
-
-	This function reads the contents of an ASCII art file specified by the file
-	path and returns it as a string.
-
-	Returns:
-	    str: The ASCII art avatar for the assistant.
-
-	Raises:
-	    KeyError: If the 'COMMBASE_APP_DIR' environment variable is not set.
-	    FileNotFoundError: If the ASCII art file specified by the file path does
-	    not exist.
-	    IOError: If there is an error while reading the file.
-
-	Example:
-	    ASCII art file: /path/to/avatar.asc
-
-	    >>> get_assistant_avatar()
-	    'ASCII ART CONTENTS'
-	"""
-	# Specify the path of the env file containing the variables
-	file_path = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'
-	file_variable = ""
-
-	# Open the file in read mode
-	with open(file_path, "r") as file:
-		# Read the entire contents of the file
-		file_variable = file.read()
-
-	# Return the variable with the file contents
-	return file_variable

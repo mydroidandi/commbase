@@ -46,7 +46,7 @@ import sys
 import subprocess
 import string
 import json
-from functions import get_instruction_to_mute_microphone, get_assistant_avatar
+from functions import read_plain_text_file
 from terminal_colors import get_terminal_colors, get_chat_participant_colors, get_assistant_avatar_color
 
 
@@ -103,16 +103,12 @@ def commbase_stt_vosk_p():
 		if avatar_color == "black":
 		  avatar_color_start = black_text_color_code_start
 
-		# Assign the value returned by get_assistant_avatar()
-		assistant_avatar = get_assistant_avatar()
-
-		# Display avatar
+		# Load an ASCII art file, store its content in a variable, and then print it
+		# in a specific color using terminal escape sequences.
+		file_path = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'
+		assistant_avatar = read_plain_text_file(file_path)
 		print(f'\033[{avatar_color_start}\033[{assistant_avatar}\033[{color_code_end}')
-		
-		file_path = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction'
-		discourse = get_instruction_to_mute_microphone(file_path)
-		print(discourse)
-
+	
 
 	def get_chat_participant_names():
 		""" 
@@ -653,13 +649,17 @@ def commbase_stt_vosk_p():
 			elif system_text_color == 'black':
 			  system_text_color_start = black_text_color_code_start
 
-			# Display a message for the end user to mute the microphone to pause the
-			# recording
-			print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Mute the microphone to pause the recording ...\033[{color_code_end}')
+			# Read the content of a file that provides instructions about muting the
+			# microphone to pause recording. It then prints the content, including the
+			# formatted assistant name and colors.
+			file_path = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction'
+			discourse = read_plain_text_file(file_path)
+			print(f'\n\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {discourse}\033[{color_code_end}')
+			# TODO: Replace system commands with new libcommbase routines mute and unmute
 			# Mute the microphone before the assistant speaks
 			subprocess.run('(amixer set Capture nocap)', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 			# Tell the end user to mute the microphone to pause the recording
-			subprocess.run(f'(echo "Mute the microphone to pause the recording ..." | {tts_engine_str})', shell=True)
+			subprocess.run(f'(echo "{discourse}" | {tts_engine_str})', shell=True)
 			# Unmute the microphone after the assistant speaks
 			subprocess.run('(amixer set Capture cap)', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 
@@ -729,3 +729,4 @@ def main():
 # directly as the main program.
 if __name__ == '__main__':
 	main()
+
