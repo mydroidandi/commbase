@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# commbase-stt-vosk.py
+# commbase-stt-vosk-p.py
 # This is a speech recognition program that uses the Vosk library. It takes
 # audio input, processes it, and outputs the recognized text. The recognized
 # text is then cleaned up, and saved in files.
@@ -38,15 +38,16 @@
 
 # Requirements
 import argparse
-import os
+import os.path
 import queue
 import sounddevice as sd
 import vosk
 import sys
 import subprocess
 import string
-import os.path
 import json
+from functions import read_plain_text_file
+from terminal_colors import get_terminal_colors, get_chat_participant_colors, get_assistant_avatar_color
 
 
 def commbase_stt_vosk_p():
@@ -54,192 +55,60 @@ def commbase_stt_vosk_p():
 	Takes audio input, processes it, and outputs the recognized text. The 
 	recognized text is then cleaned up, and saved in files.
 	"""
-	
 
-	def get_terminal_colors():
-		""" 
-		Gets the terminal colors from the config file.
-
-		Reads the environment variables from the environment configuration file.
-		Returns a tuple containing the string values of the variables if found, or
-		None if any of the variables are not present.
-
-		Returns:
-				tuple or None: A tuple containing the terminal colors, or None, if any
-				of the variables are not found.
+	def display_assistant_avatar():
 		"""
-		# Specify the path of the env file containing the variables
-		file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
+		Displays the assistant avatar in the terminal.
 
-		# Initialize variables for the background colors
-		red_background_color_code_start = None
-		green_background_color_code_start = None
-		yellow_background_color_code_start = None
-		blue_background_color_code_start = None
-		magenta_background_color_code_start = None
-		cyan_background_color_code_start = None
-		white_background_color_code_start = None
-		black_background_color_code_start = None
+		This function retrieves the ASCII art avatar of the assistant, assigns the
+		appropriate color based on the configured avatar color, and then prints it
+		to the terminal.
 
-		# Initialize variables for the text colors
-		red_text_color_code_start = None
-		green_text_color_code_start = None
-		yellow_text_color_code_start = None
-		blue_text_color_code_start = None
-		magenta_text_color_code_start = None
-		cyan_text_color_code_start = None
-		white_text_color_code_start = None
-		black_text_color_code_start = None
+		Note:
+		    The color codes used in the avatar display are obtained from the
+		    `get_terminal_colors()` function.
+		    The avatar color is obtained from the `get_assistant_avatar_color()`
+		    function.
+		    The ASCII art avatar is obtained from the `get_assistant_avatar()`
+		    function.
+
+		Example:
+		    Terminal output:
+
+		    >>> display_assistant_avatar()
+		    [COLOR CODES] ASCII ART [RESET]
+
+		"""
+		# Assign the values returned by get_terminal_colors()
+		red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
+
+		# Assign the values returned by get_assistant_avatar_color()
+		avatar_color = get_assistant_avatar_color()
 		
-		# Initialize the varoable for the end of the color
-		color_code_end = None
+		# Set the assistant avatar color
+		if avatar_color == "red":
+		  avatar_color_start = red_text_color_code_start
+		if avatar_color == "green":
+		  avatar_color_start = green_text_color_code_start
+		if avatar_color == "yellow":
+		  avatar_color_start = yellow_text_color_code_start
+		if avatar_color == "blue":
+		  avatar_color_start = blue_text_color_code_start
+		if avatar_color == "magenta":
+		  avatar_color_start = magenta_text_color_code_start
+		if avatar_color == "cyan":
+		  avatar_color_start = cyan_text_color_code_start
+		if avatar_color == "white":
+		  avatar_color_start = white_text_color_code_start
+		if avatar_color == "black":
+		  avatar_color_start = black_text_color_code_start
 
-		# Open the file and read its contents
-		with open(file_path, 'r') as f:
-			for line in f:
-				# Split the line into variable name and value
-				variable_name, value = line.strip().split('=')
-
-				# Check if the variable we are looking for exists in the file
-				if variable_name == 'TERMINAL_RED_BACKGROUND_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  red_background_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_GREEN_BACKGROUND_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  green_background_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_YELLOW_BACKGROUND_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  yellow_background_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_BLUE_BACKGROUND_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  blue_background_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_MAGENTA_BACKGROUND_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  magenta_background_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_CYAN_BACKGROUND_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  cyan_background_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_WHITE_BACKGROUND_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  white_background_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_BLACK_BACKGROUND_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  black_background_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_RED_TEXT_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  red_text_color_code_start = value.strip()[1:-1]
-
-				# Check if the variable we are looking for exists in the line
-				elif variable_name == 'TERMINAL_GREEN_TEXT_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  green_text_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_YELLOW_TEXT_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  yellow_text_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_BLUE_TEXT_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  blue_text_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_MAGENTA_TEXT_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  magenta_text_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_CYAN_TEXT_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  cyan_text_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_WHITE_TEXT_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  white_text_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_BLACK_TEXT_COLOR_CODE_START':
-				  # Remove the quotes from the value of the variable
-				  black_text_color_code_start = value.strip()[1:-1]
-
-				elif variable_name == 'TERMINAL_COLOR_CODE_END':
-				  # Remove the quotes from the value of the variable
-				  color_code_end = value.strip()[1:-1]
-
-		# Check if all the variables were found
-		if red_background_color_code_start is not None and green_background_color_code_start is not None and yellow_background_color_code_start is not None and blue_background_color_code_start is not None and magenta_background_color_code_start is not None and cyan_background_color_code_start is not None and white_background_color_code_start is not None and black_background_color_code_start is not None and red_text_color_code_start is not None and green_text_color_code_start is not None and yellow_text_color_code_start is not None and blue_text_color_code_start is not None and magenta_text_color_code_start is not None and cyan_text_color_code_start is not None and white_text_color_code_start is not None and black_text_color_code_start is not None and color_code_end is not None:
-			return red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end
-
-		# If any of the variables are not found, return None
-		return None
-
-
-	def get_chat_participant_colors():
-		""" 
-		Gets the chat participant background and text colors from the config file.
-
-		Reads the assistant, system, and end user variables from the environment
-		configuration file. Returns a tuple containing the string values of the
-		variables if found, or None if any of the variables are not present.
-
-		Returns:
-				tuple or None: A tuple containing the assistant, system, and end user
-				background and text colors in the chat pane, or None, if any of the
-				variables are not found.
-		"""
-		# Specify the path of the env file containing the variables
-		file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
-
-		# Initialize variables for the colors of the chat participants
-		end_user_background_color = None
-		assistant_background_color = None
-		system_background_color = None
-		end_user_text_color = None
-		assistant_text_color = None
-		system_text_color = None
-
-		# Open the file and read its contents
-		with open(file_path, 'r') as f:
-			for line in f:
-				# Split the line into variable name and value
-				variable_name, value = line.strip().split('=')
-
-				# Check if the variable we are looking for exists in the line
-				if variable_name == 'END_USER_BACKGROUND_COLOR_IN_CHAT_PANE':
-					# Remove the quotes from the value of the variable
-					end_user_background_color = value.strip()[1:-1]
-					
-				elif variable_name == 'ASSISTANT_BACKGROUND_COLOR_IN_CHAT_PANE':
-					# Remove the quotes from the value of the variable
-					assistant_background_color = value.strip()[1:-1]
-
-				elif variable_name == 'SYSTEM_BACKGROUND_COLOR_IN_CHAT_PANE':
-					# Remove the quotes from the value of the variable
-					system_background_color = value.strip()[1:-1]
-
-				elif variable_name == 'END_USER_TEXT_COLOR_IN_CHAT_PANE':
-					# Remove the quotes from the value of the variable
-					end_user_text_color = value.strip()[1:-1]
-
-				elif variable_name == 'ASSISTANT_TEXT_COLOR_IN_CHAT_PANE':
-					# Remove the quotes from the value of the variable
-					assistant_text_color = value.strip()[1:-1]
-
-				elif variable_name == 'SYSTEM_TEXT_COLOR_IN_CHAT_PANE':
-					# Remove the quotes from the value of the variable
-					system_text_color = value.strip()[1:-1]
-
-		# Check if all six variables were found
-		if end_user_background_color is not None and assistant_background_color is not None and system_background_color is not None and end_user_text_color is not None and assistant_text_color is not None and system_text_color is not None:
-			return end_user_background_color, assistant_background_color, system_background_color, end_user_text_color, assistant_text_color, system_text_color
-
-		# If any of the variables are not found, return None
-		return None
-
+		# Load an ASCII art file, store its content in a variable, and then print it
+		# in a specific color using terminal escape sequences.
+		file_path = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'
+		assistant_avatar = read_plain_text_file(file_path)
+		print(f'\033[{avatar_color_start}\033[{assistant_avatar}\033[{color_code_end}')
+	
 
 	def get_chat_participant_names():
 		""" 
@@ -286,6 +155,39 @@ def commbase_stt_vosk_p():
 			return end_user_name, assistant_name, system_name 
 
 		# If any of the variables are not found, return None
+		return None
+
+
+	def get_tts_engine_string():
+		"""
+    Retrieves the TTS (Text-to-Speech) engine string from the configuration file.
+
+    Returns:
+        str or None: The TTS engine string if found in the configuration file,
+        otherwise None.
+    """
+		# Specify the path of the env file containing the variable
+		file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
+
+		# Initialize variable for the tts engine string
+		tts_engine_str = None
+
+		# Open the file and read its contents
+		with open(file_path, 'r') as f:
+			for line in f:
+				# Split the line into variable name and value
+				variable_name, value = line.strip().split('=')
+
+				# Check if the variable we are looking for exists in the line
+				if variable_name == 'TTS_ENGINE_STRING':
+					# Remove the quotes from the value of the variable
+					tts_engine_str = value.strip()[1:-1]
+					
+		# Check if the variable was found
+		if tts_engine_str is not None:
+			return tts_engine_str 
+
+		# If the variable was not found, return None
 		return None
 
 
@@ -555,165 +457,6 @@ def commbase_stt_vosk_p():
 		  print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... okay stop\033[{color_code_end}')
 
 
-	def get_tts_engine_string():
-		"""
-    Retrieves the TTS (Text-to-Speech) engine string from the configuration file.
-
-    Returns:
-        str or None: The TTS engine string if found in the configuration file,
-        otherwise None.
-    """
-		# Specify the path of the env file containing the variable
-		file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
-
-		# Initialize variable for the tts engine string
-		tts_engine_str = None
-
-		# Open the file and read its contents
-		with open(file_path, 'r') as f:
-			for line in f:
-				# Split the line into variable name and value
-				variable_name, value = line.strip().split('=')
-
-				# Check if the variable we are looking for exists in the line
-				if variable_name == 'TTS_ENGINE_STRING':
-					# Remove the quotes from the value of the variable
-					tts_engine_str = value.strip()[1:-1]
-					
-		# Check if the variable was found
-		if tts_engine_str is not None:
-			return tts_engine_str 
-
-		# If the variable was not found, return None
-		return None
-
-
-	def get_assistant_avatar_color():
-		""" 
-		Gets the assistant avatar color from the config file.
-
-		Reads the 'ASSISTANT_AVATAR_COLOR_IN_CHAT_PANE' variable from the
-		environment configuration file. Returns the string value of the variable if
-		found, or None if the variable is not present.
-
-		Returns:
-				srt or None: A string containing the assitant avatar color in the chat
-				pane, or None, if the variable is not found.
-		"""
-		# Specify the path of the env file containing the variable
-		file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
-
-		# Initialize variable for the avatar color
-		avatar_color = None
-
-		# Open the file and read its contents
-		with open(file_path, 'r') as f:
-			for line in f:
-				# Split the line into variable name and value
-				variable_name, value = line.strip().split('=')
-
-				# Check if the variable we are looking for exists in the line
-				if variable_name == 'ASSISTANT_AVATAR_COLOR_IN_CHAT_PANE':
-				  # Remove the quotes from the value of the variable
-				  avatar_color = value.strip()[1:-1]
-				  
-		# Check if the variable was found
-		if avatar_color is not None:
-			return avatar_color 
-
-		# If the variable was not found, return None
-		return None
-
-
-	def get_assistant_avatar():
-		"""
-		Retrieves the ASCII art avatar for the assistant.
-
-		This function reads the contents of an ASCII art file specified by the file
-		path and returns it as a string.
-
-		Returns:
-		    str: The ASCII art avatar for the assistant.
-
-		Raises:
-		    KeyError: If the 'COMMBASE_APP_DIR' environment variable is not set.
-		    FileNotFoundError: If the ASCII art file specified by the file path does
-		    not exist.
-		    IOError: If there is an error while reading the file.
-
-		Example:
-		    ASCII art file: /path/to/avatar.asc
-
-		    >>> get_assistant_avatar()
-		    'ASCII ART CONTENTS'
-		"""
-		# Specify the path of the env file containing the variables
-		file_path = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'
-		file_variable = ""
-
-		# Open the file in read mode
-		with open(file_path, "r") as file:
-			# Read the entire contents of the file
-			file_variable = file.read()
-
-		# Return the variable with the file contents
-		return file_variable
-
-
-	def display_assistant_avatar():
-		"""
-		Displays the assistant avatar in the terminal.
-
-		This function retrieves the ASCII art avatar of the assistant, assigns the
-		appropriate color based on the configured avatar color, and then prints it
-		to the terminal.
-
-		Note:
-		    The color codes used in the avatar display are obtained from the
-		    `get_terminal_colors()` function.
-		    The avatar color is obtained from the `get_assistant_avatar_color()`
-		    function.
-		    The ASCII art avatar is obtained from the `get_assistant_avatar()`
-		    function.
-
-		Example:
-		    Terminal output:
-
-		    >>> display_assistant_avatar()
-		    [COLOR CODES] ASCII ART [RESET]
-
-		"""
-		# Assign the values returned by get_terminal_colors()
-		red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
-
-		# Assign the values returned by get_assistant_avatar_color()
-		avatar_color = get_assistant_avatar_color()
-		
-		# Set the assistant avatar color
-		if avatar_color == "red":
-		  avatar_color_start = red_text_color_code_start
-		if avatar_color == "green":
-		  avatar_color_start = green_text_color_code_start
-		if avatar_color == "yellow":
-		  avatar_color_start = yellow_text_color_code_start
-		if avatar_color == "blue":
-		  avatar_color_start = blue_text_color_code_start
-		if avatar_color == "magenta":
-		  avatar_color_start = magenta_text_color_code_start
-		if avatar_color == "cyan":
-		  avatar_color_start = cyan_text_color_code_start
-		if avatar_color == "white":
-		  avatar_color_start = white_text_color_code_start
-		if avatar_color == "black":
-		  avatar_color_start = black_text_color_code_start
-
-		# Assign the value returned by get_assistant_avatar()
-		assistant_avatar = get_assistant_avatar()
-
-		# Display avatar
-		print(f'\033[{avatar_color_start}\033[{assistant_avatar}\033[{color_code_end}')
-
-
 	# Create ArgumentParser object with add_help=False to disable default help
 	# message.
 	parser = argparse.ArgumentParser(add_help=False)
@@ -906,13 +649,17 @@ def commbase_stt_vosk_p():
 			elif system_text_color == 'black':
 			  system_text_color_start = black_text_color_code_start
 
-			# Display a message for the end user to mute the microphone to pause the
-			# recording
-			print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Mute the microphone to pause the recording ...\033[{color_code_end}')
+			# Read the content of a file that provides instructions about muting the
+			# microphone to pause recording. It then prints the content, including the
+			# formatted assistant name and colors.
+			file_path = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction'
+			discourse = read_plain_text_file(file_path)
+			print(f'\n\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {discourse}\033[{color_code_end}')
+			# TODO: Replace system commands with new libcommbase routines mute and unmute
 			# Mute the microphone before the assistant speaks
 			subprocess.run('(amixer set Capture nocap)', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 			# Tell the end user to mute the microphone to pause the recording
-			subprocess.run(f'(echo "Mute the microphone to pause the recording ..." | {tts_engine_str})', shell=True)
+			subprocess.run(f'(echo "{discourse}" | {tts_engine_str})', shell=True)
 			# Unmute the microphone after the assistant speaks
 			subprocess.run('(amixer set Capture cap)', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 
@@ -982,3 +729,4 @@ def main():
 # directly as the main program.
 if __name__ == '__main__':
 	main()
+
