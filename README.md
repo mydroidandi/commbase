@@ -62,8 +62,8 @@ This project is coded and organized like this:
 │   │       │   └── resources
 │   │       │       ├── bundles
 │   │       │       │   └── sounds
-│   │       │       ├── skill_patterns
-│   │       │       └── talks
+│   │       │       ├── discourses
+│   │       │       └── skill_patterns
 │   │       ├── PyAudio
 │   │       ├── scripts
 │   │       │   └── utilities
@@ -100,6 +100,18 @@ This project is coded and organized like this:
     │   │   └── z
     │   │       └── includes
     │   └── broker
+    │       ├── discourses
+    │       │   ├── answers
+    │       │   ├── greetings
+    │       │   ├── instructions
+    │       │   ├── introductions
+    │       │   ├── jokes
+    │       │   ├── phrases
+    │       │   ├── questions
+    │       │   ├── quotations
+    │       │   ├── speeches
+    │       │   ├── statements
+    │       │   └── talks
     │       ├── includes
     │       │   ├── routines
     │       │   ├── skills
@@ -110,15 +122,14 @@ This project is coded and organized like this:
     │       │   │   └── runners
     │       │   └── skill_testing
     │       ├── skill_patterns
-    │       ├── skill_scripts
-    │       │   ├── arduino
-    │       │   ├── bash
-    │       │   ├── c
-    │       │   ├── java
-    │       │   ├── multi-lang
-    │       │   ├── nodejs
-    │       │   └── python
-    │       └── talks
+    │       └── skill_scripts
+    │           ├── arduino
+    │           ├── bash
+    │           ├── c
+    │           ├── java
+    │           ├── multi-lang
+    │           ├── nodejs
+    │           └── python
     └── default
         ├── agents
         │   ├── x-conversation-mode-ai
@@ -126,6 +137,18 @@ This project is coded and organized like this:
         │   └── y
         │       └── includes
         └── broker
+            ├── discourses
+            │   ├── answers
+            │   ├── greetings
+            │   ├── instructions
+            │   ├── introductions
+            │   ├── jokes
+            │   ├── phrases
+            │   ├── questions
+            │   ├── quotations
+            │   ├── speeches
+            │   ├── statements
+            │   └── talks
             ├── includes
             │   ├── routines
             │   ├── skills
@@ -135,15 +158,14 @@ This project is coded and organized like this:
             │       ├── parsers
             │       └── runners
             ├── skill_patterns
-            ├── skill_scripts
-            │   ├── arduino
-            │   ├── bash
-            │   ├── c
-            │   ├── java
-            │   ├── multi-lang
-            │   ├── nodejs
-            │   └── python
-            └── talks
+            └── skill_scripts
+                ├── arduino
+                ├── bash
+                ├── c
+                ├── java
+                ├── multi-lang
+                ├── nodejs
+                └── python
 ```
 
 ## Contributing
