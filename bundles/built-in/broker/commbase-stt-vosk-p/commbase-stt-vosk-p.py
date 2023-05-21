@@ -77,7 +77,6 @@ def commbase_stt_vosk_p():
 
 		    >>> display_assistant_avatar()
 		    [COLOR CODES] ASCII ART [RESET]
-
 		"""
 		# Assign the values returned by get_terminal_colors()
 		red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
