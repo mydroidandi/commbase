@@ -57,3 +57,16 @@ def read_plain_text_file(file_path):
 	# Return the variable with the file contents
 	return file_variable
 
+
+def load_config_file():
+	"""
+	Loads the configuration file path.
+
+	Returns:
+			str: The path of the configuration file.
+	"""
+	# Specify the path of the env file containing the variables
+	CONFIG_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
+	
+	return CONFIG_FILE_PATH
+

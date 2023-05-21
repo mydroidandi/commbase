@@ -46,7 +46,7 @@ import sys
 import subprocess
 import string
 import json
-from functions import read_plain_text_file
+from functions import read_plain_text_file, load_config_file
 from terminal_colors import get_terminal_colors, get_chat_participant_colors, get_assistant_avatar_color, set_end_user_background_color, set_assistant_user_background_color, set_system_user_background_color, set_end_user_text_color, set_assistant_user_text_color, set_system_user_text_color, set_assistant_avatar_color
 
 
@@ -69,16 +69,13 @@ def commbase_stt_vosk_p():
 				tuple or None: A tuple containing the assistant, system, and end user
 				names in the chat pane, or None, if any of the variables are not found.
 		"""
-		# Specify the path of the env file containing the variables
-		file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
-
 		# Initialize variables for the chat names
 		assistant_name = None
 		system_name = None
 		end_user_name = None
 
 		# Open the file and read its contents
-		with open(file_path, 'r') as f:
+		with open(CONFIG_FILE_PATH, 'r') as f:
 			for line in f:
 				# Split the line into variable name and value
 				variable_name, value = line.strip().split('=')
@@ -112,14 +109,11 @@ def commbase_stt_vosk_p():
         str or None: The TTS engine string if found in the configuration file,
         otherwise None.
     """
-		# Specify the path of the env file containing the variable
-		file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
-
 		# Initialize variable for the tts engine string
 		tts_engine_str = None
 
 		# Open the file and read its contents
-		with open(file_path, 'r') as f:
+		with open(CONFIG_FILE_PATH, 'r') as f:
 			for line in f:
 				# Split the line into variable name and value
 				variable_name, value = line.strip().split('=')
@@ -310,8 +304,7 @@ def commbase_stt_vosk_p():
 		"""
 		# Load an ASCII art file, store its content in a variable, and then print it
 		# in a specific color using terminal escape sequences.
-		file_path = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'
-		assistant_avatar = read_plain_text_file(file_path)
+		assistant_avatar = read_plain_text_file(ASCII_FILE_PATH)
 		print(f'\033[{avatar_color_start}\033[{assistant_avatar}\033[{color_code_end}')
 
 
@@ -428,8 +421,7 @@ def commbase_stt_vosk_p():
 			# Read the content of a file that provides instructions about muting the
 			# microphone to pause recording. It then prints the content, including the
 			# formatted assistant name and colors.
-			file_path = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction'
-			discourse = read_plain_text_file(file_path)
+			discourse = read_plain_text_file(INSTRUCTION_FILE_PATH)
 			print(f'\n\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {discourse}\033[{color_code_end}')
 			# TODO: Replace system commands with new libcommbase routines mute and unmute
 			# Mute the microphone before the assistant speaks
@@ -479,9 +471,18 @@ def main():
   		None
 	"""
 	# Global declarations
-	global ML_MODEL, RESULT_DATA_FILE, PREV_DATA_FILE, OUTPUT_HISTORY_FILE, STOP_STR, q
+	global CONFIG_FILE_PATH, ASCII_FILE_PATH, INSTRUCTION_FILE_PATH, ML_MODEL, RESULT_DATA_FILE, PREV_DATA_FILE, OUTPUT_HISTORY_FILE, STOP_STR, q
 
-	# The path to the model
+	# The path of the env configuration file
+	CONFIG_FILE_PATH = load_config_file()
+
+	# The path of the ASCII art file for the avatar
+	ASCII_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'
+	
+	# The path of the instruction file
+	INSTRUCTION_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction'
+
+	# The path to the ML model
 	ML_MODEL = '$COMMBASE_APP_DIR/bundles/built-in/broker/vosk/model'
 	#print (string.Template(ML_MODEL).substitute(os.environ))
 
