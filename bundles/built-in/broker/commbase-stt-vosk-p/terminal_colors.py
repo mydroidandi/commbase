@@ -259,3 +259,286 @@ def get_assistant_avatar_color():
 	# If the variable was not found, return None
 	return None
 
+
+def set_end_user_background_color(end_user_background_color):
+	"""
+	Sets the background color for the END USER.
+
+	Parameters:
+		  end_user_background_color (str): The desired background color for the
+		  END USER.
+		      Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+		      'cyan', 'white', 'black'.
+
+	Returns:
+		  str: The start code for the selected background color.
+
+	Notes:
+		  This function internally uses the get_terminal_colors() function to
+		  obtain the necessary color codes.
+	"""
+	# Assign the values returned by get_terminal_colors()
+	red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
+
+	# Set the END USER user background color
+	if end_user_background_color == 'red':
+		end_user_background_color_start = red_background_color_code_start
+	elif end_user_background_color == 'green':
+		end_user_background_color_start = green_background_color_code_start
+	elif end_user_background_color == 'yellow':
+		end_user_background_color_start = yellow_background_color_code_start
+	elif end_user_background_color == 'blue':
+		end_user_background_color_start = blue_background_color_code_start
+	elif end_user_background_color == 'magenta':
+		end_user_background_color_start = magenta_background_color_code_start
+	elif end_user_background_color == 'cyan':
+		end_user_background_color_start = cyan_background_color_code_start
+	elif end_user_background_color == 'white':
+		end_user_background_color_start = white_background_color_code_start
+	elif end_user_background_color == 'black':
+		end_user_background_color_start = black_background_color_code_start
+
+	return end_user_background_color_start
+
+
+def set_assistant_user_background_color(assistant_background_color):
+	"""
+	Sets the background color for the ASSISTANT user.
+
+	Parameters:
+		  assistant_background_color (str): The desired background color for the
+		  ASSISTANT user.
+		      Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+		      'cyan', 'white', 'black'.
+
+	Returns:
+		  str: The start code for the selected background color.
+
+	Notes:
+		  This function internally uses the get_terminal_colors() function to obtain
+		  the necessary color codes.
+	"""
+	# Assign the values returned by get_terminal_colors()
+	red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
+
+	# Set the ASSISTANT user background color
+	if assistant_background_color == 'red':
+		assistant_background_color_start = red_background_color_code_start
+	elif assistant_background_color == 'green':
+		assistant_background_color_start = green_background_color_code_start
+	elif assistant_background_color == 'yellow':
+		assistant_background_color_start = yellow_background_color_code_start
+	elif assistant_background_color == 'blue':
+		assistant_background_color_start = blue_background_color_code_start
+	elif assistant_background_color == 'magenta':
+		assistant_background_color_start = magenta_background_color_code_start
+	elif assistant_background_color == 'cyan':
+		assistant_background_color_start = cyan_background_color_code_start
+	elif assistant_background_color == 'white':
+		assistant_background_color_start = white_background_color_code_start
+	elif assistant_background_color == 'black':
+	  assistant_background_color_start = black_background_color_code_start
+
+	return assistant_background_color_start
+
+
+def set_system_user_background_color(system_background_color):
+	"""
+	Sets the background color for the SYSTEM user.
+
+	Parameters:
+		  system_background_color (str): The desired background color for the SYSTEM
+		  user.
+		      Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+		      'cyan', 'white', 'black'.
+
+	Returns:
+		  str: The start code for the selected background color.
+
+	Notes:
+		  This function internally uses the get_terminal_colors() function to obtain
+		  the necessary color codes.
+	"""
+	# Assign the values returned by get_terminal_colors()
+	red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
+
+		# Set the SYSTEM user background color
+	if system_background_color == 'red':
+		system_background_color_start = red_background_color_code_start
+	elif system_background_color == 'green':
+		system_background_color_start = green_background_color_code_start
+	elif system_background_color == 'yellow':
+		system_background_color_start = yellow_background_color_code_start
+	elif system_background_color == 'blue':
+		system_background_color_start = blue_background_color_code_start
+	elif system_background_color == 'magenta':
+		system_background_color_start = magenta_background_color_code_start
+	elif system_background_color == 'cyan':
+		system_background_color_start = cyan_background_color_code_start
+	elif system_background_color == 'white':
+		system_background_color_start = white_background_color_code_start
+	elif system_background_color == 'black':
+		system_background_color_start = black_background_color_code_start
+
+	return system_background_color_start
+
+
+def set_end_user_text_color(end_user_text_color):
+	"""
+	Sets the text color for the END USER user.
+
+	Parameters:
+		  end_user_text_color (str): The desired text color for the END USER user.
+		      Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+		      'cyan', 'white', 'black'.
+
+	Returns:
+		  str: The start code for the selected text color.
+
+	Notes:
+		  This function internally uses the get_terminal_colors() function to obtain
+		  the necessary color codes.
+	"""
+	# Assign the values returned by get_terminal_colors()
+	red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
+
+	# Set the END USER user text color
+	if end_user_text_color == 'red':
+	  end_user_text_color_start = red_text_color_code_start
+	elif end_user_text_color == 'green':
+		end_user_text_color_start = green_text_color_code_start
+	elif end_user_text_color == 'yellow':
+		end_user_text_color_start = yellow_text_color_code_start
+	elif end_user_text_color == 'blue':
+	 end_user_text_color_start = blue_text_color_code_start
+	elif end_user_text_color == 'magenta':
+	  end_user_text_color_start = magenta_text_color_code_start
+	elif end_user_text_color == 'cyan':
+	  end_user_text_color_start = cyan_text_color_code_start
+	elif end_user_text_color == 'white':
+	  end_user_text_color_start = white_text_color_code_start
+	elif end_user_text_color == 'black':
+	  end_user_text_color_start = black_text_color_code_start
+
+	return end_user_text_color_start
+
+
+def set_assistant_user_text_color(assistant_text_color):
+	"""
+	Sets the text color for the ASSISTANT user.
+
+	Parameters:
+		  assistant_text_color (str): The desired text color for the ASSISTANT user.
+		      Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+		      'cyan', 'white', 'black'.
+
+	Returns:
+		  str: The start code for the selected text color.
+
+	Notes:
+		  This function internally uses the get_terminal_colors() function to obtain
+		  the necessary color codes.
+	"""
+	# Assign the values returned by get_terminal_colors()
+	red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
+
+		# Set the ASSISTANT user text color
+	if assistant_text_color == 'red':
+	  assistant_text_color_start = red_text_color_code_start
+	elif assistant_text_color == 'green':
+	  assistant_text_color_start = green_text_color_code_start
+	elif assistant_text_color == 'yellow':
+		assistant_text_color_start = yellow_text_color_code_start
+	elif assistant_text_color == 'blue':
+	  assistant_text_color_start = blue_text_color_code_start
+	elif assistant_text_color == 'magenta':
+	  assistant_text_color_start = magenta_text_color_code_start
+	elif assistant_text_color == 'cyan':
+	  assistant_text_color_start = cyan_text_color_code_start
+	elif assistant_text_color == 'white':
+	  assistant_text_color_start = white_text_color_code_start
+	elif assistant_text_color == 'black':
+	  assistant_text_color_start = black_text_color_code_start
+
+	return assistant_text_color_start
+
+
+def set_system_user_text_color(system_text_color):
+	"""
+	Sets the text color for the SYSTEM user.
+
+	Parameters:
+		  system_text_color (str): The desired text color for the SYSTEM user.
+		      Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+		      'cyan', 'white', 'black'.
+
+	Returns:
+		  str: The start code for the selected text color.
+
+	Notes:
+		  This function internally uses the get_terminal_colors() function to obtain
+		  the necessary color codes.
+	"""
+	# Assign the values returned by get_terminal_colors()
+	red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
+
+		# Set the SYSTEM user text color
+	if system_text_color == 'red':
+	  system_text_color_start = red_text_color_code_start
+	elif system_text_color == 'green':
+	  system_text_color_start = green_text_color_code_start
+	elif system_text_color == 'yellow':
+		system_text_color_start = yellow_text_color_code_start
+	elif system_text_color == 'blue':
+	  system_text_color_start = blue_text_color_code_start
+	elif system_text_color == 'magenta':
+	  system_text_color_start = magenta_text_color_code_start
+	elif system_text_color == 'cyan':
+	  system_background_color_start = cyan_text_color_code_start
+	elif system_text_color == 'white':
+	  system_text_color_start = white_text_color_code_start
+	elif system_text_color == 'black':
+	  system_text_color_start = black_text_color_code_start
+
+	return system_text_color_start
+
+
+def set_assistant_avatar_color(avatar_color):
+	"""
+	Sets the avatar color for the assistant.
+
+	Parameters:
+		  avatar_color (str): The desired color for the assistant's avatar.
+		      Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+		      'cyan', 'white', 'black'.
+
+	Returns:
+		  str: The start code for the selected avatar color.
+
+	Notes:
+		  This function internally uses the get_terminal_colors() function to obtain
+		  the necessary color codes.
+	"""
+	# Assign the values returned by get_terminal_colors()
+	red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
+
+	# Set the assistant avatar color
+	if avatar_color == "red":
+		avatar_color_start = red_text_color_code_start
+	elif avatar_color == "green":
+		avatar_color_start = green_text_color_code_start
+	elif avatar_color == "yellow":
+		avatar_color_start = yellow_text_color_code_start
+	elif avatar_color == "blue":
+		avatar_color_start = blue_text_color_code_start
+	elif avatar_color == "magenta":
+		avatar_color_start = magenta_text_color_code_start
+	elif avatar_color == "cyan":
+		avatar_color_start = cyan_text_color_code_start
+	elif avatar_color == "white":
+		avatar_color_start = white_text_color_code_start
+	elif avatar_color == "black":
+		avatar_color_start = black_text_color_code_start
+
+	return avatar_color_start
+
