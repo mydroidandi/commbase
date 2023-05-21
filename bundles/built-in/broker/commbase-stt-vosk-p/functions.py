@@ -46,7 +46,6 @@ def read_plain_text_file(file_path):
 
 	Returns:
 		  str: The content of the file as a string.
-
 	"""
 	file_variable = ""
 
