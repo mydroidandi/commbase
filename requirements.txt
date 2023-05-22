@@ -1,10 +1,9 @@
 # Bundled dependencies
-# Install a specific GitHub repository using HTTPS URL
-# Example: git+https://github.com/username/repo.git@branch_or_tag
-git+https://github.com/mydroidandi/commbase-stt-vosk-p.git
-git+https://github.com/mydroidandi/libcommbase.git
-git+https://github.com/alphacep/vosk-api.git
-git+https://github.com/kmein/vu-meter.git
+# Example: git+git@github.com:username/repo.git@v1.0.0
+commbase-stt-vosk-p
+libcommbase
+vosk-api
+vu-meter
 
 # Python dependencies
 aiohttp
