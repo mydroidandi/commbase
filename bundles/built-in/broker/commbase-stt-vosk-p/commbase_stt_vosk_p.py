@@ -45,9 +45,8 @@ import vosk
 import sys
 import subprocess
 import string
-import json
-from functions import read_plain_text_file, load_config_file
-from terminal_colors import get_terminal_colors, get_chat_participant_colors, get_assistant_avatar_color, set_end_user_background_color, set_assistant_user_background_color, set_system_user_background_color, set_end_user_text_color, set_assistant_user_text_color, set_system_user_text_color, set_assistant_avatar_color
+from functions import read_plain_text_file, load_config_file, int_or_str, find_text, strip_string, get_chat_participant_names, get_tts_engine_string
+from colors import get_terminal_colors, get_chat_participant_colors, get_assistant_avatar_color, set_end_user_background_color, set_assistant_user_background_color, set_system_user_background_color, set_end_user_text_color, set_assistant_user_text_color, set_system_user_text_color, set_assistant_avatar_color
 
 
 def commbase_stt_vosk_p():
@@ -55,106 +54,6 @@ def commbase_stt_vosk_p():
 	Takes audio input, processes it, and outputs the recognized text. The 
 	recognized text is then cleaned up, and saved in files.
 	"""
-
-	def get_chat_participant_names():
-		""" 
-		Gets the chat participant names from the config file.
-
-		Reads the 'ASSISTANT_NAME_IN_CHAT_PANE', 'SYSTEM_NAME_IN_CHAT_PANE', and 
-		'END_USER_NAME_IN_CHAT_PANE' variables from the environment configuration
-		file. Returns a tuple containing the string values of the variables if
-		found, or None if any of the variables are not present.
-
-		Returns:
-				tuple or None: A tuple containing the assistant, system, and end user
-				names in the chat pane, or None, if any of the variables are not found.
-		"""
-		# Initialize variables for the chat names
-		assistant_name = None
-		system_name = None
-		end_user_name = None
-
-		# Open the file and read its contents
-		with open(CONFIG_FILE_PATH, 'r') as f:
-			for line in f:
-				# Split the line into variable name and value
-				variable_name, value = line.strip().split('=')
-
-				# Check if the variable we are looking for exists in the line
-				if variable_name == 'END_USER_NAME_IN_CHAT_PANE':
-				  # Remove the quotes from the value of the variable
-				  end_user_name = value.strip()[1:-1]
-				  
-				elif variable_name == 'ASSISTANT_NAME_IN_CHAT_PANE':
-				  # Remove the quotes from the value of the variable
-				  assistant_name = value.strip()[1:-1]
-				  
-				elif variable_name == 'SYSTEM_NAME_IN_CHAT_PANE':
-				  # Remove the quotes from the value of the variable
-				  system_name = value.strip()[1:-1]
-				  
-		# Check if all three variables were found
-		if assistant_name is not None and system_name is not None and end_user_name is not None:
-			return end_user_name, assistant_name, system_name 
-
-		# If any of the variables are not found, return None
-		return None
-
-
-	def get_tts_engine_string():
-		"""
-    Retrieves the TTS (Text-to-Speech) engine string from the configuration file.
-
-    Returns:
-        str or None: The TTS engine string if found in the configuration file,
-        otherwise None.
-    """
-		# Initialize variable for the tts engine string
-		tts_engine_str = None
-
-		# Open the file and read its contents
-		with open(CONFIG_FILE_PATH, 'r') as f:
-			for line in f:
-				# Split the line into variable name and value
-				variable_name, value = line.strip().split('=')
-
-				# Check if the variable we are looking for exists in the line
-				if variable_name == 'TTS_ENGINE_STRING':
-					# Remove the quotes from the value of the variable
-					tts_engine_str = value.strip()[1:-1]
-					
-		# Check if the variable was found
-		if tts_engine_str is not None:
-			return tts_engine_str 
-
-		# If the variable was not found, return None
-		return None
-
-
-	def int_or_str(text):
-		"""
-		Parses a string input and returns either an integer or the original string.
-
-		This function takes a string input and tries to convert it to an integer. If
-		successful, it returns the integer value. If not, it returns the original
-		string.
-
-		Parameters:
-		    text (str): The input string to be parsed.
-
-		Returns:
-		    int or str: If the input string can be converted to an integer, the
-		    function returns the integer value. If not, the function returns the
-		    original string.
-
-		Raises:
-		    None.
-		"""
-		try:
-		  return int(text)
-		except ValueError:
-		  return text
-
 
 	def callback(indata, frames, time, status):
 		"""
@@ -165,81 +64,50 @@ def commbase_stt_vosk_p():
 		standard error stream.
 
 		Parameters:
-		    indata : numpy.ndarray
-		        The input audio data as a NumPy array.
-		    frames : int
-		        The number of frames in the input data.
-		    time : CData
-		        A ctypes structure containing timing information about the input
-		        data.
-		    status : CallbackFlags
-		        A flag that indicates the status of the input data.
+			  indata : numpy.ndarray
+			      The input audio data as a NumPy array.
+			  frames : int
+			      The number of frames in the input data.
+			  time : CData
+			      A ctypes structure containing timing information about the input
+			      data.
+			  status : CallbackFlags
+			      A flag that indicates the status of the input data.
 
 		Returns:
-		     None.
+			   None.
 		"""
 		if status:
-		  print(status, file=sys.stderr)
+			print(status, file=sys.stderr)
 		q.put(bytes(indata))
 
 
-	def find_text(string):
-		"""
-		Finds the index of the 'text' substring in the input string.
+	def display_assistant_avatar():
+			"""
+			Displays the assistant avatar in the terminal.
 
-		Parameters:
-		    string (str): The string to search for 'text'.
+			This function retrieves the ASCII art avatar of the assistant, assigns the
+			appropriate color based on the configured avatar color, and then prints it
+			to the terminal.
 
-		Returns:
-		    int: The index of the start of 'text' substring in the input string.
-		    If 'text' substring is not found, returns None.
-		"""
-		text_start = string.find('"text" : "')
-		return text_start if text_start != -1 else None
+			Note:
+					The color codes used in the avatar display are obtained from the
+					`get_terminal_colors()` function.
+					The avatar color is obtained from the `get_assistant_avatar_color()`
+					function.
+					The ASCII art avatar is obtained from the `get_assistant_avatar()`
+					function.
 
+			Example:
+					Terminal output:
 
-	def strip_string(string):
-		"""
-		Strip unwanted characters and whitespaces from the 'text' field of a JSON
-		string.
-
-		Parameters:
-				string (str): The input string, assumed to be a valid JSON string with a
-				'text' field.
-
-		Returns:
-				str or None: The resulting string after being stripped of unwanted
-				characters and whitespaces.
-				Returns None if the input string is None, is not a valid JSON string, or
-				does not contain
-				a 'text' field.
-		"""
-		if string is None:
-			return None
-
-		# Load the JSON string into a dictionary
-		try:
-			data = json.loads(string)
-		except ValueError:
-			return None
-
-		# Get the text field from the dictionary
-		if "text" not in data:
-			return None
-		text = data["text"]
-
-		# Replace unwanted characters and whitespaces
-		text = text.replace('"', '').strip()
-
-		# Remove 'the' from the beginning of the text, if present
-		if text.startswith('the'):
-			text = text[3:].strip()
-
-		# Remove 'the' from the end of the text, if present
-		if text.endswith('the'):
-			text = text[:-3].strip()
-
-		return text
+					>>> display_assistant_avatar()
+					[COLOR CODES] ASCII ART [RESET]
+			"""
+			# Load an ASCII art file, store its content in a variable, and then print it
+			# in a specific color using terminal escape sequences.
+			assistant_avatar = read_plain_text_file(ASCII_FILE_PATH)
+			print(f'\033[{avatar_color_start}\033[{assistant_avatar}\033[{color_code_end}')
 
 
 	def print_result():
@@ -247,22 +115,22 @@ def commbase_stt_vosk_p():
 		Prints the result on the screen and write to files.
 
 		Parameters:
-		    None.
+			  None.
 
 		Returns:
-		    None.
+			  None.
 		"""
 		string = rec.Result()
 		trimmed_string = strip_string(string)
 		if trimmed_string is None:
-		  return
+			return
 
 		print(f'\033[{end_user_background_color_start}\033[{end_user_text_color_start}{end_user_name}:\033[{color_code_end}\033[{color_code_end}\033[{end_user_text_color_start} {trimmed_string}\033[{color_code_end}')
 		# Write to data files
 		with open(RESULT_DATA_FILE, 'w') as f:
-		  f.write(trimmed_string)
+			f.write(trimmed_string)
 		with open(PREV_DATA_FILE, 'w') as f:
-		  f.write(trimmed_string)
+			f.write(trimmed_string)
 
 		## This can be used for debugging
 		## Append to history file
@@ -274,38 +142,10 @@ def commbase_stt_vosk_p():
 			# Execute a script written in a language other than Python to manage and
 			# process the current result. (This functionality is disabled for
 			# debugging purposes.)
-		  #subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-		  print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... {trimmed_string}\033[{color_code_end}')
+			#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+			print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... {trimmed_string}\033[{color_code_end}')
 		else:
-		  print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... okay stop\033[{color_code_end}')
-
-
-	def display_assistant_avatar():
-		"""
-		Displays the assistant avatar in the terminal.
-
-		This function retrieves the ASCII art avatar of the assistant, assigns the
-		appropriate color based on the configured avatar color, and then prints it
-		to the terminal.
-
-		Note:
-		    The color codes used in the avatar display are obtained from the
-		    `get_terminal_colors()` function.
-		    The avatar color is obtained from the `get_assistant_avatar_color()`
-		    function.
-		    The ASCII art avatar is obtained from the `get_assistant_avatar()`
-		    function.
-
-		Example:
-		    Terminal output:
-
-		    >>> display_assistant_avatar()
-		    [COLOR CODES] ASCII ART [RESET]
-		"""
-		# Load an ASCII art file, store its content in a variable, and then print it
-		# in a specific color using terminal escape sequences.
-		assistant_avatar = read_plain_text_file(ASCII_FILE_PATH)
-		print(f'\033[{avatar_color_start}\033[{assistant_avatar}\033[{color_code_end}')
+			print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... okay stop\033[{color_code_end}')
 
 
 	# Create ArgumentParser object with add_help=False to disable default help
