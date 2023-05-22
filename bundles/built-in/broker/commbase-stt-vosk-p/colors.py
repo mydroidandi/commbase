@@ -29,6 +29,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
+# colors.py
 # This file provides utility functions for working with terminal colors. It
 # includes functions to modify the text color, background color, and text 
 # formatting in the terminal output. These functions can be used to enhance the
