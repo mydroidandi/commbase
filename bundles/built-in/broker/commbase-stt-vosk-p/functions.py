@@ -29,12 +29,14 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
+# functions.py
 # This file contains a collection of utility functions for various tasks. It
 # provides a set of commonly used functions related to data manipulation, file
 # handling, and mathematical operations.
 
 # Requirements
 import os.path
+import json
 
 
 def read_plain_text_file(file_path):
@@ -69,4 +71,169 @@ def load_config_file():
 	CONFIG_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
 	
 	return CONFIG_FILE_PATH
+
+
+def int_or_str(text):
+	"""
+	Parses a string input and returns either an integer or the original string.
+
+	This function takes a string input and tries to convert it to an integer. If
+	successful, it returns the integer value. If not, it returns the original
+	string.
+
+	Parameters:
+	    text (str): The input string to be parsed.
+
+	Returns:
+	    int or str: If the input string can be converted to an integer, the
+	    function returns the integer value. If not, the function returns the
+	    original string.
+
+	Raises:
+	    None.
+	"""
+	try:
+	  return int(text)
+	except ValueError:
+	  return text
+
+
+def find_text(string):
+	"""
+	Finds the index of the 'text' substring in the input string.
+
+	Parameters:
+	    string (str): The string to search for 'text'.
+
+	Returns:
+	    int: The index of the start of 'text' substring in the input string.
+	    If 'text' substring is not found, returns None.
+	"""
+	text_start = string.find('"text" : "')
+	return text_start if text_start != -1 else None
+
+
+def strip_string(string):
+	"""
+	Strip unwanted characters and whitespaces from the 'text' field of a JSON
+	string.
+
+	Parameters:
+			string (str): The input string, assumed to be a valid JSON string with a
+			'text' field.
+
+	Returns:
+			str or None: The resulting string after being stripped of unwanted
+			characters and whitespaces.
+			Returns None if the input string is None, is not a valid JSON string, or
+			does not contain
+			a 'text' field.
+	"""
+	if string is None:
+		return None
+
+	# Load the JSON string into a dictionary
+	try:
+		data = json.loads(string)
+	except ValueError:
+		return None
+
+	# Get the text field from the dictionary
+	if "text" not in data:
+		return None
+	text = data["text"]
+
+	# Replace unwanted characters and whitespaces
+	text = text.replace('"', '').strip()
+
+	# Remove 'the' from the beginning of the text, if present
+	if text.startswith('the'):
+		text = text[3:].strip()
+
+	# Remove 'the' from the end of the text, if present
+	if text.endswith('the'):
+		text = text[:-3].strip()
+
+	return text
+
+
+def get_chat_participant_names():
+	""" 
+	Gets the chat participant names from the config file.
+
+	Reads the 'ASSISTANT_NAME_IN_CHAT_PANE', 'SYSTEM_NAME_IN_CHAT_PANE', and 
+	'END_USER_NAME_IN_CHAT_PANE' variables from the environment configuration
+	file. Returns a tuple containing the string values of the variables if
+	found, or None if any of the variables are not present.
+
+	Returns:
+			tuple or None: A tuple containing the assistant, system, and end user
+			names in the chat pane, or None, if any of the variables are not found.
+	"""
+	# The path of the env configuration file
+	CONFIG_FILE_PATH = load_config_file()
+	
+	# Initialize variables for the chat names
+	assistant_name = None
+	system_name = None
+	end_user_name = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'END_USER_NAME_IN_CHAT_PANE':
+				# Remove the quotes from the value of the variable
+				end_user_name = value.strip()[1:-1]
+				
+			elif variable_name == 'ASSISTANT_NAME_IN_CHAT_PANE':
+				# Remove the quotes from the value of the variable
+				assistant_name = value.strip()[1:-1]
+				
+			elif variable_name == 'SYSTEM_NAME_IN_CHAT_PANE':
+				# Remove the quotes from the value of the variable
+				system_name = value.strip()[1:-1]
+				
+	# Check if all three variables were found
+	if assistant_name is not None and system_name is not None and end_user_name is not None:
+		return end_user_name, assistant_name, system_name 
+
+	# If any of the variables are not found, return None
+	return None
+
+
+def get_tts_engine_string():
+	"""
+	Retrieves the TTS (Text-to-Speech) engine string from the configuration file.
+
+	Returns:
+	    str or None: The TTS engine string if found in the configuration file,
+	    otherwise None.
+	"""
+	# The path of the env configuration file
+	CONFIG_FILE_PATH = load_config_file()
+
+	# Initialize variable for the tts engine string
+	tts_engine_str = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'TTS_ENGINE_STRING':
+				# Remove the quotes from the value of the variable
+				tts_engine_str = value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if tts_engine_str is not None:
+		return tts_engine_str 
+
+	# If the variable was not found, return None
+	return None
 
