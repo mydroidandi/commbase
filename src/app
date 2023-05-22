@@ -73,7 +73,7 @@ app() {
 
 	# On window 0, with pane 1 selected by default, run Python and then press the
 	# enter key.
-	tmux send-keys " cpulimit --limit=$PYTHON_CPU_LIMIT_PERCENTAGE -- $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py" C-m;
+	tmux send-keys " cpulimit --limit=$PYTHON_CPU_LIMIT_PERCENTAGE -- $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/$STT_ENGINE_EXECUTABLE_PATH" C-m;
 
 	# Pane 2
 	# On window 0, select pane 2, activate the conda environment if it exists,
