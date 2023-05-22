@@ -66,11 +66,19 @@ def load_config_file():
 
 	Returns:
 			str: The path of the configuration file.
+
+	Raises:
+        KeyError: If the environment variable 'COMMBASE_APP_DIR' is not set.
 	"""
-	# Specify the path of the env file containing the variables
-	CONFIG_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
-	
-	return CONFIG_FILE_PATH
+	try:
+		# Specify the path of the env file containing the variables
+		CONFIG_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
+		return CONFIG_FILE_PATH
+	except KeyError:
+		print("Error: Environment variable 'COMMBASE_APP_DIR' is not set.")
+		# You can choose to handle the error in different ways, such as returning a default value or raising an exception.
+		# Here, we choose to return None to indicate the absence of the configuration file path.
+		return None
 
 
 def int_or_str(text):
