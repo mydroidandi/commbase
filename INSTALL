@@ -27,19 +27,21 @@ Content
 
 2.5. Build the Commbase Conda environment from a YAML file
 
-2.6. Set up the engine commbase-stt-vosk-p
+2.6. Install the required system dependency packages
 
-2.7. Install the Vosk model
+2.7. Install commbase-stt-vosk-p
 
-2.8. Install the required system dependency packages
+2.8. Install libcommbase
 
-2.9. Install VU-meter
+2.9. Install the Vosk model
 
-2.10. Install Oh My Tmux
+2.10. Install VU-meter
 
-2.11. Install the default Commbase voice commands dependencies
+2.11. Install Oh My Tmux
 
-2.12. Install Desktop Environments
+2.12. Install the default Commbase voice commands dependencies
+
+2.13. Install Desktop Environments
 
 3. Next steps
 
@@ -552,38 +554,6 @@ $ bash scripts/configuration/build_conda_environment.sh
 
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
 
-Set up the engine commbase-stt-vosk-p
---------------------------------------
-
-If you are not using the Anaconda Python environment commbase_env for running your app, you could need to change the first line of the file commbase-stt-vosk-p.py, to a fixed Python version, mostly if you experience program errors, latency, or low performance.
-
-This file is in the directory bundles/built-in/broker/commbase-stt-vosk-p/
-
-Replace the first line, accordingly.
-
-For Anaconda Python, use:
-
-#!/usr/bin/env python
-
-For Python3.11, use:
-
-#!/usr/bin/python3.11
-
-Install the Vosk model
------------------------
-
-Currently, Commbase works only in English.
-
-Visit: https://alphacephei.com/vosk/models
-
-Download and install the model manually or by running this command in commbase/scripts/configuration:
-
-$ bash install_vosk_model.sh
-
-Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance because the bigger the model you use, the bigger the memory required to load it and the bigger the cpu core usage (uses a single core). That change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
-
-Note: If you are patient, you can change all the text patterns and code to make your Commbase app work in one of the languages supported by Vosk, but we do not recommend you to do so unless you need to, because it is a huge task.
-
 Install the required system dependency packages
 ------------------------------------------------
 
@@ -693,28 +663,98 @@ To search for a particular package name or string in the official Debian reposit
 
 $ apt-cache search dash | grep "dash"
 
-Install VU-meter
------------------
+Install commbase-stt-vosk-p
+----------------------------
+
+This code repository comes bundled with the Commbase code, but can also download it.
 
 Download/clone it from GitHub and install it:
 
 $ cd bundles/built-in/broker
 
-$ git clone https://github.com/kmein/vu-meter.git
+$ git clone git@github.com:mydroidandi/commbase-stt-vosk-p.git
 
-Rename the directory:
+$ cd commbase-stt-vosk-p
 
-$ mv vu-meter-master vu-meter
+If you need to remove the .git directory:
 
-Change directory permissions:
+$ rm -rf .git
 
-$ ls -hal vu-meter
+You could need to change the first line of the file commbase_stt_vosk_py, to a fixed Python version, accordingly:
 
-$ chmod 755 vu-meter
-
-If you are using the Anaconda Python environment commbase_env, open the file vu_meter.py, and change the first line like this:
+For Anaconda Python environments, use:
 
 #!/usr/bin/env python
+
+For Python3.11, use:
+
+#!/usr/bin/python3.11
+
+Install libcommbase
+--------------------
+
+This code repository comes bundled with the Commbase code, but can also download it.
+
+$ cd bundles/built-in/broker
+
+$ git clone git@github.com:mydroidandi/libcommbase.git
+
+$ cd libcommbase
+
+If you need to remove the .git directory:
+
+$ rm -rf .git
+
+You could need to change the first line of the file commbase_stt_vosk_py, to a fixed Python version, accordingly:
+
+For Anaconda Python environments, use:
+
+#!/usr/bin/env python
+
+For Python3.11, use:
+
+#!/usr/bin/python3.11
+
+
+Install the Vosk model
+-----------------------
+
+Currently, Commbase works only in English.
+
+Visit: https://alphacephei.com/vosk/models
+
+Download and install the model manually or by running this command in commbase/scripts/configuration:
+
+$ bash install_vosk_model.sh
+
+Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance because the bigger the model you use, the bigger the memory required to load it and the bigger the cpu core usage (uses a single core). That change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
+
+Note: If you are patient, you can change all the text patterns and code to make your Commbase app work in one of the languages supported by Vosk, but we do not recommend you to do so unless you need to, because it is a huge task.
+
+Install VU-meter
+-----------------
+
+This code repository comes bundled with the Commbase code, but can also download it.
+
+$ cd bundles/built-in/broker
+
+$ git clone https://github.com/kmein/vu-meter.git
+
+$ vu_meter 
+
+If you need to remove the .git directory:
+
+$ rm -rf .git
+
+You could need to change the first line of the file commbase_stt_vosk_py, to a fixed Python version, accordingly:
+
+For Anaconda Python environments, use:
+
+#!/usr/bin/env python
+
+For Python3.11, use:
+
+#!/usr/bin/python3.11
 
 Install Oh My Tmux
 -------------------
