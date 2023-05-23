@@ -1,10 +1,3 @@
-# Bundled dependencies
-mydroidandi/commbase-stt-vosk-p
-mydroidandi/libcommbase
-alphacep/vosk-api
-kmein/vu-meter
-
-# Python dependencies
 aiohttp
 aiohttp-cors
 aiosignal
