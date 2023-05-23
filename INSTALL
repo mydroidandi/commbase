@@ -680,7 +680,7 @@ If you need to remove the .git directory:
 
 $ rm -rf .git
 
-You could need to change the first line of the file commbase_stt_vosk_py, to a fixed Python version, accordingly:
+You could need to change the first line of the file commbase_stt_vosk_p.py, to a fixed Python version, accordingly:
 
 For Anaconda Python environments, use:
 
@@ -704,17 +704,6 @@ $ cd libcommbase
 If you need to remove the .git directory:
 
 $ rm -rf .git
-
-You could need to change the first line of the file commbase_stt_vosk_py, to a fixed Python version, accordingly:
-
-For Anaconda Python environments, use:
-
-#!/usr/bin/env python
-
-For Python3.11, use:
-
-#!/usr/bin/python3.11
-
 
 Install the Vosk model
 -----------------------
@@ -746,7 +735,7 @@ If you need to remove the .git directory:
 
 $ rm -rf .git
 
-You could need to change the first line of the file commbase_stt_vosk_py, to a fixed Python version, accordingly:
+You could need to change the first line of the file vu_meter.py, to a fixed Python version, accordingly:
 
 For Anaconda Python environments, use:
 
@@ -841,7 +830,7 @@ $ top
 
 Press 'q' to exit.
 
-If you experience problems with the Python performance when running Commbase, you can yet change the value of the variable PYTHON_CPU_LIMIT_PERCENTAGE in the file config/app.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
+If you experience problems with the engine commbase_stt_vosk_p performance when running Commbase, you can yet change the value of the variable PROCESS_CPU_LIMIT_PERCENTAGE in the file config/app.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
 
 Considerations on how to choose an optimal Python CPU limit percentage:
 
