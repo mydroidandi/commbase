@@ -73,7 +73,7 @@ app() {
 
 	# On window 0, with pane 1 selected by default, run Python and then press the
 	# enter key.
-	tmux send-keys " cpulimit --limit=$PYTHON_CPU_LIMIT_PERCENTAGE -- $STT_ENGINE_STRING" C-m;
+	tmux send-keys " cpulimit --limit=$PROCESS_CPU_LIMIT_PERCENTAGE -- $STT_ENGINE_STRING" C-m;
 
 	# Pane 2
 	# On window 0, select pane 2, activate the conda environment if it exists,
