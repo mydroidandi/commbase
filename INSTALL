@@ -830,7 +830,7 @@ $ top
 
 Press 'q' to exit.
 
-If you experience problems with the engine commbase_stt_vosk_p performance when running Commbase, you can yet change the value of the variable PROCESS_CPU_LIMIT_PERCENTAGE in the file config/app.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
+If you experience problems with the engine commbase_stt_vosk_p performance when running Commbase, you can yet change the value of the variable STT_PROCESS_CPU_LIMIT_PERCENTAGE in the file config/app.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
 
 Considerations on how to choose an optimal Python CPU limit percentage:
 
