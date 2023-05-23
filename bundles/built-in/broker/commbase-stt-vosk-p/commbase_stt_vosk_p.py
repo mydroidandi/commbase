@@ -55,6 +55,10 @@ def commbase_stt_vosk_p():
 	recognized text is then cleaned up, and saved in files.
 	"""
 
+	#def parse_control_signal_okay_stop():
+	#	pass
+
+
 	def callback(indata, frames, time, status):
 		"""
 		This function is called (from a separate thread) for each audio block.
@@ -122,30 +126,70 @@ def commbase_stt_vosk_p():
 		"""
 		string = rec.Result()
 		trimmed_string = strip_string(string)
-		if trimmed_string is None:
-			return
+		#if trimmed_string is None:
+		#	return
 
-		print(f'\033[{end_user_background_color_start}\033[{end_user_text_color_start}{end_user_name}:\033[{color_code_end}\033[{color_code_end}\033[{end_user_text_color_start} {trimmed_string}\033[{color_code_end}')
-		# Write to data files
-		with open(RESULT_DATA_FILE, 'w') as f:
-			f.write(trimmed_string)
-		with open(PREV_DATA_FILE, 'w') as f:
-			f.write(trimmed_string)
+		if trimmed_string != '':
+			# Print the END USER user message in the chat pane
+			print(f'\033[{end_user_background_color_start}\033[{end_user_text_color_start}{end_user_name}:\033[{color_code_end}\033[{color_code_end}\033[{end_user_text_color_start} {trimmed_string}\033[{color_code_end}')
 
-		## This can be used for debugging
-		## Append to history file
-		#with open(OUTPUT_HISTORY_FILE, 'a') as f:
-		#  f.write(trimmed_string + "\n")
+			# Load the control signal pattern files
 
-		# Process the command if it doesn't contain the stop string
-		if STOP_STR not in trimmed_string:
-			# Execute a script written in a language other than Python to manage and
-			# process the current result. (This functionality is disabled for
-			# debugging purposes.)
-			#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-			print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... {trimmed_string}\033[{color_code_end}')
-		else:
-			print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... okay stop\033[{color_code_end}')
+			# CTRL_SIGNAL_OKAY_STOP
+			# Load the patterns file, store its content in a variable,
+			ctrl_signal_okay_stop_patterns = CTRL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH
+			read_plain_text_file(ctrl_signal_okay_stop_patterns)
+
+			# CTRL_SIGNAL_OKAY_ACCEPT
+			# Load the patterns file, store its content in a variable,
+			ctrl_signal_okay_accept_patterns = CTRL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH
+			read_plain_text_file(ctrl_signal_okay_accept_patterns)
+
+			# ...
+
+			# Attempt to match the END USER user message and the existent control
+			# signals.
+
+			# CTRL_SIGNAL_OKAY_STOP
+			# If there is any match between the END USER user message and the existent
+			# control signal, print an ASSISTANT user message including the corrected
+			# version of the END USER user message.
+			if trimmed_string in ctrl_signal_okay_stop_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing as control ... {CTRL_SIGNAL_OKAY_STOP}\033[{color_code_end}')
+				# Record the control signal string to DATA_FILE
+				with open(DATA_FILE, 'w') as f:
+					f.write(CTRL_SIGNAL_OKAY_STOP)
+				# Execute a script to manage and the current result. (This functionality
+				# is disabled for debugging purposes.)
+				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+
+			# CTRL_SIGNAL_OKAY_ACCEPT
+			# If there is any match between the END USER user message and the existent
+			# control signal, print an ASSISTANT user message including the corrected
+			# version of the END USER user message.
+			elif trimmed_string in ctrl_signal_okay_accept_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing as control ... {CTRL_SIGNAL_OKAY_ACCEPT}\033[{color_code_end}')
+				# Record the control signal string to DATA_FILE
+				with open(DATA_FILE, 'w') as f:
+					f.write(CTRL_SIGNAL_OKAY_ACCEPT)
+				# Execute a script to manage and the current result. (This functionality
+				# is disabled for debugging purposes.)
+				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+
+			#elif ...
+
+			else:
+				# Record a normal END USER user message instead of a control signal
+				# message.
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... {trimmed_string}\033[{color_code_end}')
+				# Record the trimmed_string data to DATA_FILE and PREV_DATA_FILE
+				with open(DATA_FILE, 'w') as f:
+					f.write(trimmed_string)
+				with open(PREV_DATA_FILE, 'w') as f:
+					f.write(trimmed_string)
+				# Execute a script to manage and the current result. (This functionality
+				# is disabled for debugging purposes.)
+				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 
 	# Create ArgumentParser object with add_help=False to disable default help
@@ -218,7 +262,6 @@ def commbase_stt_vosk_p():
 
 		with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
 	channels=1, callback=callback):
-
 			# Assign the values returned by get_terminal_colors()
 			red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
 
@@ -311,7 +354,9 @@ def main():
   		None
 	"""
 	# Global declarations
-	global CONFIG_FILE_PATH, ASCII_FILE_PATH, INSTRUCTION_FILE_PATH, ML_MODEL, RESULT_DATA_FILE, PREV_DATA_FILE, OUTPUT_HISTORY_FILE, STOP_STR, q
+	global CONFIG_FILE_PATH, ASCII_FILE_PATH, INSTRUCTION_FILE_PATH, ML_MODEL, DATA_FILE, PREV_DATA_FILE, OUTPUT_HISTORY_FILE, STOP_STR, q
+	global CTRL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH, CTRL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH, CTRL_SIGNAL_OKAY_DENY_PATTERNS_FILE_PATH
+	global CTRL_SIGNAL_OKAY_STOP, CTRL_SIGNAL_OKAY_ACCEPT, CTRL_SIGNAL_OKAY_DENY
 
 	# The path of the env configuration file
 	CONFIG_FILE_PATH = load_config_file()
@@ -327,12 +372,31 @@ def main():
 	#print (string.Template(ML_MODEL).substitute(os.environ))
 
 	# Output files
-	RESULT_DATA_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.data.dat'
+	DATA_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.data.dat'
 	PREV_DATA_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.prev_data.dat'
 	OUTPUT_HISTORY_FILE = os.environ["COMMBASE_APP_DIR"] + '/history/.app_history'
 
-	# String used to process the 'okay stop' control command
-	STOP_STR = "okay stop"
+	# The path of the control signal pattern files
+	CTRL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_stop_patterns'
+	CTRL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_accept_patterns'
+	CTRL_SIGNAL_OKAY_DENY_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_deny_patterns'
+	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_patterns'
+	CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_which_mode_are_you_in_patterns'
+	CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_normal_mode_patterns'
+	CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_convesational_mode_patterns'
+	CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_expert_mode_patterns'
+	CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_follow_up_mode_patterns'
+
+	# The control signals
+	CTRL_SIGNAL_OKAY_STOP = "okay stop"
+	CTRL_SIGNAL_OKAY_ACCEPT = "okay accept"
+	CTRL_SIGNAL_OKAY_DENY = "okay deny"
+	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER = "okay select the option number"
+	CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN = "okay which mode are you in"
+	CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE = "okay enter the normal mode"
+	CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE = "okay enter the conversational mode"
+	CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE = "okay enter the expert mode"
+	CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE = "okay enter the follow up mode"
 
 	# q is used to store a Queue object, which is then used to keep track of the
 	# nodes that need to be visited during the breadth-first search algorithm.
