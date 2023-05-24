@@ -170,12 +170,52 @@ def commbase_stt_vosk_p():
 				# is disabled for debugging purposes.)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER
-			elif trimmed_string in ctrl_signal_okay_select_the_option_number_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER}"\033[{color_code_end}')
+			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
+			elif trimmed_string in ctrl_signal_okay_select_the_option_number_one_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER)
+					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE)
+				# Execute a script to manage and the current result. (This functionality
+				# is disabled for debugging purposes.)
+				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+
+			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
+			elif trimmed_string in ctrl_signal_okay_select_the_option_number_two_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO}"\033[{color_code_end}')
+				# Record the control signal string to DATA_FILE
+				with open(DATA_FILE, 'w') as f:
+					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO)
+				# Execute a script to manage and the current result. (This functionality
+				# is disabled for debugging purposes.)
+				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+
+			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
+			elif trimmed_string in ctrl_signal_okay_select_the_option_number_three_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE}"\033[{color_code_end}')
+				# Record the control signal string to DATA_FILE
+				with open(DATA_FILE, 'w') as f:
+					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE)
+				# Execute a script to manage and the current result. (This functionality
+				# is disabled for debugging purposes.)
+				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+
+			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
+			elif trimmed_string in ctrl_signal_okay_select_the_option_number_four_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR}"\033[{color_code_end}')
+				# Record the control signal string to DATA_FILE
+				with open(DATA_FILE, 'w') as f:
+					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR)
+				# Execute a script to manage and the current result. (This functionality
+				# is disabled for debugging purposes.)
+				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+
+			# CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION
+			elif trimmed_string in ctrl_signal_okay_skip_that_question_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION}"\033[{color_code_end}')
+				# Record the control signal string to DATA_FILE
+				with open(DATA_FILE, 'w') as f:
+					f.write(CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION)
 				# Execute a script to manage and the current result. (This functionality
 				# is disabled for debugging purposes.)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
@@ -342,9 +382,25 @@ def commbase_stt_vosk_p():
 			# Load the patterns file and store its content in a variable
 			ctrl_signal_okay_deny_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_DENY_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER
+			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_select_the_option_number_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_PATTERNS_FILE_PATH)
+			ctrl_signal_okay_select_the_option_number_one_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE_PATTERNS_FILE_PATH)
+
+			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
+			# Load the patterns file and store its content in a variable
+			ctrl_signal_okay_select_the_option_number_two_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO_PATTERNS_FILE_PATH)
+
+			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
+			# Load the patterns file and store its content in a variable
+			ctrl_signal_okay_select_the_option_number_three_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE_PATTERNS_FILE_PATH)
+
+			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
+			# Load the patterns file and store its content in a variable
+			ctrl_signal_okay_select_the_option_number_four_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR_PATTERNS_FILE_PATH)
+
+			#	CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION
+			# Load the patterns file and store its content in a variable
+			ctrl_signal_okay_skip_that_question_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION_PATTERNS_FILE_PATH)
 
 			#	CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
 			# Load the patterns file and store its content in a variable
@@ -451,6 +507,7 @@ def main():
 	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO_PATTERNS_FILE_PATH
 	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE_PATTERNS_FILE_PATH
 	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR_PATTERNS_FILE_PATH
+	global CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION_PATTERNS_FILE_PATH
 	global CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN_PATTERNS_FILE_PATH
 	global CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE_PATTERNS_FILE_PATH
 	global CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE_PATH
@@ -459,7 +516,11 @@ def main():
 	global CTRL_SIGNAL_OKAY_STOP
 	global CTRL_SIGNAL_OKAY_ACCEPT
 	global CTRL_SIGNAL_OKAY_DENY
-	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER
+	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
+	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
+	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
+	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
+	global CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION
 	global CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
 	global CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE
 	global CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE
@@ -488,7 +549,11 @@ def main():
 	CTRL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_stop_patterns'
 	CTRL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_accept_patterns'
 	CTRL_SIGNAL_OKAY_DENY_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_deny_patterns'
-	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_patterns'
+	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_one_patterns'
+	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_two_patterns'
+	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_three_patterns'
+	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_four_patterns'
+	CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_skip_that_question_patterns'	
 	CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_which_mode_are_you_in_patterns'
 	CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_normal_mode_patterns'
 	CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_convesational_mode_patterns'
@@ -499,13 +564,17 @@ def main():
 	CTRL_SIGNAL_OKAY_STOP = "okay stop"
 	CTRL_SIGNAL_OKAY_ACCEPT = "okay accept"
 	CTRL_SIGNAL_OKAY_DENY = "okay deny"
-	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER = "okay select the option number"
+	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE = "okay select the option number one"
+	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO = "okay select the option number two"
+	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE = "okay select the option number three"
+	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR = "okay select the option number four"
+	CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION = "okay skip that question"
 	CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN = "okay which mode are you in"
 	CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE = "okay enter the normal mode"
 	CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE = "okay enter the conversational mode"
 	CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE = "okay enter the expert mode"
 	CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE = "okay enter the follow up mode"
-
+	
 	# q is used to store a Queue object, which is then used to keep track of the
 	# nodes that need to be visited during the breadth-first search algorithm.
 	q = queue.Queue()
