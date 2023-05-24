@@ -144,7 +144,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_STOP)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			# CTRL_SIGNAL_OKAY_ACCEPT
@@ -155,7 +155,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_ACCEPT)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			#	CTRL_SIGNAL_OKAY_DENY
@@ -166,7 +166,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_DENY)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
@@ -177,7 +177,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
@@ -188,7 +188,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
@@ -199,7 +199,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
@@ -210,7 +210,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			# CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION
@@ -221,7 +221,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			#	CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
@@ -232,7 +232,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			#	CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE
@@ -243,7 +243,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			#	CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE
@@ -254,7 +254,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			#	CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE
@@ -265,7 +265,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			#	CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE
@@ -276,7 +276,7 @@ def commbase_stt_vosk_p():
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 			# Everything else
@@ -288,7 +288,7 @@ def commbase_stt_vosk_p():
 					f.write(trimmed_string)
 				with open(PREV_DATA_FILE, 'w') as f:
 					f.write(trimmed_string)
-				# Manage and the result (disabled for debugging purposes)
+				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 
