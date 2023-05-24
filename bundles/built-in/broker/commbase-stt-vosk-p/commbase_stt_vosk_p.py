@@ -140,7 +140,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			if trimmed_string in ctrl_signal_okay_stop_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_STOP}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_STOP}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_STOP)
@@ -151,7 +151,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_accept_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ACCEPT}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ACCEPT}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_ACCEPT)
@@ -162,7 +162,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_deny_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_DENY}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_DENY}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_DENY)
@@ -173,7 +173,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_select_the_option_number_one_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE)
@@ -184,7 +184,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_select_the_option_number_two_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO)
@@ -195,7 +195,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_select_the_option_number_three_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE)
@@ -206,7 +206,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_select_the_option_number_four_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR)
@@ -217,7 +217,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_skip_that_question_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION)
@@ -228,7 +228,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_which_mode_are_you_in_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN)
@@ -239,7 +239,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_enter_the_normal_mode_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE)
@@ -250,7 +250,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_enter_the_conversational_mode_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE)
@@ -261,7 +261,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_enter_the_expert_mode_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE)
@@ -272,7 +272,7 @@ def commbase_stt_vosk_p():
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			elif trimmed_string in ctrl_signal_okay_enter_the_follow_up_mode_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE}"\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE)
@@ -282,7 +282,7 @@ def commbase_stt_vosk_p():
 			# Everything else
 			else:
 				# Record a normal END USER message instead of a control signal message
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} Processing ... "{trimmed_string}"\033[{color_code_end}')
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}"\033[{color_code_end}')
 				# Record the trimmed_string data to DATA_FILE and PREV_DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(trimmed_string)
