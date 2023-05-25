@@ -168,7 +168,7 @@ def commbase_stt_vosk_p():
 					with open(MESSAGE_FILE, 'w') as f:
 						f.write(CONTROL_SIGNAL_TO_STOP_PREVIOUS_COMMAND)
 					found_match = True
-					if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+					if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 						# Manage the result message
 						subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -183,7 +183,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_ACCEPT_CHANGES)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -198,7 +198,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_DENY_CHANGES)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -213,7 +213,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_SELECT_OPTION_NUMBER_ONE)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -223,12 +223,12 @@ def commbase_stt_vosk_p():
 					# If END USER message matches the control signal, print an ASSISTANT
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_TO_SELECT_OPTION_NUMBER_TWO" for processing.\033[{color_code_end}')
+						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_TO_SELECT_OPTION_NUMBER_TWO}" for processing.\033[{color_code_end}')
 						# Record the control signal string to MESSAGE_FILE
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_SELECT_OPTION_NUMBER_TWO)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -243,7 +243,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_SELECT_OPTION_NUMBER_THREE)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -253,12 +253,12 @@ def commbase_stt_vosk_p():
 					# If END USER message matches the control signal, print an ASSISTANT
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_TO_SELECT_OPTION_NUMBER_FOUR" for processing.\033[{color_code_end}')
+						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_TO_SELECT_OPTION_NUMBER_FOUR}" for processing.\033[{color_code_end}')
 						# Record the control signal string to MESSAGE_FILE
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_SELECT_OPTION_NUMBER_FOUR)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -273,7 +273,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_SKIP_QUESTION)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -288,7 +288,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_REQUEST_CURRENT_MODE)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -303,7 +303,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_ENTER_NORMAL_MODE)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -318,7 +318,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_ENTER_CONVERSATIONAL_MODE)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -333,7 +333,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_EXIT_CONVERSATIONAL_MODE)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -348,7 +348,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_ENTER_EXPERT_MODE)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -363,7 +363,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_EXIT_EXPERT_MODE)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -378,7 +378,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_ENTER_FOLLOW_UP_MODE)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -393,7 +393,7 @@ def commbase_stt_vosk_p():
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_SIGNAL_TO_EXIT_FOLLOW_UP_MODE)
 						found_match = True
-						if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -406,7 +406,7 @@ def commbase_stt_vosk_p():
 					f.write(trimmed_string)
 				with open(PREVIOUS_MESSAGE_FILE, 'w') as f:
 					f.write(trimmed_string)
-				if OMANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "True"
+				if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 					# Manage the result message
 					subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
