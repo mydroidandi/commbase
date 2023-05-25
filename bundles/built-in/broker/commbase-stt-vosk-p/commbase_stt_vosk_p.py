@@ -646,19 +646,19 @@ def main():
 	MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "False"
 
 	# The path of the control signal pattern files
-	CONTROL_TO_STOP_PREVIOUS_COMMAND_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_stop_patterns'
-	CONTROL_TO_ACCEPT_CHANGES_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_accept_patterns'
-	CONTROL_TO_DENY_CHANGES_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_deny_patterns'
-	CONTROL_TO_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_select_the_option_number_one_patterns'
-	CONTROL_TO_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_select_the_option_number_two_patterns'
-	CONTROL_TO_SELECT_OPTION_NUMBER_THREE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_select_the_option_number_three_patterns'
-	CONTROL_TO_SELECT_OPTION_NUMBER_FOUR_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_select_the_option_number_four_patterns'
-	CONTROL_TO_SKIP_QUESTION_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_skip_that_question_patterns'	
-	CONTROL_TO_REQUEST_CURRENT_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_which_mode_are_you_in_patterns'
-	CONTROL_TO_ENTER_NORMAL_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_enter_the_normal_mode_patterns'
-	CONTROL_TO_ENTER_CONVERSATIONAL_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_enter_the_convesational_mode_patterns'
-	CONTROL_TO_ENTER_EXPERT_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_enter_the_expert_mode_patterns'
-	CONTROL_TO_ENTER_FOLLOW_UP_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_enter_the_follow_up_mode_patterns'
+	CONTROL_TO_STOP_PREVIOUS_COMMAND_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_stop_patterns'
+	CONTROL_TO_ACCEPT_CHANGES_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_accept_patterns'
+	CONTROL_TO_DENY_CHANGES_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_deny_patterns'
+	CONTROL_TO_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_select_the_option_number_one_patterns'
+	CONTROL_TO_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_select_the_option_number_two_patterns'
+	CONTROL_TO_SELECT_OPTION_NUMBER_THREE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_select_the_option_number_three_patterns'
+	CONTROL_TO_SELECT_OPTION_NUMBER_FOUR_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_select_the_option_number_four_patterns'
+	CONTROL_TO_SKIP_QUESTION_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_skip_that_question_patterns'	
+	CONTROL_TO_REQUEST_CURRENT_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_which_mode_are_you_in_patterns'
+	CONTROL_TO_ENTER_NORMAL_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_enter_the_normal_mode_patterns'
+	CONTROL_TO_ENTER_CONVERSATIONAL_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_enter_the_convesational_mode_patterns'
+	CONTROL_TO_ENTER_EXPERT_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_enter_the_expert_mode_patterns'
+	CONTROL_TO_ENTER_FOLLOW_UP_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/control_patterns/okay_enter_the_follow_up_mode_patterns'
 
 	# The controls
 	CONTROL_TO_STOP_PREVIOUS_COMMAND = "okay stop"
