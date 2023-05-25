@@ -45,7 +45,7 @@ import vosk
 import sys
 import subprocess
 import string
-from functions import read_plain_text_file, load_config_file, int_or_str, find_text, strip_string, get_chat_participant_names, get_tts_engine_string
+from functions import read_plain_text_file, read_lines_from_file, load_config_file, int_or_str, find_text, strip_string, get_chat_participant_names, get_tts_engine_string
 from text_formatting import get_terminal_colors, get_chat_participant_colors, get_assistant_avatar_color, set_end_user_background_color, set_assistant_user_background_color, set_system_user_background_color, set_end_user_text_color, set_assistant_user_text_color, set_system_user_text_color, set_assistant_avatar_color
 
 
@@ -124,10 +124,12 @@ def commbase_stt_vosk_p():
 		Returns:
 			  None.
 		"""
+
 		string = rec.Result()
+
 		trimmed_string = strip_string(string)
-		#if trimmed_string is None:
-		#	return
+
+		found_match = False
 
 		if trimmed_string != '':
 			# Print the END USER user message in the chat pane
@@ -137,16 +139,126 @@ def commbase_stt_vosk_p():
 			# signals.
 
 			# CTRL_SIGNAL_OKAY_STOP
+			for line in ctrl_signal_okay_stop_patterns:
+				# If END USER message matches the control signal, print an ASSISTANT
+				# message with the corrected version of the user's message.
+				if trimmed_string == line.strip():
+					print(ctrl_signal_okay_stop_patterns)
+					print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_STOP}" for processing.\033[{color_code_end}')
+					# Record the control signal string to DATA_FILE
+					with open(DATA_FILE, 'w') as f:
+						f.write(CTRL_SIGNAL_OKAY_STOP)
+					found_match = True
+					# Manage the result (disabled for debugging purposes)
+					#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+
+			# CTRL_SIGNAL_OKAY_ACCEPT
+			if not found_match:
+				for line in ctrl_signal_okay_accept_patterns:
+					# If END USER message matches the control signal, print an ASSISTANT
+					# message with the corrected version of the user's message.
+					if trimmed_string == line.strip():
+						print(ctrl_signal_okay_accept_patterns)
+						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ACCEPT}" for processing.\033[{color_code_end}')
+						# Record the control signal string to DATA_FILE
+						with open(DATA_FILE, 'w') as f:
+							f.write(CTRL_SIGNAL_OKAY_ACCEPT)
+						found_match = True
+						# Manage the result (disabled for debugging purposes)
+						#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+
+			#	CTRL_SIGNAL_OKAY_DENY
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_EXIT_THE_NORMAL_MODE
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_EXIT_THE_CONVERSATIONAL_MODE
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_EXIT_THE_EXPERT_MODE
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE
+			if not found_match:
+
+
+			# CTRL_SIGNAL_OKAY_EXIT_THE_FOLLOW_UP_MODE
+			if not found_match:
+
+
+
+			# Fallback to dispatch the message as it was originally
+			if not found_match:
+				# Record a normal END USER message instead of a control signal message
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" for processing.\033[{color_code_end}')
+				# Record the trimmed_string data to DATA_FILE and PREV_DATA_FILE
+				with open(DATA_FILE, 'w') as f:
+					f.write(trimmed_string)
+				with open(PREV_DATA_FILE, 'w') as f:
+					f.write(trimmed_string)
+				# Manage the result (disabled for debugging purposes)
+				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+				
+
+
+			
+
+			"""
+			# CTRL_SIGNAL_OKAY_STOP
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
 			if trimmed_string in ctrl_signal_okay_stop_patterns:
+				print(ctrl_signal_okay_stop_patterns)
 				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_STOP}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
 					f.write(CTRL_SIGNAL_OKAY_STOP)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
+			"""
+			
+			"""
 			# CTRL_SIGNAL_OKAY_ACCEPT
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
@@ -290,7 +402,7 @@ def commbase_stt_vosk_p():
 					f.write(trimmed_string)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
+				"""
 
 	# Create ArgumentParser object with add_help=False to disable default help
 	# message.
@@ -362,6 +474,9 @@ def commbase_stt_vosk_p():
 
 		with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
 	channels=1, callback=callback):
+	
+			# Get colors
+	
 			# Assign the values returned by get_terminal_colors()
 			red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
 
@@ -371,19 +486,23 @@ def commbase_stt_vosk_p():
 			# Assign the values returned by get_assistant_avatar_color()
 			avatar_color = get_assistant_avatar_color()
 
+			# Get names and strings
+
 			# Assign the values returned by get_chat_participant_names()
 			end_user_name, assistant_name, system_name = get_chat_participant_names()
 			
 			# Assign the values returned by get_tts_engine_string()
 			tts_engine_str = get_tts_engine_string()
 
+			# Preload all the engine pattern files
+
 			# CTRL_SIGNAL_OKAY_STOP
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_stop_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH)
+			ctrl_signal_okay_stop_patterns = read_lines_from_file(CTRL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH)
 
 			# CTRL_SIGNAL_OKAY_ACCEPT
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_accept_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH)
+			ctrl_signal_okay_accept_patterns = read_lines_from_file(CTRL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH)
 
 			#	CTRL_SIGNAL_OKAY_DENY
 			# Load the patterns file and store its content in a variable
@@ -429,6 +548,8 @@ def commbase_stt_vosk_p():
 			# Load the patterns file and store its content in a variable
 			ctrl_signal_okay_enter_the_follow_up_mode_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE_PATH)
 
+			# Set colors
+
 			# Set the background color for the end user
 			end_user_background_color_start = set_end_user_background_color(end_user_background_color)
 
@@ -449,6 +570,8 @@ def commbase_stt_vosk_p():
 
 			# Set the color of the assistant's avatar
 			avatar_color_start = set_assistant_avatar_color(avatar_color)
+
+			# Show avatar
 
 			# Display the assitant avatar
 			display_assistant_avatar()
@@ -578,10 +701,14 @@ def main():
 	CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION = "okay skip that question"
 	CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN = "okay which mode are you in"
 	CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE = "okay enter the normal mode"
+	CTRL_SIGNAL_OKAY_EXIT_THE_NORMAL_MODE = "okay exit the normal mode"
 	CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE = "okay enter the conversational mode"
+	CTRL_SIGNAL_OKAY_EXIT_THE_CONVERSATIONAL_MODE = "okay exit the conversational mode"
 	CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE = "okay enter the expert mode"
+	CTRL_SIGNAL_OKAY_EXIT_THE_EXPERT_MODE = "okay exit the expert mode"
 	CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE = "okay enter the follow up mode"
-	
+	CTRL_SIGNAL_OKAY_EXIT_THE_FOLLOW_UP_MODE = "okay exit the follow up mode"
+
 	# q is used to store a Queue object, which is then used to keep track of the
 	# nodes that need to be visited during the breadth-first search algorithm.
 	q = queue.Queue()

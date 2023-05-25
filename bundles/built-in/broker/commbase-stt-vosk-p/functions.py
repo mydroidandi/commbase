@@ -60,6 +60,29 @@ def read_plain_text_file(file_path):
 	return file_variable
 
 
+def read_lines_from_file(file_path):
+	"""
+	Read all lines from a file and return them as a list.
+
+	Parameters:
+		  file_path (str): The path to the file to be read.
+
+	Returns:
+		  list: A list containing all the lines from the file.
+
+	Example:
+		  >>> lines = read_lines_from_file('file.txt')
+		  >>> print(lines)
+		  ['This is line 1.\n', 'This is line 2.\n', 'This is line 3.\n']
+	"""
+	with open(file_path, 'r') as f:
+			# Store all the file lines in a list
+		  lines = f.readlines()  # Read all lines from the file
+
+	# Return all the lines in a list
+	return lines
+
+
 def load_config_file():
 	"""
 	Loads the configuration file path.
