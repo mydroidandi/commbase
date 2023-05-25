@@ -35,8 +35,8 @@
 # handling, and mathematical operations.
 
 # Requirements
-import os.path
 import json
+import os.path
 
 
 def read_plain_text_file(file_path):

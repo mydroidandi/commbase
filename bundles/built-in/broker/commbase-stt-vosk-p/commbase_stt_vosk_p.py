@@ -40,13 +40,35 @@
 import argparse
 import os.path
 import queue
+import string
+import subprocess
+import sys
+
 import sounddevice as sd
 import vosk
-import sys
-import subprocess
-import string
-from functions import read_plain_text_file, read_lines_from_file, load_config_file, int_or_str, find_text, strip_string, get_chat_participant_names, get_tts_engine_string
-from text_formatting import get_terminal_colors, get_chat_participant_colors, get_assistant_avatar_color, set_end_user_background_color, set_assistant_user_background_color, set_system_user_background_color, set_end_user_text_color, set_assistant_user_text_color, set_system_user_text_color, set_assistant_avatar_color
+
+from functions import (
+    read_plain_text_file,
+    read_lines_from_file,
+    load_config_file,
+    int_or_str,
+    find_text,
+    strip_string,
+    get_chat_participant_names,
+    get_tts_engine_string,
+)
+from text_formatting import (
+    get_terminal_colors,
+    get_chat_participant_colors,
+    get_assistant_avatar_color,
+    set_end_user_background_color,
+    set_assistant_user_background_color,
+    set_system_user_background_color,
+    set_end_user_text_color,
+    set_assistant_user_text_color,
+    set_system_user_text_color,
+    set_assistant_avatar_color,
+)
 
 
 def commbase_stt_vosk_p():
