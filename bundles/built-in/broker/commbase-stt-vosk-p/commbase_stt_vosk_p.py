@@ -160,92 +160,92 @@ def commbase_stt_vosk_p():
 			# Attempt to match the END USER user message and the existent control
 			# signals.
 
-			# CTRL_SIGNAL_OKAY_STOP
-			for line in ctrl_signal_okay_stop_patterns:
+			# CONTROL_SIGNAL_OKAY_STOP
+			for line in control_signal_okay_stop_patterns:
 				# If END USER message matches the control signal, print an ASSISTANT
 				# message with the corrected version of the user's message.
 				if trimmed_string == line.strip():
-					print(ctrl_signal_okay_stop_patterns)
-					print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_STOP}" for processing.\033[{color_code_end}')
+					print(control_signal_okay_stop_patterns)
+					print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_STOP}" for processing.\033[{color_code_end}')
 					# Record the control signal string to DATA_FILE
 					with open(DATA_FILE, 'w') as f:
-						f.write(CTRL_SIGNAL_OKAY_STOP)
+						f.write(CONTROL_SIGNAL_OKAY_STOP)
 					found_match = True
 					# Manage the result (disabled for debugging purposes)
 					#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			# CTRL_SIGNAL_OKAY_ACCEPT
+			# CONTROL_SIGNAL_OKAY_ACCEPT
 			if not found_match:
-				for line in ctrl_signal_okay_accept_patterns:
+				for line in control_signal_okay_accept_patterns:
 					# If END USER message matches the control signal, print an ASSISTANT
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
-						print(ctrl_signal_okay_accept_patterns)
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ACCEPT}" for processing.\033[{color_code_end}')
+						print(control_signal_okay_accept_patterns)
+						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_ACCEPT}" for processing.\033[{color_code_end}')
 						# Record the control signal string to DATA_FILE
 						with open(DATA_FILE, 'w') as f:
-							f.write(CTRL_SIGNAL_OKAY_ACCEPT)
+							f.write(CONTROL_SIGNAL_OKAY_ACCEPT)
 						found_match = True
 						# Manage the result (disabled for debugging purposes)
 						#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_DENY
+			#	CONTROL_SIGNAL_OKAY_DENY
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
+			# CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
+			# CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
+			# CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
+			# CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION
+			# CONTROL_SIGNAL_OKAY_SKIP_THAT_QUESTION
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
+			# CONTROL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE
+			# CONTROL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_EXIT_THE_NORMAL_MODE
+			# CONTROL_SIGNAL_OKAY_EXIT_THE_NORMAL_MODE
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE
+			# CONTROL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_EXIT_THE_CONVERSATIONAL_MODE
+			# CONTROL_SIGNAL_OKAY_EXIT_THE_CONVERSATIONAL_MODE
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE
+			# CONTROL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_EXIT_THE_EXPERT_MODE
+			# CONTROL_SIGNAL_OKAY_EXIT_THE_EXPERT_MODE
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE
+			# CONTROL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE
 			if not found_match:
 
 
-			# CTRL_SIGNAL_OKAY_EXIT_THE_FOLLOW_UP_MODE
+			# CONTROL_SIGNAL_OKAY_EXIT_THE_FOLLOW_UP_MODE
 			if not found_match:
 
 
@@ -267,149 +267,149 @@ def commbase_stt_vosk_p():
 			
 
 			"""
-			# CTRL_SIGNAL_OKAY_STOP
+			# CONTROL_SIGNAL_OKAY_STOP
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			if trimmed_string in ctrl_signal_okay_stop_patterns:
-				print(ctrl_signal_okay_stop_patterns)
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_STOP}" for processing.\033[{color_code_end}')
+			if trimmed_string in control_signal_okay_stop_patterns:
+				print(control_signal_okay_stop_patterns)
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_STOP}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_STOP)
+					f.write(CONTROL_SIGNAL_OKAY_STOP)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 			"""
 			
 			"""
-			# CTRL_SIGNAL_OKAY_ACCEPT
+			# CONTROL_SIGNAL_OKAY_ACCEPT
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_accept_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ACCEPT}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_accept_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_ACCEPT}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_ACCEPT)
+					f.write(CONTROL_SIGNAL_OKAY_ACCEPT)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_DENY
+			#	CONTROL_SIGNAL_OKAY_DENY
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_deny_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_DENY}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_deny_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_DENY}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_DENY)
+					f.write(CONTROL_SIGNAL_OKAY_DENY)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
+			#	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_select_the_option_number_one_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_select_the_option_number_one_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE)
+					f.write(CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
+			#	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_select_the_option_number_two_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_select_the_option_number_two_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO)
+					f.write(CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
+			#	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_select_the_option_number_three_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_select_the_option_number_three_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE)
+					f.write(CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
+			#	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_select_the_option_number_four_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_select_the_option_number_four_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR)
+					f.write(CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			# CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION
+			# CONTROL_SIGNAL_OKAY_SKIP_THAT_QUESTION
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_skip_that_question_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_skip_that_question_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_SKIP_THAT_QUESTION}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION)
+					f.write(CONTROL_SIGNAL_OKAY_SKIP_THAT_QUESTION)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
+			#	CONTROL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_which_mode_are_you_in_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_which_mode_are_you_in_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN)
+					f.write(CONTROL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE
+			#	CONTROL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_enter_the_normal_mode_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_enter_the_normal_mode_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE)
+					f.write(CONTROL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE
+			#	CONTROL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_enter_the_conversational_mode_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_enter_the_conversational_mode_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE)
+					f.write(CONTROL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE
+			#	CONTROL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_enter_the_expert_mode_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_enter_the_expert_mode_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE)
+					f.write(CONTROL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			#	CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE
+			#	CONTROL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE
 			# If END USER message matches the control signal, print an ASSISTANT
 			# message with the corrected version of the user's message.
-			elif trimmed_string in ctrl_signal_okay_enter_the_follow_up_mode_patterns:
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE}" for processing.\033[{color_code_end}')
+			elif trimmed_string in control_signal_okay_enter_the_follow_up_mode_patterns:
+				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE}" for processing.\033[{color_code_end}')
 				# Record the control signal string to DATA_FILE
 				with open(DATA_FILE, 'w') as f:
-					f.write(CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE)
+					f.write(CONTROL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE)
 				# Manage the result (disabled for debugging purposes)
 				#subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -518,57 +518,57 @@ def commbase_stt_vosk_p():
 
 			# Preload all the engine pattern files
 
-			# CTRL_SIGNAL_OKAY_STOP
+			# CONTROL_SIGNAL_OKAY_STOP
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_stop_patterns = read_lines_from_file(CTRL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH)
+			control_signal_okay_stop_patterns = read_lines_from_file(CONTROL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH)
 
-			# CTRL_SIGNAL_OKAY_ACCEPT
+			# CONTROL_SIGNAL_OKAY_ACCEPT
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_accept_patterns = read_lines_from_file(CTRL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH)
+			control_signal_okay_accept_patterns = read_lines_from_file(CONTROL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_DENY
+			#	CONTROL_SIGNAL_OKAY_DENY
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_deny_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_DENY_PATTERNS_FILE_PATH)
+			control_signal_okay_deny_patterns = read_plain_text_file(CONTROL_SIGNAL_OKAY_DENY_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
+			#	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_select_the_option_number_one_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE_PATTERNS_FILE_PATH)
+			control_signal_okay_select_the_option_number_one_patterns = read_plain_text_file(CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
+			#	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_select_the_option_number_two_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO_PATTERNS_FILE_PATH)
+			control_signal_okay_select_the_option_number_two_patterns = read_plain_text_file(CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
+			#	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_select_the_option_number_three_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE_PATTERNS_FILE_PATH)
+			control_signal_okay_select_the_option_number_three_patterns = read_plain_text_file(CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
+			#	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_select_the_option_number_four_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR_PATTERNS_FILE_PATH)
+			control_signal_okay_select_the_option_number_four_patterns = read_plain_text_file(CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION
+			#	CONTROL_SIGNAL_OKAY_SKIP_THAT_QUESTION
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_skip_that_question_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION_PATTERNS_FILE_PATH)
+			control_signal_okay_skip_that_question_patterns = read_plain_text_file(CONTROL_SIGNAL_OKAY_SKIP_THAT_QUESTION_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
+			#	CONTROL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_which_mode_are_you_in_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN_PATTERNS_FILE_PATH)
+			control_signal_okay_which_mode_are_you_in_patterns = read_plain_text_file(CONTROL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE
+			#	CONTROL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_enter_the_normal_mode_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE_PATTERNS_FILE_PATH)
+			control_signal_okay_enter_the_normal_mode_patterns = read_plain_text_file(CONTROL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE
+			#	CONTROL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_enter_the_conversational_mode_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE_PATH)
+			control_signal_okay_enter_the_conversational_mode_patterns = read_plain_text_file(CONTROL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE
+			#	CONTROL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_enter_the_expert_mode_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE_PATTERNS_FILE_PATH)
+			control_signal_okay_enter_the_expert_mode_patterns = read_plain_text_file(CONTROL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE_PATTERNS_FILE_PATH)
 
-			#	CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE
+			#	CONTROL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE
 			# Load the patterns file and store its content in a variable
-			ctrl_signal_okay_enter_the_follow_up_mode_patterns = read_plain_text_file(CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE_PATH)
+			control_signal_okay_enter_the_follow_up_mode_patterns = read_plain_text_file(CONTROL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE_PATH)
 
 			# Set colors
 
@@ -652,32 +652,32 @@ def main():
 	"""
 	# Global declarations
 	global CONFIG_FILE_PATH, ASCII_FILE_PATH, INSTRUCTION_FILE_PATH, ML_MODEL, DATA_FILE, PREV_DATA_FILE, OUTPUT_HISTORY_FILE, q
-	global CTRL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_DENY_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE_PATH
-	global CTRL_SIGNAL_OKAY_STOP
-	global CTRL_SIGNAL_OKAY_ACCEPT
-	global CTRL_SIGNAL_OKAY_DENY
-	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
-	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
-	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
-	global CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
-	global CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION
-	global CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
-	global CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE
-	global CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE
-	global CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE
-	global CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE
+	global CONTROL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_DENY_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_SKIP_THAT_QUESTION_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE_PATH
+	global CONTROL_SIGNAL_OKAY_STOP
+	global CONTROL_SIGNAL_OKAY_ACCEPT
+	global CONTROL_SIGNAL_OKAY_DENY
+	global CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE
+	global CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO
+	global CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE
+	global CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR
+	global CONTROL_SIGNAL_OKAY_SKIP_THAT_QUESTION
+	global CONTROL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN
+	global CONTROL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE
+	global CONTROL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE
+	global CONTROL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE
+	global CONTROL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE
 
 	# The path of the env configuration file
 	CONFIG_FILE_PATH = load_config_file()
@@ -698,38 +698,38 @@ def main():
 	OUTPUT_HISTORY_FILE = os.environ["COMMBASE_APP_DIR"] + '/history/.app_history'
 
 	# The path of the control signal pattern files
-	CTRL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_stop_patterns'
-	CTRL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_accept_patterns'
-	CTRL_SIGNAL_OKAY_DENY_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_deny_patterns'
-	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_one_patterns'
-	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_two_patterns'
-	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_three_patterns'
-	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_four_patterns'
-	CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_skip_that_question_patterns'	
-	CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_which_mode_are_you_in_patterns'
-	CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_normal_mode_patterns'
-	CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_convesational_mode_patterns'
-	CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_expert_mode_patterns'
-	CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_follow_up_mode_patterns'
+	CONTROL_SIGNAL_OKAY_STOP_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_stop_patterns'
+	CONTROL_SIGNAL_OKAY_ACCEPT_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_accept_patterns'
+	CONTROL_SIGNAL_OKAY_DENY_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_deny_patterns'
+	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_one_patterns'
+	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_two_patterns'
+	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_three_patterns'
+	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_select_the_option_number_four_patterns'
+	CONTROL_SIGNAL_OKAY_SKIP_THAT_QUESTION_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_skip_that_question_patterns'	
+	CONTROL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_which_mode_are_you_in_patterns'
+	CONTROL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_normal_mode_patterns'
+	CONTROL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_convesational_mode_patterns'
+	CONTROL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_expert_mode_patterns'
+	CONTROL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_signal_patterns/okay_enter_the_follow_up_mode_patterns'
 
 	# The control signals
-	CTRL_SIGNAL_OKAY_STOP = "okay stop"
-	CTRL_SIGNAL_OKAY_ACCEPT = "okay accept"
-	CTRL_SIGNAL_OKAY_DENY = "okay deny"
-	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE = "okay select the option number one"
-	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO = "okay select the option number two"
-	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE = "okay select the option number three"
-	CTRL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR = "okay select the option number four"
-	CTRL_SIGNAL_OKAY_SKIP_THAT_QUESTION = "okay skip that question"
-	CTRL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN = "okay which mode are you in"
-	CTRL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE = "okay enter the normal mode"
-	CTRL_SIGNAL_OKAY_EXIT_THE_NORMAL_MODE = "okay exit the normal mode"
-	CTRL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE = "okay enter the conversational mode"
-	CTRL_SIGNAL_OKAY_EXIT_THE_CONVERSATIONAL_MODE = "okay exit the conversational mode"
-	CTRL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE = "okay enter the expert mode"
-	CTRL_SIGNAL_OKAY_EXIT_THE_EXPERT_MODE = "okay exit the expert mode"
-	CTRL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE = "okay enter the follow up mode"
-	CTRL_SIGNAL_OKAY_EXIT_THE_FOLLOW_UP_MODE = "okay exit the follow up mode"
+	CONTROL_SIGNAL_OKAY_STOP = "okay stop"
+	CONTROL_SIGNAL_OKAY_ACCEPT = "okay accept"
+	CONTROL_SIGNAL_OKAY_DENY = "okay deny"
+	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_ONE = "okay select the option number one"
+	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_TWO = "okay select the option number two"
+	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_THREE = "okay select the option number three"
+	CONTROL_SIGNAL_OKAY_SELECT_THE_OPTION_NUMBER_FOUR = "okay select the option number four"
+	CONTROL_SIGNAL_OKAY_SKIP_THAT_QUESTION = "okay skip that question"
+	CONTROL_SIGNAL_OKAY_WHICH_MODE_ARE_YOU_IN = "okay which mode are you in"
+	CONTROL_SIGNAL_OKAY_ENTER_THE_NORMAL_MODE = "okay enter the normal mode"
+	CONTROL_SIGNAL_OKAY_EXIT_THE_NORMAL_MODE = "okay exit the normal mode"
+	CONTROL_SIGNAL_OKAY_ENTER_THE_CONVERSATIONAL_MODE = "okay enter the conversational mode"
+	CONTROL_SIGNAL_OKAY_EXIT_THE_CONVERSATIONAL_MODE = "okay exit the conversational mode"
+	CONTROL_SIGNAL_OKAY_ENTER_THE_EXPERT_MODE = "okay enter the expert mode"
+	CONTROL_SIGNAL_OKAY_EXIT_THE_EXPERT_MODE = "okay exit the expert mode"
+	CONTROL_SIGNAL_OKAY_ENTER_THE_FOLLOW_UP_MODE = "okay enter the follow up mode"
+	CONTROL_SIGNAL_OKAY_EXIT_THE_FOLLOW_UP_MODE = "okay exit the follow up mode"
 
 	# q is used to store a Queue object, which is then used to keep track of the
 	# nodes that need to be visited during the breadth-first search algorithm.
