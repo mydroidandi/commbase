@@ -322,21 +322,6 @@ def commbase_stt_vosk_p():
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			# CONTROL_TO_EXIT__CONVERSATIONAL_MODE
-			if not found_match:
-				for line in control_to_exit_conversational_mode_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_EXIT_CONVERSATIONAL_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
-							f.write(CONTROL_TO_EXIT_CONVERSATIONAL_MODE)
-						found_match = True
-						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
 			# CONTROL_TO_ENTER_EXPERT_MODE
 			if not found_match:
 				for line in control_to_enter_expert_mode_patterns:
@@ -352,21 +337,6 @@ def commbase_stt_vosk_p():
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-			# CONTROL_TO_EXIT_THE_EXPERT_MODE
-			if not found_match:
-				for line in control_to_exit_expert_mode_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_EXIT_EXPERT_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
-							f.write(CONTROL_TO_EXIT_EXPERT_MODE)
-						found_match = True
-						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
 			# CONTROL_TO_ENTER_FOLLOW_UP_MODE
 			if not found_match:
 				for line in control_to_enter_follow_up_mode_patterns:
@@ -377,21 +347,6 @@ def commbase_stt_vosk_p():
 						# Record the control signal string to MESSAGE_FILE
 						with open(MESSAGE_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_FOLLOW_UP_MODE)
-						found_match = True
-						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			# CONTROL_TO_EXIT_FOLLOW_UP_MODE
-			if not found_match:
-				for line in control_to_exit_follow_up_mode_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_EXIT_FOLLOW_UP_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
-							f.write(CONTROL_TO_EXIT_FOLLOW_UP_MODE)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
@@ -547,25 +502,13 @@ def commbase_stt_vosk_p():
 			# Load the patterns file and store its content in a variable
 			control_to_enter_conversational_mode_patterns = read_plain_text_file(CONTROL_TO_ENTER_CONVERSATIONAL_MODE_PATTERNS_FILE)
 
-			#	CONTROL_EXIT_ENTER_CONVERSATIONAL_MODE
-			# Load the patterns file and store its content in a variable
-			control_to_exit_conversational_mode_patterns = read_plain_text_file(CONTROL_TO_EXIT_CONVERSATIONAL_MODE_PATTERNS_FILE)
-
 			#	CONTROL_TO_ENTER_EXPERT_MODE
 			# Load the patterns file and store its content in a variable
 			control_to_enter_expert_mode_patterns = read_plain_text_file(CONTROL_TO_ENTER_EXPERT_MODE_PATTERNS_FILE)
 
-			#	CONTROL_TO_EXIT_EXPERT_MODE
-			# Load the patterns file and store its content in a variable
-			control_to_exit_expert_mode_patterns = read_plain_text_file(CONTROL_TO_EXIT_EXPERT_MODE_PATTERNS_FILE)
-
 			#	CONTROL_TO_ENTER_FOLLOW_UP_MODE
 			# Load the patterns file and store its content in a variable
 			control_to_enter_follow_up_mode_patterns = read_plain_text_file(CONTROL_TO_ENTER_FOLLOW_UP_MODE_PATTERNS_FILE)
-
-			#	CONTROL_TO_EXIT_FOLLOW_UP_MODE
-			# Load the patterns file and store its content in a variable
-			control_to_exit_follow_up_mode_patterns = read_plain_text_file(CONTROL_TO_EXIT_FOLLOW_UP_MODE_PATTERNS_FILE)
 
 			# Set colors
 
@@ -661,11 +604,8 @@ def main():
 	global CONTROL_TO_REQUEST_CURRENT_MODE_PATTERNS_FILE
 	global CONTROL_TO_ENTER_NORMAL_MODE_PATTERNS_FILE
 	global CONTROL_TO_ENTER_CONVERSATIONAL_MODE_PATTERNS_FILE
-	global CONTROL_TO_EXIT_CONVERSATIONAL_MODE_PATTERNS_FILE
 	global CONTROL_TO_ENTER_EXPERT_MODE_PATTERNS_FILE
-	global CONTROL_TO_EXIT_EXPERT_MODE_PATTERNS_FILE
 	global CONTROL_TO_ENTER_FOLLOW_UP_MODE_PATTERNS_FILE
-	global CONTROL_TO_EXIT_FOLLOW_UP_MODE_PATTERNS_FILE
 
 	global CONTROL_TO_STOP_PREVIOUS_COMMAND
 	global CONTROL_TO_ACCEPT_CHANGES
@@ -678,11 +618,8 @@ def main():
 	global CONTROL_TO_REQUEST_CURRENT_MODE
 	global CONTROL_TO_ENTER_NORMAL_MODE
 	global CONTROL_TO_ENTER_CONVERSATIONAL_MODE
-	global CONTROL_TO_EXIT_CONVERSATIONAL_MODE
 	global CONTROL_TO_ENTER_EXPERT_MODE
-	global CONTROL_TO_EXIT_EXPERT_MODE
 	global CONTROL_TO_ENTER_FOLLOW_UP_MODE
-	global CONTROL_TO_EXIT_FOLLOW_UP_MODE
 
 	global q
 
@@ -720,11 +657,8 @@ def main():
 	CONTROL_TO_REQUEST_CURRENT_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_which_mode_are_you_in_patterns'
 	CONTROL_TO_ENTER_NORMAL_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_enter_the_normal_mode_patterns'
 	CONTROL_TO_ENTER_CONVERSATIONAL_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_enter_the_convesational_mode_patterns'
-	CONTROL_TO_EXIT_CONVERSATIONAL_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_exit_the_convesational_mode_patterns'
 	CONTROL_TO_ENTER_EXPERT_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_enter_the_expert_mode_patterns'
-	CONTROL_TO_EXIT_EXPERT_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_exit_the_expert_mode_patterns'
 	CONTROL_TO_ENTER_FOLLOW_UP_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_enter_the_follow_up_mode_patterns'
-	CONTROL_TO_EXIT_FOLLOW_UP_MODE_PATTERNS_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/commbase-stt-vosk-p/resources/control_patterns/okay_exit_the_follow_up_mode_patterns'
 
 	# The controls
 	CONTROL_TO_STOP_PREVIOUS_COMMAND = "okay stop"
@@ -738,11 +672,8 @@ def main():
 	CONTROL_TO_REQUEST_CURRENT_MODE = "okay which mode are you in"
 	CONTROL_TO_ENTER_NORMAL_MODE = "okay enter the normal mode"
 	CONTROL_TO_ENTER_CONVERSATIONAL_MODE = "okay enter the conversational mode"
-	CONTROL_TO_EXIT_CONVERSATIONAL_MODE = "okay exit the conversational mode"
 	CONTROL_TO_ENTER_EXPERT_MODE = "okay enter the expert mode"
-	CONTROL_TO_EXIT_EXPERT_MODE = "okay exit the expert mode"
 	CONTROL_TO_ENTER_FOLLOW_UP_MODE = "okay enter the follow up mode"
-	CONTROL_TO_EXIT_FOLLOW_UP_MODE = "okay exit the follow up mode"
 
 	# q is used to store a Queue object, which is then used to keep track of the
 	# nodes that need to be visited during the breadth-first search algorithm.
