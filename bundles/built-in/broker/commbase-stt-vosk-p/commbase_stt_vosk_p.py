@@ -128,7 +128,7 @@ def commbase_stt_vosk_p():
 			"""
 			# Load an ASCII art file, store its content in a variable, and then print it
 			# in a specific color using terminal escape sequences.
-			assistant_avatar = read_plain_text_file(ASCII_FILE_PATH)
+			assistant_avatar = read_plain_text_file(ASCII_ART_FILE_PATH)
 			print(f'\033[{avatar_color_start}\033[{assistant_avatar}\033[{color_code_end}')
 
 
@@ -164,8 +164,8 @@ def commbase_stt_vosk_p():
 				# message with the corrected version of the user's message.
 				if trimmed_string == line.strip():
 					print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_STOP_PREVIOUS_COMMAND}" for processing.\033[{color_code_end}')
-					# Record the control signal string to MESSAGE_FILE
-					with open(MESSAGE_FILE, 'w') as f:
+					# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+					with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 						f.write(CONTROL_TO_STOP_PREVIOUS_COMMAND)
 					found_match = True
 					if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -179,8 +179,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_ACCEPT_CHANGES}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ACCEPT_CHANGES)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -194,8 +194,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_DENY_CHANGES}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_DENY_CHANGES)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -209,8 +209,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_SELECT_OPTION_NUMBER_ONE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_ONE)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -224,8 +224,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_SELECT_OPTION_NUMBER_TWO}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_TWO)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -239,8 +239,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_SELECT_OPTION_NUMBER_THREE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_THREE)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -254,8 +254,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_SELECT_OPTION_NUMBER_FOUR}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_FOUR)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -269,8 +269,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_SKIP_QUESTION}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SKIP_QUESTION)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -284,8 +284,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_REQUEST_CURRENT_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_REQUEST_CURRENT_MODE)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -299,8 +299,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_ENTER_NORMAL_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_NORMAL_MODE)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -314,8 +314,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_ENTER_CONVERSATIONAL_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_CONVERSATIONAL_MODE)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -329,8 +329,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_ENTER_EXPERT_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_EXPERT_MODE)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -344,8 +344,8 @@ def commbase_stt_vosk_p():
 					# message with the corrected version of the user's message.
 					if trimmed_string == line.strip():
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_TO_ENTER_FOLLOW_UP_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to MESSAGE_FILE
-						with open(MESSAGE_FILE, 'w') as f:
+						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_FOLLOW_UP_MODE)
 						found_match = True
 						if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
@@ -356,10 +356,10 @@ def commbase_stt_vosk_p():
 			if not found_match:
 				# Record a normal END USER message instead of a control signal message
 				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" for processing.\033[{color_code_end}')
-				# Record the trimmed_string data to MESSAGE_FILE and PREVIOUS_MESSAGE_FILE
-				with open(MESSAGE_FILE, 'w') as f:
+				# Record the trimmed_string data to RESULT_MESSAGE_RECORDING_FILE and PREVIOUS_RESULT_MESSAGE_RECORDING_FILE
+				with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 					f.write(trimmed_string)
-				with open(PREVIOUS_MESSAGE_FILE, 'w') as f:
+				with open(PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 					f.write(trimmed_string)
 				if MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 					# Manage the result message
@@ -417,7 +417,7 @@ def commbase_stt_vosk_p():
 
 	try:
 		if args.model is None:
-			args.model = string.Template(ML_MODEL).substitute(os.environ)
+			args.model = string.Template(VOSK_ML_MODEL_DIRECTORY).substitute(os.environ)
 		if not os.path.exists(args.model):
 			print ("Please download a model for your language from https://alphacephei.com/vosk/models")
 			print ("and unpack as 'model' in the current folder.")
@@ -541,7 +541,7 @@ def commbase_stt_vosk_p():
 			# Read the content of a file that provides instructions about muting the
 			# microphone to pause recording. It then prints the content, including the
 			# formatted assistant name and colors.
-			discourse = read_plain_text_file(INSTRUCTION_FILE_PATH)
+			discourse = read_plain_text_file(ASSISTANT_MICROPHONE_INSTRUCTION_FILE)
 			print(f'\n\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {discourse}\033[{color_code_end}')
 			# TODO: Replace system commands with new libcommbase routines mute and unmute
 			# Mute the microphone before the assistant speaks
@@ -591,7 +591,7 @@ def main():
   		None
 	"""
 	# Global declarations
-	global CONFIG_FILE_PATH, ASCII_FILE_PATH, INSTRUCTION_FILE_PATH, ML_MODEL, MESSAGE_FILE, PREVIOUS_MESSAGE_FILE, MESSAGING_HISTORY_FILE, MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON
+	global CONFIG_FILE_PATH, ASCII_ART_FILE_PATH, ASSISTANT_MICROPHONE_INSTRUCTION_FILE, VOSK_ML_MODEL_DIRECTORY, RESULT_MESSAGE_RECORDING_FILE, PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, RESULT_MESSAGES_HISTORY_FILE, MANAGE_RESULT_MESSAGE_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON
 
 	global CONTROL_TO_STOP_PREVIOUS_COMMAND_PATTERNS_FILE
 	global CONTROL_TO_ACCEPT_CHANGES_PATTERNS_FILE
@@ -624,22 +624,25 @@ def main():
 	global q
 
 	# The path of the env configuration file
-	CONFIG_FILE_PATH = load_config_file()
+	CONFIGURATION_FILE_PATH = load_config_file()
+
+	# Secrets file
+	SECRETS_FILE_PATH = ''
 
 	# The path of the ASCII art file for the avatar
-	ASCII_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'
+	ASCII_ART_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'
 
 	# The path of the instruction file
-	INSTRUCTION_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction'
+	ASSISTANT_MICROPHONE_INSTRUCTION_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction'
 
 	# The path to the ML model
-	ML_MODEL = '$COMMBASE_APP_DIR/bundles/built-in/broker/vosk/model'
-	#print (string.Template(ML_MODEL).substitute(os.environ))
+	VOSK_ML_MODEL_DIRECTORY = '$COMMBASE_APP_DIR/bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph/model'
+	#print (string.Template(VOSK_ML_MODEL_DIRECTORY).substitute(os.environ))
 
 	# Output files
-	MESSAGE_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.message.dat'
-	PREVIOUS_MESSAGE_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.previous_message.dat'
-	MESSAGING_HISTORY_FILE = os.environ["COMMBASE_APP_DIR"] + '/history/.messaging_history'
+	RESULT_MESSAGE_RECORDING_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.message.json'
+	PREVIOUS_RESULT_MESSAGE_RECORDING_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.previous_message.json'
+	RESULT_MESSAGES_HISTORY_FILE = os.environ["COMMBASE_APP_DIR"] + '/history/.messaging_history'
 
 	# Set to True, it outputs current skills error messages or new "custom skills"
 	# error messages in the chat pane or any other pane.
