@@ -640,9 +640,9 @@ def main():
 	#print (string.Template(VOSK_ML_MODEL_DIRECTORY).substitute(os.environ))
 
 	# Output files
-	RESULT_MESSAGE_RECORDING_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.message.json'
-	PREVIOUS_RESULT_MESSAGE_RECORDING_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.previous_message.json'
-	RESULT_MESSAGES_HISTORY_FILE = os.environ["COMMBASE_APP_DIR"] + '/history/.messaging_history'
+	RESULT_MESSAGE_RECORDING_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.result_message.json'
+	PREVIOUS_RESULT_MESSAGE_RECORDING_FILE = os.environ["COMMBASE_APP_DIR"] + '/data/.previous_result_message.json'
+	RESULT_MESSAGES_HISTORY_FILE = os.environ["COMMBASE_APP_DIR"] + '/history/.result_messages_history'
 
 	# Set to True, it outputs current skills error messages or new "custom skills"
 	# error messages in the chat pane or any other pane.
