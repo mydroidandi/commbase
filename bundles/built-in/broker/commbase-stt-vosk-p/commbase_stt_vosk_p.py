@@ -168,7 +168,7 @@ def commbase_stt_vosk_p():
 					with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 						f.write(CONTROL_TO_STOP_PREVIOUS_COMMAND)
 					found_match = True
-					if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+					if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 						# Manage the result message
 						subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -183,7 +183,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ACCEPT_CHANGES)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -198,7 +198,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_DENY_CHANGES)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -213,7 +213,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_ONE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -228,7 +228,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_TWO)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -243,7 +243,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_THREE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -258,7 +258,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_FOUR)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -273,7 +273,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SKIP_QUESTION)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -288,7 +288,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_REQUEST_CURRENT_MODE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -303,7 +303,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_NORMAL_MODE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -318,7 +318,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_CONVERSATIONAL_MODE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -333,7 +333,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_EXPERT_MODE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -348,7 +348,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_FOLLOW_UP_MODE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -361,7 +361,7 @@ def commbase_stt_vosk_p():
 					f.write(trimmed_string)
 				with open(PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 					f.write(trimmed_string)
-				if MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+				if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
 					# Manage the result message
 					subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -591,7 +591,7 @@ def main():
   		None
 	"""
 	# Global declarations
-	global CONFIG_FILE_PATH, ASCII_ART_FILE_PATH, ASSISTANT_MICROPHONE_INSTRUCTION_FILE, VOSK_ML_MODEL_DIRECTORY, RESULT_MESSAGE_RECORDING_FILE, PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, RESULT_MESSAGES_HISTORY_FILE, MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON
+	global CONFIGURATION_FILE_PATH, ASCII_ART_FILE_PATH, ASSISTANT_MICROPHONE_INSTRUCTION_FILE, VOSK_ML_MODEL_DIRECTORY, RESULT_MESSAGE_RECORDING_FILE, PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, RESULT_MESSAGES_HISTORY_FILE, MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON
 
 	global CONTROL_TO_STOP_PREVIOUS_COMMAND_PATTERNS_FILE
 	global CONTROL_TO_ACCEPT_CHANGES_PATTERNS_FILE
@@ -623,12 +623,17 @@ def main():
 
 	global q
 
+	# The path of the env configuration file
+	CONFIGURATION_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
+
+
 	# Set to True, it outputs current skills error messages or new "custom skills"
 	# error messages in the chat pane or any other pane.
-	MANAGE_RESULT_MESSAGE_ON_&_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "False"
+	MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "False"
 
 	# The path of the env configuration file
-	CONFIGURATION_FILE_PATH = load_config_file()
+	'''CONFIGURATION_FILE_PATH = load_config_file()'''
+
 
 	# Secrets file
 	SECRETS_FILE_PATH = ''
