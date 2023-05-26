@@ -131,7 +131,7 @@ route_option() {
 	source $COMMBASE_APP_DIR/src/app;
 
 	# Data processing
-	APP_PROCESS_FILE="$COMMBASE_APP_DIR/skill";
+	APP_PROCESS_FILE="$COMMBASE_APP_DIR/src/skill";
 
 	# First tmux session
 	SESSIONNAME="Commbase-0";
@@ -172,7 +172,9 @@ route_option() {
 		  'stop')
 		    echo "Stopping application" 
 		    sleep 1
+		    pkill -f python
 		    tmux kill-session -t Commbase-0
+		    pkill -f commbase
 				pkill -9 commbase
 				pkill -9 commbase
 				pkill -9 commbase
@@ -192,12 +194,12 @@ route_option() {
 
 			'okay stop' | 'ok stop')
 		    cd $COMMBASE_APP_DIR/data
-		    echo "okay stop" | tee .data.dat > /dev/null
+		    echo "okay stop" | tee .result_message.json > /dev/null
 		    bash $APP_PROCESS_FILE &> /dev/null
 				;;
 		  *)
 		    cd $COMMBASE_APP_DIR/data
-		    echo "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" | tee .data.dat .prev_data.dat > /dev/null
+		    echo "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" | tee .result_message.json .previous_result_message.json > /dev/null
 		    bash $APP_PROCESS_FILE &> /dev/null
 				;;
 		esac

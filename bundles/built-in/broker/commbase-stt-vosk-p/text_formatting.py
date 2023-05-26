@@ -37,6 +37,7 @@
 
 # Requirements
 import os.path
+from config import CONFIG_FILE_PATH
 from functions import load_config_file
 
 
@@ -52,9 +53,6 @@ def get_terminal_colors():
 			tuple or None: A tuple containing the terminal colors, or None, if any
 			of the variables are not found.
 	"""
-	# The path of the env configuration file
-	file_path = load_config_file()
-
 	# Initialize variables for the background colors
 	red_background_color_code_start = None
 	green_background_color_code_start = None
@@ -79,7 +77,7 @@ def get_terminal_colors():
 	color_code_end = None
 
 	# Open the file and read its contents
-	with open(file_path, 'r') as f:
+	with open(CONFIG_FILE_PATH, 'r') as f:
 		for line in f:
 			# Split the line into variable name and value
 			variable_name, value = line.strip().split('=')
@@ -175,9 +173,6 @@ def get_chat_participant_colors():
 			background and text colors in the chat pane, or None, if any of the
 			variables are not found.
 	"""
-	# The path of the env configuration file
-	file_path = load_config_file()
-
 	# Initialize variables for the colors of the chat participants
 	end_user_background_color = None
 	assistant_background_color = None
@@ -187,7 +182,7 @@ def get_chat_participant_colors():
 	system_text_color = None
 
 	# Open the file and read its contents
-	with open(file_path, 'r') as f:
+	with open(CONFIG_FILE_PATH, 'r') as f:
 		for line in f:
 			# Split the line into variable name and value
 			variable_name, value = line.strip().split('=')
@@ -237,14 +232,11 @@ def get_assistant_avatar_color():
 			srt or None: A string containing the assitant avatar color in the chat
 			pane, or None, if the variable is not found.
 	"""
-	# The path of the env configuration file
-	file_path = load_config_file()
-
 	# Initialize variable for the avatar color
 	avatar_color = None
 
 	# Open the file and read its contents
-	with open(file_path, 'r') as f:
+	with open(CONFIG_FILE_PATH, 'r') as f:
 		for line in f:
 			# Split the line into variable name and value
 			variable_name, value = line.strip().split('=')
