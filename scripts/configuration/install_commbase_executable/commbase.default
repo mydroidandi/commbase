@@ -172,7 +172,9 @@ route_option() {
 		  'stop')
 		    echo "Stopping application" 
 		    sleep 1
+		    pkill -f python
 		    tmux kill-session -t Commbase-0
+		    pkill -f commbase
 				pkill -9 commbase
 				pkill -9 commbase
 				pkill -9 commbase
