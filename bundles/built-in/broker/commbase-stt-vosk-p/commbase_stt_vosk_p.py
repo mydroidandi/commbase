@@ -47,6 +47,7 @@ import sys
 import sounddevice as sd
 import vosk
 
+from config import CONFIG_FILE_PATH
 from functions import (
     read_plain_text_file,
     read_lines_from_file,
@@ -591,7 +592,7 @@ def main():
   		None
 	"""
 	# Global declarations
-	global CONFIGURATION_FILE_PATH, ASCII_ART_FILE_PATH, ASSISTANT_MICROPHONE_INSTRUCTION_FILE, VOSK_ML_MODEL_DIRECTORY, RESULT_MESSAGE_RECORDING_FILE, PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, RESULT_MESSAGES_HISTORY_FILE, MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON
+	global ASCII_ART_FILE_PATH, ASSISTANT_MICROPHONE_INSTRUCTION_FILE, VOSK_ML_MODEL_DIRECTORY, RESULT_MESSAGE_RECORDING_FILE, PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, RESULT_MESSAGES_HISTORY_FILE, MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON
 
 	global CONTROL_TO_STOP_PREVIOUS_COMMAND_PATTERNS_FILE
 	global CONTROL_TO_ACCEPT_CHANGES_PATTERNS_FILE
@@ -623,20 +624,12 @@ def main():
 
 	global q
 
-	# The path of the env configuration file
-	CONFIGURATION_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
-
-
 	# Set to True, it outputs current skills error messages or new "custom skills"
 	# error messages in the chat pane or any other pane.
 	MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "False"
 
-	# The path of the env configuration file
-	'''CONFIGURATION_FILE_PATH = load_config_file()'''
-
-
 	# Secrets file
-	SECRETS_FILE_PATH = ''
+	#SECRETS_FILE_PATH =  
 
 	# The path of the ASCII art file for the avatar
 	ASCII_ART_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'

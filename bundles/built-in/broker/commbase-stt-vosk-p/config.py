@@ -29,14 +29,14 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# file_paths.py
-# This file stores functions related to loading and managing file paths.
+# config.py
+# This files makes a variable available throughout the entire Python
+# application, including all modules, submodules, and functions.
 
 # Requirements
-import os.path
-from config import CONFIG_FILE_PATH
+import os
 
-def get_configuration_file_path():
-	"""
-	"""
+# The path to the .env configuration file
+CONFIG_FILE_DIR = os.environ["COMMBASE_APP_DIR"]
+CONFIG_FILE_PATH = os.path.join(CONFIG_FILE_DIR, 'config/app.conf')
 
