@@ -37,6 +37,7 @@
 # Requirements
 import json
 import os.path
+from config import CONFIG_FILE_PATH
 
 
 def read_plain_text_file(file_path):
@@ -201,9 +202,6 @@ def get_chat_participant_names():
 			tuple or None: A tuple containing the assistant, system, and end user
 			names in the chat pane, or None, if any of the variables are not found.
 	"""
-	# The path of the env configuration file
-	CONFIG_FILE_PATH = load_config_file()
-	
 	# Initialize variables for the chat names
 	assistant_name = None
 	system_name = None
@@ -244,9 +242,6 @@ def get_tts_engine_string():
 	    str or None: The TTS engine string if found in the configuration file,
 	    otherwise None.
 	"""
-	# The path of the env configuration file
-	CONFIG_FILE_PATH = load_config_file()
-
 	# Initialize variable for the tts engine string
 	tts_engine_str = None
 
