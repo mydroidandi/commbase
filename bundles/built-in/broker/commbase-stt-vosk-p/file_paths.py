@@ -30,13 +30,74 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # file_paths.py
-# This file stores functions related to loading and managing file paths.
+# This file stores functions related to loading and managing file paths
 
 # Requirements
 import os.path
-from config import CONFIG_FILE_PATH
+from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
 
-def get_configuration_file_path():
+def get_ascii_art_file_path():
 	"""
+	Retrieve the value of the SASCII_ART_FILE_PATH variable from the configuration
+	file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
 	"""
+	# Initialize variable for the tts engine string
+	ascii_art_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'ASCII_ART_FILE_PATH':
+				# Remove the quotes from the value of the variable
+				ascii_art_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if ascii_art_file is not None:
+		return ascii_art_file
+
+	# If the variable was not found, return None
+	return None
+
+
+
+
+
+
+
+
+def get_secrets_file_path():
+	"""
+	Retrieve the value of the SECRETS_FILE_PATH variable from the configuration
+	file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	secrets_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'SECRETS_FILE_PATH':
+				# Remove the quotes from the value of the variable
+				secrets_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if secrets_file is not None:
+		return secrets_file
+
+	# If the variable was not found, return None
+	return None
 
