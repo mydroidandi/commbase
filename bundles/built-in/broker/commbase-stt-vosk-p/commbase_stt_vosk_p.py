@@ -48,6 +48,7 @@ import sounddevice as sd
 import vosk
 
 from config import CONFIG_FILE_PATH
+#from file_paths import ()
 from functions import (
     read_plain_text_file,
     read_lines_from_file,
@@ -57,6 +58,7 @@ from functions import (
     strip_string,
     get_chat_participant_names,
     get_tts_engine_string,
+    get_manage_result_message_on_and_output_skill_errors_in_pane_on,
 )
 from text_formatting import (
     get_terminal_colors,
@@ -169,7 +171,7 @@ def commbase_stt_vosk_p():
 					with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 						f.write(CONTROL_TO_STOP_PREVIOUS_COMMAND)
 					found_match = True
-					if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+					if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 						# Manage the result message
 						subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -184,7 +186,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ACCEPT_CHANGES)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -199,7 +201,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_DENY_CHANGES)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -214,7 +216,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_ONE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -229,7 +231,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_TWO)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -244,7 +246,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_THREE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -259,7 +261,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SELECT_OPTION_NUMBER_FOUR)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -274,7 +276,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_SKIP_QUESTION)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -289,7 +291,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_REQUEST_CURRENT_MODE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -304,7 +306,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_NORMAL_MODE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -319,7 +321,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_CONVERSATIONAL_MODE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -334,7 +336,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_EXPERT_MODE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -349,7 +351,7 @@ def commbase_stt_vosk_p():
 						with open(RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 							f.write(CONTROL_TO_ENTER_FOLLOW_UP_MODE)
 						found_match = True
-						if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -362,7 +364,7 @@ def commbase_stt_vosk_p():
 					f.write(trimmed_string)
 				with open(PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, 'w') as f:
 					f.write(trimmed_string)
-				if MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON == "True":
+				if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 					# Manage the result message
 					subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
@@ -438,26 +440,52 @@ def commbase_stt_vosk_p():
 		with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
 	channels=1, callback=callback):
 
-			# Get colors
-	
-			# Assign the values returned by get_terminal_colors()
+			# Assign functions imported from text_formatting
+
+			# Set the values returned by get_terminal_colors()
 			red_background_color_code_start, green_background_color_code_start, yellow_background_color_code_start, blue_background_color_code_start, magenta_background_color_code_start, cyan_background_color_code_start, white_background_color_code_start, black_background_color_code_start, red_text_color_code_start, green_text_color_code_start, yellow_text_color_code_start, blue_text_color_code_start, magenta_text_color_code_start, cyan_text_color_code_start, white_text_color_code_start, black_text_color_code_start, color_code_end = get_terminal_colors()
 
-			# Assign the values returned by get_chat_participant_colors()
+			# Set the values returned by get_chat_participant_colors()
 			end_user_background_color, assistant_background_color, system_background_color, end_user_text_color, assistant_text_color, system_text_color = get_chat_participant_colors()
 
-			# Assign the values returned by get_assistant_avatar_color()
+			# Set the values returned by get_assistant_avatar_color()
 			avatar_color = get_assistant_avatar_color()
 
-			# Get names and strings
+			# Set the background color for the end user
+			end_user_background_color_start = set_end_user_background_color(end_user_background_color)
 
-			# Assign the values returned by get_chat_participant_names()
-			end_user_name, assistant_name, system_name = get_chat_participant_names()
-			
-			# Assign the values returned by get_tts_engine_string()
+			# Set the background color for the assistant user
+			assistant_background_color_start = set_assistant_user_background_color(assistant_background_color)
+
+			# Set the background color for the system user
+			system_background_color_start = set_system_user_background_color(system_background_color)
+
+			# Set the text color for the end user
+			end_user_text_color_start = set_end_user_text_color(end_user_text_color)
+
+			# Set the text color for the assistant user
+			assistant_text_color_start = set_assistant_user_text_color(assistant_text_color)
+
+			# Set the text color for the system user
+			system_text_color_start = set_system_user_text_color(system_text_color)
+
+			# Set the color of the assistant's avatar
+			avatar_color_start = set_assistant_avatar_color(avatar_color)
+
+			# Assign functions imported from functions
+
+			# Set the values returned by get_tts_engine_string()
 			tts_engine_str = get_tts_engine_string()
 
-			# Preload all the engine pattern files
+			# Set the values returned by get_chat_participant_names()
+			end_user_name, assistant_name, system_name = get_chat_participant_names()
+
+			# Set the value of manage_result_message_on_and_output_skill_errors_in_pane_on
+			manage_result_message_on_and_output_skill_errors_in_pane_on =  get_manage_result_message_on_and_output_skill_errors_in_pane_on()
+ 
+
+
+			# Preload all the control pattern files
 
 			# CONTROL_TO_STOP_PREVIOUS_COMMAND
 			# Load the patterns file and store its content in a variable
@@ -510,29 +538,6 @@ def commbase_stt_vosk_p():
 			#	CONTROL_TO_ENTER_FOLLOW_UP_MODE
 			# Load the patterns file and store its content in a variable
 			control_to_enter_follow_up_mode_patterns = read_plain_text_file(CONTROL_TO_ENTER_FOLLOW_UP_MODE_PATTERNS_FILE)
-
-			# Set colors
-
-			# Set the background color for the end user
-			end_user_background_color_start = set_end_user_background_color(end_user_background_color)
-
-			# Set the background color for the assistant user
-			assistant_background_color_start = set_assistant_user_background_color(assistant_background_color)
-
-			# Set the background color for the system user
-			system_background_color_start = set_system_user_background_color(system_background_color)
-
-			# Set the text color for the end user
-			end_user_text_color_start = set_end_user_text_color(end_user_text_color)
-
-			# Set the text color for the assistant user
-			assistant_text_color_start = set_assistant_user_text_color(assistant_text_color)
-
-			# Set the text color for the system user
-			system_text_color_start = set_system_user_text_color(system_text_color)
-
-			# Set the color of the assistant's avatar
-			avatar_color_start = set_assistant_avatar_color(avatar_color)
 
 			# Show avatar
 
@@ -592,7 +597,7 @@ def main():
   		None
 	"""
 	# Global declarations
-	global ASCII_ART_FILE_PATH, ASSISTANT_MICROPHONE_INSTRUCTION_FILE, VOSK_ML_MODEL_DIRECTORY, RESULT_MESSAGE_RECORDING_FILE, PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, RESULT_MESSAGES_HISTORY_FILE, MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON
+	global ASCII_ART_FILE_PATH, ASSISTANT_MICROPHONE_INSTRUCTION_FILE, VOSK_ML_MODEL_DIRECTORY, RESULT_MESSAGE_RECORDING_FILE, PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, RESULT_MESSAGES_HISTORY_FILE
 
 	global CONTROL_TO_STOP_PREVIOUS_COMMAND_PATTERNS_FILE
 	global CONTROL_TO_ACCEPT_CHANGES_PATTERNS_FILE
@@ -623,10 +628,6 @@ def main():
 	global CONTROL_TO_ENTER_FOLLOW_UP_MODE
 
 	global q
-
-	# Set to True, it outputs current skills error messages or new "custom skills"
-	# error messages in the chat pane or any other pane.
-	MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON = "False"
 
 	# Secrets file
 	#SECRETS_FILE_PATH =  
