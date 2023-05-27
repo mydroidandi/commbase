@@ -263,3 +263,34 @@ def get_tts_engine_string():
 	# If the variable was not found, return None
 	return None
 
+
+def get_manage_result_message_on_and_output_skill_errors_in_pane_on():
+	"""
+	Retrieve the value of the 
+	MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON variable from the
+	configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	true_or_false_str = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON':
+				# Remove the quotes from the value of the variable
+				true_or_false_str = value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if true_or_false_str is not None:
+		return true_or_false_str 
+
+	# If the variable was not found, return None
+	return None
+

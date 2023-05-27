@@ -172,10 +172,12 @@ route_option() {
 		  'stop')
 		    echo "Stopping application" 
 		    sleep 1
+		    # In this block, "pkill -f" the processes of the scripts that do not
+		    # respond to the interrupt signal or appear to duplicate once the
+		    # program stops and exits.
+		    pkill -f $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py
 		    #pkill -f python  # This will kill all the running 'python' processes
-		    # Deactivate the virtual environment is effective and keeps alive
-		    # any Python process out of the virtual environment.
-		    conda deactivate
+		    conda deactivate  # This is redundant
 		    tmux kill-session -t Commbase-0
 		    pkill -f commbase
 				exit 99
