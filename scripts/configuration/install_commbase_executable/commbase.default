@@ -172,9 +172,9 @@ route_option() {
 		  'stop')
 		    echo "Stopping application" 
 		    sleep 1
-		    #pkill -f python	# This will kill all the running 'python' processes
+		    #pkill -f python  # This will kill all the running 'python' processes
 		    # Deactivate the virtual environment is effective and keeps alive
-		    # any python process out of the virtual environment.
+		    # any Python process out of the virtual environment.
 		    conda deactivate
 		    tmux kill-session -t Commbase-0
 		    pkill -f commbase
