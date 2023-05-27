@@ -52,7 +52,6 @@ from config import CONFIG_FILE_PATH
 from functions import (
     read_plain_text_file,
     read_lines_from_file,
-    load_config_file,
     int_or_str,
     find_text,
     strip_string,
