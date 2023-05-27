@@ -166,6 +166,14 @@ From those alternatives, we recommend installing Python using the third option, 
 
 4. You do not need to edit the file config/app.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version that Commbase is going to use.
 
+5. You can finish the Python process when it does not respond to the interrupt signal or appears to duplicate, much better than you do with a single Python installation. The reason is that depending on your Python installation, all the applications running with Python end up linked to a single Python process, "python"; if you kill it, you kill all the applications. By deactivating a Python virtual environment like the Anaconda Python environment, you kill only the "python" process and its children without touching any other Python program outside the environment. In the section "Set up the Commbase executable" in this document you install the commbase executable in /usr/bin/. If you are not going to run Commbase inside a virtual environment and require killing Python or any other runtime when Commbase stops, edit the file with your favorite text editor. You can use a command like:
+
+$ sudo nano /usr/bin/commbase
+
+Specifically for Python, the line to kill Python inside the case to stop the application would look like this:
+
+		    pkill -f python  # This will kill all the running 'python' processes
+
 In case you do not have Anaconda Python in your system but still want to use it to run Commbase, you can install Anaconda Python and then read the section "Install Python in an Anaconda Python environment" to choose if you are going to create any Anaconda Python Commbase environment such as "commbase_env" yourself or build it later on as it is shown in the section "Build the Commbase Conda environment a from YAML file".
 
 The installation of Anaconda Python is beyond the scope of this documentation. For information on how to install Anaconda Python in your operating system, visit:
