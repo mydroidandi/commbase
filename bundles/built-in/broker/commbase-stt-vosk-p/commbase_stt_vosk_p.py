@@ -48,7 +48,10 @@ import sounddevice as sd
 import vosk
 
 from config import CONFIG_FILE_PATH
-#from file_paths import ()
+from file_paths import (
+		get_ascii_art_file_path,
+		get_secrets_file_path,
+)
 from functions import (
     read_plain_text_file,
     read_lines_from_file,
@@ -130,7 +133,7 @@ def commbase_stt_vosk_p():
 			"""
 			# Load an ASCII art file, store its content in a variable, and then print it
 			# in a specific color using terminal escape sequences.
-			assistant_avatar = read_plain_text_file(ASCII_ART_FILE_PATH)
+			assistant_avatar = read_plain_text_file(ascii_art_file_path)
 			print(f'\033[{avatar_color_start}\033[{assistant_avatar}\033[{color_code_end}')
 
 
@@ -438,7 +441,6 @@ def commbase_stt_vosk_p():
 
 		with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
 	channels=1, callback=callback):
-
 			# Assign functions imported from text_formatting
 
 			# Set the values returned by get_terminal_colors()
@@ -482,8 +484,20 @@ def commbase_stt_vosk_p():
 			# Set the value of manage_result_message_on_and_output_skill_errors_in_pane_on
 			manage_result_message_on_and_output_skill_errors_in_pane_on =  get_manage_result_message_on_and_output_skill_errors_in_pane_on()
  
+			# Assign functions imported from from file_paths
 
-
+			# Set the values returned by get_ascii_art_file_path()
+			ascii_art_file_path = get_ascii_art_file_path()
+			
+			
+			
+			
+			# Set the values returned by get_secrets_file_path()
+			secrets_file_path = get_secrets_file_path()
+			
+			
+			
+			
 			# Preload all the control pattern files
 
 			# CONTROL_TO_STOP_PREVIOUS_COMMAND
@@ -596,7 +610,7 @@ def main():
   		None
 	"""
 	# Global declarations
-	global ASCII_ART_FILE_PATH, ASSISTANT_MICROPHONE_INSTRUCTION_FILE, VOSK_ML_MODEL_DIRECTORY, RESULT_MESSAGE_RECORDING_FILE, PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, RESULT_MESSAGES_HISTORY_FILE
+	global ASSISTANT_MICROPHONE_INSTRUCTION_FILE, VOSK_ML_MODEL_DIRECTORY, RESULT_MESSAGE_RECORDING_FILE, PREVIOUS_RESULT_MESSAGE_RECORDING_FILE, RESULT_MESSAGES_HISTORY_FILE
 
 	global CONTROL_TO_STOP_PREVIOUS_COMMAND_PATTERNS_FILE
 	global CONTROL_TO_ACCEPT_CHANGES_PATTERNS_FILE
@@ -627,12 +641,6 @@ def main():
 	global CONTROL_TO_ENTER_FOLLOW_UP_MODE
 
 	global q
-
-	# Secrets file
-	#SECRETS_FILE_PATH =  
-
-	# The path of the ASCII art file for the avatar
-	ASCII_ART_FILE_PATH = os.environ["COMMBASE_APP_DIR"] + '/assets/ascii/avatar.asc'
 
 	# The path of the instruction file
 	ASSISTANT_MICROPHONE_INSTRUCTION_FILE = os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction'

@@ -34,13 +34,18 @@
 
 # Requirements
 import os.path
-from config import CONFIG_FILE_PATH
+from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
 
-def get_manage_result_message_on_and_output_skill_errors_in_pane_on():
+def get_ascii_art_file_path():
 	"""
+	Retrieve the value of the SASCII_ART_FILE_PATH variable from the configuration
+	file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
 	"""
 	# Initialize variable for the tts engine string
-	true_or_false_string = None
+	ascii_art_file = None
 
 	# Open the file and read its contents
 	with open(CONFIG_FILE_PATH, 'r') as f:
@@ -49,13 +54,49 @@ def get_manage_result_message_on_and_output_skill_errors_in_pane_on():
 			variable_name, value = line.strip().split('=')
 
 			# Check if the variable we are looking for exists in the line
-			if variable_name == 'MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON':
+			if variable_name == 'ASCII_ART_FILE_PATH':
 				# Remove the quotes from the value of the variable
-				true_or_false_string = value.strip()[1:-1]
+				ascii_art_file = CONFIG_FILE_DIR + value.strip()[1:-1]
 				
 	# Check if the variable was found
-	if true_or_false_string_str is not None:
-		return true_or_false_string 
+	if ascii_art_file is not None:
+		return ascii_art_file
+
+	# If the variable was not found, return None
+	return None
+
+
+
+
+
+
+
+
+def get_secrets_file_path():
+	"""
+	Retrieve the value of the SECRETS_FILE_PATH variable from the configuration
+	file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	secrets_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'SECRETS_FILE_PATH':
+				# Remove the quotes from the value of the variable
+				secrets_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if secrets_file is not None:
+		return secrets_file
 
 	# If the variable was not found, return None
 	return None
