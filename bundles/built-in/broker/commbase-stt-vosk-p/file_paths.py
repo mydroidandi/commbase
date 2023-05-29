@@ -36,6 +36,67 @@
 import os.path
 from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
 
+
+def get_vosk_ml_model_directory():
+	"""
+	Retrieve the directory path of the Vosk ML model from the configuration file.
+
+	Returns:
+		  str or None: The directory path of the Vosk ML model if found, or None if
+			not found.
+	"""
+	# Initialize variable for the tts engine string
+	model_directory = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'VOSK_ML_MODEL_DIRECTORY':
+				# Remove the quotes from the value of the variable
+				model_directory = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if model_directory is not None:
+		return model_directory
+
+	# If the variable was not found, return None
+	return None
+
+
+def get_secrets_file_path():
+	"""
+	Retrieve the value of the SECRETS_FILE_PATH variable from the configuration
+	file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	secrets_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'SECRETS_FILE_PATH':
+				# Remove the quotes from the value of the variable
+				secrets_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if secrets_file is not None:
+		return secrets_file
+
+	# If the variable was not found, return None
+	return None
+
+
 def get_ascii_art_file_path():
 	"""
 	Retrieve the value of the SASCII_ART_FILE_PATH variable from the configuration
@@ -67,21 +128,16 @@ def get_ascii_art_file_path():
 
 
 
-
-
-
-
-
-def get_secrets_file_path():
+def get_assistant_microphone_instruction_file():
 	"""
-	Retrieve the value of the SECRETS_FILE_PATH variable from the configuration
-	file.
+	Retrieve the value of the SASSISTANT_MICROPHONE_INSTRUCTION_FILE variable from
+	the configuration file.
 
 	Returns:
 		  str or None: The value of the variable if found, or None if not found.
 	"""
 	# Initialize variable for the tts engine string
-	secrets_file = None
+	instruction_file = None
 
 	# Open the file and read its contents
 	with open(CONFIG_FILE_PATH, 'r') as f:
@@ -90,13 +146,493 @@ def get_secrets_file_path():
 			variable_name, value = line.strip().split('=')
 
 			# Check if the variable we are looking for exists in the line
-			if variable_name == 'SECRETS_FILE_PATH':
+			if variable_name == 'ASSISTANT_MICROPHONE_INSTRUCTION_FILE':
 				# Remove the quotes from the value of the variable
-				secrets_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				instruction_file = CONFIG_FILE_DIR + value.strip()[1:-1]
 				
 	# Check if the variable was found
-	if secrets_file is not None:
-		return secrets_file
+	if instruction_file is not None:
+		return instruction_file
+
+	# If the variable was not found, return None
+	return None
+
+
+def get_result_message_recording_file():
+	"""
+	Retrieve the value of the SRESULT_MESSAGE_RECORDING_FILE variable from the
+	configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	recording_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'RESULT_MESSAGE_RECORDING_FILE':
+				# Remove the quotes from the value of the variable
+				recording_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if recording_file is not None:
+		return recording_file
+
+	# If the variable was not found, return None
+	return None
+
+
+def get_previous_result_message_recording_file():
+	"""
+	Retrieve the value of the SPREVIOUS_RESULT_MESSAGE_RECORDING_FILE variable
+	from the configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	recording_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'PREVIOUS_RESULT_MESSAGE_RECORDING_FILE':
+				# Remove the quotes from the value of the variable
+				recording_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if recording_file is not None:
+		return recording_file
+
+	# If the variable was not found, return None
+	return None
+
+
+def get_result_messages_history_file():
+	"""
+	Retrieve the value of the SRESULT_MESSAGES_HISTORY_FILE variable from the
+	configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	history_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'RESULT_MESSAGES_HISTORY_FILE':
+				# Remove the quotes from the value of the variable
+				history_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if history_file is not None:
+		return history_file
+
+	# If the variable was not found, return None
+	return None
+
+
+def get_control_stop_previous_command_patterns_file():
+	"""
+		Retrieve the value of the SCONTROL_STOP_PREVIOUS_COMMAND_PATTERNS_FILE from
+		the configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_STOP_PREVIOUS_COMMAND_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+
+
+def get_control_accept_changes_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_ACCEPT_CHANGES_PATTERNS_FILE from the
+	configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_ACCEPT_CHANGES_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+	
+
+def get_control_deny_changes_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_DENY_CHANGES_PATTERNS_FILE from the
+	configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_DENY_CHANGES_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+	
+
+def get_control_select_option_number_one_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE from
+	the configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+	
+
+def get_control_select_option_number_two_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE from
+	the configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+	
+
+def get_control_select_option_number_three_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_SELECT_OPTION_NUMBER_THREE_PATTERNS_FILE
+	from the configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_SELECT_OPTION_NUMBER_THREE_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+	
+
+def get_control_select_option_number_four_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_SELECT_OPTION_NUMBER_FOUR_PATTERNS_FILE
+	from the configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_SELECT_OPTION_NUMBER_FOUR_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+	
+
+def get_control_skip_question_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_SKIP_QUESTION_PATTERNS_FILE from the
+	configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_SKIP_QUESTION_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+	
+
+def get_control_request_the_current_mode_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_REQUEST_THE_CURRENT_MODE_PATTERNS_FILE from
+	the configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_REQUEST_THE_CURRENT_MODE_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+	
+
+def get_control_enter_the_normal_mode_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_ENTER_THE_NORMAL_MODE_PATTERNS_FILE from
+	the configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_ENTER_THE_NORMAL_MODE_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+	
+
+def get_control_enter_the_conversational_mode_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE
+	from the configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+
+
+def get_control_enter_the_expert_mode_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_ENTER_THE_EXPERT_MODE_PATTERNS_FILE from
+	the configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_ENTER_THE_EXPERT_MODE_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
+
+	# If the variable was not found, return None
+	return None
+	
+
+def get_control_enter_the_follow_up_mode_patterns_file():
+	"""
+	Retrieve the value of the SCONTROL_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE from
+	the configuration file.
+
+	Returns:
+		  str or None: The value of the variable if found, or None if not found.
+	"""
+	# Initialize variable for the tts engine string
+	patterns_file = None
+
+	# Open the file and read its contents
+	with open(CONFIG_FILE_PATH, 'r') as f:
+		for line in f:
+			# Split the line into variable name and value
+			variable_name, value = line.strip().split('=')
+
+			# Check if the variable we are looking for exists in the line
+			if variable_name == 'CONTROL_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE':
+				# Remove the quotes from the value of the variable
+				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+				
+	# Check if the variable was found
+	if patterns_file is not None:
+		return patterns_file
 
 	# If the variable was not found, return None
 	return None
