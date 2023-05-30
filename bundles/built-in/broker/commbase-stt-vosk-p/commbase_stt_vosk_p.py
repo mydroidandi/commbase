@@ -406,7 +406,7 @@ def commbase_stt_vosk_p():
 			# Set the value of manage_result_message_on_and_output_skill_errors_in_pane_on
 			manage_result_message_on_and_output_skill_errors_in_pane_on =  get_manage_result_message_on_and_output_skill_errors_in_pane_on()
 
-			# Assign functions imported from from file_paths
+			# Assign functions imported from file_paths
 
 			# Set the values returned by get_secrets_file_path()
 			secrets_file_path = get_secrets_file_path()
@@ -578,7 +578,7 @@ def main():
 	Returns:
   		None
 	"""
-	# Global declararions
+	# Global declarations
 	global q
 
 	# Call commbase_stt_vosk_p
