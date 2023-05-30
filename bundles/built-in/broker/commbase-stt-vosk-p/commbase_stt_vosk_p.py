@@ -96,15 +96,15 @@ from text_formatting import (
 
 def commbase_stt_vosk_p():
 	"""
-	Takes audio input, processes it, and outputs the recognized text. The 
-	recognized text is then cleaned up, and saved in file(s).
+	Takes audio input, processes it, and outputs the recognized text. The
+    recognized text is then cleaned up, and saved in file(s).
 	"""
 	# Assign the result of calling get_vosk_ml_model_directory()
 	vosk_ml_model_directory = get_vosk_ml_model_directory()
-	
-	# Ccontrol messages
-	# To change a terminal control command or a voice control command do not do
-	# that here; use its patterns file instead
+
+	# Define control messages
+	# To change a control command do not do that here; use its patterns file
+	# instead
 	CONTROL_STOP_PREVIOUS_COMMAND = "okay stop"
 	CONTROL_ACCEPT_CHANGES = "okay accept"
 	CONTROL_DENY_CHANGES = "okay deny"
@@ -173,8 +173,8 @@ def commbase_stt_vosk_p():
 					>>> display_assistant_avatar()
 					[COLOR CODES] ASCII ART [RESET]
 			"""
-			# Load an ASCII art file, store its content in a variable, and then print it
-			# in a specific color using terminal escape sequences.
+			# Load an ASCII art file, store its content in a variable, and then print
+			# it in a specific color using terminal escape sequences.
 			assistant_avatar = read_plain_text_file(ascii_art_file_path)
 			print(f'\033[{avatar_color_start}\033[{assistant_avatar}\033[{color_code_end}')
 
@@ -191,226 +191,98 @@ def commbase_stt_vosk_p():
 		"""
 		# The original result
 		string = rec.Result()
-		
+
 		# The modified result
 		trimmed_string = strip_string(string)
 
-		# TODO: Rewrite the code to parse the patterns files and match their results and trimmed_string
-		# The control signal and END USER message matching
+		# Define the control messages dictionary
+		control_dictionary = {
+			'CONTROL_STOP_PREVIOUS_COMMAND': {
+					'patterns': control_stop_previous_command_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_STOP_PREVIOUS_COMMAND}" for processing.'
+			},
+			'CONTROL_ACCEPT_CHANGES': {
+					'patterns': control_accept_changes_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ACCEPT_CHANGES}" for processing.'
+			},
+			'CONTROL_DENY_CHANGES': {
+					'patterns': control_deny_changes_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_DENY_CHANGES}" for processing.'
+			},
+			'CONTROL_SELECT_OPTION_NUMBER_ONE': {
+					'patterns': control_select_option_number_one_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_ONE}" for processing.'
+			},
+			'CONTROL_SELECT_OPTION_NUMBER_TWO': {
+					'patterns': control_select_option_number_two_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_TWO}" for processing.'
+			},
+			'CONTROL_SELECT_OPTION_NUMBER_THREE': {
+					'patterns': control_select_option_number_three_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_THREE}" for processing.'
+			},
+			'CONTROL_SELECT_OPTION_NUMBER_FOUR': {
+					'patterns': control_select_option_number_four_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_FOUR}" for processing.'
+			},
+			'CONTROL_SKIP_QUESTION': {
+					'patterns': control_skip_question_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SKIP_QUESTION}" for processing.'
+			},
+			'CONTROL_REQUEST_THE_CURRENT_MODE': {
+					'patterns': control_request_the_current_mode_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_REQUEST_THE_CURRENT_MODE}" for processing.'
+			},
+			'CONTROL_ENTER_THE_NORMAL_MODE': {
+					'patterns': control_enter_the_normal_mode_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_NORMAL_MODE}" for processing.'
+			},
+			'CONTROL_ENTER_THE_CONVERSATIONAL_MODE': {
+					'patterns': control_enter_the_conversational_mode_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_CONVERSATIONAL_MODE}" for processing.'
+			},
+			'CONTROL_ENTER_THE_EXPERT_MODE': {
+					'patterns': control_enter_the_expert_mode_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_EXPERT_MODE}" for processing.'
+			},
+			'CONTROL_ENTER_THE_FOLLOW_UP_MODE': {
+					'patterns': control_enter_the_follow_up_mode_patterns,
+					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_FOLLOW_UP_MODE}" for processing.'
+			}
+		}
+
+		# The control message and END USER message matching
 		found_match = False
 
 		if trimmed_string != '':
-			# Print the END USER user message in the chat pane
-			print(f'\033[{end_user_background_color_start}\033[{end_user_text_color_start}{end_user_name}:\033[{color_code_end}\033[{color_code_end}\033[{end_user_text_color_start} {trimmed_string}.\033[{color_code_end}')
+			# Check if the trimmed_string is not empty
+			for control, info in control_dictionary.items():
+				patterns = info['patterns']  # Get the patterns for the current control
+				message = info['message']  # Get the message for the current control
 
-			# Attempt to match the END USER user message and the existent control
-			# signals.
-
-			# CONTROL_STOP_PREVIOUS_COMMAND
-			for line in control_stop_previous_command_patterns:
-				# If END USER message matches the control signal, print an ASSISTANT
-				# message with the corrected version of the user's message.
-				if trimmed_string == line.strip():
-					print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_STOP_PREVIOUS_COMMAND}" for processing.\033[{color_code_end}')
-					found_match = True
-					# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-					with open(result_message_recording_file, 'w') as f:
-						f.write(CONTROL_STOP_PREVIOUS_COMMAND)
-						
-					if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-						# Manage the result message
-						subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			print("1:", found_match)
-			# CONTROL_ACCEPT_CHANGES
-			if not found_match:
-				for line in control_accept_changes_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
+				for line in patterns:
 					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_ACCEPT_CHANGES}" for processing.\033[{color_code_end}')
-						found_match = True
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
+						# If a match is found, print the message and record the control
+						# message
+						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {message}\033[{color_code_end}')
+						# Record the control message string to result_message_recording_file
 						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_ACCEPT_CHANGES)
-							
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			print("2:", found_match)
-			#	CONTROL_DENY_CHANGES
-			if not found_match:
-				for line in control_deny_changes_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_DENY_CHANGES}" for processing.\033[{color_code_end}')
-						found_match = True
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_DENY_CHANGES)
-							
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			print("3:", found_match)
-			# CONTROL_SELECT_OPTION_NUMBER_ONE
-			if not found_match:
-				for line in control_select_option_number_one_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_ONE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_SELECT_OPTION_NUMBER_ONE)
+							f.write(control)
 						found_match = True
 						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
 							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+						break  # Exit the inner loop if a match is found
 
-			# CONTROL_SELECT_OPTION_NUMBER_TWO
-			if not found_match:
-				for line in control_select_option_number_two_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_TWO}" for processing.\033[{color_code_end}')
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_SELECT_OPTION_NUMBER_TWO)
-						found_match = True
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+				if found_match:
+					break  # Exit the outer loop if a match is found
 
-			# CONTROL_SELECT_OPTION_NUMBER_THREE
+			# Handle the case when no match is found
 			if not found_match:
-				for line in control_select_option_number_three_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_THREE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_SELECT_OPTION_NUMBER_THREE)
-						found_match = True
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			# CONTROL_SELECT_OPTION_NUMBER_FOUR
-			if not found_match:
-				for line in control_select_option_number_four_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_FOUR}" for processing.\033[{color_code_end}')
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_SELECT_OPTION_NUMBER_FOUR)
-						found_match = True
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			# CONTROL_SKIP_QUESTION
-			if not found_match:
-				for line in control_skip_question_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_SKIP_QUESTION}" for processing.\033[{color_code_end}')
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_SKIP_QUESTION)
-						found_match = True
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			# CONTROL_REQUEST_THE_CURRENT_MODE
-			if not found_match:
-				for line in control_request_the_current_mode_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_REQUEST_THE_CURRENT_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_REQUEST_THE_CURRENT_MODE)
-						found_match = True
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			# CONTROL_ENTER_THE_NORMAL_MODE
-			if not found_match:
-				for line in control_enter_the_normal_mode_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_NORMAL_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_ENTER_THE_NORMAL_MODE)
-						found_match = True
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			# CONTROL_ENTER_THE_CONVERSATIONAL_MODE
-			if not found_match:
-				for line in control_enter_the_conversational_mode_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_CONVERSATIONAL_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_ENTER_THE_CONVERSATIONAL_MODE)
-						found_match = True
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			# CONTROL_ENTER_THE_EXPERT_MODE
-			if not found_match:
-				for line in control_enter_the_expert_mode_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_EXPERT_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_ENTER_THE_EXPERT_MODE)
-						found_match = True
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			# CONTROL_ENTER_THE_FOLLOW_UP_MODE
-			if not found_match:
-				for line in control_enter_the_follow_up_mode_patterns:
-					# If END USER message matches the control signal, print an ASSISTANT
-					# message with the corrected version of the user's message.
-					if trimmed_string == line.strip():
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_FOLLOW_UP_MODE}" for processing.\033[{color_code_end}')
-						# Record the control signal string to RESULT_MESSAGE_RECORDING_FILE
-						with open(result_message_recording_file, 'w') as f:
-							f.write(CONTROL_ENTER_THE_FOLLOW_UP_MODE)
-						found_match = True
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-
-			# Fallback to dispatch the message as it was originally
-			if not found_match:
-				# Record a normal END USER message instead of a control signal message
+				# Record a normal END USER message instead of a control message
 				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" for processing.\033[{color_code_end}')
-				# Record the trimmed_string data to RESULT_MESSAGE_RECORDING_FILE and PREVIOUS_RESULT_MESSAGE_RECORDING_FILE
+				# Record the trimmed_string data to result_message_recording_file and
+				# previous_result_message_recording_file
 				with open(result_message_recording_file, 'w') as f:
 					f.write(trimmed_string)
 				with open(previous_result_message_recording_file, 'w') as f:
@@ -534,7 +406,6 @@ def commbase_stt_vosk_p():
 			# Set the value of manage_result_message_on_and_output_skill_errors_in_pane_on
 			manage_result_message_on_and_output_skill_errors_in_pane_on =  get_manage_result_message_on_and_output_skill_errors_in_pane_on()
 
- 
 			# Assign functions imported from from file_paths
 
 			# Set the values returned by get_secrets_file_path()
@@ -545,7 +416,7 @@ def commbase_stt_vosk_p():
 
 			# Set the values returned by get_assistant_microphone_instruction_file()
 			assistant_microphone_instruction_file = get_assistant_microphone_instruction_file()
-			
+
 			# Set the values returned by get_result_message_recording_file()
 			result_message_recording_file = get_result_message_recording_file()
 
@@ -566,28 +437,28 @@ def commbase_stt_vosk_p():
 
 			# Set the values returned by get_control_select_option_number_one_patterns_file()
 			control_select_option_number_one_patterns_file = get_control_select_option_number_one_patterns_file()
-						
+
 			# Set the values returned by get_control_select_option_number_two_patterns_file()
 			control_select_option_number_two_patterns_file = get_control_select_option_number_two_patterns_file()
 
 			# Set the values returned by get_control_select_option_number_three_patterns_file()
 			control_select_option_number_three_patterns_file = get_control_select_option_number_three_patterns_file()
-									
+
 			# Set the values returned by get_control_select_option_number_four_patterns_file()
 			control_select_option_number_four_patterns_file = get_control_select_option_number_four_patterns_file()
-			
+
 			# Set the values returned by get_control_skip_question_patterns_file()
 			control_skip_question_patterns_file = get_control_skip_question_patterns_file()
 
 			# Set the values returned by get_control_request_the_current_mode_patterns_file()
 			control_request_the_current_mode_patterns_file = get_control_request_the_current_mode_patterns_file()
-									
+
 			# Set the values returned by get_control_enter_the_normal_mode()
 			control_enter_the_normal_mode_patterns_file = get_control_enter_the_normal_mode_patterns_file()
-			
+
 			# Set the values returned by get_control_enter_the_conversational_mode_patterns_file()
 			control_enter_the_conversational_mode_patterns_file = get_control_enter_the_conversational_mode_patterns_file()
-			
+
 			# Set the values returned by get_control_enter_the_expert_mode_patterns_file()
 			control_enter_the_expert_mode_patterns_file = get_control_enter_the_expert_mode_patterns_file()
 
@@ -606,47 +477,47 @@ def commbase_stt_vosk_p():
 
 			#	CONTROL_DENY_CHANGES
 			# Load the control patterns file and store its content in a variable
-			control_deny_changes_patterns = read_plain_text_file(control_deny_changes_patterns_file)
+			control_deny_changes_patterns = read_lines_from_file(control_deny_changes_patterns_file)
 
 			#	CONTROL_SELECT_OPTION_NUMBER_ONE
 			# Load the control patterns file and store its content in a variable
-			control_select_option_number_one_patterns = read_plain_text_file(control_select_option_number_one_patterns_file)
+			control_select_option_number_one_patterns = read_lines_from_file(control_select_option_number_one_patterns_file)
 
 			#	CONTROL_SELECT_OPTION_NUMBER_TWO
 			# Load the control patterns file and store its content in a variable
-			control_select_option_number_two_patterns = read_plain_text_file(control_select_option_number_two_patterns_file)
+			control_select_option_number_two_patterns = read_lines_from_file(control_select_option_number_two_patterns_file)
 
 			#	CONTROL_SELECT_OPTION_NUMBER_THREE
 			# Load the patterns file and store its content in a variable
-			control_select_option_number_three_patterns = read_plain_text_file(control_select_option_number_three_patterns_file)
+			control_select_option_number_three_patterns = read_lines_from_file(control_select_option_number_three_patterns_file)
 
 			#	CONTROL_SELECT_OPTION_NUMBER_FOUR
 			# Load the control patterns file and store its content in a variable
-			control_select_option_number_four_patterns = read_plain_text_file(control_select_option_number_four_patterns_file)
+			control_select_option_number_four_patterns = read_lines_from_file(control_select_option_number_four_patterns_file)
 
 			#	CONTROL_SKIP_QUESTION
 			# Load the control patterns file and store its content in a variable
-			control_skip_question_patterns = read_plain_text_file(control_skip_question_patterns_file)
+			control_skip_question_patterns = read_lines_from_file(control_skip_question_patterns_file)
 
 			#	CONTROL_REQUEST_THE_CURRENT_MODE
 			# Load the control patterns file and store its content in a variable
-			control_request_the_current_mode_patterns = read_plain_text_file(control_request_the_current_mode_patterns_file)
+			control_request_the_current_mode_patterns = read_lines_from_file(control_request_the_current_mode_patterns_file)
 
 			#	CONTROL_ENTER_THE_NORMAL_MODE
 			# Load the control patterns file and store its content in a variable
-			control_enter_the_normal_mode_patterns = read_plain_text_file(control_enter_the_normal_mode_patterns_file)
+			control_enter_the_normal_mode_patterns = read_lines_from_file(control_enter_the_normal_mode_patterns_file)
 
 			#	CONTROL_ENTER_THE_CONVERSATIONAL_MODE
-			# Load the control patterns file and store its content in a variable
-			control_enter_the_conversational_mode_patterns = read_plain_text_file(control_enter_the_conversational_mode_patterns_file)
+
+			control_enter_the_conversational_mode_patterns = read_lines_from_file(control_enter_the_conversational_mode_patterns_file)
 
 			#	CONTROL_ENTER_THE_EXPERT_MODE
 			# Load the control patterns file and store its content in a variable
-			control_enter_the_expert_mode_patterns = read_plain_text_file(control_enter_the_expert_mode_patterns_file)
+			control_enter_the_expert_mode_patterns = read_lines_from_file(control_enter_the_expert_mode_patterns_file)
 
 			#	CONTROL_ENTER_THE_FOLLOW_UP_MODE
 			# Load the control patterns file and store its content in a variable
-			control_enter_the_follow_up_mode_patterns = read_plain_text_file(control_enter_the_follow_up_mode_patterns_file)
+			control_enter_the_follow_up_mode_patterns = read_lines_from_file(control_enter_the_follow_up_mode_patterns_file)
 
 
 			# Show avatar
@@ -672,13 +543,13 @@ def commbase_stt_vosk_p():
 			rec = vosk.KaldiRecognizer(model, args.samplerate)
 
 			while True:
-			  data = q.get()
-			  if rec.AcceptWaveform(data):
-			    print_result()
-			  #else:
-			    #print(rec.PartialResult())
-			  if dump_fn is not None:
-			    dump_fn.write(data)
+				data = q.get()
+				if rec.AcceptWaveform(data):
+					print_result()
+				#else
+					#print(rec.PartialResult())
+				if dump_fn is not None:
+					dump_fn.write(data)
 
 
 	except KeyboardInterrupt:
@@ -695,7 +566,7 @@ def main():
 	This function serves as the entry point for the program. It is responsible for
 	initiating the execution of the program and coordinating the different
 	components or functions within it.
-	
+
 	Usage:
     - Ensure that all required dependencies are installed before running this
     program.
@@ -707,25 +578,12 @@ def main():
 	Returns:
   		None
 	"""
-	global CONTROL_STOP_PREVIOUS_COMMAND
-	global CONTROL_ACCEPT_CHANGES
-	global CONTROL_DENY_CHANGES
-	global CONTROL_SELECT_OPTION_NUMBER_ONE
-	global CONTROL_SELECT_OPTION_NUMBER_TWO
-	global CONTROL_SELECT_OPTION_NUMBER_THREE
-	global CONTROL_SELECT_OPTION_NUMBER_FOUR
-	global CONTROL_SKIP_QUESTION
-	global CONTROL_REQUEST_THE_CURRENT_MODE
-	global CONTROL_ENTER_THE_NORMAL_MODE
-	global CONTROL_ENTER_THE_CONVERSATIONAL_MODE
-	global CONTROL_ENTER_THE_EXPERT_MODE
-	global CONTROL_ENTER_THE_FOLLOW_UP_MODE
-
+	# Global declararions
 	global q
 
 	# Call commbase_stt_vosk_p
 	commbase_stt_vosk_p()
-	
+
 # Ensure that the main() function is executed only when the script is run
 # directly as the main program.
 if __name__ == '__main__':
