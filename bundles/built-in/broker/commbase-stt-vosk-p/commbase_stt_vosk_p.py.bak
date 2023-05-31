@@ -196,9 +196,7 @@ def commbase_stt_vosk_p():
 		# The modified result
 		trimmed_string = strip_string(string)
 
-		# Check if the trimmed_string is not empty and control message parsing is
-		# enabled for commbase-stt-vosk-p engine
-		if trimmed_string != '' and commbase_stt_vosk_p_parse_control_messages_on == "True":
+		if commbase_stt_vosk_p_parse_control_messages_on == "True":
 
 			# Define the control messages dictionary
 			control_dictionary = {
@@ -259,45 +257,44 @@ def commbase_stt_vosk_p():
 			# The control message and END USER message matching
 			found_match = False
 
-			# Check if the trimmed_string is not empty
-			for control, info in control_dictionary.items():
-				patterns = info['patterns']  # Get the patterns for the current control
-				message = info['message']  # Get the message for the current control
+			if trimmed_string != '':
+				# Check if the trimmed_string is not empty
+				for control, info in control_dictionary.items():
+					patterns = info['patterns']  # Get the patterns for the current control
+					message = info['message']  # Get the message for the current control
 
-				for line in patterns:
-					if trimmed_string == line.strip():  # Check for exact match
-						# If a match is found, print the message and record the control
-						# message
-						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {message}\033[{color_code_end}')
-						# Record the control message string to result_message_recording_file
-						with open(result_message_recording_file, 'w') as f:
-							f.write(control)
-						found_match = True
-						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-							# Manage the result message
-							subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
-						break  # Exit the inner loop if a match is found
+					for line in patterns:
+						if trimmed_string == line.strip():  # Check for exact match
+							# If a match is found, print the message and record the control
+							# message
+							print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {message}\033[{color_code_end}')
+							# Record the control message string to result_message_recording_file
+							with open(result_message_recording_file, 'w') as f:
+								f.write(control)
+							found_match = True
+							if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
+								# Manage the result message
+								subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+							break  # Exit the inner loop if a match is found
 
-				if found_match:
-					break  # Exit the outer loop if a match is found
+					if found_match:
+						break  # Exit the outer loop if a match is found
 
-			# Handle the case when no match is found
-			if not found_match:
-				# Record a normal END USER message instead of a control message
-				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" for processing.\033[{color_code_end}')
-				# Record the trimmed_string data to result_message_recording_file and
-				# previous_result_message_recording_file
-				with open(result_message_recording_file, 'w') as f:
-					f.write(trimmed_string)
-				with open(previous_result_message_recording_file, 'w') as f:
-					f.write(trimmed_string)
-				if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
-					# Manage the result message
-					subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+				# Handle the case when no match is found
+				if not found_match:
+					# Record a normal END USER message instead of a control message
+					print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" for processing.\033[{color_code_end}')
+					# Record the trimmed_string data to result_message_recording_file and
+					# previous_result_message_recording_file
+					with open(result_message_recording_file, 'w') as f:
+						f.write(trimmed_string)
+					with open(previous_result_message_recording_file, 'w') as f:
+						f.write(trimmed_string)
+					if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
+						# Manage the result message
+						subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
-		# Check if the trimmed_string is not empty and control message parsing is
-		# disabled for commbase-stt-vosk-p engine
-		elif trimmed_string != '' and commbase_stt_vosk_p_parse_control_messages_on == "False":
+		elif commbase_stt_vosk_p_parse_control_messages_on == "False":
 			print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" no controls for processing.\033[{color_code_end}')
 			# Record the trimmed_string data to result_message_recording_file and
 			# previous_result_message_recording_file
