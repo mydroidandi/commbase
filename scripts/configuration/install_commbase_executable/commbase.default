@@ -94,14 +94,17 @@ Start/Stop:
 Control:
   Usage: commbase [options]
   options:
-  	"[okay|ok] stop"				Stop the previous command
-  	"[okay|ok] accept"				Accept a Y/N question
-  	"[okay|ok] deny"				Deny a Y/N question
-  	"[okay|ok] which mode are you in"		Confirm the current mode
-  	"[okay|ok] enter the normal mode"		Enter the normal mode / Exit any other mode
-  	"[okay|ok] [enter/exit] the conversation mode"	Enter/exit the conversation mode
-  	"[okay|ok] [enter/exit] the expert mode xyz"	Enter/exit the expert mode xyz
-  	"[okay|ok] [enter/exit] the follow up mode"	Enter/exit the follow up mode
+  	"[okay|ok] stop"			Stop the previous command
+  	"[okay|ok] accept"			Accept a Y/N question
+  	"[okay|ok] deny"			Deny/Cancel a Y/N question
+  	"[okay|ok] select the option number <number>"
+  						Select a multi-choice question option
+  	"[okay|ok] skip that question"		Skip a question option
+  	"[okay|ok] which mode are you in"	Confirm the current mode
+  	"[okay|ok] enter the normal mode"	Enter the normal mode
+  	"[okay|ok] enter the conversation mode"	Enter the conversation mode
+  	"[okay|ok] enter the expert mode"	Enter the expert mode
+  	"[okay|ok] enter the follow up mode"	Enter the follow up mode
 
 Skills and Skillsets:
   Usage: commbase [options]
@@ -110,7 +113,7 @@ Skills and Skillsets:
   Examples:
   	"tell me about yourself"			Run Commbase introduction
   	"let me know when the internet is back"		Receive the 'event' alert and notification
-  	"set a timer of [minutes] minutes"		Start a countdown timer
+  	"set a timer of <minutes> minutes"		Start a countdown timer
   		Examples:
   			"set a timer of twenty five minutes"
 			set a timer of one hundred one minutes

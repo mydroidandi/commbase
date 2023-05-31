@@ -49,48 +49,49 @@ import vosk
 
 from config import CONFIG_FILE_PATH
 from file_paths import (
-		get_vosk_ml_model_directory,
-		get_secrets_file_path,
-		get_ascii_art_file_path,
-		get_assistant_microphone_instruction_file,
-		get_result_message_recording_file,
-		get_previous_result_message_recording_file,
-		get_result_messages_history_file,
-		get_control_stop_previous_command_patterns_file,
-		get_control_accept_changes_patterns_file,
-		get_control_deny_changes_patterns_file,
-		get_control_select_option_number_one_patterns_file,
-		get_control_select_option_number_two_patterns_file,
-		get_control_select_option_number_three_patterns_file,
-		get_control_select_option_number_four_patterns_file,
-		get_control_skip_question_patterns_file,
-		get_control_request_the_current_mode_patterns_file,
-		get_control_enter_the_normal_mode_patterns_file,
-		get_control_enter_the_conversational_mode_patterns_file,
-		get_control_enter_the_expert_mode_patterns_file,
-		get_control_enter_the_follow_up_mode_patterns_file,
+	get_ascii_art_file_path,
+	get_assistant_microphone_instruction_file,
+	get_control_accept_changes_patterns_file,
+	get_control_deny_changes_patterns_file,
+	get_control_enter_the_conversational_mode_patterns_file,
+	get_control_enter_the_expert_mode_patterns_file,
+	get_control_enter_the_follow_up_mode_patterns_file,
+	get_control_enter_the_normal_mode_patterns_file,
+	get_control_request_the_current_mode_patterns_file,
+	get_control_select_option_number_four_patterns_file,
+	get_control_select_option_number_one_patterns_file,
+	get_control_select_option_number_three_patterns_file,
+	get_control_select_option_number_two_patterns_file,
+	get_control_skip_question_patterns_file,
+	get_control_stop_previous_command_patterns_file,
+	get_previous_result_message_recording_file,
+	get_result_message_recording_file,
+	get_result_messages_history_file,
+	get_secrets_file_path,
+	get_vosk_ml_model_directory,
 )
 from functions import (
-    read_plain_text_file,
-    read_lines_from_file,
-    int_or_str,
-    find_text,
-    strip_string,
-    get_chat_participant_names,
-    get_tts_engine_string,
-    get_manage_result_message_on_and_output_skill_errors_in_pane_on,
+	find_text,
+	get_chat_participant_names,
+	get_commbase_stt_vosk_p_parse_control_messages_on,
+	get_manage_result_message_on_and_output_skill_errors_in_pane_on,
+	get_tts_engine_string,
+	int_or_str,
+	read_lines_from_file,
+	read_plain_text_file,
+	strip_string,
 )
 from text_formatting import (
-    get_terminal_colors,
-    get_chat_participant_colors,
-    get_assistant_avatar_color,
-    set_end_user_background_color,
-    set_assistant_user_background_color,
-    set_system_user_background_color,
-    set_end_user_text_color,
-    set_assistant_user_text_color,
-    set_system_user_text_color,
-    set_assistant_avatar_color,
+	get_assistant_avatar_color,
+	get_chat_participant_colors,
+	get_terminal_colors,
+	set_assistant_avatar_color,
+	set_assistant_user_background_color,
+	set_assistant_user_text_color,
+	set_end_user_background_color,
+	set_end_user_text_color,
+	set_system_user_background_color,
+	set_system_user_text_color,
 )
 
 
@@ -195,73 +196,76 @@ def commbase_stt_vosk_p():
 		# The modified result
 		trimmed_string = strip_string(string)
 
-		# Define the control messages dictionary
-		control_dictionary = {
-			'CONTROL_STOP_PREVIOUS_COMMAND': {
-					'patterns': control_stop_previous_command_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_STOP_PREVIOUS_COMMAND}" for processing.'
-			},
-			'CONTROL_ACCEPT_CHANGES': {
-					'patterns': control_accept_changes_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ACCEPT_CHANGES}" for processing.'
-			},
-			'CONTROL_DENY_CHANGES': {
-					'patterns': control_deny_changes_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_DENY_CHANGES}" for processing.'
-			},
-			'CONTROL_SELECT_OPTION_NUMBER_ONE': {
-					'patterns': control_select_option_number_one_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_ONE}" for processing.'
-			},
-			'CONTROL_SELECT_OPTION_NUMBER_TWO': {
-					'patterns': control_select_option_number_two_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_TWO}" for processing.'
-			},
-			'CONTROL_SELECT_OPTION_NUMBER_THREE': {
-					'patterns': control_select_option_number_three_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_THREE}" for processing.'
-			},
-			'CONTROL_SELECT_OPTION_NUMBER_FOUR': {
-					'patterns': control_select_option_number_four_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_FOUR}" for processing.'
-			},
-			'CONTROL_SKIP_QUESTION': {
-					'patterns': control_skip_question_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SKIP_QUESTION}" for processing.'
-			},
-			'CONTROL_REQUEST_THE_CURRENT_MODE': {
-					'patterns': control_request_the_current_mode_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_REQUEST_THE_CURRENT_MODE}" for processing.'
-			},
-			'CONTROL_ENTER_THE_NORMAL_MODE': {
-					'patterns': control_enter_the_normal_mode_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_NORMAL_MODE}" for processing.'
-			},
-			'CONTROL_ENTER_THE_CONVERSATIONAL_MODE': {
-					'patterns': control_enter_the_conversational_mode_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_CONVERSATIONAL_MODE}" for processing.'
-			},
-			'CONTROL_ENTER_THE_EXPERT_MODE': {
-					'patterns': control_enter_the_expert_mode_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_EXPERT_MODE}" for processing.'
-			},
-			'CONTROL_ENTER_THE_FOLLOW_UP_MODE': {
-					'patterns': control_enter_the_follow_up_mode_patterns,
-					'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_FOLLOW_UP_MODE}" for processing.'
+		# Check if the trimmed_string is not empty and control message parsing is
+		# enabled for commbase-stt-vosk-p engine
+		if trimmed_string != '' and commbase_stt_vosk_p_parse_control_messages_on == "True":
+
+			# Define the control messages dictionary
+			control_dictionary = {
+				'CONTROL_STOP_PREVIOUS_COMMAND': {
+						'patterns': control_stop_previous_command_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_STOP_PREVIOUS_COMMAND}" for processing.'
+				},
+				'CONTROL_ACCEPT_CHANGES': {
+						'patterns': control_accept_changes_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ACCEPT_CHANGES}" for processing.'
+				},
+				'CONTROL_DENY_CHANGES': {
+						'patterns': control_deny_changes_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_DENY_CHANGES}" for processing.'
+				},
+				'CONTROL_SELECT_OPTION_NUMBER_ONE': {
+						'patterns': control_select_option_number_one_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_ONE}" for processing.'
+				},
+				'CONTROL_SELECT_OPTION_NUMBER_TWO': {
+						'patterns': control_select_option_number_two_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_TWO}" for processing.'
+				},
+				'CONTROL_SELECT_OPTION_NUMBER_THREE': {
+						'patterns': control_select_option_number_three_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_THREE}" for processing.'
+				},
+				'CONTROL_SELECT_OPTION_NUMBER_FOUR': {
+						'patterns': control_select_option_number_four_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SELECT_OPTION_NUMBER_FOUR}" for processing.'
+				},
+				'CONTROL_SKIP_QUESTION': {
+						'patterns': control_skip_question_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_SKIP_QUESTION}" for processing.'
+				},
+				'CONTROL_REQUEST_THE_CURRENT_MODE': {
+						'patterns': control_request_the_current_mode_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_REQUEST_THE_CURRENT_MODE}" for processing.'
+				},
+				'CONTROL_ENTER_THE_NORMAL_MODE': {
+						'patterns': control_enter_the_normal_mode_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_NORMAL_MODE}" for processing.'
+				},
+				'CONTROL_ENTER_THE_CONVERSATIONAL_MODE': {
+						'patterns': control_enter_the_conversational_mode_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_CONVERSATIONAL_MODE}" for processing.'
+				},
+				'CONTROL_ENTER_THE_EXPERT_MODE': {
+						'patterns': control_enter_the_expert_mode_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_EXPERT_MODE}" for processing.'
+				},
+				'CONTROL_ENTER_THE_FOLLOW_UP_MODE': {
+						'patterns': control_enter_the_follow_up_mode_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_FOLLOW_UP_MODE}" for processing.'
+				}
 			}
-		}
 
-		# The control message and END USER message matching
-		found_match = False
+			# The control message and END USER message matching
+			found_match = False
 
-		if trimmed_string != '':
 			# Check if the trimmed_string is not empty
 			for control, info in control_dictionary.items():
 				patterns = info['patterns']  # Get the patterns for the current control
 				message = info['message']  # Get the message for the current control
 
 				for line in patterns:
-					if trimmed_string == line.strip():
+					if trimmed_string == line.strip():  # Check for exact match
 						# If a match is found, print the message and record the control
 						# message
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {message}\033[{color_code_end}')
@@ -290,6 +294,20 @@ def commbase_stt_vosk_p():
 				if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 					# Manage the result message
 					subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+
+		# Check if the trimmed_string is not empty and control message parsing is
+		# disabled for commbase-stt-vosk-p engine
+		elif trimmed_string != '' and commbase_stt_vosk_p_parse_control_messages_on == "False":
+			print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" no controls for processing.\033[{color_code_end}')
+			# Record the trimmed_string data to result_message_recording_file and
+			# previous_result_message_recording_file
+			with open(result_message_recording_file, 'w') as f:
+				f.write(trimmed_string)
+			with open(previous_result_message_recording_file, 'w') as f:
+				f.write(trimmed_string)
+			if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
+				# Manage the result message
+				subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
 
 
 	# Create ArgumentParser object with add_help=False to disable default help
@@ -406,7 +424,11 @@ def commbase_stt_vosk_p():
 			# Set the value of manage_result_message_on_and_output_skill_errors_in_pane_on
 			manage_result_message_on_and_output_skill_errors_in_pane_on =  get_manage_result_message_on_and_output_skill_errors_in_pane_on()
 
-			# Assign functions imported from from file_paths
+			# Set the value of commbase_stt_vosk_p_parse_control_messages_on
+			commbase_stt_vosk_p_parse_control_messages_on = get_commbase_stt_vosk_p_parse_control_messages_on()
+
+
+			# Assign functions imported from file_paths
 
 			# Set the values returned by get_secrets_file_path()
 			secrets_file_path = get_secrets_file_path()
@@ -464,6 +486,7 @@ def commbase_stt_vosk_p():
 
 			# Set the values returned by get_control_enter_the_follow_up_mode_patterns_file()
 			control_enter_the_follow_up_mode_patterns_file = get_control_enter_the_follow_up_mode_patterns_file()
+
 
 			# Preload all the control pattern files
 
@@ -578,7 +601,7 @@ def main():
 	Returns:
   		None
 	"""
-	# Global declararions
+	# Global declarations
 	global q
 
 	# Call commbase_stt_vosk_p

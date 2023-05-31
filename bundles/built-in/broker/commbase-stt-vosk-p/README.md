@@ -9,6 +9,24 @@ commbase-stt-vosk-p is an ASR (Automatic Speech Recognition) engine. It is capab
 
 <img alt="commbase-stt-vosk-p" src="commbase-stt-vosk-p.jpg?raw=true" width="512" height="512" />
 
+## Controls
+
+It comes with 13 reliable mutually exclusive control messages that can be recorded and sent forward together with the parsed messages and be used by skills' applications to parameterize any skill option or be bypassed for message management/handling in any application subsequently. These control messages can also be changed or customized in their respective pattern files, and ultimately, increase or decrease in number, depending on your processing power and coding ability to remove or create new instances. These out of the box controls are:
+
+* CONTROL_STOP_PREVIOUS_COMMAND
+* CONTROL_ACCEPT_CHANGES
+* CONTROL_DENY_CHANGES
+* CONTROL_SELECT_OPTION_NUMBER_ONE
+* CONTROL_SELECT_OPTION_NUMBER_TWO
+* CONTROL_SELECT_OPTION_NUMBER_THREE
+* CONTROL_SELECT_OPTION_NUMBER_FOUR
+* CONTROL_SKIP_QUESTION
+* CONTROL_REQUEST_THE_CURRENT_MODE
+* CONTROL_ENTER_THE_NORMAL_MODE
+* CONTROL_ENTER_THE_CONVERSATIONAL_MODE
+* CONTROL_ENTER_THE_EXPERT_MODE
+* CONTROL_ENTER_THE_FOLLOW_UP_MODE
+
 ## Examples
 
 Detailed information about examples can be found in the corresponding [`examples`](./examples) directory.
