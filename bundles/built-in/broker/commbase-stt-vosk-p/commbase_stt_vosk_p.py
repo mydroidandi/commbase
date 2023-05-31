@@ -49,48 +49,48 @@ import vosk
 
 from config import CONFIG_FILE_PATH
 from file_paths import (
-		get_vosk_ml_model_directory,
-		get_secrets_file_path,
-		get_ascii_art_file_path,
-		get_assistant_microphone_instruction_file,
-		get_result_message_recording_file,
-		get_previous_result_message_recording_file,
-		get_result_messages_history_file,
-		get_control_stop_previous_command_patterns_file,
-		get_control_accept_changes_patterns_file,
-		get_control_deny_changes_patterns_file,
-		get_control_select_option_number_one_patterns_file,
-		get_control_select_option_number_two_patterns_file,
-		get_control_select_option_number_three_patterns_file,
-		get_control_select_option_number_four_patterns_file,
-		get_control_skip_question_patterns_file,
-		get_control_request_the_current_mode_patterns_file,
-		get_control_enter_the_normal_mode_patterns_file,
-		get_control_enter_the_conversational_mode_patterns_file,
-		get_control_enter_the_expert_mode_patterns_file,
-		get_control_enter_the_follow_up_mode_patterns_file,
+    get_ascii_art_file_path,
+    get_assistant_microphone_instruction_file,
+    get_control_accept_changes_patterns_file,
+    get_control_deny_changes_patterns_file,
+    get_control_enter_the_conversational_mode_patterns_file,
+    get_control_enter_the_expert_mode_patterns_file,
+    get_control_enter_the_follow_up_mode_patterns_file,
+    get_control_enter_the_normal_mode_patterns_file,
+    get_control_request_the_current_mode_patterns_file,
+    get_control_select_option_number_four_patterns_file,
+    get_control_select_option_number_one_patterns_file,
+    get_control_select_option_number_three_patterns_file,
+    get_control_select_option_number_two_patterns_file,
+    get_control_skip_question_patterns_file,
+    get_control_stop_previous_command_patterns_file,
+    get_previous_result_message_recording_file,
+    get_result_message_recording_file,
+    get_result_messages_history_file,
+    get_secrets_file_path,
+    get_vosk_ml_model_directory,
 )
 from functions import (
-    read_plain_text_file,
-    read_lines_from_file,
-    int_or_str,
     find_text,
-    strip_string,
     get_chat_participant_names,
-    get_tts_engine_string,
     get_manage_result_message_on_and_output_skill_errors_in_pane_on,
+    get_tts_engine_string,
+    int_or_str,
+    read_lines_from_file,
+    read_plain_text_file,
+    strip_string,
 )
 from text_formatting import (
-    get_terminal_colors,
-    get_chat_participant_colors,
     get_assistant_avatar_color,
-    set_end_user_background_color,
-    set_assistant_user_background_color,
-    set_system_user_background_color,
-    set_end_user_text_color,
-    set_assistant_user_text_color,
-    set_system_user_text_color,
+    get_chat_participant_colors,
+    get_terminal_colors,
     set_assistant_avatar_color,
+    set_assistant_user_background_color,
+    set_assistant_user_text_color,
+    set_end_user_background_color,
+    set_end_user_text_color,
+    set_system_user_background_color,
+    set_system_user_text_color,
 )
 
 
@@ -261,7 +261,7 @@ def commbase_stt_vosk_p():
 				message = info['message']  # Get the message for the current control
 
 				for line in patterns:
-					if trimmed_string == line.strip():
+					if trimmed_string == line.strip():  # Check for exact match
 						# If a match is found, print the message and record the control
 						# message
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {message}\033[{color_code_end}')
