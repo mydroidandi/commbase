@@ -113,7 +113,7 @@ Skills and Skillsets:
   Examples:
   	"tell me about yourself"			Run Commbase introduction
   	"let me know when the internet is back"		Receive the 'event' alert and notification
-  	"set a timer of [minutes] minutes"		Start a countdown timer
+  	"set a timer of <minutes> minutes"		Start a countdown timer
   		Examples:
   			"set a timer of twenty five minutes"
 			set a timer of one hundred one minutes
