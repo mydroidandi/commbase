@@ -38,6 +38,7 @@
 
 # Requirements
 import argparse
+import json
 import os.path
 import queue
 import string
@@ -269,9 +270,14 @@ def commbase_stt_vosk_p():
 						# If a match is found, print the message and record the control
 						# message
 						print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {message}\033[{color_code_end}')
+						# Create the JSON object
+						json_data = {
+							"control": control
+						}
 						# Record the control message string to result_message_recording_file
+						# as a JSON object.
 						with open(result_message_recording_file, 'w') as f:
-							f.write(control)
+							json.dump(json_data, f)
 						found_match = True
 						if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 							# Manage the result message
@@ -285,12 +291,16 @@ def commbase_stt_vosk_p():
 			if not found_match:
 				# Record a normal END USER message instead of a control message
 				print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" for processing.\033[{color_code_end}')
-				# Record the trimmed_string data to result_message_recording_file and
-				# previous_result_message_recording_file
+				# Create the JSON object
+				json_data = {
+					"message": trimmed_string
+				}
+				# Record the control message string to result_message_recording_file
+				# as a JSON object.
 				with open(result_message_recording_file, 'w') as f:
-					f.write(trimmed_string)
+					json.dump(json_data, f)
 				with open(previous_result_message_recording_file, 'w') as f:
-					f.write(trimmed_string)
+					json.dump(json_data, f)
 				if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 					# Manage the result message
 					subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
@@ -299,12 +309,16 @@ def commbase_stt_vosk_p():
 		# disabled for commbase-stt-vosk-p engine
 		elif trimmed_string != '' and commbase_stt_vosk_p_parse_control_messages_on == "False":
 			print(f'\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} I am dispatching "{trimmed_string}" no controls for processing.\033[{color_code_end}')
-			# Record the trimmed_string data to result_message_recording_file and
-			# previous_result_message_recording_file
+			# Create the JSON object
+			json_data = {
+				"message": trimmed_string
+			}
+			# Record the control message string to result_message_recording_file
+			# as a JSON object.
 			with open(result_message_recording_file, 'w') as f:
-				f.write(trimmed_string)
+				json.dump(json_data, f)
 			with open(previous_result_message_recording_file, 'w') as f:
-				f.write(trimmed_string)
+				json.dump(json_data, f)
 			if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 				# Manage the result message
 				subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
