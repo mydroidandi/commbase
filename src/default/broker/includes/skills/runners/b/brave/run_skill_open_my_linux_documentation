@@ -37,7 +37,7 @@ run_skill_open_my_linux_documentation() {
 	source $COMMBASE_APP_DIR/src/default/broker/skill_scripts/bash/b/brave/skill_script_open_my_linux_documentation
 
 	# Import the configuration file
-	source $COMMBASE_ROOT_DIR/commbase/config/app.conf
+	source $COMMBASE_APP_DIR/config/app.conf
 	
 	# Warn the user that the script is loading by voice and in the chat pane
 	echo "loaoding" | $TTS_ENGINE_STRING
