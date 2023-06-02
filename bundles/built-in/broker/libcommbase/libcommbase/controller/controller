@@ -1,10 +1,11 @@
 ################################################################################
-#                                   Commbase                                   #
+#                                  libcommbase                                 #
 #                                                                              #
-# Conversational AI Assistant and AI Hub for Computers and Droids              #
+# A collection of libraries to centralize common functions that can be shared  #
+# across multiple conversational AI assistant projects                         #
 #                                                                              #
 # Change History                                                               #
-# 04/29/2023  Esteban Herrera Original code.                                   #
+# 05/02/2023  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -12,7 +13,7 @@
 ################################################################################
 ################################################################################
 #                                                                              #
-#  Copyright (c) 2022-present Esteban Herrera C.                               #
+#  Copyright (c) 2023-present Esteban Herrera C.                               #
 #  stv.herrera@gmail.com                                                       #
 #                                                                              #
 #  This program is free software; you can redistribute it and/or modify        #
