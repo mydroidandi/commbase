@@ -321,7 +321,7 @@ def commbase_stt_vosk_p():
 				json.dump(json_data, f)
 			if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 				# Manage the result message
-				subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/src/skill'])
+				subprocess.run(['bash', os.environ["COMMBASE_APP_DIR"] + '/bundles/built-in/broker/libcommbase/libcommbase/controller/controller'])
 
 
 	# Create ArgumentParser object with add_help=False to disable default help
