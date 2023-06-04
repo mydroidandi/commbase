@@ -1,0 +1,7 @@
+read_lines_from_file() {
+	file_path=$1
+	readarray -t lines < "$file_path"
+	for line in "${lines[@]}"; do
+		echo "$line"
+	done
+}
