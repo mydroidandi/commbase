@@ -124,18 +124,20 @@ controller() {
 	CONTROL_ENTER_THE_EXPERT_MODE="okay enter the expert mode"
 	CONTROL_ENTER_THE_FOLLOW_UP_MODE="okay enter the follow up mode"
 
-	# If new_message is not empty
-	if [[ -n $new_message ]]; then
-	
-
 	echo $new_message
 	
+	# If new_message is not empty
+	if [[ -n $new_message ]]; then
+		echo $new_message
 	fi
 
 	
 	
 	
 		#TODO: Parse the patterns files and look for matches with $new_message
+		# see chat gpt (translated from python)
+	
+	: '
 	
 		for 
 		
@@ -166,7 +168,7 @@ controller() {
 				##echo $message | jq '."message"'
 
 
-
+	'
 
 
 	tmux select-window -t 1 && tmux select-pane -t 1 && printf "\e[1;41mCOMMBASE:\e[1;m I don't understand: %s" "$trim_str"
