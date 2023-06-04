@@ -129,7 +129,6 @@ display_version() {
 
 # Routes options
 route_option() {
-
 	# Imports
 	source $COMMBASE_APP_DIR/src/app;
 

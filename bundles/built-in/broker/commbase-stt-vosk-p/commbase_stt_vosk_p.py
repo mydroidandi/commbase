@@ -545,7 +545,7 @@ def commbase_stt_vosk_p():
 			control_enter_the_normal_mode_patterns = read_lines_from_file(control_enter_the_normal_mode_patterns_file)
 
 			#	CONTROL_ENTER_THE_CONVERSATIONAL_MODE
-
+			# Load the control patterns file and store its content in a variable
 			control_enter_the_conversational_mode_patterns = read_lines_from_file(control_enter_the_conversational_mode_patterns_file)
 
 			#	CONTROL_ENTER_THE_EXPERT_MODE
