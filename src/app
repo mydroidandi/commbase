@@ -33,7 +33,6 @@
 # Creates the Commbase application interface, replaces the hostname and host IP
 # address, and enters the Commbase session.
 app() {
-
 	# Path to the env file
 	ENV_FILE="$COMMBASE_APP_DIR/env/.env";
 
