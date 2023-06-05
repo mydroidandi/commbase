@@ -30,15 +30,18 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # skill
-# Reads every new data stored in the .result_message.json and
-# .previous_result_message.json files, parses it, compares it against a list of
-# known skills and skillsets, and executes the corresponding skill or skillset
-# if the data matches a skill or skillset listed.
+# Reads every new data stored in the RESULT_MESSAGE_RECORDING_FILE and
+# PREVIOUS_RESULT_MESSAGE_RECORDING_FILE files, parses it, compares it against
+# a list of known skills and skillsets, and executes the corresponding skill or
+# skillset if the data matches a skill or skillset listed.
 # TODO: This is temporary fake versions to test jq
 skill() {
 
-	message=$(<$COMMBASE_APP_DIR/data/.result_message.json)
-	previous_message=$(<$COMMBASE_APP_DIR/data/.previous_result_message.json)
+	# The app configuration file
+	source $COMMBASE_APP_DIR/config/app.conf
+
+	message=$(<$COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE)
+	previous_message=$(<$COMMBASE_APP_DIR$PREVIOUS_RESULT_MESSAGE_RECORDING_FILE)
 
 	echo $message | jq '."message"'
 	echo $message | jq '."control"'
@@ -49,7 +52,7 @@ skill() {
 	exit 99
 }
 
-# Call the parse_skill_ if the script is run directly (not sourced)
+# Call skill if the script is run directly (not sourced)
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
 	(skill)
 fi
