@@ -132,96 +132,96 @@ controller() {
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_STOP_PREVIOUS_COMMAND\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_accept_changes_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_ACCEPT_CHANGES\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_deny_changes_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_DENY_CHANGES\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_select_option_number_one_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_SELECT_OPTION_NUMBER_ONE\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_select_option_number_two_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_SELECT_OPTION_NUMBER_TWO\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_select_option_number_three_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_SELECT_OPTION_NUMBER_THREE\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_select_option_number_four_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_SELECT_OPTION_NUMBER_FOUR\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_skip_question_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_SKIP_QUESTION\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_request_the_current_mode_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_REQUEST_THE_CURRENT_MODE\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_enter_the_normal_mode_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_ENTER_THE_NORMAL_MODE\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_enter_the_conversational_mode_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_ENTER_THE_CONVERSATIONAL_MODE\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_enter_the_expert_mode_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_ENTER_THE_EXPERT_MODE\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_enter_the_follow_up_mode_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_ENTER_THE_FOLLOW_UP_MODE\"}";
 			# Record the control message string as a JSON object.
-			echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE;
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		else
 			# Manage the result message without touching the data
-			bash "$COMMBASE_APP_DIR/src/skill";
+			(bash "$COMMBASE_APP_DIR/src/skill");
 		fi
 	fi
 
