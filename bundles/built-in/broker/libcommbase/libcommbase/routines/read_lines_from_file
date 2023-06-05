@@ -33,10 +33,13 @@
 # read_lines_from_file
 # Reads all the lines from a plain text file and echoes line by line
 read_lines_from_file() {
-	file_path=$1;
-	readarray -t lines < "$file_path";
-	for line in "${lines[@]}"; do
-		echo "$line";
-	done
+  local file=$1
+  local lines=()
+
+  while IFS= read -r line; do
+    lines+=("$line")
+  done < "$file"
+
+  printf '%s\n' "${lines[@]}"
 }
 
