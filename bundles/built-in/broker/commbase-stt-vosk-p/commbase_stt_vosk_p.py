@@ -65,6 +65,7 @@ from file_paths import (
 	get_control_select_option_number_two_patterns_file,
 	get_control_skip_question_patterns_file,
 	get_control_stop_previous_command_patterns_file,
+	get_controller_message_recording_file,
 	get_previous_result_message_recording_file,
 	get_result_message_recording_file,
 	get_result_messages_history_file,
@@ -295,7 +296,8 @@ def commbase_stt_vosk_p():
 				json_data = {
 					"message": trimmed_string
 				}
-				# Record the control message string to result_message_recording_file
+				# Record the control message string to result_message_recording_file and
+				# previous_result_message_recording_file.
 				# as a JSON object.
 				with open(result_message_recording_file, 'w') as f:
 					json.dump(json_data, f)
@@ -313,11 +315,9 @@ def commbase_stt_vosk_p():
 			json_data = {
 				"message": trimmed_string
 			}
-			# Record the control message string to result_message_recording_file
+			# Record the control message string to controller_message_recording_file
 			# as a JSON object.
-			with open(result_message_recording_file, 'w') as f:
-				json.dump(json_data, f)
-			with open(previous_result_message_recording_file, 'w') as f:
+			with open(controller_message_recording_file, 'w') as f:
 				json.dump(json_data, f)
 			if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
 				# Manage the result message
@@ -452,6 +452,9 @@ def commbase_stt_vosk_p():
 
 			# Set the values returned by get_assistant_microphone_instruction_file()
 			assistant_microphone_instruction_file = get_assistant_microphone_instruction_file()
+
+			# Set the values returned by get_controller_message_recording_file()
+			controller_message_recording_file = get_controller_message_recording_file()
 
 			# Set the values returned by get_result_message_recording_file()
 			result_message_recording_file = get_result_message_recording_file()

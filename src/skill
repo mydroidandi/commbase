@@ -46,7 +46,7 @@ skill() {
 	echo $message | jq '."message"'
 	echo $message | jq '."control"'
 	echo $previous_message | jq '."message"'
-	
+
 	tmux select-window -t 1 && tmux select-pane -t 1 && printf "\e[1;41mCOMMBASE:\e[1;m I don't understand: %s" "$trim_str"
 	tmux select-window -t 1 && tmux select-pane -t 4
 	exit 99
