@@ -42,7 +42,7 @@ from config import CONFIG_FILE_PATH
 
 def read_plain_text_file(file_path):
 	"""
-	Read the contents of a plain text file and return it as a string.
+	Reads the contents of a plain text file and return it as a string.
 
 	Parameters:
 		  file_path (str): The path to the plain text file.
@@ -63,7 +63,7 @@ def read_plain_text_file(file_path):
 
 def read_lines_from_file(file_path):
 	"""
-	Read all lines from a file and return them as a list.
+	Reads all lines from a file and return them as a list.
 
 	Parameters:
 		  file_path (str): The path to the file to be read.
@@ -147,7 +147,7 @@ def find_text(string):
 
 def strip_string(string):
 	"""
-	Strip unwanted characters and whitespaces from the 'text' field of a JSON
+	Strips unwanted characters and whitespaces from the 'text' field of a JSON
 	string.
 
 	Parameters:
@@ -266,7 +266,7 @@ def get_tts_engine_string():
 
 def get_manage_result_message_on_and_output_skill_errors_in_pane_on():
 	"""
-	Retrieve the value of the
+	Retrieves the value of the
 	MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON variable from the
 	configuration file.
 
@@ -297,7 +297,7 @@ def get_manage_result_message_on_and_output_skill_errors_in_pane_on():
 
 def get_commbase_stt_vosk_p_parse_control_messages_on():
 	"""
-	Retrieve the value of the COMMBASE_STT_VOSK_P_PARSE_CONTROL_MESSAGES_ON
+	Retrieves the value of the COMMBASE_STT_VOSK_P_PARSE_CONTROL_MESSAGES_ON
 	variable from the configuration file.
 
 	Returns:
