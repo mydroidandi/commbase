@@ -44,7 +44,7 @@ controller() {
 	source $COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/read_lines_from_file
 
 	# Read a whole file into a variable
-	json_object=$(<$COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
+	json_object=$(<$COMMBASE_APP_DIR$CONTROLLER_MESSAGE_RECORDING_FILE);
 
 	# Extract message from the JSON object
 	new_message=$(echo $json_object | jq --raw-output '."message"');
@@ -65,64 +65,21 @@ controller() {
 	control_enter_the_follow_up_mode_patterns_file=$COMMBASE_APP_DIR$CONTROL_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE;
 
 	# Load all the control pattern files in variables
-
-	# CONTROL_STOP_PREVIOUS_COMMAND
 	control_stop_previous_command_patterns=$(read_lines_from_file $control_stop_previous_command_patterns_file);
-
-	# CONTROL_ACCEPT_CHANGES
 	control_accept_changes_patterns=$(read_lines_from_file $control_accept_changes_patterns_file);
-
-	#	CONTROL_DENY_CHANGES
 	control_deny_changes_patterns=$(read_lines_from_file $control_deny_changes_patterns_file);
-
-	#	CONTROL_SELECT_OPTION_NUMBER_ONE
 	control_select_option_number_one_patterns=$(read_lines_from_file $control_select_option_number_one_patterns_file);
-
-	#	CONTROL_SELECT_OPTION_NUMBER_TWO
 	control_select_option_number_two_patterns=$(read_lines_from_file $control_select_option_number_two_patterns_file);
-
-	#	CONTROL_SELECT_OPTION_NUMBER_THREE
 	control_select_option_number_three_patterns=$(read_lines_from_file $control_select_option_number_three_patterns_file);
-
-	#	CONTROL_SELECT_OPTION_NUMBER_FOUR
 	control_select_option_number_four_patterns=$(read_lines_from_file $control_select_option_number_four_patterns_file);
-
-	#	CONTROL_SKIP_QUESTION
 	control_skip_question_patterns=$(read_lines_from_file $control_skip_question_patterns_file);
-
-	#	CONTROL_REQUEST_THE_CURRENT_MODE
 	control_request_the_current_mode_patterns=r$(read_lines_from_file $control_request_the_current_mode_patterns_file);
-
-	#	CONTROL_ENTER_THE_NORMAL_MODE
 	control_enter_the_normal_mode_patterns=$(read_lines_from_file $control_enter_the_normal_mode_patterns_file);
-
-	#	CONTROL_ENTER_THE_CONVERSATIONAL_MODE
 	control_enter_the_conversational_mode_patterns=r$(read_lines_from_file $control_enter_the_conversational_mode_patterns_file);
-
-	#	CONTROL_ENTER_THE_EXPERT_MODE
 	control_enter_the_expert_mode_patterns=$(read_lines_from_file $control_enter_the_expert_mode_patterns_file);
-
-	#	CONTROL_ENTER_THE_FOLLOW_UP_MODE
 	control_enter_the_follow_up_mode_patterns=$(read_lines_from_file $control_enter_the_follow_up_mode_patterns_file);
 
-	# Define control messages
-	# To change a control command do not do that here; use its patterns file
-	# instead
-	CONTROL_STOP_PREVIOUS_COMMAND="okay stop"
-	CONTROL_ACCEPT_CHANGES="okay accept"
-	CONTROL_DENY_CHANGES="okay deny"
-	CONTROL_SELECT_OPTION_NUMBER_ONE="okay select the option number one"
-	CONTROL_SELECT_OPTION_NUMBER_TWO="okay select the option number two"
-	CONTROL_SELECT_OPTION_NUMBER_THREE="okay select the option number three"
-	CONTROL_SELECT_OPTION_NUMBER_FOUR="okay select the option number four"
-	CONTROL_SKIP_QUESTION="okay skip that question"
-	CONTROL_REQUEST_THE_CURRENT_MODE="okay which mode are you in"
-	CONTROL_ENTER_THE_NORMAL_MODE="okay enter the normal mode"
-	CONTROL_ENTER_THE_CONVERSATIONAL_MODE="okay enter the conversational mode"
-	CONTROL_ENTER_THE_EXPERT_MODE="okay enter the expert mode"
-	CONTROL_ENTER_THE_FOLLOW_UP_MODE="okay enter the follow up mode"
-
-	# Change the message to control in case the message includes a control
+	# In case the message includes a control, replace it with a control message
 
 	# If new_message is not empty
 	if [[ -n $new_message ]]; then
@@ -131,96 +88,101 @@ controller() {
 		if echo "$control_stop_previous_command_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_STOP_PREVIOUS_COMMAND\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_accept_changes_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_ACCEPT_CHANGES\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_deny_changes_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_DENY_CHANGES\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_select_option_number_one_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_SELECT_OPTION_NUMBER_ONE\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_select_option_number_two_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_SELECT_OPTION_NUMBER_TWO\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_select_option_number_three_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_SELECT_OPTION_NUMBER_THREE\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_select_option_number_four_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_SELECT_OPTION_NUMBER_FOUR\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_skip_question_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_SKIP_QUESTION\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_request_the_current_mode_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_REQUEST_THE_CURRENT_MODE\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_enter_the_normal_mode_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_ENTER_THE_NORMAL_MODE\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_enter_the_conversational_mode_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_ENTER_THE_CONVERSATIONAL_MODE\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_enter_the_expert_mode_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_ENTER_THE_EXPERT_MODE\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		elif echo "$control_enter_the_follow_up_mode_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
 			json_data="{\"control\": \"CONTROL_ENTER_THE_FOLLOW_UP_MODE\"}";
-			# Record the control message string as a JSON object.
+			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		else
-			# Manage the result message without touching the data
+			# Create the JSON object
+			json_data="{\"message\": \"$new_message\"}";
+			# Record the control message string as a JSON object
+			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
+			(echo "$json_data" > $COMMBASE_APP_DIR$PREVIOUS_RESULT_MESSAGE_RECORDING_FILE);
+			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
 		fi
 	fi
