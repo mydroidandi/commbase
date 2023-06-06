@@ -106,8 +106,6 @@ def commbase_stt_vosk_p():
 	vosk_ml_model_directory = get_vosk_ml_model_directory()
 
 	# Define control messages
-	# To change a control command do not do that here; use its patterns file
-	# instead
 	CONTROL_STOP_PREVIOUS_COMMAND = "okay stop"
 	CONTROL_ACCEPT_CHANGES = "okay accept"
 	CONTROL_DENY_CHANGES = "okay deny"
@@ -116,7 +114,7 @@ def commbase_stt_vosk_p():
 	CONTROL_SELECT_OPTION_NUMBER_THREE = "okay select the option number three"
 	CONTROL_SELECT_OPTION_NUMBER_FOUR = "okay select the option number four"
 	CONTROL_SKIP_QUESTION = "okay skip that question"
-	CONTROL_REQUEST_THE_CURRENT_MODE = "okay which mode are you in"
+	CONTROL_REQUEST_THE_CURRENT_MODE = "okay what mode are you in"
 	CONTROL_ENTER_THE_NORMAL_MODE = "okay enter the normal mode"
 	CONTROL_ENTER_THE_CONVERSATIONAL_MODE = "okay enter the conversational mode"
 	CONTROL_ENTER_THE_EXPERT_MODE = "okay enter the expert mode"
