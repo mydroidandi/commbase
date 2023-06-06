@@ -39,7 +39,7 @@ from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
 
 def get_vosk_ml_model_directory():
 	"""
-	Retrieve the directory path of the Vosk ML model from the configuration file.
+	Retrieves the directory path of the Vosk ML model from the configuration file.
 
 	Returns:
 		  str or None: The directory path of the Vosk ML model if found, or None if
@@ -69,7 +69,7 @@ def get_vosk_ml_model_directory():
 
 def get_secrets_file_path():
 	"""
-	Retrieve the value of the SECRETS_FILE_PATH variable from the configuration
+	Retrieves the value of the SECRETS_FILE_PATH variable from the configuration
 	file.
 
 	Returns:
@@ -99,7 +99,7 @@ def get_secrets_file_path():
 
 def get_ascii_art_file_path():
 	"""
-	Retrieve the value of the SASCII_ART_FILE_PATH variable from the configuration
+	Retrieves the value of the SASCII_ART_FILE_PATH variable from the configuration
 	file.
 
 	Returns:
@@ -129,7 +129,7 @@ def get_ascii_art_file_path():
 
 def get_assistant_microphone_instruction_file():
 	"""
-	Retrieve the value of the SASSISTANT_MICROPHONE_INSTRUCTION_FILE variable from
+	Retrieves the value of the SASSISTANT_MICROPHONE_INSTRUCTION_FILE variable from
 	the configuration file.
 
 	Returns:
@@ -159,7 +159,7 @@ def get_assistant_microphone_instruction_file():
 
 def get_result_message_recording_file():
 	"""
-	Retrieve the value of the SRESULT_MESSAGE_RECORDING_FILE variable from the
+	Retrieves the value of the SRESULT_MESSAGE_RECORDING_FILE variable from the
 	configuration file.
 
 	Returns:
@@ -189,7 +189,7 @@ def get_result_message_recording_file():
 
 def get_previous_result_message_recording_file():
 	"""
-	Retrieve the value of the SPREVIOUS_RESULT_MESSAGE_RECORDING_FILE variable
+	Retrieves the value of the SPREVIOUS_RESULT_MESSAGE_RECORDING_FILE variable
 	from the configuration file.
 
 	Returns:
@@ -219,7 +219,7 @@ def get_previous_result_message_recording_file():
 
 def get_controller_message_recording_file():
 	"""
-	Retrieve the value of the CONTROLLER_MESSAGE_RECORDING_FILE variable from the
+	Retrieves the value of the CONTROLLER_MESSAGE_RECORDING_FILE variable from the
 	configuration file.
 
 	Returns:
@@ -249,7 +249,7 @@ def get_controller_message_recording_file():
 
 def get_result_messages_history_file():
 	"""
-	Retrieve the value of the SRESULT_MESSAGES_HISTORY_FILE variable from the
+	Retrieves the value of the SRESULT_MESSAGES_HISTORY_FILE variable from the
 	configuration file.
 
 	Returns:
@@ -279,7 +279,7 @@ def get_result_messages_history_file():
 
 def get_control_stop_previous_command_patterns_file():
 	"""
-		Retrieve the value of the SCONTROL_STOP_PREVIOUS_COMMAND_PATTERNS_FILE from
+		Retrieves the value of the SCONTROL_STOP_PREVIOUS_COMMAND_PATTERNS_FILE from
 		the configuration file.
 
 	Returns:
@@ -309,7 +309,7 @@ def get_control_stop_previous_command_patterns_file():
 
 def get_control_accept_changes_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_ACCEPT_CHANGES_PATTERNS_FILE from the
+	Retrieves the value of the SCONTROL_ACCEPT_CHANGES_PATTERNS_FILE from the
 	configuration file.
 
 	Returns:
@@ -339,7 +339,7 @@ def get_control_accept_changes_patterns_file():
 
 def get_control_deny_changes_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_DENY_CHANGES_PATTERNS_FILE from the
+	Retrieves the value of the SCONTROL_DENY_CHANGES_PATTERNS_FILE from the
 	configuration file.
 
 	Returns:
@@ -369,7 +369,7 @@ def get_control_deny_changes_patterns_file():
 
 def get_control_select_option_number_one_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE from
+	Retrieves the value of the SCONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE from
 	the configuration file.
 
 	Returns:
@@ -399,7 +399,7 @@ def get_control_select_option_number_one_patterns_file():
 
 def get_control_select_option_number_two_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE from
+	Retrieves the value of the SCONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE from
 	the configuration file.
 
 	Returns:
@@ -429,7 +429,7 @@ def get_control_select_option_number_two_patterns_file():
 
 def get_control_select_option_number_three_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_SELECT_OPTION_NUMBER_THREE_PATTERNS_FILE
+	Retrieves the value of the SCONTROL_SELECT_OPTION_NUMBER_THREE_PATTERNS_FILE
 	from the configuration file.
 
 	Returns:
@@ -459,7 +459,7 @@ def get_control_select_option_number_three_patterns_file():
 
 def get_control_select_option_number_four_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_SELECT_OPTION_NUMBER_FOUR_PATTERNS_FILE
+	Retrieves the value of the SCONTROL_SELECT_OPTION_NUMBER_FOUR_PATTERNS_FILE
 	from the configuration file.
 
 	Returns:
@@ -489,7 +489,7 @@ def get_control_select_option_number_four_patterns_file():
 
 def get_control_skip_question_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_SKIP_QUESTION_PATTERNS_FILE from the
+	Retrieves the value of the SCONTROL_SKIP_QUESTION_PATTERNS_FILE from the
 	configuration file.
 
 	Returns:
@@ -519,7 +519,7 @@ def get_control_skip_question_patterns_file():
 
 def get_control_request_the_current_mode_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_REQUEST_THE_CURRENT_MODE_PATTERNS_FILE from
+	Retrieves the value of the SCONTROL_REQUEST_THE_CURRENT_MODE_PATTERNS_FILE from
 	the configuration file.
 
 	Returns:
@@ -549,7 +549,7 @@ def get_control_request_the_current_mode_patterns_file():
 
 def get_control_enter_the_normal_mode_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_ENTER_THE_NORMAL_MODE_PATTERNS_FILE from
+	Retrieves the value of the SCONTROL_ENTER_THE_NORMAL_MODE_PATTERNS_FILE from
 	the configuration file.
 
 	Returns:
@@ -579,7 +579,7 @@ def get_control_enter_the_normal_mode_patterns_file():
 
 def get_control_enter_the_conversational_mode_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE
+	Retrieves the value of the SCONTROL_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE
 	from the configuration file.
 
 	Returns:
@@ -609,7 +609,7 @@ def get_control_enter_the_conversational_mode_patterns_file():
 
 def get_control_enter_the_expert_mode_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_ENTER_THE_EXPERT_MODE_PATTERNS_FILE from
+	Retrieves the value of the SCONTROL_ENTER_THE_EXPERT_MODE_PATTERNS_FILE from
 	the configuration file.
 
 	Returns:
@@ -639,7 +639,7 @@ def get_control_enter_the_expert_mode_patterns_file():
 
 def get_control_enter_the_follow_up_mode_patterns_file():
 	"""
-	Retrieve the value of the SCONTROL_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE from
+	Retrieves the value of the SCONTROL_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE from
 	the configuration file.
 
 	Returns:
