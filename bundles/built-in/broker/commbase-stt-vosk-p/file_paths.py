@@ -577,9 +577,9 @@ def get_control_enter_the_normal_mode_patterns_file():
 	return None
 	
 
-def get_control_enter_the_conversational_mode_patterns_file():
+def get_control_enter_the_conversation_mode_patterns_file():
 	"""
-	Retrieves the value of the SCONTROL_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE
+	Retrieves the value of the SCONTROL_ENTER_THE_CONVERSATION_MODE_PATTERNS_FILE
 	from the configuration file.
 
 	Returns:
@@ -595,7 +595,7 @@ def get_control_enter_the_conversational_mode_patterns_file():
 			variable_name, value = line.strip().split('=')
 
 			# Check if the variable we are looking for exists in the line
-			if variable_name == 'CONTROL_ENTER_THE_CONVERSATIONAL_MODE_PATTERNS_FILE':
+			if variable_name == 'CONTROL_ENTER_THE_CONVERSATION_MODE_PATTERNS_FILE':
 				# Remove the quotes from the value of the variable
 				patterns_file = CONFIG_FILE_DIR + value.strip()[1:-1]
 				

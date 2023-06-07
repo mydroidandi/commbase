@@ -54,7 +54,7 @@ from file_paths import (
 	get_assistant_microphone_instruction_file,
 	get_control_accept_changes_patterns_file,
 	get_control_deny_changes_patterns_file,
-	get_control_enter_the_conversational_mode_patterns_file,
+	get_control_enter_the_conversation_mode_patterns_file,
 	get_control_enter_the_expert_mode_patterns_file,
 	get_control_enter_the_follow_up_mode_patterns_file,
 	get_control_enter_the_normal_mode_patterns_file,
@@ -116,7 +116,7 @@ def commbase_stt_vosk_p():
 	CONTROL_SKIP_QUESTION = "okay skip that question"
 	CONTROL_REQUEST_THE_CURRENT_MODE = "okay what mode are you in"
 	CONTROL_ENTER_THE_NORMAL_MODE = "okay enter the normal mode"
-	CONTROL_ENTER_THE_CONVERSATIONAL_MODE = "okay enter the conversational mode"
+	CONTROL_ENTER_THE_CONVERSATION_MODE = "okay enter the conversation mode"
 	CONTROL_ENTER_THE_EXPERT_MODE = "okay enter the expert mode"
 	CONTROL_ENTER_THE_FOLLOW_UP_MODE = "okay enter the follow up mode"
 
@@ -242,9 +242,9 @@ def commbase_stt_vosk_p():
 						'patterns': control_enter_the_normal_mode_patterns,
 						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_NORMAL_MODE}" for processing.'
 				},
-				'CONTROL_ENTER_THE_CONVERSATIONAL_MODE': {
-						'patterns': control_enter_the_conversational_mode_patterns,
-						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_CONVERSATIONAL_MODE}" for processing.'
+				'CONTROL_ENTER_THE_CONVERSATION_MODE': {
+						'patterns': control_enter_the_conversation_mode_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_CONVERSATION_MODE}" for processing.'
 				},
 				'CONTROL_ENTER_THE_EXPERT_MODE': {
 						'patterns': control_enter_the_expert_mode_patterns,
@@ -493,8 +493,8 @@ def commbase_stt_vosk_p():
 			# Set the values returned by get_control_enter_the_normal_mode()
 			control_enter_the_normal_mode_patterns_file = get_control_enter_the_normal_mode_patterns_file()
 
-			# Set the values returned by get_control_enter_the_conversational_mode_patterns_file()
-			control_enter_the_conversational_mode_patterns_file = get_control_enter_the_conversational_mode_patterns_file()
+			# Set the values returned by get_control_enter_the_conversation_mode_patterns_file()
+			control_enter_the_conversation_mode_patterns_file = get_control_enter_the_conversation_mode_patterns_file()
 
 			# Set the values returned by get_control_enter_the_expert_mode_patterns_file()
 			control_enter_the_expert_mode_patterns_file = get_control_enter_the_expert_mode_patterns_file()
@@ -545,9 +545,9 @@ def commbase_stt_vosk_p():
 			# Load the control patterns file and store its content in a variable
 			control_enter_the_normal_mode_patterns = read_lines_from_file(control_enter_the_normal_mode_patterns_file)
 
-			#	CONTROL_ENTER_THE_CONVERSATIONAL_MODE
+			#	CONTROL_ENTER_THE_CONVERSATION_MODE
 			# Load the control patterns file and store its content in a variable
-			control_enter_the_conversational_mode_patterns = read_lines_from_file(control_enter_the_conversational_mode_patterns_file)
+			control_enter_the_conversation_mode_patterns = read_lines_from_file(control_enter_the_conversation_mode_patterns_file)
 
 			#	CONTROL_ENTER_THE_EXPERT_MODE
 			# Load the control patterns file and store its content in a variable
