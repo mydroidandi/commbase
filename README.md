@@ -52,9 +52,11 @@ This project is coded and organized like this:
 │   ├── built-in
 │   │   └── broker
 │   │       ├── commbase-stt-vosk-p
+│   │       │   └── examples
 │   │       ├── libcommbase
 │   │       │   ├── examples
 │   │       │   ├── libcommbase
+│   │       │   │   ├── controller
 │   │       │   │   ├── routines
 │   │       │   │   └── skills
 │   │       │   │       ├── parsers
@@ -62,8 +64,11 @@ This project is coded and organized like this:
 │   │       │   └── resources
 │   │       │       ├── bundles
 │   │       │       │   └── sounds
+│   │       │       ├── control_patterns
+│   │       │       │   └── vosk-model-en-us-0.22-lgraph
 │   │       │       ├── discourses
 │   │       │       └── skill_patterns
+│   │       │       │   └── vosk-model-en-us-0.22-lgraph
 │   │       ├── PyAudio
 │   │       ├── scripts
 │   │       │   └── utilities
@@ -122,6 +127,7 @@ This project is coded and organized like this:
     │       │   │   └── runners
     │       │   └── skill_testing
     │       ├── skill_patterns
+    │       │   └── vosk-model-en-us-0.22-lgraph
     │       └── skill_scripts
     │           ├── arduino
     │           ├── bash
@@ -158,6 +164,7 @@ This project is coded and organized like this:
             │       ├── parsers
             │       └── runners
             ├── skill_patterns
+            │   └── vosk-model-en-us-0.22-lgraph
             └── skill_scripts
                 ├── arduino
                 ├── bash
