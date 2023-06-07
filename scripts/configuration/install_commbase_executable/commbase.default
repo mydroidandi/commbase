@@ -100,7 +100,7 @@ Control:
   	"[okay|ok] select the option number <number>"
   						Select a multi-choice question option
   	"[okay|ok] skip that question"		Skip a question option
-  	"[okay|ok] which mode are you in"	Confirm the current mode
+  	"[okay|ok] what mode are you in"	Confirm the current mode
   	"[okay|ok] enter the normal mode"	Enter the normal mode
   	"[okay|ok] enter the conversation mode"	Enter the conversation mode
   	"[okay|ok] enter the expert mode"	Enter the expert mode
