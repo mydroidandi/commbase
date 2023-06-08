@@ -56,7 +56,7 @@ from file_paths import (
 	get_control_deny_changes_patterns_file,
 	get_control_enter_the_conversation_mode_patterns_file,
 	get_control_enter_the_expert_mode_patterns_file,
-	get_control_enter_the_follow_up_mode_patterns_file,
+	get_control_enter_the_follow_mode_patterns_file,
 	get_control_enter_the_normal_mode_patterns_file,
 	get_control_request_the_current_mode_patterns_file,
 	get_control_select_option_number_four_patterns_file,
@@ -118,7 +118,7 @@ def commbase_stt_vosk_p():
 	CONTROL_ENTER_THE_NORMAL_MODE = "okay enter the normal mode"
 	CONTROL_ENTER_THE_CONVERSATION_MODE = "okay enter the conversation mode"
 	CONTROL_ENTER_THE_EXPERT_MODE = "okay enter the expert mode"
-	CONTROL_ENTER_THE_FOLLOW_UP_MODE = "okay enter the follow up mode"
+	CONTROL_ENTER_THE_FOLLOW_MODE = "okay enter the follow mode"
 
 	# q is used to store a Queue object, which is then used to keep track of the
 	# nodes that need to be visited during the breadth-first search algorithm.
@@ -250,9 +250,9 @@ def commbase_stt_vosk_p():
 						'patterns': control_enter_the_expert_mode_patterns,
 						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_EXPERT_MODE}" for processing.'
 				},
-				'CONTROL_ENTER_THE_FOLLOW_UP_MODE': {
-						'patterns': control_enter_the_follow_up_mode_patterns,
-						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_FOLLOW_UP_MODE}" for processing.'
+				'CONTROL_ENTER_THE_FOLLOW_MODE': {
+						'patterns': control_enter_the_follow_mode_patterns,
+						'message': f'I am dispatching "{trimmed_string}" as control "{CONTROL_ENTER_THE_FOLLOW_MODE}" for processing.'
 				}
 			}
 
@@ -499,8 +499,8 @@ def commbase_stt_vosk_p():
 			# Set the values returned by get_control_enter_the_expert_mode_patterns_file()
 			control_enter_the_expert_mode_patterns_file = get_control_enter_the_expert_mode_patterns_file()
 
-			# Set the values returned by get_control_enter_the_follow_up_mode_patterns_file()
-			control_enter_the_follow_up_mode_patterns_file = get_control_enter_the_follow_up_mode_patterns_file()
+			# Set the values returned by get_control_enter_the_follow_mode_patterns_file()
+			control_enter_the_follow_mode_patterns_file = get_control_enter_the_follow_mode_patterns_file()
 
 
 			# Preload all the control pattern files
@@ -553,9 +553,9 @@ def commbase_stt_vosk_p():
 			# Load the control patterns file and store its content in a variable
 			control_enter_the_expert_mode_patterns = read_lines_from_file(control_enter_the_expert_mode_patterns_file)
 
-			#	CONTROL_ENTER_THE_FOLLOW_UP_MODE
+			#	CONTROL_ENTER_THE_FOLLOW_MODE
 			# Load the control patterns file and store its content in a variable
-			control_enter_the_follow_up_mode_patterns = read_lines_from_file(control_enter_the_follow_up_mode_patterns_file)
+			control_enter_the_follow_mode_patterns = read_lines_from_file(control_enter_the_follow_mode_patterns_file)
 
 
 			# Show avatar
