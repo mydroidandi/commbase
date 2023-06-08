@@ -62,7 +62,7 @@ controller() {
 	control_enter_the_normal_mode_patterns_file=$COMMBASE_APP_DIR$CONTROL_ENTER_THE_NORMAL_MODE_PATTERNS_FILE;
 	control_enter_the_conversation_mode_patterns_file=$COMMBASE_APP_DIR$CONTROL_ENTER_THE_CONVERSATION_MODE_PATTERNS_FILE;
 	control_enter_the_expert_mode_patterns_file=$COMMBASE_APP_DIR$CONTROL_ENTER_THE_EXPERT_MODE_PATTERNS_FILE;
-	control_enter_the_follow_up_mode_patterns_file=$COMMBASE_APP_DIR$CONTROL_ENTER_THE_FOLLOW_UP_MODE_PATTERNS_FILE;
+	control_enter_the_follow_mode_patterns_file=$COMMBASE_APP_DIR$CONTROL_ENTER_THE_FOLLOW_MODE_PATTERNS_FILE;
 
 	# Load all the control pattern files in variables
 	control_stop_previous_command_patterns=$(read_lines_from_file $control_stop_previous_command_patterns_file);
@@ -77,7 +77,7 @@ controller() {
 	control_enter_the_normal_mode_patterns=$(read_lines_from_file $control_enter_the_normal_mode_patterns_file);
 	control_enter_the_conversation_mode_patterns=r$(read_lines_from_file $control_enter_the_conversation_mode_patterns_file);
 	control_enter_the_expert_mode_patterns=$(read_lines_from_file $control_enter_the_expert_mode_patterns_file);
-	control_enter_the_follow_up_mode_patterns=$(read_lines_from_file $control_enter_the_follow_up_mode_patterns_file);
+	control_enter_the_follow_mode_patterns=$(read_lines_from_file $control_enter_the_follow_mode_patterns_file);
 
 	# In case the message includes a control, replace it with a control message
 
@@ -169,9 +169,9 @@ controller() {
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
 			(bash "$COMMBASE_APP_DIR/src/skill");
-		elif echo "$control_enter_the_follow_up_mode_patterns" | grep -q "$new_message"; then
+		elif echo "$control_enter_the_follow_mode_patterns" | grep -q "$new_message"; then
 			# Create the JSON object
-			json_data="{\"control\": \"CONTROL_ENTER_THE_FOLLOW_UP_MODE\"}";
+			json_data="{\"control\": \"CONTROL_ENTER_THE_FOLLOW_MODE\"}";
 			# Record the control message string as a JSON object
 			(echo "$json_data" > $COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE);
 			# Manage the result message
