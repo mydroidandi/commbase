@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 ################################################################################
-#                               commbase-stt-vosk                              #
+#                              commbase-stt-vosk-p                             #
 #                                                                              #
 # Conversational AI Assistant and AI Hub for Computers and Droids              #
 #                                                                              #
