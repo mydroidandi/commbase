@@ -1,5 +1,5 @@
 ################################################################################
-#                              commbase-stt-vosk-p                             #
+#                            commbase-stt-whisper-p                            #
 #                                                                              #
 # Conversational AI Assistant and AI Hub for Computers and Droids              #
 #                                                                              #
