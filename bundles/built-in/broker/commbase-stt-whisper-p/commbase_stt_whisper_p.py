@@ -2,7 +2,7 @@
 ################################################################################
 #                            commbase-stt-whisper-p                            #
 #                                                                              #
-# Conversational AI Assistant and AI Hub for Computers and Droids              #
+# An ASR (Automatic Speech Recognition) engine.                                #
 #                                                                              #
 # Change History                                                               #
 # 04/29/2023  Esteban Herrera Original code.                                   #
@@ -39,7 +39,6 @@
 # device (/dev/null) like this to avoid ALSA output messages:
 # shell> python commbase_stt_whisper_p.py 2>& /dev/null
 
-
 # Requirements
 import io
 from pydub import AudioSegment
@@ -47,7 +46,6 @@ import speech_recognition as sr
 import whisper
 import tempfile
 import os
-import pyttsx3
 
 # A temporary directory and a file path within that directory
 temp_file = tempfile.mkdtemp()
@@ -55,12 +53,6 @@ save_path = os.path.join(temp_file, 'temp.wav')
 
 # Initialize the text-to-speech engine, retrieve the available voices, and set
 # properties for the engine's rate and voice.
-engine = pyttsx3.init()
-voices = engine.getProperty('voices')
-engine.setProperty('rate', 145)
-engine.setProperty('voice', voices[11].id)  #TODO: Add to the file INSTALL
-
-
 def listen():
 	"""
 	Initializes a speech recognizer, captures audio input from a microphone,
@@ -99,7 +91,7 @@ def main():
 	recognition process.
 	"""
 	response = recognize_audio(listen())
-	print(response).strip()
+	print(response)
 
 
 # Ensure that the main() function is executed only when the script is run
