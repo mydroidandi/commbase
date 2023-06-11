@@ -2,7 +2,7 @@
 ################################################################################
 #                            commbase-stt-whisper-p                            #
 #                                                                              #
-# Conversational AI Assistant and AI Hub for Computers and Droids              #
+# An ASR (Automatic Speech Recognition) engine.                                #
 #                                                                              #
 # Change History                                                               #
 # 04/29/2023  Esteban Herrera Original code.                                   #
