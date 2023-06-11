@@ -99,7 +99,7 @@ def main():
 	recognition process.
 	"""
 	response = recognize_audio(listen())
-	print(response).strip()
+	print(response)
 
 
 # Ensure that the main() function is executed only when the script is run
