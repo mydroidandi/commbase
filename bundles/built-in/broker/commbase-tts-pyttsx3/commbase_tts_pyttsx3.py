@@ -34,7 +34,7 @@
 # Utilizes text-to-speech capabilities to read out the content of a file or any
 # input text provided.
 
-#Requirements
+# Requirements
 import fileinput
 import os.path
 import pyttsx3
@@ -42,68 +42,68 @@ import argparse
 import sys
 
 def set_up_text_to_speech(rate, voice_index):
-    """
-    Initializes the text-to-speech engine, retrieves the available voices, and
-    sets properties for the engine's rate and voice.
-    """
-    engine = pyttsx3.init()
-    voices = engine.getProperty('voices')
-    engine.setProperty('rate', rate)
-    engine.setProperty('voice', voices[voice_index].id)
-    return engine, voices
+	"""
+	Initializes the text-to-speech engine, retrieves the available voices, and
+	sets properties for the engine's rate and voice.
+	"""
+	engine = pyttsx3.init()
+	voices = engine.getProperty('voices')
+	engine.setProperty('rate', rate)
+	engine.setProperty('voice', voices[voice_index].id)
+	return engine, voices
 
 def talk(text, rate, voice_index):
-    """
-    Sets up the text-to-speech engine, utilizes it to speak out the provided text,
-    and ensures the speech synthesis is completed before proceeding.
-    """
-    # Assign the values returned by set_up_text_to_speech()
-    engine, voices = set_up_text_to_speech(rate, voice_index)
+	"""
+	Sets up the text-to-speech engine, utilizes it to speak out the provided text,
+	and ensures the speech synthesis is completed before proceeding.
+	"""
+	# Assign the values returned by set_up_text_to_speech()
+	engine, voices = set_up_text_to_speech(rate, voice_index)
 
-    engine.say(text)
-    engine.runAndWait()
+	engine.say(text)
+	engine.runAndWait()
 
 def read_file(file_path):
-    """
-    Attempts to read the contents of the specified file, handles potential errors
-    such as file not found or IO errors, and returns the file's content if it is
-    successfully read.
-    """
-    try:
-        with open(file_path, 'r') as file:
-            content = file.read()
-            return content
-    except FileNotFoundError:
-        print("File not found!")
-        return None
-    except IOError:
-        print("An error occurred while reading the file!")
-        return None
+	"""
+	Attempts to read the contents of the specified file, handles potential errors
+	such as file not found or IO errors, and returns the file's content if it is
+	successfully read.
+	"""
+	try:
+		with open(file_path, 'r') as file:
+		  content = file.read()
+		  return content
+	except FileNotFoundError:
+		print("File not found!")
+		return None
+	except IOError:
+		print("An error occurred while reading the file!")
+		return None
 
 def main():
-    """
-    Serves as the entry point of the program.
-    This function is responsible for reading input text from either a file or
-    standard input, storing it in the file_content variable, and then passing it
-    to the talk() function for speech synthesis. If no input text is provided, it
-    displays an appropriate message.
-    """
-    parser = argparse.ArgumentParser(description='Text-to-Speech with pyttsx3')
-    parser.add_argument('--rate', type=int, default=145, help='Voice speed')
-    parser.add_argument('--voice-index', type=int, default=0, help='Index of the voice to use')
-    args = parser.parse_args()
+	"""
+	Serves as the entry point of the program.
+	This function is responsible for reading input text from either a file or
+	standard input, storing it in the file_content variable, and then passing it
+	to the talk() function for speech synthesis. If no input text is provided, it
+	displays an appropriate message.
+	"""
+	parser = argparse.ArgumentParser(description='Text-to-Speech with pyttsx3')
+	parser.add_argument('--rate', type=int, default=145, help='Voice speed')
+	parser.add_argument('--voice-index', type=int, default=0, help='Index of the voice to use')
+	args = parser.parse_args()
 
-    file_content = ''
-    for line in sys.stdin:
-        file_content += line
+	file_content = ''
+	for line in sys.stdin:
+		file_content += line
 
-    if file_content:
-        talk(file_content, args.rate, args.voice_index)
-    else:
-        print("No input text provided.")
+	if file_content:
+		talk(file_content, args.rate, args.voice_index)
+	else:
+		print("No input text provided.")
 
 # Ensure that the main() function is executed only when the script is run
 # directly as the main program.
 if __name__ == '__main__':
-    main()
+	main()
 
