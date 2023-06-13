@@ -23,10 +23,10 @@ This command reads the content of the file.txt file and passes it as input to th
 
 ### Example 2: Providing input directly
 ``` sh
-echo "Hello World!" | python commbase_tts_pyttsx3.py
+echo "Hello World\!" | python3.11 commbase_tts_pyttsx3.py --rate=145 --voice-index=18
 ```
 
-This command provides the input text "Hello World!" directly to the commbase_tts_pyttsx3.py script. The script converts the text to speech and plays it back.
+This command provides the input text "Hello World!" directly to the commbase_tts_pyttsx3.py script using the specified rate and voice index to convert the text into speech and play it back.
 
 Make sure to have Python 3.x installed on your system and the required dependencies (fileinput, os.path, and pyttsx3) properly installed before running the commands above.
 
