@@ -35,75 +35,78 @@
 # input text provided.
 
 # Requirements
+import argparse
 import fileinput
 import os.path
 import pyttsx3
-import argparse
 import sys
 
-def set_up_text_to_speech(rate, voice_index):
-	"""
-	Initializes the text-to-speech engine, retrieves the available voices, and
-	sets properties for the engine's rate and voice.
-	"""
-	engine = pyttsx3.init()
-	voices = engine.getProperty('voices')
-	engine.setProperty('rate', rate)
-	engine.setProperty('voice', voices[voice_index].id)
-	return engine, voices
+class TextToSpeech:
+	def __init__(self):
+		self.engine = None
+		self.voices = None
 
-def talk(text, rate, voice_index):
-	"""
-	Sets up the text-to-speech engine, utilizes it to speak out the provided text,
-	and ensures the speech synthesis is completed before proceeding.
-	"""
-	# Assign the values returned by set_up_text_to_speech()
-	engine, voices = set_up_text_to_speech(rate, voice_index)
+	def set_up_text_to_speech(self, rate, voice_index):
+		"""
+		Initializes the text-to-speech engine, retrieves the available voices, and
+		sets properties for the engine's rate and voice.
+		"""
+		self.engine = pyttsx3.init()
+		self.voices = self.engine.getProperty('voices')
+		self.engine.setProperty('rate', rate)
+		self.engine.setProperty('voice', self.voices[voice_index].id)
 
-	engine.say(text)
-	engine.runAndWait()
+	def talk(self, text):
+		"""
+		Sets up the text-to-speech engine, utilizes it to speak out the provided 
+		text, and ensures the speech synthesis is completed before proceeding.
+		"""
+		self.engine.say(text)
+		self.engine.runAndWait()
 
-def read_file(file_path):
-	"""
-	Attempts to read the contents of the specified file, handles potential errors
-	such as file not found or IO errors, and returns the file's content if it is
-	successfully read.
-	"""
-	try:
-		with open(file_path, 'r') as file:
-		  content = file.read()
-		  return content
-	except FileNotFoundError:
-		print("File not found!")
-		return None
-	except IOError:
-		print("An error occurred while reading the file!")
-		return None
+	def read_file(self, file_path):
+		"""
+		Attempts to read the contents of the specified file, handles potential
+		errors such as file not found or IO errors, and returns the file's content
+		if it is successfully read.
+		"""
+		try:
+			with open(file_path, 'r') as file:
+				content = file.read()
+				return content
+		except FileNotFoundError:
+			print("File not found!")
+			return None
+		except IOError:
+			print("An error occurred while reading the file!")
+			return None
 
-def main():
-	"""
-	Serves as the entry point of the program.
-	This function is responsible for reading input text from either a file or
-	standard input, storing it in the file_content variable, and then passing it
-	to the talk() function for speech synthesis. If no input text is provided, it
-	displays an appropriate message.
-	"""
-	parser = argparse.ArgumentParser(description='Text-to-Speech with pyttsx3')
-	parser.add_argument('--rate', type=int, default=145, help='Voice speed')
-	parser.add_argument('--voice-index', type=int, default=0, help='Index of the voice to use')
-	args = parser.parse_args()
+	def main(self):
+		"""
+		Serves as the entry point of the program.
+		This method is responsible for reading input text from either a file or
+		standard input, storing it in the file_content variable, and then passing it
+		to the talk() method for speech synthesis. If no input text is provided, it
+		displays an appropriate message.
+		"""
+		parser = argparse.ArgumentParser(description='Text-to-Speech with pyttsx3')
+		parser.add_argument('--rate', type=int, default=145, help='Voice speed')
+		parser.add_argument('--voice-index', type=int, default=0, help='Index of the voice to use')
+		args = parser.parse_args()
 
-	file_content = ''
-	for line in sys.stdin:
-		file_content += line
+		self.set_up_text_to_speech(args.rate, args.voice_index)
 
-	if file_content:
-		talk(file_content, args.rate, args.voice_index)
-	else:
-		print("No input text provided.")
+		file_content = ''
+		for line in sys.stdin:
+			file_content += line
 
-# Ensure that the main() function is executed only when the script is run
-# directly as the main program.
+		if file_content:
+			self.talk(file_content)
+		else:
+			print("No input text provided.")
+
+
 if __name__ == '__main__':
-	main()
+    tts = TextToSpeech()
+    tts.main()
 
