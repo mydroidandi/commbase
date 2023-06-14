@@ -27,21 +27,23 @@ Content
 
 2.5. Build the Commbase Conda environment from a YAML file
 
-2.6. Install the required system dependency packages
+2.6. Install Whisper
 
-2.7. Install commbase-stt-vosk-p
+2.7. Install the required system dependency packages
 
-2.8. Install libcommbase
+2.8. Install commbase-stt-vosk-p
 
-2.9. Install the Vosk model
+2.9. Install libcommbase
 
-2.10. Install VU-meter
+2.10. Install the Vosk model
 
-2.11. Install Oh My Tmux
+2.11. Install VU-meter
 
-2.12. Install the default Commbase voice commands dependencies
+2.12. Install Oh My Tmux
 
-2.13. Install Desktop Environments
+2.13. Install the default Commbase voice commands dependencies
+
+2.14. Install Desktop Environments
 
 3. Next steps
 
@@ -421,7 +423,7 @@ $ sudo apt-get update
 
 Search the package in the official Debian repos (main):
 
-apt-cache search opencv
+$ apt-cache search opencv
 
 Show the package version information:
 
@@ -435,7 +437,7 @@ Verify the packge installation:
 
 $ dpkg -l | grep opencv
 
-- openai
+- openai:
 
 $ pip3.11 install openai
 
@@ -443,19 +445,43 @@ $ pip3.11 install openai
 
 $ pip3.11 install aiohttp-cors
 
-- typer
+- typer:
 
 $ pip3.11 install typer
 
-- rich
+- rich:
 
-pip3.11 install rich
+$ pip3.11 install rich
 
-- cchardet
+- cchardet:
 
 This is giving an error and was installed using pip3 instead of pip3.11, as follows:
 
 $ pip3 install cchardet
+
+- SpeechRecognition:
+
+$ pip3.11 install SpeechRecognition
+
+- ffmpeg:
+
+$ pip3.11 install ffmpeg
+
+It requires the package ffmpeg. Install it like this:
+
+$ sudo apt-get install ffmpeg
+
+- pyttsx3:
+
+$ pip3.11 install pyttsx3
+
+- pydub:
+
+$ pip3.11 install pydub
+
+It requires the package ffmpeg. Install it like this:
+
+$ sudo apt-get install python3-pydub
 
 Install Python in an Anaconda Python environment
 -------------------------------------------------
@@ -553,6 +579,37 @@ Run the config script:
 $ bash scripts/configuration/build_conda_environment.sh
 
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
+
+Install Whisper
+----------------
+
+To install Whisper with for Python:
+
+$ pip3.11 install git+https://github.com/openai/whisper.git
+
+To install Whisper for the Anaconda Python Environment commbase_env:
+
+If you haven't installed Whisper with Python do the following:
+
+$ conda activate commbase_env
+
+(commbase_env) $ pip install git+https://github.com/openai/whisper.git
+
+If you have already installed Whisper with Python, uninstall Whisper from the environment and then reinstall it from the environment:
+
+(commbase_env) $ conda uninstall openai-whisper
+
+(commbase_env) $ conda install openai-whisper
+
+Double check the Whisper installation.
+
+For Python, use:
+
+$ pip3.11 list | grep whisper
+
+For Anaconda Python, use:
+
+(commbase_env) $ conda list | grep whisper 
 
 Install the required system dependency packages
 ------------------------------------------------
