@@ -14,11 +14,12 @@
 - [3 Useful system commands](#3-useful-system-commands)
 - [4 The Commbase user interface](#4-the-commbase-user-interface)
 	- [The window Extension](#the-window-extension)
-- [5 Default Commbase commands](#5-default-commbase-commands)
+- [5 Configuration Variables](#5-configuration-variables)
+- [6 Default Commbase commands](#6-default-commbase-commands)
 	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
 	- [Commbase Management Commands](#commbase-management-commands)
 	- [Commbase Common Commands](#commbase-common-commands)
-- [6 Create new voice commands basics](#6-create-new-voice-commands-basics)
+- [7 Create new voice commands basics](#7-create-new-voice-commands-basics)
 	- [Verbosity Levels](#verbosity-levels)
 	- [Proposed Command Conventions](#proposed-command-conventions)
 		- [Modes](#modes)
@@ -41,12 +42,12 @@
 			- [Networking](#networking)
 			- [Remote Access](#remote-access)
 			- [Development](#development)
-- [7 Hints on saying and creating voice commands](#7-hints-on-saying-and-creating-voice-commands)
-- [8 Commands setup](#8-commands-setup)
+- [8 Hints on saying and creating voice commands](#8-hints-on-saying-and-creating-voice-commands)
+- [9 Commands setup](#9-commands-setup)
 	- [The Commbase root directory](#the-commbase-root-directory)
 	- [The Commbase processing file](#the-commbase-processing-file)
-- [9 Training Commbase by Assembling Skillsets](#9-training-commbase-by-assembling-skillsets)
-- [10 Keyboard Shortcuts](#10-keyboard-shortcuts)
+- [10 Training Commbase by Assembling Skillsets](#10-training-commbase-by-assembling-skillsets)
+- [11 Keyboard Shortcuts](#11-keyboard-shortcuts)
 	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
 		- [Commbase Key Bindings](#commbase-key-bindings)
 		- [Desktop Environment and Operating System](#desktop-environment-and-operating-system)
@@ -59,7 +60,7 @@
 		- [VS Code](#vs-code)
 		- [Web Browser](#web-browser)
 	- [Input Remapper](#input-remapper)
-- [11 Commbase for Software Development](#11-commbase-for-software-development)
+- [12 Commbase for Software Development](#12-commbase-for-software-development)
 	- [Get Commbase up and running for development](#get-commbase-up-and-running-for-development)
 	- [Create a Virtual Machine for Software Development](#create-a-virtual-machine-for-software-development)
 	- [Commbase Commands for Development with Neovim](#commbase-commands-for-development-with-neovim)
@@ -167,7 +168,740 @@ Press CTRL + b, then press 2
 Return to the window Commbase:
 Press CTRL + b, then press 1
 
-# 5 Default Commbase commands
+# 5 Configuration Variables
+
+The configuration variables can be accessed by going to the directory config/ and opening the files secrets and app.conf.
+
+The file `secrets` holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. The file `app.conf` holds all the other app configuration options.
+
+These are environment files that you can edit following certain rules:
+- Every environment variable is a constant.
+- Constants must be declared in uppercase.
+- The constants are strictly grouped and ordered as possible.
+- All the values assigned to constants must be double quoted.
+- You can add more CONSTANTS with values, but their names can not be duplicated in the file or match Commbase or system environment constants, such as: $COMMBASE_APP_DIR or $HOME.
+- There should not be empty lines or spaces in the file.
+
+Use your favorite text editor to open any of those files.
+
+$ nano config/app.conf
+
+The default version of the file `secrets` does not have default values and they must be provided by the app user. Its constants are:
+
+- LOCAL_HOST_UUID
+- REMOTE_USER_NAME
+- REMOTE_USER_PASSWORD
+- PROTONVPN_CLI_USERNAME
+- PROTONVPN_CLI_PASSWORD
+- PROTONVPN_API_USERNAME
+- PROTONVPN_API_PASSWORD
+- SERVER_HOST_001_UUID
+- SERVER_HOST_001_HOSTNAME
+- SERVER_HOST_001_IP_ADDRESS
+- SERVER_HOST_001_USER_PASSW
+- OPENAI_API_KEY
+
+Understanding the Purpose of the OpenAI API Key.
+
+The OpenAI API key is used to authenticate and authorize access to the OpenAI ChatGPT language models. It serves as a unique identifier for your account and allows you to make API calls to interact with the model.
+
+By including your API key in API requests, you can access the various capabilities of the GPT language models, such as generating text, answering questions, providing translations, creating conversational agents, and more. The API key helps ensure that only authorized users can access and utilize the OpenAI API services.
+
+It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
+
+The default version of the file app.conf contains the next values:
+
+- `PYTHON_ENV_VERSION`:
+  - Possible values:
+    - `python`: This is the default value, which implies that the virtual environment will use the Python version associated with the default system Python interpreter.
+    - `python3.11`: This value indicates a custom Python version, specifically version 3.11.
+    - `python3`: This value also represents a custom Python version, but the exact version is not specified.
+
+STT_PROCESS_CPU_LIMIT_PERCENTAGE="75"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+CONDA_ENV_NAME_IF_EXISTS="commbase_env"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+IP_ADDRESS_UPDATE_IN_SECS="600"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+MY_APP_AUDIO_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+SYSTEM_AUDIO_CAPTURE_DEVICE_NAME="alsa_input.pci-0000_00_1b.0.analog-stereo"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+VIDEO_CAPTURE_DEVICE_01_INDEX="0"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+VIDEO_CAPTURE_DEVICE_02_INDEX="1"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+STT_ENGINE_STRING="$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+TTS_ENGINE_STRING="festival --tts"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+TMUX_EXTRA_WINDOWS_ON="True"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+TMUX_EXTRA_WINDOW_EDITOR_ON="True"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+TMUX_EXTRA_WINDOW_TIMER=_ON"True"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+TMUX_EXTRA_WINDOW_SERVER1_ON="True"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TMUX_EXTRA_WINDOW_SERVER2_ON="False"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+TERMINAL_RED_BACKGROUND_COLOR_CODE_START="1;41m"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TERMINAL_GREEN_BACKGROUND_COLOR_CODE_START="1;42m"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+TERMINAL_YELLOW_BACKGROUND_COLOR_CODE_START="1;43m"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TERMINAL_BLUE_BACKGROUND_COLOR_CODE_START="1;44m"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TERMINAL_MAGENTA_BACKGROUND_COLOR_CODE_START="1;45m"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TERMINAL_CYAN_BACKGROUND_COLOR_CODE_START="1;46m"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TERMINAL_WHITE_BACKGROUND_COLOR_CODE_START="1;47m"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TERMINAL_BLACK_BACKGROUND_COLOR_CODE_START="1;40m"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TERMINAL_RED_TEXT_COLOR_CODE_START="31m"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TERMINAL_GREEN_TEXT_COLOR_CODE_START="32m"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TERMINAL_YELLOW_TEXT_COLOR_CODE_START="33m"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+TERMINAL_BLUE_TEXT_COLOR_CODE_START="34m"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TERMINAL_MAGENTA_TEXT_COLOR_CODE_START="35m"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+TERMINAL_CYAN_TEXT_COLOR_CODE_START="36m"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+TERMINAL_WHITE_TEXT_COLOR_CODE_START="37m"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+
+TERMINAL_BLACK_TEXT_COLOR_CODE_START="30m"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+TERMINAL_COLOR_CODE_END="1;0m"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+END_USER_BACKGROUND_COLOR_IN_CHAT_PANE="blue"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+ASSISTANT_BACKGROUND_COLOR_IN_CHAT_PANE="green"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+SYSTEM_BACKGROUND_COLOR_IN_CHAT_PANE="white"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+END_USER_TEXT_COLOR_IN_CHAT_PANE="white"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+ASSISTANT_TEXT_COLOR_IN_CHAT_PANE="white"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+SYSTEM_TEXT_COLOR_IN_CHAT_PANE="red"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+ASSISTANT_AVATAR_COLOR_IN_CHAT_PANE="cyan"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+END_USER_NAME_IN_CHAT_PANE="END USER"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+ASSISTANT_NAME_IN_CHAT_PANE="COMMBASE"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+SYSTEM_VISIBLE_IN_CHAT_PANE_ON="False"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+
+SYSTEM_NAME_IN_CHAT_PANE="SYSTEM"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON="True"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+VOSK_ML_MODEL_DIRECTORY="/bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph/model"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+SECRETS_FILE_PATH="/config/secrets"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+ASCII_ART_FILE_PATH="/assets/ascii/avatar.asc"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+ASSISTANT_MICROPHONE_INSTRUCTION_FILE="/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+RESULT_MESSAGE_RECORDING_FILE="/data/.result_message.json"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+PREVIOUS_RESULT_MESSAGE_RECORDING_FILE="/data/.previous_result_message.json"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+CONTROLLER_MESSAGE_RECORDING_FILE="/data/.controller_message.json"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+RESULT_MESSAGES_HISTORY_FILE="/history/.result_messages_history"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+COMMBASE_STT_VOSK_P_PARSE_CONTROL_MESSAGES_ON="False"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+CONTROL_STOP_PREVIOUS_COMMAND_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_stop_patterns"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+CONTROL_ACCEPT_CHANGES_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_accept_patterns"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+CONTROL_DENY_CHANGES_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_deny_patterns"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+CONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_one_patterns"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+CONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_two_patterns"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+CONTROL_SELECT_OPTION_NUMBER_THREE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_three_patterns"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+CONTROL_SELECT_OPTION_NUMBER_FOUR_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_four_patterns"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+CONTROL_SKIP_QUESTION_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_skip_that_question_patterns"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+CONTROL_REQUEST_THE_CURRENT_MODE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_what_mode_are_you_in_patterns"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+CONTROL_ENTER_THE_NORMAL_MODE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_normal_mode_patterns"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+CONTROL_ENTER_THE_CONVERSATION_MODE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_conversation_mode_patterns"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+CONTROL_ENTER_THE_EXPERT_MODE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_expert_mode_patterns"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+CONTROL_ENTER_THE_FOLLOW_MODE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_follow_mode_patterns"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+EXTERNAL_STORAGE_DRIVE_01_TAG="WD1"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+EXTERNAL_STORAGE_DRIVE_02_TAG="WD2"
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+DEV_PROJECT_DIRECTORY_NAME="YOUR_DEV_PROJECT_DIRECTORY_NAME_HERE"
+
+
+- `VAR_NAME`:
+  - Possible values:
+    - `value1`: Description of value1.
+    - `value2`: Description of value2.
+    - `value3`: Description of value3.
+
+
+
+Reset the configuration file app.conf:
+It restores the file to its inital status.
+Go to the directory scripts/utilities and execute the file reset_app.conf.sh.
+
+`$ cd config-scripts`
+
+`$ bash reset-commbase.conf.sh`
+
+
+
+
+
+
+
+
+# 6 Default Commbase commands
 
 ## Commbase Commmands unique for the Command Line
 
@@ -244,7 +978,7 @@ $ commbase "set a timer of" "one" "minute"
 `"open my current editor workspace"` / `"open my current code workspace"` /
 `"open my current editor workspace that i am working on"`.
 
-# 6 Create new voice commands basics
+# 7 Create new voice commands basics
 
 ## Verbosity Levels
 
@@ -404,7 +1138,7 @@ For commands that must be verified before execution, due to their execution is r
 > open the development project <PROYECT-NAME>
 > open the current development project
 
-# 7 Hints on saying and creating voice commands
+# 8 Hints on saying and creating voice commands
 
 Different output in well said command repetitions:
 Say a different phrase, or example "clear" before repeat a failed/non accurate phrase, so Vosk
@@ -428,7 +1162,7 @@ get kind of confused and tend to display articles such as "the" and other words 
 phrase the most similar to two people talking to one another like in a movie. For that reason, Vosk
 is used as a part of audio file transcription software in the Linux world.
 
-# 8 Commands setup
+# 9 Commands setup
 
 Run the test script test_microphone.py, as described in the section "4. Testing the Vosk model" of
 the file INSTALL, to test your new command accuracy until you feel comfortable with the command
@@ -657,7 +1391,7 @@ commbase-process-vosk-suv-vehicle.sh
 commbase-process-vosk-spacecraft.sh
 commbase-process-vosk-virtual-mentor.sh
 
-# 9 Training Commbase by Assembling Skillsets
+# 10 Training Commbase by Assembling Skillsets
 
 Commbase can be trained in a variety of manners. For example, you can train the AI Model, which would directly affect the existent commands precision, and would require to verify every command afterwards. Furthermore, you can train any preffered/specialized AI (added kind of as a plugin), to be used by Commbase in talkative mode. Also, we can train Commbase scripts that use sensors such as face recognition, voice recognition, etc., or move servos, and so on, and so forth, depending on the device where Commbase runs on.
 
@@ -819,7 +1553,7 @@ Skillsets voice commands examples:
 
 "Help me identify who is attacking our network connection" / "Detect and trace the address of the intruder/attacker computer" (for example, someone who sends a  DDoS attack.)
 
-# 10 Keyboard Shortcuts
+# 11 Keyboard Shortcuts
 
 ## Keyboard Shortcuts Cheat Sheet
 
@@ -914,7 +1648,7 @@ This application can help other Apps such as the AI Assitant "Commbase" execute 
 
 Consider Input Remmaper to create new custom Commbase commands or, for example, replace our chosen Development editor with another editor or IDE enhanced with Commbase with this type of mappings. Include and document a back and restore procedure of your custom mapping files.
 
-# 11 Commbase for Software Development
+# 12 Commbase for Software Development
 
 ## Get Commbase up and running for development
 
