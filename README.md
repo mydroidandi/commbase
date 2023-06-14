@@ -53,6 +53,9 @@ This project is coded and organized like this:
 │   │   └── broker
 │   │       ├── commbase-stt-vosk-p
 │   │       │   └── examples
+│   │       ├── commbase-stt-whisper-p
+│   │       │   └── examples
+│   │       ├── commbase-tts-pyttsx3
 │   │       ├── libcommbase
 │   │       │   ├── examples
 │   │       │   ├── libcommbase
