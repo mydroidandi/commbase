@@ -14,7 +14,7 @@
 - [3 Useful system commands](#3-useful-system-commands)
 - [4 The Commbase user interface](#4-the-commbase-user-interface)
 	- [The window Extension](#the-window-extension)
-- [5 Configuration Variables](#5-configuraion-variables)
+- [5 Configuration Variables](#5-configuration-variables)
 - [6 Default Commbase commands](#6-default-commbase-commands)
 	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
 	- [Commbase Management Commands](#commbase-management-commands)
