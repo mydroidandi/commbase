@@ -16,10 +16,10 @@ dependencies:
   - brotli-bin=1.0.9=h5eee18b_7
   - brotlipy=0.7.0=py311h5eee18b_1002
   - bzip2=1.0.8=h7b6447c_0
-  - ca-certificates=2023.01.10=h06a4308_0
+  - ca-certificates=2023.05.30=h06a4308_0
   - cairo=1.16.0=hb05425b_4
   - cchardet=2.1.7=py311h6a678d5_0
-  - certifi=2022.12.7=py311h06a4308_0
+  - certifi=2023.5.7=py311h06a4308_0
   - cffi=1.15.1=py311h5eee18b_3
   - chardet=4.0.0=py311h06a4308_1003
   - charset-normalizer=2.0.4=pyhd3eb1b0_0
@@ -53,8 +53,7 @@ dependencies:
   - hdf5=1.10.6=h3ffc7dd_1
   - icu=58.2=he6710b0_3
   - idna=3.4=py311h06a4308_0
-  - intel-openmp=2023.1.0=hdb19cb5_46305
-  - joblib=1.1.1=py311h06a4308_0
+  - joblib=1.2.0=py311h06a4308_0
   - jpeg=9e=h5eee18b_1
   - kiwisolver=1.4.4=py311h6a678d5_0
   - krb5=1.19.4=h568e23c_0
@@ -75,7 +74,7 @@ dependencies:
   - libgfortran-ng=11.2.0=h00389a5_1
   - libgfortran5=11.2.0=h1234567_1
   - libgomp=11.2.0=h1234567_1
-  - libidn2=2.3.2=h7f8727e_0
+  - libidn2=2.3.4=h5eee18b_0
   - libllvm14=14.0.6=hdb19cb5_3
   - libopenblas=0.3.21=h043d6bf_0
   - libopus=1.3.1=h7b6447c_0
@@ -96,16 +95,14 @@ dependencies:
   - libxslt=1.1.37=h2085143_0
   - lz4-c=1.9.4=h6a678d5_0
   - matplotlib-base=3.7.1=py311ha02d727_1
-  - mkl=2023.1.0=h6d00ec8_46342
-  - mkl-service=2.4.0=py311h5eee18b_1
   - mpi=1.0=mpich
   - mpich=4.1.1=hbae89fd_0
   - multidict=6.0.2=py311h5eee18b_0
   - munkres=1.1.4=py_0
   - ncurses=6.4=h6a678d5_0
   - nettle=3.7.3=hbbd107a_1
-  - nspr=4.33=h295c915_0
-  - nss=3.74=h0370c37_0
+  - nspr=4.35=h6a678d5_0
+  - nss=3.89.1=h6a678d5_0
   - numexpr=2.8.4=py311hde40847_1
   - numpy=1.24.3=py311h434b4ae_0
   - numpy-base=1.24.3=py311h4367d22_0
@@ -120,14 +117,14 @@ dependencies:
   - pandas-stubs=1.5.3.230203=py311h06a4308_0
   - pcre=8.45=h295c915_0
   - pillow=9.4.0=py311h6a678d5_0
-  - pip=23.0.1=py311h06a4308_0
+  - pip=23.1.2=py311h06a4308_0
   - pixman=0.40.0=h7f8727e_1
   - plotly=5.9.0=py311h06a4308_0
   - pooch=1.4.0=pyhd3eb1b0_0
   - portaudio=19.6.0=h7b6447c_4
   - pyaudio=0.2.11=py311h5eee18b_2
   - pycparser=2.21=pyhd3eb1b0_0
-  - pygments=2.15.1=py311h06a4308_0
+  - pygments=2.15.1=py311h06a4308_1
   - pyopenssl=23.0.0=py311h06a4308_0
   - pyparsing=3.0.9=py311h06a4308_0
   - pysocks=1.7.1=py311h06a4308_0
@@ -143,7 +140,7 @@ dependencies:
   - scikit-learn=1.2.2=py311h6a678d5_0
   - scikit-learn-intelex=2023.1.1=py311h06a4308_0
   - scipy=1.10.1=py311h24aa872_1
-  - setuptools=66.0.0=py311h06a4308_0
+  - setuptools=67.8.0=py311h06a4308_0
   - shellingham=1.5.0=py311h06a4308_0
   - six=1.16.0=pyhd3eb1b0_1
   - sqlite=3.41.2=h5eee18b_0
@@ -154,9 +151,9 @@ dependencies:
   - tqdm=4.65.0=py311h92b7b1e_0
   - typer=0.4.1=py311h06a4308_0
   - types-pytz=2022.4.0.0=py311h06a4308_1
-  - typing_extensions=4.5.0=py311h06a4308_0
+  - typing_extensions=4.6.3=py311h06a4308_0
   - tzdata=2023c=h04d1e81_0
-  - urllib3=1.26.15=py311h06a4308_0
+  - urllib3=1.26.16=py311h06a4308_0
   - wheel=0.38.4=py311h06a4308_0
   - x264=1!157.20191217=h7b6447c_0
   - xz=5.4.2=h5eee18b_0
@@ -164,8 +161,14 @@ dependencies:
   - zlib=1.2.13=h5eee18b_0
   - zstd=1.5.5=hc292b87_0
   - pip:
+      - ffmpeg-python==0.2.0
+      - openai-whisper==20230314
+      - pydub==0.25.1
+      - pyttsx3==2.90
       - sounddevice==0.4.6
+      - speechrecognition==3.10.0
       - srt==3.5.3
       - subprocess-run==0.0.8
+      - tiktoken==0.3.1
       - vosk==0.3.45
       - websockets==11.0.3
