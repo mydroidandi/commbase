@@ -36,7 +36,7 @@
 # Copy the content of cat
 cd ../../config/
 touch app.conf
-cat <<EOT > commbase.conf
+cat <<EOT > app.conf
 PYTHON_ENV_VERSION="python"
 STT_PROCESS_CPU_LIMIT_PERCENTAGE="75"
 CONDA_ENV_NAME_IF_EXISTS="commbase_env"
@@ -46,7 +46,7 @@ SYSTEM_AUDIO_CAPTURE_DEVICE_NAME="alsa_input.pci-0000_00_1b.0.analog-stereo"
 VIDEO_CAPTURE_DEVICE_01_INDEX="0"
 VIDEO_CAPTURE_DEVICE_02_INDEX="1"
 STT_ENGINE_STRING="$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py"
-TTS_ENGINE_STRING="festival --tts"
+TTS_ENGINE_STRING="$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate 150 --voice-index 18"
 TMUX_EXTRA_WINDOWS_ON="True"
 TMUX_EXTRA_WINDOW_EDITOR_ON="True"
 TMUX_EXTRA_WINDOW_TIMER=_ON"True"

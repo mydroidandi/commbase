@@ -90,8 +90,8 @@ class TextToSpeech:
 		displays an appropriate message.
 		"""
 		parser = argparse.ArgumentParser(description='Text-to-Speech with pyttsx3')
-		parser.add_argument('--rate', type=int, default=145, help='Voice speed')
-		parser.add_argument('--voice-index', type=int, default=0, help='Index of the voice to use')
+		parser.add_argument('--rate', type=int, default=145, help='Voice speed', metavar='RATE')
+		parser.add_argument('--voice-index', type=int, default=0, help='Index of the voice to use', metavar='INDEX')
 		args = parser.parse_args()
 
 		self.set_up_text_to_speech(args.rate, args.voice_index)

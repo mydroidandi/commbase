@@ -289,7 +289,7 @@ The default version of the file app.conf contains the next values:
 - `TTS_ENGINE_STRING`:
   - Possible values:
     - `festival --tts`: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, even a proprietary engine with proprietary voices or voices from other operating systems.
-    - ``: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, even a proprietary engine with proprietary voices or voices from other operating systems.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate 150 --voice-index 18`: It represents a string that specifies the configuration or command to invoke the TTS engine. It is using the specified rate and voice index to convert the text into speech and play it back. You can set up a third-party engine here, even a proprietary engine with proprietary voices or voices from other operating systems.
 
 TMUX_EXTRA_WINDOWS_ON="True"
 
