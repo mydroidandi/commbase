@@ -42,11 +42,16 @@ engine = pyttsx3.init()
 
 # Print all available voices
 voices = engine.getProperty('voices')
+
+idx = -1
+
 for voice in voices:
+	idx = idx + 1
 	print("Voice:")
 	print(" - ID: %s" % voice.id)
 	print(" - Name: %s" % voice.name)
 	print(" - Languages: %s" % voice.languages)
 	print(" - Gender: %s" % voice.gender)
 	print(" - Age: %s" % voice.age)
-	
+	print (" - Index: %s" % idx)
+
