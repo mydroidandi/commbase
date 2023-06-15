@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# reset_commbase.conf.sh
+# list_all_voices_available_for_pyttsx3.py
 # Get and then print a list of voices available for pyttsx3
 # In MS Windows, it requires the package pypiwin32 to access the native Windows
 # speech API.
@@ -39,12 +39,12 @@
 import pyttsx3
 
 engine = pyttsx3.init()
-
-# Print all available voices
 voices = engine.getProperty('voices')
 
+# Voice index counter
 idx = -1
 
+# Print all available voices
 for voice in voices:
 	idx = idx + 1
 	print("Voice:")
