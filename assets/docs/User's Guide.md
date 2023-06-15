@@ -170,7 +170,7 @@ Press CTRL + b, then press 1
 
 # 5 Configuration Variables
 
-The configuration variables can be accessed by going to the directory *config/* and opening the files *secrets* and *app.conf*.
+The configuration variables can be accessed by going to the directory **config/** and opening the files **secrets** and **app.conf**.
 
 Use your favorite text editor to open any of those files.
 
@@ -201,7 +201,7 @@ The default version of the file `secrets` which is sourced by the application, d
 
 Most of these variables are marked as optional and can be excluded if they are not needed for your specific use case.
 
-- *LOCAL_HOST_UUID*(Optional):
+- **LOCAL_HOST_UUID**(Optional):
   - Example value:
     - `01234567-89ab-cdef-0123-456789abcdef`: The UUID of the local host.
 
