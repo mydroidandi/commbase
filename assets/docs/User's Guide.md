@@ -182,19 +182,26 @@ $ nano config/app.conf
 $ nano config/secrets
 ```
 
-The file *secrets* holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. The file *app.conf* holds all the other app configuration options.
+The file *secrets* holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. 
 
-These are environment files that you can edit following certain rules:
+The file *app.conf* holds all the other app configuration options, including your custom Commbase commands new variables.
+
+These files are environment files that you can edit following certain rules:
 - Every environment variable is a constant.
 - Constants must be declared in uppercase.
+- Constant names must be alphanumeric characters.
+- The constant name is not allowed to have characters such as ";".
+- Constants spaces are represented by underscores "_".
 - The constants are strictly grouped and ordered as possible.
-- All the values assigned to constants must be double quoted.
-- You can add more CONSTANTS with values, but their names can not be duplicated in the file or match Commbase or system environment constants, such as: $COMMBASE_APP_DIR or $HOME.
+- All the values assigned to constants are strings and must be double-quoted.
+- You can add more constants with values, but their names can not be duplicated in the file or match Commbase or system environment constants, such as `$COMMBASE_APP_DIR` or `$HOME`.
 - There should not be empty lines or spaces in the file.
 
-The default version of the file `secrets` which is sourced by the application, does not have default values and they must be set by the user in order for the app to function correctly. Make sure to replace the placeholder values with the actual required values. These variables marked as optional and can be excluded if they are not needed for your specific use case.
+The default version of the file `secrets` which is sourced by the application, does not have default values, and they must be set by the user in order for the app and/or app commands to function correctly. Make sure to replace the placeholder values with the actual required values.
 
-- `LOCAL_HOST_UUID`(Optional):
+Most of these variables are marked as optional and can be excluded if they are not needed for your specific use case.
+
+- *LOCAL_HOST_UUID*(Optional):
   - Example value:
     - `01234567-89ab-cdef-0123-456789abcdef`: The UUID of the local host.
 
@@ -238,7 +245,7 @@ The default version of the file `secrets` which is sourced by the application, d
   - Example value:
     - `server_host_001_password`: The password for accessing the server host number 001.
 
-- `OPENAI_API_KEY`(Optional):
+- `OPENAI_API_KEY`:
   - Example value:
     - `your_openai_api_key`:  The API key for accessing OpenAI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
 
