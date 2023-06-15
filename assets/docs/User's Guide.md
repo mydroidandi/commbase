@@ -170,9 +170,19 @@ Press CTRL + b, then press 1
 
 # 5 Configuration Variables
 
-The configuration variables can be accessed by going to the directory config/ and opening the files secrets and app.conf.
+The configuration variables can be accessed by going to the directory *config/* and opening the files *secrets* and *app.conf*.
 
-The file `secrets` holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. The file `app.conf` holds all the other app configuration options.
+Use your favorite text editor to open any of those files.
+
+```sh
+$ nano config/app.conf
+```
+
+```sh
+$ nano config/secrets
+```
+
+The file *secrets* holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. The file *app.conf* holds all the other app configuration options.
 
 These are environment files that you can edit following certain rules:
 - Every environment variable is a constant.
@@ -182,32 +192,57 @@ These are environment files that you can edit following certain rules:
 - You can add more CONSTANTS with values, but their names can not be duplicated in the file or match Commbase or system environment constants, such as: $COMMBASE_APP_DIR or $HOME.
 - There should not be empty lines or spaces in the file.
 
-Use your favorite text editor to open any of those files.
+The default version of the file `secrets` which is sourced by the application, does not have default values and they must be set by the user in order for the app to function correctly. Make sure to replace the placeholder values with the actual required values. These variables marked as optional and can be excluded if they are not needed for your specific use case.
 
-$ nano config/app.conf
+- `LOCAL_HOST_UUID`(Optional):
+  - Example value:
+    - `01234567-89ab-cdef-0123-456789abcdef`: The UUID of the local host.
 
-The default version of the file `secrets` does not have default values and they must be provided by the app user. Its constants are:
+- `REMOTE_USER_NAME`(Optional):
+  - Example value:
+    - `my_username`: The username for remote user authentication.
+ 
+- `REMOTE_USER_PASSWORD`(Optional):
+  - Example value:
+    - `my_password`: The password for remote user authentication.
 
-- LOCAL_HOST_UUID
-- REMOTE_USER_NAME
-- REMOTE_USER_PASSWORD
-- PROTONVPN_CLI_USERNAME
-- PROTONVPN_CLI_PASSWORD
-- PROTONVPN_API_USERNAME
-- PROTONVPN_API_PASSWORD
-- SERVER_HOST_001_UUID
-- SERVER_HOST_001_HOSTNAME
-- SERVER_HOST_001_IP_ADDRESS
-- SERVER_HOST_001_USER_PASSW
-- OPENAI_API_KEY
+- `PROTONVPN_CLI_USERNAME`(Optional):
+  - Example value:
+    - `protonvpn_username`: The username for ProtonVPN command-line interface (CLI) authentication.
 
-Understanding the Purpose of the OpenAI API Key.
+- `PROTONVPN_CLI_PASSWORD`(Optional):
+  - Example value:
+    - `protonvpn_password`: The password for ProtonVPN CLI authentication.
 
-The OpenAI API key is used to authenticate and authorize access to the OpenAI ChatGPT language models. It serves as a unique identifier for your account and allows you to make API calls to interact with the model.
+- `PROTONVPN_API_USERNAME`(Optional):
+  - Example value:
+    - `protonvpn_api_username`: The username for ProtonVPN API authentication.
 
-By including your API key in API requests, you can access the various capabilities of the GPT language models, such as generating text, answering questions, providing translations, creating conversational agents, and more. The API key helps ensure that only authorized users can access and utilize the OpenAI API services.
+- `PROTONVPN_API_PASSWORD`(Optional):
+  - Example value:
+    - `protonvpn_api_password`: The password for ProtonVPN API authentication.
 
-It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
+- `SERVER_HOST_001_UUID`(Optional):
+  - Example value:
+    - `98765432-dcba-fedc-ba98-76543210abcdef`: The UUID of the server host number 001.
+
+- `SERVER_HOST_001_HOSTNAME`(Optional):
+  - Example value:
+    - `foobar`: The hostname of the server host number 001.
+
+- `SERVER_HOST_001_IP_ADDRESS`(Optional):
+  - Example value:
+    - `192.168.100.2`: The IP address of the server host 001.
+
+- `SERVER_HOST_001_USER_PASSW`(Optional):
+  - Example value:
+    - `server_host_001_password`: The password for accessing the server host number 001.
+
+- `OPENAI_API_KEY`(Optional):
+  - Example value:
+    - `your_openai_api_key`:  The API key for accessing OpenAI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
+
+Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
 The default version of the file app.conf contains the next values:
 
@@ -217,88 +252,44 @@ The default version of the file app.conf contains the next values:
     - `python3.11`: This value indicates a custom Python version, specifically version 3.11.
     - `python3`: This value also represents a custom Python version, but the exact version is not specified.
 
-STT_PROCESS_CPU_LIMIT_PERCENTAGE="75"
-
-- `VAR_NAME`:
+- `STT_PROCESS_CPU_LIMIT_PERCENTAGE`:
   - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+    - `75`: A percentage between 0 and 100 or between 0 and 400 (for machines with 4 processing cores or more.) The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity.
 
-
-CONDA_ENV_NAME_IF_EXISTS="commbase_env"
-
-- `VAR_NAME`:
+- `CONDA_ENV_NAME_IF_EXISTS`:
   - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+    - `commbase_env`: The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment.
+    - `my_env_name`: Any alternative for creating the Commbase virtual environment.
 
-
-
-IP_ADDRESS_UPDATE_IN_SECS="600"
-
-- `VAR_NAME`:
+- `IP_ADDRESS_UPDATE_IN_SECS`:
   - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+    - `600`: This value represents the interval in milliseconds at which the machine's IP address should be updated. We recommend using a value between 300 and 600 for security reasons.
 
-
-MY_APP_AUDIO_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback"
-
-- `VAR_NAME`:
+- `MY_APP_AUDIO_CAPTURE_DEVICE_NAME`:
   - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+    - `alsa_input.usb-_Webcam_C170-02.mono-fallback`: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input. Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. Check out the topic key bindings.
 
-
-SYSTEM_AUDIO_CAPTURE_DEVICE_NAME="alsa_input.pci-0000_00_1b.0.analog-stereo"
-
-- `VAR_NAME`:
+- `SYSTEM_AUDIO_CAPTURE_DEVICE_NAME`:
   - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+    - `alsa_input.pci-0000_00_1b.0.analog-stereo`: This value corresponds to a specific audio capture device. It represents the name or identifier of the audio capture device that the system should use for capturing audio. Check out the topic key bindings.
 
-
-VIDEO_CAPTURE_DEVICE_01_INDEX="0"
-
-
-- `VAR_NAME`:
+- `VIDEO_CAPTURE_DEVICE_01_INDEX`:
   - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+    - `0`: It represents the index or identifier of a video capture device. It is used to specify which video capture device should be utilized by the system or application. Use a value between 0 and the maximum number of cameras installed.
 
-
-VIDEO_CAPTURE_DEVICE_02_INDEX="1"
-
-- `VAR_NAME`:
+- `VIDEO_CAPTURE_DEVICE_02_INDEX`:
   - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+    - `1`: It represents the index or identifier of a video capture device. It is used to specify which video capture device should be utilized by the system or application. Use a value between 0 and the maximum number of cameras installed.
 
-
-STT_ENGINE_STRING="$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py"
-
-- `VAR_NAME`:
+- `STT_ENGINE_STRING`:
   - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py`: It represents a string that specifies the configuration or path to the STT engine's executable or script file.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-whisper-p/commbase_stt_whisper_p.py`: It represents a string that specifies the configuration or path to the STT engine's executable or script file.
 
-
-TTS_ENGINE_STRING="festival --tts"
-
-- `VAR_NAME`:
+- `TTS_ENGINE_STRING`:
   - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
+    - `festival --tts`: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, even a proprietary engine with proprietary voices or voices from other operating systems.
+    - ``: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, even a proprietary engine with proprietary voices or voices from other operating systems.
 
 TMUX_EXTRA_WINDOWS_ON="True"
 
