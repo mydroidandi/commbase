@@ -15,15 +15,15 @@ To use the commbase_tts_pyttsx3.py app, you can follow these examples:
 
 ### Example 1: Reading from a file
 
-``` sh
+```sh
 cat file.txt | python commbase_tts_pyttsx3.py
 ```
 
 This command reads the content of the file.txt file and passes it as input to the commbase_tts_pyttsx3.py script. The script converts the text to speech and plays it back.
 
 ### Example 2: Providing input directly
-``` sh
-echo "Hello World\!" | python3.11 commbase_tts_pyttsx3.py --rate=145 --voice-index=18
+```sh
+echo "Hello World\!" | python3.11 commbase_tts_pyttsx3.py --rate 145 --voice-index 18
 ```
 
 This command provides the input text "Hello World!" directly to the commbase_tts_pyttsx3.py script using the specified rate and voice index to convert the text into speech and play it back.
