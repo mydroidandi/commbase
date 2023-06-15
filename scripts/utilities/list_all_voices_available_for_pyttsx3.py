@@ -32,6 +32,8 @@
 
 # reset_commbase.conf.sh
 # Get and then print a list of voices available for pyttsx3
+# In MS Windows, it requires the package pypiwin32 to access the native Windows
+# speech API.
 
 # Requirements
 import pyttsx3
