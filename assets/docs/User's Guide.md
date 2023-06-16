@@ -170,266 +170,298 @@ Press CTRL + b, then press 1
 
 # 5 Configuration Variables
 
-The configuration variables can be accessed by going to the directory *config/* and opening the files *secrets* and *app.conf*.
+The configuration variables can be accessed by going to the directory **config/** and opening the files **secrets** and **app.conf**.
 
 Use your favorite text editor to open any of those files.
 
 ```sh
-$ nano config/app.conf
+nano config/app.conf
 ```
 
 ```sh
-$ nano config/secrets
+nano config/secrets
 ```
 
-The file *secrets* holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. The file *app.conf* holds all the other app configuration options.
+The file *secrets* holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. 
 
-These are environment files that you can edit following certain rules:
+The file *app.conf* holds all the other app configuration options, including your custom Commbase commands new variables.
+
+These files are environment files that you can edit following certain rules:
 - Every environment variable is a constant.
 - Constants must be declared in uppercase.
+- Constant names must be alphanumeric characters.
+- The constant name is not allowed to have characters such as ";".
+- Constants spaces are represented by underscores "_".
 - The constants are strictly grouped and ordered as possible.
-- All the values assigned to constants must be double quoted.
-- You can add more CONSTANTS with values, but their names can not be duplicated in the file or match Commbase or system environment constants, such as: $COMMBASE_APP_DIR or $HOME.
+- All the values assigned to constants are strings and must be double-quoted.
+- You can add more constants with values, but their names can not be duplicated in the file or match Commbase or system environment constants, such as `$COMMBASE_APP_DIR` or `$HOME`.
 - There should not be empty lines or spaces in the file.
 
-The default version of the file `secrets` which is sourced by the application, does not have default values and they must be set by the user in order for the app to function correctly. Make sure to replace the placeholder values with the actual required values. These variables marked as optional and can be excluded if they are not needed for your specific use case.
+The default version of the file **secrets** which is sourced by the application, does not have default values, and they must be set by the user in order for the app and/or app commands to function correctly. Make sure to replace the placeholder values with the actual required values.
 
-- `LOCAL_HOST_UUID`(Optional):
-  - Example value:
-    - `01234567-89ab-cdef-0123-456789abcdef`: The UUID of the local host.
+Most of these variables are marked as optional and can be excluded if they are not needed for your specific use case.
 
-- `REMOTE_USER_NAME`(Optional):
+- **LOCAL_HOST_UUID** (Optional):
   - Example value:
-    - `my_username`: The username for remote user authentication.
- 
-- `REMOTE_USER_PASSWORD`(Optional):
-  - Example value:
-    - `my_password`: The password for remote user authentication.
+    - `01234567-89ab-cdef-0123-456789abcdef`: The local host UUID. Use this to identify the local host of the Commbase application before your Commbase machines' network.
 
-- `PROTONVPN_CLI_USERNAME`(Optional):
+- **REMOTE_USER_NAME** (Optional):
   - Example value:
-    - `protonvpn_username`: The username for ProtonVPN command-line interface (CLI) authentication.
+    - `my_username`: The username for remote user authentication. It can be your same local username.
 
-- `PROTONVPN_CLI_PASSWORD`(Optional):
+- **REMOTE_USER_PASSWORD** (Optional):
   - Example value:
-    - `protonvpn_password`: The password for ProtonVPN CLI authentication.
+    - `my_password`: The password for remote user authentication. It can be used inside Commbase commands and/or applications that require bypassing password prompts without user intervention. This method does not encrypt the password but keeps its passphrase centralized outside command or application scripts.
 
-- `PROTONVPN_API_USERNAME`(Optional):
+- **PROTONVPN_CLI_USERNAME** (Optional):
   - Example value:
-    - `protonvpn_api_username`: The username for ProtonVPN API authentication.
+    - `protonvpn_username`: The username for ProtonVPN command-line interface (CLI) authentication. The VPN variables are specifically for use with the ProtonVPN service. You can create new variables for equivalent services of your choice.
 
-- `PROTONVPN_API_PASSWORD`(Optional):
+- **PROTONVPN_CLI_PASSWORD** (Optional):
   - Example value:
-    - `protonvpn_api_password`: The password for ProtonVPN API authentication.
+    - `protonvpn_password`: The password for ProtonVPN CLI authentication. The VPN variables are specifically for use with the ProtonVPN service. You can create new variables for equivalent services of your choice.
 
-- `SERVER_HOST_001_UUID`(Optional):
+- **PROTONVPN_API_USERNAME** (Optional):
   - Example value:
-    - `98765432-dcba-fedc-ba98-76543210abcdef`: The UUID of the server host number 001.
+    - `protonvpn_api_username`: The username for ProtonVPN API authentication. The VPN variables are specifically for use with the ProtonVPN service. You can create new variables for equivalent services of your choice.
 
-- `SERVER_HOST_001_HOSTNAME`(Optional):
+- **PROTONVPN_API_PASSWORD** (Optional):
   - Example value:
-    - `foobar`: The hostname of the server host number 001.
+    - `protonvpn_api_password`: The password for ProtonVPN API authentication. The VPN variables are specifically for use with the ProtonVPN service. You can create new variables for equivalent services of your choice.
 
-- `SERVER_HOST_001_IP_ADDRESS`(Optional):
+- **SERVER_HOST_001_UUID** (Optional):
   - Example value:
-    - `192.168.100.2`: The IP address of the server host 001.
+    - `98765432-dcba-fedc-ba98-76543210abcdef`: The UUID of the server host number 001 in a Commbase machines' network. We use numbers to match the tmux Commbase session window 4 "Server 1" but they are not necessarily the same servers.
 
-- `SERVER_HOST_001_USER_PASSW`(Optional):
+- **SERVER_HOST_001_HOSTNAME** (Optional):
   - Example value:
-    - `server_host_001_password`: The password for accessing the server host number 001.
+    - `foobar`: The hostname of the server host number 001. We use numbers to match the tmux Commbase session window 4 "Server 1" but they are not necessarily the same servers.
 
-- `OPENAI_API_KEY`(Optional):
+- **SERVER_HOST_001_IP_ADDRESS** (Optional):
+  - Example value:
+    - `192.168.100.2`: The IP address of the server host 001. We use numbers to match the tmux Commbase session window 4 "Server 1" but they are not necessarily the same servers.
+
+- **SERVER_HOST_001_USER_PASSW** (Optional):
+  - Example value:
+    - `server_host_001_password`: The password for accessing the server host number 001. We use numbers to match the tmux Commbase session window 4 "Server 1" but they are not necessarily the same servers.
+
+- **OPENAI_API_KEY**:
   - Example value:
     - `your_openai_api_key`:  The API key for accessing OpenAI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
-The default version of the file app.conf contains the next values:
+The default version of the file **app.conf** contains the next values:
 
-- `PYTHON_ENV_VERSION`:
-  - Possible values:
-    - `python`: This is the default value, which implies that the virtual environment will use the Python version associated with the default system Python interpreter.
-    - `python3.11`: This value indicates a custom Python version, specifically version 3.11.
-    - `python3`: This value also represents a custom Python version, but the exact version is not specified.
+- **PYTHON_ENV_VERSION**:
+  - Example values:
+    - `python` (Default): Choosing this value implies that the virtual environment will use the Python version associated with the default system Python interpreter. Choose this value whether your application uses a virtual environment such as commbase_env. For more details, check out the file **INSTALL**.
+    - `python3.11`: This value indicates a custom Python version, specifically version 3.11. For more details, check out the file **INSTALL**.
+    - `python3`: This value also represents a custom Python version, but the exact version is not specified. For more details, check out the file **INSTALL**.
 
-- `STT_PROCESS_CPU_LIMIT_PERCENTAGE`:
-  - Possible values:
-    - `75`: A percentage between 0 and 100 or between 0 and 400 (for machines with 4 processing cores or more.) The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity.
+- **STT_PROCESS_CPU_LIMIT_PERCENTAGE**:
+  - Description: The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity. For more details, check out the file **INSTALL**.
+  - Possible values: This variable should be a value between 0 and 100 or between 0 and 400 (for machines with 4 processing cores or more.)
+  - Example value:
+    - `75` (Default): The STT process is going to use up to 75% of the computer's processing power.
 
-- `CONDA_ENV_NAME_IF_EXISTS`:
-  - Possible values:
-    - `commbase_env`: The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment.
-    - `my_env_name`: Any alternative for creating the Commbase virtual environment.
+- **CONDA_ENV_NAME_IF_EXISTS**:
+  - Example values:
+    - `commbase_env` (Default): The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment. For more details, check out the file **INSTALL**.
+    - `my_env_name`: An alternative name for creating the Commbase virtual environment.
 
-- `IP_ADDRESS_UPDATE_IN_SECS`:
-  - Possible values:
-    - `600`: This value represents the interval in milliseconds at which the machine's IP address should be updated. We recommend using a value between 300 and 600 for security reasons.
+- **IP_ADDRESS_UPDATE_IN_SECS**:
+  - Description: This value represents the interval in milliseconds at which the machine's IP address should be updated in the file **.env** in **env/**.
+  - Possible values: We recommend using a value between 300 and 600 for security reasons.
+  - Example value:
+    - `600` (Default): This value will make the ip address update every 10 minutes.
 
-- `MY_APP_AUDIO_CAPTURE_DEVICE_NAME`:
-  - Possible values:
-    - `alsa_input.usb-_Webcam_C170-02.mono-fallback`: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input. Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. Check out the topic key bindings.
+- **MY_APP_AUDIO_CAPTURE_DEVICE_NAME**:
+  - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input.
+  - Possible values: Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
+  - Example value:
+    - `alsa_input.usb-_Webcam_C170-02.mono-fallback`: This value represents an ALSA input device connected via USB, specifically a webcam named "C170-02," configured to provide mono audio input, using a fallback configuration.
 
-- `SYSTEM_AUDIO_CAPTURE_DEVICE_NAME`:
-  - Possible values:
-    - `alsa_input.pci-0000_00_1b.0.analog-stereo`: This value corresponds to a specific audio capture device. It represents the name or identifier of the audio capture device that the system should use for capturing audio. Check out the topic key bindings.
+- **SYSTEM_AUDIO_CAPTURE_DEVICE_NAME**:
+  - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input.   - Possible values: Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
+  - Example value:
+    - `alsa_input.pci-0000_00_1b.0.analog-stereo`: This value represents an ALSA input device connected via a PCI bus, specifically an analog stereo audio input device.
 
-- `VIDEO_CAPTURE_DEVICE_01_INDEX`:
-  - Description: It is used to specify which video capture device should be utilized by the system or application. Use a value between 0 and the maximum number of cameras installed.
-  - Possible values:
+- **VIDEO_CAPTURE_DEVICE_01_INDEX**:
+  - Description: It is used to specify which video capture device should be utilized by the system or application.
+  - Possible values: Use a value between 0 and the maximum number of cameras installed.
+  - Example value:
     - `0`: It represents the index or identifier of a video capture device.
 
-- `VIDEO_CAPTURE_DEVICE_02_INDEX`:
-  - Description: It is used to specify which video capture device should be utilized by the system or application. Use a value between 0 and the maximum number of cameras installed.
-  - Possible values:
+- **VIDEO_CAPTURE_DEVICE_02_INDEX**:
+  - Description: It is used to specify which video capture device should be utilized by the system or application.
+  - Possible values: Use a value between 0 and the maximum number of cameras installed.  
+  - Example value:
     - `1`: It represents the index or identifier of a video capture device.
 
-- `STT_ENGINE_STRING`:
+- **STT_ENGINE_STRING**:
+  - Description: It represents a string that specifies the path to the current STT engine's executable or script file bundled with Commbase.
   - Possible values:
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py`: It represents a string that specifies the configuration or path to the STT engine's executable or script file.
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-whisper-p/commbase_stt_whisper_p.py`: It represents a string that specifies the configuration or path to the STT engine's executable or script file.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-whisper-p/commbase_stt_whisper_p.py` (Default): It specifies the STT engine commbase-stt-whisper-p.py's executable script.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py`: It specifies the STT engine commbase-stt-vosk-p.py's executable script.
 
-- `TTS_ENGINE_STRING`:
+- **TTS_ENGINE_STRING**:
+  - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.
   - Possible values:
-    - `festival --tts`: It represents a string that specifies the configuration or command to invoke the TTS engine.
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate 150 --voice-index 18`: It represents a string that specifies the configuration or command to invoke the TTS engine. It uses specified rate and voice index to convert the text into speech and play it back. There is one voice index for every language or accent installed by or recognized by pyttsx3 in the system.
-  - Notes: You can set up a third-party engine here, even a proprietary engine with proprietary voices or voices from other operating systems.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate 150 --voice-index 18` (Default): It specifies the TTS engine commbase-tts-pyttsx3.py's executable script and arguments. It uses a specified speed rate and voice index to convert the text into speech and play it back. There is one voice index for every language or accent installed by or recognized by pyttsx3 in the system. You can modify those arguments in the string. To select a voice/accent by index, use the utility **list_all_voices_available_for_pyttsx3.py** that you will find out in the directory **scripts/utilities**.
+    - `festival --tts`: It specifies the TTS command Festival and its arguments. Festival comes with a unique and some basic English voice tone out of the box. You can install Festival-compatible extra voices from different internet sources. To know how to install Festival-compatible voices and set one as your custom application's voice, read this guide by Esteban Herrera: <https://github.com/estebanways/diy-linux-book/blob/main/Module5/Festival/Festival.txt>.
+    - `espeak -v f2`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English female voice number 2. You can install Espeak-compatible extra voices from different internet sources.
+    - `espeak -v m3`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English male voice number 3. You can install Espeak-compatible extra voices from different internet sources.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-gTTS/commbase_tts_gTTS.py --param1 val1 --param2 val2 --param3 val3:`: It specifies the TTS executable commbase-tts-gTTS.py's script and its arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API.
 
-- `TMUX_EXTRA_WINDOWS_ON`:
+- **TMUX_EXTRA_WINDOWS_ON**:
   - Possible values:
-    - `True`: Set to True, it activates the extra windows in the Commbase tmux session.
-    - `False`: Set to False, it deactivates the extra windows in the Commbase tmux session.
+    - `True` (Default): Set to True, it activates the extra windows feature in the Commbase tmux session.
+    - `False`: Set to False, it deactivates the extra windows feature in the Commbase tmux session.
 
-- `TMUX_EXTRA_WINDOW_EDITOR_ON`:
+- **TMUX_EXTRA_WINDOW_EDITOR_ON**:
   - Possible values:
-    - `True`: Set to True, it activates the extra window Editor in the Commbase tmux session.
+    - `True` (Default): Set to True, it activates the extra window Editor in the Commbase tmux session.
     - `False`: Set to False, it deactivates the extra window Editor in the Commbase tmux session.
 
-- `TMUX_EXTRA_WINDOW_TIMER`:
+- **TMUX_EXTRA_WINDOW_TIMER**:
   - Possible values:
-    - `True`: Set to True, it activates the extra window Timer in the Commbase tmux session.
+    - `True` (Default): Set to True, it activates the extra window Timer in the Commbase tmux session.
     - `False`: Set to False, it deactivates the extra window Timer in the Commbase tmux session.
 
-- `TMUX_EXTRA_WINDOW_SERVER1_ON`:
+- **TMUX_EXTRA_WINDOW_SERVER1_ON**:
   - Possible values:
-    - `True`: Set to True, it activates the extra window Server 1 in the Commbase tmux session.
+    - `True` (Default): Set to True, it activates the extra window Server 1 in the Commbase tmux session.
     - `False`: Set to False, it deactivates the extra window Server 1 in the Commbase tmux session.
 
-- `TMUX_EXTRA_WINDOW_SERVER2_ON`:
+- **TMUX_EXTRA_WINDOW_SERVER2_ON**:
   - Possible values:
+    - `False` (Default): Set to False, it deactivates the extra window Server 2 in the Commbase tmux session.
     - `True`: Set to True, it activates the extra window Server 2 in the Commbase tmux session.
-    - `False`: Set to False, it deactivates the extra window Server 2 in the Commbase tmux session.
 
-- `TERMINAL_RED_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_RED_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;41m`: This value enables bold or bright text in terminal emulators and set the background color to red.
 
-- `TERMINAL_GREEN_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_GREEN_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;42m`: This value enables bold or bright text in terminal emulators and set the background color to green.
 
-- `TERMINAL_YELLOW_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_YELLOW_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;43m`: This value enables bold or bright text in terminal emulators and set the background color to yellow.
 
-- `TERMINAL_BLUE_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_BLUE_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;44m"`: This value enables bold or bright text in terminal emulators and set the background color to blue.
 
-- `TERMINAL_MAGENTA_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_MAGENTA_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;45m`: This value enables bold or bright text in terminal emulators and set the background color to magenta.
 
-- `TERMINAL_CYAN_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_CYAN_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;46m`: This value enables bold or bright text in terminal emulators and set the background color to cyan.
 
-- `TERMINAL_WHITE_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_WHITE_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;47m`: This value enables bold or bright text in terminal emulators and set the background color to white.
 
-- `TERMINAL_BLACK_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_BLACK_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;40m`: This value enables bold or bright text in terminal emulators and set the background color to black.
 
-- `TERMINAL_RED_TEXT_COLOR_CODE_START`:
+- **TERMINAL_RED_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;31m`: This value enables bold or bright text in terminal emulators and set the text color to red.
 
-- `TERMINAL_GREEN_TEXT_COLOR_CODE_START`:
+- **TERMINAL_GREEN_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;32m`: This value enables bold or bright text in terminal emulators and set the text color to green.
 
-- `TERMINAL_YELLOW_TEXT_COLOR_CODE_START`:
+- **TERMINAL_YELLOW_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;33m`: This value enables bold or bright text in terminal emulators and set the text color to yellow.
 
-- `TERMINAL_BLUE_TEXT_COLOR_CODE_START`:
+- **TERMINAL_BLUE_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;34m`: This value enables bold or bright text in terminal emulators and set the text color to blue.
 
-- `TERMINAL_MAGENTA_TEXT_COLOR_CODE_START`:
+- **TERMINAL_MAGENTA_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;35m`: This value enables bold or bright text in terminal emulators and set the text color to magenta.
 
-- `TERMINAL_CYAN_TEXT_COLOR_CODE_START`:
+- **TERMINAL_CYAN_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;36m`: This value enables bold or bright text in terminal emulators and set the text color to cyan.
 
-- `TERMINAL_WHITE_TEXT_COLOR_CODE_START`:
+- **TERMINAL_WHITE_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;37m`: This value enables bold or bright text in terminal emulators and set the text color to white.
 
-- `TERMINAL_BLACK_TEXT_COLOR_CODE_START`:
+- **TERMINAL_BLACK_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;30m`: This value enables bold or bright text in terminal emulators and set the text color to black.
 
-- `TERMINAL_COLOR_CODE_END`:
+- **TERMINAL_COLOR_CODE_END**:
+  - Description: The Commbase terminal colors are set once in the configuration file, so they can be called easily in any Commbase-based application custom code.
   - Possible values:
     - `1;0m`: This value enables bold or bright text in terminal emulators and instructs the terminal to revert to the default style, removing any specific formatting changes that were applied.
 
-- `END_USER_BACKGROUND_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `blue`: Turns blue the End User background color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **END_USER_BACKGROUND_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `blue` (Default): Turns blue the End User background color in the chat pane, based on the colors defined in other terminal variables. 
 
-- `ASSISTANT_BACKGROUND_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `green`: Turns green the Assistant background color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **ASSISTANT_BACKGROUND_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `green` (Default): Turns green the Assistant background color in the chat pane, based on the colors defined in other terminal variables.
 
-- `SYSTEM_BACKGROUND_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `white`: Turns white the System background color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **SYSTEM_BACKGROUND_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `white` (Default): Turns white the System background color in the chat pane, based on the colors defined in other terminal variables. 
 
-- `END_USER_TEXT_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `white`: Turns white the End User text color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **END_USER_TEXT_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `white` (Default): Turns white the End User text color in the chat pane, based on the colors defined in other terminal variables.
 
-- `ASSISTANT_TEXT_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `white`: Turns white the Assistant text color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **ASSISTANT_TEXT_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `white` (Default): Turns white the Assistant text color in the chat pane, based on the colors defined in other terminal variables.
 
-- `SYSTEM_TEXT_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `red`: Turns red the System text color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **SYSTEM_TEXT_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `red` (Default): Turns red the System text color in the chat pane, based on the colors defined in other terminal variables.
 
-- `ASSISTANT_AVATAR_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `cyan`: Turns cyan the Assistant avatar color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **ASSISTANT_AVATAR_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `cyan` (Default): Turns cyan the Assistant avatar color in the chat pane, based on the colors defined in other terminal variables. 
 
-- `END_USER_NAME_IN_CHAT_PANE`:
-  - Possible values:
-    - `END USER`: It determines how the name of the End User is displayed in the chat pane. When set to END USER, the name is shown as "END USER".
+- **END_USER_NAME_IN_CHAT_PANE**:
+  - Description: It determines how the name of the End User is displayed in the chat pane.
+  - Example value:
+    - `END USER` (Default): When set to END USER, the name is shown as "END USER".
 
-- `ASSISTANT_NAME_IN_CHAT_PANE`:
-  - Possible values:
-    - `COMMBASE`: It determines how the name of the Assistant is displayed in the chat pane. When set to COMMBASE, the name is shown as "COMMBASE".
+- **ASSISTANT_NAME_IN_CHAT_PANE**:
+  - Description: It determines how the name of the Assistant is displayed in the chat pane.
+  - Example value:
+    - `COMMBASE` (Default): When set to COMMBASE, the name is shown as "COMMBASE".
 
-- `SYSTEM_VISIBLE_IN_CHAT_PANE_ON`:
-  - Possible values:
-    - `False`: When set to False, it means that the System's messages or notifications will not be displayed in the chat pane. 
+- **SYSTEM_VISIBLE_IN_CHAT_PANE_ON**:
+  - Possible values: False or True.
+  - Example value:
+    - `False` (Default): When set to False, it means that the System's name, messages, and notifications will not be displayed in the chat pane.
 
-- `SYSTEM_NAME_IN_CHAT_PANE`:
-  - Possible values:
-    - `SYSTEM`: It determines how the name of the System is displayed in the chat pane. When set to SYSTEM, the name is shown as "SYSTEM".
+- **SYSTEM_NAME_IN_CHAT_PANE**:
+	- Description: It determines how the name of the System is displayed in the chat pane.
+  - Example value:
+    - `SYSTEM`: When set to SYSTEM, the name is shown as "SYSTEM".
 
 
 MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON="True"
@@ -686,6 +718,7 @@ DEV_PROJECT_DIRECTORY_NAME="YOUR_DEV_PROJECT_DIRECTORY_NAME_HERE"
     - `value3`: Description of value3.
 
 
+Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
 Reset the configuration file app.conf:
 It restores the file to its inital status.
@@ -694,12 +727,6 @@ Go to the directory scripts/utilities and execute the file reset_app.conf.sh.
 `$ cd config-scripts`
 
 `$ bash reset-commbase.conf.sh`
-
-
-
-
-
-
 
 
 # 6 Default Commbase commands
