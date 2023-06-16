@@ -307,149 +307,161 @@ The default version of the file **app.conf** contains the next values:
 
 - **TTS_ENGINE_STRING**:
   - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.
-  - Possible values: 
+  - Possible values:
     - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate 150 --voice-index 18` (Default): It specifies the TTS engine commbase-tts-pyttsx3.py's executable script and arguments. It uses a specified speed rate and voice index to convert the text into speech and play it back. There is one voice index for every language or accent installed by or recognized by pyttsx3 in the system. You can modify those arguments in the string. To select a voice/accent by index, use the utility **list_all_voices_available_for_pyttsx3.py** that you will find out in the directory **scripts/utilities**.
     - `festival --tts`: It specifies the TTS command Festival and its arguments. Festival comes with a unique and some basic English voice tone out of the box. You can install Festival-compatible extra voices from different internet sources. To know how to install Festival-compatible voices and set one as your custom application's voice, read this guide by Esteban Herrera: <https://github.com/estebanways/diy-linux-book/blob/main/Module5/Festival/Festival.txt>.
     - `espeak -v f2`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English female voice number 2. You can install Espeak-compatible extra voices from different internet sources.
     - `espeak -v m3`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English male voice number 3. You can install Espeak-compatible extra voices from different internet sources.
     - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-gTTS/commbase_tts_gTTS.py --param1 val1 --param2 val2 --param3 val3:`: It specifies the TTS executable commbase-tts-gTTS.py's script and its arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API.
 
-- `TMUX_EXTRA_WINDOWS_ON`:
+- **TMUX_EXTRA_WINDOWS_ON**:
   - Possible values:
-    - `True`: Set to True, it activates the extra windows in the Commbase tmux session.
-    - `False`: Set to False, it deactivates the extra windows in the Commbase tmux session.
+    - `True` (Default): Set to True, it activates the extra windows feature in the Commbase tmux session.
+    - `False`: Set to False, it deactivates the extra windows feature in the Commbase tmux session.
 
-- `TMUX_EXTRA_WINDOW_EDITOR_ON`:
+- **TMUX_EXTRA_WINDOW_EDITOR_ON**:
   - Possible values:
-    - `True`: Set to True, it activates the extra window Editor in the Commbase tmux session.
+    - `True` (Default): Set to True, it activates the extra window Editor in the Commbase tmux session.
     - `False`: Set to False, it deactivates the extra window Editor in the Commbase tmux session.
 
-- `TMUX_EXTRA_WINDOW_TIMER`:
+- **TMUX_EXTRA_WINDOW_TIMER**:
   - Possible values:
-    - `True`: Set to True, it activates the extra window Timer in the Commbase tmux session.
+    - `True` (Default): Set to True, it activates the extra window Timer in the Commbase tmux session.
     - `False`: Set to False, it deactivates the extra window Timer in the Commbase tmux session.
 
-- `TMUX_EXTRA_WINDOW_SERVER1_ON`:
+- **TMUX_EXTRA_WINDOW_SERVER1_ON**:
   - Possible values:
-    - `True`: Set to True, it activates the extra window Server 1 in the Commbase tmux session.
+    - `True` (Default): Set to True, it activates the extra window Server 1 in the Commbase tmux session.
     - `False`: Set to False, it deactivates the extra window Server 1 in the Commbase tmux session.
 
-- `TMUX_EXTRA_WINDOW_SERVER2_ON`:
+- **TMUX_EXTRA_WINDOW_SERVER2_ON**:
   - Possible values:
+    - `False` (Default): Set to False, it deactivates the extra window Server 2 in the Commbase tmux session.
     - `True`: Set to True, it activates the extra window Server 2 in the Commbase tmux session.
-    - `False`: Set to False, it deactivates the extra window Server 2 in the Commbase tmux session.
 
-- `TERMINAL_RED_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_RED_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;41m`: This value enables bold or bright text in terminal emulators and set the background color to red.
 
-- `TERMINAL_GREEN_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_GREEN_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;42m`: This value enables bold or bright text in terminal emulators and set the background color to green.
 
-- `TERMINAL_YELLOW_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_YELLOW_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;43m`: This value enables bold or bright text in terminal emulators and set the background color to yellow.
 
-- `TERMINAL_BLUE_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_BLUE_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;44m"`: This value enables bold or bright text in terminal emulators and set the background color to blue.
 
-- `TERMINAL_MAGENTA_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_MAGENTA_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;45m`: This value enables bold or bright text in terminal emulators and set the background color to magenta.
 
-- `TERMINAL_CYAN_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_CYAN_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;46m`: This value enables bold or bright text in terminal emulators and set the background color to cyan.
 
-- `TERMINAL_WHITE_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_WHITE_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;47m`: This value enables bold or bright text in terminal emulators and set the background color to white.
 
-- `TERMINAL_BLACK_BACKGROUND_COLOR_CODE_START`:
+- **TERMINAL_BLACK_BACKGROUND_COLOR_CODE_START**:
   - Possible values:
     - `1;40m`: This value enables bold or bright text in terminal emulators and set the background color to black.
 
-- `TERMINAL_RED_TEXT_COLOR_CODE_START`:
+- **TERMINAL_RED_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;31m`: This value enables bold or bright text in terminal emulators and set the text color to red.
 
-- `TERMINAL_GREEN_TEXT_COLOR_CODE_START`:
+- **TERMINAL_GREEN_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;32m`: This value enables bold or bright text in terminal emulators and set the text color to green.
 
-- `TERMINAL_YELLOW_TEXT_COLOR_CODE_START`:
+- **TERMINAL_YELLOW_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;33m`: This value enables bold or bright text in terminal emulators and set the text color to yellow.
 
-- `TERMINAL_BLUE_TEXT_COLOR_CODE_START`:
+- **TERMINAL_BLUE_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;34m`: This value enables bold or bright text in terminal emulators and set the text color to blue.
 
-- `TERMINAL_MAGENTA_TEXT_COLOR_CODE_START`:
+- **TERMINAL_MAGENTA_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;35m`: This value enables bold or bright text in terminal emulators and set the text color to magenta.
 
-- `TERMINAL_CYAN_TEXT_COLOR_CODE_START`:
+- **TERMINAL_CYAN_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;36m`: This value enables bold or bright text in terminal emulators and set the text color to cyan.
 
-- `TERMINAL_WHITE_TEXT_COLOR_CODE_START`:
+- **TERMINAL_WHITE_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;37m`: This value enables bold or bright text in terminal emulators and set the text color to white.
 
-- `TERMINAL_BLACK_TEXT_COLOR_CODE_START`:
+- **TERMINAL_BLACK_TEXT_COLOR_CODE_START**:
   - Possible values:
     - `1;30m`: This value enables bold or bright text in terminal emulators and set the text color to black.
 
-- `TERMINAL_COLOR_CODE_END`:
+- **TERMINAL_COLOR_CODE_END**:
+  - Description: The Commbase terminal colors are set once in the configuration file, so they can be called easily in any Commbase-based application custom code.
   - Possible values:
     - `1;0m`: This value enables bold or bright text in terminal emulators and instructs the terminal to revert to the default style, removing any specific formatting changes that were applied.
 
-- `END_USER_BACKGROUND_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `blue`: Turns blue the End User background color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **END_USER_BACKGROUND_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `blue` (Default): Turns blue the End User background color in the chat pane, based on the colors defined in other terminal variables. 
 
-- `ASSISTANT_BACKGROUND_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `green`: Turns green the Assistant background color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **ASSISTANT_BACKGROUND_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `green` (Default): Turns green the Assistant background color in the chat pane, based on the colors defined in other terminal variables.
 
-- `SYSTEM_BACKGROUND_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `white`: Turns white the System background color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **SYSTEM_BACKGROUND_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `white` (Default): Turns white the System background color in the chat pane, based on the colors defined in other terminal variables. 
 
-- `END_USER_TEXT_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `white`: Turns white the End User text color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **END_USER_TEXT_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `white` (Default): Turns white the End User text color in the chat pane, based on the colors defined in other terminal variables.
 
-- `ASSISTANT_TEXT_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `white`: Turns white the Assistant text color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **ASSISTANT_TEXT_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `white` (Default): Turns white the Assistant text color in the chat pane, based on the colors defined in other terminal variables.
 
-- `SYSTEM_TEXT_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `red`: Turns red the System text color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **SYSTEM_TEXT_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `red` (Default): Turns red the System text color in the chat pane, based on the colors defined in other terminal variables.
 
-- `ASSISTANT_AVATAR_COLOR_IN_CHAT_PANE`:
-  - Possible values:
-    - `cyan`: Turns cyan the Assistant avatar color in the chat pane, based on the colors defined in other terminal variables. Other options are: red, green, yellow, blue, magenta, cyan, white, or black.
+- **ASSISTANT_AVATAR_COLOR_IN_CHAT_PANE**:
+  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
+  - Example value:
+    - `cyan` (Default): Turns cyan the Assistant avatar color in the chat pane, based on the colors defined in other terminal variables. 
 
-- `END_USER_NAME_IN_CHAT_PANE`:
-  - Possible values:
-    - `END USER`: It determines how the name of the End User is displayed in the chat pane. When set to END USER, the name is shown as "END USER".
+- **END_USER_NAME_IN_CHAT_PANE**:
+  - Description: It determines how the name of the End User is displayed in the chat pane.
+  - Example value:
+    - `END USER` (Default): When set to END USER, the name is shown as "END USER".
 
-- `ASSISTANT_NAME_IN_CHAT_PANE`:
-  - Possible values:
-    - `COMMBASE`: It determines how the name of the Assistant is displayed in the chat pane. When set to COMMBASE, the name is shown as "COMMBASE".
+- **ASSISTANT_NAME_IN_CHAT_PANE**:
+  - Description: It determines how the name of the Assistant is displayed in the chat pane.
+  - Example value:
+    - `COMMBASE` (Default): When set to COMMBASE, the name is shown as "COMMBASE".
 
-- `SYSTEM_VISIBLE_IN_CHAT_PANE_ON`:
-  - Possible values:
-    - `False`: When set to False, it means that the System's messages or notifications will not be displayed in the chat pane. 
+- **SYSTEM_VISIBLE_IN_CHAT_PANE_ON**:
+  - Possible values: False or True.
+  - Example value:
+    - `False` (Default): When set to False, it means that the System's name, messages, and notifications will not be displayed in the chat pane.
 
-- `SYSTEM_NAME_IN_CHAT_PANE`:
-  - Possible values:
-    - `SYSTEM`: It determines how the name of the System is displayed in the chat pane. When set to SYSTEM, the name is shown as "SYSTEM".
+- **SYSTEM_NAME_IN_CHAT_PANE**:
+	- Description: It determines how the name of the System is displayed in the chat pane.
+  - Example value:
+    - `SYSTEM`: When set to SYSTEM, the name is shown as "SYSTEM".
 
 
 MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON="True"
