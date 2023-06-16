@@ -277,22 +277,25 @@ The default version of the file **app.conf** contains the next values:
     - `600` (Default): This value will make the ip address update every 10 minutes.
 
 - **MY_APP_AUDIO_CAPTURE_DEVICE_NAME**:
-  - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input. Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
+  - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input.
+  - Possible values: Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
   - Example value:
     - `alsa_input.usb-_Webcam_C170-02.mono-fallback`: This value represents an ALSA input device connected via USB, specifically a webcam named "C170-02," configured to provide mono audio input, using a fallback configuration.
 
 - **SYSTEM_AUDIO_CAPTURE_DEVICE_NAME**:
-  - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input. Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
+  - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input.   - Possible values: Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
   - Example value:
     - `alsa_input.pci-0000_00_1b.0.analog-stereo`: This value represents an ALSA input device connected via a PCI bus, specifically an analog stereo audio input device.
 
 - **VIDEO_CAPTURE_DEVICE_01_INDEX**:
-  - Description: It is used to specify which video capture device should be utilized by the system or application. Use a value between 0 and the maximum number of cameras installed.
+  - Description: It is used to specify which video capture device should be utilized by the system or application.
+  - Possible values: Use a value between 0 and the maximum number of cameras installed.
   - Example value:
     - `0`: It represents the index or identifier of a video capture device.
 
 - **VIDEO_CAPTURE_DEVICE_02_INDEX**:
-  - Description: It is used to specify which video capture device should be utilized by the system or application. Use a value between 0 and the maximum number of cameras installed.
+  - Description: It is used to specify which video capture device should be utilized by the system or application.
+  - Possible values: Use a value between 0 and the maximum number of cameras installed.  
   - Example value:
     - `1`: It represents the index or identifier of a video capture device.
 
