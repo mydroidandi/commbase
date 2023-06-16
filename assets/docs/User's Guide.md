@@ -254,25 +254,27 @@ Please ensure that these environment variables are correctly set with the approp
 The default version of the file **app.conf** contains the next values:
 
 - **PYTHON_ENV_VERSION**:
-  - Possible values:
-    - `python`: This is the default value, which implies that the virtual environment will use the Python version associated with the default system Python interpreter. Choose this value whether your application uses a virtual environment such as commbase_env. For more details, check out the file **INSTALL**.
+  - Example values:
+    - `python` (Default): Choosing this value implies that the virtual environment will use the Python version associated with the default system Python interpreter. Choose this value whether your application uses a virtual environment such as commbase_env. For more details, check out the file **INSTALL**.
     - `python3.11`: This value indicates a custom Python version, specifically version 3.11. For more details, check out the file **INSTALL**.
     - `python3`: This value also represents a custom Python version, but the exact version is not specified. For more details, check out the file **INSTALL**.
 
 - **STT_PROCESS_CPU_LIMIT_PERCENTAGE**:
-  - Description: The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity.
+  - Description: The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity. For more details, check out the file **INSTALL**.
   - Possible values: This variable should be a value between 0 and 100 or between 0 and 400 (for machines with 4 processing cores or more.)
   - Example value:
-    - `75`: The STT process is going to use up to 75% of the computer's processing power.
+    - `75` (Default): The STT process is going to use up to 75% of the computer's processing power.
 
-- `CONDA_ENV_NAME_IF_EXISTS`:
-  - Possible values:
-    - `commbase_env`: The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment.
-    - `my_env_name`: Any alternative for creating the Commbase virtual environment.
+- **CONDA_ENV_NAME_IF_EXISTS**:
+  - Example values:
+    - `commbase_env` (Default): The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment. For more details, check out the file **INSTALL**.
+    - `my_env_name`: An alternative name for creating the Commbase virtual environment.
 
-- `IP_ADDRESS_UPDATE_IN_SECS`:
-  - Possible values:
-    - `600`: This value represents the interval in milliseconds at which the machine's IP address should be updated. We recommend using a value between 300 and 600 for security reasons.
+- **IP_ADDRESS_UPDATE_IN_SECS**:
+  - Description: This value represents the interval in milliseconds at which the machine's IP address should be updated in the file **.env** in **env/**.
+  - Possible values: We recommend using a value between 300 and 600 for security reasons.
+  - Example value:
+    - `600` (Default): This value will make the ip address update every 10 minutes.
 
 - `MY_APP_AUDIO_CAPTURE_DEVICE_NAME`:
   - Possible values:
