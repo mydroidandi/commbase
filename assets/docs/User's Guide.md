@@ -197,13 +197,13 @@ These files are environment files that you can edit following certain rules:
 - You can add more constants with values, but their names can not be duplicated in the file or match Commbase or system environment constants, such as `$COMMBASE_APP_DIR` or `$HOME`.
 - There should not be empty lines or spaces in the file.
 
-The default version of the file `secrets` which is sourced by the application, does not have default values, and they must be set by the user in order for the app and/or app commands to function correctly. Make sure to replace the placeholder values with the actual required values.
+The default version of the file **secrets** which is sourced by the application, does not have default values, and they must be set by the user in order for the app and/or app commands to function correctly. Make sure to replace the placeholder values with the actual required values.
 
 Most of these variables are marked as optional and can be excluded if they are not needed for your specific use case.
 
 - **LOCAL_HOST_UUID** (Optional):
   - Example value:
-    - `01234567-89ab-cdef-0123-456789abcdef`: The local host UUID. Use it to identify the local host of the Commbase application before networks.
+    - `01234567-89ab-cdef-0123-456789abcdef`: The local host UUID. Use this to identify the local host of the Commbase application before your Commbase machines' network.
 
 - **REMOTE_USER_NAME** (Optional):
   - Example value:
@@ -211,39 +211,39 @@ Most of these variables are marked as optional and can be excluded if they are n
 
 - **REMOTE_USER_PASSWORD** (Optional):
   - Example value:
-    - `my_password`: The password for remote user authentication. It can be used inside Commbase commands and/or applications that require bypassing password prompts without user intervention. This method does not encrypt the password but keeps its passphrase centralized and outside the command or application scripts.
+    - `my_password`: The password for remote user authentication. It can be used inside Commbase commands and/or applications that require bypassing password prompts without user intervention. This method does not encrypt the password but keeps its passphrase centralized outside command or application scripts.
 
 - **PROTONVPN_CLI_USERNAME** (Optional):
   - Example value:
-    - `protonvpn_username`: The username for ProtonVPN command-line interface (CLI) authentication.
+    - `protonvpn_username`: The username for ProtonVPN command-line interface (CLI) authentication. The VPN variables are specifically for use with the ProtonVPN service. You can create new variables for equivalent services of your choice.
 
 - **PROTONVPN_CLI_PASSWORD** (Optional):
   - Example value:
-    - `protonvpn_password`: The password for ProtonVPN CLI authentication.
+    - `protonvpn_password`: The password for ProtonVPN CLI authentication. The VPN variables are specifically for use with the ProtonVPN service. You can create new variables for equivalent services of your choice.
 
 - **PROTONVPN_API_USERNAME** (Optional):
   - Example value:
-    - `protonvpn_api_username`: The username for ProtonVPN API authentication.
+    - `protonvpn_api_username`: The username for ProtonVPN API authentication. The VPN variables are specifically for use with the ProtonVPN service. You can create new variables for equivalent services of your choice.
 
 - **PROTONVPN_API_PASSWORD** (Optional):
   - Example value:
-    - `protonvpn_api_password`: The password for ProtonVPN API authentication.
+    - `protonvpn_api_password`: The password for ProtonVPN API authentication. The VPN variables are specifically for use with the ProtonVPN service. You can create new variables for equivalent services of your choice.
 
 - **SERVER_HOST_001_UUID** (Optional):
   - Example value:
-    - `98765432-dcba-fedc-ba98-76543210abcdef`: The UUID of the server host number 001.
+    - `98765432-dcba-fedc-ba98-76543210abcdef`: The UUID of the server host number 001 in a Commbase machines' network. We use numbers to match the tmux Commbase session window 4 "Server 1" but they are not necessarily the same servers.
 
 - **SERVER_HOST_001_HOSTNAME** (Optional):
   - Example value:
-    - `foobar`: The hostname of the server host number 001.
+    - `foobar`: The hostname of the server host number 001. We use numbers to match the tmux Commbase session window 4 "Server 1" but they are not necessarily the same servers.
 
 - **SERVER_HOST_001_IP_ADDRESS** (Optional):
   - Example value:
-    - `192.168.100.2`: The IP address of the server host 001.
+    - `192.168.100.2`: The IP address of the server host 001. We use numbers to match the tmux Commbase session window 4 "Server 1" but they are not necessarily the same servers.
 
 - **SERVER_HOST_001_USER_PASSW** (Optional):
   - Example value:
-    - `server_host_001_password`: The password for accessing the server host number 001.
+    - `server_host_001_password`: The password for accessing the server host number 001. We use numbers to match the tmux Commbase session window 4 "Server 1" but they are not necessarily the same servers.
 
 - **OPENAI_API_KEY**:
   - Example value:
@@ -251,13 +251,13 @@ Most of these variables are marked as optional and can be excluded if they are n
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
-The default version of the file app.conf contains the next values:
+The default version of the file **app.conf** contains the next values:
 
-- `PYTHON_ENV_VERSION`:
+- **PYTHON_ENV_VERSION**:
   - Possible values:
-    - `python`: This is the default value, which implies that the virtual environment will use the Python version associated with the default system Python interpreter.
-    - `python3.11`: This value indicates a custom Python version, specifically version 3.11.
-    - `python3`: This value also represents a custom Python version, but the exact version is not specified.
+    - `python`: This is the default value, which implies that the virtual environment will use the Python version associated with the default system Python interpreter. Choose this value whether your application uses a virtual environment such as commbase_env. For more details, check out the file INSTALL.
+    - `python3.11`: This value indicates a custom Python version, specifically version 3.11. For more details, check out the file INSTALL.
+    - `python3`: This value also represents a custom Python version, but the exact version is not specified. For more details, check out the file INSTALL.
 
 - `STT_PROCESS_CPU_LIMIT_PERCENTAGE`:
   - Possible values:
