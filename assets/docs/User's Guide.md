@@ -312,7 +312,6 @@ The default version of the file **app.conf** contains the next values:
     - `festival --tts`: It specifies the TTS command Festival and its arguments. Festival comes with a unique and some basic English voice tone out of the box. You can install Festival-compatible extra voices from different internet sources. To know how to install Festival-compatible voices and set one as your custom application's voice, read this guide by Esteban Herrera: <https://github.com/estebanways/diy-linux-book/blob/main/Module5/Festival/Festival.txt>.
     - `espeak -v f2`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English female voice number 2. You can install Espeak-compatible extra voices from different internet sources.
     - `espeak -v m3`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English male voice number 3. You can install Espeak-compatible extra voices from different internet sources.
-    - `espeak -v f2`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English female voice number 2. You can install Espeak-compatible extra voices from different internet sources.
    - `PENDING`: It specifies the TTS engine commbase-tts-pyttsx3.py's executable script and arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API.
 
 - `TMUX_EXTRA_WINDOWS_ON`:
