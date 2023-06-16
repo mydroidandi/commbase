@@ -175,11 +175,11 @@ The configuration variables can be accessed by going to the directory **config/*
 Use your favorite text editor to open any of those files.
 
 ```sh
-$ nano config/app.conf
+nano config/app.conf
 ```
 
 ```sh
-$ nano config/secrets
+nano config/secrets
 ```
 
 The file *secrets* holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. 
@@ -276,22 +276,24 @@ The default version of the file **app.conf** contains the next values:
   - Example value:
     - `600` (Default): This value will make the ip address update every 10 minutes.
 
-- `MY_APP_AUDIO_CAPTURE_DEVICE_NAME`:
-  - Possible values:
-    - `alsa_input.usb-_Webcam_C170-02.mono-fallback`: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input. Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. Check out the topic key bindings.
+- **MY_APP_AUDIO_CAPTURE_DEVICE_NAME**:
+  - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input. Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
+  - Example value:
+    - `alsa_input.usb-_Webcam_C170-02.mono-fallback`: This value represents an ALSA input device connected via USB, specifically a webcam named "C170-02," configured to provide mono audio input, using a fallback configuration.
 
-- `SYSTEM_AUDIO_CAPTURE_DEVICE_NAME`:
-  - Possible values:
-    - `alsa_input.pci-0000_00_1b.0.analog-stereo`: This value corresponds to a specific audio capture device. It represents the name or identifier of the audio capture device that the system should use for capturing audio. Check out the topic key bindings.
+- **SYSTEM_AUDIO_CAPTURE_DEVICE_NAME**:
+  - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input. Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
+  - Example value:
+    - `alsa_input.pci-0000_00_1b.0.analog-stereo`: This value represents an ALSA input device connected via a PCI bus, specifically an analog stereo audio input device.
 
-- `VIDEO_CAPTURE_DEVICE_01_INDEX`:
+- **VIDEO_CAPTURE_DEVICE_01_INDEX**:
   - Description: It is used to specify which video capture device should be utilized by the system or application. Use a value between 0 and the maximum number of cameras installed.
-  - Possible values:
+  - Example value:
     - `0`: It represents the index or identifier of a video capture device.
 
-- `VIDEO_CAPTURE_DEVICE_02_INDEX`:
+- **VIDEO_CAPTURE_DEVICE_02_INDEX**:
   - Description: It is used to specify which video capture device should be utilized by the system or application. Use a value between 0 and the maximum number of cameras installed.
-  - Possible values:
+  - Example value:
     - `1`: It represents the index or identifier of a video capture device.
 
 - `STT_ENGINE_STRING`:
@@ -697,6 +699,7 @@ DEV_PROJECT_DIRECTORY_NAME="YOUR_DEV_PROJECT_DIRECTORY_NAME_HERE"
     - `value3`: Description of value3.
 
 
+Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
 Reset the configuration file app.conf:
 It restores the file to its inital status.
@@ -705,12 +708,6 @@ Go to the directory scripts/utilities and execute the file reset_app.conf.sh.
 `$ cd config-scripts`
 
 `$ bash reset-commbase.conf.sh`
-
-
-
-
-
-
 
 
 # 6 Default Commbase commands
