@@ -255,13 +255,15 @@ The default version of the file **app.conf** contains the next values:
 
 - **PYTHON_ENV_VERSION**:
   - Possible values:
-    - `python`: This is the default value, which implies that the virtual environment will use the Python version associated with the default system Python interpreter. Choose this value whether your application uses a virtual environment such as commbase_env. For more details, check out the file INSTALL.
-    - `python3.11`: This value indicates a custom Python version, specifically version 3.11. For more details, check out the file INSTALL.
-    - `python3`: This value also represents a custom Python version, but the exact version is not specified. For more details, check out the file INSTALL.
+    - `python`: This is the default value, which implies that the virtual environment will use the Python version associated with the default system Python interpreter. Choose this value whether your application uses a virtual environment such as commbase_env. For more details, check out the file **INSTALL**.
+    - `python3.11`: This value indicates a custom Python version, specifically version 3.11. For more details, check out the file **INSTALL**.
+    - `python3`: This value also represents a custom Python version, but the exact version is not specified. For more details, check out the file **INSTALL**.
 
-- `STT_PROCESS_CPU_LIMIT_PERCENTAGE`:
-  - Possible values:
-    - `75`: A percentage between 0 and 100 or between 0 and 400 (for machines with 4 processing cores or more.) The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity.
+- **STT_PROCESS_CPU_LIMIT_PERCENTAGE**:
+  - Description: The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity.
+  - Possible values: This variable should be a value between 0 and 100 or between 0 and 400 (for machines with 4 processing cores or more.)
+  - Example value:
+    - `75`: The STT process is going to use up to 75% of the computer's processing power.
 
 - `CONDA_ENV_NAME_IF_EXISTS`:
   - Possible values:
