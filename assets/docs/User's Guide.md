@@ -201,51 +201,51 @@ The default version of the file `secrets` which is sourced by the application, d
 
 Most of these variables are marked as optional and can be excluded if they are not needed for your specific use case.
 
-- **LOCAL_HOST_UUID**(Optional):
+- **LOCAL_HOST_UUID** (Optional):
   - Example value:
-    - `01234567-89ab-cdef-0123-456789abcdef`: The UUID of the local host.
+    - `01234567-89ab-cdef-0123-456789abcdef`: The local host UUID. Use it to identify the local host of the Commbase application before networks.
 
-- `REMOTE_USER_NAME`(Optional):
+- **REMOTE_USER_NAME** (Optional):
   - Example value:
-    - `my_username`: The username for remote user authentication.
- 
-- `REMOTE_USER_PASSWORD`(Optional):
-  - Example value:
-    - `my_password`: The password for remote user authentication.
+    - `my_username`: The username for remote user authentication. It can be your same local username.
 
-- `PROTONVPN_CLI_USERNAME`(Optional):
+- **REMOTE_USER_PASSWORD** (Optional):
+  - Example value:
+    - `my_password`: The password for remote user authentication. It can be used inside Commbase commands and/or applications that require bypassing password prompts without user intervention. This method does not encrypt the password but keeps its passphrase centralized and outside the command or application scripts.
+
+- **PROTONVPN_CLI_USERNAME** (Optional):
   - Example value:
     - `protonvpn_username`: The username for ProtonVPN command-line interface (CLI) authentication.
 
-- `PROTONVPN_CLI_PASSWORD`(Optional):
+- **PROTONVPN_CLI_PASSWORD** (Optional):
   - Example value:
     - `protonvpn_password`: The password for ProtonVPN CLI authentication.
 
-- `PROTONVPN_API_USERNAME`(Optional):
+- **PROTONVPN_API_USERNAME** (Optional):
   - Example value:
     - `protonvpn_api_username`: The username for ProtonVPN API authentication.
 
-- `PROTONVPN_API_PASSWORD`(Optional):
+- **PROTONVPN_API_PASSWORD** (Optional):
   - Example value:
     - `protonvpn_api_password`: The password for ProtonVPN API authentication.
 
-- `SERVER_HOST_001_UUID`(Optional):
+- **SERVER_HOST_001_UUID** (Optional):
   - Example value:
     - `98765432-dcba-fedc-ba98-76543210abcdef`: The UUID of the server host number 001.
 
-- `SERVER_HOST_001_HOSTNAME`(Optional):
+- **SERVER_HOST_001_HOSTNAME** (Optional):
   - Example value:
     - `foobar`: The hostname of the server host number 001.
 
-- `SERVER_HOST_001_IP_ADDRESS`(Optional):
+- **SERVER_HOST_001_IP_ADDRESS** (Optional):
   - Example value:
     - `192.168.100.2`: The IP address of the server host 001.
 
-- `SERVER_HOST_001_USER_PASSW`(Optional):
+- **SERVER_HOST_001_USER_PASSW** (Optional):
   - Example value:
     - `server_host_001_password`: The password for accessing the server host number 001.
 
-- `OPENAI_API_KEY`:
+- **OPENAI_API_KEY**:
   - Example value:
     - `your_openai_api_key`:  The API key for accessing OpenAI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
 
