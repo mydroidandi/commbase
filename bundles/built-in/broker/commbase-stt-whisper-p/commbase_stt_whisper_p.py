@@ -37,7 +37,7 @@
 # program downloads it automatically.
 # Requires to run redirecting the standard error output (stderr) to the null 
 # device (/dev/null) like this to avoid ALSA output messages:
-# shell> python commbase_stt_whisper_p.py 2>& /dev/null
+# python commbase_stt_whisper_p.py 2>& /dev/null
 
 # Requirements
 import io
@@ -51,8 +51,7 @@ import os
 temp_file = tempfile.mkdtemp()
 save_path = os.path.join(temp_file, 'temp.wav')
 
-# Initialize the text-to-speech engine, retrieve the available voices, and set
-# properties for the engine's rate and voice.
+
 def listen():
 	"""
 	Initializes a speech recognizer, captures audio input from a microphone,
@@ -80,7 +79,7 @@ def recognize_audio(save_path):
 	transcribes an audio file located at save_path using that model. It then
 	returns the transcribed text extracted from the transcription result.
 	"""
-	audio_model = whisper.load_model('base')
+	audio_model = whisper.load_model('base')  # The version of the Whisper model to load
 	transcription = audio_model.transcribe(save_path, language='english', fp16=False)
 	return transcription['text']
 
