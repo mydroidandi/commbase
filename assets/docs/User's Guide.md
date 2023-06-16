@@ -299,16 +299,21 @@ The default version of the file **app.conf** contains the next values:
   - Example value:
     - `1`: It represents the index or identifier of a video capture device.
 
-- `STT_ENGINE_STRING`:
+- **STT_ENGINE_STRING**:
+  - Description: It represents a string that specifies the path to the current STT engine's executable or script file bundled with Commbase.
   - Possible values:
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py`: It represents a string that specifies the configuration or path to the STT engine's executable or script file.
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-whisper-p/commbase_stt_whisper_p.py`: It represents a string that specifies the configuration or path to the STT engine's executable or script file.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-whisper-p/commbase_stt_whisper_p.py` (Default): It specifies the STT engine commbase-stt-whisper-p.py's executable script.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py`: It specifies the STT engine commbase-stt-vosk-p.py's executable script.
 
-- `TTS_ENGINE_STRING`:
-  - Possible values:
-    - `festival --tts`: It represents a string that specifies the configuration or command to invoke the TTS engine.
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate 150 --voice-index 18`: It represents a string that specifies the configuration or command to invoke the TTS engine. It uses specified rate and voice index to convert the text into speech and play it back. There is one voice index for every language or accent installed by or recognized by pyttsx3 in the system.
-  - Notes: You can set up a third-party engine here, even a proprietary engine with proprietary voices or voices from other operating systems.
+- **TTS_ENGINE_STRING**:
+  - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.
+  - Possible values: 
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate 150 --voice-index 18` (Default): It specifies the TTS engine commbase-tts-pyttsx3.py's executable script and arguments. It uses a specified speed rate and voice index to convert the text into speech and play it back. There is one voice index for every language or accent installed by or recognized by pyttsx3 in the system. You can modify those arguments in the string. To select a voice/accent by index, use the utility **list_all_voices_available_for_pyttsx3.py** that you will find out in the directory **scripts/utilities**.
+    - `festival --tts`: It specifies the TTS command Festival and its arguments. Festival comes with a unique and some basic English voice tone out of the box. You can install Festival-compatible extra voices from different internet sources. To learn how to install Festival-compatible voices and set one as your custom application's voice, read this article from Esteban Herrera: <https://github.com/estebanways/diy-linux-book/blob/main/Module5/Festival/Festival.txt>.
+    - `espeak -v f2`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English female voice number 2. You can install Espeak-compatible extra voices from different internet sources.
+    - `espeak -v m3`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English male voice number 3. You can install Espeak-compatible extra voices from different internet sources.
+    - `espeak -v f2`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English female voice number 2. You can install Espeak-compatible extra voices from different internet sources.
+   - `PENDING`: It specifies the TTS engine commbase-tts-pyttsx3.py's executable script and arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API.
 
 - `TMUX_EXTRA_WINDOWS_ON`:
   - Possible values:
