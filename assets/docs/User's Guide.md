@@ -306,7 +306,7 @@ The default version of the file **app.conf** contains the next values:
     - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py`: It specifies the STT engine commbase-stt-vosk-p.py's executable script.
 
 - **TTS_ENGINE_STRING**:
-  - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.
+  - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, TTS systems with the ability to use a clone/fake of your own voice, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.
   - Possible values:
     - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate 150 --voice-index 18` (Default): It specifies the TTS engine commbase-tts-pyttsx3.py's executable script and arguments. It uses a specified speed rate and voice index to convert the text into speech and play it back. There is one voice index for every language or accent installed by or recognized by pyttsx3 in the system. You can modify those arguments in the string. To select a voice/accent by index, use the utility **list_all_voices_available_for_pyttsx3.py** that you will find out in the directory **scripts/utilities**.
     - `festival --tts`: It specifies the TTS command Festival and its arguments. Festival comes with a unique and some basic English voice tone out of the box. You can install Festival-compatible extra voices from different internet sources. To know how to install Festival-compatible voices and set one as your custom application's voice, read [`this guide.`](./Festival.md)
@@ -454,112 +454,61 @@ The default version of the file **app.conf** contains the next values:
     - `COMMBASE` (Default): When set to COMMBASE, the name is shown as "COMMBASE".
 
 - **SYSTEM_VISIBLE_IN_CHAT_PANE_ON**:
-  - Possible values: False or True.
+  - Possible values: True or False.
   - Example value:
     - `False` (Default): When set to False, it means that the System's name, messages, and notifications will not be displayed in the chat pane.
 
 - **SYSTEM_NAME_IN_CHAT_PANE**:
-	- Description: It determines how the name of the System is displayed in the chat pane.
+  - Description: It determines how the name of the System is displayed in the chat pane.
   - Example value:
-    - `SYSTEM`: When set to SYSTEM, the name is shown as "SYSTEM".
+    - `SYSTEM` (Default): When set to SYSTEM, the name is shown as "SYSTEM".
 
-
-MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON="True"
-
-- `VAR_NAME`:
+- **MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON**:
   - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+    - `True` (Default): When set to True, the feature is enabled, and it manages the result message while also displaying skill errors in the specific the chat pane of the tmux Commbase session.
+    - `False`: Whe this value is set to False, the feature is disabled or turned off. In this case, the system would not manage the result message or display skill errors in the specific chat pane of the tmux Commbase session.
 
+- **VOSK_ML_MODEL_DIRECTORY**:
+  - Example value:
+    - `/bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph/model` (Default): This setting is related to a Vosk ML model and determines the directory path where the model is located.
 
+- **SECRETS_FILE_PATH**:
+  - Example value:
+    - `/config/secrets` (Default): This setting allows users or developers to specify the location of a file containing sensitive information or secrets. Secrets files commonly store confidential data such as API keys, passwords, or access tokens that are required for secure interactions with external services or systems. It is important to handle secrets files with utmost care and ensure that proper security measures are in place to protect the sensitive information stored within them.
 
-VOSK_ML_MODEL_DIRECTORY="/bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph/model"
+- **ASCII_ART_FILE_PATH**:
+  - Example value:
+    - `/assets/ascii/avatar.asc` (Default): This value represents the default file path for an ASCII art file. The exact content and visual representation of the ASCII art file would depend on the file itself, which could contain a graphical representation of an avatar or any other desired design.
 
-- `VAR_NAME`:
+- **ASSISTANT_MICROPHONE_INSTRUCTION_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction` (Default): This value represents the default file path for the microphone instruction file. The file that contains instructions or guidelines for the usage of the assistant's microphone.
+
+- **RESULT_MESSAGE_RECORDING_FILE**:
+  - Example value:
+    - `/data/.result_message.json` (Default): This value represents a default file path. The file is in JSON format and serves as a storage location for a single result message generated by the run STT engine or the Controller.
+
+- **PREVIOUS_RESULT_MESSAGE_RECORDING_FILE**:
+  - Example value:
+    - `/data/.previous_result_message.json` (Default): This value represents a default file path. The file is in JSON format and serves as a storage location for a single previous result message generated by the run STT engine or the Controller.
+
+- **CONTROLLER_MESSAGE_RECORDING_FILE**:
+  - Example value:
+    - `/data/.controller_message.json` (Default): This setting allows users or developers to specify the location of the file where Controller messages are stored. The file is in JSON format, and if the Controller is activated, it is used by the Controller to preprocess a single result message generated by the running STT engine before saving the new result to the files held by the variables `RESULT_MESSAGE_RECORDING_FILE` and `PREVIOUS_RESULT_MESSAGE_RECORDING_FILE`.
+
+- **RESULT_MESSAGES_HISTORY_FILE**:
   - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+    - `/history/.result_messages_history` (Default): This setting represents a default file path. The file allows users or developers to append result messages one after another, sequentially.
 
+- **COMMBASE_STT_VOSK_P_PARSE_CONTROL_MESSAGES_ON**:
+  - Possible values: True or False.
+  - Example value:
+    - `False` (Default): This setting determines whether control messages are parsed or not by the engine commbase-stt-vosk-p in case they are processed by the Controller.
 
-SECRETS_FILE_PATH="/config/secrets"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-ASCII_ART_FILE_PATH="/assets/ascii/avatar.asc"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-ASSISTANT_MICROPHONE_INSTRUCTION_FILE="/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-
-RESULT_MESSAGE_RECORDING_FILE="/data/.result_message.json"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-
-PREVIOUS_RESULT_MESSAGE_RECORDING_FILE="/data/.previous_result_message.json"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-
-CONTROLLER_MESSAGE_RECORDING_FILE="/data/.controller_message.json"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-
-RESULT_MESSAGES_HISTORY_FILE="/history/.result_messages_history"
-
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-
-COMMBASE_STT_VOSK_P_PARSE_CONTROL_MESSAGES_ON="False"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
+- **COMMBASE_STT_WHISPER_P_PARSE_CONTROL_MESSAGES_ON**:
+  - Example value:
+  - Possible values: True or False.
+    - `False` (Default): This setting determines whether control messages are parsed or not by the engine commbase-stt-whisper-p in case they are processed by the Controller.
 
 
 CONTROL_STOP_PREVIOUS_COMMAND_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_stop_patterns"
