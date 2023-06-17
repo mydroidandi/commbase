@@ -1,6 +1,6 @@
 # Commbase <img align="center" alt="Visual Studio Code" width="10%" src="./images/commbase.png" /> Festival
 
-## Festival Installation and Basic Configuration for Commbase Applications
+# Festival Installation and Basic Configuration for Commbase Applications
 
 In this document, we will use Debian GNU/Linux to demonstrate the installation steps, but you can use any of your preferred distros and have the same result.
 
