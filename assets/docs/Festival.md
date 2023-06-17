@@ -43,6 +43,8 @@ Exit the interactive shell.
 
 ## Install extra voices
 
+You can install voices from many internet sources, rather than the official distribution repositories.
+
 Search for new voices in English.
 
 ```sh
@@ -61,10 +63,6 @@ List the voices available.
 festival
 ```
 
-You will see the REPL interactive shell prompt.
-
-festival>
-
 Type in `(voice.list)` and press `Enter`.
 
 You will have the next output:
@@ -72,8 +70,6 @@ You will have the next output:
 (kal_diphone us1_mbrola us2_mbrola us3_mbrola)
 
 These are the different voices to choose from.
-
-You can also install voices from alternative internet sources available.
 
 ## Test your new voice tones (voice packages)
 
@@ -100,7 +96,13 @@ Set up the new voice in the festival configuration file **/etc/festival.scm**.
 
 ```sh
 sudo cp -dpR /etc/festival.scm /etc/festival.scmBAK
-# nano /etc/festival.scm
+```
+
+And as root, do:
+
+```sh
+nano /etc/festival.scm
+```
 
 Or as user, use:
 
