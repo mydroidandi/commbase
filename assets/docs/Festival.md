@@ -118,7 +118,7 @@ Attach the next line to the end of the file:
 
 Save the changes made.
 
-## Test the complete installation:
+Test the configuration.
 
 ```sh
 echo "Hi, How are you doing? This is Commbase" | festival --tts
