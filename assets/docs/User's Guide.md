@@ -474,11 +474,7 @@ The default version of the file **app.conf** contains the next values:
 
 - **SECRETS_FILE_PATH**:
   - Example value:
-    - `/config/secrets` (Default): This setting allows users or developers to specify the location of a file containing sensitive information or secrets. Secrets files commonly store confidential data such as API keys, passwords, or access tokens that are required for secure interactions with external services or systems.
-
-It is important to handle secrets files with utmost care and ensure that proper security measures are in place to protect the sensitive information stored within them. The specific usage and purpose of the secrets file, as well as the required contents, would depend on the software or system utilizing this setting.
-
-To gain a comprehensive understanding of how the secrets file is used and its expected contents, it is recommended to refer to the documentation or relevant resources related to the software or system in question.
+    - `/config/secrets` (Default): This setting allows users or developers to specify the location of a file containing sensitive information or secrets. Secrets files commonly store confidential data such as API keys, passwords, or access tokens that are required for secure interactions with external services or systems. It is important to handle secrets files with utmost care and ensure that proper security measures are in place to protect the sensitive information stored within them.
 
 - **ASCII_ART_FILE_PATH**:
   - Example value:
