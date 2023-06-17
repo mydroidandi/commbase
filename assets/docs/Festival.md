@@ -2,19 +2,12 @@
 
 In this document, we will use Debian GNU/Linux to demonstrate the installation steps, but you can use any of your preferred distros and have the same result.
 
-## System update
+
+## Installation
 
 ```sh
 sudo apt-get update
 ```
-
-You can also upgrade like this:
-
-```sh
-sudo apt-get -u upgrade
-```
-
-## Installation
 
 ```sh
 sudo apt-get install festival
@@ -32,29 +25,25 @@ echo "hello" | festival --tts
 festival
 ```
 
-Now, you see the REPL interactive shell.
+You will see the REPL interactive shell prompt.
 
-```code
 festival>
-```
 
-Type in (voice.list) and press enter.
+Type in `(voice.list)` and press `Enter`.
 
 You will have the next output:
 
-```log
 (kal_diphone)
-```
 
 Exit the interactive shell.
 
 ```sh
-festival> (exit)
+(exit)
 ```
 
 ## Install extra voices
 
-Search for voices in English.
+Search for new voices in English.
 
 ```sh
 apt-cache search mbrola | grep "us"
@@ -69,24 +58,22 @@ sudo apt-get install festvox-us1 festvox-us2 festvox-us3
 List the voices available.
 
 ```sh
-$ festival
+festival
 ```
 
-Now, you see the REPL interactive shell:
+You will see the REPL interactive shell prompt.
 
-```sh
 festival>
-```
 
-Type in (voice.list) and press enter.
+Type in `(voice.list)` and press `Enter`.
 
 You will have the next output:
 
-```log
 (kal_diphone us1_mbrola us2_mbrola us3_mbrola)
-```
 
 These are the different voices to choose from.
+
+You can also install voices from alternative internet sources available.
 
 ## Test your new voice tones (voice packages)
 
@@ -94,15 +81,18 @@ Once in the interactive shell, you have to add the prefix "voice_" to a voice fr
 
 ```sh
 (voice_us1_mbrola)
+```
+
+Now your voice is changed.
+
+Test the new voice using the next prompt commands:
+
+```sh
 (SayText "Hello from Ubuntu")
 (tts "story.txt" nil)
 (intro)
 (exit)
 ```
-
-Now your voice is changed.
-
-You can also install voices from alternative internet sources available.
 
 ## Set a voice tone as default
 
@@ -126,7 +116,7 @@ Attach the next line to the end of the file:
 
 Save changes made.
 
-## Test the completed installation:
+## Test the complete installation:
 
 ```sh
 echo "Hi, How are you doing? This is Esteban, but you can call me Steve" | festival --tts
