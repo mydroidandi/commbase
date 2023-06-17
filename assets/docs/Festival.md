@@ -73,7 +73,7 @@ These are the different voices to choose from.
 
 ## Test your new voice tones (voice packages)
 
-Once in the interactive shell, you have to add the prefix "voice_" to a voice from the voices list.
+Once in the interactive shell, you have to add the prefix `voice_` to a voice from the voices list.
 
 ```sh
 (voice_us1_mbrola)
@@ -81,7 +81,7 @@ Once in the interactive shell, you have to add the prefix "voice_" to a voice fr
 
 Now your voice is changed.
 
-Test the new voice using the next prompt commands:
+Test the new voice using the next commands:
 
 ```sh
 (SayText "Hello from Ubuntu")
@@ -90,7 +90,7 @@ Test the new voice using the next prompt commands:
 (exit)
 ```
 
-## Set a voice tone as default
+## Set a voice tone as the default
 
 Set up the new voice in the festival configuration file **/etc/festival.scm**.
 
@@ -104,10 +104,10 @@ And as root, do:
 nano /etc/festival.scm
 ```
 
-Or as user, use:
+Or as a user, use:
 
 ```sh
-$ sudo nano /etc/festival.scm
+sudo nano /etc/festival.scm
 ```
 
 Attach the next line to the end of the file:
@@ -116,13 +116,13 @@ Attach the next line to the end of the file:
 (set! voice_default 'voice_us1_mbrola)
 ```
 
-Save changes made.
+Save the changes made.
 
 ## Test the complete installation:
 
 ```sh
-echo "Hi, How are you doing? This is Esteban, but you can call me Steve" | festival --tts
+echo "Hi, How are you doing? This is Commbase" | festival --tts
 ```
 
-Verify that the sentence above is spoken using the new voice defined in the config file.
+Verify that the sentence is spoken using the new voice defined in the configuration file.
 
