@@ -13,7 +13,7 @@
 	- [commbase teleport](#commbase-teleport)
 - [3 The Commbase User Interface](#3-the-commbase-user-interface)
 
-- [4 Useful Tmux Commands](#4-useful-tmux-commands)
+- [4 Useful Tmux Actions](#4-useful-tmux-actions)
 	- [The window Extension](#the-window-extension)
 - [5 Default Configuration Variables](#5-default-configuration-variables)
 - [6 Default Commbase commands](#6-default-commbase-commands)
@@ -150,7 +150,7 @@ TMUX_EXTRA_WINDOWS_ON, TMUX_EXTRA_WINDOW_EDITOR_ON, TMUX_EXTRA_WINDOW_TIMER_ON, 
 
 You will find information about the variables in the section **5 Default Configuration Variables**.
 
-# 4 Useful Tmux Commands
+# 4 Useful Tmux Actions
 
 **Oh My Tmux** is a configuration framework for the **Tmux** terminal multiplexer. Tmux is a command-line tool that enables multiple virtual terminals within a single terminal window or session. It provides features like window splitting, session management, and detached sessions.
 
