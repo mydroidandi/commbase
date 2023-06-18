@@ -581,11 +581,11 @@ How to reset the configuration file **app.conf**.
 It restores the configuration file to its inital status. Go to the directory **scripts/utilities** and execute the file **reset_app.conf.sh**.
 
 ```sh
-$ cd config-scripts
+cd config-scripts
 ```
 
 ```sh
-$ bash reset-commbase.conf.sh
+bash reset-commbase.conf.sh
 ```
 
 # 6 Default Commbase commands
