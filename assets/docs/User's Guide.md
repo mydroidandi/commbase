@@ -510,173 +510,85 @@ The default version of the file **app.conf** contains the next values:
   - Possible values: True or False.
     - `False` (Default): This setting determines whether control messages are parsed or not by the engine commbase-stt-whisper-p in case they are processed by the Controller.
 
+- **CONTROL_STOP_PREVIOUS_COMMAND_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_stop_patterns` (Default): By utilizing this value, it becomes possible to reliably halt or terminate the execution of the previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
-CONTROL_STOP_PREVIOUS_COMMAND_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_stop_patterns"
+- **CONTROL_ACCEPT_CHANGES_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_accept_patterns` (Default): By utilizing this value, it becomes possible to reliably accept changes proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+- **CONTROL_DENY_CHANGES_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_deny_patterns` (Default): By utilizing this value, it becomes possible to reliably deny or cancel changes proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
+**CONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE**
+  - Example value:
+- `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_one_patterns` (Default): By utilizing this value, it becomes possible to reliably select an option among a number of options to proceed or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
-CONTROL_ACCEPT_CHANGES_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_accept_patterns"
+- **CONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_two_patterns` (Default): By utilizing this value, it becomes possible to reliably select an option among a number of options to proceed or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
+- **CONTROL_SELECT_OPTION_NUMBER_THREE_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_three_patterns` (Default): By utilizing this value, it becomes possible to reliably select an option among a number of options to proceed or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+- **CONTROL_SELECT_OPTION_NUMBER_FOUR_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_four_patterns` (Default): By utilizing this value, it becomes possible to reliably select an option among a number of options to proceed or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
+- **CONTROL_SKIP_QUESTION_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_skip_that_question_patterns` (Default): By utilizing this value, it becomes possible to reliably skip an Assistant question to avoid proceeding or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
-CONTROL_DENY_CHANGES_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_deny_patterns"
+- **CONTROL_REQUEST_THE_CURRENT_MODE_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_what_mode_are_you_in_patterns` (Default): By utilizing this value, it becomes possible to reliably ask the Assistant to let us know which control mode is him/her in/running.
 
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+- **CONTROL_ENTER_THE_NORMAL_MODE_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_normal_mode_patterns` (Default):  By utilizing this value, it becomes possible to reliably make the Assistant exit/return from a previously entered mode back to the Normal mode.
 
+- **CONTROL_ENTER_THE_CONVERSATION_MODE_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_conversation_mode_patterns` (Default): By utilizing this value, it becomes possible to reliably make the Assistant exit from a previously entered mode to enter the Conversation mode.
 
+- **CONTROL_ENTER_THE_EXPERT_MODE_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_expert_mode_patterns` (Default): By utilizing this value, it becomes possible to reliably make the Assistant exit from a previously entered mode to enter the Expert mode.
 
-CONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_one_patterns"
+- **CONTROL_ENTER_THE_FOLLOW_MODE_PATTERNS_FILE**:
+  - Example value:
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_follow_mode_patterns` (Default): By utilizing this value, it becomes possible to reliably make the Assistant exit from a previously entered mode to enter the Follow mode.
 
+- **EXTERNAL_STORAGE_DRIVE_01_TAG**:
+  - Example value:
+    - `WD1` (Default): This tag is used to distinguish or label the specific external storage drive, allowing easy identification and referencing within a system and/or application.
 
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
+- **EXTERNAL_STORAGE_DRIVE_02_TAG**:
+  - Example value:
+    - `WD2` (Default): This tag is used to distinguish or label the specific external storage drive, allowing easy identification and referencing within a system and/or application.
 
-
-CONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_two_patterns"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-
-CONTROL_SELECT_OPTION_NUMBER_THREE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_three_patterns"
-
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-CONTROL_SELECT_OPTION_NUMBER_FOUR_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_four_patterns"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-CONTROL_SKIP_QUESTION_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_skip_that_question_patterns"
-
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-CONTROL_REQUEST_THE_CURRENT_MODE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_what_mode_are_you_in_patterns"
-
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-CONTROL_ENTER_THE_NORMAL_MODE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_normal_mode_patterns"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-CONTROL_ENTER_THE_CONVERSATION_MODE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_conversation_mode_patterns"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-
-CONTROL_ENTER_THE_EXPERT_MODE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_expert_mode_patterns"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-
-CONTROL_ENTER_THE_FOLLOW_MODE_PATTERNS_FILE="/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_follow_mode_patterns"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-EXTERNAL_STORAGE_DRIVE_01_TAG="WD1"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-
-EXTERNAL_STORAGE_DRIVE_02_TAG="WD2"
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
-
-
-DEV_PROJECT_DIRECTORY_NAME="YOUR_DEV_PROJECT_DIRECTORY_NAME_HERE"
-
-
-- `VAR_NAME`:
-  - Possible values:
-    - `value1`: Description of value1.
-    - `value2`: Description of value2.
-    - `value3`: Description of value3.
-
+- **DEV_PROJECT_DIRECTORY_NAME**:
+  - Example value:
+    - `YOUR_DEV_PROJECT_DIRECTORY_NAME_HERE` (Default): It can be used to indicate the specific directory or folder where a custom development project is located.
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
-Reset the configuration file app.conf:
-It restores the file to its inital status.
-Go to the directory scripts/utilities and execute the file reset_app.conf.sh.
+Reset the configuration file **app.conf**:
 
-`$ cd config-scripts`
+It restores the configuration file to its inital status.
 
-`$ bash reset-commbase.conf.sh`
+Go to the directory **scripts/utilities** and execute the file **reset_app.conf.sh**.
 
+```sh
+$ cd config-scripts
+```
+
+```sh
+$ bash reset-commbase.conf.sh
+```
 
 # 6 Default Commbase commands
 
