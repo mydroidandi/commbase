@@ -231,16 +231,16 @@ The configuration variables can be accessed by going to the directory **config/*
 Use your favorite text editor to open any of those files.
 
 ```sh
-nano config/app.conf
-```
-
-```sh
 nano config/secrets
 ```
 
-The file *secrets* holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. 
+```sh
+nano config/app.conf
+```
 
-The file *app.conf* holds all the other app configuration options, including your custom Commbase commands new variables.
+The file **secrets** holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. 
+
+The file **app.conf** holds all the other app configuration options, including your custom Commbase commands new variables.
 
 These files are environment files that you can edit following certain rules:
 - Every environment variable is a constant.
