@@ -13,7 +13,11 @@
 	- [commbase teleport](#commbase-teleport)
 - [3 The User Interface](#3-the-user-interface)
 - [4 Useful Tmux Actions](#4-useful-tmux-actions)
-	- [The window Extension](#the-window-extension)
+	- [Moving Among Windows](#moving-among-windows)
+	- [List All the Active Sessions](#list-all-the-active-sessions)
+	- [Kill the Commbase Session](#kill-the-commbase-session)
+	- [Display the Commbase Session Pane Numbers](#display-the-commbase-session-pane-numbers)
+	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)	
 - [5 Default Configuration Variables](#5-default-configuration-variables)
 - [6 Default Commbase commands](#6-default-commbase-commands)
 	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
@@ -67,7 +71,7 @@
 
 # 1 Introduction
 
-Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance, originally developed by the Computer Scientist Esteban Herrera, in 2022. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
+Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance, originally developed by the Computer Scientist Esteban Herrera, in 2022. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in this document.
 
 # 2 Start, Stop, and Teleport the Application
 
@@ -127,13 +131,13 @@ Commbase is composed of 4 windows.
 
 The window 1, "Commbase", contains 4 panes:
 
-Pane 1. It is the chat pane.
+- Pane 1. It is the chat pane.
 
-Pane 2. It is the VU-meter pane.
+- Pane 2. It is the VU-meter pane.
 
-Pane 3. It is the audio mixer pane.
+- Pane 3. It is the audio mixer pane.
 
-Pane 4. It is the Commbase terminal or simply a user terminal that can be focused, used, and cleaned from the application.
+- Pane 4. It is the Commbase terminal or simply a user terminal that can be focused, used, and cleaned from the application.
 
 The window 2, Editor", contains a single pane.
 
@@ -145,13 +149,13 @@ The extra windows from 2 to 4 can be disabled or enabled as a group or separatel
 
 To show or hide these windows, you can change the values assigned to the next default configuration variables:
 
-TMUX_EXTRA_WINDOWS_ON, TMUX_EXTRA_WINDOW_EDITOR_ON, TMUX_EXTRA_WINDOW_TIMER_ON, TMUX_EXTRA_WINDOW_SERVER1_ON, and TMUX_EXTRA_WINDOW_SERVER2_ON.
+`TMUX_EXTRA_WINDOWS_ON`, `TMUX_EXTRA_WINDOW_EDITOR_ON`, `TMUX_EXTRA_WINDOW_TIMER_ON`, `TMUX_EXTRA_WINDOW_SERVER1_ON`, and `TMUX_EXTRA_WINDOW_SERVER2_ON`.
 
 You will find information about the variables in the section **5 Default Configuration Variables**.
 
 # 4 Useful Tmux Actions
 
-**Oh My Tmux** is a configuration framework for the **Tmux** terminal multiplexer. Tmux is a command-line tool that enables multiple virtual terminals within a single terminal window or session. It provides features like window splitting, session management, and detached sessions.
+**Oh My Tmux** is a configuration framework for the Tmux terminal multiplexer. **Tmux** is a command-line tool that enables multiple virtual terminals within a single terminal window or session. It provides features like window splitting, session management, and detached sessions.
 
 Oh My Tmux builds on top of Tmux and provides a set of enhancements and customizations to improve the Tmux experience. It offers a collection of preconfigured settings, keybindings, and themes that can be easily applied to Tmux, allowing users to customize and personalize their Tmux environment.
 
@@ -159,64 +163,58 @@ By incorporating Oh My Tmux, Commbase can provide its users with a powerful and 
 
 Overall, by utilizing Oh My Tmux commands and keybindings, Commbase enhances the usability and efficiency of its terminal interface, providing users with a more seamless and intuitive experience while interacting with the application.
 
-Here is a list of Oh My Tmux actions useful when in Commbase.
+Here are some of Oh My Tmux actions useful when in Commbase.
 
-## Moving among windows
+## Moving Among Windows
 
 Go to the window 2, "Editor":
 
-Press `Ctrl` + `b`, then press `2`.
+Press `Ctrl` - `b`, then press `2`.
 
 Go to the window 3, "Timer":
 
-Press `Ctrl` + `b`, then press `3`.
+Press `Ctrl` - `b`, then press `3`.
 
 Go to the window 4, "Server 1":
 
-Press `Ctrl` + `b`, then press `4`.
+Press `Ctrl` - `b`, then press `4`.
 
 Return to the window 1, "Commbase":
 
-Press `Ctrl` + `b`, then press `1`.
+Press `Ctrl` - `b`, then press `1`.
 
-## List all the active sessions
+## List All the Active Sessions
 
 ```sh
 tmux list-sessions
 ```
 
-## Kill the Commbase session
+## Kill the Commbase Session
 
 ```sh
 tmux kill-session -t Commbase-0
 ```
 
-## Display the Commbase session pane numbers
+## Display the Commbase Session Pane Numbers
 
-In the tmux session, press `Ctrl` + `b`, release and then press `q`.
+In the tmux session, press `Ctrl` - `b`, release and then press `q`.
 
-## Close duplicated tmux sessions
+## Close Duplicated Tmux Sessions
 
 In the unlikely event that the Commbase session fails to terminate properly before restarting, it may result in duplicated sessions. To resolve this issue, follow these steps:
 
 Close the current terminal or switch to an alternative Commbase window, for example, "Editor".
 
-Next, list all tmux sessions.
-
-```sh
-tmux list-sessions
-```
+Next, list all the active sessions using the comman above.
 
 Finally, close the duplicated session(s).
 
 ```sh
-tmux kill-session -t Commbase-2
-
-tmux kill-session -t Commbase-1
-
-tmux kill-session -t Commbase-0
+tmux kill-session -t Commbase-2 & tmux kill-session -t Commbase-1 & tmux kill-session -t Commbase-0
 
 ```
+
+The ampersand (&) at the end of each command allows them to be executed concurrently.
 
 Alternatively, you can terminate all tmux sessions at once.
 
