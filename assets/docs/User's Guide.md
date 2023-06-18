@@ -14,7 +14,7 @@
 - [3 Useful system commands](#3-useful-system-commands)
 - [4 The Commbase user interface](#4-the-commbase-user-interface)
 	- [The window Extension](#the-window-extension)
-- [5 Configuration Variables](#5-configuration-variables)
+- [5 Default Configuration Variables](#5-default-configuration-variables)
 - [6 Default Commbase commands](#6-default-commbase-commands)
 	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
 	- [Commbase Management Commands](#commbase-management-commands)
@@ -168,7 +168,7 @@ Press CTRL + b, then press 2
 Return to the window Commbase:
 Press CTRL + b, then press 1
 
-# 5 Configuration Variables
+# 5 Default Configuration Variables
 
 The configuration variables can be accessed by going to the directory **config/** and opening the files **secrets** and **app.conf**.
 
