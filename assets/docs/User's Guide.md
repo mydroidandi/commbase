@@ -162,7 +162,7 @@ Overall, by utilizing Oh My Tmux commands and keybindings, Commbase enhances the
 
 Here is a list of Oh My Tmux actions useful when in Commbase.
 
-Moving among Commbase windows.
+## Moving among Commbase windows.
 
 Go to the window 2, "Editor":
 
@@ -180,23 +180,23 @@ Return to the window 1, "Commbase":
 
 Press `Ctrl` + `b`, then press `1`.
 
-List all the active sessions.
+## List all the active sessions.
 
 ```sh
 tmux list-sessions
 ```
 
-Kill the Commbase session.
+## Kill the Commbase session.
 
 ```sh
 tmux kill-session -t Commbase-0
 ```
 
-Display the Commbase session pane numbers.
+## Display the Commbase session pane numbers.
 
 In the tmux session, press `Ctrl` + `b`, release and then press `q`.
 
-Close duplicated tmux sessions.
+## Close duplicated tmux sessions.
 
 In the unlikely event that the Commbase session fails to terminate properly before restarting, it may result in duplicated sessions. To resolve this issue, follow these steps:
 
