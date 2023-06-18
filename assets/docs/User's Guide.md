@@ -7,12 +7,11 @@
 # Content
 
 - [1 Introduction](#1-introduction)
-- [2 Start, Stop, and Teleport Commbase Application](#2-start-stop-and-teleport-commbase-application)
+- [2 Start, Stop, and Teleport the Application](#2-start-stop-and-teleport-the-application)
 	- [commbase start](#commbase-start)
 	- [commbase stop](#commbase-stop)
 	- [commbase teleport](#commbase-teleport)
 - [3 The User Interface](#3-the-user-interface)
-
 - [4 Useful Tmux Actions](#4-useful-tmux-actions)
 	- [The window Extension](#the-window-extension)
 - [5 Default Configuration Variables](#5-default-configuration-variables)
@@ -70,7 +69,7 @@
 
 Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance, originally developed by the Computer Scientist Esteban Herrera, in 2022. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
 
-# 2 Start, Stop, and Teleport Commbase Application
+# 2 Start, Stop, and Teleport the Application
 
 These commands assume that the `commbase` command has been properly set up. If you haven't set it up yet, you can find instructions on how to do so in the **INSTALL** file.
 
@@ -162,7 +161,7 @@ Overall, by utilizing Oh My Tmux commands and keybindings, Commbase enhances the
 
 Here is a list of Oh My Tmux actions useful when in Commbase.
 
-## Moving among Commbase windows.
+## Moving among windows
 
 Go to the window 2, "Editor":
 
@@ -180,23 +179,23 @@ Return to the window 1, "Commbase":
 
 Press `Ctrl` + `b`, then press `1`.
 
-## List all the active sessions.
+## List all the active sessions
 
 ```sh
 tmux list-sessions
 ```
 
-## Kill the Commbase session.
+## Kill the Commbase session
 
 ```sh
 tmux kill-session -t Commbase-0
 ```
 
-## Display the Commbase session pane numbers.
+## Display the Commbase session pane numbers
 
 In the tmux session, press `Ctrl` + `b`, release and then press `q`.
 
-## Close duplicated tmux sessions.
+## Close duplicated tmux sessions
 
 In the unlikely event that the Commbase session fails to terminate properly before restarting, it may result in duplicated sessions. To resolve this issue, follow these steps:
 
