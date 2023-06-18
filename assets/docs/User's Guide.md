@@ -11,7 +11,7 @@
 	- [commbase start](#commbase-start)
 	- [commbase stop](#commbase-stop)
 	- [commbase teleport](#commbase-teleport)
-- [3 The Commbase User Interface](#3-the-commbase-user-interface)
+- [3 The User Interface](#3-the-user-interface)
 
 - [4 Useful Tmux Actions](#4-useful-tmux-actions)
 	- [The window Extension](#the-window-extension)
@@ -122,7 +122,7 @@ Additionally, "teleport" can be used as a third alternative to start Commbase. T
 
 By utilizing the "teleport" command, you can conveniently manage and transition your Commbase session to suit your specific needs.
 
-# 3 The Commbase User Interface
+# 3 The User Interface
 
 Commbase is composed of 4 windows.
 
