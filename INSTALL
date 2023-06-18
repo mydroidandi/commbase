@@ -309,6 +309,10 @@ pip: /usr/bin/pip /usr/local/bin/pip3.11 /usr/share/man/man1/pip.1.gz
 
 From now on, you can use this new command pip3.11 to install most of your pip packages.
 
+The command python -m pip install <PACKAGE> is used to ensure that the pip command is executed within the context of the specific Python interpreter specified by python.
+
+In some cases, there may be multiple versions of Python installed on a system, and using python -m pip helps ensure that the correct pip module associated with the desired Python interpreter is used for package installation. This is particularly useful when you want to install packages for a specific Python version or in virtual environments.
+
 - Install Python 3.7:
 
 $ sudo apt-get update
@@ -321,9 +325,7 @@ pip3.7:
 
 $ /usr/bin/python3 -m pip install --upgrade pip
 
-$ /usr/bin/python3 -m pip3 install --upgrade pip
-
-$ /usr/bin/python3.7 -m pip3.7 install --upgrade pip
+$ /usr/bin/python3.7 -m pip install --upgrade pip
 
 Prints a list of installed pip packages:
 
