@@ -7,14 +7,18 @@
 # Content
 
 - [1 Introduction](#1-introduction)
-- [2 Start, Stop, and Teleport Commbase application](#2-start-stop-and-teleport-commbase-application)
+- [2 Start, Stop, and Teleport the Application](#2-start-stop-and-teleport-the-application)
 	- [commbase start](#commbase-start)
 	- [commbase stop](#commbase-stop)
 	- [commbase teleport](#commbase-teleport)
-- [3 Useful system commands](#3-useful-system-commands)
-- [4 The Commbase user interface](#4-the-commbase-user-interface)
-	- [The window Extension](#the-window-extension)
-- [5 Configuration Variables](#5-configuration-variables)
+- [3 The User Interface](#3-the-user-interface)
+- [4 Useful Tmux Actions](#4-useful-tmux-actions)
+	- [Moving Among Windows](#moving-among-windows)
+	- [List All the Active Sessions](#list-all-the-active-sessions)
+	- [Kill the Commbase Session](#kill-the-commbase-session)
+	- [Display the Commbase Session Pane Numbers](#display-the-commbase-session-pane-numbers)
+	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)	
+- [5 Default Configuration Variables](#5-default-configuration-variables)
 - [6 Default Commbase commands](#6-default-commbase-commands)
 	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
 	- [Commbase Management Commands](#commbase-management-commands)
@@ -67,124 +71,176 @@
 
 # 1 Introduction
 
-Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance, originally developed by the Computer Scientist Esteban Herrera, in 2022. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in your User's Guide.
+Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance, originally developed by the Computer Scientist Esteban Herrera, in 2022. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in this document.
 
-# 2 Start, Stop, and Teleport Commbase application
+# 2 Start, Stop, and Teleport the Application
+
+These commands assume that the `commbase` command has been properly set up. If you haven't set it up yet, you can find instructions on how to do so in the **INSTALL** file.
 
 ## commbase start
 
-You can start the Commbase session in any terminal's command line, by using one of two
-methods:
-1. Just by running this command:
-`$ commbase start`
-To run Commbase as a command:
-The command must be set up. Checkout how to set up the command in the file "INSTALL."
-2. Exotic, or probably considered awkward alternatives to get Commbase up and running:
-`$ cd $HOME/Commbase/commbase/base-vosk`
-`$ bash commbase-vosk-start.sh`
-Or use:
-`$ ./commbase-vosk-start.sh`
-Or wherever you are in the file system, do run:
-`.$HOME/Commbase/commbase/base-vosk/commbase-vosk-start.sh`
+To start a Commbase session from the command line, run the following command:
+
+```sh
+commbase start
+```
 
 ## commbase stop
 
-Stop/Close the Commbase session:
-1. The best way to stop Commbase is using the killer voice command "disconnect yourself"
-2. A second option consists of the invocation of commbase in the command line:
-$ commbase stop
-3. A third way requires to kill the Commbase session like this:
-$ tmux list-sessions
-$ tmux kill-session -t Commbase-0
+To stop or close the running Commbase session, you have a few options:
+
+The most effective way is to use a specific voice command to instruct Commbase to disconnect itself. Simply say `"disconnect yourself"` to initiate the process of stopping the Commbase session gracefully.
+
+Alternatively, you can stop Commbase by running the following command in the command line:
+
+```sh
+commbase stop
+```
+
+Another method involves manually terminating the Commbase session using the tmux command. First, you can list all active sessions by running:
+
+```sh
+tmux list-sessions
+```
+
+Identify the session named "Commbase-0" and remember its session ID. Then, issue the following command to kill that specific session:
+
+```sh
+tmux kill-session -t Commbase-0
+```
 
 ## commbase teleport
 
-Syntax:
-$ commbase teleport
-Teleport can be used in the following cases:
-1. Outside Commbase it will re-spawn in a new terminal or terminal tab, including all the existent
-Commbase window output characters.
-2. Whenever you completely close the Commbase terminal UX, Commbase can't be seen but still has the
-ability to interact via voice with you, but incapable of running graphical applications. In such
-case, just teleport and Commbase re-appears without requiring to stop it and start it once again.
-3. It can be used as a 3rd alternative to start commbase.
+The "teleport" command in Commbase provides a convenient way to handle different scenarios.
 
-# 3 Useful system commands
+```sh
+commbase teleport
+```
 
-List all the active sessions:
-$ tmux list-sessions
+When used outside a terminal or a terminal tab running Commbase, executing `commbase teleport` will respawn Commbase in the new terminal or terminal tab. This includes retaining all the existing Commbase window output characters. It allows you to seamlessly switch to a different terminal environment while preserving the ongoing Commbase session.
 
-Kill the Commbase session:
-$ tmux kill-session -t Commbase-0
+If you completely close the Commbase terminal, Commbase remains active and capable of interacting with you via voice. However, it loses the ability to run graphical applications. In this situation, by teleporting it, Commbase reappears without requiring you to stop and start it again. It conveniently restores the Commbase session and enables you to continue your work.
 
-To display the Commbase session pane numbers:
-In the tmux session, press CTRL+B, release and then press q
+Additionally, "teleport" can be used as a third alternative to start Commbase. This suggests that it provides an alternative method to initiate a Commbase session, distinct from the other methods available.
 
-Close duplicated tmux sessions:
-It does not happen, but in case of that the Commbase session does not terminate itself appropriately
-before it restarts, its terminal UX would look incomplete due to session duplicates. In such cases,
-just close all the duplicated Commbase sessions and restart the Commbase application session like
-this:
-Close the current terminal and reopen it or go to the Extension window:
-CTRL + b, 2
-List the tmux sessions:
-$ tmux list-sessions
-Close the all the duplicated sessions:
-$ tmux kill-session -t Commbase-2
-$ tmux kill-session -t Commbase-1
-$ tmux kill-session -t Commbase-0
-Alternatively, you can kill all the tmux sessions at once:
-$ pkill tmux
-Start Commbase again:
-$ ./commbase-vosk-start.sh
+By utilizing the "teleport" command, you can conveniently manage and transition your Commbase session to suit your specific needs.
 
-# 4 The Commbase user interface
+# 3 The User Interface
 
-Commbase is composed by 5 panes in 2 windows:
+Commbase is composed of 4 windows.
 
-Window 1: Commbase, contains four panes:
+The window 1, "Commbase", contains 4 panes:
 
-Pane 1: It is the speech recognizer pane.
+- Pane 1. It is the chat pane.
 
-Pane 2: It is the VU-meter pane.
+- Pane 2. It is the VU-meter pane.
 
-Pane 3: It is the audio mixer pane.
+- Pane 3. It is the audio mixer pane.
 
-Pane 4: It is the Commbase input and output interface among Commbase, the user and the operating
-system.
+- Pane 4. It is the Commbase terminal or simply a user terminal that can be focused, used, and cleaned from the application.
 
-Window 2: Extension, contains just 1 pane:
+The window 2, Editor", contains a single pane.
 
-Pane: It is used as a long logs pane, for long standard inputs and outputs. Use it for creating 
-and/or running applications such as Neofetch and others, which don't not load out of the box from
-the Pane 4, due to their application's nature. Also, use it to create and/or run program commands
-in any Commbase version specific for devices without screens.
+The window 3, "Timer", contains a single pane.
 
-## The window Extension
+The window 4, "Server 1", contains a single pane.
 
-Go to the window Extension:
-Press CTRL + b, then press 2
+The extra windows from 2 to 4 can be disabled or enabled as a group or separately, by changing their settings in the configuration file **config/app.conf**. 
 
-Return to the window Commbase:
-Press CTRL + b, then press 1
+To show or hide these windows, you can change the values assigned to the next default configuration variables:
 
-# 5 Configuration Variables
+`TMUX_EXTRA_WINDOWS_ON`, `TMUX_EXTRA_WINDOW_EDITOR_ON`, `TMUX_EXTRA_WINDOW_TIMER_ON`, `TMUX_EXTRA_WINDOW_SERVER1_ON`, and `TMUX_EXTRA_WINDOW_SERVER2_ON`.
+
+You will find information about the variables in the section **5 Default Configuration Variables**.
+
+# 4 Useful Tmux Actions
+
+**Oh My Tmux** is a configuration framework for the Tmux terminal multiplexer. **Tmux** is a command-line tool that enables multiple virtual terminals within a single terminal window or session. It provides features like window splitting, session management, and detached sessions.
+
+Oh My Tmux builds on top of Tmux and provides a set of enhancements and customizations to improve the Tmux experience. It offers a collection of preconfigured settings, keybindings, and themes that can be easily applied to Tmux, allowing users to customize and personalize their Tmux environment.
+
+By incorporating Oh My Tmux, Commbase can provide its users with a powerful and customizable terminal environment that enhances productivity, simplifies configuration, and benefits from the active support of the Oh My Tmux community.
+
+Overall, by utilizing Oh My Tmux commands and keybindings, Commbase enhances the usability and efficiency of its terminal interface, providing users with a more seamless and intuitive experience while interacting with the application.
+
+Here are some of Oh My Tmux actions useful when in Commbase.
+
+## Moving Among Windows
+
+Go to the window 2, "Editor":
+
+Press `Ctrl` - `b`, then press `2`.
+
+Go to the window 3, "Timer":
+
+Press `Ctrl` - `b`, then press `3`.
+
+Go to the window 4, "Server 1":
+
+Press `Ctrl` - `b`, then press `4`.
+
+Return to the window 1, "Commbase":
+
+Press `Ctrl` - `b`, then press `1`.
+
+## List All the Active Sessions
+
+```sh
+tmux list-sessions
+```
+
+## Kill the Commbase Session
+
+```sh
+tmux kill-session -t Commbase-0
+```
+
+## Display the Commbase Session Pane Numbers
+
+In the tmux session, press `Ctrl` - `b`, release and then press `q`.
+
+## Close Duplicated Tmux Sessions
+
+In the unlikely event that the Commbase session fails to terminate properly before restarting, it may result in duplicated sessions. To resolve this issue, follow these steps:
+
+Close the current terminal or switch to an alternative Commbase window, for example, "Editor".
+
+Next, list all the active sessions using the comman above.
+
+Finally, close the duplicated session(s).
+
+```sh
+tmux kill-session -t Commbase-2 & tmux kill-session -t Commbase-1 & tmux kill-session -t Commbase-0
+
+```
+
+The ampersand (&) at the end of each command allows them to be executed concurrently.
+
+Alternatively, you can terminate all tmux sessions at once.
+
+```sh
+pkill tmux
+```
+
+Restart Commbase normally.
+
+# 5 Default Configuration Variables
 
 The configuration variables can be accessed by going to the directory **config/** and opening the files **secrets** and **app.conf**.
 
 Use your favorite text editor to open any of those files.
 
 ```sh
-nano config/app.conf
-```
-
-```sh
 nano config/secrets
 ```
 
-The file *secrets* holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. 
+```sh
+nano config/app.conf
+```
 
-The file *app.conf* holds all the other app configuration options, including your custom Commbase commands new variables.
+The file **secrets** holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. 
+
+The file **app.conf** holds all the other app configuration options, including your custom Commbase commands new variables.
 
 These files are environment files that you can edit following certain rules:
 - Every environment variable is a constant.
@@ -324,7 +380,7 @@ The default version of the file **app.conf** contains the next values:
     - `True` (Default): Set to True, it activates the extra window Editor in the Commbase tmux session.
     - `False`: Set to False, it deactivates the extra window Editor in the Commbase tmux session.
 
-- **TMUX_EXTRA_WINDOW_TIMER**:
+- **TMUX_EXTRA_WINDOW_TIMER_ON**:
   - Possible values:
     - `True` (Default): Set to True, it activates the extra window Timer in the Commbase tmux session.
     - `False`: Set to False, it deactivates the extra window Timer in the Commbase tmux session.
@@ -576,18 +632,16 @@ The default version of the file **app.conf** contains the next values:
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
-Reset the configuration file **app.conf**:
+How to reset the configuration file **app.conf**.
 
-It restores the configuration file to its inital status.
-
-Go to the directory **scripts/utilities** and execute the file **reset_app.conf.sh**.
+It restores the configuration file to its inital status. Go to the directory **scripts/utilities** and execute the file **reset_app.conf.sh**.
 
 ```sh
-$ cd config-scripts
+cd scripts/utilities
 ```
 
 ```sh
-$ bash reset-commbase.conf.sh
+bash reset-commbase.conf.sh
 ```
 
 # 6 Default Commbase commands
