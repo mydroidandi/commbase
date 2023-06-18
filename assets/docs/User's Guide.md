@@ -576,11 +576,9 @@ The default version of the file **app.conf** contains the next values:
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
-Reset the configuration file **app.conf**:
+How to reset the configuration file **app.conf**.
 
-It restores the configuration file to its inital status.
-
-Go to the directory **scripts/utilities** and execute the file **reset_app.conf.sh**.
+It restores the configuration file to its inital status. Go to the directory **scripts/utilities** and execute the file **reset_app.conf.sh**.
 
 ```sh
 $ cd config-scripts
