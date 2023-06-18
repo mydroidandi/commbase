@@ -136,11 +136,11 @@ Pane 3. It is the audio mixer pane.
 
 Pane 4. It is the Commbase terminal or simply a user terminal that can be focused, used, and cleaned from the application.
 
-The window 2, "Extension", contains a single pane "Editor".
+The window 2, Editor", contains a single pane.
 
-The window 3, "Extension", contains a single pane "Timer".
+The window 3, "Timer", contains a single pane.
 
-The window 4, "Extension", contains a single pane "Server 1".
+The window 4, "Server 1", contains a single pane.
 
 The extra windows from 2 to 4 can be disabled or enabled as a group or separately, by changing their settings in the configuration file **config/app.conf**. 
 
@@ -174,7 +174,7 @@ Press `Ctrl` + `b`, then press `3`.
 
 Go to the window 4, "Server 1":
 
-Press `Ctrl` + `b`, then press `2`.
+Press `Ctrl` + `b`, then press `4`.
 
 Return to the window 1, "Commbase":
 
