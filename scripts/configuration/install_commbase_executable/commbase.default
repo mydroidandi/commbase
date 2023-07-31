@@ -97,9 +97,14 @@ Control:
   	"[okay|ok] stop"			Stop the previous command
   	"[okay|ok] accept"			Accept a Y/N question
   	"[okay|ok] deny"			Deny/Cancel a Y/N question
-  	"[okay|ok] select the option number <number>"
+  	"[okay|ok] repeat"			Repeat the previous discourse
+  	"[okay|ok] confirm with the code <four number code>"
+  						Confirm a confirmation request
+  	"[okay|ok] remind me in [five|ten|twenty|thirty] minutes"
+  						Remind of a prior question
+  	"[okay|ok] select the option number [one|two|three|four]"
   						Select a multi-choice question option
-  	"[okay|ok] skip that question"		Skip a question option
+  	"[okay|ok] skip that question"		Skip a question of a questionnaire
   	"[okay|ok] what mode are you in"	Confirm the current mode
   	"[okay|ok] enter the normal mode"	Enter the normal mode
   	"[okay|ok] enter the conversation mode"	Enter the conversation mode
@@ -152,7 +157,7 @@ route_option() {
 			fi
 			;;
 	  '-g' | '--license')
-	    display_license | less
+	    display_license | more
 			exit 99
 			;;
 	  '-h' | '--help')
