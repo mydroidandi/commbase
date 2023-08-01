@@ -111,8 +111,6 @@ Control:
   	"[okay|ok] select the option number [one|two|three|four]"
   						Select a multi-choice question option
 
-  	"[okay|ok] skip that question"		Skip a question of a questionnaire
-
   	"[okay|ok] what mode are you in"	Confirm the current mode
   	"[okay|ok] enter the normal mode"	Enter the normal mode
   	"[okay|ok] enter the conversation mode"	Enter the conversation mode
@@ -125,6 +123,7 @@ Skills and Skillsets:
   	Checkout the User's Guide for a complete list of options
   Examples:
   	"tell me about yourself"			Run Commbase introduction
+  	"start the math test number one zero one"	Run the mentioned multi-choice test interactively
   	"let me know when the internet is back"		Receive the 'event' alert and notification
   	"set a timer of <minutes> minutes"		Start a countdown timer
   		Examples:
