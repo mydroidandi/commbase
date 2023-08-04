@@ -130,9 +130,9 @@ app() {
 	fi
 
 	# Focus the cursor in window 0, pane 4, replace hostname and host IP address,
-	# values in the env file every IP_ADDRESS_UPDATE_IN_SECS, send the while to
+	# values in the env file every IP_ADDRESS_UPDATE_FREQUENCY_IN_SECS, send the while to
 	# the background, and then clean the pane prompt.
-	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys " while true; do sed -i 's/^HOSTNAME=.*/HOSTNAME=$NEW_HOST_NAME/' $ENV_FILE; sed -i 's/^HOST_IP_ADDRESS=.*/HOST_IP_ADDRESS=$NEW_HOST_IP_ADDRESS/' $ENV_FILE; sleep $IP_ADDRESS_UPDATE_IN_SECS; done &; clear" C-m;
+	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys " while true; do sed -i 's/^HOSTNAME=.*/HOSTNAME=$NEW_HOST_NAME/' $ENV_FILE; sed -i 's/^HOST_IP_ADDRESS=.*/HOST_IP_ADDRESS=$NEW_HOST_IP_ADDRESS/' $ENV_FILE; sleep $IP_ADDRESS_UPDATE_FREQUENCY_IN_SECS; done &; clear" C-m;
 
 	# Clean up the command line of Window 0, pane 4
 	tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys " clear" C-m;

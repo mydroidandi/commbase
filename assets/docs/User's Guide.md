@@ -326,7 +326,7 @@ The default version of the file **app.conf** contains the next values:
     - `commbase_env` (Default): The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment. For more details, check out the file **INSTALL**.
     - `my_env_name`: An alternative name for creating the Commbase virtual environment.
 
-- **IP_ADDRESS_UPDATE_IN_SECS**:
+- **IP_ADDRESS_UPDATE_FREQUENCY_IN_SECS**:
   - Description: This value represents the interval in milliseconds at which the machine's IP address should be updated in the file **.env** in **env/**.
   - Possible values: We recommend using a value between 300 and 600 for security reasons.
   - Example value:
