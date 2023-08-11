@@ -677,7 +677,7 @@ Skillsets are commands grouped as a list of orders to be executed sequentially a
 
 You can create extra controls if you want to, but you can do almost everything that is possible with the controls that come with Commbase. These out-of-the-box controls are:
 
-- **"[okay|ok] stop"**:
+> [okay|ok] stop
   - Description: Stop the previous command.
   - Steps:
     - END USER: Requests to do something using a terminal/voice command.
