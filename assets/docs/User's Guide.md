@@ -15,10 +15,14 @@
 - [4 Useful Tmux Actions](#4-useful-tmux-actions)
 	- [Moving Among Windows](#moving-among-windows)
 	- [List All the Active Sessions](#list-all-the-active-sessions)
-	- [Kill the Commbase Session](#kill-the-commbase-session)
-	- [Display the Commbase Session Pane Numbers](#display-the-commbase-session-pane-numbers)
+	- [Kill the Session](#kill-the-session)
+	- [Display the Session Pane Numbers](#display-the-session-pane-numbers)
 	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)	
 - [5 Default Configuration Variables](#5-default-configuration-variables)
+- [6 Types of Commands](#6-types-of-commands)
+- [7 Terminal/Voice Control Commands](#7-terminal-voice-control-commands)
+- [8 Terminal/Voice Skill Commands](#8-terminal-voice-skill-commands)
+- [9 Terminal/voice Skillset Commands](#9-terminal-voice-skillset-commands)
 - [6 Default Commbase commands](#6-default-commbase-commands)
 	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
 	- [Commbase Management Commands](#commbase-management-commands)
@@ -189,13 +193,13 @@ Press `Ctrl` - `b`, then press `1`.
 tmux list-sessions
 ```
 
-## Kill the Commbase Session
+## Kill the Session
 
 ```sh
 tmux kill-session -t Commbase-0
 ```
 
-## Display the Commbase Session Pane Numbers
+## Display the Session Pane Numbers
 
 In the tmux session, press `Ctrl` - `b`, release and then press `q`.
 
@@ -643,6 +647,50 @@ cd scripts/utilities
 ```sh
 bash reset-commbase.conf.sh
 ```
+
+# 6 Types of Commands
+
+## Terminal Commands
+
+These are commands limited to be executed in the terminal.
+
+## Terminal/Voice Control Commands
+
+A control command consists of a message that the previous skill command parser uses to execute parameterized options, affecting the default command behavior.
+
+You can list the out-of-the-box controls with the commbase command:
+
+```sh
+commbase -h
+commbase --help
+```
+
+## Terminal/Voice Skill Commands
+
+Unlike terminal commands, terminal/voice commands can be typed in or said out loud to the voice recognizer.
+
+## Terminal/Voice Skillset Commands
+
+Skillsets are commands grouped as a list of orders to be executed sequentially at once. They can be typed or said out loud.
+
+# 7 Terminal/Voice Control Commands
+
+
+# 8 Terminal/Voice Skill Commands
+
+
+# 9 Terminal/Voice Skillset Commands
+
+
+
+
+For example:
+
+```shell
+$ commbase start|stop|teleport
+```
+
+
 
 # 6 Default Commbase commands
 
