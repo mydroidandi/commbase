@@ -678,14 +678,14 @@ Skillsets are commands grouped as a list of orders to be executed sequentially a
 You can create extra controls if you want to, but you can do almost everything that is possible with the controls that come with Commbase. These out-of-the-box controls are:
 
 > [okay|ok] stop
-  - Description: Stop the previous command.
-  - Steps:
-    - END USER: Requests to do something using a terminal/voice command.
-    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
-    - SKILL FUNCTION: Executes the command.
-    - END USER: Sends the control "okay stop".
-    - STT ENGINE: Writes only in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay stop" in the parse_skill_ function, and then executes a command to terminate the previous terminal/voice command (program executable or script process).
+- Description: Stop the previous command.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Executes the command.
+  - END USER: Sends the control "okay stop".
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay stop" in the parse_skill_ function, and then executes a command to terminate the previous terminal/voice command (program executable or script process).
 
 Base code:
 
