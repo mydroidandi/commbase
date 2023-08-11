@@ -701,8 +701,7 @@ TODO:
     - END USER: Sends the control "okay run it again".
     - STT ENGINE: Writes only in .result_message.json.
     - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay run it again" in the parse_skill_ function, and then executes a command that runs the same content of the case option *), the previous terminal/voice command.
-
-Base code:
+  - Base code:
 
 ```sh
 TODO:
@@ -718,8 +717,7 @@ TODO:
     - END USER: Sends the control "okay repeat", due to did not understand or did not hear well the discourse.
     - STT ENGINE: Writes only in .result_message.json.
     - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay repeat" in the parse_skill_ function, and then executes a command that repeats by voice the content of **.current_discourse**.
-
-Base code:
+  - Base code:
 
 ```sh
 TODO:
@@ -744,8 +742,7 @@ TODO:
     	d. Stop (terminate) the related command with "okay stop".
     	e. Ask the assistant to remind in a new period of time with "okay remind me in 10 minutes"
     	f. Move forward onto the next task pending with "ok what is the next task". This can be done infinitely while there are tasks pending in the list loop.
-
-Example 1:
+  - Example 1:
 
 Stage 1:
 
@@ -786,7 +783,7 @@ Tue 01 Aug 2023 02:50:01 PM CDT|"The amount of disk space available for the file
 Tue 01 Aug 2023 02:55:01 PM CDT|"The amount of disk space available for the file system is less than twenty percent. Do you want me to free some space?"
 ```
 
-Base code 1:
+  - Base code 1:
 
 A Bash code similar to the next one can be used to append a new request as a Task to the file **.pending_tasks.csv**.
 
@@ -794,7 +791,7 @@ A Bash code similar to the next one can be used to append a new request as a Tas
 timeout="2:20 PM CST"; task='"call mom"'; echo "$timeout|$task" >> data/.pending_tasks.csv
 ```
 
-Base code 2:
+  - Base code 2:
 
 This is an example of a Bash code similar to the one that is used in every terminal/voice command's case option "okay remind me in five minutes" to calculate the total of the sum of the current time + the minutes to delay the question, before save the question as a task in **.pending_tasks.csv**
 
