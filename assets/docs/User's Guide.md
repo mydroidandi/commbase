@@ -582,7 +582,7 @@ The default version of the file **app.conf** contains the next values:
   - Example value:
     - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_deny_patterns` (Default): By utilizing this value, it becomes possible to reliably deny or cancel changes proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
-**CONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE**
+- **CONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE**
   - Example value:
 - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_one_patterns` (Default): By utilizing this value, it becomes possible to reliably select an option among a number of options to proceed or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
@@ -694,15 +694,16 @@ Base code:
 TODO:
 ```
 
-> [okay|ok] run it again"**:
-  - Description:  Re-run the previous command.
-  - Steps:
-    - END USER: Requests to do something using a terminal/voice command.
-    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
-    - SKILL FUNCTION: Executes the command.
-    - END USER: Sends the control "okay run it again".
-    - STT ENGINE: Writes only in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay run it again" in the parse_skill_ function, and then executes a command that runs the same content of the case option *), the previous terminal/voice command.
+> **[okay|ok] run it again**
+
+- Description:  Re-run the previous command.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Executes the command.
+  - END USER: Sends the control "okay run it again".
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay run it again" in the parse_skill_ function, and then executes a command that runs the same content of the case option *), the previous terminal/voice command.
 
 Base code:
 
@@ -710,16 +711,17 @@ Base code:
 TODO:
 ```
 
-- **"[okay|ok] repeat"**:
-  - Description: Reproduce the previous discourse by speaking it.
-  - Limits: Do not use it to re-run previous terminal/voice commands.
-  - Steps:
-    - END USER: Requests to do something using a terminal/voice command.
-    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a command that includes or consists of a discourse (question, answer, greeting, feedback, etc.). All and every discourse includes a programming code to save a copy of it in the **.current_discourse** file. The reason to save it to a file is that there are many case options for every terminal/voice command, and the next terminal/voice command will overwrite the option in .result_message.json with a new "okay repeat" control, making unavailable/unknown the previous control message for the whole program.
-    - END USER: Sends the control "okay repeat", due to did not understand or did not hear well the discourse.
-    - STT ENGINE: Writes only in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay repeat" in the parse_skill_ function, and then executes a command that repeats by voice the content of **.current_discourse**.
+> **[okay|ok] repeat**
+
+- Description: Reproduce the previous discourse by speaking it.
+- Limits: Do not use it to re-run previous terminal/voice commands.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a command that includes or consists of a discourse (question, answer, greeting, feedback, etc.). All and every discourse includes a programming code to save a copy of it in the **.current_discourse** file. The reason to save it to a file is that there are many case options for every terminal/voice command, and the next terminal/voice command will overwrite the option in .result_message.json with a new "okay repeat" control, making unavailable/unknown the previous control message for the whole program.
+  - END USER: Sends the control "okay repeat", due to did not understand or did not hear well the discourse.
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay repeat" in the parse_skill_ function, and then executes a command that repeats by voice the content of **.current_discourse**.
 
 Base code:
 
@@ -727,25 +729,26 @@ Base code:
 TODO:
 ```
 
-- **"[okay|ok] remind me in [five|ten|twenty|thirty] minutes"**:
-  - Description: Start a question reminder countdown timer.
-  - Steps:
-    - END USER: Requests to do something using a terminal/voice command.
-    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a code that includes a requirement of user intervention in the form of a question spoken and displayed on the screen.
-    - END USER: Sends the control "okay remind me in five minutes".
-    - STT ENGINE: Writes only in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay remind me in five minutes" in the parse_skill_ function. It executes a code to append the total of the sum of the current time + the minutes to delay the question, for example, 5, to the **.pending_tasks.csv** (in the field Timeout) file and the current request in .previous_result_message.json (in the field Task). Next, it executes a code that runs a countdown timer of 5 minutes. The script remains running in the background.
-    - END USER: Is able to do whatever he/she wants or requires during the time specified in the terminal/voice control command.
-    - SKILL FUNCTION: The countdown timer of the script running in the background reaches 0. 
-      The assistant reminds the user that this task is pending, using a specific notification sound alert (stored in the variable `SOUND_A_PENDING_TASK_AWAITS_ATTENTION` in the configuration file **config/app.conf**).
-    - END USER: At this point, the user can: 
-    	a. Answer the question to run the task.
-    	b. Accept or deny/cancel based on the dialog with "okay accept".
-    	c. Ask for an out loud repetition with "okay repeat".
-    	d. Stop (terminate) the related command with "okay stop".
-    	e. Ask the assistant to remind in a new period of time with "okay remind me in 10 minutes"
-    	f. Move forward onto the next task pending with "ok what is the next task". This can be done infinitely while there are tasks pending in the list loop.
+> **[okay|ok] remind me in [five|ten|twenty|thirty] minutes**
+
+- Description: Start a question reminder countdown timer.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a code that includes a requirement of user intervention in the form of a question spoken and displayed on the screen.
+  - END USER: Sends the control "okay remind me in five minutes".
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay remind me in five minutes" in the parse_skill_ function. It executes a code to append the total of the sum of the current time + the minutes to delay the question, for example, 5, to the **.pending_tasks.csv** (in the field Timeout) file and the current request in .previous_result_message.json (in the field Task). Next, it executes a code that runs a countdown timer of 5 minutes. The script remains running in the background.
+  - END USER: Is able to do whatever he/she wants or requires during the time specified in the terminal/voice control command.
+  - SKILL FUNCTION: The countdown timer of the script running in the background reaches 0. 
+    The assistant reminds the user that this task is pending, using a specific notification sound alert (stored in the variable `SOUND_A_PENDING_TASK_AWAITS_ATTENTION` in the configuration file **config/app.conf**).
+  - END USER: At this point, the user can: 
+  	a. Answer the question to run the task.
+  	b. Accept or deny/cancel based on the dialog with "okay accept".
+  	c. Ask for an out loud repetition with "okay repeat".
+  	d. Stop (terminate) the related command with "okay stop".
+  	e. Ask the assistant to remind in a new period of time with "okay remind me in 10 minutes"
+  	f. Move forward onto the next task pending with "ok what is the next task". This can be done infinitely while there are tasks pending in the list loop.
 
 Example 1:
 
@@ -866,21 +869,22 @@ To display the contents of the myfile.txt file in the terminal, you can use the 
 cat data/.pending_tasks.csv
 ```
 
-- **""[okay|ok] what is the next task"**:
-  - Description: Remind of a prior question put on hold in a queue.
-  - Steps:
-    - END USER: Sends the control "okay what is the next task".
-    - STT ENGINE: Writes the request in **data/.result_message.json**.
-    - SKILL FUNCTION: It calculates the next pending task to present it to the user, as follows:
-    	If there is not any task in **data/.pending_tasks.csv**, it reproduces a message to inform the user about that and breaks the control command.
-      First, reorders the rows in a variable by Timeout in ascending Order. This arranges the date rows from the earliest to the latest date.
-      Next, it rewrites the complete content of the file using the new order of tasks. 
-      Next, it writes the terminal/voice command of the first data row in the file **.previous_result_message.json**.
-      After that, the first data row is updated with the **latest** date and time in the complete task list including the laset second 1 second. The seconds are the deciders to prepare the task to go to the end of the list the next time the file **data/.pending_tasks.csv** is called and then reordered. It avoids having the same task as first in the list every time the user sends the control "okay what is the next task" more than one time to skip the current task presented without discarding it but leaving it to retake it later again.
-      Finally, the task presented, still in the first data row, is executed as a terminal/voice command.  
-    - END USER: Has two options at this point.
-      a. It can repeat the terminal/voice control "okay what is the next task" to skip the current task without discarding it but leaving it for later again.
-      b. It can answer the question (execute the terminal/voice command.) **IMPORTANT**: Executing a terminal/voice command always requires verifying the file **data/.pending_tasks.csv** in the case option *) of the parse_skill_: If the **first data row** of the tasks list corresponds to the current terminal/voice command (assigned from **.previous_result_message.json**), the complete line will be deleted from the file. If we do not delete it from the tasks list it will be found out by "okay what is the next task" again at some time and request to complete it again, which would be considered a bug.
+> **[okay|ok] what is the next task**
+
+- Description: Remind of a prior question put on hold in a queue.
+- Steps:
+  - END USER: Sends the control "okay what is the next task".
+  - STT ENGINE: Writes the request in **data/.result_message.json**.
+  - SKILL FUNCTION: It calculates the next pending task to present it to the user, as follows:
+  	If there is not any task in **data/.pending_tasks.csv**, it reproduces a message to inform the user about that and breaks the control command.
+    First, reorders the rows in a variable by Timeout in ascending Order. This arranges the date rows from the earliest to the latest date.
+    Next, it rewrites the complete content of the file using the new order of tasks. 
+    Next, it writes the terminal/voice command of the first data row in the file **.previous_result_message.json**.
+    After that, the first data row is updated with the **latest** date and time in the complete task list including the laset second 1 second. The seconds are the deciders to prepare the task to go to the end of the list the next time the file **data/.pending_tasks.csv** is called and then reordered. It avoids having the same task as first in the list every time the user sends the control "okay what is the next task" more than one time to skip the current task presented without discarding it but leaving it to retake it later again.
+    Finally, the task presented, still in the first data row, is executed as a terminal/voice command.  
+  - END USER: Has two options at this point.
+    a. It can repeat the terminal/voice control "okay what is the next task" to skip the current task without discarding it but leaving it for later again.
+    b. It can answer the question (execute the terminal/voice command.) **IMPORTANT**: Executing a terminal/voice command always requires verifying the file **data/.pending_tasks.csv** in the case option *) of the parse_skill_: If the **first data row** of the tasks list corresponds to the current terminal/voice command (assigned from **.previous_result_message.json**), the complete line will be deleted from the file. If we do not delete it from the tasks list it will be found out by "okay what is the next task" again at some time and request to complete it again, which would be considered a bug.
 
 Example 1:
 
@@ -1150,62 +1154,23 @@ downloads/tmp/verifications.sh code here
 
 
 
+> **[okay|ok] accept**
 
+> **[okay|ok] deny**
 
-- **"[okay|ok] accept"**
-	- Description: Accept a Y/N question.
-- **"[okay|ok] deny"**
-  - Description: Deny/Cancel a Y/N question.
-  - Steps:
-    - The user requests to do something.
-      The program writes in .previous_result_message.json and in .result_message.json.
-      Example: "Tell me when I receive an email from Paul."
-    - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
-      The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
-    - When the new Paul's email arrives, the assistant proposes a solution for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new accept or deny command.
-      In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
-      Example: "You have received an email from Paul. Do you want me to read it out loud to you?" (The written part could include the possible case options: ok accept, ok, deny, ok repeat, ok remind me in five, thirty, or sixty minutes, ok skip that question, etc.)
-    - The user has one opportunity to ACCEPT or DENY the solution.
-      The user answer is stored only in the .result_message.json
-		 	Example: "Ok accept / Ok deny."
-
-Base code:
-
-```shell
-TODO:
-```
-
-- **"[okay|ok] confirm with the code <four number code>"**
-  - Description: Confirm a confirmation request.
-  - Steps:
-    - Certain commands can be made with an additional option to ask for user confirmation when Accepts, for security reasons. In such cases, the assistant asks for confirmation. The program goes to the case option ok confirm of the same terminal/voice command. This is done using a code but can be any other or a combination of some biometric methods, for example face recognition.
-    Example: "Confirm using your confirmation code."
-    - The user has one opportunity to Confirm or deny.
-    If the confirmation code (in secrets file) is wrong, repeat the confirmation request case option until the code is right or the user denies/cancels the solution.
-    The user answer is stored only in the .result_message.json.
-    Example: "ok confirm with the code 12345" / "12345"
-    Example: "ok deny."
-
-Base code:
-
-```shell
-TODO:
-```
-
-- **"[okay|ok] select the option number [one|two|three|four]"**
-  - Description: Select a multi-choice question option.
-  - Steps:
-    - The user requests to do something.
+- Description: Accept a Y/N question, or Deny/Cancel a Y/N question.
+- Steps:
+  - The user requests to do something.
     The program writes in .previous_result_message.json and in .result_message.json.
     Example: "Tell me when I receive an email from Paul."
-    - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
-    - The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
-    - When the new Paul's email arrives, the assistant proposes a number of solutions for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new command based on the chosen option.
-	  In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
-	  Example: "You have received an email from Paul. Please select an option: 1. Open it on the screen. 2. Read it out loud. 3. Remind me about that in 5 minutes. 4. Forget about that / Skip that question.
-    - The user choses an option.
-    The user answer is stored only in the .result_message.json.
-    Inside the same question parser, case option "select the option number <number>" the option chosen is executed.
+  - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
+    The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
+  - When the new Paul's email arrives, the assistant proposes a solution for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new accept or deny command.
+    In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
+    Example: "You have received an email from Paul. Do you want me to read it out loud to you?" (The written part could include the possible case options: ok accept, ok, deny, ok repeat, ok remind me in five, thirty, or sixty minutes, ok skip that question, etc.)
+  - The user has one opportunity to ACCEPT or DENY the solution.
+    The user answer is stored only in the .result_message.json
+	 	Example: "Ok accept / Ok deny."
 
 Base code:
 
@@ -1213,10 +1178,17 @@ Base code:
 TODO:
 ```
 
-- **"[okay|ok] what mode are you in"**
-  - Description: Confirm the current mode.
-  - Steps:
-    - TODO:
+> **[okay|ok] confirm with the code <four number code>**
+
+- Description: Confirm a confirmation request.
+- Steps:
+  - Certain commands can be made with an additional option to ask for user confirmation when Accepts, for security reasons. In such cases, the assistant asks for confirmation. The program goes to the case option ok confirm of the same terminal/voice command. This is done using a code but can be any other or a combination of some biometric methods, for example face recognition.
+  Example: "Confirm using your confirmation code."
+  - The user has one opportunity to Confirm or deny.
+  If the confirmation code (in secrets file) is wrong, repeat the confirmation request case option until the code is right or the user denies/cancels the solution.
+  The user answer is stored only in the .result_message.json.
+  Example: "ok confirm with the code 12345" / "12345"
+  Example: "ok deny."
 
 Base code:
 
@@ -1224,10 +1196,21 @@ Base code:
 TODO:
 ```
 
-- **"[okay|ok] enter the normal mode"**
-  - Description: Enter the normal mode.
-  - Steps:
-    - TODO:
+> **[okay|ok] select the option number [one|two|three|four]**
+
+- Description: Select a multi-choice question option.
+- Steps:
+  - The user requests to do something.
+  The program writes in .previous_result_message.json and in .result_message.json.
+  Example: "Tell me when I receive an email from Paul."
+  - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
+  - The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
+  - When the new Paul's email arrives, the assistant proposes a number of solutions for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new command based on the chosen option.
+  In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
+  Example: "You have received an email from Paul. Please select an option: 1. Open it on the screen. 2. Read it out loud. 3. Remind me about that in 5 minutes. 4. Forget about that / Skip that question.
+  - The user choses an option.
+  The user answer is stored only in the .result_message.json.
+  Inside the same question parser, case option "select the option number <number>" the option chosen is executed.
 
 Base code:
 
@@ -1235,10 +1218,33 @@ Base code:
 TODO:
 ```
 
-- **"[okay|ok] enter the conversation mode"**
-  - Description: Enter the conversation mode.
-  - Steps:
-    - TODO:
+> **[okay|ok] what mode are you in**
+
+- Description: Confirm the current mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] enter the normal mode**
+- Description: Enter the normal mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] enter the conversation mode**
+- Description: Enter the conversation mode.
+- Steps:
+  - TODO:
 
 Base code:
 
@@ -1246,10 +1252,10 @@ Base code:
 TODO:
 ```
              
-- **"[okay|ok] enter the expert mode"**
-  - Description: Enter the expert mode.
-  - Steps:
-    - TODO:
+> **[okay|ok] enter the expert mode**
+- Description: Enter the expert mode.
+- Steps:
+  - TODO:
 
 Base code:
 
@@ -1257,10 +1263,10 @@ Base code:
 TODO:
 ```
 
-- **"[okay|ok] enter the follow mode"**
-  - Description: Enter the follow mode.
-  - Steps:
-    - TODO:
+> **[okay|ok] enter the follow mode**
+- Description: Enter the follow mode.
+- Steps:
+  - TODO:
 
 Base code:
 
