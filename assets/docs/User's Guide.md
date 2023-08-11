@@ -20,9 +20,10 @@
 	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)	
 - [5 Default Configuration Variables](#5-default-configuration-variables)
 - [6 Types of Commands](#6-types-of-commands)
-- [7 Terminal/Voice Control Commands](#7-terminal-voice-control-commands)
-- [8 Terminal/Voice Skill Commands](#8-terminal-voice-skill-commands)
-- [9 Terminal/voice Skillset Commands](#9-terminal-voice-skillset-commands)
+- [7 Terminal Voice Controls](#7-terminal-voice-controls)
+- [8 Terminal Voice Skills](#8-terminal-voice-skills)
+- [9 Terminal Voice Skillsets](#9-terminal-voice-skillsets)
+
 - [6 Default Commbase commands](#6-default-commbase-commands)
 	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
 	- [Commbase Management Commands](#commbase-management-commands)
@@ -650,36 +651,36 @@ bash reset-commbase.conf.sh
 
 # 6 Types of Commands
 
-## Terminal Commands
-
-These are commands limited to be executed in the terminal.
-
-## Terminal/Voice Control Commands
-
-A control command consists of a message that the previous skill command parser uses to execute parameterized options, affecting the default command behavior.
-
-You can list the out-of-the-box controls with the commbase command:
+You can display the types of commands and some examples using the help option like this:
 
 ```sh
 commbase -h
 commbase --help
 ```
 
-## Terminal/Voice Skill Commands
+## Terminal Commands
+
+These are commands limited to be executed in the terminal.
+
+## Terminal Voice Controls
+
+A control command consists of a message that the previous skill command parser uses to execute parameterized options, affecting the default command behavior.
+
+## Terminal Voice Skills
 
 Unlike terminal commands, terminal/voice commands can be typed in or said out loud to the voice recognizer.
 
-## Terminal/Voice Skillset Commands
+## Terminal Voice Skillsets
 
 Skillsets are commands grouped as a list of orders to be executed sequentially at once. They can be typed or said out loud.
 
-# 7 Terminal/Voice Control Commands
+# 7 Terminal Voice Controls
 
 
-# 8 Terminal/Voice Skill Commands
+# 8 Terminal Voice Skills
 
 
-# 9 Terminal/Voice Skillset Commands
+# 9 Terminal Voice Skillsets
 
 
 
