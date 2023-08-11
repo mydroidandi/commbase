@@ -825,7 +825,7 @@ echo "New Date: $new_date"
 
 Make sure to give the file execution permissions:
 
-```sh
+```shell
 chmod +x add_50_minutes.sh   
 ```
 
