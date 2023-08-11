@@ -663,7 +663,7 @@ These are commands limited to be executed in the terminal.
 
 ## Terminal Voice Controls
 
-A control command consists of a message that the previous skill command parser uses to execute parameterized options, affecting the default command behavior.
+A control command consists of a message that the previous skill or skillset command parser uses to execute parameterized options, affecting the default command behavior.
 
 ## Terminal Voice Skills
 
@@ -686,9 +686,11 @@ You can create extra controls if you want to, but you can do almost everything t
     - END USER: Sends the control "okay stop".
     - STT ENGINE: Writes only in .result_message.json.
     - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay stop" in the parse_skill_ function, and then executes a command to terminate the previous terminal/voice command (program executable or script process).
+  - Base code:
 
-Base code:
+```sh
 TODO:
+```
 
 - **"[okay|ok] run it again"**:
   - Description:  Re-run the previous command.
@@ -701,7 +703,10 @@ TODO:
     - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay run it again" in the parse_skill_ function, and then executes a command that runs the same content of the case option *), the previous terminal/voice command.
 
 Base code:
+
+```sh
 TODO:
+```
 
 - **"[okay|ok] repeat"**:
   - Description: Reproduce the previous discourse by speaking it.
@@ -715,7 +720,10 @@ TODO:
     - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay repeat" in the parse_skill_ function, and then executes a command that repeats by voice the content of **.current_discourse**.
 
 Base code:
+
+```sh
 TODO:
+```
 
 - **"[okay|ok] remind me in [five|ten|twenty|thirty] minutes"**:
   - Description: Start a question reminder countdown timer.
@@ -1134,11 +1142,203 @@ The next code corresponds to the section `END USER:`, option `b.`. The user answ
 
 ```sh
 
-
 downloads/tmp/verifications.sh code here
 
-
 ```
+
+
+
+
+
+- **"[okay|ok] accept"**
+	- Description: Accept a Y/N question.
+- **"[okay|ok] deny"**
+  - Description: Deny/Cancel a Y/N question.
+  - Steps:
+    - The user requests to do something.
+      The program writes in .previous_result_message.json and in .result_message.json.
+      Example: "Tell me when I receive an email from Paul."
+    - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
+      The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
+    - When the new Paul's email arrives, the assistant proposes a solution for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new accept or deny command.
+      In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
+      Example: "You have received an email from Paul. Do you want me to read it out loud to you?" (The written part could include the possible case options: ok accept, ok, deny, ok repeat, ok remind me in five, thirty, or sixty minutes, ok skip that question, etc.)
+    - The user has one opportunity to ACCEPT or DENY the solution.
+      The user answer is stored only in the .result_message.json
+		 	Example: "Ok accept / Ok deny."
+
+Base code:
+
+```sh
+TODO:
+```
+
+- **"[okay|ok] confirm with the code <four number code>"**
+  - Description: Confirm a confirmation request.
+  - Steps:
+    - Certain commands can be made with an additional option to ask for user confirmation when Accepts, for security reasons. In such cases, the assistant asks for confirmation. The program goes to the case option ok confirm of the same terminal/voice command. This is done using a code but can be any other or a combination of some biometric methods, for example face recognition.
+    Example: "Confirm using your confirmation code."
+    - The user has one opportunity to Confirm or deny.
+    If the confirmation code (in secrets file) is wrong, repeat the confirmation request case option until the code is right or the user denies/cancels the solution.
+    The user answer is stored only in the .result_message.json.
+    Example: "ok confirm with the code 12345" / "12345"
+    Example: "ok deny."
+
+Base code:
+
+```sh
+TODO:
+```
+
+- **"[okay|ok] select the option number [one|two|three|four]"**
+  - Description: Select a multi-choice question option.
+  - Steps:
+    - The user requests to do something.
+    The program writes in .previous_result_message.json and in .result_message.json.
+    Example: "Tell me when I receive an email from Paul."
+    - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
+    - The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
+    - When the new Paul's email arrives, the assistant proposes a number of solutions for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new command based on the chosen option.
+	  In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
+	  Example: "You have received an email from Paul. Please select an option: 1. Open it on the screen. 2. Read it out loud. 3. Remind me about that in 5 minutes. 4. Forget about that / Skip that question.
+    - The user choses an option.
+    The user answer is stored only in the .result_message.json.
+    Inside the same question parser, case option "select the option number <number>" the option chosen is executed.
+
+Base code:
+
+```sh
+TODO:
+```
+
+- **"[okay|ok] what mode are you in"**
+  - Description: Confirm the current mode.
+  - Steps:
+    - TODO:
+
+Base code:
+
+```sh
+TODO:
+```
+
+- **"[okay|ok] enter the normal mode"**
+  - Description: Enter the normal mode.
+  - Steps:
+    - TODO:
+
+Base code:
+
+```sh
+TODO:
+```
+
+- **"[okay|ok] enter the conversation mode"**
+  - Description: Enter the conversation mode.
+  - Steps:
+    - TODO:
+
+Base code:
+
+```sh
+TODO:
+```
+
+- **"[okay|ok] enter the expert mode"**
+  - Description: Enter the expert mode.
+  - Steps:
+    - TODO:
+
+Base code:
+
+```sh
+TODO:
+```
+
+- **"[okay|ok] enter the follow mode"**
+  - Description: Enter the follow mode.
+  - Steps:
+    - TODO:
+
+Base code:
+
+```sh
+TODO:
+```
+
+---------+
+
+
+
+Subtitle: Hidden controls. Chaining controls.
+
+Hidden controls are controls that are not listed with the --help argument of the command commbase nor in all and every terminal/voice command in its parse_skill_ function. They just are in the parse_skill_ functions for commands that require triggering special options that are not terminal/voice control commands. Those special options can also be used to chain other special options or options in interactive sequences, for example in terminal/voice commands that require to say and display a final result based on sub-results calculated in every special option, which is impossible by creating a new skillset terminal voice/command, because the individual skills do not save or cache sub-results.
+
+In the next example, we are chaining hidden controls and controls. The case options a, b, and c are normal controls. The question options are hidden controls, and * is the default case option.
+
+```code
+case in:
+
+	case a):
+		case a content
+	
+	case b):
+		case b content
+		
+	case c):
+		case c content
+
+	question 2):
+		If the question 1 is in .question_answers.csv.
+			Ask the question 2.
+			Append the option selected to .question_answers.csv.
+			Save the hidden control "question 2" to .result_message.json.
+			Re-run the same terminal/voice command.
+		Else
+			Re-run the same terminal/voice command.
+
+	question 3):
+		If the question 2 is in .question_answers.csv.
+			Ask the question 3.
+			Append the option selected to .question_answers.csv.
+			Save the hidden control "result 1" to .result_message.json.
+			Re-run the same terminal/voice command.
+
+	result 1):
+		If the questions 1-4 are in .question_answers.csv.
+			Calculate the result.
+			Say and display the result.
+				If the result is correct
+					Say that the result is correct.
+				Else
+					Say that the result is incorrect.
+			Delete the content of the file .question_answers.csv.
+
+	*):
+		Ask the question 1.
+		Append the option selected to .question_answers.csv.
+		Save the hidden control "question 2" to .result_message.json.
+		Re-run the same terminal/voice command.
+```
+
+Example of a complete file question_answers.csv:
+
+```text
+Question, Answer
+result of two plus two, 4 
+result of two minus one, 1
+result of two divided by one, 2
+```
+
+Example of possible calculations to resolve in the case option result 1:
+- The number of questions asnwered correctly (1, 2 or 3 out of 3, for an interactive sequence/questionnaire/test/exam of 3 questions.
+- The sum of all the results of all the questions (correct result = 7)
+
+Example of the terminal/voice command for the interactive sequence:
+> Start the math test number one zero one
+
+
+
 
 # 8 Terminal Voice Skills
 
