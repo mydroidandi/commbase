@@ -676,21 +676,475 @@ Skillsets are commands grouped as a list of orders to be executed sequentially a
 
 # 7 Terminal Voice Controls
 
+You can create extra controls if you want to, but you can do almost everything that is possible with the controls that come with Commbase. These out-of-the-box controls are:
+
+- **"[okay|ok] stop"**:
+  - Description: Stop the previous command.
+  - Steps:
+    - END USER: Requests to do something using a terminal/voice command.
+    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+    - SKILL FUNCTION: Executes the command.
+    - END USER: Sends the control "okay stop".
+    - STT ENGINE: Writes only in .result_message.json.
+    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay stop" in the parse_skill_ function, and then executes a command to terminate the previous terminal/voice command (program executable or script process).
+
+Base code:
+TODO:
+
+- **"[okay|ok] run it again"**:
+  - Description:  Re-run the previous command.
+  - Steps:
+    - END USER: Requests to do something using a terminal/voice command.
+    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+    - SKILL FUNCTION: Executes the command.
+    - END USER: Sends the control "okay run it again".
+    - STT ENGINE: Writes only in .result_message.json.
+    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay run it again" in the parse_skill_ function, and then executes a command that runs the same content of the case option *), the previous terminal/voice command.
+
+Base code:
+TODO:
+
+- **"[okay|ok] repeat"**:
+  - Description: Reproduce the previous discourse by speaking it.
+  - Limits: Do not use it to re-run previous terminal/voice commands.
+  - Steps:
+    - END USER: Requests to do something using a terminal/voice command.
+    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a command that includes or consists of a discourse (question, answer, greeting, feedback, etc.). All and every discourse includes a programming code to save a copy of it in the **.current_discourse** file. The reason to save it to a file is that there are many case options for every terminal/voice command, and the next terminal/voice command will overwrite the option in .result_message.json with a new "okay repeat" control, making unavailable/unknown the previous control message for the whole program.
+    - END USER: Sends the control "okay repeat", due to did not understand or did not hear well the discourse.
+    - STT ENGINE: Writes only in .result_message.json.
+    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay repeat" in the parse_skill_ function, and then executes a command that repeats by voice the content of **.current_discourse**.
+
+Base code:
+TODO:
+
+- **"[okay|ok] remind me in [five|ten|twenty|thirty] minutes"**:
+  - Description: Start a question reminder countdown timer.
+  - Steps:
+    - END USER: Requests to do something using a terminal/voice command.
+    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a code that includes a requirement of user intervention in the form of a question spoken and displayed on the screen.
+    - END USER: Sends the control "okay remind me in five minutes".
+    - STT ENGINE: Writes only in .result_message.json.
+    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay remind me in five minutes" in the parse_skill_ function. It executes a code to append the total of the sum of the current time + the minutes to delay the question, for example, 5, to the **.pending_tasks.csv** (in the field Timeout) file and the current request in .previous_result_message.json (in the field Task). Next, it executes a code that runs a countdown timer of 5 minutes. The script remains running in the background.
+    - END USER: Is able to do whatever he/she wants or requires during the time specified in the terminal/voice control command.
+    - SKILL FUNCTION: The countdown timer of the script running in the background reaches 0. 
+      The assistant reminds the user that this task is pending, using a specific notification sound alert (stored in the variable `SOUND_A_PENDING_TASK_AWAITS_ATTENTION` in the configuration file **config/app.conf**).
+    - END USER: At this point, the user can: 
+    	a. Answer the question to run the task.
+    	b. Accept or deny/cancel based on the dialog with "okay accept".
+    	c. Ask for an out loud repetition with "okay repeat".
+    	d. Stop (terminate) the related command with "okay stop".
+    	e. Ask the assistant to remind in a new period of time with "okay remind me in 10 minutes"
+    	f. Move forward onto the next task pending with "ok what is the next task". This can be done infinitely while there are tasks pending in the list loop.
+
+Example 1:
+
+Stage 1:
+
+1. At 02:00:01 PM, the user requests to be notified when the disk space left is less than 40%.
+Terminal/voice skill command: "tell me when the disk space left is less than forty percent"
+2. At 02:05:01 PM, the user requests to be notified when the disk space left is less than 30%.
+Terminal/voice skill command: "tell me when the disk space left is less than thirty percent"
+3. At 02:10:01 PM, the user requests to be notified when the disk space left is less than 20%.
+Terminal/voice skill command: "tell me when the disk space left is less than twenty percent"
+
+After the third entry, the file **.pending_tasks.csv** looks like this:
+
+```text
+Timeout, Task
+Tue 01 Aug 2023 02:00:01 PM CDT|"The amount of disk space available for the file system is less than forty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:05:01 PM CDT|"The amount of disk space available for the file system is less than thirty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:10:01 PM CDT|"The amount of disk space available for the file system is less than twenty percent. Do you want me to free some space?"
+```
+
+Stage 2:
+
+1. At 02:15:01 PM, the amount of disk space available on the file system is less than forty percent.
+The assistant asks the user to answer the question to run the task: " The amount of disk space available on the file system is less than forty percent. Do you want me to free some space?"
+The user decides to ask the assistant to remind about the question in a period of time with "okay remind me in 30 minutes".
+2. At 02:20:01 PM, the amount of disk space available on the file system is less than thirty percent.
+The assistant asks the user to answer the question to run the task: "The amount of disk space available on the file system is less than thirty percent. Do you want me to free some space?"
+The user decides to ask the assistant to remind about the question in a period of time with "okay remind me in 30 minutes".
+3. At 02:25:01 PM, the amount of disk space available on the file system is less than twenty percent.
+The assistant asks the user to answer the question to run the task: "The amount of disk space available on the file system is less than twenty percent. Do you want me to free some space?"
+The user decides to ask the assistant to remind about the question in a period of time with "okay remind me in 30 minutes".
+
+At this point, all the entries in the file **.pending_tasks.csv** have been updated to the date and time delays specified by the user, like this:
+
+```text
+Timeout, Task
+Tue 01 Aug 2023 02:45:01 PM CDT|"The amount of disk space available for the file system is less than forty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:50:01 PM CDT|"The amount of disk space available for the file system is less than thirty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:55:01 PM CDT|"The amount of disk space available for the file system is less than twenty percent. Do you want me to free some space?"
+```
+
+Base code 1:
+
+A Bash code similar to the next one can be used to append a new request as a Task to the file **.pending_tasks.csv**.
+
+```shell
+timeout="2:20 PM CST"; task='"call mom"'; echo "$timeout|$task" >> data/.pending_tasks.csv
+```
+
+Base code 2:
+
+This is an example of a Bash code similar to the one that is used in every terminal/voice command's case option "okay remind me in five minutes" to calculate the total of the sum of the current time + the minutes to delay the question, before save the question as a task in **.pending_tasks.csv**
+
+File **add_50_minutes.sh**:
+
+```shell
+#!/bin/env bash
+
+# Given date
+#given_date="Wed 02 Aug 2023 11:52:30 PM CDT"
+
+# Assign the current date and time to the variable given_date
+given_date=$(date "+%a %d %b %Y %I:%M:%S %p %Z")
+
+# Convert the given date to epoch time
+epoch_time=$(date -d "$given_date" +%s)
+
+# Add 50 minutes (3000 seconds) to the epoch time
+new_epoch_time=$((epoch_time + 3000))
+
+# Convert the new epoch time back to the date format
+new_date=$(date -d "@$new_epoch_time" "+%a %d %b %Y %I:%M:%S %p %Z")
+
+echo "Given Date: $given_date"
+echo "New Date: $new_date"
+```
+
+Make sure to give the file execution permissions:
+
+```sh
+chmod +x add_50_minutes.sh   
+```
+
+Then, run the script:
+
+```sh
+./add_50_minutes.sh
+```
+
+Adding 50 minutes to the given date would result in the following new date:
+
+```log
+Given Date: Wed 02 Aug 2023 11:52:30 PM CDT
+New Date: Thu 03 Aug 2023 12:42:30 AM CDT
+```
+
+Base code 3:
+
+You can add a Bash code like this to append the value of the variable that holds the New Date, then a pipe, then some Task text, to the file **data/.pending_tasks.csv**:
+
+```shell
+#!/bin/env bash
+
+# Example variable value
+new_date="Tue 01 Aug 2023 02:45:01 PM CDT"
+
+# Example task
+task_text="The amount of disk space available for the file system is less than forty percent. Do you want me to free some space?"
+
+# Appending the variable value, pipe, and text to a file (e.g., myfile.txt)
+echo "$new_date|$task_text" >> data/.pending_tasks.csv
+```
+
+To display the contents of the myfile.txt file in the terminal, you can use the cat command in Bash:
+
+```sh
+cat data/.pending_tasks.csv
+```
+
+- **""[okay|ok] what is the next task"**:
+  - Description: Remind of a prior question put on hold in a queue.
+  - Steps:
+    - END USER: Sends the control "okay what is the next task".
+    - STT ENGINE: Writes the request in **data/.result_message.json**.
+    - SKILL FUNCTION: It calculates the next pending task to present it to the user, as follows:
+    	If there is not any task in **data/.pending_tasks.csv**, it reproduces a message to inform the user about that and breaks the control command.
+      First, reorders the rows in a variable by Timeout in ascending Order. This arranges the date rows from the earliest to the latest date.
+      Next, it rewrites the complete content of the file using the new order of tasks. 
+      Next, it writes the terminal/voice command of the first data row in the file **.previous_result_message.json**.
+      After that, the first data row is updated with the **latest** date and time in the complete task list including the laset second 1 second. The seconds are the deciders to prepare the task to go to the end of the list the next time the file **data/.pending_tasks.csv** is called and then reordered. It avoids having the same task as first in the list every time the user sends the control "okay what is the next task" more than one time to skip the current task presented without discarding it but leaving it to retake it later again.
+      Finally, the task presented, still in the first data row, is executed as a terminal/voice command.  
+    - END USER: Has two options at this point.
+      a. It can repeat the terminal/voice control "okay what is the next task" to skip the current task without discarding it but leaving it for later again.
+      b. It can answer the question (execute the terminal/voice command.) **IMPORTANT**: Executing a terminal/voice command always requires verifying the file **data/.pending_tasks.csv** in the case option *) of the parse_skill_: If the **first data row** of the tasks list corresponds to the current terminal/voice command (assigned from **.previous_result_message.json**), the complete line will be deleted from the file. If we do not delete it from the tasks list it will be found out by "okay what is the next task" again at some time and request to complete it again, which would be considered a bug.
+
+Example 1:
+
+Stage 1:
+
+At some time, the file **.pending_tasks.csv** looks like this:
+
+```text
+Timeout, Task
+Tue 01 Aug 2023 02:45:01 PM CDT|"The amount of disk space available for the file system is less than forty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:50:01 PM CDT|"The amount of disk space available for the file system is less than thirty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:55:01 PM CDT|"The amount of disk space available for the file system is less than twenty percent. Do you want me to free some space?"
+```
+
+Note that this is the last file used as example for the control "okay remind me in 5 minutes". So we have 3 pending tasks but did not receive any reminder from the assistant around 2:30 PM yet.
+
+Stage 2:
+
+a. At 02:30:01 PM, if the user decides to repeat the control "what is the next task", the first data row is updated with the latest date and time in the complete task list plus 1 second, so the file looks like this:
+
+```text
+Timeout, Task
+Tue 01 Aug 2023 02:56:01 PM CDT|"The amount of disk space available for the file system is less than forty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:50:01 PM CDT|"The amount of disk space available for the file system is less than thirty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:55:01 PM CDT|"The amount of disk space available for the file system is less than twenty percent. Do you want me to free some space?"
+```
+
+b. At 02:30:01 PM, if the user decides to answer the question (execute the terminal/voice command), the **first data row** of the tasks list, which corresponds to the current terminal/voice command is deleted, so the file looks like this:
+
+```text
+Timeout, Task
+Tue 01 Aug 2023 02:50:01 PM CDT|"The amount of disk space available for the file system is less than thirty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:55:01 PM CDT|"The amount of disk space available for the file system is less than twenty percent. Do you want me to free some space?"
+```
+
+In case b., we checked out the notifications before they occurred and resolved the task programmed to be reminded at 2:45 around 2:30.
+
+Base code 1:
+
+This script contains the functions required to make work this terminal/voice control command in the `SKILL FUNCTION` of every terminal/voice skill/skillset command. 
+
+```sh
+#!/bin/env bash
+
+# Define the result message file
+message=$(<.result_message.json)
+
+# Define the previous result message file
+previous_message=$(<.previous_result_message.json)
+
+# Define the pending tasks file
+tasks=$(<.pending_tasks.csv)
+
+# Function to check if the file exists
+check_file_existence() {
+	# Checks if the variable is not empty
+  if [ -z "$tasks" ]; then
+    echo "Error: No tasks found in the variable."
+    exit 1
+  fi
+}
+
+# Function to validate the tasks header format
+validate_tasks_header_format() {
+	#local file="$1"
+
+  # Get the header from the file variable if the variable is defined like this:
+  # file=".pending_tasks.csv".
+  #local header=$(head -n 1 "$file")
+
+  # Get the header from the tasks variable
+  local header=$(echo "$tasks" | head -n 1)
+  
+  # Check if the header contains the expected titles
+  if [ "$header" != "Timeout|Task" ]; then
+    echo "Error: The tasks data does not have the expected header."
+    exit 1
+  fi
+}
+
+# Ensures that the second line of the file tasks is not empty
+detect_blank_second_line() {
+
+  local second_line=$(echo "$tasks" | sed -n 2p)
+
+  # Check if the second line is empty or contains more information
+  if [ -z "$second_line" ]; then
+    echo "Error: The second line is empty."
+    exit 1
+  fi
+}
+
+# Ensures that the second line of the file tasks matches the expected format
+validate_second_line_format() {
+  # Extract the complete second line from tasks
+  second_line=$(echo "$tasks" | awk -F'|' 'NR==2')
+
+  regex='^([A-Za-z]{3} [0-9]{2} [A-Za-z]{3} [0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2} (AM|PM) [A-Za-z]{3})\|.*$'
+
+  if [[ $second_line =~ $regex ]]; then
+      echo "OK" > /dev/null
+  else
+      echo "not OK"
+  fi
+}
+
+# Reorders rows in the tasks file by Timeout in ascending order
+reorder_rows_by_timeout_in_ascending_order() {
+	# Sort tasks by Timeout in ascending order
+	sorted_tasks=$(echo "$tasks" | tail -n +2 | sort -t'|' -k1,1)
+
+	# Create a new tasks variable with the header and sorted tasks
+	sorted_tasks_with_header=$(echo "$tasks" | head -n 1; echo "$sorted_tasks")
+
+	# Save the sorted tasks back to .pending_tasks.csv
+	echo "$sorted_tasks_with_header" > .pending_tasks.csv
+}
+
+# Extracts the second field from the second row (excluding the header) from the
+# CSV file .pending_tasks and stores it in a variable.
+extract_second_field_from_second_row() {
+  second_field_second_row=$(echo "$tasks" | awk -F'|' 'NR==2 {print $2}')
+  echo "$second_field_second_row"
+}
+
+# Extracts the first field from the second row (excluding the header) from the
+# CSV .pending_tasks and stores it in a variable.
+extract_first_field_from_second_row() {
+  first_field_second_row=$(echo "$tasks" | awk -F'|' 'NR==2 {print $1}')
+  echo "$first_field_second_row"
+}
+
+# Writes the first data row of the file data/.pending_tasks.csv in the file 
+# data/.previous_result_message.json.
+get_first_command_from_json() {
+	# Get the data from the second row of the second field in the tasks file
+
+	# Call the function and capture its return value in a variable
+	data=$(extract_second_field_from_second_row)
+	#echo $data
+
+	# Create the JSON message and save it to the file
+	# data/.previous_result_message.json
+	json_message="{\"message\": $data}"
+	
+	# Write the json message in data/.previous_result_message.json
+	echo "$json_message" > .previous_result_message.json
+}
+
+# Updates the Timeout value of the second row (first task) in the file named 
+# .pending_tasks.csv with the current date and time.
+update_task_to_current_date_time() {
+	tasks=$(<.pending_tasks.csv)
+	current_date=$(date +"%a %d %b %Y %I:%M:%S %p %Z")
+
+	# Replace the second row's Timeout with the current date and time
+	new_content=$(echo "$tasks" | awk 'BEGIN { FS="|"; OFS="|" } NR==2 { $1 = "'"$current_date"'"; print; next } 1')
+
+	# Create a temporary file
+	temp_file=".pending_tasks_temp.csv"
+
+	echo "$new_content" > "$temp_file"
+
+	# Overwrite the original file with the content of the temporary file
+	mv "$temp_file" .pending_tasks.csv
+
+	echo "Updated the second row's Timeout with the current date and time."
+}
+
+# Updates the first data row with the current date and time in the complete task
+# list plus 1 minute.
+advance_first_data_row_time() {
+	# Extract the complete second line
+	second_line=$(echo "$tasks" | awk -F'|' 'NR==2')
+
+	# Extract Timeout and Task from the second line
+	timeout=$(echo "$second_line" | cut -d'|' -f1)
+	task=$(echo "$second_line" | cut -d'|' -f2)
+
+	# Convert the given timeout to epoch time
+	epoch_time=$(date -d "$timeout" +%s)
+
+	# Add 1 minute (60 seconds) to the epoch time
+	new_epoch_time=$((epoch_time + 60))
+
+	# Convert the new epoch time back to the timeout format
+	new_timeout=$(date -d "@$new_epoch_time" "+%a %d %b %Y %I:%M:%S %p %Z")
+
+	# Update the second line with the new timeout
+	updated_tasks=$(echo "$tasks" | sed "2s|$timeout|$new_timeout|")
+
+	# Overwrite the original file with the updated content
+	echo "$updated_tasks" > .pending_tasks.csv
+}
+
+# Reads the contents of the CSV file into a variable called tasks, processes the
+# tasks to identify the task with the highest timeout, increments that timeout
+# by one second, updates the task list with the new timeout, and then saves the
+# updated task list back to the CSV file.
+update_row_time() {
+  # Check if the file name is provided as an argument, otherwise use a default
+  # value.
+  local tasks_file="${1:-.pending_tasks.csv}"
+  
+  # Define the pending tasks file
+  #local tasks_file=".pending_tasks.csv"
+  
+  # Initialize a variable to store the highest timeout timestamp
+  highest_timeout=""
+  
+  # Read each line of the tasks file, separating columns using "|" as delimiter
+  while IFS="|" read -r timeout task; do
+    # Check if the timeout matches the pattern for HH:MM:SS
+    if [[ $timeout =~ [0-9]{2}:[0-9]{2}:[0-9]{2} ]]; then
+      # Convert the timeout to a Unix timestamp
+      timestamp=$(date -d "$timeout" +%s)
+      # Update the highest_timeout if the current timestamp is greater
+      if [[ -z $highest_timeout ]] || ((timestamp > highest_timeout)); then
+        highest_timeout=$timestamp
+      fi
+    fi
+  done <<< "$tasks"
+  
+  # Calculate a new timeout by adding 1 second to the highest timestamp
+  new_timeout=$(date -d @"$((highest_timeout + 1))" +"%a %d %b %Y %I:%M:%S %p %Z")
+
+  # Update the second line of the tasks file with the new timeout
+  updated_tasks=$(echo "$tasks" | awk -v new_timeout="$new_timeout" -F"|" 'NR == 2 { $1 = new_timeout "|" } { print }')
+  
+  echo "$updated_tasks" > .pending_tasks_updated.csv
+  
+  #echo "$tasks"
+  #cat .pending_tasks_updated.csv
+  
+  # Remove the space after the "|" character in each line of the file
+  sed -i 's/| /|/' .pending_tasks_updated.csv
+  
+  mv .pending_tasks_updated.csv "$tasks_file"
+}
+
+# Main script
+check_file_existence
+validate_tasks_header_format
+
+detect_blank_second_line
+validate_second_line_format
+
+reorder_rows_by_timeout_in_ascending_order
+#extract_second_field_from_second_row
+#extract_first_field_from_second_row
+get_first_command_from_json
+#update_task_to_current_date_time
+#advance_first_data_row_time
+update_row_time
+
+```
+
+Base code 2:
+
+The next code corresponds to the section `END USER:`, option `b.`. The user answers the question (execute the terminal/voice command.). If the **first data row** of the tasks list corresponds to the current terminal/voice command (assigned from **.previous_result_message.json**), the complete line will be deleted from the file.
+
+```sh
+
+
+downloads/tmp/verifications.sh code here
+
+
+```
 
 # 8 Terminal Voice Skills
 
 
 # 9 Terminal Voice Skillsets
-
-
-
-
-For example:
-
-```shell
-$ commbase start|stop|teleport
-```
-
 
 
 # 6 Default Commbase commands
