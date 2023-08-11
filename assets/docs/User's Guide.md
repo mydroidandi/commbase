@@ -23,7 +23,6 @@
 - [7 Terminal Voice Controls](#7-terminal-voice-controls)
 - [8 Terminal Voice Skills](#8-terminal-voice-skills)
 - [9 Terminal Voice Skillsets](#9-terminal-voice-skillsets)
-
 - [6 Default Commbase commands](#6-default-commbase-commands)
 	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
 	- [Commbase Management Commands](#commbase-management-commands)
