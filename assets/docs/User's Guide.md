@@ -85,7 +85,7 @@ These commands assume that the `commbase` command has been properly set up. If y
 
 To start a Commbase session from the command line, run the following command:
 
-```sh
+```shell
 commbase start
 ```
 
@@ -97,19 +97,19 @@ The most effective way is to use a specific voice command to instruct Commbase t
 
 Alternatively, you can stop Commbase by running the following command in the command line:
 
-```sh
+```shell
 commbase stop
 ```
 
 Another method involves manually terminating the Commbase session using the tmux command. First, you can list all active sessions by running:
 
-```sh
+```shell
 tmux list-sessions
 ```
 
 Identify the session named "Commbase-0" and remember its session ID. Then, issue the following command to kill that specific session:
 
-```sh
+```shell
 tmux kill-session -t Commbase-0
 ```
 
@@ -117,7 +117,7 @@ tmux kill-session -t Commbase-0
 
 The "teleport" command in Commbase provides a convenient way to handle different scenarios.
 
-```sh
+```shell
 commbase teleport
 ```
 
@@ -189,13 +189,13 @@ Press `Ctrl` - `b`, then press `1`.
 
 ## List All the Active Sessions
 
-```sh
+```shell
 tmux list-sessions
 ```
 
 ## Kill the Session
 
-```sh
+```shell
 tmux kill-session -t Commbase-0
 ```
 
@@ -213,7 +213,7 @@ Next, list all the active sessions using the comman above.
 
 Finally, close the duplicated session(s).
 
-```sh
+```shell
 tmux kill-session -t Commbase-2 & tmux kill-session -t Commbase-1 & tmux kill-session -t Commbase-0
 
 ```
@@ -222,7 +222,7 @@ The ampersand (&) at the end of each command allows them to be executed concurre
 
 Alternatively, you can terminate all tmux sessions at once.
 
-```sh
+```shell
 pkill tmux
 ```
 
@@ -234,11 +234,11 @@ The configuration variables can be accessed by going to the directory **config/*
 
 Use your favorite text editor to open any of those files.
 
-```sh
+```shell
 nano config/secrets
 ```
 
-```sh
+```shell
 nano config/app.conf
 ```
 
@@ -640,11 +640,11 @@ How to reset the configuration file **app.conf**.
 
 It restores the configuration file to its inital status. Go to the directory **scripts/utilities** and execute the file **reset_app.conf.sh**.
 
-```sh
+```shell
 cd scripts/utilities
 ```
 
-```sh
+```shell
 bash reset-commbase.conf.sh
 ```
 
@@ -652,7 +652,7 @@ bash reset-commbase.conf.sh
 
 You can display the types of commands and some examples using the help option like this:
 
-```sh
+```shell
 commbase -h
 commbase --help
 ```
@@ -689,7 +689,7 @@ You can create extra controls if you want to, but you can do almost everything t
 
 Base code:
 
-```sh
+```shell
 TODO:
 ```
 
@@ -705,7 +705,7 @@ TODO:
 
 Base code:
 
-```sh
+```shell
 TODO:
 ```
 
@@ -722,7 +722,7 @@ TODO:
 
 Base code:
 
-```sh
+```shell
 TODO:
 ```
 
@@ -831,7 +831,7 @@ chmod +x add_50_minutes.sh
 
 Then, run the script:
 
-```sh
+```shell
 ./add_50_minutes.sh
 ```
 
@@ -861,7 +861,7 @@ echo "$new_date|$task_text" >> data/.pending_tasks.csv
 
 To display the contents of the myfile.txt file in the terminal, you can use the cat command in Bash:
 
-```sh
+```shell
 cat data/.pending_tasks.csv
 ```
 
@@ -921,7 +921,7 @@ Base code 1:
 
 This script contains the functions required to make work this terminal/voice control command in the `SKILL FUNCTION` of every terminal/voice skill/skillset command. 
 
-```sh
+```shell
 #!/bin/env bash
 
 # Define the result message file
@@ -1141,7 +1141,7 @@ Base code 2:
 
 The next code corresponds to the section `END USER:`, option `b.`. The user answers the question (execute the terminal/voice command.). If the **first data row** of the tasks list corresponds to the current terminal/voice command (assigned from **.previous_result_message.json**), the complete line will be deleted from the file.
 
-```sh
+```shell
 
 downloads/tmp/verifications.sh code here
 
@@ -1170,7 +1170,7 @@ downloads/tmp/verifications.sh code here
 
 Base code:
 
-```sh
+```shell
 TODO:
 ```
 
@@ -1187,7 +1187,7 @@ TODO:
 
 Base code:
 
-```sh
+```shell
 TODO:
 ```
 
@@ -1208,7 +1208,7 @@ TODO:
 
 Base code:
 
-```sh
+```shell
 TODO:
 ```
 
@@ -1219,7 +1219,7 @@ TODO:
 
 Base code:
 
-```sh
+```shell
 TODO:
 ```
 
@@ -1230,7 +1230,7 @@ TODO:
 
 Base code:
 
-```sh
+```shell
 TODO:
 ```
 
@@ -1241,10 +1241,10 @@ TODO:
 
 Base code:
 
-```sh
+```shell
 TODO:
 ```
-
+             
 - **"[okay|ok] enter the expert mode"**
   - Description: Enter the expert mode.
   - Steps:
@@ -1252,7 +1252,7 @@ TODO:
 
 Base code:
 
-```sh
+```shell
 TODO:
 ```
 
@@ -1263,7 +1263,7 @@ TODO:
 
 Base code:
 
-```sh
+```shell
 TODO:
 ```
 
@@ -1691,7 +1691,7 @@ your speech recognition model learning process.
 
 The next piece of code is a case inside /usr/bin/commbase
 
-```bash
+```shell
 'stop')
   echo "Stopping application"
   tmux kill-session -t Commbase-0
@@ -1702,7 +1702,7 @@ The next piece of code is a case inside /usr/bin/commbase
 This command is going to help cleaning up the 'commbase' file before pasting a new versions that
 includes the a new command:
 
-```code
+```shell
 # cd /usr/bin
 # echo "" > commbase
 # nano commbase
@@ -1772,7 +1772,7 @@ Commbase uses an environment constant $COMMBASE_ROOT_DIR set up for the user env
 
 Example of the custom lines added to a bashrc file:
 
-```bash
+```shell
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -1794,7 +1794,7 @@ source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 ```
 Example of use of the constant in the same bash script:
 
-```bash
+```shell
 mpv $COMMBASE_ROOT_DIR/commbase/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
 ```
 
@@ -1806,7 +1806,7 @@ changed to point to any specified default or custom version of the file commbase
 which processes voice commands and scripts that run tasks we use and are able to program for Commbase
 to run them.
 
-```bash
+```shell
 
 # The Commbase processing file for this device:
 COMMBASE_PROCESS_VOSK="commbase-process-vosk-pc-default.sh"
@@ -1859,11 +1859,11 @@ Alternatives:
 $ commbase start
 ```
 
-```
+```shell
 $ commbase teleport
 ```
 
-```
+```shell
 $ commbase stop
 $ commbase start
 ```
