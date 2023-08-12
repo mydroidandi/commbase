@@ -13,7 +13,7 @@ These group of shortcuts are defined in the Commbase directory key-bindings/
 
 ## Bash
 
-<br />``Ctrl` + `A` : Move to the start of the command line.
+`Ctrl` + `A` : Move to the start of the command line.
 <br />`Ctrl` + `E` : Move to the end of the command line.
 <br />`Ctrl` + `F` : Move one character forward.
 <br />`Ctrl` + `B` : Move one character backward.
@@ -25,7 +25,7 @@ These group of shortcuts are defined in the Commbase directory key-bindings/
 
 ###	Bash Control/Process
 
-<br />`Ctrl` + `L` : Clear the terminal screen.
+`Ctrl` + `L` : Clear the terminal screen.
 <br />`Ctrl` + `S` : Stop command output to the screen.
 <br />`Ctrl` + `Z` : Suspend current command execution and move it to the background.
 <br />`Ctrl` + `Q` : Resume suspended command.
@@ -34,7 +34,7 @@ These group of shortcuts are defined in the Commbase directory key-bindings/
 
 ###	Bash History
 
-<br />`Ctrl` + `R` : Incremental reverse search of bash history.
+`Ctrl` + `R` : Incremental reverse search of bash history.
 <br />`Alt` + `P` : Non-incremental reverse search of bash history.
 <br />`Ctrl` + `J` : End history search at current command.
 <br />`Ctrl` + `_` :	Undo previous command.
@@ -60,7 +60,7 @@ These group of shortcuts are defined in the Commbase directory key-bindings/
 
 ###	Bash Editing
 
-<br />`Ctrl` + `U` : Delete before the cursor until the start of the command.
+`Ctrl` + `U` : Delete before the cursor until the start of the command.
 <br />`Ctrl` + `K` : Delete after the cursor until the end of the command.
 <br />`Ctrl` + `W` : Remove the command/argument before the cursor.
 <br />`Ctrl` + `D` : Remove the character under the cursor.
@@ -75,7 +75,7 @@ These group of shortcuts are defined in the Commbase directory key-bindings/
 
 ###	Bash Information
 
-<br />`TAB` : Autocomplete the command or file/directory name.
+`TAB` : Autocomplete the command or file/directory name.
 <br />`~TAB TAB`:	List all Linux users.
 <br />`Ctrl` + I`: Complete the command like TAB.
 <br />`Alt` + `?` : Display files/folders in the current path for help.
@@ -124,7 +124,7 @@ When using Neovim or Emacs, make sure that the custom keyboard shorcuts do not i
 ## Text Editors and IDEs
 
 CTRL	X	Cut.
-<br />`CTRL` + `C` : Copy.
+`CTRL` + `C` : Copy.
 <br />`CTRL` + `V` : Paste.
 <br />`CTRL` + `F` : Find.
 <br />`CTRL` + `N` : Create new file.
