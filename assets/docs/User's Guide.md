@@ -2011,8 +2011,6 @@ Skillsets voice commands examples:
 
 ## Keyboard Shortcuts Cheat Sheet
 
-Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help avoid that problem, you can use [this guide.](./Keyboard%20Shortcuts%20Cheat%20Sheet.md)
-
 ### Commbase Key Bindings
 
 `CTRL` + `SHIFT` + `Z` : Toggle active capture device.
@@ -2021,6 +2019,10 @@ Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To h
 <br />`ALT` + `SHIFT` + `3` : Start sound capturing.
 
 These group of shortcuts are defined in the directory **scripts/configuration/key_bindings/**
+
+### Keyboard shortcuts overlapping
+
+Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help avoid that problem, you can use [this guide.](./Keyboard%20Shortcuts%20Cheat%20Sheet.md)
 
 ## Input Remapper
 
