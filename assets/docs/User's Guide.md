@@ -2011,7 +2011,7 @@ Skillsets voice commands examples:
 
 ## Keyboard Shortcuts Cheat Sheet
 
-Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help avoid that problem, you can use [`this guide.`](./Keyboard Shortcuts Cheat Sheet.md)
+Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help avoid that problem, you can use [this guide.](./Keyboard%20Shortcuts%20Cheat%20Sheet.md)
 
 ### Commbase Key Bindings
 
