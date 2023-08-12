@@ -1,4 +1,4 @@
-# Commbase <img align="center" alt="Visual Studio Code" width="10%" src="./images/commbase.png" /> Keyboard Shortcuts Cheat Sheet
+# Commbase <img align="center" alt="Visual Studio Code" width="10%" src="./images/commbase.png" /> Keyboard Shortcuts
 
 # Keyboard Shortcuts Cheat Sheet
 
