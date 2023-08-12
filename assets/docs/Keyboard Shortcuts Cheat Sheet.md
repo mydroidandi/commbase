@@ -9,7 +9,7 @@
 <br />`ALT` + `SHIFT` + `2` : Stop sound capturing.
 <br />`ALT` + `SHIFT` + `3` : Start sound capturing.
 
-These group of shortcuts are defined in the Commbase directory key-bindings/
+These group of shortcuts are defined in the Commbase directory **scripts/configuration/key_bindings**
 
 ## Bash
 
