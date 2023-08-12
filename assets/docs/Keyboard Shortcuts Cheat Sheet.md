@@ -137,7 +137,7 @@ CTRL	X	Cut.
 <br />`Prefix` + `B` , `ARROWS` : Resize active pane.
 <br />`Prefix` + `B` , `ARROWS` : Switch pane.
 
-Prefix = CTRL
+Default Prefix = CTRL
 
 ## VS Code
 
