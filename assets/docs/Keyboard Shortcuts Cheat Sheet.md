@@ -77,7 +77,7 @@ These group of shortcuts are defined in the Commbase directory key-bindings/
 
 `TAB` : Autocomplete the command or file/directory name.
 <br />`~TAB TAB`:	List all Linux users.
-<br />`Ctrl` + I`: Complete the command like TAB.
+<br />`Ctrl` + `I`: Complete the command like TAB.
 <br />`Alt` + `?` : Display files/folders in the current path for help.
 <br />`Alt` + `*` : Display files/folders in the current path as parameter.
 
