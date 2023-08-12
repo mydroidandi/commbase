@@ -1285,7 +1285,7 @@ TODO:
 
 ## Undefined Controls
 
-Undefined controls are controls that are unuseful for particular terminal/voice commands.
+Undefined controls are controls (out-of-the-box controls or controls added to the out-of-the-box controls list) that are unuseful for particular terminal/voice commands.
 
 When a control is undefined in the parse_skill_ function of a terminal/voice skill/skillset command, its content consists of a message that says that the control is undefined followed by a list of every undefined control for that specific command. For example, say "power off the computer" can or cannot be repeated, depending on the command logic design.
 
@@ -1295,53 +1295,98 @@ Anyway, feel free to create commands to ask for command hints, including about u
 
 ## Hidden Controls and Control Chaining
 
-Hidden controls are controls that are not listed with the --help argument of the command commbase nor in all and every terminal/voice command in its parse_skill_ function. They just are in the parse_skill_ functions for commands that require triggering special options that are not terminal/voice control commands. Those special options can also be used to chain other special options or options in interactive sequences, for example in terminal/voice commands that require to say and display a final result based on sub-results calculated in every special option, which is impossible by creating a new skillset terminal voice/command, because the individual skills do not save or cache sub-results.
+Undefined controls are not synonymous with hidden controls.
 
-In the next example, we are chaining hidden controls and controls. The case options a, b, and c are normal controls. The question options are hidden controls, and * is the default case option.
+**Hidden controls** are controls that are not listed with the --help argument of the command commbase nor in this document, and they are not in all and every terminal/voice command in its parse_skill_ function. They just reside in the parse_skill_ functions of commands that require triggering special options that are not covered by the **non hidden**, aka **visible** terminal/voice control commands. Those special options can also be used to **chain** other special options or options in interactive sequences, for example, in terminal/voice commands that require to say and display a final result based on sub-results calculated in every special option, which is impossible by creating a new skillset terminal voice/command, because the specified individual skills do not save or cache sub-results.
 
-```code
-case in:
+In the following example, which is a segment of a simple short quiz implemented as a terminal/voice command, both hidden controls and chained controls are utilized. The case options 'select the option number one|two|three|four' represent visible controls. On the other hand, the case options 'question 1|2|3|4' correspond to hidden controls. The *) symbolizes the default case option, which is executed during the initial run of the command.
 
-	case a):
-		case a content
-	
-	case b):
-		case b content
+
+		case $control_signal_str in
+
+			'STOP!')
+				echo -e "\e[1;41mCOMMBASE:\e[1;m The previous command can not be stoppeddd!"
+				echo "the previous command cannot be stopped" | festival --tts 
+				echo "success" > .matching_skill.dat
+				return 1;
+				;;
+			*)
+				echo "success" > /dev/null;
+				echo "success" > .matching_skill.dat
+				;;
+		esac
+
+
+File .question_answers.csv:
+
+Question|Answer
+"question 1"|4
+"question 2"|2
+"question 3"|1
+
+```plaintext
+CASE control IN:
+
+	'select the option number 1'):
+		IF the Answer for the question 1 is NOT IN the file .question_answers.csv.
+			Write the option number 1 in the question 1 of the file.
+		IF the Answer for the question 1 is IN the file .question_answers.csv.
+			Save the hidden control 'question 2' to .result_message.json.
+			Re-run the same terminal/voice command without waiting for a new user command.
+		IF the Answer for the question 1 is IN the file .question_answers.csv.
+
+		IF the Answer for the question 1 is IN the file .question_answers.csv.
 		
-	case c):
-		case c content
+		IF the Answer for the question 1 is IN the file .question_answers.csv.
 
-	question 2):
-		If the question 1 is in .question_answers.csv.
+	'select the option number 2'):
+		more code here
+
+	'select the option number 3'):
+		more code here
+		
+	'select the option number 4'):
+		more code here
+
+	'question 2'):
+		IF the question 1 is IN the file .question_answers.csv.
 			Ask the question 2.
-			Append the option selected to .question_answers.csv.
-			Save the hidden control "question 2" to .result_message.json.
+			Append the option selected to the file .question_answers.csv.
+			Save the hidden control 'question 2' to .result_message.json.
 			Re-run the same terminal/voice command.
-		Else
+		ELSE
 			Re-run the same terminal/voice command.
 
-	question 3):
-		If the question 2 is in .question_answers.csv.
+	'question 3'):
+		IF the question 2 is IN the file .question_answers.csv.
 			Ask the question 3.
-			Append the option selected to .question_answers.csv.
-			Save the hidden control "result 1" to .result_message.json.
+			Append the option selected to the file .question_answers.csv.
+			Save the hidden control "result 1" to the file .result_message.json.
+			Re-run the same terminal/voice command.
+		ELSE
 			Re-run the same terminal/voice command.
 
-	result 1):
-		If the questions 1-4 are in .question_answers.csv.
+	'result 1'):
+		IF the questions 1-3 are IN the file .question_answers.csv.
 			Calculate the result.
 			Say and display the result.
-				If the result is correct
+				IF the result is correct
 					Say that the result is correct.
-				Else
+				ELSE
 					Say that the result is incorrect.
 			Delete the content of the file .question_answers.csv.
 
 	*):
-		Ask the question 1.
-		Append the option selected to .question_answers.csv.
-		Save the hidden control "question 2" to .result_message.json.
-		Re-run the same terminal/voice command.
+		IF the Answer for the question 1 is NOT IN the file .question_answers.csv.
+			Ask the question 1.
+			Re-run the same terminal/voice command without waiting for a new user command.
+		ELSE IF the Answer for the question 2 is NOT IN the file .question_answers.csv.
+			Ask the question 2.
+			Re-run the same terminal/voice command without waiting for a new user command.
+		ELSE the Answer for the question 4 is NOT IN the file .question_answers.csv.
+			Ask the question 3.
+			Re-run the same terminal/voice command without waiting for a new user command.
+
 ```
 
 Example of a complete file question_answers.csv:
