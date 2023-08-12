@@ -26,7 +26,7 @@
 	- [Terminal Voice Skillsets](#terminal-voice-skillsets)
 - [7 Terminal Voice Controls](#7-terminal-voice-controls)
 	- [Undefined Controls](#undefined-controls)
-	- [Hidden Controls & Control Chaining](#hidden-controls-&-control-chaining)
+	- [Hidden Controls and Control Chaining](#hidden-controls-and-control-chaining)
 - [8 Terminal Voice Skills](#8-terminal-voice-skills)
 - [9 Terminal Voice Skillsets](#9-terminal-voice-skillsets)
 - [6 Default Commbase commands](#6-default-commbase-commands)
