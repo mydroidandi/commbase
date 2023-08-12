@@ -129,7 +129,7 @@ CTRL	X	Cut.
 <br />`CTRL` + `F` : Find.
 <br />`CTRL` + `N` : Create new file.
 
-## Tmux
+## Oh My Tmux
 
 `Prefix` + `B` , `1-9` : Switch window by its number id.
 <br />`Prefix` + `B` , `Q` : Display pane numbers.
