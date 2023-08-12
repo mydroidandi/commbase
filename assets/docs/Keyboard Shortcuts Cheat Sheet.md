@@ -9,7 +9,7 @@
 <br />`ALT` + `SHIFT` + `2` : Stop sound capturing.
 <br />`ALT` + `SHIFT` + `3` : Start sound capturing.
 
-These group of shortcuts are defined in the directory **scripts/configuration/key_bindings/**
+These group of shortcuts are defined in the directory **scripts/configuration/key_bindings/**.
 
 ## Bash
 
@@ -60,14 +60,14 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 
 ###	Bash Editing
 
-`Ctrl` + `U` : Delete before the cursor until the start of the command.
-<br />`Ctrl` + `K` : Delete after the cursor until the end of the command.
+`Ctrl` + `U` : Delete before the cursor until the start of the command line.
+<br />`Ctrl` + `K` : Delete after the cursor until the end of the command line.
 <br />`Ctrl` + `W` : Remove the command/argument before the cursor.
 <br />`Ctrl` + `D` : Remove the character under the cursor.
 <br />`Ctrl` + `H` : Remove character before the cursor.
-<br />`Alt` + `D` : Remove from the character until the end of the word.
-<br />`Alt` + `Backspace` : Remove from the character until the start of the word.
-<br />`Alt` + `.` / `Esc` + `.` : Use last argument of previous command.
+<br />`Alt` + `D` : Remove from the character until the end of the current word.
+<br />`Alt` + `Backspace` : Remove from the character until the start of the current word.
+<br />`Alt` + `.` / `Esc` + `.` : Use last argument of the previous command.
 <br />`Alt` + `<` : Move to the first line of the bash history.
 <br />`Alt` + `>` : Move to the last line of the bash history.
 <br />`Esc` + `T` : Switch between last two words before cursor.
@@ -91,12 +91,12 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 <br />`CTRL` + `ALT` + `ARROWS` : Move through desktop workspaces.
 <br />`SUPER` + `Z` : Desktop search.
 <br />`CTRL` + `ALT` + `DEL` : Reboot computer.
-<br />`ALT` + `SYSRQ` + `R` : un**R**aw (take control of keyboard back from X11)
-<br />`ALT` + `SYSRQ` + `E` : t**E**rminate (send SIGTERM to all processes, allowing them to terminate gracefully)
-<br />`ALT` + `SYSRQ` + `I` : k**I**ll (send SIGILL to all processes, forcing them to terminate immediately)
-<br />`ALT` + `SYSRQ` : `S` : **S**ync (flush data to disk)
-<br />`ALT` + `SYSRQ` + `U` : **U**nmount (remount all filesystems read-only)
-<br />`ALT` + `SYSRQ` + `B` : re**B**oot.
+<br />`ALT` + `SYSRQ` + `R` : un**R**aw (take control of the keyboard back from X11.)
+<br />`ALT` + `SYSRQ` + `E` : t**E**rminate (send SIGTERM to all processes, allowing them to terminate gracefully.)
+<br />`ALT` + `SYSRQ` + `I` : k**I**ll (send SIGILL to all processes, forcing them to terminate immediately.)
+<br />`ALT` + `SYSRQ` : `S` : **S**ync (flush data to disk.)
+<br />`ALT` + `SYSRQ` + `U` : **U**nmount (remount all filesystems as read-only.)
+<br />`ALT` + `SYSRQ` + `B` : re**B**oot (reboot the computer).
 
 ## Gnome Terminal
 
@@ -108,7 +108,7 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 
 ## Neovim / Emacs
 
-When using Neovim or Emacs, make sure that the custom keyboard shorcuts do not interfere one another in the complete list.
+When using Neovim or Emacs, make sure that the custom keyboard shortcuts do not interfere one another in the complete list.
 
 ## OBS
 
@@ -131,11 +131,11 @@ CTRL	X	Cut.
 
 ## Oh My Tmux
 
-`Prefix` + `B` , `1-9` : Switch window by its number id.
+`Prefix` + `B` , `1-9` : Switch windows by their number IDs.
 <br />`Prefix` + `B` , `Q` : Display pane numbers.
 <br />`Prefix` + `B` , `SHIFT` : Split pane vertically.
-<br />`Prefix` + `B` , `ARROWS` : Resize active pane.
-<br />`Prefix` + `B` , `ARROWS` : Switch pane.
+<br />`Prefix` + `B` , `ARROWS` : Resize the active pane.
+<br />`Prefix` + `B` , `ARROWS` : Switch panes.
 
 Default Prefix = CTRL
 
@@ -146,7 +146,7 @@ Default Prefix = CTRL
 <br />`CTRL` + `B` : Open/Close side panel. Bold a word if editing a markdown file while using a markdown extension for VS Code.
 <br />`CTRL` + `BACKTICK SYMBOL` : Open VS Code Terminal.
 
-When using VS Code, make sure that the custom keyboard shorcuts do not interfere one another in the complete list.
+When using VS Code, make sure that the custom keyboard shortcuts do not interfere with each other in the complete list.
 
 ## Web Browser
 
