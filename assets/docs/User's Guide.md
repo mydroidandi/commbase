@@ -2024,7 +2024,7 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 
 ### Keyboard Shortcuts Overlapping
 
-Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help avoid that problem, you can use [this guide.](./Keyboard%20Shortcuts%20Cheat%20Sheet.md)
+Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help avoid that problem, you can use [this document.](./Keyboard%20Shortcuts%20Cheat%20Sheet.md)
 
 ## Input Remapper
 
