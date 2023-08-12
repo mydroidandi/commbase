@@ -58,7 +58,7 @@
 - [11 Keyboard Shortcuts](#11-keyboard-shortcuts)
 	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
 	- [Commbase Key Bindings](#commbase-key-bindings)
-	- [Keyboard Shortcuts Overlapping](keyboard-shortcuts-overlapping)
+	- [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
 		- [Commbase Key Bindings](#commbase-key-bindings)
 		- [Bash](#bash)
 		- [Desktop Environment and Operating System](#desktop-environment-and-operating-system)
@@ -2020,7 +2020,7 @@ Skillsets voice commands examples:
 <br />`ALT` + `SHIFT` + `2` : Stop sound capturing.
 <br />`ALT` + `SHIFT` + `3` : Start sound capturing.
 
-These group of shortcuts are defined in the directory **scripts/configuration/key_bindings/**
+These group of shortcuts are defined in the directory **scripts/configuration/key_bindings/**.
 
 ### Keyboard Shortcuts Overlapping
 
