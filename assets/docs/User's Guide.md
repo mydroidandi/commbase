@@ -20,6 +20,10 @@
 	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)	
 - [5 Default Configuration Variables](#5-default-configuration-variables)
 - [6 Types of Commands](#6-types-of-commands)
+	- [Terminal Commands](#terminal-commands)
+	- [Terminal Voice Controls](#terminal-voice-controls)
+	- [Terminal Voice Skills](#terminal-voice-skills)
+	- [Terminal Voice Skillsets](#terminal-voice-skillsets)
 - [7 Terminal Voice Controls](#7-terminal-voice-controls)
 - [8 Terminal Voice Skills](#8-terminal-voice-skills)
 - [9 Terminal Voice Skillsets](#9-terminal-voice-skillsets)
@@ -310,7 +314,7 @@ Most of these variables are marked as optional and can be excluded if they are n
 
 - **OPENAI_API_KEY**:
   - Example value:
-    - `your_openai_api_key`:  The API key for accessing OpenAI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
+    - `your_openai_api_key`: The API key for accessing OpenAI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
