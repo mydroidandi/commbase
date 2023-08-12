@@ -26,7 +26,7 @@
 	- [Terminal Voice Skillsets](#terminal-voice-skillsets)
 - [7 Terminal Voice Controls](#7-terminal-voice-controls)
 	- [Undefined Controls](#undefined-controls)
-	- [Hidden Controls, Control Chaining](#hidden-controls,-control-chaining)
+	- [Hidden Controls & Control Chaining](#hidden-controls-&-control-chaining)
 - [8 Terminal Voice Skills](#8-terminal-voice-skills)
 - [9 Terminal Voice Skillsets](#9-terminal-voice-skillsets)
 - [6 Default Commbase commands](#6-default-commbase-commands)
@@ -1287,7 +1287,7 @@ TODO:
 
 TODO:
 
-## Hidden Controls, Control Chaining
+## Hidden Controls & Control Chaining
 
 Hidden controls are controls that are not listed with the --help argument of the command commbase nor in all and every terminal/voice command in its parse_skill_ function. They just are in the parse_skill_ functions for commands that require triggering special options that are not terminal/voice control commands. Those special options can also be used to chain other special options or options in interactive sequences, for example in terminal/voice commands that require to say and display a final result based on sub-results calculated in every special option, which is impossible by creating a new skillset terminal voice/command, because the individual skills do not save or cache sub-results.
 
