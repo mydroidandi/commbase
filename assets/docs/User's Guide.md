@@ -1289,9 +1289,9 @@ Undefined controls are controls that are unuseful for particular terminal/voice 
 
 When a control is undefined in the parse_skill_ function of a terminal/voice skill/skillset command, its content consists of a message that says that the control is undefined followed by a list of every undefined control for that specific command. For example, say "power off the computer" can or cannot be repeated, depending on the command logic design.
 
-It is recommended not to create undefined controls as possible due to it adds complexity to the command since the user has to remember the lack of the undefined control and memorize that specific command feature.
+It is recommended not to create undefined controls as possible due to it adds complexity to the command since the user could need to remember the lack of the undefined control and memorize that specific command feature to avoid falling into the delay of saying an undefined command.
 
-Feel free to create commands to ask for command hints, including about undefined controls. For example, say "what are the undefined controls for the command power off the computer".
+Anyway, feel free to create commands to ask for command hints, including about undefined controls. For example, say "what are the undefined controls for the command "power off the computer".
 
 ## Hidden Controls and Control Chaining
 
