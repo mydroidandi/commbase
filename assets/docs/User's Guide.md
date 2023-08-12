@@ -58,6 +58,7 @@
 - [11 Keyboard Shortcuts](#11-keyboard-shortcuts)
 	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
 		- [Commbase Key Bindings](#commbase-key-bindings)
+		- [Bash](#bash)
 		- [Desktop Environment and Operating System](#desktop-environment-and-operating-system)
 		- [Gnome Terminal](#gnome-terminal)
 		- [Neovim / Emacs](#neovim--emacs)
@@ -584,7 +585,7 @@ The default version of the file **app.conf** contains the next values:
 
 - **CONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE**
   - Example value:
-- `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_one_patterns` (Default): By utilizing this value, it becomes possible to reliably select an option among a number of options to proceed or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_one_patterns` (Default): By utilizing this value, it becomes possible to reliably select an option among a number of options to proceed or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
 - **CONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE**:
   - Example value:
@@ -2010,6 +2011,8 @@ Skillsets voice commands examples:
 
 ## Keyboard Shortcuts Cheat Sheet
 
+Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help avoid that problem, you can use [`this guide.`](./Keyboard Shortcuts Cheat Sheet.md)
+
 ### Commbase Key Bindings
 
 `CTRL` + `SHIFT` + `Z` : Toggle active capture device.
@@ -2018,77 +2021,6 @@ Skillsets voice commands examples:
 <br />`ALT` + `SHIFT` + `3` : Start sound capturing.
 
 These group of shortcuts are defined in the Commbase directory key-bindings/
-
-### Desktop Environment and Operating System
-
-`SHIFT` + `TAB` : Set focus.
-<br />`ALT` + `TAB` : Select any application and bring it to foreground.
-<br />`ALT` + `SHIFT` + `TAB` : Select any application and bring it to foreground.
-<br />`INSERT` Take a full screen screenshot.
-<br />`CTRL` + `ALT` + `F1-F12` : Switch among console terminals.
-<br />`CTRL` + `ALT` + `ARROWS` : Move through desktop workspaces.
-<br />`SUPER` + `Z` : Desktop search.
-<br />`CTRL` + `ALT` + `DEL` : Reboot computer.
-<br />`ALT` + `SYSRQ` + `R` : un**R**aw (take control of keyboard back from X11)
-<br />`ALT` + `SYSRQ` + `E` : t**E**rminate (send SIGTERM to all processes, allowing them to terminate gracefully)
-<br />`ALT` + `SYSRQ` + `I` : k**I**ll (send SIGILL to all processes, forcing them to terminate immediately)
-<br />`ALT` + `SYSRQ` : `S` : **S**ync (flush data to disk)
-<br />`ALT` + `SYSRQ` + `U` : **U**nmount (remount all filesystems read-only)
-<br />`ALT` + `SYSRQ` + `B` : re**B**oot.
-
-### Gnome Terminal
-
-`CTRL` + `-` : Resize terminal.
-<br />`CTRL` + `+` : Resize terminal.
-<br />`CTRL` + `SHIFT` + `X` + `X` : Selects a portion of the terminal text typed in.
-<br />`CTRL` + `SHIFT` + `C` : Copy highlighted text from terminal.
-<br />`CTRL` + `SHIFT` + `V` : Paste clipboard text into terminal.
-
-### Neovim / Emacs
-
-When using Neovim or Emacs, make sure that the custom keyboard shorcuts do not interfere one another in the complete list.
-
-### OBS
-
-`ALT` + `SHIFT` + `4` : Start recording.
-<br />`ALT` + `SHIFT` + `5` : Stop recording.
-<br />`ALT` + `SHIFT` + `6` : Start streaming.
-<br />`ALT` + `SHIFT` + `7` : Stop streaming.
-
-### SimpleScreenRecorder
-
-`SUPER` + `S` : Start recording.
-
-### Text Editors and IDEs
-
-CTRL	X	Cut.
-<br />`CTRL` + `C` : Copy.
-<br />`CTRL` + `V` : Paste.
-<br />`CTRL` + `F` : Find.
-<br />`CTRL` + `N` : Create new file.
-
-### Tmux
-
-`Prefix` + `B` , `1-9` : Switch window by its number id.
-<br />`Prefix` + `B` , `Q` : Display pane numbers.
-<br />`Prefix` + `B` , `SHIFT` : Split pane vertically.
-<br />`Prefix` + `B` , `ARROWS` : Resize active pane.
-<br />`Prefix` + `B` , `ARROWS` : Switch pane.
-
-Prefix = CTRL
-
-### VS Code
-
-`CTRL` + `SHIFT` + `P` : View Command Palette.
-<br />`CTRL` + `P` : Find file or expression.
-<br />`CTRL` + `B` : Open/Close side panel. Bold a word if editing a markdown file while using a markdown extension for VS Code.
-<br />`CTRL` + `BACKTICK SYMBOL` : Open VS Code Terminal.
-
-When using VS Code, make sure that the custom keyboard shorcuts do not interfere one another in the complete list.
-
-### Web Browser
-
-Click on a browser's tab and then use the roller to move through the tabs.
 
 ## Input Remapper
 
