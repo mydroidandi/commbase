@@ -20,10 +20,15 @@
 	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)	
 - [5 Default Configuration Variables](#5-default-configuration-variables)
 - [6 Types of Commands](#6-types-of-commands)
+	- [Terminal Commands](#terminal-commands)
+	- [Terminal Voice Controls](#terminal-voice-controls)
+	- [Terminal Voice Skills](#terminal-voice-skills)
+	- [Terminal Voice Skillsets](#terminal-voice-skillsets)
 - [7 Terminal Voice Controls](#7-terminal-voice-controls)
+	- [Undefined Controls](#undefined-controls)
+	- [Hidden Controls and Control Chaining](#hidden-controls-and-control-chaining)
 - [8 Terminal Voice Skills](#8-terminal-voice-skills)
 - [9 Terminal Voice Skillsets](#9-terminal-voice-skillsets)
-
 - [6 Default Commbase commands](#6-default-commbase-commands)
 	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
 	- [Commbase Management Commands](#commbase-management-commands)
@@ -58,7 +63,10 @@
 - [10 Training Commbase by Assembling Skillsets](#10-training-commbase-by-assembling-skillsets)
 - [11 Keyboard Shortcuts](#11-keyboard-shortcuts)
 	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
+	- [Commbase Key Bindings](#commbase-key-bindings)
+	- [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
 		- [Commbase Key Bindings](#commbase-key-bindings)
+		- [Bash](#bash)
 		- [Desktop Environment and Operating System](#desktop-environment-and-operating-system)
 		- [Gnome Terminal](#gnome-terminal)
 		- [Neovim / Emacs](#neovim--emacs)
@@ -86,7 +94,7 @@ These commands assume that the `commbase` command has been properly set up. If y
 
 To start a Commbase session from the command line, run the following command:
 
-```sh
+```shell
 commbase start
 ```
 
@@ -98,19 +106,19 @@ The most effective way is to use a specific voice command to instruct Commbase t
 
 Alternatively, you can stop Commbase by running the following command in the command line:
 
-```sh
+```shell
 commbase stop
 ```
 
 Another method involves manually terminating the Commbase session using the tmux command. First, you can list all active sessions by running:
 
-```sh
+```shell
 tmux list-sessions
 ```
 
 Identify the session named "Commbase-0" and remember its session ID. Then, issue the following command to kill that specific session:
 
-```sh
+```shell
 tmux kill-session -t Commbase-0
 ```
 
@@ -118,7 +126,7 @@ tmux kill-session -t Commbase-0
 
 The "teleport" command in Commbase provides a convenient way to handle different scenarios.
 
-```sh
+```shell
 commbase teleport
 ```
 
@@ -190,13 +198,13 @@ Press `Ctrl` - `b`, then press `1`.
 
 ## List All the Active Sessions
 
-```sh
+```shell
 tmux list-sessions
 ```
 
 ## Kill the Session
 
-```sh
+```shell
 tmux kill-session -t Commbase-0
 ```
 
@@ -214,7 +222,7 @@ Next, list all the active sessions using the comman above.
 
 Finally, close the duplicated session(s).
 
-```sh
+```shell
 tmux kill-session -t Commbase-2 & tmux kill-session -t Commbase-1 & tmux kill-session -t Commbase-0
 
 ```
@@ -223,7 +231,7 @@ The ampersand (&) at the end of each command allows them to be executed concurre
 
 Alternatively, you can terminate all tmux sessions at once.
 
-```sh
+```shell
 pkill tmux
 ```
 
@@ -235,11 +243,11 @@ The configuration variables can be accessed by going to the directory **config/*
 
 Use your favorite text editor to open any of those files.
 
-```sh
+```shell
 nano config/secrets
 ```
 
-```sh
+```shell
 nano config/app.conf
 ```
 
@@ -308,7 +316,7 @@ Most of these variables are marked as optional and can be excluded if they are n
 
 - **OPENAI_API_KEY**:
   - Example value:
-    - `your_openai_api_key`:  The API key for accessing OpenAI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
+    - `your_openai_api_key`: The API key for accessing OpenAI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
@@ -583,9 +591,9 @@ The default version of the file **app.conf** contains the next values:
   - Example value:
     - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_deny_patterns` (Default): By utilizing this value, it becomes possible to reliably deny or cancel changes proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
-**CONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE**
+- **CONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE**
   - Example value:
-- `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_one_patterns` (Default): By utilizing this value, it becomes possible to reliably select an option among a number of options to proceed or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_one_patterns` (Default): By utilizing this value, it becomes possible to reliably select an option among a number of options to proceed or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
 - **CONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE**:
   - Example value:
@@ -641,11 +649,11 @@ How to reset the configuration file **app.conf**.
 
 It restores the configuration file to its inital status. Go to the directory **scripts/utilities** and execute the file **reset_app.conf.sh**.
 
-```sh
+```shell
 cd scripts/utilities
 ```
 
-```sh
+```shell
 bash reset-commbase.conf.sh
 ```
 
@@ -653,7 +661,7 @@ bash reset-commbase.conf.sh
 
 You can display the types of commands and some examples using the help option like this:
 
-```sh
+```shell
 commbase -h
 commbase --help
 ```
@@ -664,7 +672,7 @@ These are commands limited to be executed in the terminal.
 
 ## Terminal Voice Controls
 
-A control command consists of a message that the previous skill command parser uses to execute parameterized options, affecting the default command behavior.
+A control command consists of a message that the previous skill or skillset command parser uses to execute parameterized options, affecting the default command behavior.
 
 ## Terminal Voice Skills
 
@@ -678,65 +686,78 @@ Skillsets are commands grouped as a list of orders to be executed sequentially a
 
 You can create extra controls if you want to, but you can do almost everything that is possible with the controls that come with Commbase. These out-of-the-box controls are:
 
-- **"[okay|ok] stop"**:
-  - Description: Stop the previous command.
-  - Steps:
-    - END USER: Requests to do something using a terminal/voice command.
-    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
-    - SKILL FUNCTION: Executes the command.
-    - END USER: Sends the control "okay stop".
-    - STT ENGINE: Writes only in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay stop" in the parse_skill_ function, and then executes a command to terminate the previous terminal/voice command (program executable or script process).
+> **[okay|ok] stop**
+
+- Description: Stop the previous command.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Executes the command.
+  - END USER: Sends the control "okay stop".
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay stop" in the parse_skill_ function, and then executes a command to terminate the previous terminal/voice command (program executable or script process).
 
 Base code:
-TODO:
 
-- **"[okay|ok] run it again"**:
-  - Description:  Re-run the previous command.
-  - Steps:
-    - END USER: Requests to do something using a terminal/voice command.
-    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
-    - SKILL FUNCTION: Executes the command.
-    - END USER: Sends the control "okay run it again".
-    - STT ENGINE: Writes only in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay run it again" in the parse_skill_ function, and then executes a command that runs the same content of the case option *), the previous terminal/voice command.
+```shell
+TODO:
+```
+
+> **[okay|ok] run it again**
+
+- Description:  Re-run the previous command.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Executes the command.
+  - END USER: Sends the control "okay run it again".
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay run it again" in the parse_skill_ function, and then executes a command that runs the same content of the case option *), the previous terminal/voice command.
 
 Base code:
-TODO:
 
-- **"[okay|ok] repeat"**:
-  - Description: Reproduce the previous discourse by speaking it.
-  - Limits: Do not use it to re-run previous terminal/voice commands.
-  - Steps:
-    - END USER: Requests to do something using a terminal/voice command.
-    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a command that includes or consists of a discourse (question, answer, greeting, feedback, etc.). All and every discourse includes a programming code to save a copy of it in the **.current_discourse** file. The reason to save it to a file is that there are many case options for every terminal/voice command, and the next terminal/voice command will overwrite the option in .result_message.json with a new "okay repeat" control, making unavailable/unknown the previous control message for the whole program.
-    - END USER: Sends the control "okay repeat", due to did not understand or did not hear well the discourse.
-    - STT ENGINE: Writes only in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay repeat" in the parse_skill_ function, and then executes a command that repeats by voice the content of **.current_discourse**.
+```shell
+TODO:
+```
+
+> **[okay|ok] repeat**
+
+- Description: Reproduce the previous discourse by speaking it.
+- Limits: Do not use it to re-run previous terminal/voice commands.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a command that includes or consists of a discourse (question, answer, greeting, feedback, etc.). All and every discourse includes a programming code to save a copy of it in the **.current_discourse** file. The reason to save it to a file is that there are many case options for every terminal/voice command, and the next terminal/voice command will overwrite the option in .result_message.json with a new "okay repeat" control, making unavailable/unknown the previous control message for the whole program.
+  - END USER: Sends the control "okay repeat", due to did not understand or did not hear well the discourse.
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay repeat" in the parse_skill_ function, and then executes a command that repeats by voice the content of **.current_discourse**.
 
 Base code:
-TODO:
 
-- **"[okay|ok] remind me in [five|ten|twenty|thirty] minutes"**:
-  - Description: Start a question reminder countdown timer.
-  - Steps:
-    - END USER: Requests to do something using a terminal/voice command.
-    - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a code that includes a requirement of user intervention in the form of a question spoken and displayed on the screen.
-    - END USER: Sends the control "okay remind me in five minutes".
-    - STT ENGINE: Writes only in .result_message.json.
-    - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay remind me in five minutes" in the parse_skill_ function. It executes a code to append the total of the sum of the current time + the minutes to delay the question, for example, 5, to the **.pending_tasks.csv** (in the field Timeout) file and the current request in .previous_result_message.json (in the field Task). Next, it executes a code that runs a countdown timer of 5 minutes. The script remains running in the background.
-    - END USER: Is able to do whatever he/she wants or requires during the time specified in the terminal/voice control command.
-    - SKILL FUNCTION: The countdown timer of the script running in the background reaches 0. 
-      The assistant reminds the user that this task is pending, using a specific notification sound alert (stored in the variable `SOUND_A_PENDING_TASK_AWAITS_ATTENTION` in the configuration file **config/app.conf**).
-    - END USER: At this point, the user can: 
-    	a. Answer the question to run the task.
-    	b. Accept or deny/cancel based on the dialog with "okay accept".
-    	c. Ask for an out loud repetition with "okay repeat".
-    	d. Stop (terminate) the related command with "okay stop".
-    	e. Ask the assistant to remind in a new period of time with "okay remind me in 10 minutes"
-    	f. Move forward onto the next task pending with "ok what is the next task". This can be done infinitely while there are tasks pending in the list loop.
+```shell
+TODO:
+```
+
+> **[okay|ok] remind me in [five|ten|twenty|thirty] minutes**
+
+- Description: Start a question reminder countdown timer.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a code that includes a requirement of user intervention in the form of a question spoken and displayed on the screen.
+  - END USER: Sends the control "okay remind me in five minutes".
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay remind me in five minutes" in the parse_skill_ function. It executes a code to append the total of the sum of the current time + the minutes to delay the question, for example, 5, to the **.pending_tasks.csv** (in the field Timeout) file and the current request in .previous_result_message.json (in the field Task). Next, it executes a code that runs a countdown timer of 5 minutes. The script remains running in the background.
+  - END USER: Is able to do whatever he/she wants or requires during the time specified in the terminal/voice control command.
+  - SKILL FUNCTION: The countdown timer of the script running in the background reaches 0. 
+    The assistant reminds the user that this task is pending, using a specific notification sound alert (stored in the variable `SOUND_A_PENDING_TASK_AWAITS_ATTENTION` in the configuration file **config/app.conf**).
+  - END USER: At this point, the user can: 
+  	a. Answer the question to run the task.
+  	b. Accept or deny/cancel based on the dialog with "okay accept".
+  	c. Ask for an out loud repetition with "okay repeat".
+  	d. Stop (terminate) the related command with "okay stop".
+  	e. Ask the assistant to remind in a new period of time with "okay remind me in 10 minutes"
+  	f. Move forward onto the next task pending with "ok what is the next task". This can be done infinitely while there are tasks pending in the list loop.
 
 Example 1:
 
@@ -817,13 +838,13 @@ echo "New Date: $new_date"
 
 Make sure to give the file execution permissions:
 
-```sh
+```shell
 chmod +x add_50_minutes.sh   
 ```
 
 Then, run the script:
 
-```sh
+```shell
 ./add_50_minutes.sh
 ```
 
@@ -853,25 +874,26 @@ echo "$new_date|$task_text" >> data/.pending_tasks.csv
 
 To display the contents of the myfile.txt file in the terminal, you can use the cat command in Bash:
 
-```sh
+```shell
 cat data/.pending_tasks.csv
 ```
 
-- **""[okay|ok] what is the next task"**:
-  - Description: Remind of a prior question put on hold in a queue.
-  - Steps:
-    - END USER: Sends the control "okay what is the next task".
-    - STT ENGINE: Writes the request in **data/.result_message.json**.
-    - SKILL FUNCTION: It calculates the next pending task to present it to the user, as follows:
-    	If there is not any task in **data/.pending_tasks.csv**, it reproduces a message to inform the user about that and breaks the control command.
-      First, reorders the rows in a variable by Timeout in ascending Order. This arranges the date rows from the earliest to the latest date.
-      Next, it rewrites the complete content of the file using the new order of tasks. 
-      Next, it writes the terminal/voice command of the first data row in the file **.previous_result_message.json**.
-      After that, the first data row is updated with the **latest** date and time in the complete task list including the laset second 1 second. The seconds are the deciders to prepare the task to go to the end of the list the next time the file **data/.pending_tasks.csv** is called and then reordered. It avoids having the same task as first in the list every time the user sends the control "okay what is the next task" more than one time to skip the current task presented without discarding it but leaving it to retake it later again.
-      Finally, the task presented, still in the first data row, is executed as a terminal/voice command.  
-    - END USER: Has two options at this point.
-      a. It can repeat the terminal/voice control "okay what is the next task" to skip the current task without discarding it but leaving it for later again.
-      b. It can answer the question (execute the terminal/voice command.) **IMPORTANT**: Executing a terminal/voice command always requires verifying the file **data/.pending_tasks.csv** in the case option *) of the parse_skill_: If the **first data row** of the tasks list corresponds to the current terminal/voice command (assigned from **.previous_result_message.json**), the complete line will be deleted from the file. If we do not delete it from the tasks list it will be found out by "okay what is the next task" again at some time and request to complete it again, which would be considered a bug.
+> **[okay|ok] what is the next task**
+
+- Description: Remind of a prior question put on hold in a queue.
+- Steps:
+  - END USER: Sends the control "okay what is the next task".
+  - STT ENGINE: Writes the request in **data/.result_message.json**.
+  - SKILL FUNCTION: It calculates the next pending task to present it to the user, as follows:
+  	If there is not any task in **data/.pending_tasks.csv**, it reproduces a message to inform the user about that and breaks the control command.
+    First, reorders the rows in a variable by Timeout in ascending Order. This arranges the date rows from the earliest to the latest date.
+    Next, it rewrites the complete content of the file using the new order of tasks. 
+    Next, it writes the terminal/voice command of the first data row in the file **.previous_result_message.json**.
+    After that, the first data row is updated with the **latest** date and time in the complete task list including the laset second 1 second. The seconds are the deciders to prepare the task to go to the end of the list the next time the file **data/.pending_tasks.csv** is called and then reordered. It avoids having the same task as first in the list every time the user sends the control "okay what is the next task" more than one time to skip the current task presented without discarding it but leaving it to retake it later again.
+    Finally, the task presented, still in the first data row, is executed as a terminal/voice command.  
+  - END USER: Has two options at this point.
+    a. It can repeat the terminal/voice control "okay what is the next task" to skip the current task without discarding it but leaving it for later again.
+    b. It can answer the question (execute the terminal/voice command.) **IMPORTANT**: Executing a terminal/voice command always requires verifying the file **data/.pending_tasks.csv** in the case option *) of the parse_skill_: If the **first data row** of the tasks list corresponds to the current terminal/voice command (assigned from **.previous_result_message.json**), the complete line will be deleted from the file. If we do not delete it from the tasks list it will be found out by "okay what is the next task" again at some time and request to complete it again, which would be considered a bug.
 
 Example 1:
 
@@ -913,7 +935,7 @@ Base code 1:
 
 This script contains the functions required to make work this terminal/voice control command in the `SKILL FUNCTION` of every terminal/voice skill/skillset command. 
 
-```sh
+```shell
 #!/bin/env bash
 
 # Define the result message file
@@ -1133,13 +1155,211 @@ Base code 2:
 
 The next code corresponds to the section `END USER:`, option `b.`. The user answers the question (execute the terminal/voice command.). If the **first data row** of the tasks list corresponds to the current terminal/voice command (assigned from **.previous_result_message.json**), the complete line will be deleted from the file.
 
-```sh
-
+```shell
 
 downloads/tmp/verifications.sh code here
 
-
 ```
+
+
+
+> **[okay|ok] accept**
+
+> **[okay|ok] deny**
+
+- Description: Accept a Y/N question, or Deny/Cancel a Y/N question.
+- Steps:
+  - The user requests to do something.
+    The program writes in .previous_result_message.json and in .result_message.json.
+    Example: "Tell me when I receive an email from Paul."
+  - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
+    The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
+  - When the new Paul's email arrives, the assistant proposes a solution for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new accept or deny command.
+    In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
+    Example: "You have received an email from Paul. Do you want me to read it out loud to you?" (The written part could include the possible case options: ok accept, ok, deny, ok repeat, ok remind me in five, thirty, or sixty minutes, ok skip that question, etc.)
+  - The user has one opportunity to ACCEPT or DENY the solution.
+    The user answer is stored only in the .result_message.json
+	 	Example: "Ok accept / Ok deny."
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] confirm with the code <four number code>**
+
+- Description: Confirm a confirmation request.
+- Steps:
+  - Certain commands can be made with an additional option to ask for user confirmation when Accepts, for security reasons. In such cases, the assistant asks for confirmation. The program goes to the case option ok confirm of the same terminal/voice command. This is done using a code but can be any other or a combination of some biometric methods, for example face recognition.
+  Example: "Confirm using your confirmation code."
+  - The user has one opportunity to Confirm or deny.
+  If the confirmation code (in secrets file) is wrong, repeat the confirmation request case option until the code is right or the user denies/cancels the solution.
+  The user answer is stored only in the .result_message.json.
+  Example: "ok confirm with the code 12345" / "12345"
+  Example: "ok deny."
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] select the option number [one|two|three|four]**
+
+- Description: Select a multi-choice question option.
+- Steps:
+  - The user requests to do something.
+  The program writes in .previous_result_message.json and in .result_message.json.
+  Example: "Tell me when I receive an email from Paul."
+  - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
+  - The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
+  - When the new Paul's email arrives, the assistant proposes a number of solutions for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new command based on the chosen option.
+  In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
+  Example: "You have received an email from Paul. Please select an option: 1. Open it on the screen. 2. Read it out loud. 3. Remind me about that in 5 minutes. 4. Forget about that / Skip that question.
+  - The user choses an option.
+  The user answer is stored only in the .result_message.json.
+  Inside the same question parser, case option "select the option number <number>" the option chosen is executed.
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] what mode are you in**
+
+- Description: Confirm the current mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] enter the normal mode**
+- Description: Enter the normal mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] enter the conversation mode**
+- Description: Enter the conversation mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+             
+> **[okay|ok] enter the expert mode**
+- Description: Enter the expert mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] enter the follow mode**
+- Description: Enter the follow mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+
+## Undefined Controls
+
+Undefined controls are controls that are unuseful for particular terminal/voice commands.
+
+When a control is undefined in the parse_skill_ function of a terminal/voice skill/skillset command, its content consists of a message that says that the control is undefined followed by a list of every undefined control for that specific command. For example, say "power off the computer" can or cannot be repeated, depending on the command logic design.
+
+It is recommended not to create undefined controls as possible due to it adds complexity to the command since the user has to remember the lack of the undefined control and memorize that specific command feature.
+
+Feel free to create commands to ask for command hints, including about undefined controls. For example, say "what are the undefined controls for the command power off the computer".
+
+## Hidden Controls and Control Chaining
+
+Hidden controls are controls that are not listed with the --help argument of the command commbase nor in all and every terminal/voice command in its parse_skill_ function. They just are in the parse_skill_ functions for commands that require triggering special options that are not terminal/voice control commands. Those special options can also be used to chain other special options or options in interactive sequences, for example in terminal/voice commands that require to say and display a final result based on sub-results calculated in every special option, which is impossible by creating a new skillset terminal voice/command, because the individual skills do not save or cache sub-results.
+
+In the next example, we are chaining hidden controls and controls. The case options a, b, and c are normal controls. The question options are hidden controls, and * is the default case option.
+
+```code
+case in:
+
+	case a):
+		case a content
+	
+	case b):
+		case b content
+		
+	case c):
+		case c content
+
+	question 2):
+		If the question 1 is in .question_answers.csv.
+			Ask the question 2.
+			Append the option selected to .question_answers.csv.
+			Save the hidden control "question 2" to .result_message.json.
+			Re-run the same terminal/voice command.
+		Else
+			Re-run the same terminal/voice command.
+
+	question 3):
+		If the question 2 is in .question_answers.csv.
+			Ask the question 3.
+			Append the option selected to .question_answers.csv.
+			Save the hidden control "result 1" to .result_message.json.
+			Re-run the same terminal/voice command.
+
+	result 1):
+		If the questions 1-4 are in .question_answers.csv.
+			Calculate the result.
+			Say and display the result.
+				If the result is correct
+					Say that the result is correct.
+				Else
+					Say that the result is incorrect.
+			Delete the content of the file .question_answers.csv.
+
+	*):
+		Ask the question 1.
+		Append the option selected to .question_answers.csv.
+		Save the hidden control "question 2" to .result_message.json.
+		Re-run the same terminal/voice command.
+```
+
+Example of a complete file question_answers.csv:
+
+```text
+Question, Answer
+result of two plus two, 4 
+result of two minus one, 1
+result of two divided by one, 2
+```
+
+Example of possible calculations to resolve in the case option result 1:
+- The number of questions asnwered correctly (1, 2 or 3 out of 3, for an interactive sequence/questionnaire/test/exam of 3 questions.
+- The sum of all the results of all the questions (correct result = 7)
+
+Example of the terminal/voice command for the interactive sequence:
+
+> Start the math test number one zero one
 
 # 8 Terminal Voice Skills
 
@@ -1491,7 +1711,7 @@ your speech recognition model learning process.
 
 The next piece of code is a case inside /usr/bin/commbase
 
-```bash
+```shell
 'stop')
   echo "Stopping application"
   tmux kill-session -t Commbase-0
@@ -1502,7 +1722,7 @@ The next piece of code is a case inside /usr/bin/commbase
 This command is going to help cleaning up the 'commbase' file before pasting a new versions that
 includes the a new command:
 
-```code
+```shell
 # cd /usr/bin
 # echo "" > commbase
 # nano commbase
@@ -1572,7 +1792,7 @@ Commbase uses an environment constant $COMMBASE_ROOT_DIR set up for the user env
 
 Example of the custom lines added to a bashrc file:
 
-```bash
+```shell
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -1594,7 +1814,7 @@ source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 ```
 Example of use of the constant in the same bash script:
 
-```bash
+```shell
 mpv $COMMBASE_ROOT_DIR/commbase/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
 ```
 
@@ -1606,7 +1826,7 @@ changed to point to any specified default or custom version of the file commbase
 which processes voice commands and scripts that run tasks we use and are able to program for Commbase
 to run them.
 
-```bash
+```shell
 
 # The Commbase processing file for this device:
 COMMBASE_PROCESS_VOSK="commbase-process-vosk-pc-default.sh"
@@ -1659,11 +1879,11 @@ Alternatives:
 $ commbase start
 ```
 
-```
+```shell
 $ commbase teleport
 ```
 
-```
+```shell
 $ commbase stop
 $ commbase start
 ```
@@ -1810,78 +2030,11 @@ Skillsets voice commands examples:
 <br />`ALT` + `SHIFT` + `2` : Stop sound capturing.
 <br />`ALT` + `SHIFT` + `3` : Start sound capturing.
 
-These group of shortcuts are defined in the Commbase directory key-bindings/
+These group of shortcuts are defined in the directory **scripts/configuration/key_bindings/**.
 
-### Desktop Environment and Operating System
+### Keyboard Shortcuts Overlapping
 
-`SHIFT` + `TAB` : Set focus.
-<br />`ALT` + `TAB` : Select any application and bring it to foreground.
-<br />`ALT` + `SHIFT` + `TAB` : Select any application and bring it to foreground.
-<br />`INSERT` Take a full screen screenshot.
-<br />`CTRL` + `ALT` + `F1-F12` : Switch among console terminals.
-<br />`CTRL` + `ALT` + `ARROWS` : Move through desktop workspaces.
-<br />`SUPER` + `Z` : Desktop search.
-<br />`CTRL` + `ALT` + `DEL` : Reboot computer.
-<br />`ALT` + `SYSRQ` + `R` : un**R**aw (take control of keyboard back from X11)
-<br />`ALT` + `SYSRQ` + `E` : t**E**rminate (send SIGTERM to all processes, allowing them to terminate gracefully)
-<br />`ALT` + `SYSRQ` + `I` : k**I**ll (send SIGILL to all processes, forcing them to terminate immediately)
-<br />`ALT` + `SYSRQ` : `S` : **S**ync (flush data to disk)
-<br />`ALT` + `SYSRQ` + `U` : **U**nmount (remount all filesystems read-only)
-<br />`ALT` + `SYSRQ` + `B` : re**B**oot.
-
-### Gnome Terminal
-
-`CTRL` + `-` : Resize terminal.
-<br />`CTRL` + `+` : Resize terminal.
-<br />`CTRL` + `SHIFT` + `X` + `X` : Selects a portion of the terminal text typed in.
-<br />`CTRL` + `SHIFT` + `C` : Copy highlighted text from terminal.
-<br />`CTRL` + `SHIFT` + `V` : Paste clipboard text into terminal.
-
-### Neovim / Emacs
-
-When using Neovim or Emacs, make sure that the custom keyboard shorcuts do not interfere one another in the complete list.
-
-### OBS
-
-`ALT` + `SHIFT` + `4` : Start recording.
-<br />`ALT` + `SHIFT` + `5` : Stop recording.
-<br />`ALT` + `SHIFT` + `6` : Start streaming.
-<br />`ALT` + `SHIFT` + `7` : Stop streaming.
-
-### SimpleScreenRecorder
-
-`SUPER` + `S` : Start recording.
-
-### Text Editors and IDEs
-
-CTRL	X	Cut.
-<br />`CTRL` + `C` : Copy.
-<br />`CTRL` + `V` : Paste.
-<br />`CTRL` + `F` : Find.
-<br />`CTRL` + `N` : Create new file.
-
-### Tmux
-
-`Prefix` + `B` , `1-9` : Switch window by its number id.
-<br />`Prefix` + `B` , `Q` : Display pane numbers.
-<br />`Prefix` + `B` , `SHIFT` : Split pane vertically.
-<br />`Prefix` + `B` , `ARROWS` : Resize active pane.
-<br />`Prefix` + `B` , `ARROWS` : Switch pane.
-
-Prefix = CTRL
-
-### VS Code
-
-`CTRL` + `SHIFT` + `P` : View Command Palette.
-<br />`CTRL` + `P` : Find file or expression.
-<br />`CTRL` + `B` : Open/Close side panel. Bold a word if editing a markdown file while using a markdown extension for VS Code.
-<br />`CTRL` + `BACKTICK SYMBOL` : Open VS Code Terminal.
-
-When using VS Code, make sure that the custom keyboard shorcuts do not interfere one another in the complete list.
-
-### Web Browser
-
-Click on a browser's tab and then use the roller to move through the tabs.
+Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help you avoid that problem, you can use [this document.](./Keyboard%20Shortcuts%20Cheat%20Sheet.md)
 
 ## Input Remapper
 
