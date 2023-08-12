@@ -57,6 +57,8 @@
 - [10 Training Commbase by Assembling Skillsets](#10-training-commbase-by-assembling-skillsets)
 - [11 Keyboard Shortcuts](#11-keyboard-shortcuts)
 	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
+	- [Commbase Key Bindings](#commbase-key-bindings)
+	- [Keyboard Shortcuts Overlapping](keyboard-shortcuts-overlapping)
 		- [Commbase Key Bindings](#commbase-key-bindings)
 		- [Bash](#bash)
 		- [Desktop Environment and Operating System](#desktop-environment-and-operating-system)
@@ -2020,7 +2022,7 @@ Skillsets voice commands examples:
 
 These group of shortcuts are defined in the directory **scripts/configuration/key_bindings/**
 
-### Keyboard shortcuts overlapping
+### Keyboard Shortcuts Overlapping
 
 Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help avoid that problem, you can use [this guide.](./Keyboard%20Shortcuts%20Cheat%20Sheet.md)
 
