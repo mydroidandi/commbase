@@ -35,7 +35,7 @@
 # recorded audio, and prints the recognized text.
 # Requires the Whisper model used in the code. The first execution of the
 # program downloads it automatically.
-# Requires to run redirecting the standard error output (stderr) to the null 
+# Requires to run redirecting the standard error output (stderr) to the null
 # device (/dev/null) like this to avoid ALSA output messages:
 # python commbase_stt_whisper_p.py 2>& /dev/null
 
@@ -71,7 +71,7 @@ def listen():
 	except Exception as e:
 		print(e)
 	return save_path
-	
+
 
 def recognize_audio(save_path):
 	"""
