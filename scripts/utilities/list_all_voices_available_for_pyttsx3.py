@@ -54,4 +54,3 @@ for voice in voices:
 	print(" - Gender: %s" % voice.gender)
 	print(" - Age: %s" % voice.age)
 	print (" - Index: %s" % idx)
-
