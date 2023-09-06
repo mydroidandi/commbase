@@ -632,6 +632,37 @@ The default version of the file **app.conf** contains the next values:
   - Example value:
     - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_follow_mode_patterns` (Default): By utilizing this value, it becomes possible to reliably make the Assistant exit from a previously entered mode to enter the Follow mode.
 
+TODO: Add this variables when implemented:
+
+- **ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON**:
+  - Description: This variable is used in the function **bundles/built-in/broker/libcommbase/libcommbase/routines/skills_else**.
+  - Possible values: True or False.
+  - Example value:
+    - `False` (Default): The assistant will answer to unknown commands using the **bundles/built-in/broker/libcommbase/libcommbase/routines/random_no function**.
+    - `True`: If the variable is active in the configuration file **config/app.conf** the assistant will answer using a connection to a bundled or serviced AI chatbot that uses natural language processing to create a humanlike conversational dialogue, for example, **OpenAI's ChatGPT**, instead of using the **bundles/built-in/broker/libcommbase/libcommbase/routines/random_no function**, making those negative answers more conversational. The AI chatbot is defined by the variable `AI_CHATBOT_STRING`. App users can use this as an advantage to make interactions with the assistant appear more organic due to commands can be mixed with regular conversations similar to the conversations in the **conversation mode** or the **expert mode**. However, it can lead users to wrongly say language patterns strictly predefined as terminal/voice commands, which are automatically identified by the application and executed without user intention. Also, the user is still limited to typing/saying **prompts** (or terminal/voice commands) of 9 words maximum as it is defined for the **normal mode** (it relies on the maximum number of command arguments that can be used in Bash), and the bundled or serviced AI chatbot is also limited to answering using a maximum of 35 words (modifiable, using the variable `UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT`.
+
+- **AI_CHATBOT_STRING**:
+  - Description: Defines the bundled or serviced AI chatbot answering unknown terminal/voice commands.
+    Check out the variables: `UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT` and `ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON`.
+  - Possible values:
+    - `$TODO: New git repo based on the script terminal_chatgpt` (Default): Defines OpenAI's ChatGPT as the serviced AI chatbot that uses natural language processing to create a humanlike conversational dialogue
+
+- **UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT**:
+  - Description: Limiting answers can be beneficial because it promotes brevity, clarity, and conciseness. It ensures that information is delivered efficiently, making it easier for readers/listeners to grasp and retain the key points.
+    Check out the variables: `AI_CHATBOT_STRING` and `ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON`.
+  - Possible values: (Double quoted) numbers.
+  - Example value:
+    - `35` (Default): Limits the bundled or serviced AI chatbot to answering using a maximum of 35 words.
+
+SOUND_POSITIVE_CONFIRMATION="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/beep-up.wav"
+SOUND_NEGATIVE_CONFIRMATION="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/beep-down.wav"
+SOUND_SAY_YES_WITHOUT_SPEAKING="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-sci-fi-confirmation-914.wav"
+SOUND_SAY_NO_WITHOUT_SPEAKING="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-sci-fi-reject-notification-896.wav"
+SOUND_A_PENDING_TASK_AWAITS_ATTENTION="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-unlock-game-notification-253.wav"
+SOUND_PENDING_TASKS_REMINDER="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-uplifting-flute-notification-2317.wav"
+PENDING_TASKS_VERIFICATION_FREQUENCY_IN_SECS="6000"
+
+
 - **EXTERNAL_STORAGE_DRIVE_01_TAG**:
   - Example value:
     - `WD1` (Default): This tag is used to distinguish or label the specific external storage drive, allowing easy identification and referencing within a system and/or application.
