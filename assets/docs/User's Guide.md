@@ -690,10 +690,10 @@ The default version of the file **app.conf** contains the next values:
     - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-uplifting-flute-notification-2317.wav` (Default): A sound that reminds the user about the pending tasks queue.
 
 - **PENDING_TASKS_VERIFICATION_FREQUENCY_IN_SECS**:
-  - Description: The frequency, in seconds, at which pending tasks are checked or verified. To calculate this, you can multiply the number of minutes in an hour (60 minutes) by the number of seconds in a minute (60 seconds): 1 hour * 60 minutes/hour * 60 seconds/minute = 3,600 seconds. There are 3,600 seconds in 1 hour.
+  - Description: The frequency, in seconds, at which pending tasks are checked or verified. To calculate this, you can multiply the number of minutes, for example, 60 minuts (an hour) by the number of seconds in a minute (60 seconds): 1 hour * 60 minutes/hour * 60 seconds/minute = 3,600 seconds. There are 3,600 seconds in 1 hour.
   - Possible values: A number of seconds.
   - Example value:
-    - `3600` (Default): In this case, it's set to 3600 seconds (equivalent to 1 hour and 0 minutes), indicating that the system checks for pending tasks approximately every 60 minutes.
+    - `3600` (Default): Set to 3600 seconds (equivalent to 1 hour and 0 minutes), indicates that the system checks for pending tasks approximately every 60 minutes.
 
 - **EXTERNAL_STORAGE_DRIVE_01_TAG**:
   - Example value:
