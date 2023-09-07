@@ -632,8 +632,6 @@ The default version of the file **app.conf** contains the next values:
   - Example value:
     - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_follow_mode_patterns` (Default): By utilizing this value, it becomes possible to reliably make the Assistant exit from a previously entered mode to enter the Follow mode.
 
-TODO: Verify and finish this variable decriptions when the variables are implemented:
-
 - **ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON**:
   - Description: This variable is used in the function **bundles/built-in/broker/libcommbase/libcommbase/routines/skills_else**.
   - Possible values: True or False.
@@ -655,14 +653,47 @@ TODO: Verify and finish this variable decriptions when the variables are impleme
   - Example value:
     - `35` (Default): Limits the bundled or serviced AI chatbot to answering using a maximum of 35 words.
 
-SOUND_POSITIVE_CONFIRMATION="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/beep-up.wav"
-SOUND_NEGATIVE_CONFIRMATION="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/beep-down.wav"
-SOUND_SAY_YES_WITHOUT_SPEAKING="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-sci-fi-confirmation-914.wav"
-SOUND_SAY_NO_WITHOUT_SPEAKING="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-sci-fi-reject-notification-896.wav"
-SOUND_A_PENDING_TASK_AWAITS_ATTENTION="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-unlock-game-notification-253.wav"
-SOUND_PENDING_TASKS_REMINDER="$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-uplifting-flute-notification-2317.wav"
-PENDING_TASKS_VERIFICATION_FREQUENCY_IN_SECS="6000"
+- **SOUND_POSITIVE_CONFIRMATION**:
+  - Description: The sound file path for a positive confirmation sound, typically used to indicate a successful or affirmative response, something turned on, or something enabled.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/beep-up.wav` (Default): A high tone sound.
 
+- **SOUND_NEGATIVE_CONFIRMATION**:
+  - Description: The sound file path for a negative confirmation sound, typically used to indicate an unsuccessful or negative response, something turned off, or something disabled.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/beep-down.wav` (Default): A low tone sound.
+
+- **SOUND_SAY_YES_WITHOUT_SPEAKING**:
+  - Description: The sound file path for a non-verbal affirmative response, often used in scenarios where speaking is not possible or necessary.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-sci-fi-confirmation-914.wav` (Default): A Futuristic Sci-Fi invention confirmation sound.
+
+- **SOUND_SAY_NO_WITHOUT_SPEAKING**:
+  - Description: The sound file path for a non-verbal negative response, used in situations where verbal communication is not required or feasible.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-sci-fi-reject-notification-896.wav` (Default): A funny rejection like sound.
+
+- **SOUND_A_PENDING_TASK_AWAITS_ATTENTION**:
+  - Description: The sound file path indicating that a pending task requires attention or action. It is typically used to notify the user of an outstanding task.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-unlock-game-notification-253.wav` (Default): A sound for a pending task that requires user attention or intervention.
+
+- **SOUND_PENDING_TASKS_REMINDER**:
+  - Description: The sound file path used as a reminder for pending tasks. It may be played at regular intervals to draw attention to unfinished tasks.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-uplifting-flute-notification-2317.wav` (Default): A sound that reminds the user about the pending tasks queue.
+
+- **PENDING_TASKS_VERIFICATION_FREQUENCY_IN_SECS**:
+  - Description: The frequency, in seconds, at which pending tasks are checked or verified. To calculate this, you can multiply the number of minutes in an hour (60 minutes) by the number of seconds in a minute (60 seconds): 1 hour * 60 minutes/hour * 60 seconds/minute = 3,600 seconds. There are 3,600 seconds in 1 hour.
+  - Possible values: A number of seconds.
+  - Example value:
+    - `3600` (Default): In this case, it's set to 3600 seconds (equivalent to 1 hour and 0 minutes), indicating that the system checks for pending tasks approximately every 60 minutes.
 
 - **EXTERNAL_STORAGE_DRIVE_01_TAG**:
   - Example value:
