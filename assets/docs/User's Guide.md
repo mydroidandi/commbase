@@ -658,7 +658,7 @@ The default version of the file **app.conf** contains the next values:
   - Possible values: True or False.
   - Example value:
     - `False` (Default): The trained AI chatbot language model's ability to return and run skills/skillsets in conversations is disabled.
-    - `True` (Default): Enables the trained AI chatbot language model's ability to return and run skills/skillsets in conversations.
+    - `True`: Enables the trained AI chatbot language model's ability to return and run skills/skillsets in conversations.
 
 - **TRAINED_AI_CHATBOT_STRING**:
   - Description: Defines the bundled or serviced trained AI chatbot. Do not confuse with `AI_CHATBOT_STRING`, despite the fact that both variables can hold the same value.
