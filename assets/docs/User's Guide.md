@@ -640,7 +640,7 @@ The default version of the file **app.conf** contains the next values:
     - `True`: If the variable is active in the configuration file **config/app.conf** the assistant will answer using a connection to a bundled or serviced AI chatbot that uses natural language processing to create a humanlike conversational dialogue, for example, **OpenAI's ChatGPT**, instead of using the **bundles/built-in/broker/libcommbase/libcommbase/routines/random_no function**, making those negative answers more conversational. The AI chatbot is defined by the variable `AI_CHATBOT_STRING`. App users can use this as an advantage to make interactions with the assistant appear more organic due to commands can be mixed with regular conversations similar to the conversations in the **conversation mode** or the **expert mode**. However, it can lead users to wrongly say language patterns strictly predefined as terminal/voice commands, which are automatically identified by the application and executed without user intention. As a consequence of the wrong use of this feature, any "strange behavior" can be interpreted as **"AI hallucinations"**: situations where artificial intelligence systems produce unexpected or unintended outputs that seem to resemble hallucinations in a human context. Also, the user is still limited to typing/saying **prompts** (or terminal/voice commands) of 9 words maximum as it is defined for the **normal mode** (it relies on the maximum number of command arguments that can be used in Bash), and the bundled or serviced AI chatbot is also limited to answering using a maximum of 35 words (modifiable, using the variable `UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT`.)
 
 - **AI_CHATBOT_STRING**:
-  - Description: Defines the bundled or serviced AI chatbot answering unknown terminal/voice commands.
+  - Description: Defines the bundled or serviced AI chatbot answering unknown terminal/voice commands. Do not confuse with `TRAINED_AI_CHATBOT_STRING`, despite the fact that both variables can hold the same value.
     Check out the variables: `UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT` and `ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON`.
   - Possible values:
     - `$TODO: New git repo based on the script terminal_chatgpt` (Default): Defines OpenAI's ChatGPT as the serviced AI chatbot that uses natural language processing to create a humanlike conversational dialogue. Using a large language model (LLM) like GPT-4 with an internet connection, allows users to have access to real-time data, for example, current weather information, and then ask questions like "How is the weather like in Toronto?" and receive a perfect answer.
@@ -652,6 +652,27 @@ The default version of the file **app.conf** contains the next values:
   - Possible values: (Double quoted) numbers.
   - Example value:
     - `35` (Default): Limits the bundled or serviced AI chatbot to answering using a maximum of 35 words.
+
+- **TRAINED_AI_CHATBOT_CAN_RUN_SKILLS_ON**:
+  - Description: This variable is a good example of **automation in computer science** versus **learning from data in machine learning** using **language models**. The decision to train your own language model should be made after careful consideration of your specific requirements and constraints. In many cases, it may be more practical to use **fine-tuning** techniques on a **pre-trained model** like Open AI's GPT to achieve some level of customization while leveraging the benefits of the model's existing knowledge base. You can train a language model to answer questions and provide assistance using Linux commands, but it would require a substantial amount of training data and specialized expertise in natural language processing (NLP) and machine learning. The idea is to train the model to return skills/skillsets when it thinks/considers that the user prompts terminal/voice commands in the middle of conversations in the **"conversation mode"**, the **"expert mode"**, or in **"normal mode"** with the variable `ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON` set to "True". Those returned skills/skillsets will be processed by the AI chatbot and the run accordingly.
+  - Possible values: True or False.
+  - Example value:
+    - `False` (Default): The trained AI chatbot language model's ability to return and run skills/skillsets in conversations is disabled.
+    - `True`: Enables the trained AI chatbot language model's ability to return and run skills/skillsets in conversations.
+
+- **TRAINED_AI_CHATBOT_STRING**:
+  - Description: Defines the bundled or serviced trained AI chatbot. Do not confuse with `AI_CHATBOT_STRING`, despite the fact that both variables can hold the same value.
+    Check out the variables: `UNKNOWN_COMMAND_TRAINED_AI_CHATBOT_WORDS_LIMIT` and `TRAINED_AI_CHATBOT_CAN_RUN_SKILLS_ON`.
+  - Possible values:
+    - `$TODO: New git repo based on the script terminal_chatgpt` (Default): Defines OpenAI's ChatGPT as the serviced trained AI chatbot that uses natural language processing to create a humanlike conversational dialogue. OpenAI has made GPT available to developers, with the added bonus of **allowing them to customize the model to improve performance for their specific use cases**. According to OpenAI, **fine-tuning** GPT-3.5 Turbo can even outperform base GPT-4 for certain tasks. Using a large language model (LLM) like GPT-4 with an internet connection, allows users to have access to real-time data, for example, current weather information, and then ask questions like "How is the weather like in Toronto?" and receive a perfect answer.
+    - `$TODO: New git repo Meta's Llama 2`: Defines Meta's open source large language model Llama 2 as the local trained AI chatbot that uses natural language processing to create a humanlike conversational dialogue. The text generation Llama 2 model can be **fine-tuned on any domain-specific dataset**. After it's fine-tuned on the domain-specific dataset, the model is expected to generate domain-specific text and solve various NLP tasks in that specific domain with **few-shot prompting**. Using a large language model (LLM) like Llama 2 without an internet connection, often referred to as "offline" mode, can have several disadvantages: Limited Information Retrieval, Outdated Information, Reduced Contextual Understanding, Decreased General Knowledge, Limited Personalization, Reduced Translation and Multilingual Abilities, Inability to Access External Services, Loss of Real-Time Adaptation, Dependency on Initial Training Data.
+
+- **UNKNOWN_COMMAND_TRAINED_AI_CHATBOT_WORDS_LIMIT**:
+  - Description: Limiting answers can be beneficial because it promotes brevity, clarity, and conciseness. It ensures that information is delivered efficiently, making it easier for readers/listeners to grasp and retain the key points.
+    Check out the variables: `TRAINED_AI_CHATBOT_STRING` and `TRAINED_AI_CHATBOT_CAN_RUN_SKILLS_ON`.
+  - Possible values: (Double quoted) numbers.
+  - Example value:
+    - `35` (Default): Limits the bundled or serviced trained AI chatbot to answering using a maximum of 35 words.
 
 - **SOUND_POSITIVE_CONFIRMATION**:
   - Description: The sound file path for a positive confirmation sound, typically used to indicate a successful or affirmative response, something turned on, or something enabled.
@@ -690,10 +711,10 @@ The default version of the file **app.conf** contains the next values:
     - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-uplifting-flute-notification-2317.wav` (Default): A sound that reminds the user about the pending tasks queue.
 
 - **PENDING_TASKS_VERIFICATION_FREQUENCY_IN_SECS**:
-  - Description: The frequency, in seconds, at which pending tasks are checked or verified. To calculate this, you can multiply the number of minutes in an hour (60 minutes) by the number of seconds in a minute (60 seconds): 1 hour * 60 minutes/hour * 60 seconds/minute = 3,600 seconds. There are 3,600 seconds in 1 hour.
+  - Description: The frequency, in seconds, at which pending tasks are checked or verified. To calculate this, you can multiply the number of minutes, for example, 60 minuts (an hour) by the number of seconds in a minute (60 seconds): 1 hour * 60 minutes/hour * 60 seconds/minute = 3,600 seconds. There are 3,600 seconds in 1 hour.
   - Possible values: A number of seconds.
   - Example value:
-    - `3600` (Default): In this case, it's set to 3600 seconds (equivalent to 1 hour and 0 minutes), indicating that the system checks for pending tasks approximately every 60 minutes.
+    - `3600` (Default): Set to 3600 seconds (equivalent to 1 hour and 0 minutes), indicates that the system checks for pending tasks approximately every 60 minutes.
 
 - **EXTERNAL_STORAGE_DRIVE_01_TAG**:
   - Example value:
