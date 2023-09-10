@@ -1,0 +1,10 @@
+# Directives
+
+# SC1090: Can't follow non-constant source. Use a directive to specify location.
+# Alternative: Add the argument source to the command. For example:
+# shellcheck --shell bash script.sh source=/home/<user>/Developer/mydroidandi/commbase/config/app.conf | less
+#disable=SC1090
+
+# Suggest ${VAR} in place of $VAR
+#enable=require-variable-braces
+
