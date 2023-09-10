@@ -4,6 +4,7 @@ Programmable conversational AI assistant and distributed AI for single computers
 
 [![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase-stt-vosk-p/actions/workflows/python-package-conda.yml)
 [![python version](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue)
+[![Shell Linter](https://github.com/mydroidandi/commbase/actions/workflows/shell-linter.yml/badge.svg)](https://github.com/mydroidandi/commbase-stt-vosk-p/actions/workflows/python-package-conda.yml)
 
 ## Introduction
 
