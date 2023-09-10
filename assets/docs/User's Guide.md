@@ -15,10 +15,20 @@
 - [4 Useful Tmux Actions](#4-useful-tmux-actions)
 	- [Moving Among Windows](#moving-among-windows)
 	- [List All the Active Sessions](#list-all-the-active-sessions)
-	- [Kill the Commbase Session](#kill-the-commbase-session)
-	- [Display the Commbase Session Pane Numbers](#display-the-commbase-session-pane-numbers)
+	- [Kill the Session](#kill-the-session)
+	- [Display the Session Pane Numbers](#display-the-session-pane-numbers)
 	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)	
 - [5 Default Configuration Variables](#5-default-configuration-variables)
+- [6 Types of Commands](#6-types-of-commands)
+	- [Terminal Commands](#terminal-commands)
+	- [Terminal Voice Controls](#terminal-voice-controls)
+	- [Terminal Voice Skills](#terminal-voice-skills)
+	- [Terminal Voice Skillsets](#terminal-voice-skillsets)
+- [7 Terminal Voice Controls](#7-terminal-voice-controls)
+	- [Undefined Controls](#undefined-controls)
+	- [Hidden Controls and Control Chaining](#hidden-controls-and-control-chaining)
+- [8 Terminal Voice Skills](#8-terminal-voice-skills)
+- [9 Terminal Voice Skillsets](#9-terminal-voice-skillsets)
 - [6 Default Commbase commands](#6-default-commbase-commands)
 	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
 	- [Commbase Management Commands](#commbase-management-commands)
@@ -53,7 +63,10 @@
 - [10 Training Commbase by Assembling Skillsets](#10-training-commbase-by-assembling-skillsets)
 - [11 Keyboard Shortcuts](#11-keyboard-shortcuts)
 	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
+	- [Commbase Key Bindings](#commbase-key-bindings)
+	- [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
 		- [Commbase Key Bindings](#commbase-key-bindings)
+		- [Bash](#bash)
 		- [Desktop Environment and Operating System](#desktop-environment-and-operating-system)
 		- [Gnome Terminal](#gnome-terminal)
 		- [Neovim / Emacs](#neovim--emacs)
@@ -81,7 +94,7 @@ These commands assume that the `commbase` command has been properly set up. If y
 
 To start a Commbase session from the command line, run the following command:
 
-```sh
+```shell
 commbase start
 ```
 
@@ -93,19 +106,19 @@ The most effective way is to use a specific voice command to instruct Commbase t
 
 Alternatively, you can stop Commbase by running the following command in the command line:
 
-```sh
+```shell
 commbase stop
 ```
 
 Another method involves manually terminating the Commbase session using the tmux command. First, you can list all active sessions by running:
 
-```sh
+```shell
 tmux list-sessions
 ```
 
 Identify the session named "Commbase-0" and remember its session ID. Then, issue the following command to kill that specific session:
 
-```sh
+```shell
 tmux kill-session -t Commbase-0
 ```
 
@@ -113,7 +126,7 @@ tmux kill-session -t Commbase-0
 
 The "teleport" command in Commbase provides a convenient way to handle different scenarios.
 
-```sh
+```shell
 commbase teleport
 ```
 
@@ -185,17 +198,17 @@ Press `Ctrl` - `b`, then press `1`.
 
 ## List All the Active Sessions
 
-```sh
+```shell
 tmux list-sessions
 ```
 
-## Kill the Commbase Session
+## Kill the Session
 
-```sh
+```shell
 tmux kill-session -t Commbase-0
 ```
 
-## Display the Commbase Session Pane Numbers
+## Display the Session Pane Numbers
 
 In the tmux session, press `Ctrl` - `b`, release and then press `q`.
 
@@ -209,7 +222,7 @@ Next, list all the active sessions using the comman above.
 
 Finally, close the duplicated session(s).
 
-```sh
+```shell
 tmux kill-session -t Commbase-2 & tmux kill-session -t Commbase-1 & tmux kill-session -t Commbase-0
 
 ```
@@ -218,7 +231,7 @@ The ampersand (&) at the end of each command allows them to be executed concurre
 
 Alternatively, you can terminate all tmux sessions at once.
 
-```sh
+```shell
 pkill tmux
 ```
 
@@ -230,11 +243,11 @@ The configuration variables can be accessed by going to the directory **config/*
 
 Use your favorite text editor to open any of those files.
 
-```sh
+```shell
 nano config/secrets
 ```
 
-```sh
+```shell
 nano config/app.conf
 ```
 
@@ -303,7 +316,7 @@ Most of these variables are marked as optional and can be excluded if they are n
 
 - **OPENAI_API_KEY**:
   - Example value:
-    - `your_openai_api_key`:  The API key for accessing OpenAI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
+    - `your_openai_api_key`: The API key for accessing OpenAI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
@@ -326,7 +339,7 @@ The default version of the file **app.conf** contains the next values:
     - `commbase_env` (Default): The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment. For more details, check out the file **INSTALL**.
     - `my_env_name`: An alternative name for creating the Commbase virtual environment.
 
-- **IP_ADDRESS_UPDATE_IN_SECS**:
+- **IP_ADDRESS_UPDATE_FREQUENCY_IN_SECS**:
   - Description: This value represents the interval in milliseconds at which the machine's IP address should be updated in the file **.env** in **env/**.
   - Possible values: We recommend using a value between 300 and 600 for security reasons.
   - Example value:
@@ -368,6 +381,7 @@ The default version of the file **app.conf** contains the next values:
     - `festival --tts`: It specifies the TTS command Festival and its arguments. Festival comes with a unique and some basic English voice tone out of the box. You can install Festival-compatible extra voices from different internet sources. To know how to install Festival-compatible voices and set one as your custom application's voice, read [`this guide.`](./Festival.md)
     - `espeak -v f2`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English female voice number 2. You can install Espeak-compatible extra voices from different internet sources.
     - `espeak -v m3`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English male voice number 3. You can install Espeak-compatible extra voices from different internet sources.
+    - `xargs swift`: It specifies the TTS command swift. The company Ceptral has high quality, natural speech OSS licensed voices can be purchased, installed and downloaded from the Ceptral web site.
     - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-gTTS/commbase_tts_gTTS.py --param1 val1 --param2 val2 --param3 val3:`: It specifies the TTS executable commbase-tts-gTTS.py's script and its arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API.
 
 - **TMUX_EXTRA_WINDOWS_ON**:
@@ -578,9 +592,9 @@ The default version of the file **app.conf** contains the next values:
   - Example value:
     - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_deny_patterns` (Default): By utilizing this value, it becomes possible to reliably deny or cancel changes proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
-**CONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE**
+- **CONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE**
   - Example value:
-- `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_one_patterns` (Default): By utilizing this value, it becomes possible to reliably select an option among a number of options to proceed or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
+    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_select_the_option_number_one_patterns` (Default): By utilizing this value, it becomes possible to reliably select an option among a number of options to proceed or move forward/backward with something proposed by the Assistant as feedback to a previously executed terminal/voice command when a terminal/voice command aligns with any of the control command patterns present in the associated patterns file.
 
 - **CONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE**:
   - Example value:
@@ -618,6 +632,90 @@ The default version of the file **app.conf** contains the next values:
   - Example value:
     - `/bundles/built-in/broker/libcommbase/resources/control_patterns/vosk-model-en-us-0.22-lgraph/okay_enter_the_follow_mode_patterns` (Default): By utilizing this value, it becomes possible to reliably make the Assistant exit from a previously entered mode to enter the Follow mode.
 
+- **ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON**:
+  - Description: This variable is used in the function **bundles/built-in/broker/libcommbase/libcommbase/routines/skills_else**.
+  - Possible values: True or False.
+  - Example value:
+    - `False` (Default): The assistant will answer to unknown commands using the **bundles/built-in/broker/libcommbase/libcommbase/routines/random_no** function.
+    - `True`: If the variable is active in the configuration file **config/app.conf** the assistant will answer using a connection to a bundled or serviced AI chatbot that uses natural language processing to create a humanlike conversational dialogue, for example, **OpenAI's ChatGPT**, instead of using the **bundles/built-in/broker/libcommbase/libcommbase/routines/random_no function**, making those negative answers more conversational. The AI chatbot is defined by the variable `AI_CHATBOT_STRING`. App users can use this as an advantage to make interactions with the assistant appear more organic due to commands can be mixed with regular conversations similar to the conversations in the **conversation mode** or the **expert mode**. However, it can lead users to wrongly say language patterns strictly predefined as terminal/voice commands, which are automatically identified by the application and executed without user intention. As a consequence of the wrong use of this feature, any "strange behavior" can be interpreted as **"AI hallucinations"**: situations where artificial intelligence systems produce unexpected or unintended outputs that seem to resemble hallucinations in a human context. Also, the user is still limited to typing/saying **prompts** (or terminal/voice commands) of 9 words maximum as it is defined for the **normal mode** (it relies on the maximum number of command arguments that can be used in Bash), and the bundled or serviced AI chatbot is also limited to answering using a maximum of 35 words (modifiable, using the variable `UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT`.)
+
+- **AI_CHATBOT_STRING**:
+  - Description: Defines the bundled or serviced AI chatbot answering unknown terminal/voice commands. Do not confuse with `TRAINED_AI_CHATBOT_STRING`, despite the fact that both variables can hold the same value.
+    Check out the variables: `UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT` and `ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON`.
+  - Possible values:
+    - `$TODO: New git repo based on the script terminal_chatgpt` (Default): Defines OpenAI's ChatGPT as the **serviced AI chatbot** that uses natural language processing to create a humanlike conversational dialogue. Using a large language model (LLM) like GPT-4 with an **internet connection**, allows users to have access to real-time data, for example, current weather information, and then ask questions like "How is the weather like in Toronto?" and receive a perfect answer. Using AI chatbots like ChatGPT with an internet connection offers many advantages, but it also comes with several disadvantages. Here are some of the **key drawbacks**: Privacy Concerns, Security Risks, Dependency on Internet, Data Usage and Costs, Latency, Outages and Downtime, Lack of Offline Functionality, Maintenance and Updates, Accessibility Issues, Dependency on Service Providers, Potential for Bias and Misinformation, Lack of Control. To mitigate these disadvantages, organizations and users should carefully consider their specific needs and use cases when implementing AI chatbots.
+    - `$TODO: New git repo Meta's Llama 2`: Defines Meta's open source large language model Llama 2 as the **local AI chatbot** that uses natural language processing to create a humanlike conversational dialogue. Using a large language model (LLM) like Llama 2 without an **internet connection**, often referred to as **"offline" mode**, can have several **disadvantages**: Limited Information Retrieval, Outdated Information, Reduced Contextual Understanding, Decreased General Knowledge, Limited Personalization, Reduced Translation and Multilingual Abilities, Inability to Access External Services, Loss of Real-Time Adaptation, Dependency on Initial Training Data. To mitigate these disadvantages, organizations and users should carefully consider their specific needs and use cases when implementing AI chatbots.
+
+- **UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT**:
+  - Description: Limiting answers can be beneficial because it promotes brevity, clarity, and conciseness. It ensures that information is delivered efficiently, making it easier for readers/listeners to grasp and retain the key points.
+    Check out the variables: `AI_CHATBOT_STRING` and `ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON`.
+  - Possible values: (Double quoted) numbers.
+  - Example value:
+    - `35` (Default): Limits the bundled or serviced AI chatbot to answering using a maximum of 35 words.
+
+- **TRAINED_AI_CHATBOT_CAN_RUN_SKILLS_ON**:
+  - Description: This variable is an excellent example of **automation in computer science programming** versus **learning from data in machine learning** using **language models**. By using **fine-tuned language models**, the assistant gets closer to passing the **"Turing test""**, but sacrificing some percentage of accuracy in interpreting and running skills/skillsets. The decision to train your own language model should be made after careful consideration of your specific requirements and constraints. In many cases, it may be more practical to use **fine-tuning** techniques on a **pre-trained model** like Open AI's GPT to achieve some level of customization while leveraging the benefits of the model's existing knowledge base. You can train a language model to answer questions and provide assistance using Linux commands, but it would require a substantial amount of training data and specialized expertise in natural language processing (NLP) and machine learning. The idea is to train the model to return skills/skillsets when it thinks/considers that the user prompts terminal/voice commands in the middle of conversations in the **"conversation mode"**, the **"expert mode"**, or in **"normal mode"** with the variable `ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON` set to "True". Those returned skills/skillsets will be processed by the AI chatbot and then run accordingly.
+  - Possible values: True or False.
+  - Example value:
+    - `False` (Default): The trained AI chatbot language model's ability to return and run skills/skillsets in conversations is disabled.
+    - `True`: Enables the trained AI chatbot language model's ability to return and run skills/skillsets in conversations.
+
+- **TRAINED_AI_CHATBOT_STRING**:
+  - Description: Defines the bundled or serviced trained AI chatbot. Do not confuse with `AI_CHATBOT_STRING`, despite the fact that both variables can hold the same value.
+    Check out the variables: `UNKNOWN_COMMAND_TRAINED_AI_CHATBOT_WORDS_LIMIT` and `TRAINED_AI_CHATBOT_CAN_RUN_SKILLS_ON`.
+  - Possible values:
+    - `$TODO: New git repo based on the script terminal_chatgpt` (Default): Defines OpenAI's ChatGPT as the serviced trained AI chatbot that uses natural language processing to create a humanlike conversational dialogue. OpenAI has made GPT available to developers, with the added bonus of **allowing them to customize the model to improve performance for their specific use cases**. According to OpenAI, **fine-tuning** GPT-3.5 Turbo can even outperform base GPT-4 for certain tasks. Using a large language model (LLM) like GPT-4 with an internet connection, allows users to have access to real-time data, for example, current weather information, and then ask questions like "How is the weather like in Toronto?" and receive a perfect answer.
+    - `$TODO: New git repo Meta's Llama 2`: Defines Meta's open source large language model Llama 2 as the local trained AI chatbot that uses natural language processing to create a humanlike conversational dialogue. The text generation Llama 2 model can be **fine-tuned on any domain-specific dataset**. After it's fine-tuned on the domain-specific dataset, the model is expected to generate domain-specific text and solve various NLP tasks in that specific domain with **few-shot prompting**. Using a large language model (LLM) like Llama 2 without an internet connection, often referred to as "offline" mode, can have several disadvantages: Limited Information Retrieval, Outdated Information, Reduced Contextual Understanding, Decreased General Knowledge, Limited Personalization, Reduced Translation and Multilingual Abilities, Inability to Access External Services, Loss of Real-Time Adaptation, Dependency on Initial Training Data.
+
+- **UNKNOWN_COMMAND_TRAINED_AI_CHATBOT_WORDS_LIMIT**:
+  - Description: Limiting answers can be beneficial because it promotes brevity, clarity, and conciseness. It ensures that information is delivered efficiently, making it easier for readers/listeners to grasp and retain the key points.
+    Check out the variables: `TRAINED_AI_CHATBOT_STRING` and `TRAINED_AI_CHATBOT_CAN_RUN_SKILLS_ON`.
+  - Possible values: (Double quoted) numbers.
+  - Example value:
+    - `35` (Default): Limits the bundled or serviced trained AI chatbot to answering using a maximum of 35 words.
+
+- **SOUND_POSITIVE_CONFIRMATION**:
+  - Description: The sound file path for a positive confirmation sound, typically used to indicate a successful or affirmative response, something turned on, or something enabled.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/beep-up.wav` (Default): A high tone sound.
+
+- **SOUND_NEGATIVE_CONFIRMATION**:
+  - Description: The sound file path for a negative confirmation sound, typically used to indicate an unsuccessful or negative response, something turned off, or something disabled.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/beep-down.wav` (Default): A low tone sound.
+
+- **SOUND_SAY_YES_WITHOUT_SPEAKING**:
+  - Description: The sound file path for a non-verbal affirmative response, often used in scenarios where speaking is not possible or necessary.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-sci-fi-confirmation-914.wav` (Default): A Futuristic Sci-Fi invention confirmation sound.
+
+- **SOUND_SAY_NO_WITHOUT_SPEAKING**:
+  - Description: The sound file path for a non-verbal negative response, used in situations where verbal communication is not required or feasible.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-sci-fi-reject-notification-896.wav` (Default): A funny rejection like sound.
+
+- **SOUND_A_PENDING_TASK_AWAITS_ATTENTION**:
+  - Description: The sound file path indicating that a pending task requires attention or action. It is typically used to notify the user of an outstanding task.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-unlock-game-notification-253.wav` (Default): A sound for a pending task that requires user attention or intervention.
+
+- **SOUND_PENDING_TASKS_REMINDER**:
+  - Description: The sound file path used as a reminder for pending tasks. It may be played at regular intervals to draw attention to unfinished tasks.
+  - Possible values: High quality wave audio files.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-uplifting-flute-notification-2317.wav` (Default): A sound that reminds the user about the pending tasks queue.
+
+- **PENDING_TASKS_VERIFICATION_FREQUENCY_IN_SECS**:
+  - Description: The frequency, in seconds, at which pending tasks are checked or verified. To calculate this, you can multiply the number of minutes, for example, 60 minuts (an hour) by the number of seconds in a minute (60 seconds): 1 hour * 60 minutes/hour * 60 seconds/minute = 3,600 seconds. There are 3,600 seconds in 1 hour.
+  - Possible values: A number of seconds.
+  - Example value:
+    - `3600` (Default): Set to 3600 seconds (equivalent to 1 hour and 0 minutes), indicates that the system checks for pending tasks approximately every 60 minutes.
+
 - **EXTERNAL_STORAGE_DRIVE_01_TAG**:
   - Example value:
     - `WD1` (Default): This tag is used to distinguish or label the specific external storage drive, allowing easy identification and referencing within a system and/or application.
@@ -636,13 +734,768 @@ How to reset the configuration file **app.conf**.
 
 It restores the configuration file to its inital status. Go to the directory **scripts/utilities** and execute the file **reset_app.conf.sh**.
 
-```sh
+```shell
 cd scripts/utilities
 ```
 
-```sh
+```shell
 bash reset-commbase.conf.sh
 ```
+
+# 6 Types of Commands
+
+You can display the types of commands and some examples using the help option like this:
+
+```shell
+commbase -h
+commbase --help
+```
+
+## Terminal Commands
+
+These are commands limited to be executed in the terminal.
+
+## Terminal Voice Controls
+
+A control command consists of a message that the previous skill or skillset command parser uses to execute parameterized options, affecting the default command behavior.
+
+## Terminal Voice Skills
+
+Unlike terminal commands, terminal/voice commands can be typed in or said out loud to the voice recognizer.
+
+## Terminal Voice Skillsets
+
+Skillsets are commands grouped as a list of orders to be executed sequentially at once. They can be typed or said out loud.
+
+# 7 Terminal Voice Controls
+
+You can create extra controls if you want to, but you can do almost everything that is possible with the controls that come with Commbase. These out-of-the-box controls are:
+
+> **[okay|ok] stop**
+
+- Description: Stop the previous command.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Executes the command.
+  - END USER: Sends the control "okay stop".
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay stop" in the parse_skill_ function, and then executes a command to terminate the previous terminal/voice command (program executable or script process).
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] run it again**
+
+- Description:  Re-run the previous command.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Executes the command.
+  - END USER: Sends the control "okay run it again".
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay run it again" in the parse_skill_ function, and then executes a command that runs the same content of the case option *), the previous terminal/voice command.
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] repeat**
+
+- Description: Reproduce the previous discourse by speaking it.
+- Limits: Do not use it to re-run previous terminal/voice commands.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a command that includes or consists of a discourse (question, answer, greeting, feedback, etc.). All and every discourse includes a programming code to save a copy of it in the **.current_discourse** file. The reason to save it to a file is that there are many case options for every terminal/voice command, and the next terminal/voice command will overwrite the option in .result_message.json with a new "okay repeat" control, making unavailable/unknown the previous control message for the whole program.
+  - END USER: Sends the control "okay repeat", due to did not understand or did not hear well the discourse.
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay repeat" in the parse_skill_ function, and then executes a command that repeats by voice the content of **.current_discourse**.
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] remind me in [five|ten|twenty|thirty] minutes**
+
+- Description: Start a question reminder countdown timer.
+- Steps:
+  - END USER: Requests to do something using a terminal/voice command.
+  - STT ENGINE: Writes the request in .previous_result_message.json and in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to any case option in the parse_skill_ function, and then executes a code that includes a requirement of user intervention in the form of a question spoken and displayed on the screen.
+  - END USER: Sends the control "okay remind me in five minutes".
+  - STT ENGINE: Writes only in .result_message.json.
+  - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay remind me in five minutes" in the parse_skill_ function. It executes a code to append the total of the sum of the current time + the minutes to delay the question, for example, 5, to the **.pending_tasks.csv** (in the field Timeout) file and the current request in .previous_result_message.json (in the field Task). Next, it executes a code that runs a countdown timer of 5 minutes. The script remains running in the background.
+  - END USER: Is able to do whatever he/she wants or requires during the time specified in the terminal/voice control command.
+  - SKILL FUNCTION: The countdown timer of the script running in the background reaches 0. 
+    The assistant reminds the user that this task is pending, using a specific notification sound alert (stored in the variable `SOUND_A_PENDING_TASK_AWAITS_ATTENTION` in the configuration file **config/app.conf**).
+  - END USER: At this point, the user can: 
+  	a. Answer the question to run the task.
+  	b. Accept or deny/cancel based on the dialog with "okay accept".
+  	c. Ask for an out loud repetition with "okay repeat".
+  	d. Stop (terminate) the related command with "okay stop".
+  	e. Ask the assistant to remind in a new period of time with "okay remind me in 10 minutes"
+  	f. Move forward onto the next task pending with "ok what is the next task". This can be done infinitely while there are tasks pending in the list loop.
+
+Example 1:
+
+Stage 1:
+
+1. At 02:00:01 PM, the user requests to be notified when the disk space left is less than 40%.
+Terminal/voice skill command: "tell me when the disk space left is less than forty percent"
+2. At 02:05:01 PM, the user requests to be notified when the disk space left is less than 30%.
+Terminal/voice skill command: "tell me when the disk space left is less than thirty percent"
+3. At 02:10:01 PM, the user requests to be notified when the disk space left is less than 20%.
+Terminal/voice skill command: "tell me when the disk space left is less than twenty percent"
+
+After the third entry, the file **.pending_tasks.csv** looks like this:
+
+```text
+Timeout, Task
+Tue 01 Aug 2023 02:00:01 PM CDT|"The amount of disk space available for the file system is less than forty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:05:01 PM CDT|"The amount of disk space available for the file system is less than thirty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:10:01 PM CDT|"The amount of disk space available for the file system is less than twenty percent. Do you want me to free some space?"
+```
+
+Stage 2:
+
+1. At 02:15:01 PM, the amount of disk space available on the file system is less than forty percent.
+The assistant asks the user to answer the question to run the task: " The amount of disk space available on the file system is less than forty percent. Do you want me to free some space?"
+The user decides to ask the assistant to remind about the question in a period of time with "okay remind me in 30 minutes".
+2. At 02:20:01 PM, the amount of disk space available on the file system is less than thirty percent.
+The assistant asks the user to answer the question to run the task: "The amount of disk space available on the file system is less than thirty percent. Do you want me to free some space?"
+The user decides to ask the assistant to remind about the question in a period of time with "okay remind me in 30 minutes".
+3. At 02:25:01 PM, the amount of disk space available on the file system is less than twenty percent.
+The assistant asks the user to answer the question to run the task: "The amount of disk space available on the file system is less than twenty percent. Do you want me to free some space?"
+The user decides to ask the assistant to remind about the question in a period of time with "okay remind me in 30 minutes".
+
+At this point, all the entries in the file **.pending_tasks.csv** have been updated to the date and time delays specified by the user, like this:
+
+```text
+Timeout, Task
+Tue 01 Aug 2023 02:45:01 PM CDT|"The amount of disk space available for the file system is less than forty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:50:01 PM CDT|"The amount of disk space available for the file system is less than thirty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:55:01 PM CDT|"The amount of disk space available for the file system is less than twenty percent. Do you want me to free some space?"
+```
+
+Base code 1:
+
+A Bash code similar to the next one can be used to append a new request as a Task to the file **.pending_tasks.csv**.
+
+```shell
+timeout="2:20 PM CST"; task='"call mom"'; echo "$timeout|$task" >> data/.pending_tasks.csv
+```
+
+Base code 2:
+
+This is an example of a Bash code similar to the one that is used in every terminal/voice command's case option "okay remind me in five minutes" to calculate the total of the sum of the current time + the minutes to delay the question, before save the question as a task in **.pending_tasks.csv**
+
+File **add_50_minutes.sh**:
+
+```shell
+#!/bin/env bash
+
+# Given date
+#given_date="Wed 02 Aug 2023 11:52:30 PM CDT"
+
+# Assign the current date and time to the variable given_date
+given_date=$(date "+%a %d %b %Y %I:%M:%S %p %Z")
+
+# Convert the given date to epoch time
+epoch_time=$(date -d "$given_date" +%s)
+
+# Add 50 minutes (3000 seconds) to the epoch time
+new_epoch_time=$((epoch_time + 3000))
+
+# Convert the new epoch time back to the date format
+new_date=$(date -d "@$new_epoch_time" "+%a %d %b %Y %I:%M:%S %p %Z")
+
+echo "Given Date: $given_date"
+echo "New Date: $new_date"
+```
+
+Make sure to give the file execution permissions:
+
+```shell
+chmod +x add_50_minutes.sh   
+```
+
+Then, run the script:
+
+```shell
+./add_50_minutes.sh
+```
+
+Adding 50 minutes to the given date would result in the following new date:
+
+```log
+Given Date: Wed 02 Aug 2023 11:52:30 PM CDT
+New Date: Thu 03 Aug 2023 12:42:30 AM CDT
+```
+
+Base code 3:
+
+You can add a Bash code like this to append the value of the variable that holds the New Date, then a pipe, then some Task text, to the file **data/.pending_tasks.csv**:
+
+```shell
+#!/bin/env bash
+
+# Example variable value
+new_date="Tue 01 Aug 2023 02:45:01 PM CDT"
+
+# Example task
+task_text="The amount of disk space available for the file system is less than forty percent. Do you want me to free some space?"
+
+# Appending the variable value, pipe, and text to a file (e.g., myfile.txt)
+echo "$new_date|$task_text" >> data/.pending_tasks.csv
+```
+
+To display the contents of the myfile.txt file in the terminal, you can use the cat command in Bash:
+
+```shell
+cat data/.pending_tasks.csv
+```
+
+> **[okay|ok] what is the next task**
+
+- Description: Remind of a prior question put on hold in a queue.
+- Steps:
+  - END USER: Sends the control "okay what is the next task".
+  - STT ENGINE: Writes the request in **data/.result_message.json**.
+  - SKILL FUNCTION: It calculates the next pending task to present it to the user, as follows:
+  	If there is not any task in **data/.pending_tasks.csv**, it reproduces a message to inform the user about that and breaks the control command.
+    First, reorders the rows in a variable by Timeout in ascending Order. This arranges the date rows from the earliest to the latest date.
+    Next, it rewrites the complete content of the file using the new order of tasks. 
+    Next, it writes the terminal/voice command of the first data row in the file **.previous_result_message.json**.
+    After that, the first data row is updated with the **latest** date and time in the complete task list including the laset second 1 second. The seconds are the deciders to prepare the task to go to the end of the list the next time the file **data/.pending_tasks.csv** is called and then reordered. It avoids having the same task as first in the list every time the user sends the control "okay what is the next task" more than one time to skip the current task presented without discarding it but leaving it to retake it later again.
+    Finally, the task presented, still in the first data row, is executed as a terminal/voice command.  
+  - END USER: Has two options at this point.
+    a. It can repeat the terminal/voice control "okay what is the next task" to skip the current task without discarding it but leaving it for later again.
+    b. It can answer the question (execute the terminal/voice command.) **IMPORTANT**: Executing a terminal/voice command always requires verifying the file **data/.pending_tasks.csv** in the case option *) of the parse_skill_: If the **first data row** of the tasks list corresponds to the current terminal/voice command (assigned from **.previous_result_message.json**), the complete line will be deleted from the file. If we do not delete it from the tasks list it will be found out by "okay what is the next task" again at some time and request to complete it again, which would be considered a bug.
+
+Example 1:
+
+Stage 1:
+
+At some time, the file **.pending_tasks.csv** looks like this:
+
+```text
+Timeout, Task
+Tue 01 Aug 2023 02:45:01 PM CDT|"The amount of disk space available for the file system is less than forty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:50:01 PM CDT|"The amount of disk space available for the file system is less than thirty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:55:01 PM CDT|"The amount of disk space available for the file system is less than twenty percent. Do you want me to free some space?"
+```
+
+Note that this is the last file used as example for the control "okay remind me in 5 minutes". So we have 3 pending tasks but did not receive any reminder from the assistant around 2:30 PM yet.
+
+Stage 2:
+
+a. At 02:30:01 PM, if the user decides to repeat the control "what is the next task", the first data row is updated with the latest date and time in the complete task list plus 1 second, so the file looks like this:
+
+```text
+Timeout, Task
+Tue 01 Aug 2023 02:56:01 PM CDT|"The amount of disk space available for the file system is less than forty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:50:01 PM CDT|"The amount of disk space available for the file system is less than thirty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:55:01 PM CDT|"The amount of disk space available for the file system is less than twenty percent. Do you want me to free some space?"
+```
+
+b. At 02:30:01 PM, if the user decides to answer the question (execute the terminal/voice command), the **first data row** of the tasks list, which corresponds to the current terminal/voice command is deleted, so the file looks like this:
+
+```text
+Timeout, Task
+Tue 01 Aug 2023 02:50:01 PM CDT|"The amount of disk space available for the file system is less than thirty percent. Do you want me to free some space?"
+Tue 01 Aug 2023 02:55:01 PM CDT|"The amount of disk space available for the file system is less than twenty percent. Do you want me to free some space?"
+```
+
+In case b., we checked out the notifications before they occurred and resolved the task programmed to be reminded at 2:45 around 2:30.
+
+Base code 1:
+
+This script contains the functions required to make work this terminal/voice control command in the `SKILL FUNCTION` of every terminal/voice skill/skillset command. 
+
+```shell
+#!/bin/env bash
+
+# Define the result message file
+message=$(<.result_message.json)
+
+# Define the previous result message file
+previous_message=$(<.previous_result_message.json)
+
+# Define the pending tasks file
+tasks=$(<.pending_tasks.csv)
+
+# Function to check if the file exists
+check_file_existence() {
+	# Checks if the variable is not empty
+  if [ -z "$tasks" ]; then
+    echo "Error: No tasks found in the variable."
+    exit 1
+  fi
+}
+
+# Function to validate the tasks header format
+validate_tasks_header_format() {
+	#local file="$1"
+
+  # Get the header from the file variable if the variable is defined like this:
+  # file=".pending_tasks.csv".
+  #local header=$(head -n 1 "$file")
+
+  # Get the header from the tasks variable
+  local header=$(echo "$tasks" | head -n 1)
+  
+  # Check if the header contains the expected titles
+  if [ "$header" != "Timeout|Task" ]; then
+    echo "Error: The tasks data does not have the expected header."
+    exit 1
+  fi
+}
+
+# Ensures that the second line of the file tasks is not empty
+detect_blank_second_line() {
+
+  local second_line=$(echo "$tasks" | sed -n 2p)
+
+  # Check if the second line is empty or contains more information
+  if [ -z "$second_line" ]; then
+    echo "Error: The second line is empty."
+    exit 1
+  fi
+}
+
+# Ensures that the second line of the file tasks matches the expected format
+validate_second_line_format() {
+  # Extract the complete second line from tasks
+  second_line=$(echo "$tasks" | awk -F'|' 'NR==2')
+
+  regex='^([A-Za-z]{3} [0-9]{2} [A-Za-z]{3} [0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2} (AM|PM) [A-Za-z]{3})\|.*$'
+
+  if [[ $second_line =~ $regex ]]; then
+      echo "OK" > /dev/null
+  else
+      echo "not OK"
+  fi
+}
+
+# Reorders rows in the tasks file by Timeout in ascending order
+reorder_rows_by_timeout_in_ascending_order() {
+	# Sort tasks by Timeout in ascending order
+	sorted_tasks=$(echo "$tasks" | tail -n +2 | sort -t'|' -k1,1)
+
+	# Create a new tasks variable with the header and sorted tasks
+	sorted_tasks_with_header=$(echo "$tasks" | head -n 1; echo "$sorted_tasks")
+
+	# Save the sorted tasks back to .pending_tasks.csv
+	echo "$sorted_tasks_with_header" > .pending_tasks.csv
+}
+
+# Extracts the second field from the second row (excluding the header) from the
+# CSV file .pending_tasks and stores it in a variable.
+extract_second_field_from_second_row() {
+  second_field_second_row=$(echo "$tasks" | awk -F'|' 'NR==2 {print $2}')
+  echo "$second_field_second_row"
+}
+
+# Extracts the first field from the second row (excluding the header) from the
+# CSV .pending_tasks and stores it in a variable.
+extract_first_field_from_second_row() {
+  first_field_second_row=$(echo "$tasks" | awk -F'|' 'NR==2 {print $1}')
+  echo "$first_field_second_row"
+}
+
+# Writes the first data row of the file data/.pending_tasks.csv in the file 
+# data/.previous_result_message.json.
+get_first_command_from_json() {
+	# Get the data from the second row of the second field in the tasks file
+
+	# Call the function and capture its return value in a variable
+	data=$(extract_second_field_from_second_row)
+	#echo $data
+
+	# Create the JSON message and save it to the file
+	# data/.previous_result_message.json
+	json_message="{\"message\": $data}"
+	
+	# Write the json message in data/.previous_result_message.json
+	echo "$json_message" > .previous_result_message.json
+}
+
+# Updates the Timeout value of the second row (first task) in the file named 
+# .pending_tasks.csv with the current date and time.
+update_task_to_current_date_time() {
+	tasks=$(<.pending_tasks.csv)
+	current_date=$(date +"%a %d %b %Y %I:%M:%S %p %Z")
+
+	# Replace the second row's Timeout with the current date and time
+	new_content=$(echo "$tasks" | awk 'BEGIN { FS="|"; OFS="|" } NR==2 { $1 = "'"$current_date"'"; print; next } 1')
+
+	# Create a temporary file
+	temp_file=".pending_tasks_temp.csv"
+
+	echo "$new_content" > "$temp_file"
+
+	# Overwrite the original file with the content of the temporary file
+	mv "$temp_file" .pending_tasks.csv
+
+	echo "Updated the second row's Timeout with the current date and time."
+}
+
+# Updates the first data row with the current date and time in the complete task
+# list plus 1 minute.
+advance_first_data_row_time() {
+	# Extract the complete second line
+	second_line=$(echo "$tasks" | awk -F'|' 'NR==2')
+
+	# Extract Timeout and Task from the second line
+	timeout=$(echo "$second_line" | cut -d'|' -f1)
+	task=$(echo "$second_line" | cut -d'|' -f2)
+
+	# Convert the given timeout to epoch time
+	epoch_time=$(date -d "$timeout" +%s)
+
+	# Add 1 minute (60 seconds) to the epoch time
+	new_epoch_time=$((epoch_time + 60))
+
+	# Convert the new epoch time back to the timeout format
+	new_timeout=$(date -d "@$new_epoch_time" "+%a %d %b %Y %I:%M:%S %p %Z")
+
+	# Update the second line with the new timeout
+	updated_tasks=$(echo "$tasks" | sed "2s|$timeout|$new_timeout|")
+
+	# Overwrite the original file with the updated content
+	echo "$updated_tasks" > .pending_tasks.csv
+}
+
+# Reads the contents of the CSV file into a variable called tasks, processes the
+# tasks to identify the task with the highest timeout, increments that timeout
+# by one second, updates the task list with the new timeout, and then saves the
+# updated task list back to the CSV file.
+update_row_time() {
+  # Check if the file name is provided as an argument, otherwise use a default
+  # value.
+  local tasks_file="${1:-.pending_tasks.csv}"
+  
+  # Define the pending tasks file
+  #local tasks_file=".pending_tasks.csv"
+  
+  # Initialize a variable to store the highest timeout timestamp
+  highest_timeout=""
+  
+  # Read each line of the tasks file, separating columns using "|" as delimiter
+  while IFS="|" read -r timeout task; do
+    # Check if the timeout matches the pattern for HH:MM:SS
+    if [[ $timeout =~ [0-9]{2}:[0-9]{2}:[0-9]{2} ]]; then
+      # Convert the timeout to a Unix timestamp
+      timestamp=$(date -d "$timeout" +%s)
+      # Update the highest_timeout if the current timestamp is greater
+      if [[ -z $highest_timeout ]] || ((timestamp > highest_timeout)); then
+        highest_timeout=$timestamp
+      fi
+    fi
+  done <<< "$tasks"
+  
+  # Calculate a new timeout by adding 1 second to the highest timestamp
+  new_timeout=$(date -d @"$((highest_timeout + 1))" +"%a %d %b %Y %I:%M:%S %p %Z")
+
+  # Update the second line of the tasks file with the new timeout
+  updated_tasks=$(echo "$tasks" | awk -v new_timeout="$new_timeout" -F"|" 'NR == 2 { $1 = new_timeout "|" } { print }')
+  
+  echo "$updated_tasks" > .pending_tasks_updated.csv
+  
+  #echo "$tasks"
+  #cat .pending_tasks_updated.csv
+  
+  # Remove the space after the "|" character in each line of the file
+  sed -i 's/| /|/' .pending_tasks_updated.csv
+  
+  mv .pending_tasks_updated.csv "$tasks_file"
+}
+
+# Main script
+check_file_existence
+validate_tasks_header_format
+
+detect_blank_second_line
+validate_second_line_format
+
+reorder_rows_by_timeout_in_ascending_order
+#extract_second_field_from_second_row
+#extract_first_field_from_second_row
+get_first_command_from_json
+#update_task_to_current_date_time
+#advance_first_data_row_time
+update_row_time
+
+```
+
+Base code 2:
+
+The next code corresponds to the section `END USER:`, option `b.`. The user answers the question (execute the terminal/voice command.). If the **first data row** of the tasks list corresponds to the current terminal/voice command (assigned from **.previous_result_message.json**), the complete line will be deleted from the file.
+
+```shell
+
+downloads/tmp/verifications.sh code here
+
+```
+
+
+
+> **[okay|ok] accept**
+
+> **[okay|ok] deny**
+
+- Description: Accept a Y/N question, or Deny/Cancel a Y/N question.
+- Steps:
+  - The user requests to do something.
+    The program writes in .previous_result_message.json and in .result_message.json.
+    Example: "Tell me when I receive an email from Paul."
+  - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
+    The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
+  - When the new Paul's email arrives, the assistant proposes a solution for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new accept or deny command.
+    In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
+    Example: "You have received an email from Paul. Do you want me to read it out loud to you?" (The written part could include the possible case options: ok accept, ok, deny, ok repeat, ok remind me in five, thirty, or sixty minutes, ok skip that question, etc.)
+  - The user has one opportunity to ACCEPT or DENY the solution.
+    The user answer is stored only in the .result_message.json
+	 	Example: "Ok accept / Ok deny."
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] confirm with the code <four number code>**
+
+- Description: Confirm a confirmation request.
+- Steps:
+  - Certain commands can be made with an additional option to ask for user confirmation when Accepts, for security reasons. In such cases, the assistant asks for confirmation. The program goes to the case option ok confirm of the same terminal/voice command. This is done using a code but can be any other or a combination of some biometric methods, for example face recognition.
+  Example: "Confirm using your confirmation code."
+  - The user has one opportunity to Confirm or deny.
+  If the confirmation code (in secrets file) is wrong, repeat the confirmation request case option until the code is right or the user denies/cancels the solution.
+  The user answer is stored only in the .result_message.json.
+  Example: "ok confirm with the code 12345" / "12345"
+  Example: "ok deny."
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] select the option number [one|two|three|four]**
+
+- Description: Select a multi-choice question option.
+- Steps:
+  - The user requests to do something.
+  The program writes in .previous_result_message.json and in .result_message.json.
+  Example: "Tell me when I receive an email from Paul."
+  - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
+  - The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
+  - When the new Paul's email arrives, the assistant proposes a number of solutions for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new command based on the chosen option.
+  In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
+  Example: "You have received an email from Paul. Please select an option: 1. Open it on the screen. 2. Read it out loud. 3. Remind me about that in 5 minutes. 4. Forget about that / Skip that question.
+  - The user choses an option.
+  The user answer is stored only in the .result_message.json.
+  Inside the same question parser, case option "select the option number <number>" the option chosen is executed.
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] what mode are you in**
+
+- Description: Confirm the current mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] enter the normal mode**
+- Description: Enter the normal mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] enter the conversation mode**
+- Description: Enter the conversation mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+             
+> **[okay|ok] enter the expert mode**
+- Description: Enter the expert mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+
+> **[okay|ok] enter the follow mode**
+- Description: Enter the follow mode.
+- Steps:
+  - TODO:
+
+Base code:
+
+```shell
+TODO:
+```
+
+## Undefined Controls
+
+Undefined controls are controls (out-of-the-box controls or controls added to the out-of-the-box controls list) that are unuseful for particular terminal/voice commands.
+
+When a control is undefined in the parse_skill_ function of a terminal/voice skill/skillset command, its content consists of a message that says that the control is undefined followed by a list of every undefined control for that specific command. For example, say "power off the computer" can or cannot be repeated, depending on the command logic design.
+
+It is recommended not to create undefined controls as possible due to it adds complexity to the command since the user could need to remember the lack of the undefined control and memorize that specific command feature to avoid falling into the delay of commanding an undefined control.
+
+Anyway, feel free to create commands to ask for command hints, including about undefined controls. For example, say "what are the undefined controls for the command "power off the computer".
+
+## Hidden Controls and Control Chaining
+
+Undefined controls are not synonymous with hidden controls.
+
+**Hidden controls** are controls that are not listed with the --help argument of the command commbase nor in this document, and they are not in all and every terminal/voice command in its parse_skill_ function. They just reside in the parse_skill_ functions of commands that require triggering special options that are not covered by the **non hidden**, aka **visible** terminal/voice control commands. Those special options can also be used to **chain** other special options or options in interactive sequences, for example, in terminal/voice commands that require to say and display a final result based on sub-results calculated in every special option, which is impossible by creating a new skillset terminal voice/command, because the specified individual skills do not save or cache sub-results.
+
+In the following example, which is a segment of a simple short quiz implemented as a terminal/voice command, both hidden controls and chained controls are utilized. The case options 'select the option number one|two|three|four' represent visible controls. On the other hand, the case options 'question 1|2|3|4' correspond to hidden controls. The *) symbolizes the default case option, which is executed during the initial run of the command.
+
+
+		case $control_signal_str in
+
+			'STOP!')
+				echo -e "\e[1;41mCOMMBASE:\e[1;m The previous command can not be stoppeddd!"
+				echo "the previous command cannot be stopped" | festival --tts 
+				echo "success" > .matching_skill.dat
+				return 1;
+				;;
+			*)
+				echo "success" > /dev/null;
+				echo "success" > .matching_skill.dat
+				;;
+		esac
+
+
+File .question_answers.csv:
+
+Question|Answer
+"question 1"|4
+"question 2"|2
+"question 3"|1
+
+```plaintext
+CASE control IN:
+
+	'select the option number 1'):
+		IF the Answer for the question 1 is NOT IN the file .question_answers.csv.
+			Write the option number 1 in the question 1 of the file.
+		IF the Answer for the question 1 is IN the file .question_answers.csv.
+			Save the hidden control 'question 2' to .result_message.json.
+			Re-run the same terminal/voice command without waiting for a new user command.
+		IF the Answer for the question 1 is IN the file .question_answers.csv.
+
+		IF the Answer for the question 1 is IN the file .question_answers.csv.
+		
+		IF the Answer for the question 1 is IN the file .question_answers.csv.
+
+	'select the option number 2'):
+		more code here
+
+	'select the option number 3'):
+		more code here
+		
+	'select the option number 4'):
+		more code here
+
+	'question 2'):
+		IF the question 1 is IN the file .question_answers.csv.
+			Ask the question 2.
+			Append the option selected to the file .question_answers.csv.
+			Save the hidden control 'question 2' to .result_message.json.
+			Re-run the same terminal/voice command.
+		ELSE
+			Re-run the same terminal/voice command.
+
+	'question 3'):
+		IF the question 2 is IN the file .question_answers.csv.
+			Ask the question 3.
+			Append the option selected to the file .question_answers.csv.
+			Save the hidden control "result 1" to the file .result_message.json.
+			Re-run the same terminal/voice command.
+		ELSE
+			Re-run the same terminal/voice command.
+
+	'result 1'):
+		IF the questions 1-3 are IN the file .question_answers.csv.
+			Calculate the result.
+			Say and display the result.
+				IF the result is correct
+					Say that the result is correct.
+				ELSE
+					Say that the result is incorrect.
+			Delete the content of the file .question_answers.csv.
+
+	*):
+		IF the Answer for the question 1 is NOT IN the file .question_answers.csv.
+			Ask the question 1.
+			Re-run the same terminal/voice command without waiting for a new user command.
+		ELSE IF the Answer for the question 2 is NOT IN the file .question_answers.csv.
+			Ask the question 2.
+			Re-run the same terminal/voice command without waiting for a new user command.
+		ELSE the Answer for the question 4 is NOT IN the file .question_answers.csv.
+			Ask the question 3.
+			Re-run the same terminal/voice command without waiting for a new user command.
+
+```
+
+Example of a complete file question_answers.csv:
+
+```text
+Question, Answer
+result of two plus two, 4 
+result of two minus one, 1
+result of two divided by one, 2
+```
+
+Example of possible calculations to resolve in the case option result 1:
+- The number of questions asnwered correctly (1, 2 or 3 out of 3, for an interactive sequence/questionnaire/test/exam of 3 questions.
+- The sum of all the results of all the questions (correct result = 7)
+
+Example of the terminal/voice command for the interactive sequence:
+
+> Start the math test number one zero one
+
+# 8 Terminal Voice Skills
+
+
+# 9 Terminal Voice Skillsets
+
 
 # 6 Default Commbase commands
 
@@ -988,7 +1841,7 @@ your speech recognition model learning process.
 
 The next piece of code is a case inside /usr/bin/commbase
 
-```bash
+```shell
 'stop')
   echo "Stopping application"
   tmux kill-session -t Commbase-0
@@ -999,7 +1852,7 @@ The next piece of code is a case inside /usr/bin/commbase
 This command is going to help cleaning up the 'commbase' file before pasting a new versions that
 includes the a new command:
 
-```code
+```shell
 # cd /usr/bin
 # echo "" > commbase
 # nano commbase
@@ -1069,7 +1922,7 @@ Commbase uses an environment constant $COMMBASE_ROOT_DIR set up for the user env
 
 Example of the custom lines added to a bashrc file:
 
-```bash
+```shell
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -1091,7 +1944,7 @@ source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
 ```
 Example of use of the constant in the same bash script:
 
-```bash
+```shell
 mpv $COMMBASE_ROOT_DIR/commbase/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
 ```
 
@@ -1103,7 +1956,7 @@ changed to point to any specified default or custom version of the file commbase
 which processes voice commands and scripts that run tasks we use and are able to program for Commbase
 to run them.
 
-```bash
+```shell
 
 # The Commbase processing file for this device:
 COMMBASE_PROCESS_VOSK="commbase-process-vosk-pc-default.sh"
@@ -1156,11 +2009,11 @@ Alternatives:
 $ commbase start
 ```
 
-```
+```shell
 $ commbase teleport
 ```
 
-```
+```shell
 $ commbase stop
 $ commbase start
 ```
@@ -1307,78 +2160,11 @@ Skillsets voice commands examples:
 <br />`ALT` + `SHIFT` + `2` : Stop sound capturing.
 <br />`ALT` + `SHIFT` + `3` : Start sound capturing.
 
-These group of shortcuts are defined in the Commbase directory key-bindings/
+These group of shortcuts are defined in the directory **scripts/configuration/key_bindings/**.
 
-### Desktop Environment and Operating System
+### Keyboard Shortcuts Overlapping
 
-`SHIFT` + `TAB` : Set focus.
-<br />`ALT` + `TAB` : Select any application and bring it to foreground.
-<br />`ALT` + `SHIFT` + `TAB` : Select any application and bring it to foreground.
-<br />`INSERT` Take a full screen screenshot.
-<br />`CTRL` + `ALT` + `F1-F12` : Switch among console terminals.
-<br />`CTRL` + `ALT` + `ARROWS` : Move through desktop workspaces.
-<br />`SUPER` + `Z` : Desktop search.
-<br />`CTRL` + `ALT` + `DEL` : Reboot computer.
-<br />`ALT` + `SYSRQ` + `R` : un**R**aw (take control of keyboard back from X11)
-<br />`ALT` + `SYSRQ` + `E` : t**E**rminate (send SIGTERM to all processes, allowing them to terminate gracefully)
-<br />`ALT` + `SYSRQ` + `I` : k**I**ll (send SIGILL to all processes, forcing them to terminate immediately)
-<br />`ALT` + `SYSRQ` : `S` : **S**ync (flush data to disk)
-<br />`ALT` + `SYSRQ` + `U` : **U**nmount (remount all filesystems read-only)
-<br />`ALT` + `SYSRQ` + `B` : re**B**oot.
-
-### Gnome Terminal
-
-`CTRL` + `-` : Resize terminal.
-<br />`CTRL` + `+` : Resize terminal.
-<br />`CTRL` + `SHIFT` + `X` + `X` : Selects a portion of the terminal text typed in.
-<br />`CTRL` + `SHIFT` + `C` : Copy highlighted text from terminal.
-<br />`CTRL` + `SHIFT` + `V` : Paste clipboard text into terminal.
-
-### Neovim / Emacs
-
-When using Neovim or Emacs, make sure that the custom keyboard shorcuts do not interfere one another in the complete list.
-
-### OBS
-
-`ALT` + `SHIFT` + `4` : Start recording.
-<br />`ALT` + `SHIFT` + `5` : Stop recording.
-<br />`ALT` + `SHIFT` + `6` : Start streaming.
-<br />`ALT` + `SHIFT` + `7` : Stop streaming.
-
-### SimpleScreenRecorder
-
-`SUPER` + `S` : Start recording.
-
-### Text Editors and IDEs
-
-CTRL	X	Cut.
-<br />`CTRL` + `C` : Copy.
-<br />`CTRL` + `V` : Paste.
-<br />`CTRL` + `F` : Find.
-<br />`CTRL` + `N` : Create new file.
-
-### Tmux
-
-`Prefix` + `B` , `1-9` : Switch window by its number id.
-<br />`Prefix` + `B` , `Q` : Display pane numbers.
-<br />`Prefix` + `B` , `SHIFT` : Split pane vertically.
-<br />`Prefix` + `B` , `ARROWS` : Resize active pane.
-<br />`Prefix` + `B` , `ARROWS` : Switch pane.
-
-Prefix = CTRL
-
-### VS Code
-
-`CTRL` + `SHIFT` + `P` : View Command Palette.
-<br />`CTRL` + `P` : Find file or expression.
-<br />`CTRL` + `B` : Open/Close side panel. Bold a word if editing a markdown file while using a markdown extension for VS Code.
-<br />`CTRL` + `BACKTICK SYMBOL` : Open VS Code Terminal.
-
-When using VS Code, make sure that the custom keyboard shorcuts do not interfere one another in the complete list.
-
-### Web Browser
-
-Click on a browser's tab and then use the roller to move through the tabs.
+Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help you avoid that problem, you can use [this document.](./Keyboard%20Shortcuts%20Cheat%20Sheet.md)
 
 ## Input Remapper
 

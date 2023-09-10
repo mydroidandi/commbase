@@ -94,12 +94,23 @@ Start/Stop:
 Control:
   Usage: commbase [options]
   options:
+
   	"[okay|ok] stop"			Stop the previous command
+  	"[okay|ok] run it again"		Re-run the previous command 
+
+  	"[okay|ok] repeat"			Reproduce the previous discourse by speaking it
+  	"[okay|ok] remind me in [five|ten|twenty|thirty] minutes"
+  						Start a question reminder countdown timer
+  	"[okay|ok] what is the next task"	Remind of a prior question put on hold in a queue
+
   	"[okay|ok] accept"			Accept a Y/N question
   	"[okay|ok] deny"			Deny/Cancel a Y/N question
-  	"[okay|ok] select the option number <number>"
+  	"[okay|ok] confirm with the code <four number code>"
+  						Confirm a confirmation request
+
+  	"[okay|ok] select the option number [one|two|three|four]"
   						Select a multi-choice question option
-  	"[okay|ok] skip that question"		Skip a question option
+
   	"[okay|ok] what mode are you in"	Confirm the current mode
   	"[okay|ok] enter the normal mode"	Enter the normal mode
   	"[okay|ok] enter the conversation mode"	Enter the conversation mode
@@ -112,6 +123,7 @@ Skills and Skillsets:
   	Checkout the User's Guide for a complete list of options
   Examples:
   	"tell me about yourself"			Run Commbase introduction
+  	"start the math test number one zero one"	Run the mentioned multi-choice test interactively
   	"let me know when the internet is back"		Receive the 'event' alert and notification
   	"set a timer of <minutes> minutes"		Start a countdown timer
   		Examples:
@@ -152,7 +164,7 @@ route_option() {
 			fi
 			;;
 	  '-g' | '--license')
-	    display_license | less
+	    display_license | more
 			exit 99
 			;;
 	  '-h' | '--help')

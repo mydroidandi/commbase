@@ -146,4 +146,5 @@ logs
 .vscode/
 *.sw*
 commbase.code-workspace
+.kateproject
 
