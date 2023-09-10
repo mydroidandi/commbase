@@ -1,10 +1,23 @@
-# Directives
+# Configuration options
 
-# SC1090: Can't follow non-constant source. Use a directive to specify location.
-# Alternative: Add the argument source to the command. For example:
-# shellcheck --shell bash script.sh source=/home/<user>/Developer/mydroidandi/commbase/config/app.conf | less
-#disable=SC1090
+# Set the preferred shell to bash (default is sh)
+shell=bash
+
+# Set the maximum line length (default is 80)
+#max_line_length=100
 
 # Suggest ${VAR} in place of $VAR
 #enable=require-variable-braces
 
+# Enable specific checks (comma-separated)
+# To disable a check, prefix it with "no"
+#enable=SC1000,noSC2000
+#disable=SC1090
+
+# Ignore specific errors in certain lines
+# Example: Ignore SC1000 and SC2000 in lines 5 and 10
+#ignore=5,10:SC1000,SC2000
+
+# Set the severity level for specific checks
+# Example: Make SC3000 a warning instead of an error
+#severity=SC3000:warning
