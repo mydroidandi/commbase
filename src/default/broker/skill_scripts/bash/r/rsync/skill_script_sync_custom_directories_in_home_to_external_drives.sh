@@ -205,16 +205,23 @@ elif [ "$MY_HOST_NAME" == "$HOSTNAME" ]; then
 	(echo "<> Syncing the directory: /etc/ to $external_storage_drive_02_backup_path ..." >> "$LOG_FILE")
 	(sudo rsync -avh --delete --quiet -e /etc/* "$external_storage_drive_02_backup_path" 2>&1 | tee -a "$LOG_FILE")
 	# Log the end of the sync
-	(echo "<> Synchronization process completed.")
-	(echo "<> Synchronization process completed." >> "$LOG_FILE")
+	(echo "")
+	(echo "---------")
+	(echo "---------" >> "$LOG_FILE")
+	(echo "RESULTS:")
+	(echo "RESULTS:" >> "$LOG_FILE")
+	(echo "---------")
+	(echo "---------" >> "$LOG_FILE")
+	(echo "Synchronization process completed!")
+	(echo "Synchronization process completed!" >> "$LOG_FILE")
 	(echo -n "End date: ")
 	(date)
 	(echo -n "End date: " >> "$LOG_FILE")
 	(date >> "$LOG_FILE")
-	(echo "<> Verify and resolve any sync issue based on the log file and then sync again!")
-	(echo "<> Verify and resolve any sync issue based on the log file and then sync again!" >> "$LOG_FILE")
+	(echo "Verify and resolve any sync issue based on the log file and then sync again.")
+	(echo "Verify and resolve any sync issue based on the log file and then sync again." >> "$LOG_FILE")
 else
-	(echo "<> Something went wrong! Verify your IP address and hostname in your .env file")
+	(echo "Something went wrong! Verify your IP address and hostname in your .env file.")
 	(echo -n "End date: ")
 	(date)
 	(echo -n "End date: " >> "$LOG_FILE")
@@ -222,3 +229,4 @@ else
 fi
 
 (exit 99)
+
