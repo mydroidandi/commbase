@@ -4,8 +4,10 @@ Programmable conversational AI assistant and distributed AI for single computers
 
 [![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue)
-[![Flake8](https://github.com/mydroidandi/commbase/actions/workflows/python-flake8-lint.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
-[![Shell Linter](https://github.com/mydroidandi/commbase/actions/workflows/shell-linter.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
+[![flake8 Lint](https://github.com/mydroidandi/commbase/actions/workflows/python-flake8-lint.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-flake8-lint.yml)
+[![json-lint](https://github.com/mydroidandi/commbase/actions/workflows/jq-json-lint.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/jq-json-lint.yml)
+[![Shell Linter](https://github.com/mydroidandi/commbase/actions/workflows/shell-linter.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/shell-linter.yml))
+
 
 ## Introduction
 
