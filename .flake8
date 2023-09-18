@@ -26,7 +26,3 @@ select = B,C,E,F,W,T4,B9
 
 # Exclude specific directories or files from linting
 exclude = .git,__pycache__,.venv
-
-# Indentation settings
-# Set the desired indentation size to 2 spaces
-indent-size = 2
