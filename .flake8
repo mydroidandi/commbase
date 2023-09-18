@@ -1,0 +1,27 @@
+# .flake8 - Python linting configuration
+
+[flake8]
+# Ignore specific error and warning categories
+# E203: Whitespace before ':'
+# E266: Too many leading '#' for an inline comment
+# E501: Line too long (adjust 'max-line-length' accordingly)
+# W503: Line break before binary operator
+# F403: Imported name is undefined in the current module
+# F401: Imported but unused names
+ignore = E203, E266, E501, W503, F403, F401
+
+# Set the maximum line length (the project's preference is 80)
+max-line-length = 555
+
+# Select specific error and warning categories to check
+# B: Bugbear (custom checks for Flake8)
+# C: Complexity-related checks (e.g., cyclomatic complexity)
+# E: Errors
+# F: Formatting-related issues (e.g., code formatting)
+# W: Warnings
+# T4: Type checker-related checks (if using a type checker like MyPy)
+# B9: Best practices and other checks
+select = B,C,E,F,W,T4,B9
+
+# Exclude specific directories or files from linting
+exclude = .git,__pycache__,.venv
