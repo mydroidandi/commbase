@@ -5,4 +5,4 @@ select = B,C,E,F,W,T4,B9
 exclude = .git,__pycache__,.venv
 
 # Indentation settings
-indent-size = 4
+indent-size = 2
