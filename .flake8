@@ -10,9 +10,8 @@
 # F401: Imported but unused names
 ignore = E203, E266, E501, W503, F403, F401
 
-# Set the maximum line length (adjust to your project's preference)
-#max-line-length = 88
-max-line-length = 80
+# Set the maximum line length (the project's preference is 80)
+#max-line-length = 555
 
 # Select specific error and warning categories to check
 # B: Bugbear (custom checks for Flake8)
