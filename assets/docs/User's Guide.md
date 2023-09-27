@@ -571,14 +571,16 @@ The default version of the file **app.conf** contains the next values:
     - `/history/.result_messages_history` (Default): This setting represents a default file path. The file allows users or developers to append result messages one after another, sequentially.
 
 - **COMMBASE_STT_VOSK_P_PARSE_CONTROL_MESSAGES_ON**:
+  - Description: This setting determines whether control messages are parsed or not by the engine commbase-stt-vosk-p in case they are processed by the Controller.
   - Possible values: True or False.
   - Example value:
-    - `False` (Default): This setting determines whether control messages are parsed or not by the engine commbase-stt-vosk-p in case they are processed by the Controller.
+    - `False` (Default): This setting prevents the engine commbase-stt-vosk-p from parsing messages and sends them as is to the alternative libcommbase controller. Only the activated controller of the activate engine will work at a time.
 
 - **COMMBASE_STT_WHISPER_P_PARSE_CONTROL_MESSAGES_ON**:
+  - Description: This setting determines whether control messages are parsed or not by the engine commbase-stt-whisper-p in case they are processed by the Controller.
   - Example value:
   - Possible values: True or False.
-    - `False` (Default): This setting determines whether control messages are parsed or not by the engine commbase-stt-whisper-p in case they are processed by the Controller.
+    - `False` (Default): This setting prevents the engine commbase-stt-whisper-p from parsing messages and sends them as is to the alternative libcommbase controller. Only the activated controller of the activate engine will work at a time.
 
 - **CONTROL_STOP_PREVIOUS_COMMAND_PATTERNS_FILE**:
   - Example value:
