@@ -49,51 +49,51 @@ import os
 
 # A temporary directory and a file path within that directory
 temp_file = tempfile.mkdtemp()
-save_path = os.path.join(temp_file, 'temp.wav')
+save_path = os.path.join(temp_file, "temp.wav")
 
 
 def listen():
-	"""
-	Initializes a speech recognizer, captures audio input from a microphone,
-	adjusts for ambient noise, saves the recorded audio as a WAV file, and handles
-	any exceptions that may occur during the process, and then returns the path of
-	the saved audio file.
-	"""
-	listener = sr.Recognizer()  # Create an instance of Recognizer
-	try:
-		with sr.Microphone() as source:
-			print("END USER:")
-			listener.adjust_for_ambient_noise(source)
-			audio = listener.listen(source)
-			data = io.BytesIO(audio.get_wav_data())
-			audio_clip = AudioSegment.from_file(data)
-			audio_clip.export(save_path, format='wav')
-	except Exception as e:
-		print(e)
-	return save_path
+    """
+    Initializes a speech recognizer, captures audio input from a microphone,
+    adjusts for ambient noise, saves the recorded audio as a WAV file, and handles
+    any exceptions that may occur during the process, and then returns the path of
+    the saved audio file.
+    """
+    listener = sr.Recognizer()  # Create an instance of Recognizer
+    try:
+        with sr.Microphone() as source:
+            print("END USER:")
+            listener.adjust_for_ambient_noise(source)
+            audio = listener.listen(source)
+            data = io.BytesIO(audio.get_wav_data())
+            audio_clip = AudioSegment.from_file(data)
+            audio_clip.export(save_path, format="wav")
+    except Exception as e:
+        print(e)
+    return save_path
 
 
 def recognize_audio(save_path):
-	"""
-	Uses the Whisper library to load a pre-trained audio recognition model and
-	transcribes an audio file located at save_path using that model. It then
-	returns the transcribed text extracted from the transcription result.
-	"""
-	audio_model = whisper.load_model('base')  # The version of the Whisper model to load
-	transcription = audio_model.transcribe(save_path, language='english', fp16=False)
-	return transcription['text']
+    """
+    Uses the Whisper library to load a pre-trained audio recognition model and
+    transcribes an audio file located at save_path using that model. It then
+    returns the transcribed text extracted from the transcription result.
+    """
+    audio_model = whisper.load_model("base")  # The version of the Whisper model to load
+    transcription = audio_model.transcribe(save_path, language="english", fp16=False)
+    return transcription["text"]
 
 
 def main():
-	"""
-	Servers as the entry point of the program and orchestrates the speech 
-	recognition process.
-	"""
-	response = recognize_audio(listen())
-	print(response)
+    """
+    Servers as the entry point of the program and orchestrates the speech
+    recognition process.
+    """
+    response = recognize_audio(listen())
+    print(response)
 
 
 # Ensure that the main() function is executed only when the script is run
 # directly as the main program.
-if __name__ == '__main__':
-	main()
+if __name__ == "__main__":
+    main()

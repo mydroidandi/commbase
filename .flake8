@@ -3,15 +3,16 @@
 [flake8]
 # Ignore specific error and warning categories
 # E203: Whitespace before ':'
+# E226: Missing whitespace around arithmetic operator
 # E266: Too many leading '#' for an inline comment
 # E501: Line too long (adjust 'max-line-length' accordingly)
 # W503: Line break before binary operator
 # F403: Imported name is undefined in the current module
 # F401: Imported but unused names
-ignore = E203, E266, E501, W503, F403, F401
+ignore = E203, E226, E266, E501, W503, F403, F401
 
 # Set the maximum line length (the project's preference is 80)
-max-line-length = 555
+max-line-length = 88
 
 # Select specific error and warning categories to check
 # B: Bugbear (custom checks for Flake8)

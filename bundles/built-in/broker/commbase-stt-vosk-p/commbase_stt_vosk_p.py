@@ -456,31 +456,15 @@ def commbase_stt_vosk_p():
             # Set the values returned by get_assistant_avatar_color()
             avatar_color = get_assistant_avatar_color()
 
-            # Set the background color for the end user
-            end_user_background_color_start = set_end_user_background_color(
-                end_user_background_color
-            )
-
             # Set the background color for the assistant user
             assistant_background_color_start = set_assistant_user_background_color(
                 assistant_background_color
             )
 
-            # Set the background color for the system user
-            system_background_color_start = set_system_user_background_color(
-                system_background_color
-            )
-
-            # Set the text color for the end user
-            end_user_text_color_start = set_end_user_text_color(end_user_text_color)
-
             # Set the text color for the assistant user
             assistant_text_color_start = set_assistant_user_text_color(
                 assistant_text_color
             )
-
-            # Set the text color for the system user
-            system_text_color_start = set_system_user_text_color(system_text_color)
 
             # Set the color of the assistant's avatar
             avatar_color_start = set_assistant_avatar_color(avatar_color)
@@ -506,7 +490,7 @@ def commbase_stt_vosk_p():
             # Assign functions imported from file_paths
 
             # Set the values returned by get_secrets_file_path()
-            secrets_file_path = get_secrets_file_path()
+            # secrets_file_path = get_secrets_file_path()
 
             # Set the values returned by get_ascii_art_file_path()
             ascii_art_file_path = get_ascii_art_file_path()
@@ -528,7 +512,7 @@ def commbase_stt_vosk_p():
             )
 
             # Set the values returned by get_result_messages_history_file()
-            result_messages_history_file = get_result_messages_history_file()
+            # result_messages_history_file = get_result_messages_history_file()
 
             # Set the values returned by get_control_stop_previous_command_patterns_file()
             control_stop_previous_command_patterns_file = (
