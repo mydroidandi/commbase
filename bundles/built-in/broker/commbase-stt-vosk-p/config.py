@@ -38,5 +38,4 @@ import os
 
 # The path to the .env configuration file
 CONFIG_FILE_DIR = os.environ["COMMBASE_APP_DIR"]
-CONFIG_FILE_PATH = os.path.join(CONFIG_FILE_DIR, 'config/app.conf')
-
+CONFIG_FILE_PATH = os.path.join(CONFIG_FILE_DIR, "config/app.conf")

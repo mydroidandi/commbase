@@ -40,21 +40,20 @@ import pyttsx3
 # Initialize the text-to-speech engine, retrieve the available voices, and set
 # properties for the engine's rate and voice.
 engine = pyttsx3.init()
-voices = engine.getProperty('voices')
-engine.setProperty('rate', 145)
-engine.setProperty('voice', voices[18].id)
+voices = engine.getProperty("voices")
+engine.setProperty("rate", 145)
+engine.setProperty("voice", voices[18].id)
 
 
 def talk(text):
-	"""
-	"""
-	engine.say(text)
-	engine.runAndWait()
+    """ """
+    engine.say(text)
+    engine.runAndWait()
 
 
 def read_file(file_path):
     try:
-        with open(file_path, 'r') as file:
+        with open(file_path, "r") as file:
             content = file.read()
             return content
     except FileNotFoundError:
@@ -65,28 +64,30 @@ def read_file(file_path):
         return None
 
 
-#file_path = 'jokes.txt'  # Replace with your file path
-file_path = os.environ["COMMBASE_APP_DIR"] + '/src/default/broker/discourses/jokes/9_jokes_joke'
+# file_path = 'jokes.txt'  # Replace with your file path
+file_path = (
+    os.environ["COMMBASE_APP_DIR"] + "/src/default/broker/discourses/jokes/9_jokes_joke"
+)
 file_content = read_file(file_path)
 
 
 """
 def main():
-	for voice in voices:
-		print(voice)
+    for voice in voices:
+        print(voice)
 """
 
 
 def main():
-	"""
-	Servers as the entry point of the program and orchestrates the speech 
-	recognition process.
-	"""
-	talk(file_content)
-	print(file_content)
+    """
+    Servers as the entry point of the program and orchestrates the speech
+    recognition process.
+    """
+    talk(file_content)
+    print(file_content)
 
 
 # Ensure that the main() function is executed only when the script is run
 # directly as the main program.
-if __name__ == '__main__':
-	main()
+if __name__ == "__main__":
+    main()

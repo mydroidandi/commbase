@@ -39,18 +39,18 @@
 import pyttsx3
 
 engine = pyttsx3.init()
-voices = engine.getProperty('voices')
+voices = engine.getProperty("voices")
 
 # Voice index counter
 idx = -1
 
 # Print all available voices
 for voice in voices:
-	idx = idx + 1
-	print("Voice:")
-	print(" - ID: %s" % voice.id)
-	print(" - Name: %s" % voice.name)
-	print(" - Languages: %s" % voice.languages)
-	print(" - Gender: %s" % voice.gender)
-	print(" - Age: %s" % voice.age)
-	print (" - Index: %s" % idx)
+    idx = idx + 1
+    print("Voice:")
+    print(" - ID: %s" % voice.id)
+    print(" - Name: %s" % voice.name)
+    print(" - Languages: %s" % voice.languages)
+    print(" - Gender: %s" % voice.gender)
+    print(" - Age: %s" % voice.age)
+    print(" - Index: %s" % idx)

@@ -9,6 +9,7 @@ RATE = 44100
 RECORD_SECONDS = 5
 WAVE_OUTPUT_FILENAME = "output.wav"
 
+
 def main():
     audio = pyaudio.PyAudio()
     try:
@@ -38,6 +39,7 @@ def main():
     wf.setframerate(RATE)
     wf.writeframes(b''.join(frames))
     wf.close()
+
 
 if __name__ == "__main__":
     main()

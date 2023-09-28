@@ -46,87 +46,86 @@ import os
 
 
 def get_chatgpt_api_key(callback=None):
-	# Specify the path of the env file containing the variable
-	file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
+    # Specify the path of the env file containing the variable
+    file_path = os.environ["COMMBASE_APP_DIR"] + "/config/app.conf"
 
-	# Open the file and read its contents
-	with open(file_path, 'r') as f:
-		for line in f:
-			# Split the line into variable name and value
-			variable_name, value = line.strip().split('=')
+    # Open the file and read its contents
+    with open(file_path, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
 
-			# Check if the variable we are looking for exists in the line
-			if variable_name == 'OPENAI_API_KEY':
-				# Remove the quotes from the value of the variable
-				API_KEY = value.strip()[1:-1]
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "OPENAI_API_KEY":
+                # Remove the quotes from the value of the variable
+                API_KEY = value.strip()[1:-1]
 
-				# Call the callback function with the API key value as an argument
-				if callback is not None:
-					callback(API_KEY)
+                # Call the callback function with the API key value as an argument
+                if callback is not None:
+                    callback(API_KEY)
 
-					return API_KEY
+                    return API_KEY
 
-	# If the variable is not found, return None
-	return None
+    # If the variable is not found, return None
+    return None
 
 
 def main():
-	def process_api_key(api_key):
-		# Do something with the API key value
-		#print(f"Received API key: {API_KEY}")
-		openai.api_key = api_key
+    def process_api_key(api_key):
+        # Do something with the API key value
+        # print(f"Received API key: {API_KEY}")
+        openai.api_key = api_key
 
-	# Get the API key value and pass it to the callback function
-	get_chatgpt_api_key(callback=process_api_key)
+    # Get the API key value and pass it to the callback function
+    get_chatgpt_api_key(callback=process_api_key)
 
-	print("[bold green]Terminal ChatGP[/bold green]")
+    print("[bold green]Terminal ChatGP[/bold green]")
 
-	table = Table("Command", "Description")
-	table.add_row("exit", "Exit the application")
-	table.add_row("new", "New conversation")
+    table = Table("Command", "Description")
+    table.add_row("exit", "Exit the application")
+    table.add_row("new", "New conversation")
 
-	print(table)
+    print(table)
 
-	# Assistant context
-	context = {"role": "system",
-               "content": "You are a very helpful assistant."}
-	messages = [context]
+    # Assistant context
+    context = {"role": "system", "content": "You are a very helpful assistant."}
+    messages = [context]
 
-	while True:
+    while True:
 
-		content = __prompt()
+        content = __prompt()
 
-		if content == "new":
-			print("ChatGPT: New conversation created")
-			messages = [context]
-			content = __prompt()
+        if content == "new":
+            print("ChatGPT: New conversation created")
+            messages = [context]
+            content = __prompt()
 
-		messages.append({"role": "user", "content": content})
+        messages.append({"role": "user", "content": content})
 
-		response = openai.ChatCompletion.create(
-				model="gpt-3.5-turbo", messages=messages)
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo", messages=messages
+        )
 
-		response_content = response.choices[0].message.content
+        response_content = response.choices[0].message.content
 
-		messages.append({"role": "assistant", "content": response_content})
+        messages.append({"role": "assistant", "content": response_content})
 
-		print(f"[bold green]ChatGPT: [/bold green] [green]{response_content}[/green]")
+        print(f"[bold green]ChatGPT: [/bold green] [green]{response_content}[/green]")
 
 
 def __prompt() -> str:
-	prompt = typer.prompt("\nYou")
+    prompt = typer.prompt("\nYou")
 
-	if prompt == "exit":
-		exit = typer.confirm("Are you sure?")
-		if exit:
-			print("Goodbye!")
-			raise typer.Abort()
+    if prompt == "exit":
+        exit = typer.confirm("Are you sure?")
+        if exit:
+            print("Goodbye!")
+            raise typer.Abort()
 
-		return __prompt()
+        return __prompt()
 
-	return prompt
+    return prompt
 
 
 if __name__ == "__main__":
-	typer.run(main)
-
+    typer.run(main)

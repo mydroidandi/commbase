@@ -3,6 +3,7 @@ import pyaudio
 from amplitude import Amplitude
 from vu_constants import RATE, INPUT_FRAMES_PER_BLOCK
 
+
 def main():
     audio = pyaudio.PyAudio()
     try:
@@ -11,7 +12,7 @@ def main():
                             rate=RATE,
                             input=True,
                             frames_per_buffer=INPUT_FRAMES_PER_BLOCK
-                           )
+                            )
 
         maximal = Amplitude()
         while True:
@@ -24,6 +25,7 @@ def main():
         stream.stop_stream()
         stream.close()
         audio.terminate()
+
 
 if __name__ == "__main__":
     main()
