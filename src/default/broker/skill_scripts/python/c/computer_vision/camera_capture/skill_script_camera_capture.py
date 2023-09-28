@@ -39,67 +39,69 @@ import os
 
 
 def get_video_capture_device_index():
-	""" Gets the video capture device index from the config file """
-	# Specify the path of the env file containing the variable
-	file_path = os.environ["COMMBASE_APP_DIR"] + '/config/app.conf'
+    """Gets the video capture device index from the config file"""
+    # Specify the path of the env file containing the variable
+    file_path = os.environ["COMMBASE_APP_DIR"] + "/config/app.conf"
 
-	# Open the file and read its contents
-	with open(file_path, 'r') as f:
-		for line in f:
-			# Split the line into variable name and value
-			variable_name, value = line.strip().split('=')
+    # Open the file and read its contents
+    with open(file_path, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
 
-			# Check if the variable we are looking for exists in the line
-			if variable_name == 'VIDEO_CAPTURE_DEVICE_01_INDEX':
-				# Remove the quotes from the value of the variable
-				VIDEO_CAPTURE_DEVICE_INDEX = value.strip()[1:-1]
-				return int(VIDEO_CAPTURE_DEVICE_INDEX)
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "VIDEO_CAPTURE_DEVICE_01_INDEX":
+                # Remove the quotes from the value of the variable
+                VIDEO_CAPTURE_DEVICE_INDEX = value.strip()[1:-1]
+                return int(VIDEO_CAPTURE_DEVICE_INDEX)
 
-	# If the variable is not found, return None
-	return None
+    # If the variable is not found, return None
+    return None
 
 
 def open_camera(video_capture_device_index):
-	""" Opens the camera device capture """
-	# Open a camera capture object
-	cap = cv2.VideoCapture(video_capture_device_index)  # Use camera index 0 for the default camera
-	print(cap)
-	
-	# Check if camera opened successfully
-	if not cap.isOpened():
-		print("Failed to open camera")
-		exit(1)
+    """Opens the camera device capture"""
+    # Open a camera capture object
+    cap = cv2.VideoCapture(
+        video_capture_device_index
+    )  # Use camera index 0 for the default camera
+    print(cap)
 
-	while True:
-		# Capture frame-by-frame
-		ret, frame = cap.read()
+    # Check if camera opened successfully
+    if not cap.isOpened():
+        print("Failed to open camera")
+        exit(1)
 
-		# Check if frame was captured successfully
-		if not ret:
-			print("Failed to capture frame")
-			break
+    while True:
+        # Capture frame-by-frame
+        ret, frame = cap.read()
 
-		# Display the frame
-		cv2.imshow("Camera", frame)
+        # Check if frame was captured successfully
+        if not ret:
+            print("Failed to capture frame")
+            break
 
-		# Exit the loop if 'q' key is pressed
-		if cv2.waitKey(1) & 0xFF == ord('q'):
-			break
+        # Display the frame
+        cv2.imshow("Camera", frame)
 
-	# Release the camera capture object
-	cap.release()
+        # Exit the loop if 'q' key is pressed
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            break
 
-	# Close all OpenCV windows
-	cv2.destroyAllWindows()
+    # Release the camera capture object
+    cap.release()
+
+    # Close all OpenCV windows
+    cv2.destroyAllWindows()
 
 
 def skill_script_camera_capture():
-	""" Main call """
-	# Get the video capture device index
-	video_capture_device = get_video_capture_device_index()
+    """Main call"""
+    # Get the video capture device index
+    video_capture_device = get_video_capture_device_index()
 
-	# Open the camera
-	open_camera(video_capture_device)
+    # Open the camera
+    open_camera(video_capture_device)
+
 
 skill_script_camera_capture()
-
