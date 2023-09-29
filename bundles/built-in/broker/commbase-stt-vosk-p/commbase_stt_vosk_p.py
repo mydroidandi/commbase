@@ -99,7 +99,7 @@ from text_formatting import (
 
 def commbase_stt_vosk_p():
     """
-        Takes audio input, processes it, and outputs the recognized text. The
+    Takes audio input, processes it, and outputs the recognized text. The
     recognized text is then cleaned up, and saved in file(s).
     """
     # Assign the result of calling get_vosk_ml_model_directory()
@@ -126,25 +126,25 @@ def commbase_stt_vosk_p():
 
     def callback(indata, frames, time, status):
         """
-        This function is called (from a separate thread) for each audio block.
-
         This function puts the input data into a queue for processing.
         If the status parameter is not None, it prints an error message to the
         standard error stream.
 
+        This function is called (from a separate thread) for each audio block.
+
         Parameters:
-                  indata : numpy.ndarray
-                      The input audio data as a NumPy array.
-                  frames : int
-                      The number of frames in the input data.
-                  time : CData
-                      A ctypes structure containing timing information about the input
-                      data.
-                  status : CallbackFlags
-                      A flag that indicates the status of the input data.
+            indata : numpy.ndarray
+                The input audio data as a NumPy array.
+            frames : int
+                The number of frames in the input data.
+            time : CData
+                A ctypes structure containing timing information about the input
+                data.
+            status : CallbackFlags
+                A flag that indicates the status of the input data.
 
         Returns:
-                   None.
+            None.
         """
         if status:
             print(status, file=sys.stderr)
@@ -154,26 +154,25 @@ def commbase_stt_vosk_p():
         """
         Displays the assistant avatar in the terminal.
 
-        This function retrieves the ASCII art avatar of the assistant, assigns the
-        appropriate color based on the configured avatar color, and then prints it
-        to the terminal.
+        This function retrieves the ASCII art avatar of the assistant, assigns
+        the appropriate color based on the configured avatar color, and then
+        prints it to the terminal.
 
         Note:
-                        The color codes used in the avatar display are obtained from the
-                        `get_terminal_colors()` function.
-                        The avatar color is obtained from the `get_assistant_avatar_color()`
-                        function.
-                        The ASCII art avatar is obtained from the `get_assistant_avatar()`
-                        function.
+            The color codes used in the avatar display are obtained from the
+            `get_terminal_colors()` function.
+            The avatar color is obtained from the `get_assistant_avatar_color()`
+            function.
+            The ASCII art avatar is obtained from the `get_assistant_avatar()`
+            function.
 
         Example:
-                        Terminal output:
-
-                        >>> display_assistant_avatar()
-                        [COLOR CODES] ASCII ART [RESET]
+            Terminal output:
+                >>> display_assistant_avatar()
+                [COLOR CODES] ASCII ART [RESET]
         """
-        # Load an ASCII art file, store its content in a variable, and then print
-        # it in a specific color using terminal escape sequences.
+        # Load an ASCII art file, store its content in a variable, and then
+        # prints it in a specific color using terminal escape sequences.
         assistant_avatar = read_plain_text_file(ascii_art_file_path)
         print(f"\033[{avatar_color_start}\033[{assistant_avatar}\033[{color_code_end}")
 
@@ -182,10 +181,10 @@ def commbase_stt_vosk_p():
         Prints the result on the screen and write to files.
 
         Parameters:
-                  None.
+            None.
 
         Returns:
-                  None.
+            None.
         """
         # The original result
         string = rec.Result()
@@ -193,8 +192,8 @@ def commbase_stt_vosk_p():
         # The modified result
         trimmed_string = strip_string(string)
 
-        # Check if the trimmed_string is not empty and control message parsing is
-        # enabled for commbase-stt-vosk-p engine
+        # Check if the trimmed_string is not empty and control message parsing
+        # is enabled for commbase-stt-vosk-p engine
         if (
             trimmed_string != ""
             and commbase_stt_vosk_p_parse_control_messages_on == "True"
@@ -266,15 +265,15 @@ def commbase_stt_vosk_p():
 
                 for line in patterns:
                     if trimmed_string == line.strip():  # Check for exact match
-                        # If a match is found, print the message and record the control
-                        # message
+                        # If a match is found, print the message and record the
+                        # control message
                         print(
                             f"\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {message}\033[{color_code_end}"
                         )
                         # Create the JSON object
                         json_data = {"control": control}
-                        # Record the control message string to result_message_recording_file
-                        # as a JSON object.
+                        # Record the control message string to
+                        # result_message_recording_file as a JSON object.
                         with open(result_message_recording_file, "w") as f:
                             json.dump(json_data, f)
                         found_match = True
@@ -299,9 +298,9 @@ def commbase_stt_vosk_p():
                 )
                 # Create the JSON object
                 json_data = {"message": trimmed_string}
-                # Record the control message string to result_message_recording_file and
-                # previous_result_message_recording_file.
-                # as a JSON object.
+                # Record the control message string to
+                # result_message_recording_file and
+                # previous_result_message_recording_file as a JSON object.
                 with open(result_message_recording_file, "w") as f:
                     json.dump(json_data, f)
                 with open(previous_result_message_recording_file, "w") as f:
@@ -315,8 +314,8 @@ def commbase_stt_vosk_p():
                         ["bash", os.environ["COMMBASE_APP_DIR"] + "/src/skill"]
                     )
 
-        # Check if the trimmed_string is not empty and control message parsing is
-        # disabled for commbase-stt-vosk-p engine
+        # Check if the trimmed_string is not empty and control message parsing
+        # is disabled for commbase-stt-vosk-p engine.
         elif (
             trimmed_string != ""
             and commbase_stt_vosk_p_parse_control_messages_on == "False"
@@ -326,8 +325,8 @@ def commbase_stt_vosk_p():
             )
             # Create the JSON object
             json_data = {"message": trimmed_string}
-            # Record the control message string to controller_message_recording_file
-            # as a JSON object.
+            # Record the control message string to
+            # controller_message_recording_file as a JSON object.
             with open(controller_message_recording_file, "w") as f:
                 json.dump(json_data, f)
             if manage_result_message_on_and_output_skill_errors_in_pane_on == "True":
@@ -664,15 +663,15 @@ def commbase_stt_vosk_p():
             # Display the assitant avatar
             display_assistant_avatar()
 
-            # Read the content of a file that provides instructions about muting the
-            # microphone to pause recording. It then prints the content, including the
-            # formatted assistant name and colors.
+            # Read the content of a file that provides instructions about muting
+            # the microphone to pause recording. It then prints the content,
+            # including the formatted assistant name and colors.
             discourse = read_plain_text_file(assistant_microphone_instruction_file)
             print(
                 f"\n\033[{assistant_background_color_start}\033[{assistant_text_color_start}{assistant_name}:\033[{color_code_end}\033[{color_code_end}\033[{assistant_text_color_start} {discourse}\033[{color_code_end}"
             )
-            # TODO: Replace system commands with new libcommbase routines mute and unmute
-            # Mute the microphone before the assistant speaks
+            # TODO: Replace system commands with new libcommbase routines mute
+            # and unmute Mute the microphone before the assistant speaks.
             subprocess.run(
                 "(amixer set Capture nocap)",
                 stdout=subprocess.DEVNULL,
@@ -689,7 +688,8 @@ def commbase_stt_vosk_p():
                 shell=True,
             )
 
-            # Create a new instance of the KaldiRecognizer class from the Vosk library
+            # Create a new instance of the KaldiRecognizer class from the Vosk
+            # library.
             rec = vosk.KaldiRecognizer(model, args.samplerate)
 
             while True:
@@ -710,22 +710,22 @@ def commbase_stt_vosk_p():
 
 def main():
     """
-        Entry point of the program.
+    Entry point of the program.
 
-        This function serves as the entry point for the program. It is responsible for
-        initiating the execution of the program and coordinating the different
-        components or functions within it.
+    This function serves as the entry point for the program. It is responsible
+    for initiating the execution of the program and coordinating the different
+    components or functions within it.
 
-        Usage:
-    - Ensure that all required dependencies are installed before running this
-    program.
-    - Run this script using the Python interpreter: `commbase-stt-vosk-p.py`
+    Usage:
+        - Ensure that all required dependencies are installed before running
+        this program.
+        - Run this script using the Python interpreter: `commbase-stt-vosk-p.py`
 
         Paramenters:
-                        None
+            None.
 
         Returns:
-                None
+            None.
     """
     # Global declarations
     global q
