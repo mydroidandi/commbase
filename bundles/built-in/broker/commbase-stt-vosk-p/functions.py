@@ -45,10 +45,10 @@ def read_plain_text_file(file_path):
     Reads the contents of a plain text file and return it as a string.
 
     Parameters:
-              file_path (str): The path to the plain text file.
+        file_path (str): The path to the plain text file.
 
     Returns:
-              str: The content of the file as a string.
+        str: The content of the file as a string.
     """
     file_variable = ""
 
@@ -66,15 +66,15 @@ def read_lines_from_file(file_path):
     Reads all lines from a file and return them as a list.
 
     Parameters:
-              file_path (str): The path to the file to be read.
+        file_path (str): The path to the file to be read.
 
     Returns:
-              list: A list containing all the lines from the file.
+        list: A list containing all the lines from the file.
 
     Example:
-              >>> lines = read_lines_from_file('file.txt')
-              >>> print(lines)
-              ['This is line 1.\n', 'This is line 2.\n', 'This is line 3.\n']
+        >>> lines = read_lines_from_file('file.txt')
+        >>> print(lines)
+        ['This is line 1.\n', 'This is line 2.\n', 'This is line 3.\n']
     """
     with open(file_path, "r") as f:
         # Store all the file lines in a list
@@ -89,10 +89,10 @@ def load_config_file():
     Loads the configuration file path.
 
     Returns:
-                    str: The path of the configuration file.
+        str: The path of the configuration file.
 
     Raises:
-    KeyError: If the environment variable 'COMMBASE_APP_DIR' is not set.
+        KeyError: If the environment variable 'COMMBASE_APP_DIR' is not set.
     """
     try:
         # Specify the path of the env file containing the variables
@@ -100,8 +100,10 @@ def load_config_file():
         return CONFIG_FILE_PATH
     except KeyError:
         print("Error: Environment variable 'COMMBASE_APP_DIR' is not set.")
-        # You can choose to handle the error in different ways, such as returning a default value or raising an exception.
-        # Here, we choose to return None to indicate the absence of the configuration file path.
+        # You can choose to handle the error in different ways, such as
+        # returning a default value or raising an exception.
+        # Here, we choose to return None to indicate the absence of the
+        # configuration file path.
         return None
 
 
@@ -151,15 +153,14 @@ def strip_string(string):
     string.
 
     Parameters:
-                    string (str): The input string, assumed to be a valid JSON string with a
+        string (str): The input string, assumed to be a valid JSON string with a
                     'text' field.
 
     Returns:
-                    str or None: The resulting string after being stripped of unwanted
-                    characters and whitespaces.
-                    Returns None if the input string is None, is not a valid JSON string, or
-                    does not contain
-                    a 'text' field.
+        str or None: The resulting string after being stripped of unwanted
+        characters and whitespaces.
+        Returns None if the input string is None, is not a valid JSON string, or
+        does not contain a 'text' field.
     """
     if string is None:
         return None
@@ -199,8 +200,8 @@ def get_chat_participant_names():
     found, or None if any of the variables are not present.
 
     Returns:
-                    tuple or None: A tuple containing the assistant, system, and end user
-                    names in the chat pane, or None, if any of the variables are not found.
+        tuple or None: A tuple containing the assistant, system, and end user
+        names in the chat pane, or None, if any of the variables are not found.
     """
     # Initialize variables for the chat names
     assistant_name = None
@@ -240,7 +241,8 @@ def get_chat_participant_names():
 
 def get_tts_engine_string():
     """
-    Retrieves the TTS (Text-to-Speech) engine string from the configuration file.
+    Retrieves the TTS (Text-to-Speech) engine string from the configuration
+    file.
 
     Returns:
         str or None: The TTS engine string if found in the configuration file,
@@ -271,11 +273,11 @@ def get_tts_engine_string():
 def get_manage_result_message_on_and_output_skill_errors_in_pane_on():
     """
     Retrieves the value of the
-    MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON variable from the
-    configuration file.
+    MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON variable from
+    the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     true_or_false_str = None
@@ -308,7 +310,7 @@ def get_commbase_stt_vosk_p_parse_control_messages_on():
     variable from the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     parse_control_messages = None
