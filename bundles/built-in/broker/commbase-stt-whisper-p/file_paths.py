@@ -1,5 +1,5 @@
 ################################################################################
-#                              commbase-stt-whisper-p                          #
+#                              commbase-stt-vosk-p                             #
 #                                                                              #
 # An ASR (Automatic Speech Recognition) engine.                                #
 #                                                                              #
@@ -31,19 +31,20 @@
 
 # file_paths.py
 # This file stores functions related to loading and managing file paths
+# Requires os.path already imported
 
 # Requirements
-import os.path
 from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
 
 
 def get_vosk_ml_model_directory():
     """
-    Retrieves the directory path of the Vosk ML model from the configuration file.
+    Retrieves the directory path of the Vosk ML model from the configuration
+    file.
 
     Returns:
-              str or None: The directory path of the Vosk ML model if found, or None if
-                    not found.
+        str or None: The directory path of the Vosk ML model if found, or None
+        if not found.
     """
     # Initialize variable for the tts engine string
     model_directory = None
@@ -73,7 +74,7 @@ def get_secrets_file_path():
     file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     secrets_file = None
@@ -99,11 +100,11 @@ def get_secrets_file_path():
 
 def get_ascii_art_file_path():
     """
-    Retrieves the value of the SASCII_ART_FILE_PATH variable from the configuration
-    file.
+    Retrieves the value of the SASCII_ART_FILE_PATH variable from the
+    configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     ascii_art_file = None
@@ -129,11 +130,11 @@ def get_ascii_art_file_path():
 
 def get_assistant_microphone_instruction_file():
     """
-    Retrieves the value of the SASSISTANT_MICROPHONE_INSTRUCTION_FILE variable from
-    the configuration file.
+    Retrieves the value of the SASSISTANT_MICROPHONE_INSTRUCTION_FILE variable
+    from the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     instruction_file = None
@@ -163,7 +164,7 @@ def get_result_message_recording_file():
     configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     recording_file = None
@@ -193,7 +194,7 @@ def get_previous_result_message_recording_file():
     from the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     recording_file = None
@@ -219,11 +220,11 @@ def get_previous_result_message_recording_file():
 
 def get_controller_message_recording_file():
     """
-    Retrieves the value of the CONTROLLER_MESSAGE_RECORDING_FILE variable from the
-    configuration file.
+    Retrieves the value of the CONTROLLER_MESSAGE_RECORDING_FILE variable from
+    the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     recording_file = None
@@ -253,7 +254,7 @@ def get_result_messages_history_file():
     configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     history_file = None
@@ -279,11 +280,11 @@ def get_result_messages_history_file():
 
 def get_control_stop_previous_command_patterns_file():
     """
-            Retrieves the value of the SCONTROL_STOP_PREVIOUS_COMMAND_PATTERNS_FILE from
-            the configuration file.
+        Retrieves the value of the SCONTROL_STOP_PREVIOUS_COMMAND_PATTERNS_FILE
+        from the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -313,7 +314,7 @@ def get_control_accept_changes_patterns_file():
     configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -343,7 +344,7 @@ def get_control_deny_changes_patterns_file():
     configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -369,11 +370,11 @@ def get_control_deny_changes_patterns_file():
 
 def get_control_select_option_number_one_patterns_file():
     """
-    Retrieves the value of the SCONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE from
-    the configuration file.
+    Retrieves the value of the SCONTROL_SELECT_OPTION_NUMBER_ONE_PATTERNS_FILE
+    from the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -399,11 +400,11 @@ def get_control_select_option_number_one_patterns_file():
 
 def get_control_select_option_number_two_patterns_file():
     """
-    Retrieves the value of the SCONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE from
-    the configuration file.
+    Retrieves the value of the SCONTROL_SELECT_OPTION_NUMBER_TWO_PATTERNS_FILE
+    from the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -433,7 +434,7 @@ def get_control_select_option_number_three_patterns_file():
     from the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -463,7 +464,7 @@ def get_control_select_option_number_four_patterns_file():
     from the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -493,7 +494,7 @@ def get_control_skip_question_patterns_file():
     configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -519,11 +520,11 @@ def get_control_skip_question_patterns_file():
 
 def get_control_request_the_current_mode_patterns_file():
     """
-    Retrieves the value of the SCONTROL_REQUEST_THE_CURRENT_MODE_PATTERNS_FILE from
-    the configuration file.
+    Retrieves the value of the SCONTROL_REQUEST_THE_CURRENT_MODE_PATTERNS_FILE
+    from the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -549,11 +550,11 @@ def get_control_request_the_current_mode_patterns_file():
 
 def get_control_enter_the_normal_mode_patterns_file():
     """
-    Retrieves the value of the SCONTROL_ENTER_THE_NORMAL_MODE_PATTERNS_FILE from
-    the configuration file.
+    Retrieves the value of the SCONTROL_ENTER_THE_NORMAL_MODE_PATTERNS_FILE
+    from the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -583,7 +584,7 @@ def get_control_enter_the_conversation_mode_patterns_file():
     from the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -613,7 +614,7 @@ def get_control_enter_the_expert_mode_patterns_file():
     the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None
@@ -643,7 +644,7 @@ def get_control_enter_the_follow_mode_patterns_file():
     the configuration file.
 
     Returns:
-              str or None: The value of the variable if found, or None if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable for the tts engine string
     patterns_file = None

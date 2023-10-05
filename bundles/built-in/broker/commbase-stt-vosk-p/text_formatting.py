@@ -34,11 +34,12 @@
 # includes functions to modify the text color, background color, and text
 # formatting in the terminal output. These functions can be used to enhance the
 # visual appearance and readability of command-line interfaces.
+# Requires os.path already imported
+# Requires to import load_config_file from functions in case CONFIG_FILE_PATH is
+# not used
 
 # Requirements
-import os.path
 from config import CONFIG_FILE_PATH
-from functions import load_config_file
 
 
 def get_terminal_colors():
@@ -50,8 +51,8 @@ def get_terminal_colors():
     None if any of the variables are not present.
 
     Returns:
-                    tuple or None: A tuple containing the terminal colors, or None, if any
-                    of the variables are not found.
+        tuple or None: A tuple containing the terminal colors, or None, if any
+        of the variables are not found.
     """
     # Initialize variables for the background colors
     red_background_color_code_start = None
@@ -73,7 +74,7 @@ def get_terminal_colors():
     white_text_color_code_start = None
     black_text_color_code_start = None
 
-    # Initialize the varoable for the end of the color
+    # Initialize the variable for the end of the color
     color_code_end = None
 
     # Open the file and read its contents
@@ -205,9 +206,9 @@ def get_chat_participant_colors():
     variables if found, or None if any of the variables are not present.
 
     Returns:
-                    tuple or None: A tuple containing the assistant, system, and end user
-                    background and text colors in the chat pane, or None, if any of the
-                    variables are not found.
+        tuple or None: A tuple containing the assistant, system, and end user
+        background and text colors in the chat pane, or None, if any of the
+        variables are not found.
     """
     # Initialize variables for the colors of the chat participants
     end_user_background_color = None
@@ -279,8 +280,8 @@ def get_assistant_avatar_color():
     found, or None if the variable is not present.
 
     Returns:
-                    srt or None: A string containing the assitant avatar color in the chat
-                    pane, or None, if the variable is not found.
+        srt or None: A string containing the assitant avatar color in the chat
+        pane, or None, if the variable is not found.
     """
     # Initialize variable for the avatar color
     avatar_color = None
@@ -309,17 +310,17 @@ def set_end_user_background_color(end_user_background_color):
     Sets the background color for the END USER.
 
     Parameters:
-              end_user_background_color (str): The desired background color for the
-              END USER.
-                  Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
-                  'cyan', 'white', 'black'.
+        end_user_background_color (str): The desired background color for the
+        END USER.
+            Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+            'cyan', 'white', 'black'.
 
     Returns:
-              str: The start code for the selected background color.
+        str: The start code for the selected background color.
 
     Notes:
-              This function internally uses the get_terminal_colors() function to
-              obtain the necessary color codes.
+        This function internally uses the get_terminal_colors() function to
+        obtain the necessary color codes.
     """
     # Assign the values returned by get_terminal_colors()
     (
@@ -368,17 +369,17 @@ def set_assistant_user_background_color(assistant_background_color):
     Sets the background color for the ASSISTANT user.
 
     Parameters:
-              assistant_background_color (str): The desired background color for the
-              ASSISTANT user.
-                  Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
-                  'cyan', 'white', 'black'.
+        assistant_background_color (str): The desired background color for the
+        ASSISTANT user.
+            Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+            'cyan', 'white', 'black'.
 
     Returns:
-              str: The start code for the selected background color.
+        str: The start code for the selected background color.
 
     Notes:
-              This function internally uses the get_terminal_colors() function to obtain
-              the necessary color codes.
+        This function internally uses the get_terminal_colors() function to
+        obtain the necessary color codes.
     """
     # Assign the values returned by get_terminal_colors()
     (
@@ -427,17 +428,17 @@ def set_system_user_background_color(system_background_color):
     Sets the background color for the SYSTEM user.
 
     Parameters:
-              system_background_color (str): The desired background color for the SYSTEM
-              user.
-                  Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
-                  'cyan', 'white', 'black'.
+        system_background_color (str): The desired background color for the
+        SYSTEM user.
+            Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+            'cyan', 'white', 'black'.
 
     Returns:
-              str: The start code for the selected background color.
+        str: The start code for the selected background color.
 
     Notes:
-              This function internally uses the get_terminal_colors() function to obtain
-              the necessary color codes.
+        This function internally uses the get_terminal_colors() function to
+        obtain the necessary color codes.
     """
     # Assign the values returned by get_terminal_colors()
     (
@@ -486,16 +487,16 @@ def set_end_user_text_color(end_user_text_color):
     Sets the text color for the END USER user.
 
     Parameters:
-              end_user_text_color (str): The desired text color for the END USER user.
-                  Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
-                  'cyan', 'white', 'black'.
+        end_user_text_color (str): The desired text color for the END USER user.
+            Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+            'cyan', 'white', 'black'.
 
     Returns:
-              str: The start code for the selected text color.
+        str: The start code for the selected text color.
 
     Notes:
-              This function internally uses the get_terminal_colors() function to obtain
-              the necessary color codes.
+        This function internally uses the get_terminal_colors() function to
+        obtain the necessary color codes.
     """
     # Assign the values returned by get_terminal_colors()
     (
@@ -544,16 +545,17 @@ def set_assistant_user_text_color(assistant_text_color):
     Sets the text color for the ASSISTANT user.
 
     Parameters:
-              assistant_text_color (str): The desired text color for the ASSISTANT user.
-                  Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
-                  'cyan', 'white', 'black'.
+        assistant_text_color (str): The desired text color for the ASSISTANT
+        user.
+            Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+            'cyan', 'white', 'black'.
 
     Returns:
-              str: The start code for the selected text color.
+         str: The start code for the selected text color.
 
     Notes:
-              This function internally uses the get_terminal_colors() function to obtain
-              the necessary color codes.
+        This function internally uses the get_terminal_colors() function to
+        obtain the necessary color codes.
     """
     # Assign the values returned by get_terminal_colors()
     (
@@ -602,16 +604,16 @@ def set_system_user_text_color(system_text_color):
     Sets the text color for the SYSTEM user.
 
     Parameters:
-              system_text_color (str): The desired text color for the SYSTEM user.
-                  Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
-                  'cyan', 'white', 'black'.
+        system_text_color (str): The desired text color for the SYSTEM user.
+            Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+            'cyan', 'white', 'black'.
 
     Returns:
-              str: The start code for the selected text color.
+        str: The start code for the selected text color.
 
     Notes:
-              This function internally uses the get_terminal_colors() function to obtain
-              the necessary color codes.
+        This function internally uses the get_terminal_colors() function to
+        obtain the necessary color codes.
     """
     # Assign the values returned by get_terminal_colors()
     (
@@ -660,16 +662,16 @@ def set_assistant_avatar_color(avatar_color):
     Sets the avatar color for the assistant.
 
     Parameters:
-              avatar_color (str): The desired color for the assistant's avatar.
-                  Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
-                  'cyan', 'white', 'black'.
+        avatar_color (str): The desired color for the assistant's avatar.
+            Valid options are: 'red', 'green', 'yellow', 'blue', 'magenta',
+            'cyan', 'white', 'black'.
 
     Returns:
-              str: The start code for the selected avatar color.
+        str: The start code for the selected avatar color.
 
     Notes:
-              This function internally uses the get_terminal_colors() function to obtain
-              the necessary color codes.
+        This function internally uses the get_terminal_colors() function to
+        obtain the necessary color codes.
     """
     # Assign the values returned by get_terminal_colors()
     (
