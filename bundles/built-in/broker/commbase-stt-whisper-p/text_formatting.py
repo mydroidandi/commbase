@@ -1,5 +1,5 @@
 ################################################################################
-#                              commbase-stt-vosk-p                             #
+#                              commbase-stt-whisper-p                          #
 #                                                                              #
 # An ASR (Automatic Speech Recognition) engine.                                #
 #                                                                              #
