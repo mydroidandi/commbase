@@ -154,7 +154,7 @@ def strip_string(string):
 
     Parameters:
         string (str): The input string, assumed to be a valid JSON string with a
-                    'text' field.
+        'text' field.
 
     Returns:
         str or None: The resulting string after being stripped of unwanted
