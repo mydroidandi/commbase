@@ -60,7 +60,8 @@ def get_chatgpt_api_key(callback=None):
                 # Remove the quotes from the value of the variable
                 API_KEY = value.strip()[1:-1]
 
-                # Call the callback function with the API key value as an argument
+                # Call the callback function with the API key value as an
+                # argument
                 if callback is not None:
                     callback(API_KEY)
 

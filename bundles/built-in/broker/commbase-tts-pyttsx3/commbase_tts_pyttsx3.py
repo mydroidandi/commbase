@@ -33,11 +33,10 @@
 # commbase_tts_pyttsx3.py
 # Utilizes text-to-speech capabilities to read out the content of a file or any
 # input text provided.
+# Previous versions required to import fileinput and os.path
 
 # Requirements
 import argparse
-import fileinput
-import os.path
 import pyttsx3
 import sys
 
@@ -49,8 +48,8 @@ class TextToSpeech:
 
     def set_up_text_to_speech(self, rate, voice_index):
         """
-        Initializes the text-to-speech engine, retrieves the available voices, and
-        sets properties for the engine's rate and voice.
+        Initializes the text-to-speech engine, retrieves the available voices,
+        and sets properties for the engine's rate and voice.
         """
         self.engine = pyttsx3.init()
         self.voices = self.engine.getProperty("voices")
@@ -68,8 +67,8 @@ class TextToSpeech:
     def read_file(self, file_path):
         """
         Attempts to read the contents of the specified file, handles potential
-        errors such as file not found or IO errors, and returns the file's content
-        if it is successfully read.
+        errors such as file not found or IO errors, and returns the file's
+        content if it is successfully read.
         """
         try:
             with open(file_path, "r") as file:
@@ -86,9 +85,9 @@ class TextToSpeech:
         """
         Serves as the entry point of the program.
         This method is responsible for reading input text from either a file or
-        standard input, storing it in the file_content variable, and then passing it
-        to the talk() method for speech synthesis. If no input text is provided, it
-        displays an appropriate message.
+        standard input, storing it in the file_content variable, and then
+        passing it to the talk() method for speech synthesis. If no input text
+        is provided, it displays an appropriate message.
         """
         parser = argparse.ArgumentParser(description="Text-to-Speech with pyttsx3")
         parser.add_argument(

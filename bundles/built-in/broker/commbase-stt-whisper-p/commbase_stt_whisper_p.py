@@ -55,9 +55,9 @@ save_path = os.path.join(temp_file, "temp.wav")
 def listen():
     """
     Initializes a speech recognizer, captures audio input from a microphone,
-    adjusts for ambient noise, saves the recorded audio as a WAV file, and handles
-    any exceptions that may occur during the process, and then returns the path of
-    the saved audio file.
+    adjusts for ambient noise, saves the recorded audio as a WAV file, and
+    handles any exceptions that may occur during the process, and then returns
+    the path of the saved audio file.
     """
     listener = sr.Recognizer()  # Create an instance of Recognizer
     try:
