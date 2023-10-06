@@ -33,8 +33,6 @@
 # commbase_tts_pyttsx3.py
 # Utilizes text-to-speech capabilities to read out the content of a file or any
 # input text provided.
-# Previous versions without the command like feature required to import
-# fileinput and os.path
 
 # Requirements
 import argparse
