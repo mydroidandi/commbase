@@ -33,7 +33,6 @@
 # commbase_tts_pyttsx3.py
 # Utilizes text-to-speech capabilities to read out the content of a file or any
 # input text provided.
-# Previous versions required to import fileinput and os.path
 
 # Requirements
 import argparse
@@ -61,6 +60,8 @@ class TextToSpeech:
         Sets up the text-to-speech engine, utilizes it to speak out the provided
         text, and ensures the speech synthesis is completed before proceeding.
         """
+        if not text:
+            print("No input text provided.")
         self.engine.say(text)
         self.engine.runAndWait()
 
@@ -76,10 +77,10 @@ class TextToSpeech:
                 return content
         except FileNotFoundError:
             print("File not found!")
-            return None
+            raise  # Raise the FileNotFoundError here
         except IOError:
             print("An error occurred while reading the file!")
-            return None
+            raise  # Raise the IOError here
 
     def main(self):
         """
