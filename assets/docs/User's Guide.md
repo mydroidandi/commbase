@@ -289,7 +289,7 @@ Verify that there is an index for the devices you want to use as Commbase captur
 1 sink(s) available.
    * index: 0
           name: <alsa_output.pci-0000_00_1b.0.analog-stereo>
- [...]
+
 ```
 
 - Filter the name of the sound devices to identify the capture device that will be used as the dedicated Commbase capture device:
@@ -327,13 +327,13 @@ For example, the next output shows a webcam of the brand Logitech and an Intel i
 pacmd set-default-source "alsa_input.usb-_Webcam_C170-02.mono-fallback"
 pacmd set-default-source "alsa_output.pci-0000_00_1b.0.analog-stereo.monitor"
 pacmd set-default-source "alsa_input.pci-0000_00_1b.0.analog-stereo"
-```
+pacmd set-default-source "alsa_input.usb-SunplusIT_Inc_FHD_Camera_Microphone_01.00.00-02.analog-stereo"
 
 - Use two names of capture devices returned as the Commbase and the alternative captures. The selected capture devices must be updated in the correspondent local host environment variables stored in the file **config/app.conf**. This is an example of the customized variables:
 
 ```shell
 COMMBASE_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback"
-ALTERNATIVE_CAPTURE_DEVICE_NAME="alsa_input.pci-0000_00_1b.0.analog-stereo"
+ALTERNATIVE_CAPTURE_DEVICE_NAME="alsa_input.usb-SunplusIT_Inc_FHD_Camera_Microphone_01.00.00-02.analog-stereo"
 ```
 
 Note that those variables are used in this toggle keybinding script.
