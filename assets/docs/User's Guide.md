@@ -244,7 +244,7 @@ pkill tmux
 
 Restart Commbase normally.
 
-# 5 Set Up Microphones and Audio Keybinding
+# 5 Set Up Microphones and Audio Keybindings
 
 Microphones are the ears of your app assistant.
 
