@@ -18,7 +18,13 @@
 	- [Kill the Session](#kill-the-session)
 	- [Display the Session Pane Numbers](#display-the-session-pane-numbers)
 	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)
-- [5 Set Up Microphones](#5-set-up-microphones)
+- [5 Set Up Microphones and audio keybindings](#5-set-up-microphones-and-audio-keybindings)
+	- [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
+	- [To Prepare a Dedicated Sound Capture Device for Commbase](#to-prepare-a-dedicated-sound-capture-device-for-commbase)
+	- [Configure the File to Toggle the Active Capture Device](#configure-the-file-to-toggle-the--active-capture-device)
+	- [Configure the File to Toggle the Capture_On Off](#configure-the-file-to-toggle-the-capture-on-off)
+	- [Configure the File Capture Mute](#configure-the-file-capture-mute)
+	- [Configure the File Capture Unmute](#configure-the-file-capture-unmute)
 - [6 Keyboard Shortcuts](#6-keyboard-shortcuts)
 	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
 	- [Commbase Key Bindings](#commbase-key-bindings)
@@ -254,11 +260,7 @@ For example, we access a system **audio settings** GUI that shows the following 
 
 Let's use the two camera microphones (second and third options from the list), which comply the audio quality requirements.
 
-## Configure the File toggle_active_capture_device.sh
-
-File path: **scripts/configuration/key_bindings/toggle_active_capture_device.sh**
-
-To prepare a dedicated sound capture device for Commbase:
+## To Prepare a Dedicated Sound Capture Device for Commbase
 
 Commbase does not need to work with the default device but with an active device.
 
@@ -337,13 +339,15 @@ COMMBASE_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback"
 ALTERNATIVE_CAPTURE_DEVICE_NAME="alsa_input.usb-SunplusIT_Inc_FHD_Camera_Microphone_01.00.00-02.analog-stereo"
 ```
 
-Note that those variables are used in this toggle keybinding script.
+Note that those variables are used in the toggle keybinding script files.
 
 The selected devices are added manually, due to their names changing from device to device in the market, also depending on the order they were attached to the computer and/or when they were activated/recognized on/by the OS.
 
 Everybody is allowed to create additional keybinding scripts to suit other needs, like having multi-switch keyboard shortcuts rather than a simple toggle switch like this.
 
-Alternatively, use the GUIs pavucontrol or Sound to switch from/to the Commbase capture device with the help of the mouse.
+## Configure the File to Toggle the Active Capture Device
+
+The file **scripts/configuration/key_bindings/toggle_active_capture_device.sh** toggles and activates the current active and default capture device to another device in a group of two devices, turning it active and default.
 
 - Set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
   - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
@@ -355,17 +359,17 @@ Alternatively, use the GUIs pavucontrol or Sound to switch from/to the Commbase 
   - Then the new key binding appears on the list.
   - Finally, verify that the key binding works.
 
-## Configure the File toggle_capture_on-off.sh
+## Configure the File to Toggle the Capture_On Off
 
-scripts/configuration/key_bindings/toggle_capture_on-off.sh
+The file scripts/configuration/key_bindings/toggle_capture_on-off.sh
 
-## Configure the File capture_mute.sh
+## Configure the File Capture Mute
 
-scripts/configuration/key_bindings/capture_mute.sh
+The file scripts/configuration/key_bindings/capture_mute.sh
 
-## Configure the File capture_unmute.sh
+## Configure the File Capture_Unmute
 
-scripts/configuration/key_bindings/capture_unmute.sh
+The file scripts/configuration/key_bindings/capture_unmute.sh
 
 # 6 Keyboard Shortcuts
 
