@@ -385,7 +385,7 @@ xbindkeys -p
 
 You can also set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
  - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
- - Next, give the new shortcut a new name, like `**toggle active capture device**`.
+ - Next, give the new shortcut a new name, like `toggle active capture device`.
  - Next, select the route to this file.
  - Next, click or tap on the button `Add the keyboard shortcut`. The shortcut appears in the list.
  - Next, click on unassigned to pick an accelerator.
@@ -431,7 +431,7 @@ xbindkeys -p
 
 You can also set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
  - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
- - Next, give the new shortcut a new name, like `**toggle capture ON or OFF**`.
+ - Next, give the new shortcut a new name, like `toggle capture ON or OFF`.
  - Next, select the route to this file.
  - Next, click or tap on the button `Add the keyboard shortcut`. The shortcut appears in the list.
  - Next, click on unassigned to pick an accelerator.
@@ -477,7 +477,7 @@ xbindkeys -p
 
 You can also set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
  - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
- - Next, give the new shortcut a new name, like `**capture mute**`.
+ - Next, give the new shortcut a new name, like `capture mute`.
  - Next, select the route to this file.
  - Next, click or tap on the button `Add the keyboard shortcut`. The shortcut appears in the list.
  - Next, click on unassigned to pick an accelerator.
@@ -523,7 +523,7 @@ xbindkeys -p
 
 You can also set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
  - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
- - Next, give the new shortcut a new name, like `**capture unmute**`.
+ - Next, give the new shortcut a new name, like `capture unmute`.
  - Next, select the route to this file.
  - Next, click or tap on the button `Add the keyboard shortcut`. The shortcut appears in the list.
  - Next, click on unassigned to pick an accelerator.
