@@ -21,8 +21,8 @@
 - [5 Set Up Microphones and Audio Keybindings](#5-set-up-microphones-and-audio-keybindings)
 	- [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
 	- [To Prepare a Dedicated Sound Capture Device for Commbase](#to-prepare-a-dedicated-sound-capture-device-for-commbase)
-	- [Configure the File to Toggle the Active Capture Device](#configure-the-file-to-toggle-the--active-capture-device)
-	- [Configure the File to Toggle the Capture_On Off](#configure-the-file-to-toggle-the-capture-on-off)
+	- [Configure the File to Toggle the Active Capture Device](#configure-the-file-to-toggle-the-active-capture-device)
+	- [Configure the File to Toggle the Capture On Off](#configure-the-file-to-toggle-the-capture-on-off)
 	- [Configure the File Capture Mute](#configure-the-file-capture-mute)
 	- [Configure the File Capture Unmute](#configure-the-file-capture-unmute)
 - [6 Keyboard Shortcuts](#6-keyboard-shortcuts)
@@ -367,7 +367,7 @@ The file scripts/configuration/key_bindings/toggle_capture_on-off.sh
 
 The file scripts/configuration/key_bindings/capture_mute.sh
 
-## Configure the File Capture_Unmute
+## Configure the File Capture Unmute
 
 The file scripts/configuration/key_bindings/capture_unmute.sh
 
