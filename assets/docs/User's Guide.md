@@ -258,6 +258,8 @@ For example, we access a system **audio settings** GUI that shows the following 
 * Analog Input Webcam C170
 * Internal Microphone Built-in Audio
 
+The second option is currently the best option available, but the third option yet has a pretty decent 16bit mono quality mic with integrated noise cancellation.
+
 Let's use the two camera microphones (second and third options from the list), which comply the audio quality requirements.
 
 ## To Prepare a Dedicated Sound Capture Device for Commbase
