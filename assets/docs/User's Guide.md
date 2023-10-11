@@ -17,23 +17,46 @@
 	- [List All the Active Sessions](#list-all-the-active-sessions)
 	- [Kill the Session](#kill-the-session)
 	- [Display the Session Pane Numbers](#display-the-session-pane-numbers)
-	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)	
-- [5 Default Configuration Variables](#5-default-configuration-variables)
-- [6 Types of Commands](#6-types-of-commands)
+	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)
+- [5 Set Up Microphones and Audio Keybindings](#5-set-up-microphones-and-audio-keybindings)
+	- [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
+	- [To Prepare a Dedicated Sound Capture Device for Commbase](#to-prepare-a-dedicated-sound-capture-device-for-commbase)
+	- [Configure the File to Toggle the Active Capture Device](#configure-the-file-to-toggle-the-active-capture-device)
+	- [Configure the File to Toggle the Capture On Off](#configure-the-file-to-toggle-the-capture-on-off)
+	- [Configure the File Capture Mute](#configure-the-file-capture-mute)
+	- [Configure the File Capture Unmute](#configure-the-file-capture-unmute)
+- [6 Keyboard Shortcuts](#6-keyboard-shortcuts)
+	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
+	- [Commbase Key Bindings](#commbase-key-bindings)
+	- [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
+		- [Commbase Key Bindings](#commbase-key-bindings)
+		- [Bash](#bash)
+		- [Desktop Environment and Operating System](#desktop-environment-and-operating-system)
+		- [Gnome Terminal](#gnome-terminal)
+		- [Neovim / Emacs](#neovim--emacs)
+		- [OBS](#obs)
+		- [SimpleScreenRecorder](#simplescreenrecorder)
+		- [Text Editors and IDEs](#text-editors-and-ides)
+		- [Tmux](#tmux)
+		- [VS Code](#vs-code)
+		- [Web Browser](#web-browser)
+	- [Input Remapper](#input-remapper)
+- [7 Default Configuration Variables](#7-default-configuration-variables)
+- [8 Types of Commands](#8-types-of-commands)
 	- [Terminal Commands](#terminal-commands)
 	- [Terminal Voice Controls](#terminal-voice-controls)
 	- [Terminal Voice Skills](#terminal-voice-skills)
 	- [Terminal Voice Skillsets](#terminal-voice-skillsets)
-- [7 Terminal Voice Controls](#7-terminal-voice-controls)
+- [9 Terminal Voice Controls](#9-terminal-voice-controls)
 	- [Undefined Controls](#undefined-controls)
 	- [Hidden Controls and Control Chaining](#hidden-controls-and-control-chaining)
-- [8 Terminal Voice Skills](#8-terminal-voice-skills)
-- [9 Terminal Voice Skillsets](#9-terminal-voice-skillsets)
-- [6 Default Commbase commands](#6-default-commbase-commands)
+- [10 Terminal Voice Skills](#10-terminal-voice-skills)
+- [11 Terminal Voice Skillsets](#11-terminal-voice-skillsets)
+- [12 Default Commbase commands](#12-default-commbase-commands)
 	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
 	- [Commbase Management Commands](#commbase-management-commands)
 	- [Commbase Common Commands](#commbase-common-commands)
-- [7 Create new voice commands basics](#7-create-new-voice-commands-basics)
+- [13 Create new voice commands basics](#13-create-new-voice-commands-basics)
 	- [Verbosity Levels](#verbosity-levels)
 	- [Proposed Command Conventions](#proposed-command-conventions)
 		- [Modes](#modes)
@@ -56,28 +79,12 @@
 			- [Networking](#networking)
 			- [Remote Access](#remote-access)
 			- [Development](#development)
-- [8 Hints on saying and creating voice commands](#8-hints-on-saying-and-creating-voice-commands)
-- [9 Commands setup](#9-commands-setup)
+- [14 Hints on saying and creating voice commands](#14-hints-on-saying-and-creating-voice-commands)
+- [15 Commands setup](#15-commands-setup)
 	- [The Commbase root directory](#the-commbase-root-directory)
 	- [The Commbase processing file](#the-commbase-processing-file)
-- [10 Training Commbase by Assembling Skillsets](#10-training-commbase-by-assembling-skillsets)
-- [11 Keyboard Shortcuts](#11-keyboard-shortcuts)
-	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
-	- [Commbase Key Bindings](#commbase-key-bindings)
-	- [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
-		- [Commbase Key Bindings](#commbase-key-bindings)
-		- [Bash](#bash)
-		- [Desktop Environment and Operating System](#desktop-environment-and-operating-system)
-		- [Gnome Terminal](#gnome-terminal)
-		- [Neovim / Emacs](#neovim--emacs)
-		- [OBS](#obs)
-		- [SimpleScreenRecorder](#simplescreenrecorder)
-		- [Text Editors and IDEs](#text-editors-and-ides)
-		- [Tmux](#tmux)
-		- [VS Code](#vs-code)
-		- [Web Browser](#web-browser)
-	- [Input Remapper](#input-remapper)
-- [12 Commbase for Software Development](#12-commbase-for-software-development)
+- [16 Training Commbase by Assembling Skillsets](#16-training-commbase-by-assembling-skillsets)
+- [17 Commbase for Software Development](#17-commbase-for-software-development)
 	- [Get Commbase up and running for development](#get-commbase-up-and-running-for-development)
 	- [Create a Virtual Machine for Software Development](#create-a-virtual-machine-for-software-development)
 	- [Commbase Commands for Development with Neovim](#commbase-commands-for-development-with-neovim)
@@ -237,7 +244,162 @@ pkill tmux
 
 Restart Commbase normally.
 
-# 5 Default Configuration Variables
+# 5 Set Up Microphones and Audio Keybindings
+
+Microphones are the ears of your app assistant.
+
+## Input Audio and Audio Quality Requirements
+
+Your app requires a minimum of 2 high-quality USB microphones with integrated noise cancellation. Preferably, the microphones will be digital. That ensures quality communication between the user and the STT engine, making it recognize speech as well as possible.
+
+For example, we access a system **audio settings** GUI that shows the following **input devices**:
+* Digital INput (S/-PDIF) FHD Camera Microphone
+* Microphone FHD Camera Microphone
+* Analog Input Webcam C170
+* Internal Microphone Built-in Audio
+
+Let's use the two camera microphones (second and third options from the list), which comply the audio quality requirements.
+
+## To Prepare a Dedicated Sound Capture Device for Commbase
+
+Commbase does not need to work with the default device but with an active device.
+
+In Linux desktops, the default configuration always has a single active capture device, despite the number of devices installed on the operating system.
+
+The Linux package Jack lets you connect multiple sound devices to a common virtual sound bus, boosting the number of active devices.
+
+Jack is able to replace and also interact with PulseAudio, the sound server system for POSIX OSes, including Linux, or any other replacement for PulseAudio. However, that enhancement requires installing professional audio packages or studios, such as KXStudio, running on the operating system.
+
+The easiest way to be able to use Commbase without requiring to route multiple sound capture devices to a common virtual bus is to set up Commbase to make it work with a dedicated device.
+
+That device can be selected as the only active input when Commbase is required to talk or receive orders.
+
+In that way, a Commbase dedicated audio input is not going to interact with/affect the normal audio input(s) used by the rest of the applications, such as AI assistant chatbots, chat/video conference software, DAWs, etc.
+
+Configuration steps for a dedicated capture device for Commbase with PulseAudio:
+
+- Identify the internal sound card in the computer: 
+
+```shell
+pacmd list-sinks | more
+
+```
+
+Verify that there is an index for the devices you want to use as Commbase capture and as alternative capture. 
+
+```output
+1 sink(s) available.
+   * index: 0
+          name: <alsa_output.pci-0000_00_1b.0.analog-stereo>
+
+```
+
+- Filter the name of the sound devices to identify the capture device that will be used as the dedicated Commbase capture device:
+
+```shell
+pacmd list-sources | grep name
+```
+
+For example, the next output shows a webcam of the brand Logitech and an Intel internal sound card with a capture device:
+
+```output
+	name: <alsa_input.usb-_Webcam_C170-02.mono-fallback>
+		alsa.name = "USB Audio"
+		alsa.subdevice_name = "subdevice #0"
+		alsa.card_name = "Webcam C170"
+		alsa.long_card_name = "Webcam C170 at usb-0000:00:1a.0-1.2, high speed"
+		alsa.driver_name = "snd_usb_audio"
+		device.vendor.name = "Logitech, Inc."
+		device.product.name = "Webcam C170"
+		device.profile.name = "mono-fallback"
+		device.icon_name = "camera-web-usb"
+	name: <alsa_output.pci-0000_00_1b.0.analog-stereo.monitor>
+		alsa.card_name = "HDA Intel PCH"
+		alsa.long_card_name = "HDA Intel PCH at 0xf7e30000 irq 32"
+		alsa.driver_name = "snd_hda_intel"
+		device.vendor.name = "Intel Corporation"
+		device.product.name = "7 Series/C216 Chipset Family High Definition Audio Controller"
+		device.icon_name = "audio-card-pci"
+
+```
+
+- Test that switching to and activating the chosen dedicated Commbase capture device just works. Open the GUI of pavucontrol, or, for example, in Cinnamon go to System Settings > Sound. That will help to identify the active capture device every time the testing command is run:
+
+```shell
+pacmd set-default-source "alsa_input.usb-_Webcam_C170-02.mono-fallback"
+pacmd set-default-source "alsa_output.pci-0000_00_1b.0.analog-stereo.monitor"
+pacmd set-default-source "alsa_input.pci-0000_00_1b.0.analog-stereo"
+pacmd set-default-source "alsa_input.usb-SunplusIT_Inc_FHD_Camera_Microphone_01.00.00-02.analog-stereo"
+```
+
+- The selected Commbase and alternative capture devices must be updated in the correspondent local host environment variables stored in the file **config/app.conf**. This is an example of the customized variables:
+
+```shell
+COMMBASE_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback"
+ALTERNATIVE_CAPTURE_DEVICE_NAME="alsa_input.usb-SunplusIT_Inc_FHD_Camera_Microphone_01.00.00-02.analog-stereo"
+```
+
+Note that those variables are used in the toggle keybinding script files.
+
+The selected devices are added manually, due to their names changing from device to device in the market, also depending on the order they were attached to the computer and/or when they were activated/recognized on/by the OS.
+
+Everybody is allowed to create additional keybinding scripts to suit other needs, like having multi-switch keyboard shortcuts rather than a simple toggle switch like this.
+
+## Configure the File to Toggle the Active Capture Device
+
+The file **scripts/configuration/key_bindings/toggle_active_capture_device.sh** toggles and activates the current active and default capture device to another device in a group of two devices, turning it active and default.
+
+- Set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
+  - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
+  - Next, give the new shortcut a new name, like "toggle active capture device".
+  - Next, select the route to this file.
+  - Next, click or tap on the button `Add the keyboard shortcut`. The shortcut appears in the list.
+  - Next, click on unassigned to pick an accelerator.
+  - Next, press the keys `CTRL` + `SHIFT` + `Z` (all together) and then release them at a time.
+  - Then the new key binding appears on the list.
+  - Finally, verify that the key binding works.
+
+## Configure the File to Toggle the Capture On Off
+
+The file scripts/configuration/key_bindings/toggle_capture_on-off.sh
+
+## Configure the File Capture Mute
+
+The file scripts/configuration/key_bindings/capture_mute.sh
+
+## Configure the File Capture Unmute
+
+The file scripts/configuration/key_bindings/capture_unmute.sh
+
+# 6 Keyboard Shortcuts
+
+## Keyboard Shortcuts Cheat Sheet
+
+### Commbase Key Bindings
+
+`CTRL` + `SHIFT` + `Z` : Toggle active capture device.
+<br />`ALT` + `SHIFT` + `1` : Toggle ON/OFF sound capturing.
+<br />`ALT` + `SHIFT` + `2` : Stop sound capturing.
+<br />`ALT` + `SHIFT` + `3` : Start sound capturing.
+
+These group of shortcuts are defined in the directory **scripts/configuration/key_bindings/**.
+
+### Keyboard Shortcuts Overlapping
+
+Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help you avoid that problem, you can use [this document.](./Keyboard%20Shortcuts%20Cheat%20Sheet.md)
+
+## Input Remapper
+
+It's an easy to use tool to change the mapping of your input device buttons. It's kind of a Linux alternative to the popular Karabiner for MacOS.
+<br />Supports mice, keyboards, gamepads, X11, Wayland, combined buttons and programmable macros.
+<br />Allows mapping non-keyboard events (click, joystick, wheel) to keys of keyboard devices.
+<br />Web: <https://github.com/sezanzeb/input-remapper>
+
+This application can help other Apps such as the AI Assitant "Commbase" execute voice commands based on Commbase scripts that run custom keyboard shortcuts created with Input Remapper instead of Cinnamon which can make Commbase independant of Gnome/Cinnamon, but still dependent of the powerful Gnome terminal.
+
+Consider Input Remmaper to create new custom Commbase commands or, for example, replace our chosen Development editor with another editor or IDE enhanced with Commbase with this type of mappings. Include and document a back and restore procedure of your custom mapping files.
+
+# 7 Default Configuration Variables
 
 The configuration variables can be accessed by going to the directory **config/** and opening the files **secrets** and **app.conf**.
 
@@ -744,7 +906,7 @@ cd scripts/utilities
 bash reset-commbase.conf.sh
 ```
 
-# 6 Types of Commands
+# 8 Types of Commands
 
 You can display the types of commands and some examples using the help option like this:
 
@@ -769,7 +931,7 @@ Unlike terminal commands, terminal/voice commands can be typed in or said out lo
 
 Skillsets are commands grouped as a list of orders to be executed sequentially at once. They can be typed or said out loud.
 
-# 7 Terminal Voice Controls
+# 9 Terminal Voice Controls
 
 You can create extra controls if you want to, but you can do almost everything that is possible with the controls that come with Commbase. These out-of-the-box controls are:
 
@@ -1493,13 +1655,12 @@ Example of the terminal/voice command for the interactive sequence:
 
 > Start the math test number one zero one
 
-# 8 Terminal Voice Skills
+# 10 Terminal Voice Skills
 
 
-# 9 Terminal Voice Skillsets
+# 11 Terminal Voice Skillsets
 
-
-# 6 Default Commbase commands
+# 12 Default Commbase commands
 
 ## Commbase Commmands unique for the Command Line
 
@@ -1576,7 +1737,7 @@ $ commbase "set a timer of" "one" "minute"
 `"open my current editor workspace"` / `"open my current code workspace"` /
 `"open my current editor workspace that i am working on"`.
 
-# 7 Create new voice commands basics
+# 13 Create new voice commands basics
 
 ## Verbosity Levels
 
@@ -1736,7 +1897,7 @@ For commands that must be verified before execution, due to their execution is r
 > open the development project <PROYECT-NAME>
 > open the current development project
 
-# 8 Hints on saying and creating voice commands
+# 14 Hints on saying and creating voice commands
 
 Different output in well said command repetitions:
 Say a different phrase, or example "clear" before repeat a failed/non accurate phrase, so Vosk
@@ -1760,7 +1921,7 @@ get kind of confused and tend to display articles such as "the" and other words 
 phrase the most similar to two people talking to one another like in a movie. For that reason, Vosk
 is used as a part of audio file transcription software in the Linux world.
 
-# 9 Commands setup
+# 15 Commands setup
 
 Run the test script test_microphone.py, as described in the section "4. Testing the Vosk model" of
 the file INSTALL, to test your new command accuracy until you feel comfortable with the command
@@ -1989,7 +2150,7 @@ commbase-process-vosk-suv-vehicle.sh
 commbase-process-vosk-spacecraft.sh
 commbase-process-vosk-virtual-mentor.sh
 
-# 10 Training Commbase by Assembling Skillsets
+# 16 Training Commbase by Assembling Skillsets
 
 Commbase can be trained in a variety of manners. For example, you can train the AI Model, which would directly affect the existent commands precision, and would require to verify every command afterwards. Furthermore, you can train any preffered/specialized AI (added kind of as a plugin), to be used by Commbase in talkative mode. Also, we can train Commbase scripts that use sensors such as face recognition, voice recognition, etc., or move servos, and so on, and so forth, depending on the device where Commbase runs on.
 
@@ -2151,35 +2312,7 @@ Skillsets voice commands examples:
 
 "Help me identify who is attacking our network connection" / "Detect and trace the address of the intruder/attacker computer" (for example, someone who sends a  DDoS attack.)
 
-# 11 Keyboard Shortcuts
-
-## Keyboard Shortcuts Cheat Sheet
-
-### Commbase Key Bindings
-
-`CTRL` + `SHIFT` + `Z` : Toggle active capture device.
-<br />`ALT` + `SHIFT` + `1` : Toggle ON/OFF sound capturing.
-<br />`ALT` + `SHIFT` + `2` : Stop sound capturing.
-<br />`ALT` + `SHIFT` + `3` : Start sound capturing.
-
-These group of shortcuts are defined in the directory **scripts/configuration/key_bindings/**.
-
-### Keyboard Shortcuts Overlapping
-
-Some of the keyboard shortcuts could overlap with other keyboard shortcuts. To help you avoid that problem, you can use [this document.](./Keyboard%20Shortcuts%20Cheat%20Sheet.md)
-
-## Input Remapper
-
-It's an easy to use tool to change the mapping of your input device buttons. It's kind of a Linux alternative to the popular Karabiner for MacOS.
-<br />Supports mice, keyboards, gamepads, X11, Wayland, combined buttons and programmable macros.
-<br />Allows mapping non-keyboard events (click, joystick, wheel) to keys of keyboard devices.
-<br />Web: <https://github.com/sezanzeb/input-remapper>
-
-This application can help other Apps such as the AI Assitant "Commbase" execute voice commands based on Commbase scripts that run custom keyboard shortcuts created with Input Remapper instead of Cinnamon which can make Commbase independant of Gnome/Cinnamon, but still dependent of the powerful Gnome terminal.
-
-Consider Input Remmaper to create new custom Commbase commands or, for example, replace our chosen Development editor with another editor or IDE enhanced with Commbase with this type of mappings. Include and document a back and restore procedure of your custom mapping files.
-
-# 12 Commbase for Software Development
+# 17 Commbase for Software Development
 
 ## Get Commbase up and running for development
 
