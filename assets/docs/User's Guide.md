@@ -18,7 +18,7 @@
 	- [Kill the Session](#kill-the-session)
 	- [Display the Session Pane Numbers](#display-the-session-pane-numbers)
 	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)
-- [5 Set Up Microphones and audio keybindings](#5-set-up-microphones-and-audio-keybindings)
+- [5 Set Up Microphones and Audio Keybindings](#5-set-up-microphones-and-audio-keybindings)
 	- [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
 	- [To Prepare a Dedicated Sound Capture Device for Commbase](#to-prepare-a-dedicated-sound-capture-device-for-commbase)
 	- [Configure the File to Toggle the Active Capture Device](#configure-the-file-to-toggle-the--active-capture-device)
@@ -244,7 +244,7 @@ pkill tmux
 
 Restart Commbase normally.
 
-# 5 Set Up Microphones
+# 5 Set Up Microphones and Audio Keybinding
 
 Microphones are the ears of your app assistant.
 
