@@ -359,7 +359,7 @@ The file **scripts/configuration/key_bindings/toggle_active_capture_device.sh** 
   - Then the new key binding appears on the list.
   - Finally, verify that the key binding works.
 
-## Configure the File to Toggle the Capture_On Off
+## Configure the File to Toggle the Capture On Off
 
 The file scripts/configuration/key_bindings/toggle_capture_on-off.sh
 
