@@ -54,7 +54,7 @@ toggle_active_capture_device() {
 # Turn capture on whether it is off.
 turn_capture_on() {
 # Assume that the capture is mono, no matter the number of channels, which is
-# correct # for registering the human voice.
+# correct for registering the human voice.
   amixer_status=$(amixer get Capture | awk -F "[, ]+" '/on|off^/{print $NF ":", $1, $(NF-1)}' | tail -n+3) || exit 99;
 
   if (echo "$amixer_status" | grep -q 'off' || exit 99); then
