@@ -75,18 +75,21 @@ mv "$DIR_TO_RENAME_PATH/$DIR_TO_RENAME" "$NEW_DIR_PATH/$NEW_DIR_NAME"
 if grep -q "COMMBASE_APP_DIR" ~/.bashrc; then
     sed -i "s#COMMBASE_APP_DIR=.*#COMMBASE_APP_DIR=\"$NEW_DIR_PATH\/$NEW_DIR_NAME\"#" ~/.bashrc
 else
-    echo "" >> ~/.bashrc
-    echo "# The Commbase App directory for the Bash shell" >> ~/.bashrc
-    echo "export COMMBASE_APP_DIR=\"$NEW_DIR_PATH/$NEW_DIR_NAME\"" >> ~/.bashrc
+    {
+      echo ""
+      echo "# The Commbase App directory for the Bash shell"
+      echo "export COMMBASE_APP_DIR=\"$NEW_DIR_PATH/$NEW_DIR_NAME\""
+    } >> ~/.bashrc  # using a (multiline) command grouping construct
 fi
 
 # Overwrite the line in .zshrc if it exists
 if grep -q "COMMBASE_APP_DIR" ~/.zshrc; then
     sed -i "s#COMMBASE_APP_DIR=.*#COMMBASE_APP_DIR=\"$NEW_DIR_PATH\/$NEW_DIR_NAME\"#" ~/.zshrc
 else
-    echo "" >> ~/.zshrc
-    echo "# The Commbase App directory for the Z shell" >> ~/.zshrc
-    echo "export COMMBASE_APP_DIR=\"$NEW_DIR_PATH/$NEW_DIR_NAME\"" >> ~/.zshrc
+    { echo ""
+      echo "# The Commbase App directory for the Z shell"
+      echo "export COMMBASE_APP_DIR=\"$NEW_DIR_PATH/$NEW_DIR_NAME\""
+		} >> ~/.zshrc  # using a (multiline) command grouping construct
 fi
 
 # Set the APP_DIR variable to the new directory
@@ -96,4 +99,3 @@ APP_DIR="$NEW_DIR_PATH/$NEW_DIR_NAME"
 echo -e "🎉️ Yor new app directory is: \033[31m$APP_DIR\033[0m"
 
 exit 99
-
