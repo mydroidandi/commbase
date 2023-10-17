@@ -35,9 +35,9 @@
 
 # Downloads the model zip
 download_vosk_model() {
-
-	cd $COMMBASE_ROOT_DIR/bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph
-	wget https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip
+  cd "$COMMBASE_APP_DIR/bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph" || return
+  wget -O vosk-model-en-us-0.22-lgraph.zip https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip || return
+  echo "Vosk model downloaded successfully."
 }
 
 # Extracts the model zip

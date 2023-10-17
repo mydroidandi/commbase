@@ -20,7 +20,7 @@
 	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)
 - [5 Set Up Microphones and Audio Keybindings](#5-set-up-microphones-and-audio-keybindings)
 	- [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
-	- [To Prepare a Dedicated Sound Capture Device for Commbase](#to-prepare-a-dedicated-sound-capture-device-for-commbase)
+	- [To Prepare a Dedicated Sound Capture Device](#to-prepare-a-dedicated-sound-capture-device)
 	- [Configure the File to Toggle the Active Capture Device](#configure-the-file-to-toggle-the-active-capture-device)
 	- [Configure the File to Toggle the Capture On Off](#configure-the-file-to-toggle-the-capture-on-off)
 	- [Configure the File Capture Mute](#configure-the-file-capture-mute)
@@ -258,11 +258,13 @@ For example, we access a system **audio settings** GUI that shows the following 
 * Analog Input Webcam C170
 * Internal Microphone Built-in Audio
 
-Let's use the two camera microphones (second and third options from the list), which comply the audio quality requirements.
+The second option is currently the best option available, but the third option yet has a pretty decent quality 16-bit mono voice-capturing mic with integrated noise cancellation.
 
-## To Prepare a Dedicated Sound Capture Device for Commbase
+Let's use the two camera microphones (second and third options from the list), which comply the audio setup requirements.
 
-Commbase does not need to work with the default device but with an active device.
+## To Prepare a Dedicated Sound Capture Device
+
+Your assistant's app does not need to work with the default device but with an active device.
 
 In Linux desktops, the default configuration always has a single active capture device, despite the number of devices installed on the operating system.
 
@@ -270,13 +272,13 @@ The Linux package Jack lets you connect multiple sound devices to a common virtu
 
 Jack is able to replace and also interact with PulseAudio, the sound server system for POSIX OSes, including Linux, or any other replacement for PulseAudio. However, that enhancement requires installing professional audio packages or studios, such as KXStudio, running on the operating system.
 
-The easiest way to be able to use Commbase without requiring to route multiple sound capture devices to a common virtual bus is to set up Commbase to make it work with a dedicated device.
+The easiest way to be able to use Commbase without requiring to route multiple sound capture devices to a common virtual bus is to set up your assistant's app to make it work with a dedicated device.
 
 That device can be selected as the only active input when Commbase is required to talk or receive orders.
 
-In that way, a Commbase dedicated audio input is not going to interact with/affect the normal audio input(s) used by the rest of the applications, such as AI assistant chatbots, chat/video conference software, DAWs, etc.
+In that way, your assistant's app dedicated audio input is not going to interact with/affect the normal audio input(s) used by the rest of the applications, such as AI assistant chatbots, chat/video conference software, DAWs, etc.
 
-Configuration steps for a dedicated capture device for Commbase with PulseAudio:
+Configuration steps for a dedicated capture device for your assistant's with PulseAudio:
 
 - Identify the internal sound card in the computer: 
 
@@ -349,27 +351,185 @@ Everybody is allowed to create additional keybinding scripts to suit other needs
 
 The file **scripts/configuration/key_bindings/toggle_active_capture_device.sh** toggles and activates the current active and default capture device to another device in a group of two devices, turning it active and default.
 
-- Set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
-  - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
-  - Next, give the new shortcut a new name, like "toggle active capture device".
-  - Next, select the route to this file.
-  - Next, click or tap on the button `Add the keyboard shortcut`. The shortcut appears in the list.
-  - Next, click on unassigned to pick an accelerator.
-  - Next, press the keys `CTRL` + `SHIFT` + `Z` (all together) and then release them at a time.
-  - Then the new key binding appears on the list.
-  - Finally, verify that the key binding works.
+To bind the script to a key combination in Linux, you can use a utility like **xbindkeys** or **xmodmap**. Here's how you can set up a keybinding for your script using **xbindkeys**:
+
+Create a configuration file for **xbindkeys** if it doesn't already exist. You can create a default configuration file using the following command:
+
+```shell
+xbindkeys --defaults > ~/.xbindkeysrc
+```
+
+Open the ~/.xbindkeysrc file in a text editor. You can use any text editor you prefer, such as nano, vim, or gedit.
+
+```shell
+nano ~/.xbindkeysrc
+```
+
+Add a keybinding for your script to the ~/.xbindkeysrc file. 
+
+```plaintext
+# Toggle active capture device
+"bash $COMMBASE_APP_DIR/scripts/configuration/key_bindings/toggle_active_capture_device.sh"
+  Control+Shift+z
+```
+
+Make sure to specify the key combination you want to use (in this case, `Control+Shift+z`).
+
+Save the file and exit your text editor.
+
+Reload **xbindkeys** to apply the changes to your keybindings:
+
+```shell
+xbindkeys -p
+```
+
+You can also set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
+ - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
+ - Next, give the new shortcut a new name, like `toggle active capture device`.
+ - Next, select the route to this file.
+ - Next, click or tap on the button `Add the keyboard shortcut`. The shortcut appears in the list.
+ - Next, click on unassigned to pick an accelerator.
+ - Next, press the keys `CTRL` + `SHIFT` + `Z` (all together) and then release them at a time.
+ - Then the new key binding appears on the list.
+ - Finally, verify that the key binding works.
 
 ## Configure the File to Toggle the Capture On Off
 
-The file scripts/configuration/key_bindings/toggle_capture_on-off.sh
+The file **scripts/configuration/key_bindings/toggle_capture_on-off.sh** is a parameter to toggle ON/OFF the sound capture.
+
+To bind the script to a key combination in Linux, you can use a utility like **xbindkeys** or **xmodmap**. Here's how you can set up a keybinding for your script using **xbindkeys**:
+
+Create a configuration file for **xbindkeys** if it doesn't already exist. You can create a default configuration file using the following command:
+
+```shell
+xbindkeys --defaults > ~/.xbindkeysrc
+```
+
+Open the ~/.xbindkeysrc file in a text editor. You can use any text editor you prefer, such as nano, vim, or gedit.
+
+```shell
+nano ~/.xbindkeysrc
+```
+
+Add a keybinding for your script to the ~/.xbindkeysrc file. 
+
+```plaintext
+# Toggle capture on-off
+"bash $COMMBASE_APP_DIR/scripts/configuration/key_bindings/toggle_capture_on-off.sh"
+  Alt+Shift+1
+```
+
+Make sure to specify the key combination you want to use (in this case, `Alt+Shift+1`).
+
+Save the file and exit your text editor.
+
+Reload **xbindkeys** to apply the changes to your keybindings:
+
+```shell
+xbindkeys -p
+```
+
+You can also set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
+ - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
+ - Next, give the new shortcut a new name, like `toggle capture ON or OFF`.
+ - Next, select the route to this file.
+ - Next, click or tap on the button `Add the keyboard shortcut`. The shortcut appears in the list.
+ - Next, click on unassigned to pick an accelerator.
+ - Next, press the keys `ALT` + `SHIFT` + `1` (all together) and then release them at a time.
+ - Then the new key binding appears on the list.
+ - Finally, verify that the key binding works.
 
 ## Configure the File Capture Mute
 
-The file scripts/configuration/key_bindings/capture_mute.sh
+The file **scripts/configuration/key_bindings/capture_mute.sh** a parameter to mute the sound capture.
+
+To bind the script to a key combination in Linux, you can use a utility like **xbindkeys** or **xmodmap**. Here's how you can set up a keybinding for your script using **xbindkeys**:
+
+Create a configuration file for **xbindkeys** if it doesn't already exist. You can create a default configuration file using the following command:
+
+```shell
+xbindkeys --defaults > ~/.xbindkeysrc
+```
+
+Open the ~/.xbindkeysrc file in a text editor. You can use any text editor you prefer, such as nano, vim, or gedit.
+
+```shell
+nano ~/.xbindkeysrc
+```
+
+Add a keybinding for your script to the ~/.xbindkeysrc file. 
+
+```plaintext
+# Mute capture
+"bash $COMMBASE_APP_DIR/scripts/configuration/key_bindings/capture_mute.sh"
+  Alt+Shift+2
+```
+
+Make sure to specify the key combination you want to use (in this case, `Alt+Shift+2`).
+
+Save the file and exit your text editor.
+
+Reload **xbindkeys** to apply the changes to your keybindings:
+
+```shell
+xbindkeys -p
+```
+
+You can also set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
+ - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
+ - Next, give the new shortcut a new name, like `capture mute`.
+ - Next, select the route to this file.
+ - Next, click or tap on the button `Add the keyboard shortcut`. The shortcut appears in the list.
+ - Next, click on unassigned to pick an accelerator.
+ - Next, press the keys `ALT` + `SHIFT` + `2` (all together) and then release them at a time.
+ - Then the new key binding appears on the list.
+ - Finally, verify that the key binding works.
 
 ## Configure the File Capture Unmute
 
-The file scripts/configuration/key_bindings/capture_unmute.sh
+The file **scripts/configuration/key_bindings/capture_unmute.sh** a parameter to mute the sound capture.
+
+To bind the script to a key combination in Linux, you can use a utility like **xbindkeys** or **xmodmap**. Here's how you can set up a keybinding for your script using **xbindkeys**:
+
+Create a configuration file for **xbindkeys** if it doesn't already exist. You can create a default configuration file using the following command:
+
+```shell
+xbindkeys --defaults > ~/.xbindkeysrc
+```
+
+Open the ~/.xbindkeysrc file in a text editor. You can use any text editor you prefer, such as nano, vim, or gedit.
+
+```shell
+nano ~/.xbindkeysrc
+```
+
+Add a keybinding for your script to the ~/.xbindkeysrc file. 
+
+```plaintext
+# Unmute capture
+"bash $COMMBASE_APP_DIR/scripts/configuration/key_bindings/capture_unmute.sh"
+  Alt+Shift+3
+```
+
+Make sure to specify the key combination you want to use (in this case, `Alt+Shift+3`).
+
+Save the file and exit your text editor.
+
+Reload **xbindkeys** to apply the changes to your keybindings:
+
+```shell
+xbindkeys -p
+```
+
+You can also set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
+ - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
+ - Next, give the new shortcut a new name, like `capture unmute`.
+ - Next, select the route to this file.
+ - Next, click or tap on the button `Add the keyboard shortcut`. The shortcut appears in the list.
+ - Next, click on unassigned to pick an accelerator.
+ - Next, press the keys `ALT` + `SHIFT` + `3` (all together) and then release them at a time.
+ - Then the new key binding appears on the list.
+ - Finally, verify that the key binding works.
 
 # 6 Keyboard Shortcuts
 
@@ -395,7 +555,7 @@ It's an easy to use tool to change the mapping of your input device buttons. It'
 <br />Allows mapping non-keyboard events (click, joystick, wheel) to keys of keyboard devices.
 <br />Web: <https://github.com/sezanzeb/input-remapper>
 
-This application can help other Apps such as the AI Assitant "Commbase" execute voice commands based on Commbase scripts that run custom keyboard shortcuts created with Input Remapper instead of Cinnamon which can make Commbase independant of Gnome/Cinnamon, but still dependent of the powerful Gnome terminal.
+This application can help other Apps such as the AI Assistant "Commbase" execute voice commands based on Commbase scripts that run custom keyboard shortcuts created with Input Remapper instead of Cinnamon which can make Commbase independant of Gnome/Cinnamon, but still dependent of the powerful Gnome terminal.
 
 Consider Input Remmaper to create new custom Commbase commands or, for example, replace our chosen Development editor with another editor or IDE enhanced with Commbase with this type of mappings. Include and document a back and restore procedure of your custom mapping files.
 
@@ -896,7 +1056,7 @@ Please ensure that these environment variables are correctly set with the approp
 
 How to reset the configuration file **app.conf**.
 
-It restores the configuration file to its inital status. Go to the directory **scripts/utilities** and execute the file **reset_app.conf.sh**.
+It restores the configuration file to its inital status. Go to the directory **scripts/utilities/reset_app.conf/** and execute the file **reset_app.conf.sh**.
 
 ```shell
 cd scripts/utilities
@@ -1424,7 +1584,7 @@ downloads/tmp/verifications.sh code here
   - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
     The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
   - When the new Paul's email arrives, the assistant proposes a solution for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new accept or deny command.
-    In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
+    In case the user or the assistant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
     Example: "You have received an email from Paul. Do you want me to read it out loud to you?" (The written part could include the possible case options: ok accept, ok, deny, ok repeat, ok remind me in five, thirty, or sixty minutes, ok skip that question, etc.)
   - The user has one opportunity to ACCEPT or DENY the solution.
     The user answer is stored only in the .result_message.json
@@ -1464,7 +1624,7 @@ TODO:
   - The assistant proceeds to find a solution. This occurs inside the parser, case option "*)". A loop or an async function verifies the email every x minutes, looking for Paul's email.
   - The user is allowed to interact with the assistant while the program awaits in the background/behind the scenes.
   - When the new Paul's email arrives, the assistant proposes a number of solutions for the request. The same parser exits the loop or async function and asks the user looking forward to receiving a new command based on the chosen option.
-  In case the user or the assitant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
+  In case the user or the assistant voice talks over this response causing the user to get confused about what it hears, it is able to use the control ok reapeat to repeat the solution proposal once more. If the control ok repeat is selected, the program skips the code to write in .previous_result_message.json and in .result_message.json, and just re-executes the bash script 'skill'.
   Example: "You have received an email from Paul. Please select an option: 1. Open it on the screen. 2. Read it out loud. 3. Remind me about that in 5 minutes. 4. Forget about that / Skip that question.
   - The user choses an option.
   The user answer is stored only in the .result_message.json.

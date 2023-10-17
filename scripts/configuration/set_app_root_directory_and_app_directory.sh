@@ -38,7 +38,7 @@
 
 # Prompt user to enter the current location of the Commbase repository directory,
 # and set the default location to $HOME if no input is provided.
-read -p "👉️ Enter the current location of the Commbase repository directory (press enter for default '$HOME'): " DIR_TO_RENAME_PATH
+read -r -p "👉️ Enter the current location of the Commbase repository directory (press enter for default '$HOME'): " DIR_TO_RENAME_PATH
 
 if [[ -z "$DIR_TO_RENAME_PATH" ]]; then
     DIR_TO_RENAME_PATH="$HOME"
@@ -46,15 +46,15 @@ fi
 
 # Prompt user to enter the current name of the Commbase repository directory,
 # and repeat the prompt until a non-empty input is provided.
-read -p "👉️ Enter the current name of the Commbase repository directory (for example, commbase or commbase-main): " DIR_TO_RENAME
+read -r -p "👉️ Enter the current name of the Commbase repository directory (for example, commbase or commbase-main): " DIR_TO_RENAME
 
 while [[ -z "$DIR_TO_RENAME" ]]; do
-    read -p "👉️ Please enter a non-empty name of the Commbase repository directory: " DIR_TO_RENAME
+    read -r -p "👉️ Please enter a non-empty name of the Commbase repository directory: " DIR_TO_RENAME
 done
 
 # Prompt user to enter a new location for their app, and set the default
 # location to $HOME if no input is provided.
-read -p "👉️ Enter a new location for your app (press enter for default '$HOME'): " NEW_DIR_PATH
+read -r -p "👉️ Enter a new location for your app (press enter for default '$HOME'): " NEW_DIR_PATH
 
 if [[ -z "$NEW_DIR_PATH" ]]; then
     NEW_DIR_PATH="$HOME"
@@ -62,10 +62,10 @@ fi
 
 # Prompt user to enter the name for their new app, and repeat the prompt until a
 # non-empty input is provided.
-read -p "👉️ Enter your new app's name: " NEW_DIR_NAME
+read -r -p "👉️ Enter your new app's name: " NEW_DIR_NAME
 
 while [[ -z "$NEW_DIR_NAME" ]]; do
-    read -p "👉️ Please enter a non-empty name for the new app: " NEW_DIR_NAME
+    read -r -p "👉️ Please enter a non-empty name for the new app: " NEW_DIR_NAME
 done
 
 # Rename the app directory
@@ -75,18 +75,21 @@ mv "$DIR_TO_RENAME_PATH/$DIR_TO_RENAME" "$NEW_DIR_PATH/$NEW_DIR_NAME"
 if grep -q "COMMBASE_APP_DIR" ~/.bashrc; then
     sed -i "s#COMMBASE_APP_DIR=.*#COMMBASE_APP_DIR=\"$NEW_DIR_PATH\/$NEW_DIR_NAME\"#" ~/.bashrc
 else
-    echo "" >> ~/.bashrc
-    echo "# The Commbase App directory for the Bash shell" >> ~/.bashrc
-    echo "export COMMBASE_APP_DIR=\"$NEW_DIR_PATH/$NEW_DIR_NAME\"" >> ~/.bashrc
+    {
+      echo ""
+      echo "# The Commbase App directory for the Bash shell"
+      echo "export COMMBASE_APP_DIR=\"$NEW_DIR_PATH/$NEW_DIR_NAME\""
+    } >> ~/.bashrc  # using a (multiline) command grouping construct
 fi
 
 # Overwrite the line in .zshrc if it exists
 if grep -q "COMMBASE_APP_DIR" ~/.zshrc; then
     sed -i "s#COMMBASE_APP_DIR=.*#COMMBASE_APP_DIR=\"$NEW_DIR_PATH\/$NEW_DIR_NAME\"#" ~/.zshrc
 else
-    echo "" >> ~/.zshrc
-    echo "# The Commbase App directory for the Z shell" >> ~/.zshrc
-    echo "export COMMBASE_APP_DIR=\"$NEW_DIR_PATH/$NEW_DIR_NAME\"" >> ~/.zshrc
+    { echo ""
+      echo "# The Commbase App directory for the Z shell"
+      echo "export COMMBASE_APP_DIR=\"$NEW_DIR_PATH/$NEW_DIR_NAME\""
+		} >> ~/.zshrc  # using a (multiline) command grouping construct
 fi
 
 # Set the APP_DIR variable to the new directory
@@ -96,4 +99,3 @@ APP_DIR="$NEW_DIR_PATH/$NEW_DIR_NAME"
 echo -e "🎉️ Yor new app directory is: \033[31m$APP_DIR\033[0m"
 
 exit 99
-
