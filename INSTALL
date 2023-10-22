@@ -493,6 +493,10 @@ It requires the package tesseract-ocr. Install it like this:
 
 $ sudo apt-get install tesseract-ocr
 
+- pytest:
+
+$ pip3.11 install pytest
+
 Install Python in an Anaconda Python environment
 -------------------------------------------------
 
