@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# skill_script_set_a_timer_of_1_to_129_minutes/skill_script_set_a_timer_of_1_to_129_minutes.sh
+# skill_script_set_a_timer_of_1_to_129_minutes.sh
 # This is a fork from https://github.com/tomxue/countdown improved with an alarm
 # with voice and sounds, also for Commbase
 
