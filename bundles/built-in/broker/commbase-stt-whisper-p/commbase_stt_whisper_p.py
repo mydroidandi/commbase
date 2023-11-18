@@ -37,7 +37,7 @@
 # program downloads it automatically.
 # Requires to run redirecting the standard error output (stderr) to the null
 # device (/dev/null) like this to avoid ALSA output messages:
-# python commbase_stt_whisper_p.py 2>& /dev/null
+# shell> python commbase_stt_whisper_p.py 2>& /dev/null
 
 # Requirements
 import io
@@ -49,7 +49,7 @@ import os
 
 # A temporary directory and a file path within that directory
 temp_file = tempfile.mkdtemp()
-save_path = os.path.join(temp_file, "temp.wav")
+save_path = os.path.join(temp_file, 'temp.wav')
 
 
 def listen():
@@ -60,16 +60,18 @@ def listen():
     the path of the saved audio file.
     """
     listener = sr.Recognizer()  # Create an instance of Recognizer
-    try:
-        with sr.Microphone() as source:
-            print("END USER:")
-            listener.adjust_for_ambient_noise(source)
-            audio = listener.listen(source)
+    with sr.Microphone() as source:
+        print("COMMBASE: Listening...")
+        listener.adjust_for_ambient_noise(source)
+
+        try:
+            audio = listener.listen(source, timeout=2)  # Set a timeout of 2 seconds
+            print("COMMBASE: Processing...")
             data = io.BytesIO(audio.get_wav_data())
             audio_clip = AudioSegment.from_file(data)
-            audio_clip.export(save_path, format="wav")
-    except Exception as e:
-        print(e)
+            audio_clip.export(save_path, format='wav')
+        except sr.WaitTimeoutError:
+            print("COMMBASE: Speech stopped. Recognizing...")
     return save_path
 
 
@@ -79,21 +81,22 @@ def recognize_audio(save_path):
     transcribes an audio file located at save_path using that model. It then
     returns the transcribed text extracted from the transcription result.
     """
-    audio_model = whisper.load_model("base")  # The version of the Whisper model to load
-    transcription = audio_model.transcribe(save_path, language="english", fp16=False)
-    return transcription["text"]
+    audio_model = whisper.load_model('base')
+    transcription = audio_model.transcribe(save_path, language='english', fp16=False)
+    return transcription['text']
 
 
 def main():
     """
-    Servers as the entry point of the program and orchestrates the speech
+    Serves as the entry point of the program and orchestrates the speech
     recognition process.
     """
-    response = recognize_audio(listen())
-    print(response)
+    while True:
+        response = recognize_audio(listen())
+        print(f"END USER: {response}")
 
 
 # Ensure that the main() function is executed only when the script is run
 # directly as the main program.
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
