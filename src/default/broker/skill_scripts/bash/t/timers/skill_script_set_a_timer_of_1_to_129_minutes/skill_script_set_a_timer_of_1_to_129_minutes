@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# localhost_countdown.sh
+# skill_script_set_a_timer_of_1_to_129_minutes.sh
 # This is a fork from https://github.com/tomxue/countdown improved with an alarm
 # with voice and sounds, also for Commbase
 
@@ -108,7 +108,6 @@ while [ $sec_rem -gt 0 ]; do
 	echo "Days:    " $days 
 	echo "Weeks:   " $weeks 
 	echo "Press CTRL-C to stop the alarm"
-  echo ""
 
 	echo -n "["
 
@@ -134,5 +133,5 @@ printf "\n"
 # Alarm Alternatives:
 #aplay -q mixkit-game-notification-wave-alarm-987.wav
 #echo "finished" | festival --tts
+#sleep 0.5; while true; do spd-say -w 'get back to work' ; aplay -q $COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-unlock-game-notification-253.wav; done
 sleep 0.5; while true; do spd-say -w 'get back to work'; sleep 40; done
-#sleep 0.5; while true; do spd-say -w 'get back to work' ; aplay -q $COMMBASE/Commbase/timers/custom-countdown/mixkit-game-notification-wave-alarm-987.wav; done

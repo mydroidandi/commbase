@@ -16,10 +16,10 @@ dependencies:
   - brotli-bin=1.0.9=h5eee18b_7
   - brotlipy=0.7.0=py311h5eee18b_1002
   - bzip2=1.0.8=h7b6447c_0
-  - ca-certificates=2023.05.30=h06a4308_0
+  - ca-certificates=2023.08.22=h06a4308_0
   - cairo=1.16.0=hb05425b_4
   - cchardet=2.1.7=py311h6a678d5_0
-  - certifi=2023.5.7=py311h06a4308_0
+  - certifi=2023.7.22=py311h06a4308_0
   - cffi=1.15.1=py311h5eee18b_3
   - chardet=4.0.0=py311h06a4308_1003
   - charset-normalizer=2.0.4=pyhd3eb1b0_0
@@ -53,6 +53,7 @@ dependencies:
   - hdf5=1.10.6=h3ffc7dd_1
   - icu=58.2=he6710b0_3
   - idna=3.4=py311h06a4308_0
+  - iniconfig=1.1.1=pyhd3eb1b0_0
   - joblib=1.2.0=py311h06a4308_0
   - jpeg=9e=h5eee18b_1
   - kiwisolver=1.4.4=py311h6a678d5_0
@@ -60,7 +61,9 @@ dependencies:
   - lame=3.100=h7b6447c_0
   - lcms2=2.12=h3be6417_0
   - ld_impl_linux-64=2.38=h1181459_1
+  - leptonica=1.82.0=he027829_1
   - lerc=3.0=h295c915_0
+  - libarchive=3.6.2=hb4bd9a0_1
   - libbrotlicommon=1.0.9=h5eee18b_7
   - libbrotlidec=1.0.9=h5eee18b_7
   - libbrotlienc=1.0.9=h5eee18b_7
@@ -111,7 +114,7 @@ dependencies:
   - openh264=2.1.1=h4ff587b_0
   - openjpeg=2.4.0=h3ad879b_0
   - openpyxl=3.0.10=py311h5eee18b_0
-  - openssl=1.1.1t=h7f8727e_0
+  - openssl=1.1.1w=h7f8727e_0
   - packaging=23.0=py311h06a4308_0
   - pandas=1.5.3=py311hba01205_0
   - pandas-stubs=1.5.3.230203=py311h06a4308_0
@@ -120,6 +123,7 @@ dependencies:
   - pip=23.1.2=py311h06a4308_0
   - pixman=0.40.0=h7f8727e_1
   - plotly=5.9.0=py311h06a4308_0
+  - pluggy=1.0.0=py311h06a4308_1
   - pooch=1.4.0=pyhd3eb1b0_0
   - portaudio=19.6.0=h7b6447c_4
   - pyaudio=0.2.11=py311h5eee18b_2
@@ -128,6 +132,8 @@ dependencies:
   - pyopenssl=23.0.0=py311h06a4308_0
   - pyparsing=3.0.9=py311h06a4308_0
   - pysocks=1.7.1=py311h06a4308_0
+  - pytesseract=0.3.10=py311h06a4308_0
+  - pytest=7.4.0=py311h06a4308_0
   - python=3.11.3=h7a1cb2a_0
   - python-dateutil=2.8.2=pyhd3eb1b0_0
   - pytz=2022.7=py311h06a4308_0
@@ -146,6 +152,7 @@ dependencies:
   - sqlite=3.41.2=h5eee18b_0
   - tbb=2021.8.0=hdb19cb5_0
   - tenacity=8.2.2=py311h06a4308_0
+  - tesseract=5.2.0=h6a678d5_0
   - threadpoolctl=2.2.0=pyh0d69192_0
   - tk=8.6.12=h1ccaba5_0
   - tqdm=4.65.0=py311h92b7b1e_0

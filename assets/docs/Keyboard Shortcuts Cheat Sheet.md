@@ -134,7 +134,7 @@ CTRL	X	Cut.
 `Prefix` + `B` , `1-9` : Switch windows by their number IDs.
 <br />`Prefix` + `B` , `Q` : Display pane numbers.
 <br />`Prefix` + `B` , `SHIFT` : Split pane vertically.
-<br />`Prefix` + `B` , `ARROWS` : Resize the active pane.
+<br />`Prefix` + `B` + `ARROWS` : Resize the active pane.
 <br />`Prefix` + `B` , `ARROWS` : Switch panes.
 
 Default Prefix = CTRL
