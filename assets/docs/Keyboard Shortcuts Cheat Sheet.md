@@ -113,7 +113,7 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 <br />`ALT` + `SHIFT` + `6` : Start streaming.
 <br />`ALT` + `SHIFT` + `7` : Stop streaming.
 
-## SimplESCreenRecorder
+## SimpleSCreenRecorder
 
 `SUPER`/ `META` + `S` : Start recording.
 
