@@ -1,4 +1,4 @@
-# Commbase <img align="center" alt="Visual Studio Code" width="10%" src="./images/commbase.png" /> Keyboard Shortcuts
+# Commbase <img align="center" ALT="Visual Studio Code" width="10%" src="./images/commbase.png" /> Keyboard Shortcuts
 
 # Keyboard Shortcuts Cheat Sheet
 
@@ -13,36 +13,36 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 
 ## Bash
 
-`Ctrl` + `A` : Move to the start of the command line.
-<br />`Ctrl` + `E` : Move to the end of the command line.
-<br />`Ctrl` + `F` : Move one character forward.
-<br />`Ctrl` + `B` : Move one character backward.
-<br />`Ctrl` + `XX` : Switch cursor position between start of the command line and the current position.
-<br />`Ctrl` + `]` + `x` : Move the cursor forward to next occurrence of x.
-<br />`Alt` + `F` / `Esc` + `F` : Move the cursor one word forward.
-<br />`Alt` + `B` / `Esc` + `B`	:	Move the cursor one word backward.
-<br />`Alt` + `Ctrl` + `]` + `x` : Move cursor to the previous occurrence of x.
+`CTRL` + `A` : Move to the start of the command line.
+<br />`CTRL` + `E` : Move to the end of the command line.
+<br />`CTRL` + `F` : Move one character forward.
+<br />`CTRL` + `B` : Move one character backward.
+<br />`CTRL` + `XX` : Switch cursor position between start of the command line and the current position.
+<br />`CTRL` + `]` + `X` : Move the cursor forward to next occurrence of x.
+<br />`ALT` + `F` / `ESC` + `F` : Move the cursor one word forward.
+<br />`ALT` + `B` / `ESC` + `B`	:	Move the cursor one word backward.
+<br />`ALT` + `CTRL` + `]` + `X` : Move cursor to the previous occurrence of x.
 
 ###	Bash Control/Process
 
-`Ctrl` + `L` : Clear the terminal screen.
-<br />`Ctrl` + `S` : Stop command output to the screen.
-<br />`Ctrl` + `Z` : Suspend current command execution and move it to the background.
-<br />`Ctrl` + `Q` : Resume suspended command.
-<br />`Ctrl` + `C` : Send SIGI signal and kill currently executing command.
-<br />`Ctrl` + `D` : Close the current terminal.
+`CTRL` + `L` : Clear the terminal screen.
+<br />`CTRL` + `S` : Stop command output to the screen.
+<br />`CTRL` + `Z` : Suspend current command execution and move it to the background.
+<br />`CTRL` + `Q` : Resume suspended command.
+<br />`CTRL` + `C` : Send SIGI signal and kill currently executing command.
+<br />`CTRL` + `D` : Close the current terminal.
 
 ###	Bash History
 
-`Ctrl` + `R` : Incremental reverse search of bash history.
-<br />`Alt` + `P` : Non-incremental reverse search of bash history.
-<br />`Ctrl` + `J` : End history search at current command.
-<br />`Ctrl` + `_` :	Undo previous command.
-<br />`Ctrl` + `P` / `Up arrow` : Move to previous command.
-<br />`Ctrl` + `N` / `Down arrow` :	Move to next command.
-<br />`Ctrl` + `S` : Get the next most recent command.
-<br />`Ctrl` + `O` : Run and re-enter the command found via Ctrl + S and Ctrl + R.
-<br />`Ctrl` + `G` : Exit history search mode.
+`CTRL` + `R` : Incremental reverse search of bash history.
+<br />`ALT` + `P` : Non-incremental reverse search of bash history.
+<br />`CTRL` + `J` : End history search at current command.
+<br />`CTRL` + `_` :	Undo previous command.
+<br />`CTRL` + `P` / `UP ARROW` : Move to previous command.
+<br />`CTRL` + `N` / `DOWN ARROW` :	Move to next command.
+<br />`CTRL` + `S` : Get the next most recent command.
+<br />`CTRL` + `O` : Run and re-enter the command found via CTRL + S and CTRL + R.
+<br />`CTRL` + `G` : Exit history search mode.
 <br />`!!` : Run last command.
 <br />`!*` : Run previous command except its first word.
 <br />`!*:p` : Display what !* substitutes.
@@ -60,26 +60,26 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 
 ###	Bash Editing
 
-`Ctrl` + `U` : Delete before the cursor until the start of the command line.
-<br />`Ctrl` + `K` : Delete after the cursor until the end of the command line.
-<br />`Ctrl` + `W` : Remove the command/argument before the cursor.
-<br />`Ctrl` + `D` : Remove the character under the cursor.
-<br />`Ctrl` + `H` : Remove character before the cursor.
-<br />`Alt` + `D` : Remove from the character until the end of the current word.
-<br />`Alt` + `Backspace` : Remove from the character until the start of the current word.
-<br />`Alt` + `.` / `Esc` + `.` : Use last argument of the previous command.
-<br />`Alt` + `<` : Move to the first line of the bash history.
-<br />`Alt` + `>` : Move to the last line of the bash history.
-<br />`Esc` + `T` : Switch between last two words before cursor.
-<br />`Alt` + `T` : Switch current word with the previous.
+`CTRL` + `U` : Delete before the cursor until the start of the command line.
+<br />`CTRL` + `K` : Delete after the cursor until the end of the command line.
+<br />`CTRL` + `W` : Remove the command/argument before the cursor.
+<br />`CTRL` + `D` : Remove the character under the cursor.
+<br />`CTRL` + `H` : Remove character before the cursor.
+<br />`ALT` + `D` : Remove from the character until the end of the current word.
+<br />`ALT` + `BACKSPACE` : Remove from the character until the start of the current word.
+<br />`ALT` + `.` / `ESC` + `.` : Use last argument of the previous command.
+<br />`ALT` + `<` : Move to the first line of the bash history.
+<br />`ALT` + `>` : Move to the last line of the bash history.
+<br />`ESC` + `T` : Switch between last two words before cursor.
+<br />`ALT` + `T` : Switch current word with the previous.
 
 ###	Bash Information
 
 `TAB` : Autocomplete the command or file/directory name.
 <br />`~TAB TAB`:	List all Linux users.
-<br />`Ctrl` + `I`: Complete the command like TAB.
-<br />`Alt` + `?` : Display files/folders in the current path for help.
-<br />`Alt` + `*` : Display files/folders in the current path as parameter.
+<br />`CTRL` + `I`: Complete the command like TAB.
+<br />`ALT` + `?` : Display files/folders in the current path for help.
+<br />`ALT` + `*` : Display files/folders in the current path as parameter.
 
 ## Desktop Environment and Operating System
 
@@ -106,10 +106,6 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 <br />`CTRL` + `SHIFT` + `C` : Copy highlighted text from terminal.
 <br />`CTRL` + `SHIFT` + `V` : Paste clipboard text into terminal.
 
-## Neovim / Emacs
-
-When using Neovim or Emacs, make sure that the custom keyboard shortcuts do not interfere one another in the complete list.
-
 ## OBS
 
 `ALT` + `SHIFT` + `4` : Start recording.
@@ -117,27 +113,27 @@ When using Neovim or Emacs, make sure that the custom keyboard shortcuts do not 
 <br />`ALT` + `SHIFT` + `6` : Start streaming.
 <br />`ALT` + `SHIFT` + `7` : Stop streaming.
 
-## SimpleScreenRecorder
+## SimplESCreenRecorder
 
-`SUPER` + `S` : Start recording.
-
-## Text Editors and IDEs
-
-CTRL	X	Cut.
-`CTRL` + `C` : Copy.
-<br />`CTRL` + `V` : Paste.
-<br />`CTRL` + `F` : Find.
-<br />`CTRL` + `N` : Create new file.
+`SUPER`/ `META` + `S` : Start recording.
 
 ## Oh My Tmux
 
-`Prefix` + `B` , `1-9` : Switch windows by their number IDs.
-<br />`Prefix` + `B` , `Q` : Display pane numbers.
-<br />`Prefix` + `B` , `SHIFT` : Split pane vertically.
-<br />`Prefix` + `B` + `ARROWS` : Resize the active pane.
-<br />`Prefix` + `B` , `ARROWS` : Switch panes.
+`PREFIX` + `B` , `1-9` : Switch windows by their number IDs.
+<br />`PREFIX` + `B` , `Q` : Display pane numbers.
+<br />`PREFIX` + `B` , `SHIFT` : Split pane vertically.
+<br />`PREFIX` + `B` + `ARROWS` : Resize the active pane.
+<br />`PREFIX` + `B` , `ARROWS` : Switch panes.
 
-Default Prefix = CTRL
+Default PREFIX = CTRL
+
+## Text Editors and IDEs
+
+`CTRL` +	`X`: Cut.
+<br />`CTRL` + `C` : Copy.
+<br />`CTRL` + `V` : Paste.
+<br />`CTRL` + `F` : Find.
+<br />`CTRL` + `N` : Create new file.
 
 ## VS Code
 
@@ -148,7 +144,10 @@ Default Prefix = CTRL
 
 When using VS Code, make sure that the custom keyboard shortcuts do not interfere with each other in the complete list.
 
+## Neovim / Emacs
+
+When using Neovim or Emacs, make sure that the custom keyboard shortcuts do not interfere one another in the complete list.
+
 ## Web Browser
 
 Click on a browser's tab and then use the roller to move through the tabs.
-
