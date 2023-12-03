@@ -120,6 +120,8 @@ echo "" > "$LOG_FILE"
 (echo "$HOME/.config/BraveSoftware/" >> "$LOG_FILE")
 (echo "$HOME/config/")
 (echo "$HOME/config/" >> "$LOG_FILE")
+(echo "$HOME/.local/share/nvim/site/")
+(echo "$HOME/.local/share/nvim/site/" >> "$LOG_FILE")
 (echo "$HOME/Developer/")
 (echo "$HOME/Developer/" >> "$LOG_FILE")
 (echo "$HOME/Documents/")
@@ -168,7 +170,16 @@ elif [ "$MY_HOST_NAME" == "$HOSTNAME" ]; then
 	(echo "<> Syncing the directory: ~/config/ to $external_storage_drive_02_backup_path ...")
 	(echo "<> Syncing the directory: ~/config/ to $external_storage_drive_02_backup_path ..." >> "$LOG_FILE")
 	(rsync -avh --delete --quiet -e ~/config/* "$external_storage_drive_02_backup_path" 2>&1 | tee -a "$LOG_FILE")
-	# Sync ~/Developer/
+  # Sync ~/.local/share/nvim/site/
+  external_storage_drive_01_backup_path="/media/$USER/$EXTERNAL_STORAGE_DRIVE_01_TAG/SYNC/hosts/$MY_HOST_NAME/.local/share/nvim/site/"
+  (echo "<> Syncing the directory: ~/.local/share/nvim/site/ to $external_storage_drive_01_backup_path ...")
+  (echo "<> Syncing the directory: ~/.local/share/nvim/site/ to $external_storage_drive_01_backup_path ..." >> "$LOG_FILE")
+  (rsync -avh --delete --quiet -e ~/.local/share/nvim/site/* "$external_storage_drive_01_backup_path" 2>&1 | tee -a "$LOG_FILE")
+  external_storage_drive_02_backup_path="/media/$USER/$EXTERNAL_STORAGE_DRIVE_02_TAG/SYNC/hosts/$MY_HOST_NAME/.local/share/nvim/site/"
+  (echo "<> Syncing the directory: ~/.local/share/nvim/site/ to $external_storage_drive_02_backup_path ...")
+  (echo "<> Syncing the directory: ~/.local/share/nvim/site/ to $external_storage_drive_02_backup_path ..." >> "$LOG_FILE")
+  (rsync -avh --delete --quiet -e ~/.local/share/nvim/site/* "$external_storage_drive_02_backup_path" 2>&1 | tee -a "$LOG_FILE")
+  # Sync ~/Developer/
 	external_storage_drive_01_backup_path="/media/$USER/$EXTERNAL_STORAGE_DRIVE_01_TAG/SYNC/hosts/$MY_HOST_NAME/Developer/"
 	(echo "<> Syncing the directory: ~/Developer/ to $external_storage_drive_01_backup_path ...")
 	(echo "<> Syncing the directory: ~/Developer/ to $external_storage_drive_01_backup_path ..." >> "$LOG_FILE")
