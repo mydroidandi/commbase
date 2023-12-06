@@ -20,7 +20,7 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 <br />`CTRL` + `XX` : Switch cursor position between start of the command line and the current position.
 <br />`CTRL` + `]` + `X` : Move the cursor forward to next occurrence of x.
 <br />`ALT` + `F` / `ESC` + `F` : Move the cursor one word forward.
-<br />`ALT` + `B` / `ESC` + `B`	:	Move the cursor one word backward.
+<br />`ALT` + `B` / `ESC` + `B` : Move the cursor one word backward.
 <br />`ALT` + `CTRL` + `]` + `X` : Move cursor to the previous occurrence of x.
 
 ###	Bash Control/Process
@@ -37,9 +37,9 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 `CTRL` + `R` : Incremental reverse search of bash history.
 <br />`ALT` + `P` : Non-incremental reverse search of bash history.
 <br />`CTRL` + `J` : End history search at current command.
-<br />`CTRL` + `_` :	Undo previous command.
+<br />`CTRL` + `_` : Undo previous command.
 <br />`CTRL` + `P` / `UP ARROW` : Move to previous command.
-<br />`CTRL` + `N` / `DOWN ARROW` :	Move to next command.
+<br />`CTRL` + `N` / `DOWN ARROW` : Move to next command.
 <br />`CTRL` + `S` : Get the next most recent command.
 <br />`CTRL` + `O` : Run and re-enter the command found via CTRL + S and CTRL + R.
 <br />`CTRL` + `G` : Exit history search mode.
@@ -76,8 +76,8 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 ###	Bash Information
 
 `TAB` : Autocomplete the command or file/directory name.
-<br />`~TAB TAB`:	List all Linux users.
-<br />`CTRL` + `I`: Complete the command like TAB.
+<br />`~TAB TAB` : List all Linux users.
+<br />`CTRL` + `I` : Complete the command like TAB.
 <br />`ALT` + `?` : Display files/folders in the current path for help.
 <br />`ALT` + `*` : Display files/folders in the current path as parameter.
 
@@ -98,6 +98,13 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 <br />`ALT` + `SYSRQ` + `U` : **U**nmount (remount all filesystems as read-only.)
 <br />`ALT` + `SYSRQ` + `B` : re**B**oot (reboot the computer).
 
+## FZF
+
+`CTRL` + `R`: Fuzzy find a command in the command history.
+<br />`CTRL` + `T `: Fuzzy find a file from the current working tree.
+<br />`ENTER` : Open the file.
+<br />`ESC` : Exit the program.
+
 ## Gnome Terminal
 
 `CTRL` + `-` : Resize terminal.
@@ -106,6 +113,10 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 <br />`CTRL` + `SHIFT` + `C` : Copy highlighted text from terminal.
 <br />`CTRL` + `SHIFT` + `V` : Paste clipboard text into terminal.
 
+## Neovim / Emacs
+
+When using Neovim or Emacs, make sure that the custom keyboard shortcuts do not interfere one another in the complete list.
+
 ## OBS
 
 `ALT` + `SHIFT` + `4` : Start recording.
@@ -113,19 +124,21 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 <br />`ALT` + `SHIFT` + `6` : Start streaming.
 <br />`ALT` + `SHIFT` + `7` : Stop streaming.
 
-## SimpleSCreenRecorder
-
-`SUPER`/ `META` + `S` : Start recording.
-
 ## Oh My Tmux
 
 `PREFIX` + `B` , `1-9` : Switch windows by their number IDs.
 <br />`PREFIX` + `B` , `Q` : Display pane numbers.
-<br />`PREFIX` + `B` , `SHIFT` : Split pane vertically.
+<br />`PREFIX` + `B` , `"` : Split window horizontally.
+<br />`PREFIX` + `B` , `SHIFT` + `PERCENT SIGN` : Split window vertically.
+<br />`PREFIX` + `B` , `SHIFT` + `PERCENT SIGN` : Split pane vertically.
 <br />`PREFIX` + `B` + `ARROWS` : Resize the active pane.
 <br />`PREFIX` + `B` , `ARROWS` : Switch panes.
 
 Default PREFIX = CTRL
+
+## SimpleSCreenRecorder
+
+`SUPER`/ `META` + `S` : Start recording.
 
 ## Text Editors and IDEs
 
@@ -144,10 +157,7 @@ Default PREFIX = CTRL
 
 When using VS Code, make sure that the custom keyboard shortcuts do not interfere with each other in the complete list.
 
-## Neovim / Emacs
-
-When using Neovim or Emacs, make sure that the custom keyboard shortcuts do not interfere one another in the complete list.
-
 ## Web Browser
 
 Click on a browser's tab and then use the roller to move through the tabs.
+
