@@ -20,7 +20,7 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 <br />`CTRL` + `XX` : Switch cursor position between start of the command line and the current position.
 <br />`CTRL` + `]` + `X` : Move the cursor forward to next occurrence of x.
 <br />`ALT` + `F` / `ESC` + `F` : Move the cursor one word forward.
-<br />`ALT` + `B` / `ESC` + `B`	:	Move the cursor one word backward.
+<br />`ALT` + `B` / `ESC` + `B` : Move the cursor one word backward.
 <br />`ALT` + `CTRL` + `]` + `X` : Move cursor to the previous occurrence of x.
 
 ###	Bash Control/Process
@@ -37,9 +37,9 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 `CTRL` + `R` : Incremental reverse search of bash history.
 <br />`ALT` + `P` : Non-incremental reverse search of bash history.
 <br />`CTRL` + `J` : End history search at current command.
-<br />`CTRL` + `_` :	Undo previous command.
+<br />`CTRL` + `_` : Undo previous command.
 <br />`CTRL` + `P` / `UP ARROW` : Move to previous command.
-<br />`CTRL` + `N` / `DOWN ARROW` :	Move to next command.
+<br />`CTRL` + `N` / `DOWN ARROW` : Move to next command.
 <br />`CTRL` + `S` : Get the next most recent command.
 <br />`CTRL` + `O` : Run and re-enter the command found via CTRL + S and CTRL + R.
 <br />`CTRL` + `G` : Exit history search mode.
@@ -76,8 +76,8 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 ###	Bash Information
 
 `TAB` : Autocomplete the command or file/directory name.
-<br />`~TAB TAB`:	List all Linux users.
-<br />`CTRL` + `I`: Complete the command like TAB.
+<br />`~TAB TAB` : List all Linux users.
+<br />`CTRL` + `I` : Complete the command like TAB.
 <br />`ALT` + `?` : Display files/folders in the current path for help.
 <br />`ALT` + `*` : Display files/folders in the current path as parameter.
 
@@ -101,7 +101,7 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 ## FZF
 
 `CTRL` + `R`: Fuzzy find a command in the command history.
-<br />`CTRL` + `T`:	Fuzzy find a file from the current working tree.
+<br />`CTRL` + `T `: Fuzzy find a file from the current working tree.
 <br />`ENTER` : Open the file.
 <br />`ESC` : Exit the program.
 
@@ -160,3 +160,4 @@ When using VS Code, make sure that the custom keyboard shortcuts do not interfer
 ## Web Browser
 
 Click on a browser's tab and then use the roller to move through the tabs.
+
