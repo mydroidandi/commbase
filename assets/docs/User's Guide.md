@@ -159,17 +159,19 @@ The window 1, "Commbase", contains 4 panes:
 
 - Pane 4. It is the Commbase terminal or simply a user terminal that can be focused, used, and cleaned from the application.
 
-The window 2, Editor", contains a single pane.
+The window 2, "Timer", contains a single pane.
 
-The window 3, "Timer", contains a single pane.
+The window 3, "Server 1", contains a single pane.
 
-The window 4, "Server 1", contains a single pane.
+The window 3, "Server 1", contains a single pane that is disabled by default in the configuration file.
+
+The window 5, "Files 1", contains a single pane.
 
 The extra windows from 2 to 4 can be disabled or enabled as a group or separately, by changing their settings in the configuration file **config/app.conf**. 
 
 To show or hide these windows, you can change the values assigned to the next default configuration variables:
 
-`TMUX_EXTRA_WINDOWS_ON`, `TMUX_EXTRA_WINDOW_EDITOR_ON`, `TMUX_EXTRA_WINDOW_TIMER_ON`, `TMUX_EXTRA_WINDOW_SERVER1_ON`, and `TMUX_EXTRA_WINDOW_SERVER2_ON`.
+`TMUX_EXTRA_WINDOWS_ON`, `TMUX_EXTRA_WINDOW_TIMER_ON`, `TMUX_EXTRA_WINDOW_SERVER1_ON`, and `TMUX_EXTRA_WINDOW_SERVER2_ON`, `TMUX_EXTRA_WINDOW_FILES1_ON`.
 
 You will find information about the variables in the section **5 Default Configuration Variables**.
 
@@ -711,11 +713,6 @@ The default version of the file **app.conf** contains the next values:
     - `True` (Default): Set to True, it activates the extra windows feature in the Commbase tmux session.
     - `False`: Set to False, it deactivates the extra windows feature in the Commbase tmux session.
 
-- **TMUX_EXTRA_WINDOW_EDITOR_ON**:
-  - Possible values:
-    - `True` (Default): Set to True, it activates the extra window Editor in the Commbase tmux session.
-    - `False`: Set to False, it deactivates the extra window Editor in the Commbase tmux session.
-
 - **TMUX_EXTRA_WINDOW_TIMER_ON**:
   - Possible values:
     - `True` (Default): Set to True, it activates the extra window Timer in the Commbase tmux session.
@@ -730,6 +727,11 @@ The default version of the file **app.conf** contains the next values:
   - Possible values:
     - `False` (Default): Set to False, it deactivates the extra window Server 2 in the Commbase tmux session.
     - `True`: Set to True, it activates the extra window Server 2 in the Commbase tmux session.
+
+- **TMUX_EXTRA_WINDOW_FILES1_ON**:
+  - Possible values:
+    - `True` (Default): Set to True, it activates the extra window Files 1 in the Commbase tmux session.
+    - `False`: Set to False, it deactivates the extra window Files 1 in the Commbase tmux session.
 
 - **TERMINAL_RED_BACKGROUND_COLOR_CODE_START**:
   - Possible values:

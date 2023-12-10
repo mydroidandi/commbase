@@ -102,30 +102,30 @@ app() {
 	# In this section, activate/deactivate or add custom extra windows
 
 	if [ "$TMUX_EXTRA_WINDOWS_ON" = "True" ]; then
-   	if [ "$TMUX_EXTRA_WINDOW_EDITOR_ON" = "True" ]; then
-			# Window 1
-			# Auto-create a new window 1 for a file manager or text editor
-			tmux new-window -t Commbase-0:2 -n "Files" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
-			#tmux select-window -t 2 && tmux send-keys "vifm" C-m
-		fi
-		
 		if [ "$TMUX_EXTRA_WINDOW_TIMER_ON" = "True" ]; then
-			# Window 2	
-			# Auto-create a new window 2 for a countdown timer of 25 mins and start it
-			tmux new-window -t Commbase-0:3 -n "Timer" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
-			tmux select-window -t 3 && tmux send-keys " bash $COMMBASE_APP_DIR/src/default/broker/skill_scripts/bash/t/timers/skill_script_set_a_timer_of_1_to_129_minutes/skill_script_set_a_timer_of_1_to_129_minutes -m 25" C-m;
+			# Window 1	
+			# Auto-create a new window 1 for a countdown timer of 25 mins and start it
+			tmux new-window -t Commbase-0:2 -n "Timer" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
+			tmux select-window -t 2 && tmux send-keys " bash $COMMBASE_APP_DIR/src/default/broker/skill_scripts/bash/t/timers/skill_script_set_a_timer_of_1_to_129_minutes/skill_script_set_a_timer_of_1_to_129_minutes -m 25" C-m;
 		fi
-		
+
 		if [ "$TMUX_EXTRA_WINDOW_SERVER1_ON" = "True" ];then
+			# Window 2
+			# Auto-create a new window 2 for a ssh connection to a server 1
+			tmux new-window -t Commbase-0:3 -n "Server 1" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
+		fi
+
+		if [ "$TMUX_EXTRA_WINDOW_SERVER2_ON" = "True" ];then
 			# Window 3
 			# Auto-create a new window 3 for a ssh connection to a server 1
-			tmux new-window -t Commbase-0:4 -n "Server 1" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
+			tmux new-window -t Commbase-0:4 -n "Server 2" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
 		fi
-		
-		if [ "$TMUX_EXTRA_WINDOW_SERVER2_ON" = "True" ];then
+
+  	if [ "$TMUX_EXTRA_WINDOW_FILES1_ON" = "True" ]; then
 			# Window 4
-			# Auto-create a new window for a ssh connection to a server 2
-			tmux new-window -t Commbase-0:5 -n "Server 2" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
+			# Auto-create a new window 4 for a directory/file manager or text editor
+			tmux new-window -t Commbase-0:5 -n "Files 1" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
+			#tmux select-window -t 2 && tmux send-keys "vifm" C-m
 		fi
 	fi
 
