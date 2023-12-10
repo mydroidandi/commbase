@@ -106,7 +106,7 @@ app() {
 			# Window 1
 			# Auto-create a new window 1 for a file manager or text editor
 			tmux new-window -t Commbase-0:2 -n "Files" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
-			#tmux select-window -t 2 && tmux send-keys "mc" C-m
+			#tmux select-window -t 2 && tmux send-keys "vifm" C-m
 		fi
 		
 		if [ "$TMUX_EXTRA_WINDOW_TIMER_ON" = "True" ]; then
