@@ -125,7 +125,7 @@ app() {
 			# Window 4
 			# Auto-create a new window 4 for a directory/file manager or text editor
 			tmux new-window -t Commbase-0:5 -n "Files 1" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
-			#tmux select-window -t 2 && tmux send-keys "vifm" C-m
+			#tmux select-window -t 2 && tmux send-keys "nnn" C-m
 		fi
 	fi
 
