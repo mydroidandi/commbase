@@ -81,15 +81,13 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 <br />`ALT` + `?` : Display files/folders in the current path for help.
 <br />`ALT` + `*` : Display files/folders in the current path as parameter.
 
-## Desktop Environment and Operating System
+## Desktop Environments / Window Managers / Operating System
 
 `SHIFT` + `TAB` : Set focus.
 <br />`ALT` + `TAB` : Select any application and bring it to foreground.
 <br />`ALT` + `SHIFT` + `TAB` : Select any application and bring it to foreground.
 <br />`INSERT` Take a full screen screenshot.
 <br />`CTRL` + `ALT` + `F1-F12` : Switch among console terminals.
-<br />`CTRL` + `ALT` + `ARROWS` : Move through desktop workspaces.
-<br />`SUPER` + `Z` : Desktop search.
 <br />`CTRL` + `ALT` + `DEL` : Reboot computer.
 <br />`ALT` + `SYSRQ` + `R` : un**R**aw (take control of the keyboard back from X11.)
 <br />`ALT` + `SYSRQ` + `E` : t**E**rminate (send SIGTERM to all processes, allowing them to terminate gracefully.)
@@ -97,6 +95,21 @@ These group of shortcuts are defined in the directory **scripts/configuration/ke
 <br />`ALT` + `SYSRQ` : `S` : **S**ync (flush data to disk.)
 <br />`ALT` + `SYSRQ` + `U` : **U**nmount (remount all filesystems as read-only.)
 <br />`ALT` + `SYSRQ` + `B` : re**B**oot (reboot the computer).
+
+### Cinnamon Desktop Environment
+
+`CTRL` + `ALT` + `ARROWS` : Move through desktop workspaces.
+<br />`SUPER/META` + `Z` : Desktop search.
+
+### KDE Desktop Environment
+
+`META`+ `Q` : Manage Activities.
+<br />`SUPER/META` + `TAB` : Next Activity.
+<br />`SUPER/META` + `SHIFT`+ `TAB` : Previous Activity.
+<br />`CTRL` + `F1` : Switch to Desktop 1.
+<br />`CTRL` + `F2` : Switch to Desktop 2.
+<br />`CTRL` + `F3` : Switch to Desktop 3.
+<br />`CTRL` + `F4` : Switch to Desktop 4.
 
 ## FZF
 
@@ -160,4 +173,3 @@ When using VS Code, make sure that the custom keyboard shortcuts do not interfer
 ## Web Browser
 
 Click on a browser's tab and then use the roller to move through the tabs.
-
