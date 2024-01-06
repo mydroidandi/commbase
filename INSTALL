@@ -435,7 +435,7 @@ Install the package:
 
 $ sudo apt-get install python3-opencv
 
-Verify the packge installation:
+Verify the package installation:
 
 $ dpkg -l | grep opencv
 
