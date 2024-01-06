@@ -666,9 +666,9 @@ List of required packages/commands:
 
 - openssh-server (server and client)
 
-- pkill (it comes installed with the base system sometimes, in a package with another name)
-
 - portaudio19-dev (seen in the section of PyAudio)
+
+- procps (it includes the command pkill)
 
 - python3-opencv (seen in the installation of OpenCV)
 
