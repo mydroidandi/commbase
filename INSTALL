@@ -674,6 +674,8 @@ List of required packages/commands:
 
 - procps (it includes the command pkill)
 
+- pulseaudio (Gnome desktop environment default is pipewire currently)
+
 - python3-opencv (seen in the installation of OpenCV)
 
 - rsync
@@ -706,7 +708,7 @@ $ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
 
 For example, this is the actual one-liner command someone could require:
 
-$ sudo apt-get update; sudo apt-get install alsa-utils bash cpulimit curl dash espeak festival ffmpeg gawk gdebi gnome-terminal git jq mpv mplayer nmap openssh-client openssh-server portaudio19-dev procps python3-opencv rsync sed sox sudo tar tasksel tesseract-ocr tmux unzip uuid-runtime wget xbindkeys
+$ sudo apt-get update; sudo apt-get install alsa-utils bash cpulimit curl dash espeak festival ffmpeg gawk gdebi gnome-terminal git jq mpv mplayer nmap openssh-client openssh-server portaudio19-dev procps pulseaudio python3-opencv rsync sed sox sudo tar tasksel tesseract-ocr tmux unzip uuid-runtime wget xbindkeys
 
 Troubleshooting the package installation:
 
