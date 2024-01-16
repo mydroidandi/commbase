@@ -135,7 +135,7 @@ Go to the directory scripts/configuration/install_commbase_executable/ and execu
 
 $ cd scripts/configuration/install_commbase_executable/
 
-$ bash install_commbase_executable.sh
+$ sudo bash install_commbase_executable.sh
 
 A new commbase file should appear in the directory /usr/bin.
 
