@@ -115,9 +115,10 @@ Or as a user, use:
 sudo nano /etc/festival.scm
 ```
 
-Attach the next line to the end of the file:
+Attach the next lines to the end of the file:
 
 ```code
+;; Custom voice tone
 (set! voice_default 'voice_us1_mbrola)
 ```
 
