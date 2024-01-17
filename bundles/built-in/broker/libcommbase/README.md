@@ -7,4 +7,3 @@ libcommbase is a collection of libraries to centralize common functions that can
 ## Examples
 
 Detailed information about examples can be found in the corresponding [`examples`](./examples) directory.
-
