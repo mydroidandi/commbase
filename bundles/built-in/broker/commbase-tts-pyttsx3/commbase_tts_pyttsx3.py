@@ -2,7 +2,7 @@
 ################################################################################
 #                            commbase_tts_pyttsx3.py                           #
 #                                                                              #
-# Conversational AI Assistant and AI Hub for Computers and Droids              #
+# Command-line application that transforms written text into spoken words      #
 #                                                                              #
 # Change History                                                               #
 # 06/10/2023  Esteban Herrera Original code.                                   #

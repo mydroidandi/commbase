@@ -55,8 +55,6 @@ This project is coded and organized like this:
 ├── bundles  # Stores the collection of software programs or applications that have been combined and distributed together
 │   ├── built-in
 │   │   └── broker
-│   │       ├── commbase-stt-vosk-p
-│   │       │   └── examples
 │   │       ├── commbase-stt-whisper-p
 │   │       │   └── examples
 │   │       ├── commbase-tts-pyttsx3
@@ -77,10 +75,6 @@ This project is coded and organized like this:
 │   │       │       └── skill_patterns
 │   │       │       │   └── vosk-model-en-us-0.22-lgraph
 │   │       ├── PyAudio
-│   │       ├── scripts
-│   │       │   └── utilities
-│   │       ├── vosk
-│   │       │   └── model
 │   │       └── vu-meter
 │   ├── custom
 │   │   └── agents
