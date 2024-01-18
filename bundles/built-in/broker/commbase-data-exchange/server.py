@@ -69,13 +69,14 @@ def save_json():
 
         return jsonify({"message": "JSON data saved successfully", "filename": filename})
 
-    #except Exception as e:
+    # except Exception as e:
     #    return jsonify({"error": str(e)}), 500
 
     except Exception as e:
         import traceback
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
+
 
 # API endpoint to retrieve saved JSON data
 @app.route('/api/get_saved_data', methods=['GET'])
