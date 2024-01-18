@@ -83,3 +83,10 @@ if __name__ == '__main__':
 In the allowed_origins list, replace the placeholders with the actual origins of your frontend applications that you want to allow. You can include as many origins as needed.
 
 This way, the server will only accept requests from the specified origins, helping to control which domains can access your server's resources. Adjust the allowed_origins list according to your specific frontend application URLs.
+
+# Tell Flask it is Behind a Proxy
+
+The information can be found on [Flask Website](https://flask.palletsprojects.com/en/2.3.x/deploying/proxy_fix/).
+
+More information can be found [here](https://flask.palletsprojects.com/en/2.3.x/deploying/).
+
