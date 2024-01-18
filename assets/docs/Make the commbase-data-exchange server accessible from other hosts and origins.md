@@ -1,12 +1,12 @@
 # Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> Server Access
 
-# Make the Flask server accessible from other hosts
+# Make the commbase-data-exchange server accessible from other hosts and origins
 
-## Allow external access to the Flask server
+## Modify the server's address to make it accessible from other hosts
 
-You can modify the server's address to make it accessible from other hosts. Instead of using 127.0.0.1, you can use the IP address of your machine or 0.0.0.0 to make the server accessible externally.
+Instead of using 127.0.0.1, you can use the IP address of your machine or 0.0.0.0 to make the server accessible externally.
 
-In the server.py file, change the line:
+In the **server.py** file, change the line:
 
 ```python
 socketio.run(app, debug=True)
@@ -34,7 +34,7 @@ To enable CORS in your Flask application, you can use the Flask-CORS extension. 
 pip install flask-cors
 ```
 
-Then, modify your server.py file to include CORS support:
+Then, modify your **server.py** file to include CORS support:
 
 ```python
 import os
@@ -58,7 +58,7 @@ Make sure to read the Flask-CORS documentation for more details on configuration
 
 ## How can I modify the code to specify allowed origins
 
-To specify allowed origins using Flask-CORS, you can pass the origins parameter to the CORS instance. This allows you to define a list of origins that are permitted to make requests to your server. Here's how you can modify your server.py to include specific allowed origins:
+To specify allowed origins using Flask-CORS, you can pass the origins parameter to the CORS instance. This allows you to define a list of origins that are permitted to make requests to your server. Here's how you can modify your **server.py** to include specific allowed origins:
 
 ```python
 import os
@@ -69,7 +69,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # Specify allowed origins (replace with your frontend's actual origin)
-allowed_origins = ["http://localhost:3000", "https://example.com", "http://127.0.0.1:3000", "http://192.168.1.100"]
+allowed_origins = ["http://localhost:3000", "https://example.com", "http://192.168.1.100"]
 
 CORS(app, origins=allowed_origins)  # Enable CORS with allowed origins
 socketio = SocketIO(app)
