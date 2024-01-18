@@ -1,4 +1,4 @@
-# Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> Make commbase-data-exchange Externally Accessible
+# Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> commbase-data-exchange Externally Accessible
 
 # Make the commbase-data-exchange server accessible from other hosts and origins
 
