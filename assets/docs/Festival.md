@@ -1,4 +1,4 @@
-# Commbase <img align="center" alt="Visual Studio Code" width="10%" src="./images/commbase.png" /> Festival
+# Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> Festival
 
 # Festival Installation and Basic Configuration for Commbase Applications
 
@@ -131,4 +131,3 @@ echo "Hi, How are you doing? This is Commbase" | festival --tts
 ```
 
 Verify that the sentence is spoken using the new voice defined in the configuration file.
-
