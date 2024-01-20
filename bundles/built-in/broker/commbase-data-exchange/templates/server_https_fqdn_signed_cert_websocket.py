@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# server.py
+# server_https_fqdn_signed_cert_websocket.py
 # Serves as a server for exchanging JSON data with clients over HTTP and
 # WebSocket connections, allowing clients to save and retrieve JSON data in
 # real-time.

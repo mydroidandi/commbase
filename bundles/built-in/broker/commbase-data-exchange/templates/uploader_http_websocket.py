@@ -30,33 +30,15 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# uploader.py
+# uploader_http_websocket.py
 # Sends a POST request with a JSON payload to a specified API endpoint and
 # handles the response.
 
 import requests  # pip install requests
 import json
 
-
-def upload_data(api_url, json_data):
-    try:
-        # Send a POST request to the API endpoint with JSON payload
-        response = requests.post(api_url, json=json_data, verify=False)  # For HTTPS (self-signed)
-
-        # Check the response status
-        if response.status_code == 200:
-            print("JSON data saved successfully.")
-            print("Response:", response.json())
-        else:
-            print(f"Error: {response.status_code}")
-            print("Response:", response.json())
-
-    except requests.exceptions.RequestException as e:
-        print(f"Request failed: {e}")
-
-
-# Define the API endpoint (HTTP or HTTPS)
-api_url = 'https://127.0.0.1:5000/api/save_json'  # For HTTPS
+# Define the API endpoint
+api_url = 'http://127.0.0.1:5000/api/save_json'
 
 # Sample JSON payload
 sample_json_data = {
@@ -65,5 +47,17 @@ sample_json_data = {
     "city": "Example City"
 }
 
-# Call the upload_data function with the chosen API URL
-upload_data(api_url, sample_json_data)
+try:
+    # Send a POST request to the API endpoint with JSON payload
+    response = requests.post(api_url, json=sample_json_data)
+
+    # Check the response status
+    if response.status_code == 200:
+        print("JSON data saved successfully.")
+        print("Response:", response.json())
+    else:
+        print(f"Error: {response.status_code}")
+        print("Response:", response.json())
+
+except requests.exceptions.RequestException as e:
+    print(f"Request failed: {e}")

@@ -1,4 +1,3 @@
- 
 #!/usr/bin/env python
 ################################################################################
 #                              commbase-client                                 #
@@ -31,17 +30,27 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# client.py
+# client_https_localhost_local_ca_polling.py
 # Fetches commands from the commbase-data-exchange server and executes them
 
-import requests
+import requests  # pip install requests
 from socketio import Client
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+import schedule  # pip install schedule
+import time
+
+# Suppress only the InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 # Define the API endpoint to retrieve saved JSON data
-api_url = 'http://127.0.0.1:5000/api/get_saved_data'
+api_url = 'https://127.0.0.1:5000/api/get_saved_data'
 
 # Define the WebSocket endpoint
-socketio_url = 'http://127.0.0.1:5000'
+socketio_url = 'https://127.0.0.1:5000'
+# socketio_url = 'ws://127.0.0.1:5000'
+
+# Path to the CA certificate file (change this to the actual path)
+ca_cert_path = './certificates/ca.pem'
 
 sio = Client()
 
@@ -53,10 +62,9 @@ def handle_update_saved_data(saved_data):
         print(data)
 
 
-def main():
+def get_updated_data():
     try:
-        # Send a GET request to the API endpoint
-        response = requests.get(api_url)
+        response = requests.get(api_url, verify=ca_cert_path)
 
         # Check the response status
         if response.status_code == 200:
@@ -76,5 +84,10 @@ def main():
         print(f"Request failed: {e}")
 
 
-if __name__ == '__main__':
-    main()
+# Schedule the task to run every 5 seconds
+schedule.every(5).seconds.do(get_updated_data)
+
+# Run the scheduler
+while True:
+    schedule.run_pending()
+    time.sleep(1)
