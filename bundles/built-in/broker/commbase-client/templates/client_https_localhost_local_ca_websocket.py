@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 ################################################################################
-#                            commbase-data-exchange                            #
+#                              commbase-client                                 #
 #                                                                              #
-# Server for exchanging data with clients over HTTP and WebSocket connections  #
+# Fetches commands from the commbase-data-exchange server and executes them    #
 #                                                                              #
 # Change History                                                               #
 # 01/17/2024  Esteban Herrera Original code.                                   #
@@ -30,34 +30,58 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# uploader.py
-# Sends a POST request with a JSON payload to a specified API endpoint and
-# handles the response.
+# client_https_localhost_local_ca_websocket.py
+# Fetches commands from the commbase-data-exchange server and executes them
 
 import requests  # pip install requests
-import json
+from socketio import Client
 
-# Define the API endpoint
-api_url = 'http://127.0.0.1:5000/api/save_json'
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
-# Sample JSON payload
-sample_json_data = {
-    "name": "John Doe",
-    "age": 30,
-    "city": "Example City"
-}
+# Suppress only the InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-try:
-    # Send a POST request to the API endpoint with JSON payload
-    response = requests.post(api_url, json=sample_json_data)
+# Define the API endpoint to retrieve saved JSON data
+api_url = 'https://127.0.0.1:5000/api/get_saved_data'
 
-    # Check the response status
-    if response.status_code == 200:
-        print("JSON data saved successfully.")
-        print("Response:", response.json())
-    else:
-        print(f"Error: {response.status_code}")
-        print("Response:", response.json())
+# Define the WebSocket endpoint
+# socketio_url = 'http://127.0.0.1:5000'
+socketio_url = 'ws://127.0.0.1:5000'
 
-except requests.exceptions.RequestException as e:
-    print(f"Request failed: {e}")
+# Path to the CA certificate file (change this to the actual path)
+ca_cert_path = './certificates/ca.pem'
+
+sio = Client()
+
+
+@sio.on('update_saved_data')
+def handle_update_saved_data(saved_data):
+    print("Updated Saved JSON data:")
+    for data in saved_data:
+        print(data)
+
+
+def main():
+    try:
+        response = requests.get(api_url, verify=ca_cert_path)
+
+        # Check the response status
+        if response.status_code == 200:
+            saved_data = response.json()
+            print("Initial Saved JSON data:")
+            for data in saved_data:
+                print(data)
+        else:
+            print(f"Error: {response.status_code}")
+            print("Response:", response.json())
+
+        # Connect to the WebSocket for real-time updates
+        sio.connect(socketio_url)
+        sio.wait()
+
+    except Exception as e:
+        print(f"Request failed: {e}")
+
+
+if __name__ == '__main__':
+    main()

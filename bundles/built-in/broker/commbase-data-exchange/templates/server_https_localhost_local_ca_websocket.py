@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# server.py
+# server_https_localhost_local_ca_websocket.py
 # Serves as a server for exchanging JSON data with clients over HTTP and
 # WebSocket connections, allowing clients to save and retrieve JSON data in
 # real-time.
@@ -50,9 +50,9 @@ CLIENT_DATA_DIR = 'client_data'
 # Ensure the directory exists
 os.makedirs(CLIENT_DATA_DIR, exist_ok=True)
 
-# Load SSL context
-context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-context.load_cert_chain('certificates/server.crt', 'certificates/server.key')
+# Load SSL context with the full certificate chain
+context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+context.load_cert_chain('certificates/cert.pem', 'certificates/key.pem', 'certificates/ca.pem')  # Add 'certificates/ca.pem' here
 
 
 # API endpoint to receive and save JSON

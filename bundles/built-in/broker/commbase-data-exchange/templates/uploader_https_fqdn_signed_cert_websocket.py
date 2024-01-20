@@ -30,85 +30,40 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# server.py
-# Serves as a server for exchanging JSON data with clients over HTTP and
-# WebSocket connections, allowing clients to save and retrieve JSON data in
-# real-time.
+# uploader_https_fqdn_signed_cert_websocket.py
+# Sends a POST request with a JSON payload to a specified API endpoint and
+# handles the response.
 
-import os
-from flask import Flask, jsonify, request, render_template  # pip install flask flask-socketio
-from flask_socketio import SocketIO  # pip install flask-socketio
+import requests  # pip install requests
 import json
 
-app = Flask(__name__)
-socketio = SocketIO(app)
 
-# Directory to store client data
-CLIENT_DATA_DIR = 'client_data'
-
-# Ensure the directory exists
-os.makedirs(CLIENT_DATA_DIR, exist_ok=True)
-
-
-# API endpoint to receive and save JSON
-@app.route('/api/save_json', methods=['POST'])
-def save_json():
+def upload_data(api_url, json_data):
     try:
-        json_data = request.get_json()
+        # Send a POST request to the API endpoint with JSON payload
+        response = requests.post(api_url, json=json_data)
 
-        if not json_data:
-            return jsonify({"error": "Empty JSON payload"}), 400
+        # Check the response status
+        if response.status_code == 200:
+            print("JSON data saved successfully.")
+            print("Response:", response.json())
+        else:
+            print(f"Error: {response.status_code}")
+            print("Response:", response.json())
 
-        filename = os.path.join(CLIENT_DATA_DIR, f"json_{len(os.listdir(CLIENT_DATA_DIR)) + 1}.json")
-
-        with open(filename, 'w') as file:
-            json.dump(json_data, file)
-
-        # Emit real-time update to connected clients
-        emit_saved_data()
-
-        return jsonify({"message": "JSON data saved successfully", "filename": filename})
-
-    # except Exception as e:
-    #    return jsonify({"error": str(e)}), 500
-
-    except Exception as e:
-        import traceback
-        traceback.print_exc()
-        return jsonify({"error": str(e)}), 500
+    except requests.exceptions.RequestException as e:
+        print(f"Request failed: {e}")
 
 
-# API endpoint to retrieve saved JSON data
-@app.route('/api/get_saved_data', methods=['GET'])
-def get_saved_data():
-    try:
-        saved_data = []
-        for filename in os.listdir(CLIENT_DATA_DIR):
-            filepath = os.path.join(CLIENT_DATA_DIR, filename)
-            with open(filepath, 'r') as file:
-                data = json.load(file)
-                saved_data.append(data)
+# Define the API endpoint (HTTP or HTTPS)
+api_url = 'https://127.0.0.1:5000/api/save_json'  # For HTTPS
 
-        return jsonify(saved_data)
+# Sample JSON payload
+sample_json_data = {
+    "name": "John Doe",
+    "age": 30,
+    "city": "Example City"
+}
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-
-@socketio.on('connect')
-def handle_connect():
-    emit_saved_data()
-
-
-def emit_saved_data():
-    saved_data = []
-    for filename in os.listdir(CLIENT_DATA_DIR):
-        filepath = os.path.join(CLIENT_DATA_DIR, filename)
-        with open(filepath, 'r') as file:
-            data = json.load(file)
-            saved_data.append(data)
-    socketio.emit('update_saved_data', saved_data)
-
-
-if __name__ == '__main__':
-    socketio.run(app, debug=True)
+# Call the upload_data function with the chosen API URL
+upload_data(api_url, sample_json_data)

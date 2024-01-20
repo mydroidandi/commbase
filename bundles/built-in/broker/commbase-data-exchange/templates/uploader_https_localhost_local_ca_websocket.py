@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# uploader.py
+# uploader_https_localhost_local_ca_websocket.py
 # Sends a POST request with a JSON payload to a specified API endpoint and
 # handles the response.
 
@@ -38,10 +38,10 @@ import requests  # pip install requests
 import json
 
 
-def upload_data(api_url, json_data):
+def upload_data(api_url, json_data, ca_cert_path=None):
     try:
         # Send a POST request to the API endpoint with JSON payload
-        response = requests.post(api_url, json=json_data)
+        response = requests.post(api_url, json=json_data, verify=ca_cert_path)
 
         # Check the response status
         if response.status_code == 200:
@@ -65,5 +65,8 @@ sample_json_data = {
     "city": "Example City"
 }
 
-# Call the upload_data function with the chosen API URL
-upload_data(api_url, sample_json_data)
+# Path to the CA certificate file (change this to the actual path)
+ca_cert_path = 'certificates/ca.pem'
+
+# Call the upload_data function with the chosen API URL and CA certificate path
+upload_data(api_url, sample_json_data, ca_cert_path)
