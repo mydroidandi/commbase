@@ -8,4 +8,4 @@ When the client receives a Commbase application message from the user, it sends 
 
 ## Empowering Localhost Applications
 
-The commbase-data-exchange single-server single-client design provides the capabilities of Centralized Control and Management, and Scalability to localhost-based applications.
+The commbase-data-exchange single-server single-client design provides the capabilities of Centralized Control and Management, and Scalability to standalone applications.
