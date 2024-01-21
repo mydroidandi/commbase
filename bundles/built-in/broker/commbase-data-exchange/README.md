@@ -6,6 +6,8 @@ Its client component fetches initial data from the server component through HTTP
 
 When the client receives a Commbase application message from the user, it sends it to the server for processing. The server manages to process the message, and when receives the processing result, it sends it to the client. Finally, the client executes the result. Results can be any type of discourse, skills, skillsets, or any of their combinations.
 
+The server component can be executed in one host and the client component can be executed in another host.
+
 ## Empowering Localhost Applications
 
 The commbase-data-exchange single-server single-client design provides the capabilities of Centralized Control and Management, and Scalability to standalone applications.
