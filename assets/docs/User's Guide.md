@@ -525,6 +525,8 @@ Consider Input Remmaper to create new custom Commbase commands or, for example, 
 
 The commbase-data-exchange bundle enhances Commbase by providing the functionality of a localhost-based application with a single server and single client. This configuration operates similarly to any standalone application but introduces additional advantages.
 
+In Commbase, this feature is designed to function seamlessly by default. However, if you plan to run the client and server components on separate hosts, for any of the reasons mentioned earlier, please refer to [`this document.`](./Execute%20the%20Commbase%20client%20and%20server%20on%20separate%20hosts.md)
+
 Creating an application that separates client and server components is a common architectural approach in software development. Here are some reasons for designing applications with separate client and server components:
 
 | Category                         | Example                                                     |
@@ -537,8 +539,6 @@ Creating an application that separates client and server components is a common 
 | **Centralized Data Management**  | Storing and managing data on a centralized server.          |
 | **Improved Maintenance**         | Updating the client or server independently without impact. |
 | **Reduced Network Load**         | Minimizing data transfer between client and server.         |
-
-The commbase-data-exchange feature is designed to function seamlessly by default. However, if you plan to run the client and server components on separate hosts, for any of the reasons mentioned earlier, please refer to [`this guide.`](./Execute the Client and Server on Separate Hosts.md)
 
 # 8 Default Configuration Variables
 
