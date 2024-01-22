@@ -101,79 +101,42 @@ This project is coded and organized like this:
 │   └── utilities
 │       └── back-up
 └── src  # Stores the source code files of the project
-    ├── custom
-    │   ├── agents
-    │   │   └── z
-    │   │       └── includes
-    │   └── broker
-    │       ├── discourses
-    │       │   ├── answers
-    │       │   ├── greetings
-    │       │   ├── instructions
-    │       │   ├── introductions
-    │       │   ├── jokes
-    │       │   ├── phrases
-    │       │   ├── questions
-    │       │   ├── quotations
-    │       │   ├── speeches
-    │       │   ├── statements
-    │       │   └── talks
-    │       ├── includes
-    │       │   ├── routines
-    │       │   ├── skills
-    │       │   │   ├── parsers
-    │       │   │   └── runners
-    │       │   ├── skillsets
-    │       │   │   ├── parsers
-    │       │   │   └── runners
-    │       │   └── skill_testing
-    │       ├── skill_patterns
-    │       │   └── vosk-model-en-us-0.22-lgraph
-    │       └── skill_scripts
-    │           ├── arduino
-    │           ├── bash
-    │           ├── c
-    │           ├── java
-    │           ├── multi-lang
-    │           ├── nodejs
-    │           └── python
-    └── default
-        ├── agents
-        │   ├── x-conversation-mode-ai
-        │   │   └── includes
-        │   └── y
-        │       └── includes
-        └── broker
-            ├── discourses
-            │   ├── answers
-            │   ├── greetings
-            │   ├── instructions
-            │   ├── introductions
-            │   ├── jokes
-            │   ├── phrases
-            │   ├── questions
-            │   ├── quotations
-            │   ├── speeches
-            │   ├── statements
-            │   └── talks
-            ├── includes
-            │   ├── routines
-            │   ├── skills
-            │   │   ├── parsers
-            │   │   └── runners
-            │   └── skillsets
-            │       ├── parsers
-            │       └── runners
-            ├── skill_patterns
-            │   └── vosk-model-en-us-0.22-lgraph
-            └── skill_scripts
-                ├── arduino
-                ├── bash
-                ├── c
-                ├── java
-                ├── multi-lang
-                ├── nodejs
-                └── python
+    ├── agents
+    │   ├── x-conversation-mode-ai
+    │   │   └── includes
+    │   └── y
+    │       └── includes
+    └── broker
+        ├── discourses
+        │   ├── answers
+        │   ├── greetings
+        │   ├── instructions
+        │   ├── introductions
+        │   ├── jokes
+        │   ├── phrases
+        │   ├── questions
+        │   ├── quotations
+        │   ├── speeches
+        │   ├── statements
+        │   └── talks
+        ├── includes
+        │   ├── routines
+        │   ├── skills
+        │   │   ├── parsers
+        │   │   └── runners
+        │   └── skillsets
+        │       ├── parsers
+        │       └── runners
+        ├── skill_patterns
+        │   └── vosk-model-en-us-0.22-lgraph
+        └── skill_scripts
+            ├── arduino
+            ├── bash
+            ├── c
+            ├── java
+            ├── multi-lang
+            ├── nodejs
+            └── python
 ```
 
 ## Contributing
