@@ -30,23 +30,24 @@
     - [Commbase Key Bindings](#commbase-key-bindings)
     - [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
   - [Input Remapper](#input-remapper)
-- [7 Default Configuration Variables](#7-default-configuration-variables)
-- [8 Types of Commands](#8-types-of-commands)
+- [7 Execute the Client and Server on Separate Hosts](#7-execute-the-client-and-server-on-separate-hosts)
+- [8 Default Configuration Variables](#8-default-configuration-variables)
+- [9 Types of Commands](#9-types-of-commands)
   - [Terminal Commands](#terminal-commands)
   - [Terminal Voice Controls](#terminal-voice-controls)
   - [Terminal Voice Skills](#terminal-voice-skills)
   - [Terminal Voice Skillsets](#terminal-voice-skillsets)
-- [9 Terminal Voice Controls](#9-terminal-voice-controls)
+- [10 Terminal Voice Controls](#10-terminal-voice-controls)
   - [Undefined Controls](#undefined-controls)
   - [Hidden Controls and Control Chaining](#hidden-controls-and-control-chaining)
-- [10 Terminal Voice Skills](#10-terminal-voice-skills)
-- [11 Create new voice commands basics](#13-create-new-voice-commands-basics)
+- [11 Terminal Voice Skills](#11-terminal-voice-skills)
+- [12 Create new voice commands basics](#12-create-new-voice-commands-basics)
 	- [Verbosity Levels](#verbosity-levels)
-- [12 Hints on saying and creating voice commands](#14-hints-on-saying-and-creating-voice-commands)
-- [13 Commands setup](#15-commands-setup)
+- [13 Hints on saying and creating voice commands](#13-hints-on-saying-and-creating-voice-commands)
+- [14 Commands setup](#14-commands-setup)
 	- [The Commbase app directory](#the-commbase-app-directory)
 	- [The Commbase processing file](#the-commbase-processing-file)
-- [14 Training Commbase by Assembling Skillsets](#16-training-commbase-by-assembling-skillsets)
+- [15 Training Commbase by Assembling Skillsets](#15-training-commbase-by-assembling-skillsets)
 
 # 1 Introduction
 
@@ -520,7 +521,26 @@ This application can help other Apps such as the AI Assistant "Commbase" execute
 
 Consider Input Remmaper to create new custom Commbase commands or, for example, replace our chosen Development editor with another editor or IDE enhanced with Commbase with this type of mappings. Include and document a back and restore procedure of your custom mapping files.
 
-# 7 Default Configuration Variables
+# 7 Execute the Client and Server on Separate Hosts
+
+The commbase-data-exchange bundle enhances Commbase by providing the functionality of a localhost-based application with a single server and single client. This configuration operates similarly to any standalone application but introduces additional advantages.
+
+Creating an application that separates client and server components is a common architectural approach in software development. Here are some reasons for designing applications with separate client and server components:
+
+| Category                         | Example                                                     |
+|----------------------------------|-------------------------------------------------------------|
+| **Scalability**                  | Adding more server instances to handle increased load.      |
+| **Responsiveness**               | Separating graphical interfaces to ensure quick UI updates. |
+| **Security**                     | Keeping sensitive data and business logic on the server.    |
+| **Flexibility**                  | Developing client and server components independently.      |
+| **Cross-Platform Compatibility** | Building an application that runs on various devices.       |
+| **Centralized Data Management**  | Storing and managing data on a centralized server.          |
+| **Improved Maintenance**         | Updating the client or server independently without impact. |
+| **Reduced Network Load**         | Minimizing data transfer between client and server.         |
+
+The commbase-data-exchange feature is designed to function seamlessly by default. However, if you plan to run the client and server components on separate hosts, for any of the reasons mentioned earlier, please refer to [`this guide.`](./Execute the Client and Server on Separate Hosts.md)
+
+# 8 Default Configuration Variables
 
 The configuration variables can be accessed by going to the directory **config/** and opening the files **secrets** and **app.conf**.
 
@@ -1027,7 +1047,7 @@ cd scripts/utilities
 bash reset-commbase.conf.sh
 ```
 
-# 8 Types of Commands
+# 9 Types of Commands
 
 You can display the types of commands and some examples using the help option like this:
 
@@ -1052,7 +1072,7 @@ Unlike terminal commands, terminal/voice commands can be typed in or said out lo
 
 Skillsets are commands grouped as a list of orders to be executed sequentially at once. They can be typed or said out loud.
 
-# 9 Terminal Voice Controls
+# 10 Terminal Voice Controls
 
 You can create extra controls if you want to, but you can do almost everything that is possible with the controls that come with Commbase. These out-of-the-box controls are:
 
@@ -1776,7 +1796,7 @@ Example of the terminal/voice command for the interactive sequence:
 
 > Start the math test number one zero one
 
-# 10 Terminal Voice Skills
+# 11 Terminal Voice Skills
 
 ## Skills unique for the command Line
 
@@ -1809,7 +1829,7 @@ capture_mute.sh  capture_unmute.sh  toggle_active_capture_device.sh  toggle_capt
 
 `{WRONG VOICE COMMANDS}`.
 
-# 11 Create new voice commands basics
+# 12 Create new voice commands basics
 
 ## Verbosity Levels
 
@@ -1824,7 +1844,7 @@ Commands can be made with alternatives to WH question, i.e:
 	 	IN "tell me the time"  (Just tells us the time using the voice)
 		IN "what time is it"   (Shows a clock and tells the time using the voice)
 
-# 12 Hints on saying and creating voice commands
+# 13 Hints on saying and creating voice commands
 
 Different output in well said command repetitions:
 Say a different phrase, or example "clear" before repeat a failed/non accurate phrase, so Vosk
@@ -1848,7 +1868,7 @@ get kind of confused and tend to display articles such as "the" and other words 
 phrase the most similar to two people talking to one another like in a movie. For that reason, Vosk
 is used as a part of audio file transcription software in the Linux world.
 
-# 13 Commands setup
+# 14 Commands setup
 
 Run the test script test_microphone.py, as described in the section "4. Testing the Vosk model" of
 the file INSTALL, to test your new command accuracy until you feel comfortable with the command
@@ -2077,7 +2097,7 @@ commbase-process-vosk-suv-vehicle.sh
 commbase-process-vosk-spacecraft.sh
 commbase-process-vosk-virtual-mentor.sh
 
-# 14 Training Commbase by Assembling Skillsets
+# 15 Training Commbase by Assembling Skillsets
 
 Commbase can be trained in a variety of manners. For example, you can train the AI Model, which would directly affect the existent commands precision, and would require to verify every command afterwards. Furthermore, you can train any preffered/specialized AI (added kind of as a plugin), to be used by Commbase in talkative mode. Also, we can train Commbase scripts that use sensors such as face recognition, voice recognition, etc., or move servos, and so on, and so forth, depending on the device where Commbase runs on.
 
