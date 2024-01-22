@@ -13,70 +13,41 @@
   - [commbase teleport](#commbase-teleport)
 - [3 The User Interface](#3-the-user-interface)
 - [4 Useful Tmux Actions](#4-useful-tmux-actions)
-	- [Moving Among Windows](#moving-among-windows)
-	- [List All the Active Sessions](#list-all-the-active-sessions)
-	- [Kill the Session](#kill-the-session)
-	- [Display the Session Pane Numbers](#display-the-session-pane-numbers)
-	- [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)
+  - [Moving Among Windows](#moving-among-windows)
+  - [List All the Active Sessions](#list-all-the-active-sessions)
+  - [Kill the Session](#kill-the-session)
+  - [Display the Session Pane Numbers](#display-the-session-pane-numbers)
+  - [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)
 - [5 Set Up Microphones and Audio Keybindings](#5-set-up-microphones-and-audio-keybindings)
-	- [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
-	- [To Prepare a Dedicated Sound Capture Device](#to-prepare-a-dedicated-sound-capture-device)
-	- [Configure the File to Toggle the Active Capture Device](#configure-the-file-to-toggle-the-active-capture-device)
-	- [Configure the File to Toggle the Capture On Off](#configure-the-file-to-toggle-the-capture-on-off)
-	- [Configure the File Capture Mute](#configure-the-file-capture-mute)
-	- [Configure the File Capture Unmute](#configure-the-file-capture-unmute)
+  - [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
+  - [To Prepare a Dedicated Sound Capture Device](#to-prepare-a-dedicated-sound-capture-device)
+  - [Configure the File to Toggle the Active Capture Device](#configure-the-file-to-toggle-the-active-capture-device)
+  - [Configure the File to Toggle the Capture On Off](#configure-the-file-to-toggle-the-capture-on-off)
+  - [Configure the File Capture Mute](#configure-the-file-capture-mute)
+  - [Configure the File Capture Unmute](#configure-the-file-capture-unmute)
 - [6 Keyboard Shortcuts](#6-keyboard-shortcuts)
-	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
-      - [Commbase Key Bindings](#commbase-key-bindings)
-	- [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
-      - [Input Remapper](#input-remapper)
+  - [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
+    - [Commbase Key Bindings](#commbase-key-bindings)
+    - [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
+  - [Input Remapper](#input-remapper)
 - [7 Default Configuration Variables](#7-default-configuration-variables)
 - [8 Types of Commands](#8-types-of-commands)
-	- [Terminal Commands](#terminal-commands)
-	- [Terminal Voice Controls](#terminal-voice-controls)
-	- [Terminal Voice Skills](#terminal-voice-skills)
-	- [Terminal Voice Skillsets](#terminal-voice-skillsets)
+  - [Terminal Commands](#terminal-commands)
+  - [Terminal Voice Controls](#terminal-voice-controls)
+  - [Terminal Voice Skills](#terminal-voice-skills)
+  - [Terminal Voice Skillsets](#terminal-voice-skillsets)
 - [9 Terminal Voice Controls](#9-terminal-voice-controls)
-	- [Undefined Controls](#undefined-controls)
-	- [Hidden Controls and Control Chaining](#hidden-controls-and-control-chaining)
+  - [Undefined Controls](#undefined-controls)
+  - [Hidden Controls and Control Chaining](#hidden-controls-and-control-chaining)
 - [10 Terminal Voice Skills](#10-terminal-voice-skills)
-- [11 Terminal Voice Skillsets](#11-terminal-voice-skillsets)
-- [12 Default Commbase commands](#12-default-commbase-commands)
-	- [Commbase Commmands unique for the Command Line](#commbase-commmands-unique-for-the-command-line)
-	- [Commbase Management Commands](#commbase-management-commands)
-	- [Commbase Common Commands](#commbase-common-commands)
-- [13 Create new voice commands basics](#13-create-new-voice-commands-basics)
+- [11 Create new voice commands basics](#13-create-new-voice-commands-basics)
 	- [Verbosity Levels](#verbosity-levels)
-	- [Proposed Command Conventions](#proposed-command-conventions)
-		- [Modes](#modes)
-		- [Step by Step Mode](#step-by-step-mode)
-		- [Normal Mode](#normal-mode)
-			- [Cancel Commands Already Ordered](#cancel-commands-already-ordered)
-			- [Verify/Modify Commbase Status](#verifymodify-commbase-status)
-			- [Activate/Deactivate Local Hardware or Things](#activatedeactivate-local-hardware-or-things)
-			- [Open/Close Applications](#openclose-applications)
-			- [Star/Stop Services](#starstop-services)
-			- [Install Applications](#install-applications)
-			- [System Clipboard](#system-clipboard)
-			- [File Operations](#file-operations)
-			- [Search Web Pages](#search-web-pages)
-			- [Translate](#translate)
-			- [Calendar](#calendar)
-			- [Entertainment](#entertainment)
-			- [System Status](#system-status)
-			- [Security](#security)
-			- [Networking](#networking)
-			- [Remote Access](#remote-access)
-			- [Development](#development)
-- [14 Hints on saying and creating voice commands](#14-hints-on-saying-and-creating-voice-commands)
-- [15 Commands setup](#15-commands-setup)
-	- [The Commbase root directory](#the-commbase-root-directory)
+- [12 Hints on saying and creating voice commands](#14-hints-on-saying-and-creating-voice-commands)
+- [13 Commands setup](#15-commands-setup)
+	- [The Commbase app directory](#the-commbase-app-directory)
 	- [The Commbase processing file](#the-commbase-processing-file)
-- [16 Training Commbase by Assembling Skillsets](#16-training-commbase-by-assembling-skillsets)
-- [17 Commbase for Software Development](#17-commbase-for-software-development)
-	- [Get Commbase up and running for development](#get-commbase-up-and-running-for-development)
-	- [Create a Virtual Machine for Software Development](#create-a-virtual-machine-for-software-development)
-	- [Commbase Commands for Development with Neovim](#commbase-commands-for-development-with-neovim)
+- [14 Training Commbase by Assembling Skillsets](#16-training-commbase-by-assembling-skillsets)
+- [15 Training Commbase by Assembling Skillsets](#16-training-commbase-by-assembling-skillsets)
 
 # 1 Introduction
 
@@ -1808,88 +1779,38 @@ Example of the terminal/voice command for the interactive sequence:
 
 # 10 Terminal Voice Skills
 
-
-# 11 Terminal Voice Skillsets
-
-
-# 12 Default Commbase commands
-
-## Commbase Commmands unique for the Command Line
+## Skills unique for the command Line
 
 ```shell
-$ commbase start|stop|teleport
-$ commbase {TYPOS}
+commbase start|stop|teleport
+commbase start server
+commbase start client
+commbase audiomixer
+commbase {TYPOS}
 ```
 
-## Commbase Management Commands
-
-`"okay stop"`.
-
-`"tell me about yourself"` / `"introduce yourself"`.
-
-`"stop capturing sound"` / `"stop listening"`.
-
-`"reload recognition"` / `"reload speech recognition"` / `"reload your speech recognition"` / `"reload your recognition"`.
+## Built-in skills
 
 `"disconnect yourself"`.
 
+`"list your command history"`.
+
+`"reload recognition"` / `"reload speech recognition"` / `"reload your speech recognition"` / `"reload your recognition"`.
+
+`"stop capturing sound"` / `"stop listening"`.
+
+`"tell me about yourself"` / `"introduce yourself"`.
+
 `"wake up"` / `"wake-up"`.
+
+TODO: Paste the content in the existent parsers in bundles/built-in/broker/libcommbase/libcommbase/skills/parsers/
+
+TODO: Make built-in skills (parsers for the next runner in bundles/built-in/broker/libcommbase/libcommbase/skills/runners/):
+capture_mute.sh  capture_unmute.sh  toggle_active_capture_device.sh  toggle_capture_on-off.sh
 
 `{WRONG VOICE COMMANDS}`.
 
-## Commbase Common Commands
-
-`"update applications"`.
-
-`"open the brave browser"`.
-
-`"open my linux documentation"`.
-
-`"show me my location"`.
-
-`"open the network browser"`.
-
-`"g i t status"`.
-
-`"open a new terminal"`.
-
-`"open a/the simple browser"`.
-
-`(MODAL + SUBJECT +) "kill the simple browser"` / `(MODAL + SUBJECT +) "close the/tha/that simple browser"`.
-
-`"reproduce a chapter of robinson crusoe"` / `"reproduce robinson crusoe"`.
-
-`"open the terminal editor"`.
-
-`"show me basic system information"`.
-
-`"connect me to the development server"`.
-
-`"let me know when the internet is back"` / `"tell me when the internet is back"`.
-
-`"list the addresses in the local network"`.
-
-`"verify the internet connection"`.
-
-`"connect me to the private network"`.
-
-`"disconnect me from the private network"`.
-
-`"push to the local web server"`.
-
-`"synchronize development from desktop"`.
-
-`"set a timer of <NUMBER-IN-WORDS> minutes"`.
-
-```shell 
-$ commbase "set a timer of" "one minute"
-$ commbase "set a timer of" "one" "minute"
-```
-
-`"open my current editor workspace"` / `"open my current code workspace"` /
-`"open my current editor workspace that i am working on"`.
-
-# 13 Create new voice commands basics
+# 11 Create new voice commands basics
 
 ## Verbosity Levels
 
@@ -1904,152 +1825,7 @@ Commands can be made with alternatives to WH question, i.e:
 	 	IN "tell me the time"  (Just tells us the time using the voice)
 		IN "what time is it"   (Shows a clock and tells the time using the voice)
 
-## Proposed Command Conventions
-
-### Modes
-
-> tell me what mode are you
-
-> enter/exit normal mode
-
-> enter/exit step by step mode
-
-> enter/exit conversation mode
-
-> enter/exit dictation mode
-
-> enter/exit follow mode
-> follow me
-
-> enter/exit vehicle mode
-> enter/exit autonomous mode
-
-### Step by Step Mode
-
-For commands that must be verified before execution, due to their execution is risky
-
-### Normal Mode
-
-#### Cancel Commands Already Ordered
-
-> cancel/wait
-
-#### Verify/Modify Commbase Status
-
-> do you copy
-> wake up
-> disconnect yourself/goodbye/turn you off
-
-#### Activate/Deactivate Local Hardware or Things
-
-> activate/deactivate <SOMETHING (I.e.: Webcam, microphone)>
-
-> turn off/turn on <SOMETHING (I.e.: lights)>
-
-> turn down/turn up <SOMETHING (I.e.: output volume, input volume/microphone volume)>
-
-#### Open/Close Applications
-
-> open/close program/application/action-script <PROGRAM/APP/ACTION-SCRIPT>
-> kill program/application/action <PROGRAM/APP/ACTION>
-> exit program/application/action <PROGRAM/APP/ACTION>
-
-#### Star/Stop Services
-
-> start/stop service <SERVICE>
-
-#### Install Applications
-
-> install/remove the application <PROGRAM/APP/ACTION-SCRIPT>
-
-> search the application <PROGRAM/APP/ACTION-SCRIPT> 
-
-> where is/find the application <PROGRAM/APP/ACTION-SCRIPT> 
-
-#### System Clipboard
-
-> select <WORD>
-> copy to clipboard
-> paste from clipboard
-
-#### File Operations
-
-> create a new file <NEWFILE>
-> delete file <FILE>
-> move the file <FILE> to <PATH-TO-DIRECTORY>
-> move the file <FILE> to the current directory 
-> rename the file <FILE-NAME> as <NEW-FILE-NAME> 
-
-#### Search Web Pages
-
-> browse/search <SOMETHING/SOMEWHERE (I.e.: my location)>
-> browser/search/show me the map of <GOOGLE-MAP-PLACE>
-
-> show me information about <WIKIPEDIA-TOPIC>
-> tell me information about <WIKIPEDIA-TOPIC>
-
-> search/browse the translation of i love my mom into spanish
-
-> search/browse and play the album <ALBUM> by <ARTIST>
-
-#### Translate
-
-> translate i love my mom into spanish
-> show me i love my mom in spanish
-> tell me i love my mom into spanish
-
-#### Calendar
-
-> show me the time 
-> what time is it
-> tell me the time
-> create a new meeting called <SUBJECT> on <MONTH> <DAY> <YEAR> from <TIME> to <TIME>
-
-#### Entertainment
-
-> play the album <ALBUM> by <ARTIST>
-> play the album <ALBUM> by <ARTIST> on <PLAYER>
-
-> play <ARTIST>
-> play <LBUM>
-
-> play music
-
-> tell/say me a joke
-
-> tell me a story/tails
-
-#### System Status
-
-> tell me the system version
-> show me the system version
-
-#### Security
-
-> show me a system security report/version
-> show me the firewall rules
-
-#### Networking
-
-> tell me my i p address/addresses
-> show me a map of the/my local network
-> sniff the local area network
-> show me my i p address configuration
-
-#### Remote Access
-
-> open/close s s h connection with host <HOSTNAME/IP ADDRESS>
-> show/tell me the host in my current domain
-
-#### Development
-
-> show me the git status
-> git commit all
-> open visual studio code
-> open the development project <PROYECT-NAME>
-> open the current development project
-
-# 14 Hints on saying and creating voice commands
+# 12 Hints on saying and creating voice commands
 
 Different output in well said command repetitions:
 Say a different phrase, or example "clear" before repeat a failed/non accurate phrase, so Vosk
@@ -2073,7 +1849,7 @@ get kind of confused and tend to display articles such as "the" and other words 
 phrase the most similar to two people talking to one another like in a movie. For that reason, Vosk
 is used as a part of audio file transcription software in the Linux world.
 
-# 15 Commands setup
+# 13 Commands setup
 
 Run the test script test_microphone.py, as described in the section "4. Testing the Vosk model" of
 the file INSTALL, to test your new command accuracy until you feel comfortable with the command
@@ -2231,7 +2007,7 @@ or you will loose your customizations because none of them is in the official so
 To propose a new command for the Commbase repository, checkout the information on how to contribute
 to the project in the document README.md.
 
-## The Commbase root directory
+## The Commbase app directory
 
 Commbase uses an environment constant $COMMBASE_ROOT_DIR set up for the user environment/session. Such as in many Linux distributions, this type of constants can be exported in $HOME/.bashrc, $HOME/.zshrc or any other custom shell rc configuration file.
 
@@ -2302,7 +2078,7 @@ commbase-process-vosk-suv-vehicle.sh
 commbase-process-vosk-spacecraft.sh
 commbase-process-vosk-virtual-mentor.sh
 
-# 16 Training Commbase by Assembling Skillsets
+# 14 Training Commbase by Assembling Skillsets
 
 Commbase can be trained in a variety of manners. For example, you can train the AI Model, which would directly affect the existent commands precision, and would require to verify every command afterwards. Furthermore, you can train any preffered/specialized AI (added kind of as a plugin), to be used by Commbase in talkative mode. Also, we can train Commbase scripts that use sensors such as face recognition, voice recognition, etc., or move servos, and so on, and so forth, depending on the device where Commbase runs on.
 
@@ -2463,156 +2239,3 @@ Skillsets voice commands examples:
 > Skillset: Opens Etherape, runs nmap, pings neighbors, tests Secure Shell connections to neighbors.
 
 "Help me identify who is attacking our network connection" / "Detect and trace the address of the intruder/attacker computer" (for example, someone who sends a  DDoS attack.)
-
-# 17 Commbase for Software Development
-
-## Get Commbase up and running for development
-
-Steps (on a daily basis):
-
-Start the computer that will used for development (for example, shark.)
-
-Login your session (shark.)
-
-Test the default sound OUTPUT and INPUT (microphone.)
-
-Optionally, route Commbase INPUT (mic) using JACK. For more information on how to setup JACK you can visit the following documentation: <https://drive.google.com/drive/u/1/folders/1JW07u-g3dIFHHMqCz7XKg6lgyLrvCHdx>
-
-Test the web camera.
-
-Test the internet connection, also using a browser.
-
-Skim the email inbox.
-
-Check the calendar.
-
-Open a terminal with GPU rendering:
-
-```shell
-$ wezterm
-```
-
-Or without GPU rendering:
-
-```shell
-$ gnome terminal
-```
-
-Identify the computer (shark) and local server (shark2) IP a address:
-
-```shell
-$ ping  ip-address
-```
-
-Compare the addresses and update them in the file: **commbase/config/commbase.conf** if required:
-
-```shell
-$ nvim commbase.conf
-$ nano commbase.conf
-```
-
-But, do not access any server yet, to be able to keep the server connections in Commbase Windows that we will create later on.
-
-Activate Bash for Python3.7 for Commbase. With Anaconda's (python) the commands could be:
-For a particular envinronment:
-
-```shell
-$ conda activate my-env_env
-```
-
-For exiting to (base):
-
-```shell
-$ bash
-```
-
-Restore previous Tmux sessions, which includes Commbase sessions:
-
-```shell
-$ tmux list-sessions
-$ tmux attach-session -t Commbase-0
-```
-
-Or, start a new Commbase session:
-
-```shell
-$ commbase start
-```
-
-Test the Commbase session for feedback:
-Open the microphone and say anything or a voice command at him/her.
-
-Open the Commbase window 2 "Extension". That would be your programming tmux window.
-Go to the next window:
-Press `CTRL` + `b`, `n`.
-Or use:
-Go to a window by number:
-Press `CTRL` + `b`, `#` (i.e.: 0, 1, 2, 3, etc.)
-
-Create and open a new Commbase window in the current session:
-
-```shell
-$ tmux new-window -t Commbase-0:2 -n "Timer" && sleep $time
-$ tmux select-window -t 3
-```
-
-Now, it is a perfect time to create a new window for a server connection, and then enter the server from there.
-
-```shell
-$ tmux new-window -t Commbase-0:2 -n "Server x1" && sleep $time
-$ tmux select-window -t 4
-```
-
-To Test the local server (shark2):
-<br />Login in a second terminal tab:
-
-```shell
-$ ssh user@local-server-ip
-$ ssh -X user@local-server-ip
-```
-
-Go to the window "Timer" and then run the timer script using the shell command:
-
-```shell
-$ bash ~/Developer/Commbase/timers/custom-countdown/desktop-shark-countdown.sh -m 20
-
-```
-
-The last command is an alternative to the voice command "set a timer of twenty minutes", thought for developers to take terminal control of their timer. In that way, you can stop using Commbase if you need to, for example, use the microphone in meetings, but still keep using the timer in teh same Commbase session without requiring to get out of the programing terminal with or without the any mouse.
-
-Go back to the Commbase session window 2 "Extension":
-Press `CTRL` + `b`, `p`.
-Or use:
-Go to a window by number:
-Press `CTRL` + `b`, `#` (i.e.: 0, 1, 2, 3, etc.)
-
-Now, you are able to open the code editor right there:
-
-```shell
-$ nvim
-$ nvim path/to/file
-$ nvim new_file
-```
-
-Don't forget tmux session (Commbase-0) key shortcuts to move forwards and backwards through the session windows, and to select window by its number, all using key shorcuts, only:
-`CTRL` + `b`, `n`.
-`CTRL` + `b`, `p`.
-`CTRL` + `b`, `#`.
-
-If you complete all these steps, you will keep Commbase running in the foreground in a Tmux window. That speeds up the application recognition's feedback besides other factors such as network statuses (for networked instances) and processor features related to AI at execution time, let's say, the model's accuracy, precision and recall (aka sensitivity). 
-
-In the meantime, order Commbase to run Neovim keyboard shortcuts, Neovim commands, nvim terminal commands with options, and Commbase commands related to development.
-
-Also, in future Commbase releases, there will be a Neovim plugin for Commbase to allow him/her to collaborate together with Code Copilots such as GitHub's Copilot in INSERT (dictation) mode. If you are interested in becoming a Commbase contributor, you can send an email or pull request your tested new featured branch to the project.
-
-## Create a Virtual Machine for Software Development
-
-In general, VMs (Virtual Machines) and Containers can be useful for preserving workign copies of complex installations such as the Commbase one.
-
-A computer dedicated for Development can be virtualized in KVM or VirtualBox. Both are recommeded for faster devel envinronment rescueing based on backup restoration compared to re-installation, and hardware portability.
-<br />VirtualBox is recommended to be able to use GPU rendering and acceleration, and Platform compatibility (Windows and MacOS). It seems the best option to choose from, currently, just for portability!
-<br/ >KVM is recommended to create a non graphical Virtual Machine and native kernel virtualization for velocity and less usage of the system resources.
-
-A good installation would be a Minimal GNU/Debian Linux with Cinnamon for Gnome Terminal, and use Awesome as the Window Manager in order for the system to save resources. A minimun graphical environment is a requirement for Commbase. Ligatures and Tranaparency cannot be used from Gnome Terminal + Commbase, but they are not required and would be a step onto a next level. However, gpu is required for the Copilots plugins to work. A solution to more or less ceed the GPU power to the VM would be use a light Window Manager rather than Desktop Environments.
-
-## Commbase Commands for Development with Neovim
