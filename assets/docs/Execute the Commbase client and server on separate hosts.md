@@ -1,4 +1,4 @@
-# Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> Separate Commbase client and server
+# Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> Separate Commbase Client and Server
 
 # Separate Commbase client and server in commbase-data-exchange
 
