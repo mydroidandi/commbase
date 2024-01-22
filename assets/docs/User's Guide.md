@@ -8,9 +8,9 @@
 
 - [1 Introduction](#1-introduction)
 - [2 Start, Stop, and Teleport the Application](#2-start-stop-and-teleport-the-application)
-	- [commbase start](#commbase-start)
-	- [commbase stop](#commbase-stop)
-	- [commbase teleport](#commbase-teleport)
+  - [commbase start](#commbase-start)
+  - [commbase stop](#commbase-stop)
+  - [commbase teleport](#commbase-teleport)
 - [3 The User Interface](#3-the-user-interface)
 - [4 Useful Tmux Actions](#4-useful-tmux-actions)
 	- [Moving Among Windows](#moving-among-windows)
@@ -27,20 +27,9 @@
 	- [Configure the File Capture Unmute](#configure-the-file-capture-unmute)
 - [6 Keyboard Shortcuts](#6-keyboard-shortcuts)
 	- [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
-	- [Commbase Key Bindings](#commbase-key-bindings)
+      - [Commbase Key Bindings](#commbase-key-bindings)
 	- [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
-		- [Commbase Key Bindings](#commbase-key-bindings)
-		- [Bash](#bash)
-		- [Desktop Environment and Operating System](#desktop-environment-and-operating-system)
-		- [Gnome Terminal](#gnome-terminal)
-		- [Neovim / Emacs](#neovim--emacs)
-		- [OBS](#obs)
-		- [SimpleScreenRecorder](#simplescreenrecorder)
-		- [Text Editors and IDEs](#text-editors-and-ides)
-		- [Tmux](#tmux)
-		- [VS Code](#vs-code)
-		- [Web Browser](#web-browser)
-	- [Input Remapper](#input-remapper)
+      - [Input Remapper](#input-remapper)
 - [7 Default Configuration Variables](#7-default-configuration-variables)
 - [8 Types of Commands](#8-types-of-commands)
 	- [Terminal Commands](#terminal-commands)
@@ -1821,6 +1810,7 @@ Example of the terminal/voice command for the interactive sequence:
 
 
 # 11 Terminal Voice Skillsets
+
 
 # 12 Default Commbase commands
 
