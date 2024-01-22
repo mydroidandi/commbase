@@ -1,7 +1,7 @@
 ################################################################################
 #                                   Commbase                                   #
 #                                                                              #
-# Conversational AI Assistant and AI Hub for Computers and Droids              #
+# AI Powered Conversational Assistant for Computers and Droids                 #
 #                                                                              #
 # Change History                                                               #
 # 04/29/2023  Esteban Herrera Original code.                                   #
