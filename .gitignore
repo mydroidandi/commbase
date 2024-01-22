@@ -133,9 +133,6 @@ dmypy.json
 # Ignore bundled models
 bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph/model/
 
-# .bak files used for devel
-skill.bak
-
 # Ignore Logs
 logs
 # Do not ignore skill-script log files
@@ -147,4 +144,3 @@ logs
 *.sw*
 commbase.code-workspace
 .kateproject
-
