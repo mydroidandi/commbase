@@ -1,4 +1,4 @@
-# Commbase <img align="center" alt="Visual Studio Code" width="10%" src="./images/commbase.png" /> User's Guide
+# Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> User's Guide
 
 <p>
 <img align="center" alt="Commbase" width="100%" src="./images/commbase.png" />
