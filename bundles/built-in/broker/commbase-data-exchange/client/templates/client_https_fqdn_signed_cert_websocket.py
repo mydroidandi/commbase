@@ -1,10 +1,11 @@
+#!/usr/bin/env python
 ################################################################################
-#                                   Commbase                                   #
+#                              commbase-client                                 #
 #                                                                              #
-# Conversational AI Assistant and AI Hub for Computers and Droids              #
+# Fetches commands from the commbase-data-exchange server and executes them    #
 #                                                                              #
 # Change History                                                               #
-# 04/29/2023  Esteban Herrera Original code.                                   #
+# 01/17/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -29,8 +30,55 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# default_skillsets
-# Processes a list of default skillsets
-default_skillsets() {
-	
-}
+# client_https_fqdn_signed_cert_websocket.py
+# Fetches commands from the commbase-data-exchange server and executes them
+
+import requests  # pip install requests
+from socketio import Client
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+# Suppress only the InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+# Define the API endpoint to retrieve saved JSON data
+api_url = 'https://127.0.0.1:5000/api/get_saved_data'
+
+# Define the WebSocket endpoint
+# socketio_url = 'http://127.0.0.1:5000'
+socketio_url = 'ws://127.0.0.1:5000'
+
+sio = Client()
+
+
+@sio.on('update_saved_data')
+def handle_update_saved_data(saved_data):
+    print("Updated Saved JSON data:")
+    for data in saved_data:
+        print(data)
+
+
+def main():
+    try:
+        # Send a GET request to the API endpoint
+        response = requests.get(api_url)
+
+        # Check the response status
+        if response.status_code == 200:
+            saved_data = response.json()
+            print("Initial Saved JSON data:")
+            for data in saved_data:
+                print(data)
+        else:
+            print(f"Error: {response.status_code}")
+            print("Response:", response.json())
+
+        # Connect to the WebSocket for real-time updates
+        sio.connect(socketio_url)
+        sio.wait()
+
+    except Exception as e:
+        print(f"Request failed: {e}")
+
+
+if __name__ == '__main__':
+    main()

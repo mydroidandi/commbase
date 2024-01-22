@@ -1,6 +1,6 @@
 # Commbase <img align="center" alt="Commbase" width="10%" src="./assets/docs/images/commbase.png" />
 
-Programmable conversational AI assistant and distributed AI for single computers or droids
+Programmable AI powered conversational assistant and distributed AI for single computers or droids
 
 [![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
@@ -101,79 +101,42 @@ This project is coded and organized like this:
 │   └── utilities
 │       └── back-up
 └── src  # Stores the source code files of the project
-    ├── custom
-    │   ├── agents
-    │   │   └── z
-    │   │       └── includes
-    │   └── broker
-    │       ├── discourses
-    │       │   ├── answers
-    │       │   ├── greetings
-    │       │   ├── instructions
-    │       │   ├── introductions
-    │       │   ├── jokes
-    │       │   ├── phrases
-    │       │   ├── questions
-    │       │   ├── quotations
-    │       │   ├── speeches
-    │       │   ├── statements
-    │       │   └── talks
-    │       ├── includes
-    │       │   ├── routines
-    │       │   ├── skills
-    │       │   │   ├── parsers
-    │       │   │   └── runners
-    │       │   ├── skillsets
-    │       │   │   ├── parsers
-    │       │   │   └── runners
-    │       │   └── skill_testing
-    │       ├── skill_patterns
-    │       │   └── vosk-model-en-us-0.22-lgraph
-    │       └── skill_scripts
-    │           ├── arduino
-    │           ├── bash
-    │           ├── c
-    │           ├── java
-    │           ├── multi-lang
-    │           ├── nodejs
-    │           └── python
-    └── default
-        ├── agents
-        │   ├── x-conversation-mode-ai
-        │   │   └── includes
-        │   └── y
-        │       └── includes
-        └── broker
-            ├── discourses
-            │   ├── answers
-            │   ├── greetings
-            │   ├── instructions
-            │   ├── introductions
-            │   ├── jokes
-            │   ├── phrases
-            │   ├── questions
-            │   ├── quotations
-            │   ├── speeches
-            │   ├── statements
-            │   └── talks
-            ├── includes
-            │   ├── routines
-            │   ├── skills
-            │   │   ├── parsers
-            │   │   └── runners
-            │   └── skillsets
-            │       ├── parsers
-            │       └── runners
-            ├── skill_patterns
-            │   └── vosk-model-en-us-0.22-lgraph
-            └── skill_scripts
-                ├── arduino
-                ├── bash
-                ├── c
-                ├── java
-                ├── multi-lang
-                ├── nodejs
-                └── python
+    ├── agents
+    │   ├── x-conversation-mode-ai
+    │   │   └── includes
+    │   └── y
+    │       └── includes
+    └── broker
+        ├── discourses
+        │   ├── answers
+        │   ├── greetings
+        │   ├── instructions
+        │   ├── introductions
+        │   ├── jokes
+        │   ├── phrases
+        │   ├── questions
+        │   ├── quotations
+        │   ├── speeches
+        │   ├── statements
+        │   └── talks
+        ├── includes
+        │   ├── routines
+        │   ├── skills
+        │   │   ├── parsers
+        │   │   └── runners
+        │   └── skillsets
+        │       ├── parsers
+        │       └── runners
+        ├── skill_patterns
+        │   └── vosk-model-en-us-0.22-lgraph
+        └── skill_scripts
+            ├── arduino
+            ├── bash
+            ├── c
+            ├── java
+            ├── multi-lang
+            ├── nodejs
+            └── python
 ```
 
 ## Contributing

@@ -1,10 +1,11 @@
+#!/usr/bin/env python
 ################################################################################
-#                                   Commbase                                   #
+#                            commbase-data-exchange                            #
 #                                                                              #
-# Conversational AI Assistant and AI Hub for Computers and Droids              #
+# Server for exchanging data with clients over HTTP and WebSocket connections  #
 #                                                                              #
 # Change History                                                               #
-# 04/29/2023  Esteban Herrera Original code.                                   #
+# 01/17/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -29,33 +30,43 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# skill
-# Reads every new data stored in the RESULT_MESSAGE_RECORDING_FILE and
-# PREVIOUS_RESULT_MESSAGE_RECORDING_FILE files, parses it, compares it against
-# a list of known skills and skillsets, and executes the corresponding skill or
-# skillset if the data matches a skill or skillset listed.
-# TODO: This is temporary fake versions to test jq
-skill() {
+# uploader_https_localhost_local_ca_websocket.py
+# Sends a POST request with a JSON payload to a specified API endpoint and
+# handles the response.
 
-	# The app configuration file
-	source $COMMBASE_APP_DIR/config/app.conf
+import requests  # pip install requests
+import json
 
-	message=$(<$COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE)
-	previous_message=$(<$COMMBASE_APP_DIR$PREVIOUS_RESULT_MESSAGE_RECORDING_FILE)
 
-	echo $message | jq '."message"'
-	echo $message | jq '."control"'
-	echo $previous_message | jq '."message"'
+def upload_data(api_url, json_data, ca_cert_path=None):
+    try:
+        # Send a POST request to the API endpoint with JSON payload
+        response = requests.post(api_url, json=json_data, verify=ca_cert_path)
 
-	tmux select-window -t 1 && tmux select-pane -t 1 && printf "\e[1;41mCOMMBASE:\e[1;m I don't understand: %s" "$trim_str"
-	tmux select-window -t 1 && tmux select-pane -t 4
-	exit 99
+        # Check the response status
+        if response.status_code == 200:
+            print("JSON data saved successfully.")
+            print("Response:", response.json())
+        else:
+            print(f"Error: {response.status_code}")
+            print("Response:", response.json())
+
+    except requests.exceptions.RequestException as e:
+        print(f"Request failed: {e}")
+
+
+# Define the API endpoint (HTTP or HTTPS)
+api_url = 'https://127.0.0.1:5000/api/save_json'  # For HTTPS
+
+# Sample JSON payload
+sample_json_data = {
+    "name": "John Smith",
+    "age": 30,
+    "city": "Example City"
 }
 
-# Call skill if the script is run directly (not sourced)
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-	(skill)
-fi
+# Path to the CA certificate file (change this to the actual path)
+ca_cert_path = 'certificates/ca.pem'
 
-exit 99
-
+# Call the upload_data function with the chosen API URL and CA certificate path
+upload_data(api_url, sample_json_data, ca_cert_path)

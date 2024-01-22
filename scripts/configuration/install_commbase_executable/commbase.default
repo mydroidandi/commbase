@@ -48,6 +48,11 @@
 # the pane 1 of the tmux session. The other output in their respective function
 # , otherwise, in their correspondent scripts.
 
+# TODO: Add new commands:
+#commbase start server
+#commbase start client
+#commbase audiomixer
+
 # Prints license
 display_license() {
 

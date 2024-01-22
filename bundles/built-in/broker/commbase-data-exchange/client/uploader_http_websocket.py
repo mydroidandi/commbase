@@ -30,11 +30,11 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# uploader.py
+# uploader_http_websocket.py
 # Sends a POST request with a JSON payload to a specified API endpoint and
 # handles the response.
 
-import requests
+import requests  # pip install requests
 import json
 
 # Define the API endpoint
@@ -42,7 +42,7 @@ api_url = 'http://127.0.0.1:5000/api/save_json'
 
 # Sample JSON payload
 sample_json_data = {
-    "name": "John Doe",
+    "name": "John Smith",
     "age": 30,
     "city": "Example City"
 }
