@@ -9,6 +9,7 @@ With this modification, Commbase can be separate into two components. The Commba
 ## Modify the server's address to make it accessible from other host\(s\) and origins
 
 Instead of using 127.0.0.1, you can use the IP address of your machine or 0.0.0.0 to make the server accessible externally.
+n1ff3r010101
 
 Go to directory bundles/built-in/broker/commbase-data-exchange/server/templates/.
 
@@ -156,7 +157,7 @@ If you are not using a reverse proxy server, you can still enable HTTPS directly
 
 You need to have one valid HTTPS certificate to be able to use your new set up with the built-in ssl module that handles the SSL context.
 
-#### Option 1. Secure your local network endpoint with HTTPS using a local certificate authority (CA)
+### Option 1. Secure your local network endpoint with HTTPS using a local certificate authority (CA)
 
 If you want to secure your local network endpoint with HTTPS without a registered domain name, you can create a self-signed certificate or use a local certificate authority (CA). While self-signed certificates are an option, they come with security warnings in most browsers, as they are not issued by a trusted third party.
 
@@ -219,7 +220,7 @@ Securing cryptographic keys, especially server keys, is crucial for maintaining 
 11. Key Management Policies
 12. Consider Key Management Solutions
 
-#### Option 2. Submit the CSR to a Certificate Authority (CA)
+### Option 2. Submit the CSR to a Certificate Authority (CA)
 
 For this option, you should use the template file **server_https_fqdn_signed_cert_websocket.py**, instead of the file in the examples.
 
@@ -277,7 +278,7 @@ openssl rsa -in server.key.org -out server.key
 
 This way, you have the original key (server.key.org) with a passphrase and a new key (server.key) without a passphrase.
 
-## Verify the server side configuration
+### Verify the server side configuration
 
 Test the new server configuration (in the Commbase environment commbase_env):
 
@@ -331,9 +332,9 @@ api_url = 'https://127.0.0.1:5000/api/save_json'  # For HTTPS
 ca_cert_path = 'certificates/ca.pem'
 ```
 
-## Set up the client side configuration
+### Set up the client side configuration
 
-### The client file in the client
+#### The client file in the client
 
 Every template file in the directory **bundles/built-in/broker/commbase-data-exchange/server/templates** has a specific upload file in the directory **bundles/built-in/broker/commbase-data-exchange/client/templates**:
 
@@ -361,7 +362,7 @@ socketio_url = 'https://127.0.0.1:5000'
 ca_cert_path = './certificates/ca.pem'
 ```
 
-### The uploader file in the client
+#### The uploader file in the client
 
 Almost every template file in the directory **bundles/built-in/broker/commbase-data-exchange/client/templates** has a specific uploader file in the same directory:
 
