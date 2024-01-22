@@ -1,6 +1,6 @@
 # Commbase <img align="center" alt="Commbase" width="10%" src="./assets/docs/images/commbase.png" />
 
-Programmable conversational AI assistant and distributed AI for single computers or droids
+Programmable AI powered conversational assistant and distributed AI for single computers or droids
 
 [![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
