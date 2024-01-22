@@ -1,7 +1,7 @@
 # Commbase <img align="center" alt="Visual Studio Code" width="10%" src="./images/commbase.png" /> User's Guide
 
 <p>
-<img align="center" alt="Visual Studio Code" width="100%" src="./images/commbase.png" />
+<img align="center" alt="Commbase" width="100%" src="./images/commbase.png" />
 </p>
 
 # Content
@@ -47,7 +47,6 @@
 	- [The Commbase app directory](#the-commbase-app-directory)
 	- [The Commbase processing file](#the-commbase-processing-file)
 - [14 Training Commbase by Assembling Skillsets](#16-training-commbase-by-assembling-skillsets)
-- [15 Training Commbase by Assembling Skillsets](#16-training-commbase-by-assembling-skillsets)
 
 # 1 Introduction
 
