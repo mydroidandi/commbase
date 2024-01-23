@@ -31,7 +31,7 @@
     - [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
   - [Input Remapper](#input-remapper)
 - [7 Execute the Client and Server on Separate Hosts](#7-execute-the-client-and-server-on-separate-hosts)
-- [8 Default Configuration Variables](#8-default-configuration-variables)
+- [8 Configuration Variables](#8-configuration-variables)
 - [9 Types of Commands](#9-types-of-commands)
   - [Terminal Commands](#terminal-commands)
   - [Terminal Voice Controls](#terminal-voice-controls)
@@ -127,7 +127,7 @@ The window 3, "Server 1", contains a single pane that is disabled by default in 
 
 The window 5, "Files 1", contains a single pane.
 
-The extra windows from 2 to 4 can be disabled or enabled as a group or separately, by changing their settings in the configuration file **config/app.conf**. 
+The extra windows from 2 to 4 can be disabled or enabled as a group or separately, by changing their settings in the configuration file **config/commbase.conf**.
 
 To show or hide these windows, you can change the values assigned to the next default configuration variables:
 
@@ -296,7 +296,7 @@ pacmd set-default-source "alsa_input.pci-0000_00_1b.0.analog-stereo"
 pacmd set-default-source "alsa_input.usb-SunplusIT_Inc_FHD_Camera_Microphone_01.00.00-02.analog-stereo"
 ```
 
-- The selected Commbase and alternative capture devices must be updated in the correspondent local host environment variables stored in the file **config/app.conf**. This is an example of the customized variables:
+- The selected Commbase and alternative capture devices must be updated in the correspondent local host environment variables stored in the file **config/commbase.conf**. This is an example of the customized variables:
 
 ```shell
 COMMBASE_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback"
@@ -540,9 +540,9 @@ Creating an application that separates client and server components is a common 
 | **Improved Maintenance**         | Updating the client or server independently without impact. |
 | **Reduced Network Load**         | Minimizing data transfer between client and server.         |
 
-# 8 Default Configuration Variables
+# 8 Configuration Variables
 
-The configuration variables can be accessed by going to the directory **config/** and opening the files **secrets** and **app.conf**.
+The configuration variables can be accessed by going to the directory **config/** and opening the files **secrets**, **app.conf**, and **commbase.conf**.
 
 Use your favorite text editor to open any of those files.
 
@@ -554,9 +554,15 @@ nano config/secrets
 nano config/app.conf
 ```
 
+```shell
+nano config/commbase.conf
+```
+
 The file **secrets** holds all the identities, passwords, usernames, IP addresses, and other private information to be used to log in to external services and identify and connect to other computers from your Commbase-based app. 
 
-The file **app.conf** holds all the other app configuration options, including your custom Commbase commands new variables.
+The file **app.conf** is for you to add your custom Commbase-based app new variables, except for the secrets, which should go in the **secrets** file.
+
+The file **commbase.conf** holds all the Commbase configuration options.
 
 These files are environment files that you can edit following certain rules:
 - Every environment variable is a constant.
@@ -623,7 +629,7 @@ Most of these variables are marked as optional and can be excluded if they are n
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
-The default version of the file **app.conf** contains the next values:
+The default version of the file **commbase.conf** contains the next values:
 
 - **PYTHON_ENV_VERSION**:
   - Example values:
@@ -942,7 +948,7 @@ The default version of the file **app.conf** contains the next values:
   - Possible values: True or False.
   - Example value:
     - `False` (Default): The assistant will answer to unknown commands using the **bundles/built-in/broker/libcommbase/libcommbase/routines/random_no** function.
-    - `True`: If the variable is active in the configuration file **config/app.conf** the assistant will answer using a connection to a bundled or served AI chatbot that uses natural language processing to create a humanlike conversational dialogue, for example, **OpenAI's GPT**, instead of using the **bundles/built-in/broker/libcommbase/libcommbase/routines/random_no function**, making those negative answers more conversational. The AI chatbot is defined by the variable `AI_CHATBOT_STRING`. App users can use this as an advantage to make interactions with the assistant appear more organic due to commands can be mixed with regular conversations similar to the conversations in the **conversation mode** or the **expert mode**. However, it can lead users to wrongly say language patterns strictly predefined as terminal/voice commands, which are automatically identified by the application and executed without user intention. As a consequence of the wrong use of this feature, any "strange behavior" can be interpreted as **"AI hallucinations"**: situations where artificial intelligence systems produce unexpected or unintended outputs that seem to resemble hallucinations in a human context. Also, the user is still limited to typing/saying **prompts** (or terminal/voice commands) of 9 words maximum as it is defined for the **normal mode** (it relies on the maximum number of command arguments that can be used in Bash), and the bundled or served AI chatbot is also limited to answering using a maximum of 35 words (modifiable, using the variable `UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT`.)
+    - `True`: If the variable is active in the configuration file **config/commbase.conf** the assistant will answer using a connection to a bundled or served AI chatbot that uses natural language processing to create a humanlike conversational dialogue, for example, **OpenAI's GPT**, instead of using the **bundles/built-in/broker/libcommbase/libcommbase/routines/random_no function**, making those negative answers more conversational. The AI chatbot is defined by the variable `AI_CHATBOT_STRING`. App users can use this as an advantage to make interactions with the assistant appear more organic due to commands can be mixed with regular conversations similar to the conversations in the **conversation mode** or the **expert mode**. However, it can lead users to wrongly say language patterns strictly predefined as terminal/voice commands, which are automatically identified by the application and executed without user intention. As a consequence of the wrong use of this feature, any "strange behavior" can be interpreted as **"AI hallucinations"**: situations where artificial intelligence systems produce unexpected or unintended outputs that seem to resemble hallucinations in a human context. Also, the user is still limited to typing/saying **prompts** (or terminal/voice commands) of 9 words maximum as it is defined for the **normal mode** (it relies on the maximum number of command arguments that can be used in Bash), and the bundled or served AI chatbot is also limited to answering using a maximum of 35 words (modifiable, using the variable `UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT`.)
 
 - **AI_CHATBOT_STRING**:
   - Description: Defines the bundled or served AI chatbot answering unknown terminal/voice commands. Do not confuse with `TRAINED_AI_CHATBOT_STRING`, despite the fact that both variables can hold the same value.
@@ -1035,9 +1041,9 @@ The default version of the file **app.conf** contains the next values:
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
-How to reset the configuration file **app.conf**.
+How to reset the configuration file **commbase.conf**.
 
-It restores the configuration file to its inital status. Go to the directory **scripts/utilities/reset_app.conf/** and execute the file **reset_app.conf.sh**.
+It restores the configuration file to its inital status. Go to the directory **scripts/utilities/reset_commbase.conf/** and execute the file **reset_commbase.conf.sh**.
 
 ```shell
 cd scripts/utilities
@@ -1140,7 +1146,7 @@ TODO:
   - SKILL FUNCTION: Goes to the command in .previous_result_message.json, then goes to the case option "okay remind me in five minutes" in the parse_skill_ function. It executes a code to append the total of the sum of the current time + the minutes to delay the question, for example, 5, to the **.pending_tasks.csv** (in the field Timeout) file and the current request in .previous_result_message.json (in the field Task). Next, it executes a code that runs a countdown timer of 5 minutes. The script remains running in the background.
   - END USER: Is able to do whatever he/she wants or requires during the time specified in the terminal/voice control command.
   - SKILL FUNCTION: The countdown timer of the script running in the background reaches 0. 
-    The assistant reminds the user that this task is pending, using a specific notification sound alert (stored in the variable `SOUND_A_PENDING_TASK_AWAITS_ATTENTION` in the configuration file **config/app.conf**).
+    The assistant reminds the user that this task is pending, using a specific notification sound alert (stored in the variable `SOUND_A_PENDING_TASK_AWAITS_ATTENTION` in the configuration file **config/commbase.conf**).
   - END USER: At this point, the user can: 
   	a. Answer the question to run the task.
   	b. Accept or deny/cancel based on the dialog with "okay accept".
@@ -1996,11 +2002,8 @@ $ su -
 
 If you need, you should set up your commbase.conf file with your own constant values.
 
-This file, in  the directory commbase/config/, was created during the Commbase installation,
+This file, in  the directory config/, was created during the Commbase installation,
 as is described in the document INSTALL.
-
-If you want or require to re-create it from scratch, checkout the section "Set up the file
-commbase.conf" in the mentioned document.
 
 Commbase uses this file to store the list of skill-scripts' logins, usernames with passwords,
 and APIs credentials.
@@ -2011,9 +2014,7 @@ could create containing passwords, passphrases, private keys and other secrets a
 in an external list and managed carefully as a part of the security policy for your systems.
 
 Within this file you can even create constants for allowing Commbase to connect through networks,
-using sign ins and technologies such as Secure SHell (SSH).
-
-By the way, commbase.conf file is listed in the file commbase/.gitignore.
+using sign ins and technologies such as Secure Shell (SSH).
 
 Note: If you want to generate new uuid for any purpose, for example, create one unique id for every
 device in your Commbase device network, you can use uuid-runtime:
@@ -2028,20 +2029,20 @@ to the project in the document README.md.
 
 ## The Commbase app directory
 
-Commbase uses an environment constant $COMMBASE_ROOT_DIR set up for the user environment/session. Such as in many Linux distributions, this type of constants can be exported in $HOME/.bashrc, $HOME/.zshrc or any other custom shell rc configuration file.
+Commbase uses an environment constant $COMMBASE_APP_DIR set up for the user environment/session. Such as in many Linux distributions, this type of constants can be exported in $HOME/.bashrc, $HOME/.zshrc or any other custom shell rc configuration file.
 
 Example of the custom lines added to a bashrc file:
 
 ```shell
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# The Commbase App directory for the Bash shell
+export COMMBASE_APP_DIR="/home/commbase/commbase"
+
 ```
 
 Example of use of the constant:
 
 ```bash
-tmux send-keys "bash $COMMBASE_ROOT_DIR/commbase/core/<PATH/TO/SCRIPT/FILE/script.sh> &"
+tmux send-keys "bash $COMMBASE_APP_DIR/commbase/core/<PATH/TO/SCRIPT/FILE/script.sh> &"
 ```
 
 The constant can be used in any custom script file inside the Commbase root directory and its subdirectories.
@@ -2050,12 +2051,15 @@ Example in a script header:
 
 ```bash
 # The configuration file.
-source $COMMBASE_ROOT_DIR/commbase/config/commbase.conf
+source $COMMBASE_APP_DIR/commbase/config/secrets
+source $COMMBASE_APP_DIR/commbase/config/app.conf
+source $COMMBASE_APP_DIR/commbase/config/commbase.conf
 ```
+
 Example of use of the constant in the same bash script:
 
 ```shell
-mpv $COMMBASE_ROOT_DIR/commbase/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
+mpv $COMMBASE_APP_DIR/commbase/bundled/audiobooks/Robinson-Crusoe/crusoe_anew_02_baldwin_64kb.mp3
 ```
 
 ## The Commbase processing file

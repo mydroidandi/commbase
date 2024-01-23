@@ -388,11 +388,11 @@ api_url = 'https://127.0.0.1:5000/api/save_json'  # For HTTPS
 ca_cert_path = 'certificates/ca.pem'
 ```
 
-## Set up the commbase-data-exchange-variables in the Commbase config file app.conf:
+## Set up the commbase-data-exchange-variables in the Commbase config file commbase.conf:
 
 TODO:
 
-Define variables in **app.conf**.
+Define variables in **commbase.conf**.
 
 
 Test Commands using the new commands:
