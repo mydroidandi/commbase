@@ -30,12 +30,11 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# reset_app.conf.sh
-# Restores the default configuration in app.conf.default to the configuration
-# file $COMMBASE_APP_DIR/config/app.conf
+# reset_commbase.conf.sh
+# Restores the default configuration in commbase.conf.default to the configuration
+# file $COMMBASE_APP_DIR/config/commbase.conf
 
-# Copy app.conf.default to $COMMBASE_APP_DIR/config/app.conf
-cp app.conf.default "$COMMBASE_APP_DIR/config/app.conf"
+# Copy commbase.conf.default to $COMMBASE_APP_DIR/config/commbase.conf
+cp commbase.conf.default "$COMMBASE_APP_DIR/config/commbase.conf"
 
 exit 99
-

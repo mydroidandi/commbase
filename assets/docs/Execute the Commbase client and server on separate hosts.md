@@ -9,7 +9,6 @@ With this modification, Commbase can be separate into two components. The Commba
 ## Modify the server's address to make it accessible from other host\(s\) and origins
 
 Instead of using 127.0.0.1, you can use the IP address of your machine or 0.0.0.0 to make the server accessible externally.
-n1ff3r010101
 
 Go to directory bundles/built-in/broker/commbase-data-exchange/server/templates/.
 
@@ -240,7 +239,7 @@ Submit the generated CSR (new_server.csr) to a trusted Certificate Authority to 
 
 During the configuration with Let's Encrypt, you could choose to install Certbox. To install Certbox you should use snapd, in Debian.
 
-Once snapd is installed , to install certbox, do:
+Once snapd is installed, to install certbox, do:
 
 ```shell
 sudo snap install --classic certbot
@@ -388,11 +387,11 @@ api_url = 'https://127.0.0.1:5000/api/save_json'  # For HTTPS
 ca_cert_path = 'certificates/ca.pem'
 ```
 
-## Set up the commbase-data-exchange-variables in the Commbase config file app.conf:
+## Set up the commbase-data-exchange-variables in the Commbase config file commbase.conf:
 
 TODO:
 
-Define variables in **app.conf**.
+Define variables in **commbase.conf**.
 
 
 Test Commands using the new commands:

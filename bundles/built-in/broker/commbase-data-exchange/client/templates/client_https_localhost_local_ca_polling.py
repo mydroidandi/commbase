@@ -54,6 +54,9 @@ ca_cert_path = './certificates/ca.pem'
 
 sio = Client()
 
+# Time interval in seconds for scheduling the task
+interval = 5  # Replace 5 with the desired time interval in seconds
+
 
 @sio.on('update_saved_data')
 def handle_update_saved_data(saved_data):
@@ -84,8 +87,8 @@ def get_updated_data():
         print(f"Request failed: {e}")
 
 
-# Schedule the task to run every 5 seconds
-schedule.every(5).seconds.do(get_updated_data)
+# Schedule the task to run every time interval in seconds
+schedule.every(interval).seconds.do(get_updated_data)
 
 # Run the scheduler
 while True:
