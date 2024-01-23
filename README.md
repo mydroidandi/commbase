@@ -46,47 +46,47 @@ This project is coded and organized like this:
 ```sh
 /path/to/my/commbase/app
 ├── assets  # Stores different types of assets, such as images, fonts, and ASCII art
-│   ├── ascii
-│   ├── docs  # Stores the Commbase User's Guide document
-│   │   └── images
-│   ├── fonts
-│   ├── icons
-│   └── images
+│   ├── ascii
+│   ├── docs  # Stores the Commbase User's Guide document
+│   │   └── images
+│   ├── fonts
+│   ├── icons
+│   └── images
 ├── bundles  # Stores the collection of software programs or applications that have been combined and distributed together
-│   ├── built-in
-│   │   └── broker
-│   │       ├── commbase-stt-whisper-p
-│   │       │   └── examples
-│   │       ├── commbase-tts-pyttsx3
-│   │       ├── libcommbase
-│   │       │   ├── examples
-│   │       │   ├── libcommbase
-│   │       │   │   ├── controller
-│   │       │   │   ├── routines
-│   │       │   │   └── skills
-│   │       │   │       ├── parsers
-│   │       │   │       └── runners
-│   │       │   └── resources
-│   │       │       ├── bundles
-│   │       │       │   └── sounds
-│   │       │       ├── control_patterns
-│   │       │       │   └── vosk-model-en-us-0.22-lgraph
-│   │       │       ├── discourses
-│   │       │       └── skill_patterns
-│   │       │       │   └── vosk-model-en-us-0.22-lgraph
-│   │       ├── PyAudio
-│   │       └── vu-meter
-│   ├── custom
-│   │   └── agents
-│   │       └── z
-│   └── default
-│       ├── agents
-│       │   ├── x-conversation-mode-ai
-│       │   └── y
-│       └── broker
-│           ├── audiobooks
-│           │   └── Robinson_Crusoe
-│           └── tensorflow
+│   ├── built-in
+│   │   └── broker
+│   │       ├── commbase-stt-whisper-p
+│   │       │   └── examples
+│   │       ├── commbase-tts-pyttsx3
+│   │       ├── libcommbase
+│   │       │   ├── examples
+│   │       │   ├── libcommbase
+│   │       │   │   ├── controller
+│   │       │   │   ├── routines
+│   │       │   │   └── skills
+│   │       │   │       ├── parsers
+│   │       │   │       └── runners
+│   │       │   └── resources
+│   │       │       ├── bundles
+│   │       │       │   └── sounds
+│   │       │       ├── control_patterns
+│   │       │       │   └── vosk-model-en-us-0.22-lgraph
+│   │       │       ├── discourses
+│   │       │       └── skill_patterns
+│   │       │       │   └── vosk-model-en-us-0.22-lgraph
+│   │       ├── PyAudio
+│   │       └── vu-meter
+│   ├── custom
+│   │   └── agents
+│   │       └── z
+│   └── default
+│       ├── agents
+│       │   ├── x-conversation-mode-ai
+│       │   └── y
+│       └── broker
+│           ├── audiobooks
+│           │   └── Robinson_Crusoe
+│           └── tensorflow
 ├── config  # Stores the configuration file
 ├── data  # Stores the voice recognition model results
 ├── env  # Stores the environment file
@@ -94,41 +94,41 @@ This project is coded and organized like this:
 ├── log	 # Stores custom log files of specific skills
 ├── screenshots  # Stores the image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
-│   ├── configuration
-│   │   ├── install_commbase_executable
-│   │   └── key_bindings
-│   ├── deployment
-│   └── utilities
-│       └── back-up
+│   ├── configuration
+│   │   ├── install_commbase_executable
+│   │   └── key_bindings
+│   ├── deployment
+│   └── utilities
+│       └── back-up
 └── src  # Stores the source code files of the project
     ├── agents
-    │   ├── x-conversation-mode-ai
-    │   │   └── includes
-    │   └── y
-    │       └── includes
+    │   ├── x-conversation-mode-ai
+    │   │   └── includes
+    │   └── y
+    │       └── includes
     └── broker
         ├── discourses
-        │   ├── answers
-        │   ├── greetings
-        │   ├── instructions
-        │   ├── introductions
-        │   ├── jokes
-        │   ├── phrases
-        │   ├── questions
-        │   ├── quotations
-        │   ├── speeches
-        │   ├── statements
-        │   └── talks
+        │   ├── answers
+        │   ├── greetings
+        │   ├── instructions
+        │   ├── introductions
+        │   ├── jokes
+        │   ├── phrases
+        │   ├── questions
+        │   ├── quotations
+        │   ├── speeches
+        │   ├── statements
+        │   └── talks
         ├── includes
-        │   ├── routines
-        │   ├── skills
-        │   │   ├── parsers
-        │   │   └── runners
-        │   └── skillsets
-        │       ├── parsers
-        │       └── runners
+        │   ├── routines
+        │   ├── skills
+        │   │   ├── parsers
+        │   │   └── runners
+        │   └── skillsets
+        │       ├── parsers
+        │       └── runners
         ├── skill_patterns
-        │   └── vosk-model-en-us-0.22-lgraph
+        │   └── vosk-model-en-us-0.22-lgraph
         └── skill_scripts
             ├── arduino
             ├── bash
@@ -164,4 +164,3 @@ If you want to contact us you can reach us at <stv.herrera@gmail.com>.
 ## License
 
 This project uses the following license: [`License`](./COPYING).
-
