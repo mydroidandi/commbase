@@ -52,7 +52,7 @@ This project is coded and organized like this:
 │   ├── fonts
 │   ├── icons
 │   └── images
-├── bundles  # Stores the collection of software programs or applications that have been combined and distributed together
+├── bundles  # Software bundle
 │   ├── built-in
 │   │   └── broker
 │   │       ├── commbase-stt-whisper-p
