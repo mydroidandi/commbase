@@ -166,7 +166,7 @@ From those alternatives, we recommend installing Python using the third option, 
 
 3. You recreate and install the Commbase environment, packages, and packaging dependencies all at once.
 
-4. You do not need to edit the file config/app.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version that Commbase is going to use.
+4. You do not need to edit the file config/commbase.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version that Commbase is going to use.
 
 In case you do not have Anaconda Python in your system but still want to use it to run Commbase, you can install Anaconda Python and then read the section "Install Python in an Anaconda Python environment" to choose if you are going to create any Anaconda Python Commbase environment such as "commbase_env" yourself or build it later on as it is shown in the section "Build the Commbase Conda environment a from YAML file".
 
@@ -176,7 +176,7 @@ https://docs.anaconda.com/free/anaconda/getting-started/install/
 
 After its installation, your Anaconda Python version should be capable of installing or building your commbase_env environment. Otherwise, try to install a newer or older version of Anaconda Python and verify the Python versions it can install, run, and work with.
 
-In case you want to use your systems' or any custom Python version, edit the file config/app.conf line with the variable PYTHON_ENV_VERSION="python"
+In case you want to use your systems' or any custom Python version, edit the file config/commbase.conf line with the variable PYTHON_ENV_VERSION="python"
 
 For example:
 
@@ -520,7 +520,7 @@ To install PyPi-like packages in the (base) in Anaconda Python, use the command 
 
 (base) USER-NAME@HOSTNAME:~$ conda install PACKAGE-NAME
 
-If you want to create a new Anaconda Python (3.11) environment just for Commbase, you can use the default name commbase_env or customize it in the configuration file config/app.conf:
+If you want to create a new Anaconda Python (3.11) environment just for Commbase, you can use the default name commbase_env or customize it in the configuration file config/commbase.conf:
 
 CONDA_ENV_NAME_IF_EXISTS="commbase_env"
 
@@ -897,7 +897,7 @@ $ top
 
 Press 'q' to exit.
 
-If you experience problems with the engine commbase_stt_vosk_p performance when running Commbase, you can yet change the value of the variable STT_PROCESS_CPU_LIMIT_PERCENTAGE in the file config/app.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
+If you experience problems with the engine commbase_stt_vosk_p performance when running Commbase, you can yet change the value of the variable STT_PROCESS_CPU_LIMIT_PERCENTAGE in the file config/commbase.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
 
 Considerations on how to choose an optimal Python CPU limit percentage:
 
