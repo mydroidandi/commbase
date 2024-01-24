@@ -37,19 +37,39 @@
 import requests  # pip install requests
 import json
 
+from config import CONFIG_FILE_PATH
+from file_paths import (
+    get_result_messages_recording_file
+)
+
 # Define the API endpoint
 api_url = 'http://127.0.0.1:5000/api/save_json'
 
-# Sample JSON payload
-sample_json_data = {
-    "name": "John Smith",
-    "age": 30,
-    "city": "Example City"
-}
+json_file_path = get_result_messages_recording_file()
+
+
+# Reads JSON payload File
+def read_json_file(json_file_path):
+    try:
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+            return data
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON: {e}")
+        return None
+    except FileNotFoundError:
+        print(f"File not found: {json_file_path}")
+        return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+
+json_data = read_json_file(json_file_path)
 
 try:
     # Send a POST request to the API endpoint with JSON payload
-    response = requests.post(api_url, json=sample_json_data)
+    response = requests.post(api_url, json=json_data)
 
     # Check the response status
     if response.status_code == 200:
