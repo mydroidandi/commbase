@@ -166,7 +166,7 @@ Steps:
 
 Install OpenSSL:
 
-Make sure OpenSSL is installed on your machine. In Debian it can be done as follows:
+Make sure OpenSSL is installed on your machine. In Debian GNU/Linux it can be done as follows:
 
 ```shell
 sudo apt-get install openssl
@@ -339,7 +339,7 @@ Every template file in the directory **bundles/built-in/broker/commbase-data-exc
 
 The file **server_https_fqdn_signed_cert_websocket.py** requires the file **client_https_fqdn_signed_cert_websocket.py**.
 
-The file **server_https_localhost_local_ca_websocket.py** requires the file **client_https_localhost_local_ca_polling.py**. This file is used instead of the file **client_https_localhost_local_ca_websocket.py**, because this last file does not keep the websocket connection open, probably due to the local CA cert used instead of a cert from a trusted CA.
+The file **server_https_localhost_local_ca_websocket.py** requires the file **client_https_localhost_local_ca_polling.py**. This file is used instead of the file **client_https_localhost_local_ca_websocket.py**, because this last file does not keep the websocket connection open, probably due to the local CA cert used instead of a cert from a trusted CA. The provided code utilizes a polling mechanism to periodically fetch updates from the commbase-data-exchange server. The polling is achieved through the use of the schedule library, which schedules the execution of the get_updated_data function at specified time intervals.
 
 The file **server_http_websocket.py** requires the file **client_http_websocket.py**.
 
@@ -390,8 +390,6 @@ ca_cert_path = 'certificates/ca.pem'
 ## Set up the commbase-data-exchange-variables in the Commbase config file commbase.conf:
 
 TODO:
-
-Define variables in **commbase.conf**.
 
 
 Test Commands using the new commands:

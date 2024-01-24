@@ -1,1 +1,1 @@
-{"name": "John Doe", "age": 30, "city": "Example City"}
+{"messages": [{"control": ""}, {"result_message": "tell me about yourself"}, {"previous_result_message": "tell me about yourself"}]}

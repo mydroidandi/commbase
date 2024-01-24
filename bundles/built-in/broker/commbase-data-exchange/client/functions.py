@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 ################################################################################
-#                              commbase-client                                 #
+#                            commbase-data-exchange                            #
 #                                                                              #
-# Fetches commands from the commbase-data-exchange server and executes them    #
+# Server for exchanging data with clients over HTTP and WebSocket connections  #
 #                                                                              #
 # Change History                                                               #
 # 01/17/2024  Esteban Herrera Original code.                                   #
@@ -30,63 +30,41 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# client_https_localhost_local_ca_websocket.py
-# Fetches commands from the commbase-data-exchange server and executes them
+# functions.py
+# This file contains a collection of utility functions for various tasks. It
+# provides a set of commonly used functions related to data manipulation, file
+# handling, and mathematical operations.
 
-import requests  # pip install requests
-from socketio import Client
-
+# Requirements
 from config import CONFIG_FILE_PATH
-from file_paths import (
-    get_ca_pem_file_path
-)
-
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-
-# Suppress only the InsecureRequestWarning
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-
-# Define the API endpoint to retrieve saved JSON data
-api_url = 'https://127.0.0.1:5000/api/get_saved_data'
-
-# Define the WebSocket endpoint
-# socketio_url = 'http://127.0.0.1:5000'
-socketio_url = 'ws://127.0.0.1:5000'
-
-# Path to the CA certificate file (change this to the actual path 'certificates/ca.pem')
-ca_cert_path = get_ca_pem_file_path()
-
-sio = Client()
 
 
-@sio.on('update_saved_data')
-def handle_update_saved_data(saved_data):
-    print("Updated Saved JSON data:")
-    for data in saved_data:
-        print(data)
+def get_client_polling_interval_in_secs():
+    """
+    Retrieves the time interval, in seconds, for scheduling the task, from the
+    configuration file.
 
+    Returns:
+        str or None: The interval string if found in the configuration file,
+        otherwise None.
+    """
+    # Initialize variable
+    polling_interval = None
 
-def main():
-    try:
-        response = requests.get(api_url, verify=ca_cert_path)
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
 
-        # Check the response status
-        if response.status_code == 200:
-            saved_data = response.json()
-            print("Initial Saved JSON data:")
-            for data in saved_data:
-                print(data)
-        else:
-            print(f"Error: {response.status_code}")
-            print("Response:", response.json())
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "CLIENT_POLLING_INTERVAL_IN_SECS":
+                # Remove the quotes from the value of the variable
+                polling_interval = value.strip()[1:-1]
 
-        # Connect to the WebSocket for real-time updates
-        sio.connect(socketio_url)
-        sio.wait()
+    # Check if the variable was found
+    if polling_interval is not None:
+        return polling_interval
 
-    except Exception as e:
-        print(f"Request failed: {e}")
-
-
-if __name__ == '__main__':
-    main()
+    # If the variable was not found, return None
+    return None

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 ################################################################################
-#                              commbase-client                                 #
+#                            commbase-data-exchange                            #
 #                                                                              #
-# Fetches commands from the commbase-data-exchange server and executes them    #
+# Server for exchanging data with clients over HTTP and WebSocket connections  #
 #                                                                              #
 # Change History                                                               #
 # 01/17/2024  Esteban Herrera Original code.                                   #
@@ -30,63 +30,13 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# client_https_localhost_local_ca_websocket.py
-# Fetches commands from the commbase-data-exchange server and executes them
+# config.py
+# This files makes a variable available throughout the entire Python
+# application, including all modules, submodules, and functions.
 
-import requests  # pip install requests
-from socketio import Client
+# Requirements
+import os
 
-from config import CONFIG_FILE_PATH
-from file_paths import (
-    get_ca_pem_file_path
-)
-
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-
-# Suppress only the InsecureRequestWarning
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-
-# Define the API endpoint to retrieve saved JSON data
-api_url = 'https://127.0.0.1:5000/api/get_saved_data'
-
-# Define the WebSocket endpoint
-# socketio_url = 'http://127.0.0.1:5000'
-socketio_url = 'ws://127.0.0.1:5000'
-
-# Path to the CA certificate file (change this to the actual path 'certificates/ca.pem')
-ca_cert_path = get_ca_pem_file_path()
-
-sio = Client()
-
-
-@sio.on('update_saved_data')
-def handle_update_saved_data(saved_data):
-    print("Updated Saved JSON data:")
-    for data in saved_data:
-        print(data)
-
-
-def main():
-    try:
-        response = requests.get(api_url, verify=ca_cert_path)
-
-        # Check the response status
-        if response.status_code == 200:
-            saved_data = response.json()
-            print("Initial Saved JSON data:")
-            for data in saved_data:
-                print(data)
-        else:
-            print(f"Error: {response.status_code}")
-            print("Response:", response.json())
-
-        # Connect to the WebSocket for real-time updates
-        sio.connect(socketio_url)
-        sio.wait()
-
-    except Exception as e:
-        print(f"Request failed: {e}")
-
-
-if __name__ == '__main__':
-    main()
+# The path to the .env configuration file
+CONFIG_FILE_DIR = os.environ["COMMBASE_APP_DIR"]
+CONFIG_FILE_PATH = os.path.join(CONFIG_FILE_DIR, "config/commbase.conf")

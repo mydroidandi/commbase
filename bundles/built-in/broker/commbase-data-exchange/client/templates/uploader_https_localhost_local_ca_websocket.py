@@ -37,6 +37,11 @@
 import requests  # pip install requests
 import json
 
+from config import CONFIG_FILE_PATH
+from file_paths import (
+    get_ca_pem_file_path
+)
+
 
 def upload_data(api_url, json_data, ca_cert_path=None):
     try:
@@ -65,8 +70,8 @@ sample_json_data = {
     "city": "Example City"
 }
 
-# Path to the CA certificate file (change this to the actual path)
-ca_cert_path = 'certificates/ca.pem'
+# Path to the CA certificate file (change this to the actual path 'certificates/ca.pem')
+ca_cert_path = get_ca_pem_file_path()
 
 # Call the upload_data function with the chosen API URL and CA certificate path
 upload_data(api_url, sample_json_data, ca_cert_path)

@@ -133,6 +133,16 @@ dmypy.json
 # Ignore bundled models
 bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph/model/
 
+# Ignore the contents of the "certificates" directory except for the file
+# named ".gitkeep".
+certificates/*
+!certificates/.gitkeep
+
+# Ignore the content of the directory src/broker/, except for the file
+# named src/broker/.gitkeep
+src/broker/*
+!src/broker/.gitkeep
+
 # Ignore Logs
 logs
 # Do not ignore skill-script log files
