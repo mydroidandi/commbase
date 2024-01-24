@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 ################################################################################
-#                              commbase-client                                 #
+#                            commbase-data-exchange                            #
 #                                                                              #
-# Fetches commands from the commbase-data-exchange server and executes them    #
+# Server for exchanging data with clients over HTTP and WebSocket connections  #
 #                                                                              #
 # Change History                                                               #
 # 01/17/2024  Esteban Herrera Original code.                                   #
@@ -30,63 +30,70 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# client_https_localhost_local_ca_websocket.py
-# Fetches commands from the commbase-data-exchange server and executes them
+# file_paths.py
+# This file stores functions related to loading and managing file paths
+# Requires os.path already imported
 
-import requests  # pip install requests
-from socketio import Client
-
-from config import CONFIG_FILE_PATH
-from file_paths import (
-    get_ca_pem_file_path
-)
-
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-
-# Suppress only the InsecureRequestWarning
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-
-# Define the API endpoint to retrieve saved JSON data
-api_url = 'https://127.0.0.1:5000/api/get_saved_data'
-
-# Define the WebSocket endpoint
-# socketio_url = 'http://127.0.0.1:5000'
-socketio_url = 'ws://127.0.0.1:5000'
-
-# Path to the CA certificate file (change this to the actual path 'certificates/ca.pem')
-ca_cert_path = get_ca_pem_file_path()
-
-sio = Client()
+# Requirements
+from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
 
 
-@sio.on('update_saved_data')
-def handle_update_saved_data(saved_data):
-    print("Updated Saved JSON data:")
-    for data in saved_data:
-        print(data)
+def get_xyz_directory():
+    """
+    Retrieves the directory path of xyz from the configuration
+    file.
+
+    Returns:
+        str or None: The directory path of the xyz if found, or None
+        if not found.
+    """
+    # Initialize variable
+    xyz_directory = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "XYZZZZZ_DIRECTORY":
+                # Remove the quotes from the value of the variable
+                xyz_directory = CONFIG_FILE_DIR + value.strip()[1:-1]
+
+    # Check if the variable was found
+    if xyz_directory is not None:
+        return xyz_directory
+
+    # If the variable was not found, return None
+    return None
 
 
-def main():
-    try:
-        response = requests.get(api_url, verify=ca_cert_path)
+def get_ca_pem_file_path():
+    """
+    Retrieves the value of the CERTS_AND_KEYS_CA_PEM_FILE variable from the
+    configuration file.
 
-        # Check the response status
-        if response.status_code == 200:
-            saved_data = response.json()
-            print("Initial Saved JSON data:")
-            for data in saved_data:
-                print(data)
-        else:
-            print(f"Error: {response.status_code}")
-            print("Response:", response.json())
+    Returns:
+        str or None: The value of the variable if found, or None if not found.
+    """
+    # Initialize variable
+    ca_pem_file = None
 
-        # Connect to the WebSocket for real-time updates
-        sio.connect(socketio_url)
-        sio.wait()
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
 
-    except Exception as e:
-        print(f"Request failed: {e}")
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "CERTS_AND_KEYS_CA_PEM_FILE":
+                # Remove the quotes from the value of the variable
+                ca_pem_file = CONFIG_FILE_DIR + value.strip()[1:-1]
 
+    # Check if the variable was found
+    if ca_pem_file is not None:
+        return ca_pem_file
 
-if __name__ == '__main__':
-    main()
+    # If the variable was not found, return None
+    return None

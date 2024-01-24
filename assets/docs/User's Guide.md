@@ -527,6 +527,8 @@ The commbase-data-exchange bundle enhances Commbase by providing the functionali
 
 In Commbase, this feature is designed to function seamlessly by default. However, if you plan to run the client and server components on separate hosts, for any of the reasons mentioned earlier, please refer to [`this document.`](./Execute%20the%20Commbase%20client%20and%20server%20on%20separate%20hosts.md)
 
+In order for Commbase to work like this, it must be installed in both client and server.
+
 Creating an application that separates client and server components is a common architectural approach in software development. Here are some reasons for designing applications with separate client and server components:
 
 | Category                         | Example                                                     |
