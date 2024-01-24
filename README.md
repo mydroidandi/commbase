@@ -47,7 +47,7 @@ This project is coded and organized like this:
 /path/to/my/commbase/app
 ├── assets  # Stores different types of assets, such as images, fonts, and ASCII art
 │   ├── ascii
-│   ├── docs  # Stores the Commbase User's Guide document
+│   ├── docs  # Stores the Commbase User's Guide documents
 │   │   └── images
 │   ├── fonts
 │   ├── icons
@@ -87,11 +87,11 @@ This project is coded and organized like this:
 │           ├── audiobooks
 │           │   └── Robinson_Crusoe
 │           └── tensorflow
-├── certificates  # Stores the configuration file
-├── config  # Stores certificates and keys
-├── data  # Stores the voice recognition model results
+├── certificates  # Stores certificates and keys
+├── config   # Stores the configuration files
+├── data  # Stores the voice recognition model results and other data files
 ├── env  # Stores the environment file
-├── history  # Stores the Commbase command history file
+├── history  # Stores the app commands history files
 ├── log	 # Stores custom log files of specific skills
 ├── screenshots  # Stores the image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
@@ -101,7 +101,7 @@ This project is coded and organized like this:
 │   ├── deployment
 │   └── utilities
 │       └── back-up
-└── src  # Stores the source code files of the project
+└── src  # This directory contains user-generated source code
     ├── agents
     │   ├── x-conversation-mode-ai
     │   │   └── includes
