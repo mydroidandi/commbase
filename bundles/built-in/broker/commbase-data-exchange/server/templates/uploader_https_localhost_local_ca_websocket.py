@@ -42,6 +42,7 @@ from file_paths import (
     get_ca_pem_file_path
 )
 
+
 def upload_data(api_url, json_data, ca_cert_path=None):
     try:
         # Send a POST request to the API endpoint with JSON payload

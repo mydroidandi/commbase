@@ -38,6 +38,7 @@
 # Requirements
 from config import CONFIG_FILE_PATH
 
+
 def get_client_polling_interval_in_secs():
     """
     Retrieves the time interval, in seconds, for scheduling the task, from the

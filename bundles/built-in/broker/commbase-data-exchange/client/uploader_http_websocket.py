@@ -48,7 +48,7 @@ api_url = 'http://127.0.0.1:5000/api/save_json'
 json_file_path = get_result_messages_recording_file()
 
 
-# Reads JSON payload File
+# Reads the JSON payload File
 def read_json_file(json_file_path):
     try:
         with open(json_file_path, 'r') as json_file:
