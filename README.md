@@ -87,7 +87,8 @@ This project is coded and organized like this:
 │           ├── audiobooks
 │           │   └── Robinson_Crusoe
 │           └── tensorflow
-├── config  # Stores the configuration file
+├── certificates  # Stores the configuration file
+├── config  # Stores certificates and keys
 ├── data  # Stores the voice recognition model results
 ├── env  # Stores the environment file
 ├── history  # Stores the Commbase command history file

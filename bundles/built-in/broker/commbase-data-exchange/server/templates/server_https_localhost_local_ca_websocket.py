@@ -41,6 +41,17 @@ from flask_socketio import SocketIO  # pip install flask-socketio
 import json
 import ssl  # Import the ssl module
 
+from config import CONFIG_FILE_PATH
+from file_paths import (
+    get_cert_pem_file_path,
+    get_key_pem_file_path,
+    get_ca_pem_file_path,
+)
+
+cert_pem = get_cert_pem_file_path()
+key_pem = get_key_pem_file_path()
+ca_pem = get_ca_pem_file_path()
+
 app = Flask(__name__)
 socketio = SocketIO(app)
 
@@ -52,7 +63,7 @@ os.makedirs(CLIENT_DATA_DIR, exist_ok=True)
 
 # Load SSL context with the full certificate chain
 context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-context.load_cert_chain('certificates/cert.pem', 'certificates/key.pem', 'certificates/ca.pem')  # Add 'certificates/ca.pem' here
+context.load_cert_chain(cert_pem, key_pem, ca_pem)  # Add 'certificates/ca.pem' here
 
 
 # API endpoint to receive and save JSON
