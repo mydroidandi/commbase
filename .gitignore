@@ -148,6 +148,9 @@ logs
 # Do not ignore skill-script log files
 #*.log
 
+# Ignore the directory tests/
+tests/
+
 # Ignore IDE specific files
 .idea/
 .vscode/
