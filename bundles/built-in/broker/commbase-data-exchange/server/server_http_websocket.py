@@ -40,6 +40,8 @@ from flask import Flask, jsonify, request, render_template  # pip install flask 
 from flask_socketio import SocketIO  # pip install flask-socketio
 import json
 
+import subprocess
+
 app = Flask(__name__)
 socketio = SocketIO(app)
 
@@ -63,6 +65,11 @@ def save_json():
 
         with open(filename, 'w') as file:
             json.dump(json_data, file)
+
+        # Calls src/skill.sh
+        subprocess.run(
+            ["bash", os.environ["COMMBASE_APP_DIR"] + "/src/skill.sh"]
+        )
 
         # Emit real-time update to connected clients
         emit_saved_data()

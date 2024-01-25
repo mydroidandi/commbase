@@ -101,7 +101,7 @@ def get_ca_pem_file_path():
 
 def get_request_messages_recording_file():
     """
-    Retrieves the value of the SREQUEST_MESSAGES_RECORDING_FILE variable from the
+    Retrieves the value of the REQUEST_MESSAGES_RECORDING_FILE variable from the
     configuration file.
 
     Returns:

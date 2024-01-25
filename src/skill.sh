@@ -48,7 +48,9 @@ skill() {
 	echo $previous_message | jq '."message"'
 
 	tmux select-window -t 1 && tmux select-pane -t 1 && printf "\e[1;41mCOMMBASE:\e[1;m I don't understand: %s" "$trim_str"
-	tmux select-window -t 1 && tmux select-pane -t 4
+	#tmux select-window -t 1 && tmux select-pane -t 4 && gnome-terminal --command='ls' &
+	tmux select-window -t 1 && tmux select-pane -t 1
+
 	exit 99
 }
 
