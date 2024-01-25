@@ -39,13 +39,13 @@ import json
 
 from config import CONFIG_FILE_PATH
 from file_paths import (
-    get_result_messages_recording_file
+    get_request_messages_recording_file
 )
 
 # Define the API endpoint
 api_url = 'http://127.0.0.1:5000/api/save_json'
 
-json_file_path = get_result_messages_recording_file()
+json_file_path = get_request_messages_recording_file()
 
 
 # Reads the JSON payload File
