@@ -26,8 +26,8 @@ The request object is a JSON structure with the following attributes:
 {
   "messages": [
     {"control": ""},
-    {"current_request": "tell me about yourself"},
-    {"previous_request": "tell me about yourself"},
+    {"current_request": "tell me about yourself."},
+    {"previous_request": "tell me about yourself."},
     {"current_response": ""},
     {"runtime": ""},
     {"source_code": ""}
@@ -43,9 +43,9 @@ Note: The response object represents a single updated object.
 {
   "messages": [
     {"control": ""},
-    {"current_request": "tell me about yourself"},
-    {"previous_request": "tell me about yourself"},
-    {"current_response": "Here is information about myself"},
+    {"current_request": "tell me about yourself."},
+    {"previous_request": "tell me about yourself."},
+    {"current_response": "Here is information about myself."},
     {"runtime": "nodejs"},
     {"source_code": "console.log('Line 1\na\nb\nc');\nconsole.log('Line 2');\nconsole.log('Line 3');"}
   ]
@@ -72,3 +72,82 @@ Line 3
 ```
 
 The Bash program that executes the script uses `echo -e` to interpret escape sequences, ensuring that the newline characters in the source code are preserved when saving it to a temporary file for execution.
+
+### Examples in Bash
+
+```json
+{
+  "messages": [
+    {"control": ""},
+    {"current_request": "tell me about yourself."},
+    {"previous_request": "tell me about yourself."},
+    {"current_response": "Here is information about myself."},
+    {"runtime": "bash"},
+    {"source_code": "echo \"My name is Commbase, I am a ...\"\nsleep 5"}
+  ]
+}
+```
+
+This example uses `sleep` in the script to keep the terminal open a specific period of time in seconds.
+
+```json
+{
+  "messages": [
+    {"control": ""},
+    {"current_request": "tell me about yourself."},
+    {"previous_request": "tell me about yourself."},
+    {"current_response": "Here is information about myself."},
+    {"runtime": "bash"},
+    {"source_code": "#!/usr/bin/env bash\necho \"My name is Commbase, I am a ...\"\n# Use 'read' to wait for user input\nread -p \"Press Enter to exit\"\necho \"Exiting the script.\""}
+  ]
+}
+```
+
+This example uses `read -p` to do not exit immediately and waits for user input to exit.
+
+```json
+{
+  "messages": [
+    {"control": ""},
+    {"current_request": "tell me about yourself."},
+    {"previous_request": "tell me about yourself."},
+    {"current_response": "Here is information about myself."},
+    {"runtime": "bash"},
+    {"source_code": "#!/usr/bin/env bash\necho \"My name is Commbase, I am a ...\"\necho \"This script will run indefinitely. Press Ctrl+C to stop it.\"\nwhile true; do\n  sleep 1\ndone"}
+  ]
+}
+```
+
+This example uses a `while loop` with the condition `true`, which is always true, creating an infinite loop. The `sleep 1` statement ensures there's a short delay between iterations to prevent excessive resource usage.
+
+```json
+{
+  "messages": [
+    {"control": ""},
+    {"current_request": "tell me about yourself."},
+    {"previous_request": "tell me about yourself."},
+    {"current_response": "Here is information about myself."},
+    {"runtime": "bash"},
+    {"source_code": "#!/usr/bin/env bash\n(echo \"My name is Commbase, I am a ...\")\n(firefox)"}
+  ]
+}
+```
+
+This example opens a (graphical) web browser (in the client) using the command `firefox`.
+
+### Example in Python
+
+```json
+{
+  "messages": [
+    {"control": ""},
+    {"current_request": "tell me about yourself."},
+    {"previous_request": "tell me about yourself."},
+    {"current_response": "Here is information about myself."},
+    {"runtime": "python"},
+    {"source_code": "#!/usr/bin/env bash\nprint(\"My name is Commbase, I am a ...\")\ntime.sleep(5)"}
+  ]
+}
+```
+
+This example pauses the script's execution for 5 seconds using the `time.sleep()` function.
