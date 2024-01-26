@@ -29,35 +29,54 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# skill
-# Reads every new data stored in the RESULT_MESSAGE_RECORDING_FILE and
-# PREVIOUS_RESULT_MESSAGE_RECORDING_FILE files, parses it, compares it against
-# a list of known skills and skillsets, and executes the corresponding skill or
-# skillset if the data matches a skill or skillset listed.
-# TODO: This is temporary fake versions to test jq
-skill() {
+# skill_hunter.sh
+# Reads the new JSON data request stored in commbase-data-exchange/server/client_data,
+# searches for a Commbase skill or skill or skillset that matches the request in
+# the directory, and calls the uploader in the server.
+skill_hunter() {
+  # The configuration files
+  source $COMMBASE_APP_DIR/config/commbase.conf
+  source $COMMBASE_APP_DIR/config/app.conf
+  source $COMMBASE_APP_DIR/config/secrets
 
-	# The app configuration file
-	source $COMMBASE_APP_DIR/config/app.conf
+  # Read the new JSON data request stored in commbase-data-exchange/server/client_data
+  data_exchange_client_data_file=/bundles/built-in/broker/commbase-data-exchange/server/client_data/json_1.json
 
-	message=$(<$COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE)
-	previous_message=$(<$COMMBASE_APP_DIR$PREVIOUS_RESULT_MESSAGE_RECORDING_FILE)
+  messages=$(<$COMMBASE_APP_DIR$data_exchange_client_data_file)
 
-	echo $message | jq '."message"'
-	echo $message | jq '."control"'
-	echo $previous_message | jq '."message"'
+  # Extract and echo each message
+  #echo "$messages" | jq -r '.messages[] | to_entries[] | "\(.key): \(.value)"'
 
-	tmux select-window -t 1 && tmux select-pane -t 1 && printf "\e[1;41mCOMMBASE:\e[1;m I don't understand: %s" "$trim_str"
-	#tmux select-window -t 1 && tmux select-pane -t 4 && gnome-terminal --command='ls' &
-	tmux select-window -t 1 && tmux select-pane -t 1
+  # Extract and echo the entry corresponding to "control"
+  #echo "$messages" | jq -r '.messages[] | select(.control != null) | to_entries[] | "\(.key): \(.value)"'
 
-	exit 99
+  # Store only the value of "current_request" without the key
+  current_request=$(echo "$messages" | jq -r '.messages[] | select(.current_request != null) | .current_request')
+
+  echo "Current request:" "$current_request""."
+
+  # Search for a Commbase skill or skill or skillset that matches the request in
+  # the directory.
+  # TODO:
+  echo "SEARCHING FOR SKILL OR SKILLSET IN THE DIRECTORY ..."
+
+
+  # Call the uploader in the server
+  # TODO:
+
+  # Store only the value of "current_request" without the key
+  current_request=$(echo "$messages" | jq -r '.messages[] | select(.current_request != null) | .current_request')
+
+  tmux select-window -t 1 && tmux select-pane -t 1 && printf "\e[1;41mCOMMBASE:\e[1;m I don't understand: %s\n" "$current_request""."
+  #tmux select-window -t 1 && tmux select-pane -t 4 && gnome-terminal --command='ls' &
+  tmux select-window -t 1 && tmux select-pane -t 1
+
+  exit 99
 }
 
 # Call skill if the script is run directly (not sourced)
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-	(skill)
+  (skill_hunter)
 fi
 
 exit 99
-
