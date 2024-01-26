@@ -147,10 +147,10 @@ display_version() {
 # Routes options
 route_option() {
 	# Imports
-	source $COMMBASE_APP_DIR/src/app;
+	source $COMMBASE_APP_DIR/src/app.sh;
 
 	# Data processing
-	APP_PROCESS_FILE="$COMMBASE_APP_DIR/src/skill";
+	APP_PROCESS_FILE="$COMMBASE_APP_DIR/src/skill_client.sh";
 
 	# First tmux session
 	SESSIONNAME="Commbase-0";
