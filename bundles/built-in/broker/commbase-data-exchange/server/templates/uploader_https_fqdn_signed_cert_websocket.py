@@ -37,6 +37,11 @@
 import requests  # pip install requests
 import json
 
+from config import CONFIG_FILE_PATH
+from file_paths import (
+    get_result_messages_recording_file
+)
+
 
 def upload_data(api_url, json_data):
     try:
@@ -58,12 +63,27 @@ def upload_data(api_url, json_data):
 # Define the API endpoint (HTTP or HTTPS)
 api_url = 'https://127.0.0.1:5000/api/save_json'  # For HTTPS
 
-# Sample JSON payload
-sample_json_data = {
-    "name": "John Doe",
-    "age": 30,
-    "city": "Example City"
-}
+json_file_path = get_result_messages_recording_file()
+
+
+# Reads the JSON payload File
+def read_json_file(json_file_path):
+    try:
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+            return data
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON: {e}")
+        return None
+    except FileNotFoundError:
+        print(f"File not found: {json_file_path}")
+        return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+
+json_data = read_json_file(json_file_path)
 
 # Call the upload_data function with the chosen API URL
-upload_data(api_url, sample_json_data)
+upload_data(api_url, json_data)
