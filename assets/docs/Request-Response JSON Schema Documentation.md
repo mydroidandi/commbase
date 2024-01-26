@@ -37,6 +37,8 @@ The request object is a JSON structure with the following attributes:
 
 ### Example Response Object:
 
+Note: The response object represents a single updated object.
+
 ```json
 {
   "messages": [
@@ -45,9 +47,28 @@ The request object is a JSON structure with the following attributes:
     {"previous_request": "tell me about yourself"},
     {"current_response": "Here is information about myself"},
     {"runtime": "nodejs"},
-    {"source_code": "console.log('Line 1');\nconsole.log('Line 2');\nconsole.log('Line 3');"}
+    {"source_code": "console.log('Line 1\na\nb\nc');\nconsole.log('Line 2');\nconsole.log('Line 3');"}
   ]
 }
 ```
 
-Note: The response object represents a single updated object.
+In the client, the script to execute would be:
+
+```js
+console.log('Line 1\na\nb\nc');
+console.log('Line 2');
+console.log('Line 3');
+```
+
+... and the code execution would log in the console:
+
+```bash
+Line 1
+a
+b
+c
+Line 2
+Line 3
+```
+
+The Bash program that executes the script uses `echo -e` to interpret escape sequences, ensuring that the newline characters in the source code are preserved when saving it to a temporary file for execution.
