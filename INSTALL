@@ -379,7 +379,13 @@ $ sudo apt-get install portaudio19-dev portaudio19-doc
 
 - PyAudio‑0.2.13:
 
-$ pip3.11 install PyAudio
+PyAudio requires python3-pyaudio to install:
+
+$ sudo apt install python3-pyaudio
+
+More information here: https://pypi.org/project/PyAudio/
+
+$ pip3.11 install pyaudio
 
 - Subprocess.run:
 
