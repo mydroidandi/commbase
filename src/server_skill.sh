@@ -29,11 +29,11 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# skill_hunter.sh
+# server_skill.sh
 # Reads the new JSON data request stored in commbase-data-exchange/server/client_data,
-# searches for a Commbase skill or skill or skillset that matches the request in
-# the directory, and calls the uploader in the server.
-skill_hunter() {
+# searches for a Commbase skill or skillset that matches the request in the
+# directory, and calls the uploader in the server.
+server_skill() {
   # The configuration files
   source $COMMBASE_APP_DIR/config/commbase.conf
   source $COMMBASE_APP_DIR/config/app.conf
@@ -55,8 +55,8 @@ skill_hunter() {
 
   echo "Current request:" "$current_request""."
 
-  # Search for a Commbase skill or skill or skillset that matches the request in
-  # the directory.
+  # Search for a Commbase skill or skillset that matches the request in the
+  # directory.
   # TODO:
   echo "SEARCHING FOR SKILL OR SKILLSET IN THE DIRECTORY ..."
 
@@ -74,9 +74,9 @@ skill_hunter() {
   exit 99
 }
 
-# Call skill if the script is run directly (not sourced)
+# Call server_skill if the script is run directly (not sourced)
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  (skill_hunter)
+  (server_skill)
 fi
 
 exit 99
