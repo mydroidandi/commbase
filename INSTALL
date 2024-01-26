@@ -487,7 +487,7 @@ $ pip3.11 install pyttsx3
 
 $ pip3.11 install pydub
 
-It requires the package ffmpeg. Install it like this:
+It requires the packages ffmpeg and python3-pydub. Install python3-pydub like this:
 
 $ sudo apt-get install python3-pydub
 
