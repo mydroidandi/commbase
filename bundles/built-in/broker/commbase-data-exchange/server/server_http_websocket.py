@@ -68,7 +68,7 @@ def save_json():
 
         # Calls src/skill.sh
         subprocess.run(
-            ["bash", os.environ["COMMBASE_APP_DIR"] + "/src/skill.sh"]
+            ["bash", os.environ["COMMBASE_APP_DIR"] + "/src/skill_hunter.sh"]
         )
 
         # Emit real-time update to connected clients

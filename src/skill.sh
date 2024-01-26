@@ -1,3 +1,4 @@
+#!/bin/env bash
 ################################################################################
 #                                   Commbase                                   #
 #                                                                              #
@@ -29,35 +30,74 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# skill
-# Reads every new data stored in the RESULT_MESSAGE_RECORDING_FILE and
-# PREVIOUS_RESULT_MESSAGE_RECORDING_FILE files, parses it, compares it against
-# a list of known skills and skillsets, and executes the corresponding skill or
-# skillset if the data matches a skill or skillset listed.
-# TODO: This is temporary fake versions to test jq
-skill() {
+# skill.sh
+# This script is designed to execute a temporary script based on the specified
+# runtime extracted from JSON data. It checks for the presence of required tools
+# (jq) and runtimes (Bash, Node.js, Python, etc.) and informs the user if any
+# are missing. Finally, it removes the temporary script file.
 
-	# The app configuration file
-	source $COMMBASE_APP_DIR/config/app.conf
+# The configuration files
+source $COMMBASE_APP_DIR/config/commbase.conf
+source $COMMBASE_APP_DIR/config/app.conf
+source $COMMBASE_APP_DIR/config/secrets
 
-	message=$(<$COMMBASE_APP_DIR$RESULT_MESSAGE_RECORDING_FILE)
-	previous_message=$(<$COMMBASE_APP_DIR$PREVIOUS_RESULT_MESSAGE_RECORDING_FILE)
-
-	echo $message | jq '."message"'
-	echo $message | jq '."control"'
-	echo $previous_message | jq '."message"'
-
-	tmux select-window -t 1 && tmux select-pane -t 1 && printf "\e[1;41mCOMMBASE:\e[1;m I don't understand: %s" "$trim_str"
-	#tmux select-window -t 1 && tmux select-pane -t 4 && gnome-terminal --command='ls' &
-	tmux select-window -t 1 && tmux select-pane -t 1
-
-	exit 99
-}
-
-# Call skill if the script is run directly (not sourced)
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-	(skill)
+# Check if jq is installed
+if ! command -v jq &> /dev/null; then
+  echo "jq is not installed. Please install it before running this script."
+  exit 1
 fi
 
-exit 99
+# TODO: Read from updated version of messages.json in data/
+# Read JSON data from the file
+json_data=$(cat response_messages.json)
 
+# Extract source_code, runtime, and current_response from JSON object
+source_code=$(echo "$json_data" | jq -r '.messages[] | select(has("source_code")).source_code')
+runtime=$(echo "$json_data" | jq -r '.messages[] | select(has("runtime")).runtime')
+current_response=$(echo "$json_data" | jq -r '.messages[] | select(has("current_response")).current_response')
+
+# Check if source_code and runtime are not null
+if [ -z "$source_code" ] || [ -z "$runtime" ]; then
+  echo "Error: Missing source_code or runtime in JSON."
+  exit 1
+fi
+
+# Save source code to a temporary file
+echo "$source_code" > .skill_runner
+
+# Check if the specified runtime is available
+case "$runtime" in
+  "bash")
+    if ! command -v bash &> /dev/null; then
+      echo "Bash is not installed. Please install it before running this script."
+      rm .skill_runner
+      exit 1
+    fi
+    tmux select-window -t 1 && tmux select-pane -t 1 && (echo "$current_response"; echo "$current_response" | $TTS_ENGINE_STRING; gnome-terminal -- bash .skill_runner; sleep .1 &)
+    ;;
+  "nodejs")
+    if ! command -v node &> /dev/null; then
+      echo "Node.js is not installed. Please install it before running this script."
+      rm .skill_runner
+      exit 1
+    fi
+    tmux select-window -t 1 && tmux select-pane -t 1 && (echo "$current_response"; echo "$current_response" | $TTS_ENGINE_STRING; gnome-terminal -- node .skill_runner;sleep .1 &)
+    ;;
+  "python")
+    if ! command -v python &> /dev/null; then
+      echo "Python is not installed. Please install it before running this script."
+      rm .skill_runner
+      exit 1
+    fi
+    tmux select-window -t 1 && tmux select-pane -t 1 && (echo "$current_response"; echo "$current_response" | $TTS_ENGINE_STRING; gnome-terminal -- python .skill_runner;sleep .1 &)
+    ;;
+  # Add more runtimes here ...
+  *)
+    echo "Unsupported runtime: $runtime"
+    #rm .skill_runner
+    exit 1
+    ;;
+esac
+
+# Remove the temporary script file
+rm .skill_runner

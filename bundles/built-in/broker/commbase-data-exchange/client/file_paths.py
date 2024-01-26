@@ -99,9 +99,9 @@ def get_ca_pem_file_path():
     return None
 
 
-def get_request_messages_recording_file():
+def get_messages_recording_file():
     """
-    Retrieves the value of the REQUEST_MESSAGES_RECORDING_FILE variable from the
+    Retrieves the value of the MESSAGES_RECORDING_FILE variable from the
     configuration file.
 
     Returns:
@@ -117,7 +117,7 @@ def get_request_messages_recording_file():
             variable_name, value = line.strip().split("=")
 
             # Check if the variable we are looking for exists in the line
-            if variable_name == "REQUEST_MESSAGES_RECORDING_FILE":
+            if variable_name == "MESSAGES_RECORDING_FILE":
                 # Remove the quotes from the value of the variable
                 recording_file = CONFIG_FILE_DIR + value.strip()[1:-1]
 
