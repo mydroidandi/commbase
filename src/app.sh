@@ -29,19 +29,15 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# app
-# Creates the Commbase application interface, replaces the hostname and host IP
+# app.sh
+# Creates the Commbase application interface, updates the hostname and host IP
 # address, and enters the Commbase session.
 app() {
-  # Path to the env file
-  ENV_FILE="$COMMBASE_APP_DIR/env/.env";
-
-  # Assign the host values from the operating system
-  NEW_HOST_NAME=$(hostname | awk '{print $1}');
-  NEW_HOST_IP_ADDRESS=$(hostname -I | awk '{print $1}');
-
   # The configuration file
-  source $COMMBASE_APP_DIR/config/app.conf
+  source $COMMBASE_APP_DIR/config/commbase.conf
+
+  # Imports from libcommbase
+  source $COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/check_data_exchange_server_connection.sh
 
   # Give .3 seconds to tmux to draw its content before continuing
   time=0.3;
@@ -52,52 +48,61 @@ app() {
   # Create a new session, detach from it to continue, and sleep
   tmux new-session -d -t "Commbase" && sleep $time;
 
+  # Activate the conda environment if it exists
+  tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
+
   # Create windows and panels
 
   # Window 0: Commbase
   # Rename the first tmux window, window 0, split it horizontally, and focus the
   # cursor in pane 0 (above).
-  tmux rename-window "Commbase" && tmux split-window -v && tmux select-pane -t 1;
+  tmux rename-window "Commbase" && tmux split-window -h && tmux select-pane -t 2;
 
-  # Split vertically the pane 0
-  tmux split-window -h && tmux select-pane -t 1 && sleep $time;
+  # Split horizontally the pane 2
+  tmux split-window -v && tmux select-pane -t 2 && sleep $time;
 
-  # Split horizontally the pane 0
-  tmux split-window -v && tmux select-pane -t 1 && sleep $time;
+  # Split vertically the pane 2
+  tmux split-window -h && tmux select-pane -t 2 && sleep $time;
+
+  # Split horizontally the pane 2
+  tmux split-window -v && tmux select-pane -t 2 && sleep $time;
+
+  # Split vertically the pane 2
+  tmux split-window -h && tmux select-pane -t 2 && sleep $time;
 
   # Pane 1
-  # Focus the cursor in window 0, with pane 1 selected by default, activate the
-  # conda environment if it exists, send the enter key, and sleep.
-  tmux select-window -t 1 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
-
-  # On window 0, with pane 1 selected by default, run Python and then press the
-  # enter key.
-  tmux send-keys " cpulimit --limit=$STT_PROCESS_CPU_LIMIT_PERCENTAGE -- $STT_ENGINE_STRING" C-m;
-
-  # Pane 2
-  # On window 0, select pane 2, activate the conda environment if it exists,
-  # send the enter key, and sleep.
-  tmux select-pane -t 2 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
-
-  # On window 0, select pane 2, run Python and then send the enter key
-  tmux select-pane -t 2 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/vu-meter/vu_meter.py" C-m;
+  # On window 0, select pane 1, run the STT engine and then press the enter key
+  tmux select-pane -t 1 && tmux send-keys " cpulimit --limit=$STT_PROCESS_CPU_LIMIT_PERCENTAGE -- $STT_ENGINE_STRING" C-m;
 
   # Pane 3
   # On window 0, select pane 3, activate the conda environment if it exists,
   # send the enter key, and sleep.
   tmux select-pane -t 3 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
+  # Run commbase-data-exchange server
+  tmux select-pane -t 3 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_DATA_EXCHANGE_SERVER_CONNECTION_FILE_PATH" C-m && sleep $time;
+  # Check the connection to the server before starting the client
+  (check_data_exchange_server_connection)
 
-  # On window 0, select pane 3, run alsamixer, send the enter key, and sleep
-  tmux select-pane -t 3 && tmux send-keys " alsamixer --view all" C-m;
+  # Pane 2
+  # On window 0, select pane 2, activate the conda environment if it exists,
+  # send the enter key, and sleep.
+  tmux select-pane -t 2 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
+  # Run commbase-data-exchange client
+  tmux select-pane -t 2 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_DATA_EXCHANGE_CLIENT_CONNECTION_FILE_PATH" C-m && sleep $time;
 
   # Pane 4
   # On window 0, select pane 4, activate the conda environment if it exists,
   # send the enter key, and sleep.
   tmux select-pane -t 4 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
+  # Run the VU meter
+  tmux select-pane -t 4 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/vu-meter/vu_meter.py" C-m;
 
-  # On window 0, select pane 4, cd the directory commbase, clear, send the enter
-  # key, and sleep.
-  tmux select-pane -t 4 && tmux send-keys " cd $COMMBASE_APP_DIR ; clear" C-m;
+  # Pane 5
+  # On window 0, select pane 5, activate the conda environment if it exists,
+  # send the enter key, and sleep.
+  tmux select-pane -t 5 && tmux send-keys " cd $COMMBASE_APP_DIR ; clear" C-m;
+  # Run alsamixer
+  tmux select-pane -t 5 && tmux send-keys " alsamixer --view all" C-m;
 
   # In this section, activate/deactivate or add custom extra windows
 
@@ -125,17 +130,12 @@ app() {
       # Window 4
       # Auto-create a new window 4 for a directory/file manager or text editor
       tmux new-window -t Commbase-0:5 -n "Files 1" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
-      #tmux select-window -t 2 && tmux send-keys "nnn" C-m
+      #tmux select-window -t 4 && tmux send-keys "nnn" C-m
     fi
   fi
 
-  # Focus the cursor in window 0, pane 4, replace hostname and host IP address,
-  # values in the env file every IP_ADDRESS_UPDATE_FREQUENCY_IN_SECS, send the while to
-  # the background, and then clean the pane prompt.
-  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys " while true; do sed -i 's/^HOSTNAME=.*/HOSTNAME=$NEW_HOST_NAME/' $ENV_FILE; sed -i 's/^HOST_IP_ADDRESS=.*/HOST_IP_ADDRESS=$NEW_HOST_IP_ADDRESS/' $ENV_FILE; sleep $IP_ADDRESS_UPDATE_FREQUENCY_IN_SECS; done &; clear" C-m;
-
-  # Clean up the command line of Window 0, pane 4
-  tmux select-window -t 1 && tmux select-pane -t 4 && tmux send-keys " clear" C-m;
+  # Clean up the command line of Window 0, pane 6
+  tmux select-window -t 1 && tmux select-pane -t 6 && tmux send-keys " clear" C-m;
 
   # Enter the Commbase session
   tmux attach-session -t Commbase-0;
