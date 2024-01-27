@@ -66,9 +66,9 @@ def save_json():
         with open(filename, 'w') as file:
             json.dump(json_data, file)
 
-        # Calls src/skill.sh
+        # Calls src/_server_skill.sh
         subprocess.run(
-            ["bash", os.environ["COMMBASE_APP_DIR"] + "/src/skill_hunter.sh"]
+            ["bash", os.environ["COMMBASE_APP_DIR"] + "/src/server_skill.sh"]
         )
 
         # Emit real-time update to connected clients

@@ -379,7 +379,13 @@ $ sudo apt-get install portaudio19-dev portaudio19-doc
 
 - PyAudio‑0.2.13:
 
-$ pip3.11 install PyAudio
+PyAudio requires python3-pyaudio to install:
+
+$ sudo apt install python3-pyaudio
+
+More information here: https://pypi.org/project/PyAudio/
+
+$ pip3.11 install pyaudio
 
 - Subprocess.run:
 
@@ -481,7 +487,7 @@ $ pip3.11 install pyttsx3
 
 $ pip3.11 install pydub
 
-It requires the package ffmpeg. Install it like this:
+It requires the packages ffmpeg and python3-pydub. Install python3-pydub like this:
 
 $ sudo apt-get install python3-pydub
 

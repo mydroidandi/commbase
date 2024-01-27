@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# skill.sh
+# client_skill.sh
 # This script is designed to execute a temporary script based on the specified
 # runtime extracted from JSON data. It checks for the presence of required tools
 # (jq) and runtimes (Bash, Node.js, Python, etc.) and informs the user if any

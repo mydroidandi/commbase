@@ -147,10 +147,10 @@ display_version() {
 # Routes options
 route_option() {
 	# Imports
-	source $COMMBASE_APP_DIR/src/app;
+	source $COMMBASE_APP_DIR/src/app.sh;
 
 	# Data processing
-	APP_PROCESS_FILE="$COMMBASE_APP_DIR/src/skill";
+	APP_PROCESS_FILE="$COMMBASE_APP_DIR/src/skill_client.sh";
 
 	# First tmux session
 	SESSIONNAME="Commbase-0";
@@ -195,6 +195,7 @@ route_option() {
 		    # respond to the interrupt signal or appear to duplicate once the
 		    # program stops and exits.
 		    pkill -f $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py
+		    pkill -f $COMMBASE_APP_DIR/src/app.sh  # This is redundant
 		    #pkill -f python  # This will kill all the running 'python' processes
 		    conda deactivate  # This is redundant
 		    tmux kill-session -t Commbase-0
@@ -229,4 +230,3 @@ route_option $1 $2 $3 $4 $5 $6 $7 $8 $9;
 main $1 $2 $3 $4 $5 $6 $7 $8 $9;
 
 exit 99
-
