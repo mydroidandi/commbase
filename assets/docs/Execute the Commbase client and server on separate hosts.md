@@ -406,4 +406,4 @@ CERTS_AND_KEYS_KEY_PEM_FILE="/certificates/key.pem"
 CERTS_AND_KEYS_CA_PEM_FILE="/certificates/ca.pem"
 ```
 
-They are all explained in the section **8 Configuration Variables** in this [`document`](./User%27s%20Guide.md)
+They are all documented in the section **8 Configuration Variables** in this [`document`](./User%27s%20Guide.md)
