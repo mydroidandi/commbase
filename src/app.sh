@@ -30,8 +30,7 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # app.sh
-# Creates the Commbase application interface, updates the hostname and host IP
-# address, and enters the Commbase session.
+# Creates the Commbase application interface and enters the Commbase session.
 app() {
   # The configuration file
   source $COMMBASE_APP_DIR/config/commbase.conf
