@@ -646,6 +646,66 @@ The default version of the file **commbase.conf** contains the next values:
     - `commbase_env` (Default): The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment. For more details, check out the file **INSTALL**.
     - `my_env_name`: An alternative name for creating the Commbase virtual environment.
 
+- **COMMBASE_DATA_EXCHANGE_SERVER_HOST_ADDRESS**:
+  - Description: The host address for the Commbase Data Exchange Server.
+  - Example value:
+    - `127.0.0.1` (Default): The server is hosted on the local machine.
+
+- **COMMBASE_DATA_EXCHANGE_SERVER_PORT**:
+  - Description: The port on which the Commbase Data Exchange Server operates.
+  - Example value:
+    - `5000` (Default): The server communicates on port 5000.
+
+- **COMMBASE_DATA_EXCHANGE_SERVER_CONNECTION_FILE_PATH**:
+  - Description: File path for the server's connection module.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/server/server_http_websocket.py`
+
+- **COMMBASE_DATA_EXCHANGE_SERVER_UPLOADER_FILE_PATH**:
+  - Description: File path for the server's uploader module.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/server/uploader_http_websocket.py`
+
+- **COMMBASE_DATA_EXCHANGE_CLIENT_CONNECTION_FILE_PATH**:
+  - Description: File path for the client's connection module.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/client_http_websocket.py`
+
+- **COMMBASE_DATA_EXCHANGE_CLIENT_UPLOADER_FILE_PATH**:
+  - Description: File path for the client's uploader module.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/uploader_http_websocket.py`
+
+- **CLIENT_POLLING_INTERVAL_IN_SECS**:
+  - Description: Polling interval in seconds for the client.
+  - Example value:
+    - `5` (Default): The client polls every 5 seconds.
+
+- **CERTS_AND_KEYS_SERVER_CRT_FILE**:
+  - Description: File path for the server's certificate file.
+  - Example value:
+    - `/certificates/server.crt`
+
+- **CERTS_AND_KEYS_SERVER_KEY_FILE**:
+  - Description: File path for the server's key file.
+  - Example value:
+    - `/certificates/server.key`
+
+- **CERTS_AND_KEYS_CERT_PEM_FILE**:
+  - Description: File path for the certificate PEM file.
+  - Example value:
+    - `/certificates/cert.pem`
+
+- **CERTS_AND_KEYS_KEY_PEM_FILE**:
+  - Description: File path for the key PEM file.
+  - Example value:
+    - `/certificates/key.pem`
+
+- **CERTS_AND_KEYS_CA_PEM_FILE**:
+  - Description: File path for the CA PEM file.
+  - Example value:
+    - `/certificates/ca.pem`
+
 - **MY_APP_AUDIO_CAPTURE_DEVICE_NAME**:
   - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input.
   - Possible values: Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
