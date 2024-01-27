@@ -650,12 +650,6 @@ The default version of the file **commbase.conf** contains the next values:
     - `commbase_env` (Default): The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment. For more details, check out the file **INSTALL**.
     - `my_env_name`: An alternative name for creating the Commbase virtual environment.
 
-- **IP_ADDRESS_UPDATE_FREQUENCY_IN_SECS**:
-  - Description: This value represents the interval in milliseconds at which the machine's IP address should be updated in the file **.env** in **env/**.
-  - Possible values: We recommend using a value between 300 and 600 for security reasons.
-  - Example value:
-    - `600` (Default): This value will make the ip address update every 10 minutes.
-
 - **MY_APP_AUDIO_CAPTURE_DEVICE_NAME**:
   - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input.
   - Possible values: Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
