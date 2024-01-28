@@ -73,6 +73,10 @@ case "$runtime" in
       rm .skill_runner
       exit 1
     fi
+    # TODO: Here there must be ifs for the json property source_code_display, inside of every runtime case
+    # The echoes for the json property current_response_display must go in the pane 1, chatroom.
+    # Those echoes must include string of the Assistant name with tag and colors, something like
+    # printf "\e[1;41mCOMMBASE:\e[1;m I don't understand: %s\n" "$current_request""."   ----> but using the config file variables.
     tmux select-window -t 1 && tmux select-pane -t 1 && (echo "$current_response"; echo "$current_response" | $TTS_ENGINE_STRING; gnome-terminal -- bash .skill_runner; sleep .1 &)
     ;;
   "nodejs")
@@ -94,7 +98,7 @@ case "$runtime" in
   # Add more runtimes here ...
   *)
     echo "Unsupported runtime: $runtime"
-    #rm .skill_runner
+    rm .skill_runner
     exit 1
     ;;
 esac
