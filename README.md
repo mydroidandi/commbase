@@ -70,10 +70,13 @@ This project is coded and organized like this:
 │   │       │       ├── bundles
 │   │       │       │   └── sounds
 │   │       │       ├── control_patterns
-│   │       │       │   └── vosk-model-en-us-0.22-lgraph
+│   │       │       │   └── en_us
+│   │       │       │       └── openai-whisper-model-base
 │   │       │       ├── discourses
+│   │       │       │   └── en_us
 │   │       │       └── skill_patterns
-│   │       │       │   └── vosk-model-en-us-0.22-lgraph
+│   │       │           └── en_us
+│   │       │               └── openai-whisper-model-base
 │   │       ├── PyAudio
 │   │       └── vu-meter
 │   ├── custom
