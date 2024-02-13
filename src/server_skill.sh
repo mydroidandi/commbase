@@ -32,7 +32,7 @@
 # server_skill.sh
 # Reads the new JSON data request stored in commbase-data-exchange/server/client_data,
 # searches for a Commbase skill or skillset that matches the request in the
-# directory, and calls the uploader in the server.
+# directory, and calls the updater in the server side.
 server_skill() {
   # The configuration files
   source $COMMBASE_APP_DIR/config/commbase.conf
@@ -66,10 +66,6 @@ server_skill() {
 
   # Store only the value of "current_request" without the key
   current_request=$(echo "$messages" | jq -r '.messages[] | select(.current_request != null) | .current_request')
-
-  tmux select-window -t 1 && tmux select-pane -t 1 && printf "\e[1;41mCOMMBASE:\e[1;m I don't understand: %s\n" "$current_request""."
-  #tmux select-window -t 1 && tmux select-pane -t 4 && gnome-terminal --command='ls' &
-  tmux select-window -t 1 && tmux select-pane -t 1
 
   exit 99
 }
