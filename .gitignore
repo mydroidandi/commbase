@@ -138,10 +138,8 @@ bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph/model/
 certificates/*
 !certificates/.gitkeep
 
-# Ignore the content of the directory src/broker/, except for the file
-# named src/broker/.gitkeep
-src/broker/*
-!src/broker/.gitkeep
+# Ignore the directory src/broker/
+src/broker/
 
 # Ignore Logs
 logs
