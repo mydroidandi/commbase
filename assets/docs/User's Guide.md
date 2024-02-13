@@ -671,10 +671,10 @@ The default version of the file **commbase.conf** contains the next values:
   - Example value:
     - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/client_http_websocket.py`
 
-- **COMMBASE_DATA_EXCHANGE_CLIENT_UPLOADER_FILE_PATH**:
+- **COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH**:
   - Description: File path for the client's uploader module.
   - Example value:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/uploader_http_websocket.py`
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/updater_http_websocket.py`
 
 - **CLIENT_POLLING_INTERVAL_IN_SECS**:
   - Description: Polling interval in seconds for the client.

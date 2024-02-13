@@ -231,7 +231,7 @@ route_option() {
             # Update the "control" value in the JSON file while keeping it in one line
             jq --arg new_value "$new_control_value" '.messages[0].control = $new_value' "$json_file" | jq -c '.' > "$json_file.tmp" && mv "$json_file.tmp" "$json_file"
             # Send the messages request through commbase-data-exchange client
-            "$PYTHON_ENV_VERSION" "$COMMBASE_DATA_EXCHANGE_CLIENT_UPLOADER_FILE_PATH"
+            "$PYTHON_ENV_VERSION" "$COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH"
             ;;
           *)
             cd "$COMMBASE_APP_DIR"/data || exit
