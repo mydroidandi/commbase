@@ -272,9 +272,6 @@ client_skill(){
       ;;
   esac
 
-  # Remove the temporary file
-  #rm $COMMBASE_APP_DIR/data/.skill_runner
-
   exit 99
 }
 
