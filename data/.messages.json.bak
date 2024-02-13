@@ -1,1 +1,0 @@
-{"messages": [{"control": ""},{"current_request": "tell me about yourself"},{"previous_request": "tell me about yourself"},{"current_response": "Here is information about myself."},{"runtime": "bash"},{"source_code_display": "new terminal"},{"source_code": "#!/usr/bin/env bash\n(echo \"My name is Commbase, I am a ...\")\n(firefox)"}]}

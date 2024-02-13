@@ -46,7 +46,7 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 # Directory to store client data
-CLIENT_DATA_DIR = 'client_data'
+CLIENT_DATA_DIR = os.path.join(os.environ.get("COMMBASE_APP_DIR", ""), "bundles", "built-in", "broker", "commbase-data-exchange", "server", "client_data")
 
 # Ensure the directory exists
 os.makedirs(CLIENT_DATA_DIR, exist_ok=True)
@@ -99,6 +99,39 @@ def get_saved_data():
         return jsonify(saved_data)
 
     except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+# API endpoint to update and save JSON
+@app.route('/api/update_json/<int:json_id>', methods=['PUT'])
+def update_json(json_id):
+    try:
+        json_data = request.get_json()
+
+        if not json_data:
+            return jsonify({"error": "Empty JSON payload"}), 400
+
+        filename = os.path.join(CLIENT_DATA_DIR, f"json_{json_id}.json")
+
+        if not os.path.exists(filename):
+            return jsonify({"error": f"JSON file with ID {json_id} not found"}), 404
+
+        with open(filename, 'w') as file:
+            json.dump(json_data, file)
+
+        # Calls src/_server_skill.sh
+        subprocess.run(
+            ["bash", os.environ["COMMBASE_APP_DIR"] + "/src/server_skill.sh"]
+        )
+
+        # Emit real-time update to connected clients
+        emit_saved_data()
+
+        return jsonify({"message": f"JSON data updated successfully for ID {json_id}", "filename": filename})
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
 

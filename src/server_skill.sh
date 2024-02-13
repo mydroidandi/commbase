@@ -32,7 +32,7 @@
 # server_skill.sh
 # Reads the new JSON data request stored in commbase-data-exchange/server/client_data,
 # searches for a Commbase skill or skillset that matches the request in the
-# directory, and calls the uploader in the server.
+# directory, and calls the updater in the server side.
 server_skill() {
   # The configuration files
   source $COMMBASE_APP_DIR/config/commbase.conf

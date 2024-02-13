@@ -31,15 +31,14 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # uploader_http_websocket.py
-# Sends a POST request with a JSON payload to a specified API endpoint and
-# handles the response.
+# Send a PUT request to update JSON data on a server
 
-import requests  # pip install requests
 import json
+import requests
+import subprocess
 from config import CONFIG_FILE_PATH
 from file_paths import get_messages_recording_file
 
-import subprocess
 
 def read_json_file(json_file_path):
     try:
@@ -57,9 +56,9 @@ def read_json_file(json_file_path):
         return None
 
 
-def send_post_request(api_url, json_data):
+def update_json(api_url, json_id, json_data):
     try:
-        response = requests.post(api_url, json=json_data)
+        response = requests.put(f"{api_url}/{json_id}", json=json_data)
         return response
     except requests.exceptions.RequestException as e:
         print(f"Request failed: {e}")
@@ -67,62 +66,57 @@ def send_post_request(api_url, json_data):
 
 
 def main():
-    # Define the API endpoint
-    api_url = 'http://127.0.0.1:5000/api/save_json'
+    # Define the API endpoint for update
+    api_url = 'http://127.0.0.1:5000/api/update_json'
 
     # Get the JSON file path
     json_file_path = get_messages_recording_file()
 
     # Read JSON data from file
-    json_data = read_json_file(json_file_path)
+    updated_json_data = read_json_file(json_file_path)
 
-    if json_data is not None:
-        # Send a POST request to the API endpoint with JSON payload
-        response = send_post_request(api_url, json_data)
+    # Specify the JSON ID for update (replace with the appropriate ID)
+    json_id = 1
 
-        # Check the response status
-        if response is not None:
-            session_name = 'Commbase-0'
-            window_number = '1'
-            pane_number = '2'
-            if response.status_code == 200:
-                # Print "JSON data saved successfully."
-                status = "JSON data saved successfully."
-                try:
-                    subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} -l "{status}" 2>/dev/null', check=True, shell=True)
-                except subprocess.CalledProcessError as e:
-                    print(f"Error executing subprocess command: {e}")
-                except Exception as e:
-                    print(f"Other error occurred: {e}")
-                # Print " Response: ..."
-                status = f" Response: {response.json()}"
-                try:
-                    subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} -l "{status}" 2>/dev/null', check=True, shell=True)
-                    # Add an additional tmux send-keys command to simulate the Enter key press.
-                    subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} "Enter" 2>/dev/null Enter', check=True, shell=True)
-                except subprocess.CalledProcessError as e:
-                    print(f"Error executing subprocess command: {e}")
-                except Exception as e:
-                    print(f"Other error occurred: {e}")
-            else:
-                # Print "Error: ..."
-                status = f"Error: {response.status_code}"
-                try:
-                    subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} -l "{status}" 2>/dev/null', check=True, shell=True)
-                except subprocess.CalledProcessError as e:
-                    print(f"Error executing subprocess command: {e}")
-                except Exception as e:
-                    print(f"Other error occurred: {e}")
-                # Print " Response: ..."
-                status = f" Response: {response.json()}"
-                try:
-                    subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} -l "{status}" 2>/dev/null', check=True, shell=True)
-                    # Add an additional tmux send-keys command to simulate the Enter key press.
-                    subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} "Enter" 2>/dev/null Enter', check=True, shell=True)
-                except subprocess.CalledProcessError as e:
-                    print(f"Error executing subprocess command: {e}")
-                except Exception as e:
-                    print(f"Other error occurred: {e}")
+    # Send a PUT request to the API endpoint with JSON payload and ID
+    response = update_json(api_url, json_id, updated_json_data)
+
+    # Handle the response
+    if response is not None:
+        session_name = 'Commbase-0'
+        window_number = '1'
+        pane_number = '2'
+        if response.status_code == 200:
+            # Print "JSON data saved successfully."
+            status = "JSON data updated successfully."
+            try:
+                subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} -l "{status}" 2>/dev/null', check=True, shell=True)
+                # Add an additional tmux send-keys command to simulate the Enter key press.
+                subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} "Enter" 2>/dev/null Enter', check=True, shell=True)
+            except subprocess.CalledProcessError as e:
+                print(f"Error executing subprocess command: {e}")
+            except Exception as e:
+                print(f"Other error occurred: {e}")
+        else:
+            # Print "Error: ..."
+            status = f"Error: {response.status_code}"
+            try:
+                subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} -l "{status}" 2>/dev/null', check=True, shell=True)
+            except subprocess.CalledProcessError as e:
+                print(f"Error executing subprocess command: {e}")
+            except Exception as e:
+                print(f"Other error occurred: {e}")
+            # Print " Response: ..."
+            status = f" Response: {response.json()}"
+            try:
+                subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} -l "{status}" 2>/dev/null', check=True, shell=True)
+                # Add an additional tmux send-keys command to simulate the Enter key press.
+                subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} "Enter" 2>/dev/null Enter', check=True, shell=True)
+            except subprocess.CalledProcessError as e:
+                print(f"Error executing subprocess command: {e}")
+            except Exception as e:
+                print(f"Other error occurred: {e}")
+
 
 if __name__ == "__main__":
     main()
