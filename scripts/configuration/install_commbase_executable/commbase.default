@@ -147,10 +147,6 @@ route_option() {
     # Imports
     source $COMMBASE_APP_DIR/config/commbase.conf
     source $COMMBASE_APP_DIR/src/app.sh
-    #source $COMMBASE_APP_DIR/src/client_skill.sh
-
-    # Data processing
-    #APP_PROCESS_FILE=$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/controller/controller
 
     # First tmux session
     SESSIONNAME="Commbase-0";
