@@ -52,7 +52,7 @@ This project is coded and organized like this:
 │   ├── fonts
 │   ├── icons
 │   └── images
-├── bundles  # Software bundle
+├── bundles  # External software bundle and external asset bundle
 │   ├── built-in
 │   │   └── broker
 │   │       ├── commbase-stt-whisper-p
@@ -79,23 +79,22 @@ This project is coded and organized like this:
 │   │       │               └── openai-whisper-model-base
 │   │       ├── PyAudio
 │   │       └── vu-meter
-│   ├── custom
-│   │   └── agents
-│   │       └── z
-│   └── default
+│   └── custom
 │       ├── agents
-│       │   ├── x-conversation-mode-ai
-│       │   └── y
+│       │   ├── x
+│       │   ├── y
+│       │   └── ...
 │       └── broker
 │           ├── audiobooks
 │           │   └── Robinson_Crusoe
-│           └── tensorflow
+│           ├── tensorflow
+│           └── ...
 ├── certificates  # Stores certificates and keys
 ├── config   # Stores the configuration files
 ├── data  # Stores the voice recognition model results and other data files
 ├── env  # Stores the environment file
 ├── history  # Stores the app commands history files
-├── log	 # Stores custom log files of specific skills
+├── log  # Stores custom log files of specific skills
 ├── screenshots  # Stores the image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
 │   ├── configuration
@@ -104,44 +103,27 @@ This project is coded and organized like this:
 │   ├── deployment
 │   └── utilities
 │       └── back-up
-└── src  # This directory contains user-generated source code
-    ├── agents
-    │   ├── x-conversation-mode-ai
-    │   │   └── includes
-    │   └── y
-    │       └── includes
-    └── broker
-        ├── discourses
-        │   ├── answers
-        │   ├── greetings
-        │   ├── instructions
-        │   ├── introductions
-        │   ├── jokes
-        │   ├── phrases
-        │   ├── questions
-        │   ├── quotations
-        │   ├── speeches
-        │   ├── statements
-        │   └── talks
-        ├── includes
-        │   ├── routines
-        │   ├── skills
-        │   │   ├── parsers
-        │   │   └── runners
-        │   └── skillsets
-        │       ├── parsers
-        │       └── runners
-        ├── skill_patterns
-        │   └── vosk-model-en-us-0.22-lgraph
-        └── skill_scripts
-            ├── arduino
-            ├── bash
-            ├── c
-            ├── java
-            ├── multi-lang
-            ├── nodejs
-            ├── python
-            └── ...
+├── src  # This directory contains user-generated source code
+│    ├── agents
+│    │   ├── x
+│    │   │   └── includes
+│    │   ├── y
+│    │   │   └── includes
+│    │   └── ---
+│    └── skills_db
+│        ├── arduino
+│        ├── bash
+│        │   └── f
+│        │       └── firefox
+│        ├── c
+│        ├── java
+│        ├── multi-lang
+│        ├── nodejs
+│        ├── python
+│        └── ...
+└── tests # Stores the Commbase and the user-generated source code tests
+    ├── commbase
+    └── src
 ```
 
 ## Contributing

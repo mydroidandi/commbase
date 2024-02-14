@@ -138,8 +138,10 @@ bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph/model/
 certificates/*
 !certificates/.gitkeep
 
-# Ignore the directory src/broker/
-src/broker/
+# Ignore the contents of the "skills_db" directory except for the file
+# named "open_the_web_browser.json".
+src/skills_db/*
+!src/skills_db/bash/f/firefox/open_the_web_browser.json
 
 # Ignore Logs
 logs
