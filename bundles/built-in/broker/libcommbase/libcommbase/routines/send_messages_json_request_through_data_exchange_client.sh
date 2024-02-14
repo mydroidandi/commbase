@@ -45,7 +45,8 @@ send_messages_json_request_through_data_exchange_client() {
   exit 99
 }
 
-# Call send_messages_json_request_through_data_exchange_client if the script is run directly (not sourced)
+# Call send_messages_json_request_through_data_exchange_client if the script is
+# run directly (not sourced)
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   (send_messages_json_request_through_data_exchange_client)
 fi
