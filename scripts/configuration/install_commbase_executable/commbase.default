@@ -116,7 +116,6 @@ Control:
     "[okay|ok] what mode are you in"     Confirm the current mode
     "[okay|ok] enter the normal mode"    Enter the normal mode
     "[okay|ok] enter the conversation mode" Enter the conversation mode
-    "[okay|ok] enter the expert mode"    Enter the expert mode
     "[okay|ok] enter the follow mode"    Enter the follow mode
 
 Skills and Skillsets:
@@ -228,11 +227,11 @@ route_option() {
             # Path to the JSON file
             json_file=".messages.json"
             # New value for "control"
-            new_control_value="CONTROL_STOP_PREVIOUS_COMMAND"
+            new_control_value="stop_previous_command"
             # Update the "control" value in the JSON file while keeping it in one line
             jq --arg new_value "$new_control_value" '.messages[0].control = $new_value' "$json_file" | jq -c '.' > "$json_file.tmp" && mv "$json_file.tmp" "$json_file"
             # Send the messages request through commbase-data-exchange client
-            "$PYTHON_ENV_VERSION" "$COMMBASE_DATA_EXCHANGE_CLIENT_UPLOADER_FILE_PATH"
+            "$PYTHON_ENV_VERSION" "$COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH"
             ;;
           *)
             cd "$COMMBASE_APP_DIR"/data || exit
