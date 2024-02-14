@@ -38,7 +38,7 @@
 # variable COMMBASE_STT_VOSK_P_PARSE_CONTROL_MESSAGES_ON set to "False".
 controller() {
 	# The app configuration file
-	source $COMMBASE_APP_DIR/config/app.conf
+	source $COMMBASE_APP_DIR/config/commbase.conf
 
 	# The function that reads the lines from the control message pattern files
 	source $COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/read_lines_from_file
@@ -196,4 +196,3 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
 fi
 
 exit 99
-

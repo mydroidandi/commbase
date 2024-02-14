@@ -1,11 +1,12 @@
-#!/usr/bin/env python
+#!usr//bin/env bash
 ################################################################################
-#                            commbase-data-exchange                            #
+#                                  libcommbase                                 #
 #                                                                              #
-# Server for exchanging data with clients over HTTP and WebSocket connections  #
+# A collection of libraries to centralize common functions that can be shared  #
+# across multiple conversational AI assistant projects                         #
 #                                                                              #
 # Change History                                                               #
-# 01/17/2024  Esteban Herrera Original code.                                   #
+# 01/26/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -13,7 +14,7 @@
 ################################################################################
 ################################################################################
 #                                                                              #
-#  Copyright (c) 2022-present Esteban Herrera C.                               #
+#  Copyright (c) 2023-present Esteban Herrera C.                               #
 #  stv.herrera@gmail.com                                                       #
 #                                                                              #
 #  This program is free software; you can redistribute it and/or modify        #
@@ -30,54 +31,48 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# uploader_http_websocket.py
-# Sends a POST request with a JSON payload to a specified API endpoint and
-# handles the response.
+# check_data_exchange_server_connection.sh
+# Uses a loop to check if the data exchange server is running before starting
+# the data exchange client.
+check_data_exchange_server_connection() {
 
-import requests  # pip install requests
-import json
+  # The configuration file
+  source $COMMBASE_APP_DIR/config/commbase.conf
 
-from config import CONFIG_FILE_PATH
-from file_paths import (
-    get_messages_recording_file
-)
+  # Data exchange server IP address and port
+  SERVER_HOST=$COMMBASE_DATA_EXCHANGE_SERVER_HOST_ADDRESS
+  SERVER_PORT=$COMMBASE_DATA_EXCHANGE_SERVER_PORT
 
-# Define the API endpoint
-api_url = 'http://127.0.0.1:5000/api/save_json'
+  # Function to check if the server is running
+  check_server() {
+    nc -zv "$SERVER_HOST" "$SERVER_PORT"
+  }
 
-json_file_path = get_messages_recording_file()
+  # Wait for the server to start (timeout after a certain duration)
+  timeout_duration=60  # Set the timeout duration in seconds
+  start_time=$(date +%s)
 
+  while true; do
+    if check_server; then
+      echo "Server is running. Starting the client..."
+      # Add your client startup command here
+      break
+    fi
 
-# Reads the JSON payload File
-def read_json_file(json_file_path):
-    try:
-        with open(json_file_path, 'r') as json_file:
-            data = json.load(json_file)
-            return data
-    except json.JSONDecodeError as e:
-        print(f"Error decoding JSON: {e}")
-        return None
-    except FileNotFoundError:
-        print(f"File not found: {json_file_path}")
-        return None
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
+    current_time=$(date +%s)
+    elapsed_time=$((current_time - start_time))
 
+    if [ "$elapsed_time" -ge "$timeout_duration" ]; then
+      echo "Timeout: Unable to connect to the server within $timeout_duration seconds."
+      exit 1
+    fi
 
-json_data = read_json_file(json_file_path)
+    echo "Waiting for the server to start..."
+    sleep 1  # Adjust the sleep duration as needed
+  done
+}
 
-try:
-    # Send a POST request to the API endpoint with JSON payload
-    response = requests.post(api_url, json=json_data)
-
-    # Check the response status
-    if response.status_code == 200:
-        print("JSON data saved successfully.")
-        print("Response:", response.json())
-    else:
-        print(f"Error: {response.status_code}")
-        print("Response:", response.json())
-
-except requests.exceptions.RequestException as e:
-    print(f"Request failed: {e}")
+# Call check_data_exchange_server_connection if the script is run directly (not sourced)
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  (check_data_exchange_server_connection)
+fi

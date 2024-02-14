@@ -41,13 +41,9 @@
   - [Undefined Controls](#undefined-controls)
   - [Hidden Controls and Control Chaining](#hidden-controls-and-control-chaining)
 - [11 Terminal Voice Skills](#11-terminal-voice-skills)
-- [12 Create new voice commands basics](#12-create-new-voice-commands-basics)
+- [12 Create new skills basics](#12-create-new-skills-basics)
 	- [Verbosity Levels](#verbosity-levels)
-- [13 Hints on saying and creating voice commands](#13-hints-on-saying-and-creating-voice-commands)
-- [14 Commands setup](#14-commands-setup)
-	- [The Commbase app directory](#the-commbase-app-directory)
-	- [The Commbase processing file](#the-commbase-processing-file)
-- [15 Training Commbase by Assembling Skillsets](#15-training-commbase-by-assembling-skillsets)
+- [13 Training Commbase by Assembling Skillsets](#13-training-commbase-by-assembling-skillsets)
 
 # 1 Introduction
 
@@ -650,11 +646,65 @@ The default version of the file **commbase.conf** contains the next values:
     - `commbase_env` (Default): The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment. For more details, check out the file **INSTALL**.
     - `my_env_name`: An alternative name for creating the Commbase virtual environment.
 
-- **IP_ADDRESS_UPDATE_FREQUENCY_IN_SECS**:
-  - Description: This value represents the interval in milliseconds at which the machine's IP address should be updated in the file **.env** in **env/**.
-  - Possible values: We recommend using a value between 300 and 600 for security reasons.
+- **COMMBASE_DATA_EXCHANGE_SERVER_HOST_ADDRESS**:
+  - Description: The host address for the Commbase Data Exchange Server.
   - Example value:
-    - `600` (Default): This value will make the ip address update every 10 minutes.
+    - `127.0.0.1` (Default): The server is hosted on the local machine.
+
+- **COMMBASE_DATA_EXCHANGE_SERVER_PORT**:
+  - Description: The port on which the Commbase Data Exchange Server operates.
+  - Example value:
+    - `5000` (Default): The server communicates on port 5000.
+
+- **COMMBASE_DATA_EXCHANGE_SERVER_CONNECTION_FILE_PATH**:
+  - Description: File path for the server's connection module.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/server/server_http_websocket.py`
+
+- **COMMBASE_DATA_EXCHANGE_SERVER_UPLOADER_FILE_PATH**:
+  - Description: File path for the server's uploader module.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/server/uploader_http_websocket.py`
+
+- **COMMBASE_DATA_EXCHANGE_CLIENT_CONNECTION_FILE_PATH**:
+  - Description: File path for the client's connection module.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/client_http_websocket.py`
+
+- **COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH**:
+  - Description: File path for the client's uploader module.
+  - Example value:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/updater_http_websocket.py`
+
+- **CLIENT_POLLING_INTERVAL_IN_SECS**:
+  - Description: Polling interval in seconds for the client.
+  - Example value:
+    - `5` (Default): The client polls every 5 seconds.
+
+- **CERTS_AND_KEYS_SERVER_CRT_FILE**:
+  - Description: File path for the server's certificate file.
+  - Example value:
+    - `/certificates/server.crt`
+
+- **CERTS_AND_KEYS_SERVER_KEY_FILE**:
+  - Description: File path for the server's key file.
+  - Example value:
+    - `/certificates/server.key`
+
+- **CERTS_AND_KEYS_CERT_PEM_FILE**:
+  - Description: File path for the certificate PEM file.
+  - Example value:
+    - `/certificates/cert.pem`
+
+- **CERTS_AND_KEYS_KEY_PEM_FILE**:
+  - Description: File path for the key PEM file.
+  - Example value:
+    - `/certificates/key.pem`
+
+- **CERTS_AND_KEYS_CA_PEM_FILE**:
+  - Description: File path for the CA PEM file.
+  - Example value:
+    - `/certificates/ca.pem`
 
 - **MY_APP_AUDIO_CAPTURE_DEVICE_NAME**:
   - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input.
@@ -1812,7 +1862,6 @@ Example of the terminal/voice command for the interactive sequence:
 commbase start|stop|teleport
 commbase start server
 commbase start client
-commbase audiomixer
 commbase {TYPOS}
 ```
 
@@ -1837,22 +1886,28 @@ capture_mute.sh  capture_unmute.sh  toggle_active_capture_device.sh  toggle_capt
 
 `{WRONG VOICE COMMANDS}`.
 
-# 12 Create new voice commands basics
+# 12 Create new skills basics
 
-## Verbosity Levels
+## Verbosity Levels Proposal
 
-Commands beginning with "Show me" (Shows a result)
+### Show VS Tell and so on
 
-Commands beginning with "Tell me" (Tells us something, not too large)
+Commands beginning with "Show me" can be used to show a result.
 
-Commands beginning with "Tell me more (about that)"  (A long explanation about something)
+Commands beginning with "Tell me" can be used to hear the assistant telling us something not too long as a response.
 
-Commands can be made with alternatives to WH question, i.e: 
-		IN "show me the time" (Shows a clock app on screen)
-	 	IN "tell me the time"  (Just tells us the time using the voice)
-		IN "what time is it"   (Shows a clock and tells the time using the voice)
+Commands beginning with "Tell me more (about that)"  can be used to hear the assistant telling us a longer explanation about something.
 
-# 13 Hints on saying and creating voice commands
+Commands can be made with alternatives to WH question, i.e:
+
+> "show me the time" (Shows a clock app on screen)
+
+> "tell me the time"  (Just tells us the time using the voice)
+
+> "what time is it"   (Shows a clock and tells the time using the voice)
+
+
+## Hints on saying and creating voice commands
 
 Different output in well said command repetitions:
 Say a different phrase, or example "clear" before repeat a failed/non accurate phrase, so Vosk
@@ -1876,7 +1931,12 @@ get kind of confused and tend to display articles such as "the" and other words 
 phrase the most similar to two people talking to one another like in a movie. For that reason, Vosk
 is used as a part of audio file transcription software in the Linux world.
 
-# 14 Commands setup
+## How to structure a command
+
+This [`document`](./Request-Response JSON Schema Documentation.md) contains the information on how to structure a command.
+
+
+## Bake a command
 
 Run the test script test_microphone.py, as described in the section "4. Testing the Vosk model" of
 the file INSTALL, to test your new command accuracy until you feel comfortable with the command
@@ -2103,7 +2163,7 @@ commbase-process-vosk-suv-vehicle.sh
 commbase-process-vosk-spacecraft.sh
 commbase-process-vosk-virtual-mentor.sh
 
-# 15 Training Commbase by Assembling Skillsets
+# 13 Training Commbase by Assembling Skillsets
 
 Commbase can be trained in a variety of manners. For example, you can train the AI Model, which would directly affect the existent commands precision, and would require to verify every command afterwards. Furthermore, you can train any preffered/specialized AI (added kind of as a plugin), to be used by Commbase in talkative mode. Also, we can train Commbase scripts that use sensors such as face recognition, voice recognition, etc., or move servos, and so on, and so forth, depending on the device where Commbase runs on.
 

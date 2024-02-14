@@ -2,7 +2,7 @@
 ################################################################################
 #                                   Commbase                                   #
 #                                                                              #
-# Conversational AI Assistant and AI Hub for Computers and Droids              #
+# AI Powered Conversational Assistant for Computers and Droids                 #
 #                                                                              #
 # Change History                                                               #
 # 04/29/2023  Esteban Herrera Original code.                                   #
@@ -31,10 +31,10 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # commbase
-# Prints command license, help and version.
-# Starts, teleports, and stops Commbase terminal versions of the commbase voice
-# commands for their processing.
-# 
+# It is part of a larger application, likely designed for voice command
+# processing and interaction with the Commbase system, involving the starting
+# and stopping of servers, clients, and handling various commands and options.
+
 # To start the application:
 # shell> commbase start
 # Or run it like this:
@@ -45,13 +45,8 @@
 # Or replace single quotes by double quotes in the parameter.
 #
 # The command options start, teleport, stop, *), and else don't output logs in
-# the pane 1 of the tmux session. The other output in their respective function
-# , otherwise, in their correspondent scripts.
-
-# TODO: Add new commands:
-#commbase start server
-#commbase start client
-#commbase audiomixer
+# the pane 1 of the tmux session. The other options output in their respective
+# function, otherwise, in their correspondent scripts.
 
 # Prints license
 display_license() {
@@ -85,55 +80,57 @@ Commbase (v0.0.1)
 Print:
   Syntax: commbase [-g|h|V]
   options:
-  	g, --license		Print the GPL license notification
-  	h, --help		Print this Help
-  	V, v, --version		Print software version and exit
+    g, --license       Print the GPL license notification
+    h, --help          Print this Help
+    V, v, --version    Print software version and exit
 
 Start/Stop:
   Usage: commbase [options]
   options:
-  	start		Start Commbase
-  	teleport	Teleport Commbase
-  	stop		Stop Commbase
+    start              Start Commbase
+    teleport           Teleport Commbase
+    server             Start Commbase server on a server host
+    client             Launch Commbase client on a client host
+    stop               Stop Commbase
 
 Control:
   Usage: commbase [options]
   options:
 
-  	"[okay|ok] stop"			Stop the previous command
-  	"[okay|ok] run it again"		Re-run the previous command 
+    "[okay|ok] stop"                     Stop the previous command
+    "[okay|ok] run it again"             Re-run the previous command
 
-  	"[okay|ok] repeat"			Reproduce the previous discourse by speaking it
-  	"[okay|ok] remind me in [five|ten|twenty|thirty] minutes"
-  						Start a question reminder countdown timer
-  	"[okay|ok] what is the next task"	Remind of a prior question put on hold in a queue
+    "[okay|ok] repeat"                   Reproduce the previous discourse by speaking it
+    "[okay|ok] remind me in [five|ten|twenty|thirty] minutes"
+                                         Start a question reminder countdown timer
+    "[okay|ok] what is the next task"    Remind of a prior question put on hold in a queue
 
-  	"[okay|ok] accept"			Accept a Y/N question
-  	"[okay|ok] deny"			Deny/Cancel a Y/N question
-  	"[okay|ok] confirm with the code <four number code>"
-  						Confirm a confirmation request
+    "[okay|ok] accept"                   Accept a Y/N question
+    "[okay|ok] deny"                     Deny/Cancel a Y/N question
+    "[okay|ok] confirm with the code <four number code>"
+                                         Confirm a confirmation request
 
-  	"[okay|ok] select the option number [one|two|three|four]"
-  						Select a multi-choice question option
+    "[okay|ok] select the option number [one|two|three|four]"
+                                         Select a multi-choice question option
 
-  	"[okay|ok] what mode are you in"	Confirm the current mode
-  	"[okay|ok] enter the normal mode"	Enter the normal mode
-  	"[okay|ok] enter the conversation mode"	Enter the conversation mode
-  	"[okay|ok] enter the expert mode"	Enter the expert mode
-  	"[okay|ok] enter the follow mode"	Enter the follow mode
+    "[okay|ok] what mode are you in"     Confirm the current mode
+    "[okay|ok] enter the normal mode"    Enter the normal mode
+    "[okay|ok] enter the conversation mode" Enter the conversation mode
+    "[okay|ok] enter the follow mode"    Enter the follow mode
 
 Skills and Skillsets:
   Usage: commbase [options]
   options:
-  	Checkout the User's Guide for a complete list of options
+    Checkout the User's Guide for a complete list of options
   Examples:
-  	"tell me about yourself"			Run Commbase introduction
-  	"start the math test number one zero one"	Run the mentioned multi-choice test interactively
-  	"let me know when the internet is back"		Receive the 'event' alert and notification
-  	"set a timer of <minutes> minutes"		Start a countdown timer
-  		Examples:
-  			"set a timer of twenty five minutes"
-			set a timer of one hundred one minutes
+    "tell me about yourself"             Run Commbase introduction
+    "start the math test number one zero one"
+                                         Run the mentioned multi-choice test interactively
+    "let me know when the internet is back" Receive the 'event' alert and notification
+    "set a timer of <minutes> minutes"   Start a countdown timer
+        Examples:
+            "set a timer of twenty five minutes"
+            set a timer of one hundred one minutes
 
 **Double quotes are optional
 EOT
@@ -141,85 +138,125 @@ EOT
 
 # Prints version
 display_version() {
-	echo "Commbase (v0.0.1)";
+    echo "Commbase (v0.0.1)";
 }
 
 # Routes options
 route_option() {
-	# Imports
-	source $COMMBASE_APP_DIR/src/app;
+    # Imports
+    source $COMMBASE_APP_DIR/config/commbase.conf
+    source $COMMBASE_APP_DIR/src/app.sh
 
-	# Data processing
-	APP_PROCESS_FILE="$COMMBASE_APP_DIR/src/skill";
+    # First tmux session
+    SESSIONNAME="Commbase-0";
 
-	# First tmux session
-	SESSIONNAME="Commbase-0";
+    terminal_voice_command="$1 ""$2";
 
-	terminal_voice_command="$1 ""$2";
+    case "$1" in
 
-	case "$1" in
+        'start' | 'teleport' | 'client')
+            if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
+                echo "Session '$SESSIONNAME' exists.";
+                tmux attach-session -t Commbase-0;
+            else
+                echo "Starting application";
+                app;
+            fi
+            ;;
+        'server')
+            if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
+                echo "Session '$SESSIONNAME' exists.";
+                tmux attach-session -t Commbase-0;
+            else
+                echo "Starting application";
+                # Give .3 seconds to tmux to draw its content before continuing
+                time=0.3;
+                # Kill any existent tmux Commbase session in order to avoid duplicates
+                tmux kill-session -t Commbase-0;
+                # Create a new session, detach from it to continue, and sleep
+                tmux new-session -d -t "Commbase" && sleep $time;
+                # Activate the conda environment if it exists
+                tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
+                # Clean up the command line
+                tmux send-keys " clear" C-m;
+                # Run commbase-data-exchange server
+                tmux select-pane -t 1 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_DATA_EXCHANGE_SERVER_CONNECTION_FILE_PATH" C-m && sleep $time;
+                # Enter the Commbase session
+                tmux attach-session -t Commbase-0;
+            fi
+            ;;
+        '-g' | '--license')
+            display_license | more
+            exit 99
+            ;;
+        '-h' | '--help')
+            display_help | less
+            exit 99
+            ;;
+        '-V' | '-v' | '--version')
+            display_version
+            exit 99
+            ;;
+    esac
 
-		'start' | 'teleport')
-			if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-				echo "Session '$SESSIONNAME' exists.";
-				tmux attach-session -t Commbase-0;
-			else
-				echo "Starting application";
-				app;
-			fi
-			;;
-	  '-g' | '--license')
-	    display_license | more
-			exit 99
-			;;
-	  '-h' | '--help')
-	    display_help | less
-			exit 99
-			;;
-	  '-V' | '-v' | '--version')
-	    display_version
-			exit 99
-			;;
-	esac
+    # Make sure that the tmux session is running
+    if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
+        echo "Session '$SESSIONNAME' exists." > /dev/null;
 
-	# Make sure that the tmux session is running
-	if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-		echo "Session '$SESSIONNAME' exists." > /dev/null;
+        case "$1" in
 
-		case "$1" in
+          'stop')
+            echo "Stopping application"
+            sleep 1
+            # In this block, "pkill -f" the processes of the scripts that do not
+            # respond to the interrupt signal or appear to duplicate once the
+            # program stops and exits.
+            pkill -f $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-whiper-p/commbase_stt_whisper_p.py
+            #pkill -f python  # This will kill all the running 'python' processes
+            conda deactivate  # This is redundant
+            tmux kill-session -t Commbase-0
+            pkill -f commbase
+            exit 99
+            ;;
+        esac
 
-		  'stop')
-		    echo "Stopping application" 
-		    sleep 1
-		    # In this block, "pkill -f" the processes of the scripts that do not
-		    # respond to the interrupt signal or appear to duplicate once the
-		    # program stops and exits.
-		    pkill -f $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py
-		    #pkill -f python  # This will kill all the running 'python' processes
-		    conda deactivate  # This is redundant
-		    tmux kill-session -t Commbase-0
-		    pkill -f commbase
-				exit 99
-				;;
-		esac
+        case "$terminal_voice_command" in
 
-		case "$terminal_voice_command" in
+          'okay stop' | 'ok stop')
+            cd "$COMMBASE_APP_DIR"/data || exit
+            # Path to the JSON file
+            json_file=".messages.json"
+            # New value for "control"
+            new_control_value="stop_previous_command"
+            # Update the "control" value in the JSON file while keeping it in one line
+            jq --arg new_value "$new_control_value" '.messages[0].control = $new_value' "$json_file" | jq -c '.' > "$json_file.tmp" && mv "$json_file.tmp" "$json_file"
+            # Send the messages request through commbase-data-exchange client
+            "$PYTHON_ENV_VERSION" "$COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH"
+            ;;
+          *)
+            cd "$COMMBASE_APP_DIR"/data || exit
+            # Your input parameters
+            param1="$1"
+            param2="$2"
+            param3="$3"
+            param4="$4"
+            param5="$5"
+            param6="$6"
+            param7="$7"
+            param8="$8"
+            param9="$9"
+            # Set the file path
+            json_file=".messages.json"
+            # Create a JSON object with the desired structure
+            json_content='{"messages": [{"control": ""}, {"current_request": "'"$param1 $param2 $param3 $param4 $param5 $param6 $param7 $param8 $param9"'"}, {"previous_request": "'"$param1 $param2 $param3 $param4 $param5 $param6 $param7 $param8 $param9"'"}, {"current_response": ""}, {"runtime": ""}, {"source_code_display": ""}, {"source_code": ""}]}'
+            # Write the JSON object to the file
+            echo "$json_content" > "$json_file"
+            ;;
+        esac
 
-			'okay stop' | 'ok stop')
-		    cd $COMMBASE_APP_DIR/data
-		    echo "okay stop" | tee .result_message.json > /dev/null
-		    bash $APP_PROCESS_FILE &> /dev/null
-				;;
-		  *)
-		    cd $COMMBASE_APP_DIR/data
-		    echo "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" | tee .result_message.json .previous_result_message.json > /dev/null
-		    bash $APP_PROCESS_FILE &> /dev/null
-				;;
-		esac
-
-	else
-		echo "Session '$SESSIONNAME' does not exists. Usage: /usr/bin/commbase [start|stop]";
-	fi
+    else
+        echo "Session '$SESSIONNAME' does not exists. Usage: /usr/bin/commbase [start|stop]";
+    fi
 }
 
 main() {
@@ -229,4 +266,3 @@ route_option $1 $2 $3 $4 $5 $6 $7 $8 $9;
 main $1 $2 $3 $4 $5 $6 $7 $8 $9;
 
 exit 99
-

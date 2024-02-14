@@ -389,22 +389,21 @@ ca_cert_path = 'certificates/ca.pem'
 
 ## Set up the commbase-data-exchange-variables in the Commbase config file commbase.conf:
 
-TODO:
+The commbase-data-exchange variables in **config/commbase.conf** are:
 
+```plaintext
+COMMBASE_DATA_EXCHANGE_SERVER_HOST_ADDRESS="127.0.0.1"
+COMMBASE_DATA_EXCHANGE_SERVER_PORT="5000"
+COMMBASE_DATA_EXCHANGE_SERVER_CONNECTION_FILE_PATH="$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/server/server_http_websocket.py"
+COMMBASE_DATA_EXCHANGE_SERVER_UPLOADER_FILE_PATH="$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/server/uploader_http_websocket.py"
+COMMBASE_DATA_EXCHANGE_CLIENT_CONNECTION_FILE_PATH="$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/client_http_websocket.py"
+COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH="$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/updater_http_websocket.py"
+CLIENT_POLLING_INTERVAL_IN_SECS="5"
+CERTS_AND_KEYS_SERVER_CRT_FILE="/certificates/server.crt"
+CERTS_AND_KEYS_SERVER_KEY_FILE="/certificates/server.key"
+CERTS_AND_KEYS_CERT_PEM_FILE="/certificates/cert.pem"
+CERTS_AND_KEYS_KEY_PEM_FILE="/certificates/key.pem"
+CERTS_AND_KEYS_CA_PEM_FILE="/certificates/ca.pem"
+```
 
-Test Commands using the new commands:
-
-commbase start
-commbase start server
-commbase start client
-
-UI upgrade
-
-INSTALLATIONS for INSTALL and commbase_env:
-
-conda install flask flask-socketio requests flask-cors
-
-pip install simple-websocket schedule
-
-sudo apt-get install openssl
-
+They are all documented in the section **8 Configuration Variables** in this [`document`](./User%27s%20Guide.md)
