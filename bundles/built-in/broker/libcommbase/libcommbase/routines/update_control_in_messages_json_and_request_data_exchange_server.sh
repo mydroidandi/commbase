@@ -31,12 +31,14 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# update_control_stop_previous_command_in_messages_json.sh
-# Updates the control stop_previous_command in data/.messages.json and sends the
-# messages request through commbase-data-exchange client.
-update_control_stop_previous_command_in_messages_json() {
+# update_control_in_messages_json_and_request_data_exchange_server.sh
+# Updates any control in data/.messages.json and sends the messages request
+# through commbase-data-exchange client.
+# Usage:
+# bash update_control_in_messages_json_and_request_data_exchange_server.sh <new_control_value>
+update_control_in_messages_json_and_request_data_exchange_server() {
   # Configuration file
-  source $COMMBASE_APP_DIR/config/commbase.conf
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
 
   cd "$COMMBASE_APP_DIR"/data || exit
 
@@ -44,20 +46,22 @@ update_control_stop_previous_command_in_messages_json() {
   json_file=".messages.json"
 
   # New value for "control"
-  new_control_value="stop_previous_command"
+  new_control_value="$1"
 
   # Update the "control" value in the JSON file while keeping it in one line
   jq --arg new_value "$new_control_value" '.messages[0].control = $new_value' "$json_file" | jq -c '.' > "$json_file.tmp" && mv "$json_file.tmp" "$json_file"
 
   # Send the messages request through commbase-data-exchange client
-"$PYTHON_ENV_VERSION" "$COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH"
+  "$PYTHON_ENV_VERSION" "$COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH"
 
   exit 99
 }
 
-# Call update_control_stop_previous_command_in_messages_json if the script is run directly (not sourced)
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  (update_control_stop_previous_command_in_messages_json)
+# Check if a new_control_value is provided as a command-line argument
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <new_control_value>"
+  exit 1
 fi
 
-exit 99
+# Call the function with the provided new_control_value
+(update_control_in_messages_json_and_request_data_exchange_server "$1")
