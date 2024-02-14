@@ -31,42 +31,23 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# update_control_in_messages_json_and_request_data_exchange_server.sh
-# Updates any control in data/.messages.json and calls
-# send_messages_json_request_through_data_exchange_client.sh.
-# Usage:
-# bash update_control_in_messages_json_and_request_data_exchange_server.sh <new_control_value>
-update_control_in_messages_json_and_request_data_exchange_server() {
+# send_messages_json_request_through_data_exchange_client.sh
+# Sends the messages request through commbase-data-exchange client.
+send_messages_json_request_through_data_exchange_client() {
   # Configuration file
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
-  # Import from libcommbase
-  send_messages_json_request=$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/send_messages_json_request_through_data_exchange_client.sh
-
   cd "$COMMBASE_APP_DIR"/data || exit
 
-  # Path to the JSON file
-  json_file=".messages.json"
-
-  # New value for "control"
-  new_control_value="$1"
-
-  # Update the "control" value in the JSON file while keeping it in one line
-  jq --arg new_value "$new_control_value" '.messages[0].control = $new_value' "$json_file" | jq -c '.' > "$json_file.tmp" && mv "$json_file.tmp" "$json_file"
-
   # Send the messages request through commbase-data-exchange client
-  bash "$send_messages_json_request"
+  "$PYTHON_ENV_VERSION" "$COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH"
 
   exit 99
 }
 
-# Check if a new_control_value is provided as a command-line argument
-if [ "$#" -ne 1 ]; then
-  echo "Usage: $0 <new_control_value>"
-  exit 1
+# Call send_messages_json_request_through_data_exchange_client if the script is run directly (not sourced)
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  (send_messages_json_request_through_data_exchange_client)
 fi
-
-# Call the function with the provided new_control_value
-(update_control_in_messages_json_and_request_data_exchange_server "$1")
 
 exit 99
