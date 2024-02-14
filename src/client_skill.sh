@@ -35,7 +35,7 @@
 # runtime extracted from JSON data. It checks for the presence of required tools
 # (jq) and runtimes (Bash, Node.js, Python, etc.) and informs the user if any
 # are missing.
-client_skill(){
+client_skill() {
   # Configuration files
   source $COMMBASE_APP_DIR/config/commbase.conf
   source $COMMBASE_APP_DIR/config/app.conf
