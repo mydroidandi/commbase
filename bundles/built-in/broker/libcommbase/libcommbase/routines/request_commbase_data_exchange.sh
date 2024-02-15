@@ -31,9 +31,9 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# send_messages_json_request_through_data_exchange_client.sh
+# request_commbase_data_exchange.sh
 # Sends the messages request through commbase-data-exchange client.
-send_messages_json_request_through_data_exchange_client() {
+request_commbase_data_exchange() {
   # Configuration file
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
@@ -45,10 +45,10 @@ send_messages_json_request_through_data_exchange_client() {
   exit 99
 }
 
-# Call send_messages_json_request_through_data_exchange_client if the script is
+# Call request_commbase_data_exchange if the script is
 # run directly (not sourced)
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  (send_messages_json_request_through_data_exchange_client)
+  (request_commbase_data_exchange)
 fi
 
 exit 99
