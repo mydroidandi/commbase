@@ -87,7 +87,7 @@ This project is coded and organized like this:
 │       └── broker
 │           ├── audiobooks
 │           │   └── Robinson_Crusoe
-│           ├── tensorflow
+│           ├── tensorfx
 │           └── ...
 ├── certificates  # Stores certificates and keys
 ├── config   # Stores the configuration files
@@ -104,23 +104,17 @@ This project is coded and organized like this:
 │   └── utilities
 │       └── back-up
 ├── src  # This directory contains user-generated source code
-│    ├── agents
-│    │   ├── x
-│    │   │   └── includes
-│    │   ├── y
-│    │   │   └── includes
-│    │   └── ---
-│    └── skills_db
-│        ├── arduino
-│        ├── bash
-│        │   └── f
-│        │       └── firefox
-│        ├── c
-│        ├── java
-│        ├── multi-lang
-│        ├── nodejs
-│        ├── python
-│        └── ...
+│   └── skills_db
+│       ├── arduino
+│       ├── bash
+│       │   └── f
+│       │       └── firefox
+│       ├── c
+│       ├── java
+│       ├── multi-lang
+│       ├── nodejs
+│       ├── python
+│       └── ...
 └── tests # Stores the Commbase and the user-generated source code tests
     ├── commbase
     └── src
