@@ -621,6 +621,10 @@ Most of these variables are marked as optional and can be excluded if they are n
   - Example value:
     - `server_host_001_password`: The password for accessing the server host number 001. We use numbers to match the tmux Commbase session window 4 "Server 1" but they are not necessarily the same servers.
 
+- **GOOGLE_API_KEY**:
+  - Example value:
+    - `your_google_api_key`: The API key for accessing Google AI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your Google AI account and the associated usage of the API services.
+
 - **OPENAI_API_KEY**:
   - Example value:
     - `your_openai_api_key`: The API key for accessing OpenAI services. It's important to keep your API key secure and not share it with unauthorized individuals, as it provides access to your OpenAI account and the associated usage of the API services.
