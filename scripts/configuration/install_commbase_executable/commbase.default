@@ -97,40 +97,40 @@ Control:
   Usage: commbase [options]
   options:
 
-    "[okay|ok] stop"                     Stop the previous command
-    "[okay|ok] run it again"             Re-run the previous command
+    "[Okay|Ok] stop."                     Stop the previous command
+    "[Okay|Ok] run it again."             Re-run the previous command
 
-    "[okay|ok] repeat"                   Reproduce the previous discourse by speaking it
-    "[okay|ok] remind me in [five|ten|twenty|thirty] minutes"
+    "[Okay|Ok] repeat."                   Reproduce the previous discourse by speaking it
+    "[Okay|Ok] remind me in [five|ten|twenty|thirty] minutes."
                                          Start a question reminder countdown timer
-    "[okay|ok] what is the next task"    Remind of a prior question put on hold in a queue
+    "[Okay|Ok] what is the next task."    Remind of a prior question put on hold in a queue
 
-    "[okay|ok] accept"                   Accept a Y/N question
-    "[okay|ok] deny"                     Deny/Cancel a Y/N question
-    "[okay|ok] confirm with the code <four number code>"
+    "[Okay|Ok] accept."                   Accept a Y/N question
+    "[Okay|Ok] deny."                     Deny/Cancel a Y/N question
+    "[Okay|Ok] confirm with the code <four number code>."
                                          Confirm a confirmation request
 
-    "[okay|ok] select the option number [one|two|three|four]"
+    "[Okay|Ok] select the option number [one|two|three|four]."
                                          Select a multi-choice question option
 
-    "[okay|ok] what mode are you in"     Confirm the current mode
-    "[okay|ok] enter the normal mode"    Enter the normal mode
-    "[okay|ok] enter the conversation mode" Enter the conversation mode
-    "[okay|ok] enter the follow mode"    Enter the follow mode
+    "[Okay|Ok] what mode are you in."     Confirm the current mode
+    "[Okay|Ok] enter the normal mode."    Enter the normal mode
+    "[Okay|Ok] enter the conversation mode." Enter the conversation mode
+    "[Okay|Ok] enter the follow mode."    Enter the follow mode
 
 Skills and Skillsets:
   Usage: commbase [options]
   options:
     Checkout the User's Guide for a complete list of options
   Examples:
-    "tell me about yourself"             Run Commbase introduction
-    "start the math test number one zero one"
+    "Tell me about yourself."             Run Commbase introduction
+    "Start the math test number one zero one."
                                          Run the mentioned multi-choice test interactively
-    "let me know when the internet is back" Receive the 'event' alert and notification
-    "set a timer of <minutes> minutes"   Start a countdown timer
+    "Let me know when the internet is back." Receive the 'event' alert and notification
+    "Set a timer of <minutes> minutes."   Start a countdown timer
         Examples:
-            "set a timer of twenty five minutes"
-            set a timer of one hundred one minutes
+            "Set a timer of twenty five minutes."
+            Set a timer of one hundred one minutes.
 
 **Double quotes are optional
 EOT
@@ -146,6 +146,10 @@ route_option() {
     # Imports
     source $COMMBASE_APP_DIR/config/commbase.conf
     source $COMMBASE_APP_DIR/src/app.sh
+
+    # Imports from libcommbase
+    update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
+    controller=$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/controller/controller.sh
 
     # First tmux session
     SESSIONNAME="Commbase-0";
@@ -211,7 +215,7 @@ route_option() {
             # In this block, "pkill -f" the processes of the scripts that do not
             # respond to the interrupt signal or appear to duplicate once the
             # program stops and exits.
-            pkill -f $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-whiper-p/commbase_stt_whisper_p.py
+            pkill -f $STT_ENGINE_PATH
             #pkill -f python  # This will kill all the running 'python' processes
             conda deactivate  # This is redundant
             tmux kill-session -t Commbase-0
@@ -222,16 +226,12 @@ route_option() {
 
         case "$terminal_voice_command" in
 
-          'okay stop' | 'ok stop')
+          'Okay stop.' | 'Ok stop.')
             cd "$COMMBASE_APP_DIR"/data || exit
             # Path to the JSON file
             json_file=".messages.json"
-            # New value for "control"
-            new_control_value="stop_previous_command"
-            # Update the "control" value in the JSON file while keeping it in one line
-            jq --arg new_value "$new_control_value" '.messages[0].control = $new_value' "$json_file" | jq -c '.' > "$json_file.tmp" && mv "$json_file.tmp" "$json_file"
-            # Send the messages request through commbase-data-exchange client
-            "$PYTHON_ENV_VERSION" "$COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH"
+            # Update the "control" value in the JSON file
+            (bash "$update_control_in_messages_json" stop_previous_command)
             ;;
           *)
             cd "$COMMBASE_APP_DIR"/data || exit
@@ -249,8 +249,13 @@ route_option() {
             json_file=".messages.json"
             # Create a JSON object with the desired structure
             json_content='{"messages": [{"control": ""}, {"current_request": "'"$param1 $param2 $param3 $param4 $param5 $param6 $param7 $param8 $param9"'"}, {"previous_request": "'"$param1 $param2 $param3 $param4 $param5 $param6 $param7 $param8 $param9"'"}, {"current_response": ""}, {"runtime": ""}, {"source_code_display": ""}, {"source_code": ""}]}'
+            cleaned_current_request=$(echo "$json_content" | jq -c '.messages[] |= if has("current_request") then .current_request |= sub("^ +| +$";"") else . end')
+            cleaned_previous_request=$(echo "$cleaned_current_request" | jq -c '.messages[] |= if has("previous_request") then .previous_request |= sub("^ +| +$";"") else . end')
+            cleaned_json=$cleaned_previous_request
             # Write the JSON object to the file
-            echo "$json_content" > "$json_file"
+            echo "$cleaned_json" > "$json_file"
+            # Send the messages request through commbase-data-exchange client
+            (bash "$controller")
             ;;
         esac
 

@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# read_lines_from_file
+# read_lines_from_file.sh
 # Reads all the lines from a plain text file and echoes line by line
 read_lines_from_file() {
   local file=$1
@@ -42,4 +42,3 @@ read_lines_from_file() {
 
   printf '%s\n' "${lines[@]}"
 }
-

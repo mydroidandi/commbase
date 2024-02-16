@@ -1,1 +1,1 @@
-{"messages":[{"control":"accept_changes"},{"current_request":"Open the web browser     "},{"previous_request":"Open the web browser     "},{"current_response":""},{"runtime":""},{"source_code_display":""},{"source_code":""}]}
+{"messages":[{"control":"stop_previous_command"},{"current_request":"tell me a joke2"},{"previous_request":"tell me a joke2"},{"current_response":""},{"runtime":""},{"source_code_display":""},{"source_code":""}]}
