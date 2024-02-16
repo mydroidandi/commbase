@@ -71,12 +71,12 @@ This project is coded and organized like this:
 │   │       │       │   └── sounds
 │   │       │       ├── control_patterns
 │   │       │       │   └── en_us
-│   │       │       │       └── openai-whisper-model-base
+│   │       │       │       └── openai_whisper_model_base
 │   │       │       ├── discourses
 │   │       │       │   └── en_us
 │   │       │       └── skill_patterns
 │   │       │           └── en_us
-│   │       │               └── openai-whisper-model-base
+│   │       │               └── openai_whisper_model_base
 │   │       ├── PyAudio
 │   │       └── vu-meter
 │   └── custom
