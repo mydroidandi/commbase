@@ -31,17 +31,17 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# update_control_in_messages_json_and_request_data_exchange_server.sh
+# update_control_in_messages_json.sh
 # Updates any control in data/.messages.json and calls
-# send_messages_json_request_through_data_exchange_client.sh.
+# request_commbase_data_exchange.sh.
 # Usage:
-# bash update_control_in_messages_json_and_request_data_exchange_server.sh <new_control_value>
-update_control_in_messages_json_and_request_data_exchange_server() {
+# bash update_control_in_messages_json.sh <new_control_value>
+update_control_in_messages_json() {
   # Configuration file
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
   # Import from libcommbase
-  send_messages_json_request=$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/send_messages_json_request_through_data_exchange_client.sh
+  request_commbase_data_exchange=$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/request_commbase_data_exchange.sh
 
   cd "$COMMBASE_APP_DIR"/data || exit
 
@@ -55,7 +55,7 @@ update_control_in_messages_json_and_request_data_exchange_server() {
   jq --arg new_value "$new_control_value" '.messages[0].control = $new_value' "$json_file" | jq -c '.' > "$json_file.tmp" && mv "$json_file.tmp" "$json_file"
 
   # Send the messages request through commbase-data-exchange client
-  bash "$send_messages_json_request"
+  bash "$request_commbase_data_exchange"
 
   exit 99
 }
@@ -67,6 +67,6 @@ if [ "$#" -ne 1 ]; then
 fi
 
 # Call the function with the provided new_control_value
-(update_control_in_messages_json_and_request_data_exchange_server "$1")
+(update_control_in_messages_json "$1")
 
 exit 99
