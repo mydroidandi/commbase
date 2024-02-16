@@ -729,11 +729,15 @@ The default version of the file **commbase.conf** contains the next values:
   - Example value:
     - `1`: It represents the index or identifier of a video capture device.
 
+- **STT_ENGINE_PATH**:
+  - Description: It specifies the path to the current STT engine's executable or script file bundled with Commbase.
+  - Possible values:
+    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-whisper-p/commbase_stt_whisper_p.py` (Default): It specifies the STT engine commbase-stt-whisper-p.py's executable script.
+
 - **STT_ENGINE_STRING**:
   - Description: It represents a string that specifies the path to the current STT engine's executable or script file bundled with Commbase.
   - Possible values:
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-whisper-p/commbase_stt_whisper_p.py` (Default): It specifies the STT engine commbase-stt-whisper-p.py's executable script.
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-vosk-p/commbase_stt_vosk_p.py`: It specifies the STT engine commbase-stt-vosk-p.py's executable script.
+    - `$PYTHON_ENV_VERSION $STT_ENGINE_PATH` (Default): It specifies the STT engine commbase-stt-whisper-p.py's executable script.
 
 - **TTS_ENGINE_STRING**:
   - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, TTS systems with the ability to use a clone/fake of your own voice, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.
