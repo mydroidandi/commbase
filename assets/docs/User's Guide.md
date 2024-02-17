@@ -650,6 +650,11 @@ The default version of the file **commbase.conf** contains the next values:
     - `commbase_env` (Default): The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment. For more details, check out the file **INSTALL**.
     - `my_env_name`: An alternative name for creating the Commbase virtual environment.
 
+- **COMMBASE_LOCALE**:
+  - Description: This setting is used to determine the language and regional preferences for user interfaces, messages, and other communicative elements within the software. The components related to language settings include: the i18n directory (which covers the Commbase files themselves), control patterns, and skills patterns of libcommbase. Additionally, users can code custom Commbase app terminal/voice commands with skill/skillset scripts, which should come with internationalization support.
+  - Example values:
+    - `en_us` (Default): This setting designates the default locale as English (United States). Users with this locale will encounter the application in English, experiencing the predetermined language and formatting preferences specified by this setting.
+
 - **COMMBASE_DATA_EXCHANGE_SERVER_HOST_ADDRESS**:
   - Description: The host address for the Commbase Data Exchange Server.
   - Example value:
