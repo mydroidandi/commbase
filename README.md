@@ -97,6 +97,7 @@ This project is coded and organized like this:
 ├── data  # Stores the voice recognition model results and other data files
 ├── env  # Stores the environment file
 ├── history  # Stores the app commands history files
+├── i18n  # Stores resources related to localization and internationalization
 ├── log  # Stores custom log files of specific skills
 ├── screenshots  # Stores the image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
