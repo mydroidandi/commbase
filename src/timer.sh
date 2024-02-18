@@ -141,7 +141,7 @@ done
 # figlet "Time's Up!"
 # sleep 0.5; while true; do spd-say -w "twenty five minutes more have passed"; sleep 1500; done
 
-# Custom
+# Custom alarm
 source $COMMBASE_APP_DIR/config/commbase.conf
 tts_engine="$TTS_ENGINE_STRING"
 sleep 0.5; while true; do echo "twenty five minutes more have passed" | $tts_engine; sleep 1500; done
