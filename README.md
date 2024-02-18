@@ -105,9 +105,10 @@ This project is coded and organized like this:
 │   ├── skills_db
 │   │   ├── arduino
 │   │   ├── bash
-│   │   │   └── f
-│   │   │       ├── firefox
-│   │   │       └── ...
+│   │   │   ├── f
+│   │   │   │   ├── firefox
+│   │   │   │   └── ...
+│   │   │   └── ...
 │   │   ├── c
 │   │   ├── java
 │   │   ├── multi-lang
