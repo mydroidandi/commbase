@@ -47,51 +47,41 @@ This project is coded and organized like this:
 /path/to/my/commbase/app
 ├── assets  # Stores different types of assets, such as images, fonts, and ASCII art
 │   ├── ascii
-│   ├── docs  # Stores the Commbase User's Guide documents
+│   ├── docs  # Stores the Commbase User's Guide
 │   │   └── images
 │   ├── fonts
 │   ├── icons
 │   └── images
 ├── bundles  # External software bundle and external asset bundle
-│   ├── built-in
-│   │   └── broker
-│   │       ├── commbase-llm-google-gemini-p
-│   │       ├── commbase-llm-meta-llama-p
-│   │       ├── commbase-llm-openai-gpt-p
-│   │       ├── commbase-stt-whisper-p
-│   │       │   └── examples
-│   │       ├── commbase-tts-pyttsx3
-│   │       ├── libcommbase
-│   │       │   ├── examples
-│   │       │   ├── libcommbase
-│   │       │   │   ├── controller
-│   │       │   │   ├── routines
-│   │       │   │   └── skills
-│   │       │   │       ├── parsers
-│   │       │   │       └── runners
-│   │       │   └── resources
-│   │       │       ├── bundles
-│   │       │       │   └── sounds
-│   │       │       ├── control_patterns
-│   │       │       │   └── en_us
-│   │       │       │       └── openai_whisper_model_base
-│   │       │       ├── discourses
-│   │       │       │   └── en_us
-│   │       │       └── skill_patterns
-│   │       │           └── en_us
-│   │       │               └── openai_whisper_model_base
-│   │       ├── PyAudio
-│   │       └── vu-meter
-│   └── custom
-│       ├── agents
-│       │   ├── x
-│       │   ├── y
-│       │   └── ...
-│       └── broker
-│           ├── audiobooks
-│           │   └── Robinson_Crusoe
-│           ├── tensorfx
-│           └── ...
+│   ├── commbase-data-exchange
+│   ├── commbase-llm-google-gemini-p
+│   ├── commbase-llm-meta-llama-p
+│   ├── commbase-llm-openai-gpt-p
+│   ├── commbase-stt-whisper-p
+│   │   └── examples
+│   ├── commbase-tts-gTTS
+│   ├── commbase-tts-pyttsx3
+│   ├── libcommbase
+│   │   ├── examples
+│   │   ├── libcommbase
+│   │   │   ├── controller
+│   │   │   ├── routines
+│   │   │   └── skills
+│   │   │       ├── parsers
+│   │   │       └── runners
+│   │   └── resources
+│   │       ├── bundles
+│   │       │   └── sounds
+│   │       ├── control_patterns
+│   │       │   └── en_us
+│   │       │       └── openai_whisper_model_base
+│   │       ├── discourses
+│   │       │   └── en_us
+│   │       └── skill_patterns
+│   │           └── en_us
+│   │               └── openai_whisper_model_base
+│   ├── PyAudio
+│   └── vu-meter
 ├── certificates  # Stores certificates and keys
 ├── config   # Stores the configuration files
 ├── data  # Stores the voice recognition model results and other data files
@@ -108,20 +98,25 @@ This project is coded and organized like this:
 │   └── utilities
 │       └── back-up
 ├── src  # This directory contains user-generated source code
-│   └── skills_db
-│       ├── arduino
-│       ├── bash
-│       │   └── f
-│       │       └── firefox
-│       ├── c
-│       ├── java
-│       ├── multi-lang
-│       ├── nodejs
-│       ├── python
-│       └── ...
-└── tests # Stores the Commbase and the user-generated source code tests
-    ├── commbase
-    └── src
+│   ├── bundles
+│   │   ├── audiobooks
+│   │   │   └── Robinson_Crusoe
+│   │   └── ...
+│   ├── skills_db
+│   │   ├── arduino
+│   │   ├── bash
+│   │   │   └── f
+│   │   │       └── firefox
+│   │   ├── c
+│   │   ├── java
+│   │   ├── multi-lang
+│   │   ├── nodejs
+│   │   ├── python
+│   │   └── ...
+│   ├── tests
+│   │   └── ...
+│   └── ...
+└── tests # Stores the Commbase tests
 ```
 
 ## Contributing
