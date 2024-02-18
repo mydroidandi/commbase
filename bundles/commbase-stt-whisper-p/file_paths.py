@@ -250,7 +250,7 @@ def get_controller_message_recording_file():
 
 def get_messaging_history_file():
     """
-    Retrieves the value of the SRESULT_MESSAGES_HISTORY_FILE variable from the
+    Retrieves the value of the SMESSAGING_HISTORY_FILE variable from the
     configuration file.
 
     Returns:
@@ -266,7 +266,7 @@ def get_messaging_history_file():
             variable_name, value = line.strip().split("=")
 
             # Check if the variable we are looking for exists in the line
-            if variable_name == "RESULT_MESSAGES_HISTORY_FILE":
+            if variable_name == "MESSAGING_HISTORY_FILE":
                 # Remove the quotes from the value of the variable
                 history_file = CONFIG_FILE_DIR + value.strip()[1:-1]
 
