@@ -46,7 +46,7 @@ controller() {
 
   # Extract the JSON object property value current_request from the file
   # messages json.
-  messages_json=$(<$COMMBASE_APP_DIR$MESSAGES_RECORDING_FILE)
+  messages_json=$(<$COMMBASE_APP_DIR$MESSAGING_FILE)
   # Read the value of current_request property from JSON
   current_request=$(jq -r '.messages[1].current_request' <<< "$messages_json")
 

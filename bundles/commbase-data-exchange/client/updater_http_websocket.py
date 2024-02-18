@@ -37,7 +37,7 @@ import json
 import requests
 import subprocess
 from config import CONFIG_FILE_PATH
-from file_paths import get_messages_recording_file
+from file_paths import get_messaging_file
 
 
 def read_json_file(json_file_path):
@@ -70,7 +70,7 @@ def main():
     api_url = 'http://127.0.0.1:5000/api/update_json'
 
     # Get the JSON file path
-    json_file_path = get_messages_recording_file()
+    json_file_path = get_messaging_file()
 
     # Read JSON data from file
     updated_json_data = read_json_file(json_file_path)

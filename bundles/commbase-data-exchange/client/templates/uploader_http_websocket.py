@@ -37,7 +37,7 @@
 import requests  # pip install requests
 import json
 from config import CONFIG_FILE_PATH
-from file_paths import get_messages_recording_file
+from file_paths import get_messaging_file
 
 import subprocess
 
@@ -71,7 +71,7 @@ def main():
     api_url = 'http://127.0.0.1:5000/api/save_json'
 
     # Get the JSON file path
-    json_file_path = get_messages_recording_file()
+    json_file_path = get_messaging_file()
 
     # Read JSON data from file
     json_data = read_json_file(json_file_path)
