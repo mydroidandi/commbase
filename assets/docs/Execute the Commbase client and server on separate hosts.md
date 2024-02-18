@@ -10,7 +10,7 @@ With this modification, Commbase can be separate into two components. The Commba
 
 Instead of using 127.0.0.1, you can use the IP address of your machine or 0.0.0.0 to make the server accessible externally.
 
-Go to directory bundles/built-in/broker/commbase-data-exchange/server/templates/.
+Go to directory bundles/commbase-data-exchange/server/templates/.
 
 You will find these files:
 
@@ -26,7 +26,7 @@ The SSL/TLS connection is established when the client receives the initial JSON 
 
 Let's take the file **server_https_localhost_local_ca_websocket.py** as an example.
 
-Paste a copy of the template file in the Commbase directory **bundles/built-in/broker/commbase-data-exchange/server/**.
+Paste a copy of the template file in the Commbase directory **bundles/commbase-data-exchange/server/**.
 
 Open the file copy, and change the code:
 
@@ -172,7 +172,7 @@ Make sure OpenSSL is installed on your machine. In Debian GNU/Linux it can be do
 sudo apt-get install openssl
 ```
 
-Go to the directory **/home/commbase/Dev/mydroidandi/commbase/bundles/built-in/broker/commbase-data-exchange/server/certificates/**
+Go to the directory **/home/commbase/Dev/mydroidandi/commbase/bundles/commbase-data-exchange/server/certificates/**
 
 Create a Local CA:
 
@@ -198,7 +198,7 @@ openssl x509 -req -in csr.pem -CA ca.pem -CAkey ca-key.pem -out cert.pem
 
 For the Common Name, use: 127.0.0.1
 
-Go to the directory **/home/commbase/Dev/mydroidandi/commbase/bundles/built-in/broker/commbase-data-exchange/client/certificates/** and put there a copy of the CA certificate `ca.pem` generated in this procedure.
+Go to the directory **/home/commbase/Dev/mydroidandi/commbase/bundles/commbase-data-exchange/client/certificates/** and put there a copy of the CA certificate `ca.pem` generated in this procedure.
 
 The ".pem" extension in a server key typically indicates that the key is stored in the PEM (Privacy-Enhanced Mail) format. PEM is a widely used encoding format for cryptographic objects, including private keys, public keys, certificates, and other related information.
 
@@ -307,7 +307,7 @@ This way, you have the original key (server.key.org) with a passphrase and a new
 
 ### Set up the appropriate upload file in the server
 
-Almost every template file in the directory **bundles/built-in/broker/commbase-data-exchange/server/templates** has a specific uploader file in the same directory:
+Almost every template file in the directory **bundles/commbase-data-exchange/server/templates** has a specific uploader file in the same directory:
 
 The file **server_https_fqdn_signed_cert_websocket.py** requires the file **uploader_https_fqdn_signed_cert_websocket.py**.
 
@@ -319,7 +319,7 @@ The file **uploader_https_false_cert_verification.py** can be used as an uploade
 
 In continuation with the example, let's use the file **uploader_https_localhost_local_ca_websocket.py** for **server_https_localhost_local_ca_websocket.py**.
 
-Paste a copy of the template file in the Commbase directory **bundles/built-in/broker/commbase-data-exchange/server/**.
+Paste a copy of the template file in the Commbase directory **bundles/commbase-data-exchange/server/**.
 
 The only things you could change to reconfigure this file are these two:
 
@@ -335,7 +335,7 @@ ca_cert_path = 'certificates/ca.pem'
 
 #### The client file in the client
 
-Every template file in the directory **bundles/built-in/broker/commbase-data-exchange/server/templates** has a specific upload file in the directory **bundles/built-in/broker/commbase-data-exchange/client/templates**:
+Every template file in the directory **bundles/commbase-data-exchange/server/templates** has a specific upload file in the directory **bundles/commbase-data-exchange/client/templates**:
 
 The file **server_https_fqdn_signed_cert_websocket.py** requires the file **client_https_fqdn_signed_cert_websocket.py**.
 
@@ -345,7 +345,7 @@ The file **server_http_websocket.py** requires the file **client_http_websocket.
 
 In continuation with the example, let's use the file **client_https_localhost_local_ca_polling.py** for **server_https_localhost_local_ca_websocket.py**.
 
-Paste a copy of the template file in the Commbase directory **bundles/built-in/broker/commbase-data-exchange/server/**.
+Paste a copy of the template file in the Commbase directory **bundles/commbase-data-exchange/server/**.
 
 The only things you could change to reconfigure this file are these three:
 
@@ -363,7 +363,7 @@ ca_cert_path = './certificates/ca.pem'
 
 #### The uploader file in the client
 
-Almost every template file in the directory **bundles/built-in/broker/commbase-data-exchange/client/templates** has a specific uploader file in the same directory:
+Almost every template file in the directory **bundles/commbase-data-exchange/client/templates** has a specific uploader file in the same directory:
 
 The file **server_https_fqdn_signed_cert_websocket.py** requires the file **uploader_https_fqdn_signed_cert_websocket.py**.
 
@@ -375,7 +375,7 @@ The file **uploader_https_false_cert_verification.py** can be used as an uploade
 
 In continuation with the example, let's use the file **uploader_https_localhost_local_ca_websocket.py** for **server_https_localhost_local_ca_websocket.py**.
 
-Paste a copy of the template file in the Commbase directory **bundles/built-in/broker/commbase-data-exchange/client/**.
+Paste a copy of the template file in the Commbase directory **bundles/commbase-data-exchange/client/**.
 
 The only things you could change to reconfigure this file are these two:
 
@@ -394,10 +394,10 @@ The commbase-data-exchange variables in **config/commbase.conf** are:
 ```plaintext
 COMMBASE_DATA_EXCHANGE_SERVER_HOST_ADDRESS="127.0.0.1"
 COMMBASE_DATA_EXCHANGE_SERVER_PORT="5000"
-COMMBASE_DATA_EXCHANGE_SERVER_CONNECTION_FILE_PATH="$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/server/server_http_websocket.py"
-COMMBASE_DATA_EXCHANGE_SERVER_UPLOADER_FILE_PATH="$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/server/uploader_http_websocket.py"
-COMMBASE_DATA_EXCHANGE_CLIENT_CONNECTION_FILE_PATH="$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/client_http_websocket.py"
-COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH="$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/updater_http_websocket.py"
+COMMBASE_DATA_EXCHANGE_SERVER_CONNECTION_FILE_PATH="$COMMBASE_APP_DIR/bundles/commbase-data-exchange/server/server_http_websocket.py"
+COMMBASE_DATA_EXCHANGE_SERVER_UPLOADER_FILE_PATH="$COMMBASE_APP_DIR/bundles/commbase-data-exchange/server/uploader_http_websocket.py"
+COMMBASE_DATA_EXCHANGE_CLIENT_CONNECTION_FILE_PATH="$COMMBASE_APP_DIR/bundles/commbase-data-exchange/client/client_http_websocket.py"
+COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH="$COMMBASE_APP_DIR/bundles/commbase-data-exchange/client/updater_http_websocket.py"
 CLIENT_POLLING_INTERVAL_IN_SECS="5"
 CERTS_AND_KEYS_SERVER_CRT_FILE="/certificates/server.crt"
 CERTS_AND_KEYS_SERVER_KEY_FILE="/certificates/server.key"

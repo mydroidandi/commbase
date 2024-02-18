@@ -155,8 +155,8 @@ route_option() {
     source $COMMBASE_APP_DIR/src/app.sh
 
     # Imports from libcommbase
-    update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
-    controller=$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/controller/controller.sh
+    update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
+    controller=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/controller/controller.sh
 
     # First tmux session
     SESSIONNAME="Commbase-0";

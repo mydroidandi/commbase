@@ -668,22 +668,22 @@ The default version of the file **commbase.conf** contains the next values:
 - **COMMBASE_DATA_EXCHANGE_SERVER_CONNECTION_FILE_PATH**:
   - Description: File path for the server's connection module.
   - Example value:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/server/server_http_websocket.py`
+    - `$COMMBASE_APP_DIR/bundles/commbase-data-exchange/server/server_http_websocket.py`
 
 - **COMMBASE_DATA_EXCHANGE_SERVER_UPLOADER_FILE_PATH**:
   - Description: File path for the server's uploader module.
   - Example value:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/server/uploader_http_websocket.py`
+    - `$COMMBASE_APP_DIR/bundles/commbase-data-exchange/server/uploader_http_websocket.py`
 
 - **COMMBASE_DATA_EXCHANGE_CLIENT_CONNECTION_FILE_PATH**:
   - Description: File path for the client's connection module.
   - Example value:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/client_http_websocket.py`
+    - `$COMMBASE_APP_DIR/bundles/commbase-data-exchange/client/client_http_websocket.py`
 
 - **COMMBASE_DATA_EXCHANGE_CLIENT_UPDATER_FILE_PATH**:
   - Description: File path for the client's uploader module.
   - Example value:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-data-exchange/client/updater_http_websocket.py`
+    - `$COMMBASE_APP_DIR/bundles/commbase-data-exchange/client/updater_http_websocket.py`
 
 - **CLIENT_POLLING_INTERVAL_IN_SECS**:
   - Description: Polling interval in seconds for the client.
@@ -741,7 +741,7 @@ The default version of the file **commbase.conf** contains the next values:
 - **STT_ENGINE_PATH**:
   - Description: It specifies the path to the current STT engine's executable or script file bundled with Commbase.
   - Possible values:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-stt-whisper-p/commbase_stt_whisper_p.py` (Default): It specifies the STT engine commbase-stt-whisper-p.py's executable script.
+    - `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-p/commbase_stt_whisper_p.py` (Default): It specifies the STT engine commbase-stt-whisper-p.py's executable script.
 
 - **STT_ENGINE_STRING**:
   - Description: It represents a string that specifies the path to the current STT engine's executable or script file bundled with Commbase.
@@ -751,12 +751,12 @@ The default version of the file **commbase.conf** contains the next values:
 - **TTS_ENGINE_STRING**:
   - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, TTS systems with the ability to use a clone/fake of your own voice, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.
   - Possible values:
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate 150 --voice-index 18` (Default): It specifies the TTS engine commbase-tts-pyttsx3.py's executable script and arguments. It uses a specified speed rate and voice index to convert the text into speech and play it back. There is one voice index for every language or accent installed by or recognized by pyttsx3 in the system. You can modify those arguments in the string. To select a voice/accent by index, use the utility **list_all_voices_available_for_pyttsx3.py** that you will find out in the directory **scripts/utilities**.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate 150 --voice-index 18` (Default): It specifies the TTS engine commbase-tts-pyttsx3.py's executable script and arguments. It uses a specified speed rate and voice index to convert the text into speech and play it back. There is one voice index for every language or accent installed by or recognized by pyttsx3 in the system. You can modify those arguments in the string. To select a voice/accent by index, use the utility **list_all_voices_available_for_pyttsx3.py** that you will find out in the directory **scripts/utilities**.
     - `festival --tts`: It specifies the TTS command Festival and its arguments. Festival comes with a unique and some basic English voice tone out of the box. You can install Festival-compatible extra voices from different internet sources. To know how to install Festival-compatible voices and set one as your custom application's voice, read [`this guide.`](./Festival.md)
     - `espeak -v f2`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English female voice number 2. You can install Espeak-compatible extra voices from different internet sources.
     - `espeak -v m3`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English male voice number 3. You can install Espeak-compatible extra voices from different internet sources.
     - `xargs swift`: It specifies the TTS command swift. The company Ceptral has high quality, natural speech OSS licensed voices can be purchased, installed and downloaded from the Ceptral web site.
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/commbase-tts-gTTS/commbase_tts_gTTS.py --param1 val1 --param2 val2 --param3 val3:`: It specifies the TTS executable commbase-tts-gTTS.py's script and its arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/commbase-tts-gTTS/commbase_tts_gTTS.py --param1 val1 --param2 val2 --param3 val3:`: It specifies the TTS executable commbase-tts-gTTS.py's script and its arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API.
 
 - **TMUX_EXTRA_WINDOWS_ON**:
   - Possible values:
@@ -912,10 +912,6 @@ The default version of the file **commbase.conf** contains the next values:
     - `True` (Default): When set to True, the feature is enabled, and it manages the result message while also displaying skill errors in the specific the chat pane of the tmux Commbase session.
     - `False`: Whe this value is set to False, the feature is disabled or turned off. In this case, the system would not manage the result message or display skill errors in the specific chat pane of the tmux Commbase session.
 
-- **VOSK_ML_MODEL_DIRECTORY**:
-  - Example value:
-    - `/bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph/model` (Default): This setting is related to a Vosk ML model and determines the directory path where the model is located.
-
 - **SECRETS_FILE_PATH**:
   - Example value:
     - `/config/secrets` (Default): This setting allows users or developers to specify the location of a file containing sensitive information or secrets. Secrets files commonly store confidential data such as API keys, passwords, or access tokens that are required for secure interactions with external services or systems. It is important to handle secrets files with utmost care and ensure that proper security measures are in place to protect the sensitive information stored within them.
@@ -926,7 +922,7 @@ The default version of the file **commbase.conf** contains the next values:
 
 - **ASSISTANT_MICROPHONE_INSTRUCTION_FILE**:
   - Example value:
-    - `/bundles/built-in/broker/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction` (Default): This value represents the default file path for the microphone instruction file. The file that contains instructions or guidelines for the usage of the assistant's microphone.
+    - `/bundles/libcommbase/resources/discourses/mute_the_microphone_to_pause_the_recording_instruction` (Default): This value represents the default file path for the microphone instruction file. The file that contains instructions or guidelines for the usage of the assistant's microphone.
 
 - **MESSAGES_RECORDING_FILE**:
   - Example value:
@@ -939,22 +935,22 @@ The default version of the file **commbase.conf** contains the next values:
 - **CONTROL_PATTERNS_FILE**:
   - Description: This file stores a set of key-value pairs. Each key corresponds to a specific control action trigger, and the associated values are arrays containing different variations or phrases that are recognized as valid expressions of that control. Controls are designed to respond to spoken or written control command, aka Terminal Voice Controls. You can carefully add/edit custom values for any value property in the file. You must verify that the values are well recognized by the STT engine when spoken to ensure that they will work as controls. Add new custom properties is possible but the earlier you add them the better, because the controls are hard coded in the skill scripts and adding a new property in the control patterns file could involve updating every existent skill in the skills catalog. For a description of the controls, use the command `commbase --help`.
   - Example value:
-    - `/bundles/built-in/broker/libcommbase/resources/control_patterns/en_us/openai_whisper_model_base/control_patterns.json` (Default): This value represents a default file path.
+    - `/bundles/libcommbase/resources/control_patterns/en_us/openai_whisper_model_base/control_patterns.json` (Default): This value represents a default file path.
 
 - **ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON**:
-  - Description: This variable is used in the function **bundles/built-in/broker/libcommbase/libcommbase/routines/skills_else**.
+  - Description: This variable is used in the function **bundles/libcommbase/libcommbase/routines/skills_else**.
   - Possible values: True or False.
   - Example value:
-    - `False` (Default): The assistant will answer to unknown commands using the **bundles/built-in/broker/libcommbase/libcommbase/routines/random_no** function.
-    - `True`: If the variable is active in the configuration file **config/commbase.conf** the assistant will answer using a connection to a bundled or served AI chatbot that uses natural language processing to create a humanlike conversational dialogue, for example, **OpenAI's GPT**, instead of using the **bundles/built-in/broker/libcommbase/libcommbase/routines/random_no function**, making those negative answers more conversational. The AI chatbot is defined by the variable `AI_CHATBOT_STRING`. App users can use this as an advantage to make interactions with the assistant appear more organic due to commands can be mixed with regular conversations similar to the conversations in the **conversation mode** or the **expert mode**. However, it can lead users to wrongly say language patterns strictly predefined as terminal/voice commands, which are automatically identified by the application and executed without user intention. As a consequence of the wrong use of this feature, any "strange behavior" can be interpreted as **"AI hallucinations"**: situations where artificial intelligence systems produce unexpected or unintended outputs that seem to resemble hallucinations in a human context. Also, the user is still limited to typing/saying **prompts** (or terminal/voice commands) of 9 words maximum as it is defined for the **normal mode** (it relies on the maximum number of command arguments that can be used in Bash), and the bundled or served AI chatbot is also limited to answering using a maximum of 35 words (modifiable, using the variable `UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT`.)
+    - `False` (Default): The assistant will answer to unknown commands using the **bundles/libcommbase/libcommbase/routines/random_no** function.
+    - `True`: If the variable is active in the configuration file **config/commbase.conf** the assistant will answer using a connection to a bundled or served AI chatbot that uses natural language processing to create a humanlike conversational dialogue, for example, **OpenAI's GPT**, instead of using the **bundles/libcommbase/libcommbase/routines/random_no function**, making those negative answers more conversational. The AI chatbot is defined by the variable `AI_CHATBOT_STRING`. App users can use this as an advantage to make interactions with the assistant appear more organic due to commands can be mixed with regular conversations similar to the conversations in the **conversation mode** or the **expert mode**. However, it can lead users to wrongly say language patterns strictly predefined as terminal/voice commands, which are automatically identified by the application and executed without user intention. As a consequence of the wrong use of this feature, any "strange behavior" can be interpreted as **"AI hallucinations"**: situations where artificial intelligence systems produce unexpected or unintended outputs that seem to resemble hallucinations in a human context. Also, the user is still limited to typing/saying **prompts** (or terminal/voice commands) of 9 words maximum as it is defined for the **normal mode** (it relies on the maximum number of command arguments that can be used in Bash), and the bundled or served AI chatbot is also limited to answering using a maximum of 35 words (modifiable, using the variable `UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT`.)
 
 - **AI_CHATBOT_STRING**:
   - Description: Defines the bundled or served AI chatbot answering unknown terminal/voice commands. Do not confuse with `TRAINED_AI_CHATBOT_STRING`, despite the fact that both variables can hold the same value.
     Check out the variables: `UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT` and `ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON`.
   - Possible values:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-llm-google-gemini-p/commbase_llm_google_gemini_p.py` (Default): Defines Google's Gemini as the **served AI chatbot** that uses natural language processing to create a humanlike conversational dialogue.
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-llm-openai-gpt-p/commbase_llm_openai_gpt_p.py`: Defines OpenAI's GPT as the **served AI chatbot** that uses natural language processing to create a humanlike conversational dialogue. Using a large language model (LLM) like GPT-3, GPT-4, etc., with an **internet connection**, allows users to have access to real-time data, for example, current weather information, and then ask questions like "How is the weather like in Toronto?" and receive a perfect answer. Using AI chatbots like OpenAI's GPT with an internet connection offers many advantages, but it also comes with several disadvantages. Here are some of the **key drawbacks**: Privacy Concerns, Security Risks, Dependency on Internet, Data Usage and Costs, Latency, Outages and Downtime, Lack of Offline Functionality, Maintenance and Updates, Accessibility Issues, Dependency on Service Providers, Potential for Bias and Misinformation, Lack of Control. To mitigate these disadvantages, organizations and users should carefully consider their specific needs and use cases when implementing AI chatbots.
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-llm-meta-llama-p/commbase_llm_meta_llama_p.py`: Defines Meta's open source large language model Llama 2, 3, etc., as the **local AI chatbot** that uses natural language processing to create a humanlike conversational dialogue. Using a large language model (LLM) like Llama without an **internet connection**, often referred to as **"offline" mode**, can have several **disadvantages**: Limited Information Retrieval, Outdated Information, Reduced Contextual Understanding, Decreased General Knowledge, Limited Personalization, Reduced Translation and Multilingual Abilities, Inability to Access External Services, Loss of Real-Time Adaptation, Dependency on Initial Training Data. To mitigate these disadvantages, organizations and users should carefully consider their specific needs and use cases when implementing AI chatbots.
+    - `$COMMBASE_APP_DIR/bundles/commbase-llm-google-gemini-p/commbase_llm_google_gemini_p.py` (Default): Defines Google's Gemini as the **served AI chatbot** that uses natural language processing to create a humanlike conversational dialogue.
+    - `$COMMBASE_APP_DIR/bundles/commbase-llm-openai-gpt-p/commbase_llm_openai_gpt_p.py`: Defines OpenAI's GPT as the **served AI chatbot** that uses natural language processing to create a humanlike conversational dialogue. Using a large language model (LLM) like GPT-3, GPT-4, etc., with an **internet connection**, allows users to have access to real-time data, for example, current weather information, and then ask questions like "How is the weather like in Toronto?" and receive a perfect answer. Using AI chatbots like OpenAI's GPT with an internet connection offers many advantages, but it also comes with several disadvantages. Here are some of the **key drawbacks**: Privacy Concerns, Security Risks, Dependency on Internet, Data Usage and Costs, Latency, Outages and Downtime, Lack of Offline Functionality, Maintenance and Updates, Accessibility Issues, Dependency on Service Providers, Potential for Bias and Misinformation, Lack of Control. To mitigate these disadvantages, organizations and users should carefully consider their specific needs and use cases when implementing AI chatbots.
+    - `$COMMBASE_APP_DIR/bundles/commbase-llm-meta-llama-p/commbase_llm_meta_llama_p.py`: Defines Meta's open source large language model Llama 2, 3, etc., as the **local AI chatbot** that uses natural language processing to create a humanlike conversational dialogue. Using a large language model (LLM) like Llama without an **internet connection**, often referred to as **"offline" mode**, can have several **disadvantages**: Limited Information Retrieval, Outdated Information, Reduced Contextual Understanding, Decreased General Knowledge, Limited Personalization, Reduced Translation and Multilingual Abilities, Inability to Access External Services, Loss of Real-Time Adaptation, Dependency on Initial Training Data. To mitigate these disadvantages, organizations and users should carefully consider their specific needs and use cases when implementing AI chatbots.
 
 - **UNKNOWN_COMMAND_AI_CHATBOT_WORDS_LIMIT**:
   - Description: Limiting answers can be beneficial because it promotes brevity, clarity, and conciseness. It ensures that information is delivered efficiently, making it easier for readers/listeners to grasp and retain the key points.
@@ -974,9 +970,9 @@ The default version of the file **commbase.conf** contains the next values:
   - Description: Defines the bundled or served trained AI chatbot. Do not confuse with `AI_CHATBOT_STRING`, despite the fact that both variables can hold the same value.
     Check out the variables: `UNKNOWN_COMMAND_TRAINED_AI_CHATBOT_WORDS_LIMIT` and `TRAINED_AI_CHATBOT_CAN_RUN_SKILLS_ON`.
   - Possible values:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-llm-google-gemini-p/commbase_llm_google_gemini_p.py` (Default): Defines Google's Gemini as the served trained AI chatbot that uses natural language processing to create a humanlike conversational dialogue.
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-llm-openai-gpt-p/commbase_llm_openai_gpt_p.py`: Defines OpenAI's GPT as the served trained AI chatbot that uses natural language processing to create a humanlike conversational dialogue. OpenAI has made GPT available to developers, with the added bonus of **allowing them to customize the model to improve performance for their specific use cases**. According to OpenAI, **fine-tuning** GPT-3.5 Turbo can even outperform base GPT-4 for certain tasks. **Embeddings** and **meta prompts** are required to achieve the goal of making the OpenAI's GPT model return skills/skillsets when it thinks that the user prompts terminal/voice commands in the middle of conversations, but you must be careful about the model regarding **tokens** limits. **Fine-tuning** is not always recommended. It can be used to, for example, template/format the answers of the model. Using a **large language model (LLM)** like GPT-4 with an **internet connection**, allows users to have access to real-time data, for example, current weather information, and then ask questions like "How is the weather like in Toronto?" and receive a perfect answer.
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/commbase-llm-meta-llama-p/commbase_llm_meta_llama_p.py`: Defines Meta's open source large language model Llama 2, 3, etc., as the local trained AI chatbot that uses natural language processing to create a humanlike conversational dialogue. The text generation Llama 2 model can be **fine-tuned on any domain-specific dataset**. After it's fine-tuned on the domain-specific dataset, the model is expected to generate domain-specific text and solve various NLP tasks in that specific domain with **few-shot prompting**. Using a **large language model (LLM)** like Llama 2 without an **internet connection**, often referred to as "offline" mode, can have several disadvantages: Limited Information Retrieval, Outdated Information, Reduced Contextual Understanding, Decreased General Knowledge, Limited Personalization, Reduced Translation and Multilingual Abilities, Inability to Access External Services, Loss of Real-Time Adaptation, Dependency on Initial Training Data.
+    - `$COMMBASE_APP_DIR/bundles/commbase-llm-google-gemini-p/commbase_llm_google_gemini_p.py` (Default): Defines Google's Gemini as the served trained AI chatbot that uses natural language processing to create a humanlike conversational dialogue.
+    - `$COMMBASE_APP_DIR/bundles/commbase-llm-openai-gpt-p/commbase_llm_openai_gpt_p.py`: Defines OpenAI's GPT as the served trained AI chatbot that uses natural language processing to create a humanlike conversational dialogue. OpenAI has made GPT available to developers, with the added bonus of **allowing them to customize the model to improve performance for their specific use cases**. According to OpenAI, **fine-tuning** GPT-3.5 Turbo can even outperform base GPT-4 for certain tasks. **Embeddings** and **meta prompts** are required to achieve the goal of making the OpenAI's GPT model return skills/skillsets when it thinks that the user prompts terminal/voice commands in the middle of conversations, but you must be careful about the model regarding **tokens** limits. **Fine-tuning** is not always recommended. It can be used to, for example, template/format the answers of the model. Using a **large language model (LLM)** like GPT-4 with an **internet connection**, allows users to have access to real-time data, for example, current weather information, and then ask questions like "How is the weather like in Toronto?" and receive a perfect answer.
+    - `$COMMBASE_APP_DIR/bundles/commbase-llm-meta-llama-p/commbase_llm_meta_llama_p.py`: Defines Meta's open source large language model Llama 2, 3, etc., as the local trained AI chatbot that uses natural language processing to create a humanlike conversational dialogue. The text generation Llama 2 model can be **fine-tuned on any domain-specific dataset**. After it's fine-tuned on the domain-specific dataset, the model is expected to generate domain-specific text and solve various NLP tasks in that specific domain with **few-shot prompting**. Using a **large language model (LLM)** like Llama 2 without an **internet connection**, often referred to as "offline" mode, can have several disadvantages: Limited Information Retrieval, Outdated Information, Reduced Contextual Understanding, Decreased General Knowledge, Limited Personalization, Reduced Translation and Multilingual Abilities, Inability to Access External Services, Loss of Real-Time Adaptation, Dependency on Initial Training Data.
 
 - **UNKNOWN_COMMAND_TRAINED_AI_CHATBOT_WORDS_LIMIT**:
   - Description: Limiting answers can be beneficial because it promotes brevity, clarity, and conciseness. It ensures that information is delivered efficiently, making it easier for readers/listeners to grasp and retain the key points.
@@ -989,37 +985,37 @@ The default version of the file **commbase.conf** contains the next values:
   - Description: The sound file path for a positive confirmation sound, typically used to indicate a successful or affirmative response, something turned on, or something enabled.
   - Possible values: High quality wave audio files.
   - Example value:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/beep-up.wav` (Default): A high tone sound.
+    - `$COMMBASE_APP_DIR/bundles/libcommbase/resources/bundles/sounds/beep-up.wav` (Default): A high tone sound.
 
 - **SOUND_NEGATIVE_CONFIRMATION**:
   - Description: The sound file path for a negative confirmation sound, typically used to indicate an unsuccessful or negative response, something turned off, or something disabled.
   - Possible values: High quality wave audio files.
   - Example value:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/beep-down.wav` (Default): A low tone sound.
+    - `$COMMBASE_APP_DIR/bundles/libcommbase/resources/bundles/sounds/beep-down.wav` (Default): A low tone sound.
 
 - **SOUND_SAY_YES_WITHOUT_SPEAKING**:
   - Description: The sound file path for a non-verbal affirmative response, often used in scenarios where speaking is not possible or necessary.
   - Possible values: High quality wave audio files.
   - Example value:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-sci-fi-confirmation-914.wav` (Default): A Futuristic Sci-Fi invention confirmation sound.
+    - `$COMMBASE_APP_DIR/bundles/libcommbase/resources/bundles/sounds/mixkit-sci-fi-confirmation-914.wav` (Default): A Futuristic Sci-Fi invention confirmation sound.
 
 - **SOUND_SAY_NO_WITHOUT_SPEAKING**:
   - Description: The sound file path for a non-verbal negative response, used in situations where verbal communication is not required or feasible.
   - Possible values: High quality wave audio files.
   - Example value:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-sci-fi-reject-notification-896.wav` (Default): A funny rejection like sound.
+    - `$COMMBASE_APP_DIR/bundles/libcommbase/resources/bundles/sounds/mixkit-sci-fi-reject-notification-896.wav` (Default): A funny rejection like sound.
 
 - **SOUND_A_PENDING_TASK_AWAITS_ATTENTION**:
   - Description: The sound file path indicating that a pending task requires attention or action. It is typically used to notify the user of an outstanding task.
   - Possible values: High quality wave audio files.
   - Example value:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-unlock-game-notification-253.wav` (Default): A sound for a pending task that requires user attention or intervention.
+    - `$COMMBASE_APP_DIR/bundles/libcommbase/resources/bundles/sounds/mixkit-unlock-game-notification-253.wav` (Default): A sound for a pending task that requires user attention or intervention.
 
 - **SOUND_PENDING_TASKS_REMINDER**:
   - Description: The sound file path used as a reminder for pending tasks. It may be played at regular intervals to draw attention to unfinished tasks.
   - Possible values: High quality wave audio files.
   - Example value:
-    - `$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/resources/bundles/sounds/mixkit-uplifting-flute-notification-2317.wav` (Default): A sound that reminds the user about the pending tasks queue.
+    - `$COMMBASE_APP_DIR/bundles/libcommbase/resources/bundles/sounds/mixkit-uplifting-flute-notification-2317.wav` (Default): A sound that reminds the user about the pending tasks queue.
 
 - **PENDING_TASKS_VERIFICATION_FREQUENCY_IN_SECS**:
   - Description: The frequency, in seconds, at which pending tasks are checked or verified. To calculate this, you can multiply the number of minutes, for example, 60 minuts (an hour) by the number of seconds in a minute (60 seconds): 1 hour * 60 minutes/hour * 60 seconds/minute = 3,600 seconds. There are 3,600 seconds in 1 hour.
@@ -1827,9 +1823,9 @@ commbase {TYPOS}
 
 `"wake up"` / `"wake-up"`.
 
-TODO: Paste the content in the existent parsers in bundles/built-in/broker/libcommbase/libcommbase/skills/parsers/
+TODO: Paste the content in the existent parsers in bundles/libcommbase/libcommbase/skills/parsers/
 
-TODO: Make built-in skills (parsers for the next runner in bundles/built-in/broker/libcommbase/libcommbase/skills/runners/):
+TODO: Make built-in skills (parsers for the next runner in bundles/libcommbase/libcommbase/skills/runners/):
 capture_mute.sh  capture_unmute.sh  toggle_active_capture_device.sh  toggle_capture_on-off.sh
 
 `{WRONG VOICE COMMANDS}`.

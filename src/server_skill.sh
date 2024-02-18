@@ -40,7 +40,7 @@ server_skill() {
   source $COMMBASE_APP_DIR/config/secrets
 
   # Read the new JSON data request stored in commbase-data-exchange/server/client_data
-  data_exchange_client_data_file=/bundles/built-in/broker/commbase-data-exchange/server/client_data/json_1.json
+  data_exchange_client_data_file=/bundles/commbase-data-exchange/server/client_data/json_1.json
 
   messages=$(<$COMMBASE_APP_DIR$data_exchange_client_data_file)
 
