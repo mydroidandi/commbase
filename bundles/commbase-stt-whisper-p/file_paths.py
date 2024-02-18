@@ -158,7 +158,7 @@ def get_assistant_microphone_instruction_file():
     return None
 
 
-def get_result_message_recording_file():
+def get_messaging_file():
     """
     Retrieves the value of the SRESULT_MESSAGE_RECORDING_FILE variable from the
     configuration file.
@@ -248,7 +248,7 @@ def get_controller_message_recording_file():
     return None
 
 
-def get_result_messages_history_file():
+def get_messaging_history_file():
     """
     Retrieves the value of the SRESULT_MESSAGES_HISTORY_FILE variable from the
     configuration file.
