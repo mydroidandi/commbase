@@ -764,7 +764,7 @@ Install libcommbase
 
 This code repository comes bundled with the Commbase codebase, but can also download it.
 
-$ cd bundles/built-in/broker
+$ cd bundles
 
 $ git clone git@github.com:mydroidandi/libcommbase.git
 
@@ -779,7 +779,7 @@ Install VU-meter
 
 This code repository comes bundled with the Commbase code, but can also download it.
 
-$ cd bundles/built-in/broker
+$ cd bundles
 
 $ git clone https://github.com/kmein/vu-meter.git
 

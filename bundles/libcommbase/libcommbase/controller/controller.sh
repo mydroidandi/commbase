@@ -41,8 +41,8 @@ controller() {
   source $COMMBASE_APP_DIR/config/commbase.conf
 
   # Imports from libcommbase
-  update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
-  request_commbase_data_exchange=$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/request_commbase_data_exchange.sh
+  update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
+  request_commbase_data_exchange=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/request_commbase_data_exchange.sh
 
   # Extract the JSON object property value current_request from the file
   # messages json.

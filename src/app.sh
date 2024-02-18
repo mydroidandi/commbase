@@ -36,7 +36,7 @@ app() {
   source $COMMBASE_APP_DIR/config/commbase.conf
 
   # Imports from libcommbase
-  source $COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/check_data_exchange_server_connection.sh
+  source $COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/check_data_exchange_server_connection.sh
 
   # Give .3 seconds to tmux to draw its content before continuing
   time=0.3;
@@ -94,7 +94,7 @@ app() {
   # send the enter key, and sleep.
   tmux select-pane -t 4 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
   # Run the VU meter
-  tmux select-pane -t 4 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/built-in/broker/vu-meter/vu_meter.py" C-m;
+  tmux select-pane -t 4 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/vu-meter/vu_meter.py" C-m;
 
   # Pane 5
   # On window 0, select pane 5, activate the conda environment if it exists,

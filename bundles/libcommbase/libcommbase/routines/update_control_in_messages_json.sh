@@ -41,7 +41,7 @@ update_control_in_messages_json() {
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
   # Import from libcommbase
-  request_commbase_data_exchange=$COMMBASE_APP_DIR/bundles/built-in/broker/libcommbase/libcommbase/routines/request_commbase_data_exchange.sh
+  request_commbase_data_exchange=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/request_commbase_data_exchange.sh
 
   cd "$COMMBASE_APP_DIR"/data || exit
 
