@@ -106,7 +106,8 @@ This project is coded and organized like this:
 │   │   ├── arduino
 │   │   ├── bash
 │   │   │   └── f
-│   │   │       └── firefox
+│   │   │       ├── firefox
+│   │   │       └── ...
 │   │   ├── c
 │   │   ├── java
 │   │   ├── multi-lang
