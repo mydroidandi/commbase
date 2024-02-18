@@ -39,7 +39,7 @@ import json
 
 from config import CONFIG_FILE_PATH
 from file_paths import (
-    get_result_messages_recording_file
+    get_messaging_file
 )
 
 
@@ -63,7 +63,7 @@ def upload_data(api_url, json_data):
 # Define the API endpoint (HTTP or HTTPS)
 api_url = 'https://127.0.0.1:5000/api/save_json'  # For HTTPS
 
-json_file_path = get_result_messages_recording_file()
+json_file_path = get_messaging_file()
 
 
 # Reads the JSON payload File
