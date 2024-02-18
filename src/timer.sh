@@ -50,6 +50,7 @@
 # $ ./countdown.sh -d 21:06:45
 # Stop the alarm:
 # Press Ctrl-c two times to exit the program
+
 if [ "$#" -lt "2" ] ; then
   echo "Incorrect usage ! Example:"
   echo './countdown.sh -d  "Jun 10 2011 16:06"'
@@ -118,7 +119,8 @@ done
 #figlet "Time's Up!"
 
 # Choose or program your alarm alternative here ...
-# Say finished using festival tts and finish the program
+
+# Say "finished" using festival tts and finish the program
 #echo "finished" | festival --tts
 
 # Say "get back to work" using spd-say and play a sound every 1/2 second until
@@ -137,4 +139,11 @@ done
 # When using this alternative, remember to comment out the next line of code
 # like this:
 # figlet "Time's Up!"
-sleep 0.5; while true; do spd-say -w "twenty five minutes more have passed"; sleep 1500; done
+#sleep 0.5; while true; do spd-say -w "twenty five minutes more have passed"; sleep 1500; done
+
+# Custom alarm
+source $COMMBASE_APP_DIR/config/commbase.conf
+tts_engine="$TTS_ENGINE_STRING"
+# Match the countdown time and the sleep time to sound the alarm every end of
+# the time period of 1500 secs.
+sleep 0.5; while true; do echo "twenty five minutes more have passed" | $tts_engine; sleep 1500; done
