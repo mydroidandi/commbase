@@ -96,7 +96,8 @@ This project is coded and organized like this:
 │   │   └── key_bindings
 │   ├── deployment
 │   └── utilities
-│       └── back-up
+│       ├── back-up
+│       └── reset_commbase.conf
 ├── src  # This directory contains user-generated source code
 │   ├── bundles
 │   │   ├── audiobooks

@@ -124,7 +124,7 @@ $ exit
 
 Reopen the terminal.
 
-Note: Do not confuse this history file .bash_history with the file .app_history that is mentioned in the document User's Guide.
+Note: Do not confuse this history file .bash_history with the file history/.app_history that is mentioned in the document User's Guide.
 
 Set up the Commbase executable
 -------------------------------
