@@ -137,4 +137,4 @@ done
 # When using this alternative, remember to comment out the next line of code
 # like this:
 # figlet "Time's Up!"
-sleep 0.5; while true; do spd-say -w "time is over"; sleep 1500; done
+sleep 0.5; while true; do spd-say -w "twenty five minutes more have passed"; sleep 1500; done
