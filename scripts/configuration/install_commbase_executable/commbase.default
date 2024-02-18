@@ -102,21 +102,28 @@ Control:
 
     "[Okay|Ok] repeat."                   Reproduce the previous discourse by speaking it
     "[Okay|Ok] remind me in [five|ten|twenty|thirty] minutes."
-                                         Start a question reminder countdown timer
+                                          Start a question reminder countdown timer
     "[Okay|Ok] what is the next task."    Remind of a prior question put on hold in a queue
 
     "[Okay|Ok] accept."                   Accept a Y/N question
     "[Okay|Ok] deny."                     Deny/Cancel a Y/N question
     "[Okay|Ok] confirm with the code <four number code>."
-                                         Confirm a confirmation request
+                                          Confirm a confirmation request
 
     "[Okay|Ok] select the option number [one|two|three|four]."
-                                         Select a multi-choice question option
+                                          Select a multi-choice question option
 
     "[Okay|Ok] what mode are you in."     Confirm the current mode
     "[Okay|Ok] enter the normal mode."    Enter the normal mode
-    "[Okay|Ok] enter the conversation mode." Enter the conversation mode
+    "[Okay|Ok] enter the conversation mode."
+                                          Enter the conversation mode
     "[Okay|Ok] enter the follow mode."    Enter the follow mode
+    "[Okay|Ok] enter the car mode."       Enter the car mode
+    "[Okay|Ok] enter the boat mode."      Enter the boat mode
+    "[Okay|Ok] enter the plane mode."     Enter the plane mode
+    "[Okay|Ok] enter the starship mode."  Enter the starship mode
+    "[Okay|Ok] enter the refrigerator mode."
+                                          Enter the refrigerator mode
 
 Skills and Skillsets:
   Usage: commbase [options]
@@ -254,7 +261,7 @@ route_option() {
             cleaned_json=$cleaned_previous_request
             # Write the JSON object to the file
             echo "$cleaned_json" > "$json_file"
-            # Send the messages request through commbase-data-exchange client
+            # Send the messages request to the controller for parsing
             (bash "$controller")
             ;;
         esac

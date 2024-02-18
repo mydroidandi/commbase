@@ -53,7 +53,7 @@ server_skill() {
   # Store only the value of "current_request" without the key
   current_request=$(echo "$messages" | jq -r '.messages[] | select(.current_request != null) | .current_request')
 
-  echo "Current request:" "$current_request""."
+  echo "Current request:" "$current_request"
 
   # Search for a Commbase skill or skillset that matches the request in the
   # directory.
