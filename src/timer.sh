@@ -120,7 +120,7 @@ done
 
 # Choose or program your alarm alternative here ...
 
-# Say finished using festival tts and finish the program
+# Say "finished" using festival tts and finish the program
 #echo "finished" | festival --tts
 
 # Say "get back to work" using spd-say and play a sound every 1/2 second until
@@ -144,4 +144,6 @@ done
 # Custom alarm
 source $COMMBASE_APP_DIR/config/commbase.conf
 tts_engine="$TTS_ENGINE_STRING"
+# Match the countdown time and the sleep time to sound the alarm every end of
+# the time period of 1500 secs.
 sleep 0.5; while true; do echo "twenty five minutes more have passed" | $tts_engine; sleep 1500; done
