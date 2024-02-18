@@ -31,19 +31,17 @@ Content
 
 2.7. Install the required system dependency packages
 
-2.8. Install commbase-stt-vosk-p
+2.8. Install commbase-stt-whisper-p
 
 2.9. Install libcommbase
 
-2.10. Install the Vosk model
+2.10. Install VU-meter
 
-2.11. Install VU-meter
+2.11. Install Oh My Tmux
 
-2.12. Install Oh My Tmux
+2.12. Install the default Commbase voice commands dependencies
 
-2.13. Install the default Commbase voice commands dependencies
-
-2.14. Install Desktop Environments
+2.13. Install Desktop Environments
 
 3. Next steps
 
@@ -346,25 +344,6 @@ $ pip3 install subprocess.run
 Install Python packages
 ------------------------
 
-- Vosk:
-
-$ pip3.11 install vosk
-
-Or use:
-
-$ python -m pip install vosk
-
-If you can't install it, check the output messages. For example, I have Vosk already in the system from a previous Kdenlive application installation (installed as a flatpak from flathub), which does not allow me to re-install Vosk.
-
-Example of terminal OUTPUT:
-
-Defaulting to user installation because normal site-packages is not writable
-Requirement already satisfied: vosk in /home/<USER>/.local/lib/python3.7/site-packages (0.3.22)
-
-End of OUTPUT.
-
-In the previous output, the messages references the current Python Vosk package installation. Python is already installed in a directory of the current local user <USER>, instead of system-wide, so it is helpful to re-install python3, pip3, or vosk.
-
 - Portaudio:
 
 PyAudio‑0.2.13 requires Portaudio19 to install:
@@ -479,6 +458,18 @@ It requires the package ffmpeg. Install it like this:
 
 $ sudo apt-get install ffmpeg
 
+- flask:
+
+$ pip3.11 install flask
+
+- flask-cors:
+
+$ pip3.11 install flask-cors
+
+- flask-socketio:
+
+$ pip3.11 install flask-socketio
+
 - pyttsx3:
 
 $ pip3.11 install pyttsx3
@@ -502,6 +493,18 @@ $ sudo apt-get install tesseract-ocr
 - pytest:
 
 $ pip3.11 install pytest
+
+- requests:
+
+$ pip3.11 install requests
+
+- simple-websocket:
+
+$ pip3.11 install simple-websocket
+
+- schedule:
+
+$ pip3.11 install schedule
 
 Install Python in an Anaconda Python environment
 -------------------------------------------------
@@ -656,6 +659,8 @@ List of required packages/commands:
 
 - ffmpeg
 
+- figlet
+
 - gawk
 
 - gdebi
@@ -675,6 +680,8 @@ List of required packages/commands:
 - openssh-client
 
 - openssh-server
+
+- openssl
 
 - portaudio19-dev (seen in the section of PyAudio)
 
@@ -714,7 +721,7 @@ $ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
 
 For example, this is the actual one-liner command someone could require:
 
-$ sudo apt-get update; sudo apt-get install alsa-utils bash cpulimit curl dash espeak festival ffmpeg gawk gdebi gnome-terminal git jq mpv mplayer nmap openssh-client openssh-server portaudio19-dev procps pulseaudio python3-opencv rsync sed sox sudo tar tasksel tesseract-ocr tmux unzip uuid-runtime wget xbindkeys
+$ sudo apt-get update; sudo apt-get install alsa-utils bash cpulimit curl dash espeak festival ffmpeg figlet gawk gdebi gnome-terminal git jq mpv mplayer nmap openssh-client openssh-server openssl portaudio19-dev procps pulseaudio python3-opencv rsync sed sox sudo tar tasksel tesseract-ocr tmux unzip uuid-runtime wget xbindkeys
 
 Troubleshooting the package installation:
 
@@ -752,33 +759,6 @@ To search for a particular package name or string in the official Debian reposit
 
 $ apt-cache search dash | grep "dash"
 
-Install commbase-stt-vosk-p
-----------------------------
-
-This code repository comes bundled with the Commbase codebase, but can also download it.
-
-Download/clone it from GitHub and install it:
-
-$ cd bundles/built-in/broker
-
-$ git clone git@github.com:mydroidandi/commbase-stt-vosk-p.git
-
-$ cd commbase-stt-vosk-p
-
-If you need to remove the .git directory:
-
-$ rm -rf .git
-
-You could need to change the first line of the file commbase_stt_vosk_p.py, to a fixed Python version, accordingly:
-
-For Anaconda Python environments, use:
-
-#!/usr/bin/env python
-
-For Python3.11, use:
-
-#!/usr/bin/python3.11
-
 Install libcommbase
 --------------------
 
@@ -793,21 +773,6 @@ $ cd libcommbase
 If you need to remove the .git directory:
 
 $ rm -rf .git
-
-Install the Vosk model
------------------------
-
-Currently, Commbase works only in English.
-
-Visit: https://alphacephei.com/vosk/models
-
-Download and install the model manually or by running this command in commbase/scripts/configuration:
-
-$ bash install_vosk_model.sh
-
-Note: You can download and use a newer model version or a more accurate model with a bigger size, but it could/would affect the Commbase voice recognition precision and/or the system performance because the bigger the model you use, the bigger the memory required to load it and the bigger the cpu core usage (uses a single core). That change would make you verify all the voice commands to make sure that the voice recognition matches your commands.
-
-Note: If you are patient, you can change all the text patterns and code to make your Commbase app work in one of the languages supported by Vosk, but we do not recommend you to do so unless you need to, because it is a huge task.
 
 Install VU-meter
 -----------------
@@ -903,7 +868,7 @@ $ top
 
 Press 'q' to exit.
 
-If you experience problems with the engine commbase_stt_vosk_p performance when running Commbase, you can yet change the value of the variable STT_PROCESS_CPU_LIMIT_PERCENTAGE in the file config/commbase.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
+If you experience problems with the engine commbase_stt_whisper_p performance when running Commbase, you can yet change the value of the variable STT_PROCESS_CPU_LIMIT_PERCENTAGE in the file config/commbase.conf to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs.
 
 Considerations on how to choose an optimal Python CPU limit percentage:
 
