@@ -209,7 +209,7 @@ Restart Commbase normally.
 
 ## More Tmux Commands
 
-The full list of tmux commands is its the man page.
+The full list of tmux commands is its man page.
 
 ```shell
 man tmux
