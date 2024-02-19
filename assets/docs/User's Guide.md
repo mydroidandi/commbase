@@ -18,6 +18,7 @@
   - [Kill the Session](#kill-the-session)
   - [Display the Session Pane Numbers](#display-the-session-pane-numbers)
   - [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)
+  - [More_Tmux_Commands](#more-tmux-commands)
 - [5 Set Up Microphones and Audio Keybindings](#5-set-up-microphones-and-audio-keybindings)
   - [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
   - [To Prepare a Dedicated Sound Capture Device](#to-prepare-a-dedicated-sound-capture-device)
@@ -205,6 +206,14 @@ pkill tmux
 ```
 
 Restart Commbase normally.
+
+## More Tmux Commands
+
+The full list of tmux commands is its the man page.
+
+```shell
+man tmux
+```
 
 # 5 Set Up Microphones and Audio Keybindings
 
