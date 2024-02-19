@@ -103,23 +103,27 @@ By utilizing the "teleport" command, you can conveniently manage and transition 
 
 # 3 The User Interface
 
-Commbase is composed of 4 windows.
+Commbase is composed of 4 tmux windows.
 
 The window 1, "Commbase", contains 4 panes:
 
-- Pane 1. It is the chat pane.
+- Pane 1. It is the chatroom pane.
 
-- Pane 2. It is the VU-meter pane.
+- Pane 2. It is the client logs pane.
 
-- Pane 3. It is the audio mixer pane.
+- Pane 3. It is the server logs pane.
 
-- Pane 4. It is the Commbase terminal or simply a user terminal that can be focused, used, and cleaned from the application.
+- Pane 4. It is the VU-meter pane.
+
+- Pane 5. It is the audio mixer pane.
+
+- Pane 6. It is a user terminal that is also focused and used by Commbase for launching skill scripts.
 
 The window 2, "Timer", contains a single pane.
 
 The window 3, "Server 1", contains a single pane.
 
-The window 3, "Server 1", contains a single pane that is disabled by default in the configuration file.
+The window 4, "Server 2", contains a single pane that is disabled by default in the configuration file.
 
 The window 5, "Files 1", contains a single pane.
 
