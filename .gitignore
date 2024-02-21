@@ -152,7 +152,7 @@ src/certificates/*
 
 # Ignore the contents of the "src/config" directory except for the file
 # named ".gitkeep".
-src/log/*
+src/config/*
 !src/config/.gitkeep
 
 # Ignore the contents of the "src/log" directory except for the file
