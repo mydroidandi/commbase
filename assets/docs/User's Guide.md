@@ -659,7 +659,7 @@ The default version of the file **commbase.conf** contains the next values:
 - **PYTHON_ENV_VERSION**:
   - Example values:
     - `python` (Default): Choosing this value implies that the virtual environment will use the Python version associated with the default system Python interpreter. Choose this value whether your application uses a virtual environment such as commbase_env. For more details, check out the file **INSTALL**.
-    - `python3.11`: This value indicates a custom Python version, specifically version 3.11. For more details, check out the file **INSTALL**.
+    - `python3.12`: This value indicates a custom Python version, specifically version 3.12. For more details, check out the file **INSTALL**.
     - `python3`: This value also represents a custom Python version, but the exact version is not specified. For more details, check out the file **INSTALL**.
 
 - **STT_PROCESS_CPU_LIMIT_PERCENTAGE**:
