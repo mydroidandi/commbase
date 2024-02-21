@@ -39,37 +39,37 @@
 
 # Recreates conda environment
 recreate_conda_env(){
+  # Environment
+  CONDA_ENV_NAME="commbase_env"
+  CONDA_ENV_FILENAME="commbase_env.yaml"
 
-	# Environment
-	CONDA_ENV_NAME="commbase_env"
-	CONDA_ENV_FILENAME="commbase_env.yaml"
+  # Remove an existent environment
+  conda remove -n $CONDA_ENV_NAME --all
 
-	# Remove an existent environment
-	conda remove -n $CONDA_ENV_NAME --all
+  # Recreate a new environment commbase_env
+  conda env create -f "$COMMBASE_APP_DIR/$CONDA_ENV_FILENAME"
 
-	# Recreate a new environment commbase_env
-	conda env create -f "$COMMBASE_APP_DIR/$CONDA_ENV_FILENAME"
+  # List the environment
+  conda info --envs
 
-	# List the environment
-	conda info --envs
+  # Activate the environment
+  #conda activate commbase_env
 
-	# Activate the environment
-	#conda activate commbase_env
+  # Identify the active environment (no foobar)
+  #conda env list
 
-	# List environment packages (requires previous enviroment activation)
-	#conda list
+  # List environment packages (requires previous enviroment activation)
+  #conda list | more
 
-	# Update Conda Environments Using a YAML File
-	# Running this command will update your current environment to include the most
-	# current versions of the packages listed in that environment file.
-	#conda activate $CONDA_ENVIRONMENT
-	#conda env update -f $CONDA_ENVIRONMENT_FILENAME
+  # Update Conda Environments Using a YAML File
+  # Running this command will update your current environment to include the most
+  # current versions of the packages listed in that environment file.
+  #conda activate $CONDA_ENVIRONMENT
+  #conda env update -f $CONDA_ENVIRONMENT_FILENAME
 
-	exit 99
-
+  exit 99
 }
 
 recreate_conda_env || exit 99;
 
 exit 99
-
