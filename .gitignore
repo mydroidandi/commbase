@@ -130,9 +130,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Ignore bundled models
-bundles/built-in/broker/vosk/models/vosk-model-en-us-0.22-lgraph/model/
-
 # Ignore the contents of the "certificates" directory except for the file
 # named ".gitkeep".
 certificates/*
