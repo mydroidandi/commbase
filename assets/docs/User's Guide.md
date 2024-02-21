@@ -18,6 +18,7 @@
   - [Kill the Session](#kill-the-session)
   - [Display the Session Pane Numbers](#display-the-session-pane-numbers)
   - [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)
+  - [More_Tmux_Commands](#more-tmux-commands)
 - [5 Set Up Microphones and Audio Keybindings](#5-set-up-microphones-and-audio-keybindings)
   - [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
   - [To Prepare a Dedicated Sound Capture Device](#to-prepare-a-dedicated-sound-capture-device)
@@ -103,33 +104,47 @@ By utilizing the "teleport" command, you can conveniently manage and transition 
 
 # 3 The User Interface
 
-Commbase is composed of 4 windows.
+Using tmux to create multiple windows with panes can be beneficial for several reasons:
+
+1. Efficient Multitasking
+2. Parallel Development
+3. Server Management
+4. Customization
+5. Persistent Sessions
+
+Commbase is composed by 1 single window but it renders 5 tmux windows by default.
+
+The windows from 2 to 5 are not requirements, and can be disabled (see below).
 
 The window 1, "Commbase", contains 4 panes:
 
-- Pane 1. It is the chat pane.
+- Pane 1. It is the chatroom pane.
 
-- Pane 2. It is the VU-meter pane.
+- Pane 2. It is the client logs pane.
 
-- Pane 3. It is the audio mixer pane.
+- Pane 3. It is the server logs pane.
 
-- Pane 4. It is the Commbase terminal or simply a user terminal that can be focused, used, and cleaned from the application.
+- Pane 4. It is the VU-meter pane.
+
+- Pane 5. It is the audio mixer pane.
+
+- Pane 6. It is a user terminal that is also focused and used by Commbase for launching skill scripts.
 
 The window 2, "Timer", contains a single pane.
 
 The window 3, "Server 1", contains a single pane.
 
-The window 3, "Server 1", contains a single pane that is disabled by default in the configuration file.
+The window 4, "Server 2", contains a single pane that is disabled by default in the configuration file.
 
 The window 5, "Files 1", contains a single pane.
 
-The extra windows from 2 to 4 can be disabled or enabled as a group or separately, by changing their settings in the configuration file **config/commbase.conf**.
+The extra windows from 2 to 5 can be disabled or enabled as a group or separately, by changing their settings in the configuration file **config/commbase.conf**.
 
 To show or hide these windows, you can change the values assigned to the next default configuration variables:
 
 `TMUX_EXTRA_WINDOWS_ON`, `TMUX_EXTRA_WINDOW_TIMER_ON`, `TMUX_EXTRA_WINDOW_SERVER1_ON`, and `TMUX_EXTRA_WINDOW_SERVER2_ON`, `TMUX_EXTRA_WINDOW_FILES1_ON`.
 
-You will find information about the variables in the section **5 Default Configuration Variables**.
+You will find information about the variables in the section **8 Configuration Variables**.
 
 # 4 Useful Tmux Actions
 
@@ -201,6 +216,14 @@ pkill tmux
 ```
 
 Restart Commbase normally.
+
+## More Tmux Commands
+
+The full list of tmux commands is its man page.
+
+```shell
+man tmux
+```
 
 # 5 Set Up Microphones and Audio Keybindings
 
@@ -636,7 +659,7 @@ The default version of the file **commbase.conf** contains the next values:
 - **PYTHON_ENV_VERSION**:
   - Example values:
     - `python` (Default): Choosing this value implies that the virtual environment will use the Python version associated with the default system Python interpreter. Choose this value whether your application uses a virtual environment such as commbase_env. For more details, check out the file **INSTALL**.
-    - `python3.11`: This value indicates a custom Python version, specifically version 3.11. For more details, check out the file **INSTALL**.
+    - `python3.12`: This value indicates a custom Python version, specifically version 3.12. For more details, check out the file **INSTALL**.
     - `python3`: This value also represents a custom Python version, but the exact version is not specified. For more details, check out the file **INSTALL**.
 
 - **STT_PROCESS_CPU_LIMIT_PERCENTAGE**:
@@ -1803,9 +1826,10 @@ Example of the terminal/voice command for the interactive sequence:
 ## Skills unique for the command Line
 
 ```shell
-commbase start|stop|teleport
-commbase start server
-commbase start client
+commbase start|teleport
+commbase server
+commbase client
+commbase stop
 commbase {TYPOS}
 ```
 

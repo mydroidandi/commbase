@@ -46,7 +46,7 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 # Directory to store client data
-CLIENT_DATA_DIR = os.path.join(os.environ.get("COMMBASE_APP_DIR", ""), "bundles", "built-in", "broker", "commbase-data-exchange", "server", "client_data")
+CLIENT_DATA_DIR = os.path.join(os.environ.get("COMMBASE_APP_DIR", ""), "bundles", "commbase-data-exchange", "server", "client_data")
 
 # Ensure the directory exists
 os.makedirs(CLIENT_DATA_DIR, exist_ok=True)
