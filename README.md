@@ -82,7 +82,7 @@ This project is coded and organized like this:
 │   │               └── openai_whisper_model_base
 │   ├── PyAudio
 │   └── vu-meter
-├── config  # Stores the configuration files
+├── config  # Stores the configuration file
 ├── data  # Stores the voice recognition model results and other data files
 ├── env  # Stores the environment file
 ├── history  # Stores the app commands history files
