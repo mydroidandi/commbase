@@ -37,6 +37,11 @@
 # Toggles ON/OFF the sound capture.
 # Uses the keyboard binding ALT + SHIFT + 1.
 toggle_capture_on_off() {
+  # Imports
+  source $COMMBASE_APP_DIR/config/commbase.conf
+
+  tts_engine="$TTS_ENGINE_STRING"
+
   # Assume that the capture is mono, no matter the number of channels, which is
   # correct for registering the human voice.
   amixer_status=$(amixer get Capture | awk -F "[, ]+" '/on|off^/{print $NF ":", $1, $(NF-1)}' | tail -n+3 || exit 99);
@@ -50,7 +55,7 @@ toggle_capture_on_off() {
     # Uses the keyboard binding ALT-SHIFT-2.
     (amixer set Capture nocap &>/dev/null || exit 99);
   else
-    (echo "I perceive an issue with the sound capture" | festival --tts || exit 99);
+    (echo "I perceive an issue with the sound capture" | $tts_engine || exit 99);
   fi
 }
 
