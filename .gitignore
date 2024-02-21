@@ -138,6 +138,8 @@ logs
 # Ignore the directory tests/
 tests/
 
+# Ignore contents of src/
+
 # Ignore the contents of the "src/bundles" directory except for the file
 # named ".gitkeep".
 src/bundles/*
@@ -147,6 +149,11 @@ src/bundles/*
 # named ".gitkeep".
 src/certificates/*
 !src/certificates/.gitkeep
+
+# Ignore the contents of the "src/config" directory except for the file
+# named ".gitkeep".
+src/log/*
+!src/config/.gitkeep
 
 # Ignore the contents of the "src/log" directory except for the file
 # named ".gitkeep".
