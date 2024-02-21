@@ -138,37 +138,25 @@ logs
 # Ignore the directory tests/
 tests/
 
-# Ignore contents of src/
-
-# Ignore the contents of the "src/bundles" directory except for the file
-# named ".gitkeep".
+# Ignore the contents of the "src/bundles" directory
 src/bundles/*
-!src/bundles/.gitkeep
 
-# Ignore the contents of the "src/certificates" directory except for the file
-# named ".gitkeep".
+# Ignore the contents of the "src/certificates" directory
 src/certificates/*
-!src/certificates/.gitkeep
 
-# Ignore the contents of the "src/config" directory except for the file
-# named ".gitkeep".
+# Ignore the contents of the "src/config" directory
 src/config/*
-!src/config/.gitkeep
 
-# Ignore the contents of the "src/log" directory except for the file
-# named ".gitkeep".
+# Ignore the contents of the "src/log" directory
 src/log/*
-!src/log/.gitkeep
 
 # Ignore the contents of the "src/skills_db" directory except for the file
 # named "open_the_web_browser.json".
 src/skills_db/*
 !src/skills_db/bash/f/firefox/open_the_web_browser.json
 
-# Ignore the contents of the "src/tests" directory except for the file
-# named ".gitkeep".
+# Ignore the contents of the "src/tests" directory
 src/tests/*
-!src/tests/.gitkeep
 
 # Ignore IDE specific files
 .idea/
