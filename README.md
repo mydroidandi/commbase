@@ -82,13 +82,11 @@ This project is coded and organized like this:
 │   │               └── openai_whisper_model_base
 │   ├── PyAudio
 │   └── vu-meter
-├── certificates  # Stores certificates and keys
-├── config   # Stores the configuration files
+├── config  # Stores the configuration file
 ├── data  # Stores the voice recognition model results and other data files
 ├── env  # Stores the environment file
 ├── history  # Stores the app commands history files
 ├── i18n  # Stores resources related to localization and internationalization
-├── log  # Stores custom log files of specific skills
 ├── screenshots  # Stores the image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
 │   ├── configuration
@@ -103,6 +101,9 @@ This project is coded and organized like this:
 │   │   ├── audiobooks
 │   │   │   └── Robinson_Crusoe
 │   │   └── ...
+│   ├── certificates
+│   ├── config
+│   ├── log
 │   ├── skills_db
 │   │   ├── arduino
 │   │   ├── bash
