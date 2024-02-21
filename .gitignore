@@ -130,15 +130,20 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Ignore the contents of the "certificates" directory except for the file
+# Ignore the contents of the "src/certificates" directory except for the file
 # named ".gitkeep".
 src/certificates/*
 !src/certificates/.gitkeep
 
-# Ignore the contents of the "skills_db" directory except for the file
+# Ignore the contents of the "src/skills_db" directory except for the file
 # named "open_the_web_browser.json".
 src/skills_db/*
 !src/skills_db/bash/f/firefox/open_the_web_browser.json
+
+# Ignore the contents of the "src/log" directory except for the file
+# named ".gitkeep".
+src/log/*
+!src/log/.gitkeep
 
 # Ignore Logs
 logs
