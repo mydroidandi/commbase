@@ -130,21 +130,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Ignore the contents of the "src/certificates" directory except for the file
-# named ".gitkeep".
-src/certificates/*
-!src/certificates/.gitkeep
-
-# Ignore the contents of the "src/skills_db" directory except for the file
-# named "open_the_web_browser.json".
-src/skills_db/*
-!src/skills_db/bash/f/firefox/open_the_web_browser.json
-
-# Ignore the contents of the "src/log" directory except for the file
-# named ".gitkeep".
-src/log/*
-!src/log/.gitkeep
-
 # Ignore Logs
 logs
 # Do not ignore skill-script log files
@@ -152,6 +137,31 @@ logs
 
 # Ignore the directory tests/
 tests/
+
+# Ignore the contents of the "src/bundles" directory except for the file
+# named ".gitkeep".
+src/bundles/*
+!src/bundles/.gitkeep
+
+# Ignore the contents of the "src/certificates" directory except for the file
+# named ".gitkeep".
+src/certificates/*
+!src/certificates/.gitkeep
+
+# Ignore the contents of the "src/log" directory except for the file
+# named ".gitkeep".
+src/log/*
+!src/log/.gitkeep
+
+# Ignore the contents of the "src/skills_db" directory except for the file
+# named "open_the_web_browser.json".
+src/skills_db/*
+!src/skills_db/bash/f/firefox/open_the_web_browser.json
+
+# Ignore the contents of the "src/tests" directory except for the file
+# named ".gitkeep".
+src/tests/*
+!src/tests/.gitkeep
 
 # Ignore IDE specific files
 .idea/
