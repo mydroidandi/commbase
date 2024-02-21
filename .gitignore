@@ -132,8 +132,8 @@ dmypy.json
 
 # Ignore the contents of the "certificates" directory except for the file
 # named ".gitkeep".
-certificates/*
-!certificates/.gitkeep
+src/certificates/*
+!src/certificates/.gitkeep
 
 # Ignore the contents of the "skills_db" directory except for the file
 # named "open_the_web_browser.json".
