@@ -666,7 +666,7 @@ The default version of the file **commbase.conf** contains the next values:
   - Description: The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity. For more details, check out the file **INSTALL**.
   - Possible values: This variable should be a value between 0 and 100 or between 0 and 400 (for machines with 4 processing cores or more.)
   - Example value:
-    - `75` (Default): The STT process is going to use up to 75% of the computer's processing power.
+    - `90` (Default): The STT process is going to use up to 75% of the computer's processing power.
 
 - **CONDA_ENV_NAME_IF_EXISTS**:
   - Example values:
