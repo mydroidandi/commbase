@@ -65,7 +65,7 @@ def listen():
         listener.adjust_for_ambient_noise(source)
 
         try:
-            audio = listener.listen(source, timeout=2)  # Set a timeout of 2 seconds
+            audio = listener.listen(source, timeout=30)  # Set a timeout of 30 seconds
             print("COMMBASE: Processing...")
             data = io.BytesIO(audio.get_wav_data())
             audio_clip = AudioSegment.from_file(data)
