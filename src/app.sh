@@ -110,7 +110,7 @@ app() {
       # Window 1
       # Auto-create a new window 1 for a countdown timer of 25 mins and start it
       tmux new-window -t Commbase-0:2 -n "Timer" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
-      tmux select-window -t 2 && tmux send-keys " bash $COMMBASE_APP_DIR/src/timer.sh -m 25" C-m;
+      tmux select-window -t 2 && tmux send-keys " tclock" C-m;  # The app clock-tui requires rust with cargo.
     fi
 
     if [ "$TMUX_EXTRA_WINDOW_SERVER1_ON" = "True" ];then
