@@ -36,7 +36,7 @@
 # to another device in a group of two devices, turning it active and default.
 
 # The configuration file
-source "$COMMBASE_APP_DIR/config/app.conf"
+source "$COMMBASE_APP_DIR/config/commbase.conf"
 
 # Toggle and activate the current active and default capture device to another
 # device in a group of two devices, turning it active and default.
@@ -45,9 +45,9 @@ toggle_active_capture_device() {
   active_device=$(pactl list sources short | grep RUNNING || exit 99);
 
   if (echo "$active_device" | grep -q "$MY_APP_AUDIO_CAPTURE_DEVICE_NAME" || exit 99); then
-    (pacmd set-default-source "$SYSTEM_AUDIO_CAPTURE_DEVICE_NAME" || exit 99);
+    (pactl set-default-source "$SYSTEM_AUDIO_CAPTURE_DEVICE_NAME" || exit 99);  # Works with PulseAudio or PulseAudio and PipeWire
   else
-    (pacmd set-default-source "$MY_APP_AUDIO_CAPTURE_DEVICE_NAME" || exit 99);
+    (pactl set-default-source "$MY_APP_AUDIO_CAPTURE_DEVICE_NAME" || exit 99);  # Works with Pulseaudio or PulseAudio and Pipewire
   fi
 }
 
