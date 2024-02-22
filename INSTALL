@@ -17,7 +17,7 @@ Content
 
 2. Requisites and dependencies
 
-2.1. Decide which Python version to install
+2.1. Choose a Python version to install
 
 2.2. Install Python
 
@@ -27,21 +27,11 @@ Content
 
 2.5. Build the Commbase Conda environment from a YAML file
 
-2.6. Install Whisper
+2.6. Install OpenAI's Whisper
 
 2.7. Install the required system dependency packages
 
-2.8. Install commbase-stt-whisper-p
-
-2.9. Install libcommbase
-
-2.10. Install VU-meter
-
-2.11. Install Oh My Tmux
-
-2.12. Install the default Commbase voice commands dependencies
-
-2.13. Install Desktop Environments
+2.8. Install Oh My Tmux
 
 3. Next steps
 
@@ -76,11 +66,9 @@ Visit: https://github.com/mydroidandi/commbase
 
 Download or clone the repository somewhere in your home directory:
 
-$ echo $HOME
-
 $ cd $HOME
 
-Extract the zip file:
+$ git clone git@github.com:mydroidandi/commbase.git
 
 $ unzip commbase-main.zip
 
@@ -101,7 +89,7 @@ Notes about the difference between .bashrc and .bash_profile:
 
 When Bash is invoked as an interactive non-login shell, it reads and executes commands from ~/.bashrc, if that file exists, and is readable.
 
-When invoked as an interactive login shell, Bash looks for the /etc/profile file, and if the file exists , it runs the commands listed in the file. Then Bash searches for ~/.bash_profile, ~/.bash_login, and ~/.profile files, in the listed order, and executes commands from the first readable file found.
+When invoked as an interactive login shell, Bash looks for the /etc/profile file, and if the file exists, it runs the commands listed in the file. Then Bash searches for ~/.bash_profile, ~/.bash_login, and ~/.profile files, in the listed order, and executes commands from the first readable file found.
 
 In case of that your OS distribution does not use ~/.bashrc, add manually the variable $COMMBASE_APP_DIR and its value to your Bash Startup File(s).
 
@@ -110,13 +98,13 @@ Set up the HISTCONTROL environment variable
 
 The HISTCONTROL variable determines which commands are saved in the history file. If you set it to the value "ignoreboth", any command preceded by a space character will be excluded from the history.
 
-Commbase uses HISTCONTROL to keep clean the commands' history during the rendering of the Commbase UI.
+Commbase uses HISTCONTROL to keep clean the commands' history during the rendering of the Commbase User Interface (UI).
 
 To set up the HISTCONTROL environment variable, run the script scripts/configuration/append_function_no_history_to_bashrc.sh:
 
 $ cd scripts/configuration
 
-$ sudo bash append_function_no_history_to_bashrc.sh
+$ bash append_function_no_history_to_bashrc.sh
 
 $ source append_function_no_history_to_bashrc.sh
 
@@ -139,14 +127,14 @@ A new commbase file should appear in the directory /usr/bin.
 
 $ ls /usr/bin/commbase
 
-Do not run the commbase command yet. Remember that the command commbase opens an enhanced tmux session named Commbase-0. To avoid duplicate instances of Commbase running on the system, you need to completely close the program before rerunning it once more. Check out the User's Guide for more details regarding this topic.
+Do not run the commbase just command yet. Remember that the command commbase opens an enhanced tmux session named Commbase-0. To avoid duplicate instances of Commbase running on the system, you need to completely close the program before rerunning it once more. Check out the User's Guide for more details regarding this topic.
 
 
 2. Requisites and dependencies
 ===============================
 
-Decide which Python version to install
----------------------------------------
+Choose a Python version to install
+-----------------------------------
 
 In the next documentation sections, we present 3 alternatives to install the Commbase Python Environment:
 
@@ -156,56 +144,42 @@ In the next documentation sections, we present 3 alternatives to install the Com
 
 3. Build the Commbase Conda environment from a YAML file.
 
-From those alternatives, we recommend installing Python using the third option, Build the Commbase Conda environment from a YAML file, because of the following advantages:
+From those alternatives, we recommend installing Python using the third option, Build the Commbase Conda environment from a YAML file, because there is no need to create a new Commbase environment from zero, in case of systems with multiple environments setups. You recreate and install the Commbase environment, packages, and packaging dependencies all at once. Also, you do not need to edit the file config/commbase.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version that Commbase is going to use.
 
-1. Some Anaconda Python packages are optimized for AI (Machine Learning and Data Science.)
+For the second and third alternatives given, in case you do not have Anaconda Python in your system but still want to use it to run Commbase, you can install Anaconda Python and then read the section "Install Python in an Anaconda Python environment" to choose if you are going to create any Anaconda Python Commbase environment such as "commbase_env" yourself or build it later on as it is shown in the section "Build the Commbase Conda environment from a YAML file". After its installation, your Anaconda Python version should be capable of installing or building your commbase_env environment. Otherwise, try to install a newer or older version of Anaconda Python and verify the Python versions it can install, run, and work with. The installation of Anaconda Python is beyond the scope of this documentation. For information on how to install Anaconda Python in your operating system, visit: https://docs.anaconda.com/free/anaconda/getting-started/install/
 
-2. There is no need to manually create a new Commbase environment, in case of systems with multiple environments setups.
-
-3. You recreate and install the Commbase environment, packages, and packaging dependencies all at once.
-
-4. You do not need to edit the file config/commbase.conf constant PYTHON_ENV_VERSION="python" to define your own or custom Python version that Commbase is going to use.
-
-In case you do not have Anaconda Python in your system but still want to use it to run Commbase, you can install Anaconda Python and then read the section "Install Python in an Anaconda Python environment" to choose if you are going to create any Anaconda Python Commbase environment such as "commbase_env" yourself or build it later on as it is shown in the section "Build the Commbase Conda environment a from YAML file".
-
-The installation of Anaconda Python is beyond the scope of this documentation. For information on how to install Anaconda Python in your operating system, visit:
-
-https://docs.anaconda.com/free/anaconda/getting-started/install/
-
-After its installation, your Anaconda Python version should be capable of installing or building your commbase_env environment. Otherwise, try to install a newer or older version of Anaconda Python and verify the Python versions it can install, run, and work with.
-
-In case you want to use your systems' or any custom Python version, edit the file config/commbase.conf line with the variable PYTHON_ENV_VERSION="python"
+For the first alternative, in case you want to use your systems' or any other custom Python version, edit the file config/commbase.conf line with the variable PYTHON_ENV_VERSION="python" if required.
 
 For example:
 
-PYTHON_ENV_VERSION="python3.11"
+PYTHON_ENV_VERSION="python3.12"
 
-In that way, Commbase will attempt to run using python3.11 from your OS instead of using the Anaconda Python environment commbase_env, which has and runs its own Python version.
+In that way, Commbase will attempt to run using python3.12 from your OS instead of using the Anaconda Python environment commbase_env, which has and runs its own Python version.
 
-Python 3.11 is the minimum Python version required to run all the Commbase software properly, in the system or in a virtual environment. A Python version higher than the one used in commbase_env could affect any skill script or any custom scripts you could make. In such cases, you could keep your custom Python version or Python environment version and manage the errors by yourself.
+Python 3.12 is the minimum Python version required to run all the Commbase software properly, in the system or in a virtual environment. A Python version higher than the one used in commbase_env could affect any skill script or any custom scripts you could make. In such cases, you could keep your custom Python version or Python environment version and manage the errors by yourself.
 
 Install Python
 ---------------
 
-In this section, we added an excellent alternative to standard Python installations. However, the method to install Python is your decision at the end of the day, and that choice is not going to affect how Commbase works. After the alternative "Build Python 3.11.1 on Debian 11 Bullseye", we put a subsection "Install Python 3.7" just for reference of installations of older Python versions.
+In this section, we added an excellent alternative to standard Python installations. However, the method to install Python is your decision at the end of the day, and that choice is not going to affect how Commbase works. After the alternative "Build Python 3.12.1 on Debian 12 Bookworm", we put a subsection "Install Python 3.7" just for reference of installations of older Python versions on an older Debian GNU/Linux distribution.
 
-- Build Python 3.11.1 on Debian 11 Bullseye:
+- Build Python 3.12.1 on Debian 11, 12:
 
 Check the current version:
 
 $ apt info python3
 
-Info: https://www.python.org/downloads/release/python-3111/
+Info: https://www.python.org/downloads/release/python-3121/
 
 Download and extract the Python source code:
 
 $ cd /tmp/
 
-$ wget https://www.python.org/ftp/python/3.11.1/Python-3.11.1.tgz
+$ wget https://www.python.org/ftp/python/3.12.1/Python-3.12.1.tgz
 
-$ tar -xzvf Python-3.11.1.tgz
+$ tar -xzvf Python-3.12.1.tgz
 
-$ cd Python-3.11.1/
+$ cd Python-3.12.1/
 
 Install the build tools:
 
@@ -229,17 +203,17 @@ The default Python installation is /usr/bin. If you want to install Python under
 
 $ sudo make altinstall
 
-This will install Python at /usr/local/bin/python3.11. To test the version, run this:
+This will install Python at /usr/local/bin/python3.12. To test the version, run this:
 
-$ python3.11 -V
+$ python3.12 -V
 
 You will get this output:
 
-Python 3.11.1
+Python 3.12.1
 
-Make Python 3.11.1 the default version.
+Make Python 3.12.1 the default version.
 
-To make the default version of Python 3.11.1, run this:
+To make the default version of Python 3.12.1, run this:
 
 $ sudo ln -s /usr/local/bin/python
 
@@ -247,17 +221,17 @@ Output:
 
 ln: failed to create symbolic link './python': File exists
 
-$ sudo ln -s /usr/local/bin/python3.11 /usr/local/bin/python
+$ sudo ln -s /usr/local/bin/python3.12 /usr/local/bin/python
 
 This creates a bunch of softlinks and links the latest Python to /usr/local/bin.
 
-Test whether Python 3.11.1 is the default version:
+Test whether Python 3.12.1 is the default version:
 
 $ ls -al /usr/local/bin/python
 
 Output:
 
-lrwxrwxrwx 1 root root 25 May 11 16:52 /usr/local/bin/python -> /usr/local/bin/python3.11
+lrwxrwxrwx 1 root root 25 May 11 16:52 /usr/local/bin/python -> /usr/local/bin/python3.12
 
 $ ls -al /etc/alternatives/python
 
@@ -265,19 +239,19 @@ Output:
 
 ls: cannot access '/etc/alternatives/python': No such file or directory
 
-$ /usr/local/bin/python3.11 -V
+$ /usr/local/bin/python3.12 -V
 
 Output:
 
-Python 3.11.1
+Python 3.12.1
 
 $ python -V
 
 The output will be:
 
-Python 3.11.1
+Python 3.12.1
 
-So, at this point, Python 3.11.1 has been set as the default version of Python.
+So, at this point, Python 3.12.1 has been set as the default version of Python.
 
 Verify the pip version:
 
@@ -291,27 +265,29 @@ Upgrade the pip version:
 
 $ whereis python
 
-$ /usr/local/bin/python3.11 -m pip install --upgrade pip
+$ /usr/local/bin/python3.12 -m pip install --upgrade pip
 
-$ pip3.11 install --upgrade pip
+$ pip3.12 install --upgrade pip
 
 $  whereis pip
 
 Check the new pip version:
 
-$ pip3.11 -V
+$ pip3.12 -V
 
 Output:
 
-pip: /usr/bin/pip /usr/local/bin/pip3.11 /usr/share/man/man1/pip.1.gz
+pip: /usr/bin/pip /usr/local/bin/pip3.12 /usr/share/man/man1/pip.1.gz
 
-From now on, you can use this new command pip3.11 to install most of your pip packages.
+From now on, you can use this new command pip3.12 to install most of your pip packages.
 
 The command python -m pip install <PACKAGE> is used to ensure that the pip command is executed within the context of the specific Python interpreter specified by python.
 
 In some cases, there may be multiple versions of Python installed on a system, and using python -m pip helps ensure that the correct pip module associated with the desired Python interpreter is used for package installation. This is particularly useful when you want to install packages for a specific Python version or in virtual environments.
 
 - Install Python 3.7:
+
+$ whereis python3.7
 
 $ sudo apt-get update
 
@@ -346,7 +322,7 @@ Install Python packages
 
 - Portaudio:
 
-PyAudio‑0.2.13 requires Portaudio19 to install:
+PyAudio requires Portaudio19 to install:
 
 More information here: https://packages.debian.org/bullseye/portaudio19-dev
 
@@ -356,7 +332,7 @@ $ apt-cache search portaudio
 
 $ sudo apt-get install portaudio19-dev portaudio19-doc
 
-- PyAudio‑0.2.13:
+- PyAudio:
 
 PyAudio requires python3-pyaudio to install:
 
@@ -364,27 +340,27 @@ $ sudo apt install python3-pyaudio
 
 More information here: https://pypi.org/project/PyAudio/
 
-$ pip3.11 install pyaudio
+$ pip3.12 install pyaudio
 
 - Subprocess.run:
 
 More information here: https://pypi.org/project/subprocess.run/
 
-$ pip3.11 install subprocess.run
+$ pip3.12 install subprocess.run
 
 - Sounddevice:
 
 This package allows us to run test_microphone.py
 
-$ pip3.11 install sounddevice
+$ pip3.12 install sounddevice
 
 - Chardet:
 
-$ pip3.11 install chardet
+$ pip3.12 install chardet
 
 - Scikit-learn and scikit-learn-intelex (this last is optional):
 
-$ pip3.11 install scikit-learn scikit-learn-intelex
+$ pip3.12 install scikit-learn scikit-learn-intelex
 
 - OpenCV:
 
@@ -392,9 +368,9 @@ It must be installed as Python package and also as a system package.
 
 To install the Python OpenCV package:
 
-$ pip3.11 install opencv-python
+$ pip3.12 install opencv-python
 
-Steps to install OpenCV in Debian 11:
+Steps to install OpenCV in Debian 11, 12:
 
 Verify the current Debian version (The version limits the higher version that you can install of any package name):
 
@@ -426,33 +402,33 @@ $ dpkg -l | grep opencv
 
 - openai:
 
-$ pip3.11 install openai
+$ pip3.12 install openai
 
 - aiohttp-cors
 
-$ pip3.11 install aiohttp-cors
+$ pip3.12 install aiohttp-cors
 
 - typer:
 
-$ pip3.11 install typer
+$ pip3.12 install typer
 
 - rich:
 
-$ pip3.11 install rich
+$ pip3.12 install rich
 
 - cchardet:
 
-This is giving an error and was installed using pip3 instead of pip3.11, as follows:
+This is giving an error and was installed using pip3 instead of pip3.12, as follows:
 
 $ pip3 install cchardet
 
 - SpeechRecognition:
 
-$ pip3.11 install SpeechRecognition
+$ pip3.12 install SpeechRecognition
 
 - ffmpeg:
 
-$ pip3.11 install ffmpeg
+$ pip3.12 install ffmpeg
 
 It requires the package ffmpeg. Install it like this:
 
@@ -460,23 +436,35 @@ $ sudo apt-get install ffmpeg
 
 - flask:
 
-$ pip3.11 install flask
+$ pip3.12 install flask
 
 - flask-cors:
 
-$ pip3.11 install flask-cors
+$ pip3.12 install flask-cors
 
 - flask-socketio:
 
-$ pip3.11 install flask-socketio
+$ pip3.12 install flask-socketio
+
+- requests:
+
+$ pip3.12 install requests
+
+- simple-websocket:
+
+$ pip3.12 install simple-websocket
+
+- schedule:
+
+$ pip3.12 install schedule
 
 - pyttsx3:
 
-$ pip3.11 install pyttsx3
+$ pip3.12 install pyttsx3
 
 - pydub:
 
-$ pip3.11 install pydub
+$ pip3.12 install pydub
 
 It requires the packages ffmpeg and python3-pydub. Install python3-pydub like this:
 
@@ -484,7 +472,7 @@ $ sudo apt-get install python3-pydub
 
 - pytesseract:
 
-$ pip3.11 install pytesseract
+$ pip3.12 install pytesseract
 
 It requires the package tesseract-ocr. Install it like this:
 
@@ -492,24 +480,12 @@ $ sudo apt-get install tesseract-ocr
 
 - pytest:
 
-$ pip3.11 install pytest
-
-- requests:
-
-$ pip3.11 install requests
-
-- simple-websocket:
-
-$ pip3.11 install simple-websocket
-
-- schedule:
-
-$ pip3.11 install schedule
+$ pip3.12 install pytest
 
 Install Python in an Anaconda Python environment
 -------------------------------------------------
 
-Alternatively, you can replace Python 3.11 with Anaconda Python. Anaconda Python includes some well-optimized Python packages, so the speech recognition AI is supposed to work faster with Anaconda Python than with the official running Python, but everything depends on many factors, such as package versions and system resource availability.
+Alternatively, you can replace Python 3.12 with Anaconda Python. Anaconda Python includes some well-optimized Python packages, so the speech recognition AI is supposed to work faster with Anaconda Python than with the official running Python, but everything depends on many factors, such as package versions and system resource availability.
 
 More information on Anaconda: https://www.anaconda.com/
 
@@ -529,13 +505,13 @@ To install PyPi-like packages in the (base) in Anaconda Python, use the command 
 
 (base) USER-NAME@HOSTNAME:~$ conda install PACKAGE-NAME
 
-If you want to create a new Anaconda Python (3.11) environment just for Commbase, you can use the default name commbase_env or customize it in the configuration file config/commbase.conf:
+If you want to create a new Anaconda Python (3.12.1) environment just for Commbase, you can use the default name commbase_env or customize it in the configuration file config/commbase.conf:
 
 CONDA_ENV_NAME_IF_EXISTS="commbase_env"
 
 To create the environment using the default name commbase_env do:
 
-$ conda create -n commbase_env python=3.11
+$ conda create -n commbase_env python=3.12.1
 
 $ conda activate commbase_env
 
@@ -557,7 +533,9 @@ Alternatively, to install PyPi-like packages in the (commbase_env) environment i
 
 To verify the package was installed, in your terminal window or an Anaconda Python prompt, run:
 
-(commbase_env) $ conda list
+(commbase_env) $ conda list | more
+
+(commbase_env) $ conda list | grep ipython
 
 Note: This documentation and Commbase code would be updated for future releases of Python to make everything Commbase compatible.
 
@@ -575,18 +553,6 @@ Verify the Anaconda Python's Python version used:
 
 (base) $ python --version
 
-As stated, some Anaconda Python packages are usually performing better than the packages for the OS distribution, that is the case of OpenCV. You can test and compare the performance between the OS distribution Python version and the Anaconda Python environment version, by running the file resizable-camera-capture.py from every separate environment. The file does not have to include the Python version to be used in the first line of the script to be executed using the Python version in/specified in the command line:
-
-In the system environment, specifying to use Python3.11:
-
-$ cd /path/to/my/commbase/app
-
-$ python3.11 src/default/broker/skill_scripts/python/c/computer_vision/resizable_camera_capture/skill_script_resizable_camera_capture.py
-
-In the Anaconda Python commbase_env environment, using the environment's Python version:
-
-(commbase_env) $ python src/default/broker/skill_scripts/python/c/computer_vision/resizable_camera_capture/skill_script_resizable_camera_capture.py
-
 Build the Commbase Conda environment from a YAML file
 ------------------------------------------------------
 
@@ -603,36 +569,46 @@ $ bash scripts/configuration/build_conda_environment.sh
 
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
 
-Install Whisper
-----------------
+Install OpenAI's Whisper
+-------------------------
 
-To install Whisper with for Python:
+To install Whisper for Python:
 
-$ pip3.11 install git+https://github.com/openai/whisper.git
+$ pip3.12 install git+https://github.com/openai/whisper.git
 
-To install Whisper for the Anaconda Python Environment commbase_env:
+In an Anaconda Python environment, Whisper should be installed after recreating the Commbase environment. This is because it is directly installed from its GitHub repository using pip, rather than from the default Anaconda channel or from the Python Package Index (PyPI), also known as the Cheese Shop. PyPI is the official third-party software repository for Python.
 
-If you haven't installed Whisper with Python do the following:
+To install Whisper for the Anaconda Python environment commbase_env:
 
 $ conda activate commbase_env
 
 (commbase_env) $ pip install git+https://github.com/openai/whisper.git
 
-If you have already installed Whisper with Python, uninstall Whisper from the environment and then reinstall it from the environment:
+If you have already installed Whisper for Python, but want to change to the Anaconda Python environment alternative, uninstall Whisper for Python and then then reinstall it for the Anaconda environment:
 
-(commbase_env) $ conda uninstall openai-whisper
+$ pip3.12 list | grep  openai-whisper
+
+$ pip3.12 uninstall openai-whisper
+
+$ conda activate commbase_env
 
 (commbase_env) $ conda install openai-whisper
 
-Double check the Whisper installation.
+(commbase_env) $ conda list | grep openai-whisper
 
-For Python, use:
+Finally, you could need to uninstall Whisper from the Anaconda Python's environment:
 
-$ pip3.11 list | grep whisper
+(commbase_env) $ conda uninstall openai-whisper
 
-For Anaconda Python, use:
+This will properly handle dependencies and remove the package along with its dependencies managed by Conda.
 
-(commbase_env) $ conda list | grep whisper 
+If you use 'pip uninstall package', it might not be aware of the dependencies managed by Conda, and you could potentially leave behind orphaned files or dependencies.
+
+To maintain consistency and avoid potential issues, it's best to stick with the package manager used for installation when uninstalling.
+
+If you want to verify the list of packages in the Commbase environment file:
+
+(commbase_env) $ nano commbase_env.yaml
 
 Install the required system dependency packages
 ------------------------------------------------
@@ -643,85 +619,147 @@ In Debian, the DPKG packages that contain all the required commands can be insta
 
 List of required packages/commands:
 
-- alsa-utils (contains the tools: alsamixer and aplay)
+- alsa-utils:
 
-- bash
+It contains the tools alsamixer and aplay.
 
-- cpulimit
+- bash.
 
-- curl
+- cpulimit.
 
-- dash (contains the sh command) 
+- curl.
 
-- espeak (alternative to festival)
+- dash:
 
-- festival
+It contains the sh command.
 
-- ffmpeg
+- espeak:
 
-- figlet
+It is an alternative to festival.
 
-- gawk
+- festival.
 
-- gdebi
+- ffmpeg.
 
-- gnome-terminal
+- figlet.
 
-- git
+- gawk.
 
-- jq
+- gdebi.
 
-- mpv
+- gnome-terminal:
 
-- mplayer
+Actually, it can be any of these Linux terminals: gnome-terminal, konsole, lxterminal, kitty, alacritty, xterm.
 
-- nmap
+Note: More terminals can be added in the file src/client_skill.sh.
 
-- openssh-client
+- git.
 
-- openssh-server
+- jq.
 
-- openssl
+- mpv.
 
-- portaudio19-dev (seen in the section of PyAudio)
+- mplayer.
 
-- procps (it includes the command pkill)
+- nmap.
 
-- pulseaudio (Gnome desktop environment default is pipewire currently)
+- openssh-client.
 
-- python3-opencv (seen in the installation of OpenCV)
+- openssh-server.
 
-- rsync
+- openssl.
 
-- sed
+- portaudio19-dev:
 
-- sox (includes the command play)
+It is seen in the section of PyAudio.
+
+- procps.
+
+It includes the command pkill.
+
+- pulseaudio:
+
+Some Linux configurations, such as the Gnome desktop environment, currently use Pipewire instead of PulseAudio by default. Commbase can normally be used with Pipewire or PulseAudio or both.
+
+Install pulseaudio. This is required to have pactl available:
+
+$ sudo apt-get install pulseaudio
+
+pactl, which is the command-line interface for the PulseAudio sound server, can typically interact with devices managed by PipeWire. This interoperability is because PipeWire is designed to be compatible with PulseAudio APIs and commands, allowing tools like pactl to work with both PulseAudio and PipeWire.
+
+However, it's essential to note that while pactl can often interact with PipeWire devices, there might be some limitations or differences in behavior compared to using it with PulseAudio directly.
+
+In case you want to use Pipewire instead of PulseAudio, install Pipewire like this:
+
+$ sudo apt-get install pipewire
+
+You can have both PulseAudio and PipeWire installed on the same system. They can coexist, and you can choose which one to use as the default audio server based on your preferences or requirements.
+
+If you want PipeWire to work with applications that rely on PulseAudio, you may want to install the PulseAudio compatibility layer for PipeWire:
+
+$ sudo apt-get install pipewire-pulse
+
+To determine whether your system is using PipeWire or PulseAudio:
+
+$ pactl info | grep "Server Name"
+
+To determine whether your system is using PipeWire or ALSA as the default audio server, you can check the status of the PipeWire service and ALSA Mixer.
+
+For PipeWire, you can check if the PipeWire service is running:
+
+$ systemctl --user status pipewire
+
+For ALSA, you can check the status of the ALSA service or mixer. Note that ALSA doesn't have a centralized service like PipeWire or PulseAudio, but you can check the status of ALSA services or utilities:
+
+$ sudo alsactl restore
+
+This command restores the settings of the ALSA soundcard.
+
+Additionally, you can check the ALSA Mixer settings:
+
+$ alsamixer
+
+- python3-opencv:
+
+It is seen in the installation of OpenCV.
+
+- rsync.
+
+- sed.
+
+- sox:
+
+It includes the command play.
 
 - sudo
 
-- tar (seen in the section of PyAudio)
+- tar.
 
-- tasksel (Debian specific, optional)
+- tasksel:
 
-- tesseract-ocr
+Debian specific, optional.
 
-- tmux
+- tesseract-ocr.
 
-- unzip
+- tmux.
 
-- uuid-runtime
+- unzip.
 
-- wget
+- uuid-runtime.
 
-- xbindkeys (similar to xmodmap)
+- wget.
 
-Use APT to install packages from the official repositories for your distro, like this:
+- xbindkeys:
 
-$ sudo apt-get install <PACKAGE-NAME> <PACKAGE-NAME2> <PACKAGE-NAM3> <...>
+It is similar to xmodmap.
 
-For example, this is the actual one-liner command someone could require:
+Install these packages from the official repositories for your distro. In summary, for Debian it would be like this:
 
-$ sudo apt-get update; sudo apt-get install alsa-utils bash cpulimit curl dash espeak festival ffmpeg figlet gawk gdebi gnome-terminal git jq mpv mplayer nmap openssh-client openssh-server openssl portaudio19-dev procps pulseaudio python3-opencv rsync sed sox sudo tar tasksel tesseract-ocr tmux unzip uuid-runtime wget xbindkeys
+$ sudo apt-get update; sudo apt-get install alsa-utils bash cpulimit curl dash espeak festival ffmpeg figlet gawk gdebi git jq mpv mplayer nmap openssh-client openssh-server openssl portaudio19-dev procps pulseaudio python3-opencv rsync sed sox sudo tar tasksel tesseract-ocr tmux unzip uuid-runtime wget xbindkeys
+
+$ sudo apt-get install pipewire pipewire-pulse
+
+$ sudo apt-get install gnome-terminal
 
 Troubleshooting the package installation:
 
@@ -759,50 +797,10 @@ To search for a particular package name or string in the official Debian reposit
 
 $ apt-cache search dash | grep "dash"
 
-Install libcommbase
---------------------
-
-This code repository comes bundled with the Commbase codebase, but can also download it.
-
-$ cd bundles
-
-$ git clone git@github.com:mydroidandi/libcommbase.git
-
-$ cd libcommbase
-
-If you need to remove the .git directory:
-
-$ rm -rf .git
-
-Install VU-meter
------------------
-
-This code repository comes bundled with the Commbase code, but can also download it.
-
-$ cd bundles
-
-$ git clone https://github.com/kmein/vu-meter.git
-
-$ vu_meter 
-
-If you need to remove the .git directory:
-
-$ rm -rf .git
-
-You could need to change the first line of the file vu_meter.py, to a fixed Python version, accordingly:
-
-For Anaconda Python environments, use:
-
-#!/usr/bin/env python
-
-For Python3.11, use:
-
-#!/usr/bin/python3.11
-
 Install Oh My Tmux
 -------------------
 
-Download/clone it from GitHub and install it:
+Clone it from GitHub and install it:
 
 $ cd
 
@@ -811,24 +809,6 @@ $ git clone https://github.com/gpakosz/.tmux.git
 $ ln -s -f .tmux/.tmux.conf
 
 $ cp .tmux/.tmux.conf.local .
-
-Install the default Commbase voice commands dependencies
----------------------------------------------------------
-
-The applications to run by voice commands can be replaced at any moment and grow by users (skill programmers and skillset trainers). For example, replace VS Code by Gedit, Vim, etc.
-
-Install Desktop Environments
------------------------------
-
-Installing a Desktop Environment is a good option for Desktop/Workstation oriented setups. However, you need free space on the disk. An installation like that is not recommended on IoTs with low hard drive space available.
-
-Check free space like this:
-
-$ df -h
-
-To install/Remove Desktop Environments:
-
-$ sudo tasksel
 
 
 3. Next steps
@@ -848,11 +828,9 @@ Optionally, type the command in the terminal:
 
 $ commbase "tell me about yourself"
 
-The output should be the Commbase introduction, which means that the "demo skills" are already installed.
+The output should be the Commbase introduction.
 
-From here, you should decide to start programming new "custom skills" from an initial Commbase installation with "demo skills" or proceed to use the "sample skills", before programming new "custom skills" for Commbase.
-
-You can program new custom skills to customize your voice assistant or to create J.A.R.V.I.S. from Iron Man.
+From here, you can program new custom skills to customize your voice assistant or to create J.A.R.V.I.S. from Iron Man.
 
 Check out the document User's Guide in the directory docs/ for a complete list of options.
 
