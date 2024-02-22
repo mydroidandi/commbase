@@ -111,11 +111,12 @@ This project is coded and organized like this:
 │   │   │   │   ├── firefox
 │   │   │   │   └── ...
 │   │   │   └── ...
-│   │   ├── c
+│   │   ├── c++
 │   │   ├── java
 │   │   ├── multi-lang
 │   │   ├── nodejs
 │   │   ├── python
+│   │   ├── rust
 │   │   └── ...
 │   ├── tests
 │   │   └── ...
