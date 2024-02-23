@@ -1,10 +1,11 @@
+#!/usr/bin/env python
 ################################################################################
 #                              commbase-stt-whisper-p                          #
 #                                                                              #
 # An ASR (Automatic Speech Recognition) engine.                                #
 #                                                                              #
 # Change History                                                               #
-# 04/29/2023  Esteban Herrera Original code.                                   #
+# 01/17/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -38,4 +39,4 @@ import os
 
 # The path to the .env configuration file
 CONFIG_FILE_DIR = os.environ["COMMBASE_APP_DIR"]
-CONFIG_FILE_PATH = os.path.join(CONFIG_FILE_DIR, "config/app.conf")
+CONFIG_FILE_PATH = os.path.join(CONFIG_FILE_DIR, "config/commbase.conf")

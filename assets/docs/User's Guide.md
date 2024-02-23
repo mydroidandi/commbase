@@ -666,7 +666,7 @@ The default version of the file **commbase.conf** contains the next values:
   - Description: The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity. For more details, check out the file **INSTALL**.
   - Possible values: This variable should be a value between 0 and 100 or between 0 and 400 (for machines with 4 processing cores or more.)
   - Example value:
-    - `75` (Default): The STT process is going to use up to 75% of the computer's processing power.
+    - `90` (Default): The STT process is going to use up to 75% of the computer's processing power.
 
 - **CONDA_ENV_NAME_IF_EXISTS**:
   - Example values:
@@ -769,7 +769,7 @@ The default version of the file **commbase.conf** contains the next values:
 - **STT_ENGINE_STRING**:
   - Description: It represents a string that specifies the path to the current STT engine's executable or script file bundled with Commbase.
   - Possible values:
-    - `$PYTHON_ENV_VERSION $STT_ENGINE_PATH` (Default): It specifies the STT engine commbase-stt-whisper-p.py's executable script.
+    - `$PYTHON_ENV_VERSION $STT_ENGINE_PATH 2> /dev/null` (Default): It specifies the STT engine commbase-stt-whisper-p.py's executable script.
 
 - **TTS_ENGINE_STRING**:
   - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, TTS systems with the ability to use a clone/fake of your own voice, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.

@@ -47,9 +47,15 @@ import whisper
 import tempfile
 import os
 
+from config import CONFIG_FILE_PATH
+from file_paths import get_chat_log_file
+
 # A temporary directory and a file path within that directory
 temp_file = tempfile.mkdtemp()
 save_path = os.path.join(temp_file, 'temp.wav')
+
+# A temporary file path
+temp_file_path = get_chat_log_file()
 
 
 def listen():
@@ -62,10 +68,12 @@ def listen():
     listener = sr.Recognizer()  # Create an instance of Recognizer
     with sr.Microphone() as source:
         print("COMMBASE: Listening...")
-        listener.adjust_for_ambient_noise(source)
+        #for index, name in enumerate(sr.Microphone.list_microphone_names()):
+        #    print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
+        #listener.adjust_for_ambient_noise(source)
 
         try:
-            audio = listener.listen(source, timeout=2)  # Set a timeout of 2 seconds
+            audio = listener.listen(source, timeout=30)  # Set a timeout of 30 seconds
             print("COMMBASE: Processing...")
             data = io.BytesIO(audio.get_wav_data())
             audio_clip = AudioSegment.from_file(data)
@@ -86,14 +94,29 @@ def recognize_audio(save_path):
     return transcription['text']
 
 
+def write_to_temp_file(text):
+    end_user_text = "END USER:" + text + "\n"
+    with open(temp_file_path, 'a') as temp_file:
+        temp_file.write(end_user_text)
+
+
+# Closes the temporary file
+def close_temp_file():
+    if os.path.exists(temp_file_path):
+        os.remove(temp_file_path)
+
+
 def main():
-    """
-    Serves as the entry point of the program and orchestrates the speech
-    recognition process.
-    """
-    while True:
-        response = recognize_audio(listen())
-        print(f"END USER: {response}")
+    try:
+        while True:
+            response = recognize_audio(listen())
+            print(f"END USER: {response}")
+
+            # Write the transcribed text to a temporary file
+            write_to_temp_file(response)
+    finally:
+        # Ensure the temporary file is closed and cleaned up
+        close_temp_file()
 
 
 # Ensure that the main() function is executed only when the script is run

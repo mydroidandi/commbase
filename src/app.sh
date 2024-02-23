@@ -70,13 +70,19 @@ app() {
   tmux split-window -h && tmux select-pane -t 2 && sleep $time;
 
   # Pane 1
-  # On window 0, select pane 1, run the STT engine and then press the enter key
-  tmux select-pane -t 1 && tmux send-keys " cpulimit --limit=$STT_PROCESS_CPU_LIMIT_PERCENTAGE -- $STT_ENGINE_STRING" C-m;
+  # On window 0, select pane 1, open or create the chatroom file
+  tmux select-pane -t 1 && tmux send-keys " touch $COMMBASE_APP_DIR$CHAT_LOG_FILE" C-m && sleep $time;
+  # Clear the screen, and set the prompt to an empty string
+  tmux select-pane -t 1 && tmux send-keys " clear && PS1=""" C-m;
+  # Run the STT engine and then press the enter key
+  tmux select-pane -t 1 && tmux send-keys " tail -f $COMMBASE_APP_DIR$CHAT_LOG_FILE" C-m && sleep $time;
 
   # Pane 3
   # On window 0, select pane 3, activate the conda environment if it exists,
   # send the enter key, and sleep.
   tmux select-pane -t 3 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
+  # Clear the screen, and set the prompt to an empty string
+  tmux select-pane -t 3 && tmux send-keys " clear && PS1=""" C-m;
   # Run commbase-data-exchange server
   tmux select-pane -t 3 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_DATA_EXCHANGE_SERVER_CONNECTION_FILE_PATH" C-m && sleep $time;
   # Check the connection to the server before starting the client
@@ -86,6 +92,8 @@ app() {
   # On window 0, select pane 2, activate the conda environment if it exists,
   # send the enter key, and sleep.
   tmux select-pane -t 2 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
+  # Clear the screen, and set the prompt to an empty string
+  tmux select-pane -t 2 && tmux send-keys " clear && PS1=""" C-m;
   # Run commbase-data-exchange client
   tmux select-pane -t 2 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_DATA_EXCHANGE_CLIENT_CONNECTION_FILE_PATH" C-m && sleep $time;
 
@@ -93,15 +101,27 @@ app() {
   # On window 0, select pane 4, activate the conda environment if it exists,
   # send the enter key, and sleep.
   tmux select-pane -t 4 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
-  # Run the VU meter
-  tmux select-pane -t 4 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/vu-meter/vu_meter.py" C-m;
+  # Run the STT engine and then press the enter key
+  tmux select-pane -t 4 && tmux send-keys " cpulimit --limit=$STT_PROCESS_CPU_LIMIT_PERCENTAGE -- $STT_ENGINE_STRING" C-m && sleep $time;
+  # Clear the screen, and set the prompt to an empty string
+  tmux select-pane -t 4 && tmux send-keys " clear && PS1=""" C-m;
+
+  # Split vertically the pane 4
+  tmux select-pane -t 4 && tmux split-pane -h && sleep $time;
 
   # Pane 5
   # On window 0, select pane 5, activate the conda environment if it exists,
   # send the enter key, and sleep.
-  tmux select-pane -t 5 && tmux send-keys " cd $COMMBASE_APP_DIR ; clear" C-m;
+  tmux select-pane -t 5 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
+  # Run the VU meter
+  tmux select-pane -t 5 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/vu-meter/vu_meter.py" C-m;
+
+  # Pane 6
+  # On window 0, select pane 6, activate the conda environment if it exists,
+  # send the enter key, and sleep.
+  tmux select-pane -t 6 && tmux send-keys " cd $COMMBASE_APP_DIR ; clear" C-m;
   # Run alsamixer
-  tmux select-pane -t 5 && tmux send-keys " alsamixer --view all" C-m;
+  tmux select-pane -t 6 && tmux send-keys " alsamixer --view all" C-m;
 
   # In this section, activate/deactivate or add custom extra windows
 
@@ -110,7 +130,7 @@ app() {
       # Window 1
       # Auto-create a new window 1 for a countdown timer of 25 mins and start it
       tmux new-window -t Commbase-0:2 -n "Timer" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
-      tmux select-window -t 2 && tmux send-keys " bash $COMMBASE_APP_DIR/src/timer.sh -m 25" C-m;
+      #tmux select-window -t 2 && tmux send-keys " tclock" C-m;  # The app clock-tui requires rust with cargo.
     fi
 
     if [ "$TMUX_EXTRA_WINDOW_SERVER1_ON" = "True" ];then
@@ -133,8 +153,8 @@ app() {
     fi
   fi
 
-  # Clean up the command line of Window 0, pane 6
-  tmux select-window -t 1 && tmux select-pane -t 6 && tmux send-keys " clear" C-m;
+  # Clean up the command line of Window 0, pane 7
+  tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear" C-m;
 
   # Enter the Commbase session
   tmux attach-session -t Commbase-0;
