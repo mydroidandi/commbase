@@ -111,7 +111,7 @@ Using Tmux to create multiple windows with panes can be beneficial for several r
 4. Customization
 5. Persistent Sessions
 
-The default minimal app, renders its interface in the file src/app/.sh. This app is composed by 1 single window, but draws a maximum of 5 Tmux windows.
+The default minimal app, renders its interface in the file src/app/.sh. This app is composed by 1 single window that manages all the concerns, but draws a maximum of 5 Tmux windows.
 
 The windows from 2 to 5 are not required by the app to work, and can be disabled (see below).
 
