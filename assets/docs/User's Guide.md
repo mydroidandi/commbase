@@ -104,8 +104,7 @@ By utilizing the "teleport" command, you can conveniently manage and transition 
 
 # 3 The User Interface
 
-Using tmux to create multiple windows with panes can be beneficial for several reasons:
-
+Using Tmux to create multiple windows with panes can be beneficial for several reasons:
 1. Efficient Multitasking
 2. Parallel Development
 3. Server Management
@@ -114,23 +113,16 @@ Using tmux to create multiple windows with panes can be beneficial for several r
 
 The default minimal app, renders its interface in the file src/app/.sh. This app is composed by 1 single window, but draws a maximum of 5 Tmux windows.
 
-The windows from 2 to 5 are not require by the app to work, and can be disabled (see below).
+The windows from 2 to 5 are not required by the app to work, and can be disabled (see below).
 
-The window 1, "Commbase", contains 7 panes:
-
-- Pane 1. It is the chatroom pane.
-
-- Pane 2. It is the client logs pane.
-
-- Pane 3. It is the server logs pane.
-
-- Pane 4. It is the speech recognizer.
-
-- Pane 5. It is the VU-meter pane.
-
-- Pane 6. It is the audio mixer pane.
-
-- Pane 7. It is a user terminal that is also focused and used by Commbase for launching skill scripts.
+The window 1, "Commbase", contains 7 panes, where every pane runs a component:
+- Pane 1. It is the chatroom component.
+- Pane 2. It is the client component.
+- Pane 3. It is the server component.
+- Pane 4. It is the speech recognizer component.
+- Pane 5. It is the VU-meter component.
+- Pane 6. It is the audio mixer component.
+- Pane 7. It is the user terminal component. It is almost always focused, except when is used by Commbase for launching skill scripts.
 
 The window 2, "Dashboard", contains a single pane that is disabled by default in the configuration file.
 
@@ -147,6 +139,8 @@ To show or hide these windows, you can change the values assigned to the next de
 `TMUX_EXTRA_WINDOWS_ON`, `TMUX_EXTRA_WINDOW_DASHBOARD_ON`, `TMUX_EXTRA_WINDOW_SERVER1_ON`, and `TMUX_EXTRA_WINDOW_SERVER2_ON`, `TMUX_EXTRA_WINDOW_FILES1_ON`.
 
 You will find information about the variables in the section **8 Configuration Variables**.
+
+Like every file in the directory **src/**, **app.sh** hold a minimal default configuration and can be re-programmed, modularized, or replaced with GUIs to meet the app user needs.
 
 # 4 Useful Tmux Actions
 
