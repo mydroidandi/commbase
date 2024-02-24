@@ -1,6 +1,6 @@
 # Commbase <img align="center" alt="Commbase" width="10%" src="./assets/docs/images/commbase.png" />
 
-Module and library bundler, and development framework for building AI-powered conversational assistants.
+Module and library bundler, and development framework for building AI-Powered conversational assistants.
 
 [![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
