@@ -112,11 +112,11 @@ Using tmux to create multiple windows with panes can be beneficial for several r
 4. Customization
 5. Persistent Sessions
 
-Commbase is composed by 1 single window but it renders 5 tmux windows by default.
+The default minimal app, renders its interface in the file src/app/.sh. This app is composed by 1 single window, but draws a maximum of 5 Tmux windows.
 
-The windows from 2 to 5 are not requirements, and can be disabled (see below).
+The windows from 2 to 5 are not require by the app to work, and can be disabled (see below).
 
-The window 1, "Commbase", contains 4 panes:
+The window 1, "Commbase", contains 7 panes:
 
 - Pane 1. It is the chatroom pane.
 
@@ -124,13 +124,15 @@ The window 1, "Commbase", contains 4 panes:
 
 - Pane 3. It is the server logs pane.
 
-- Pane 4. It is the VU-meter pane.
+- Pane 4. It is the speech recognizer.
 
-- Pane 5. It is the audio mixer pane.
+- Pane 5. It is the VU-meter pane.
 
-- Pane 6. It is a user terminal that is also focused and used by Commbase for launching skill scripts.
+- Pane 6. It is the audio mixer pane.
 
-The window 2, "Timer", contains a single pane.
+- Pane 7. It is a user terminal that is also focused and used by Commbase for launching skill scripts.
+
+The window 2, "Dashboard", contains a single pane that is disabled by default in the configuration file.
 
 The window 3, "Server 1", contains a single pane.
 
@@ -142,7 +144,7 @@ The extra windows from 2 to 5 can be disabled or enabled as a group or separatel
 
 To show or hide these windows, you can change the values assigned to the next default configuration variables:
 
-`TMUX_EXTRA_WINDOWS_ON`, `TMUX_EXTRA_WINDOW_TIMER_ON`, `TMUX_EXTRA_WINDOW_SERVER1_ON`, and `TMUX_EXTRA_WINDOW_SERVER2_ON`, `TMUX_EXTRA_WINDOW_FILES1_ON`.
+`TMUX_EXTRA_WINDOWS_ON`, `TMUX_EXTRA_WINDOW_DASHBOARD_ON`, `TMUX_EXTRA_WINDOW_SERVER1_ON`, and `TMUX_EXTRA_WINDOW_SERVER2_ON`, `TMUX_EXTRA_WINDOW_FILES1_ON`.
 
 You will find information about the variables in the section **8 Configuration Variables**.
 
@@ -786,10 +788,10 @@ The default version of the file **commbase.conf** contains the next values:
     - `True` (Default): Set to True, it activates the extra windows feature in the Commbase tmux session.
     - `False`: Set to False, it deactivates the extra windows feature in the Commbase tmux session.
 
-- **TMUX_EXTRA_WINDOW_TIMER_ON**:
+- **TMUX_EXTRA_WINDOW_DASHBOARD_ON**:
   - Possible values:
-    - `True` (Default): Set to True, it activates the extra window Timer in the Commbase tmux session.
-    - `False`: Set to False, it deactivates the extra window Timer in the Commbase tmux session.
+    - `False` (Default): Set to False, it deactivates the extra window Dashboard in the Commbase tmux session.
+    - `True`: Set to True, it activates the extra window Timer in the Commbase tmux session.
 
 - **TMUX_EXTRA_WINDOW_SERVER1_ON**:
   - Possible values:
