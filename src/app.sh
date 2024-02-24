@@ -113,24 +113,28 @@ app() {
   # On window 0, select pane 5, activate the conda environment if it exists,
   # send the enter key, and sleep.
   tmux select-pane -t 5 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
+  # Clear the screen, and set the prompt to an empty string
+  tmux select-pane -t 5 && tmux send-keys " cd $COMMBASE_APP_DIR ; clear && PS1=""" C-m;
   # Run the VU meter
   tmux select-pane -t 5 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/vu-meter/vu_meter.py" C-m;
 
   # Pane 6
   # On window 0, select pane 6, activate the conda environment if it exists,
   # send the enter key, and sleep.
-  tmux select-pane -t 6 && tmux send-keys " cd $COMMBASE_APP_DIR ; clear" C-m;
+  tmux select-pane -t 6 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
+  # Clear the screen, and set the prompt to an empty string
+  tmux select-pane -t 6 && tmux send-keys " cd $COMMBASE_APP_DIR ; clear && PS1=""" C-m;
   # Run alsamixer
   tmux select-pane -t 6 && tmux send-keys " alsamixer --view all" C-m;
 
   # In this section, activate/deactivate or add custom extra windows
 
   if [ "$TMUX_EXTRA_WINDOWS_ON" = "True" ]; then
-    if [ "$TMUX_EXTRA_WINDOW_TIMER_ON" = "True" ]; then
+    if [ "$TMUX_EXTRA_WINDOW_DASHBOARD_ON" = "True" ]; then
       # Window 1
-      # Auto-create a new window 1 for a countdown timer of 25 mins and start it
-      tmux new-window -t Commbase-0:2 -n "Timer" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
-      #tmux select-window -t 2 && tmux send-keys " tclock" C-m;  # The app clock-tui requires rust with cargo.
+      # Auto-create a new window 1 for a system dashboard
+      tmux new-window -t Commbase-0:2 -n "Dashboard" && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS ; clear" C-m && sleep $time;
+      #tmux select-window -t 2 && tmux send-keys " tclock" C-m;  # The app clock-tui requires Rust with Cargo.
     fi
 
     if [ "$TMUX_EXTRA_WINDOW_SERVER1_ON" = "True" ];then
@@ -153,6 +157,9 @@ app() {
     fi
   fi
 
+  # On window 0, select pane 7, activate the conda environment if it exists,
+  # send the enter key, and sleep.
+  tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time;
   # Clean up the command line of Window 0, pane 7
   tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear" C-m;
 
