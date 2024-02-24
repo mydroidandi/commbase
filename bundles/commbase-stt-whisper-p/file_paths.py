@@ -37,38 +37,6 @@
 # Requirements
 from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
 
-
-def get_xyz_directory():
-    """
-    Retrieves the directory path of xyz from the configuration
-    file.
-
-    Returns:
-        str or None: The directory path of the xyz if found, or None
-        if not found.
-    """
-    # Initialize variable
-    xyz_directory = None
-
-    # Open the file and read its contents
-    with open(CONFIG_FILE_PATH, "r") as f:
-        for line in f:
-            # Split the line into variable name and value
-            variable_name, value = line.strip().split("=")
-
-            # Check if the variable we are looking for exists in the line
-            if variable_name == "XYZZZZZ_DIRECTORY":
-                # Remove the quotes from the value of the variable
-                xyz_directory = CONFIG_FILE_DIR + value.strip()[1:-1]
-
-    # Check if the variable was found
-    if xyz_directory is not None:
-        return xyz_directory
-
-    # If the variable was not found, return None
-    return None
-
-
 def get_chat_log_file():
     """
     Retrieves the value of the CHAT_LOG_FILE variable from the configuration
