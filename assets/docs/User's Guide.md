@@ -777,6 +777,10 @@ The default version of the file **commbase.conf** contains the next values:
     - `xargs swift`: It specifies the TTS command swift. The company Ceptral has high quality, natural speech OSS licensed voices can be purchased, installed and downloaded from the Ceptral web site.
     - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/commbase-tts-gTTS/commbase_tts_gTTS.py --param1 val1 --param2 val2 --param3 val3:`: It specifies the TTS executable commbase-tts-gTTS.py's script and its arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API.
 
+- **CHAT_LOG_FILE**:
+  - Possible values:
+    - `/data/.chat_log.txt` (Default): The chat log file likely stores a record of interactions or conversations.
+
 - **TMUX_EXTRA_WINDOWS_ON**:
   - Possible values:
     - `True` (Default): Set to True, it activates the extra windows feature in the Commbase tmux session.
