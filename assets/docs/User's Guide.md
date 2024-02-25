@@ -878,12 +878,12 @@ The default version of the file **commbase.conf** contains the next values:
 - **END_USER_BACKGROUND_COLOR_IN_CHAT_PANE**:
   - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
   - Example value:
-    - `blue` (Default): Turns blue the End User background color in the chat pane, based on the colors defined in other terminal variables. 
+    - `$TERMINAL_BLUE_BACKGROUND_COLOR_CODE_START` (Default): Turns blue the End User background color in the chat pane, based on the colors defined in other terminal variables.
 
 - **ASSISTANT_BACKGROUND_COLOR_IN_CHAT_PANE**:
   - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
   - Example value:
-    - `green` (Default): Turns green the Assistant background color in the chat pane, based on the colors defined in other terminal variables.
+    - `$TERMINAL_GREEN_BACKGROUND_COLOR_CODE_START` (Default): Turns green the Assistant background color in the chat pane, based on the colors defined in other terminal variables.
 
 - **SYSTEM_BACKGROUND_COLOR_IN_CHAT_PANE**:
   - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
@@ -908,12 +908,12 @@ The default version of the file **commbase.conf** contains the next values:
 - **END_USER_NAME_IN_CHAT_PANE**:
   - Description: It determines how the name of the End User is displayed in the chat pane.
   - Example value:
-    - `END USER` (Default): When set to END USER, the name is shown as "END USER".
+    - `END USER:` (Default): When set to END USER, the name is shown as "END USER".
 
 - **ASSISTANT_NAME_IN_CHAT_PANE**:
   - Description: It determines how the name of the Assistant is displayed in the chat pane.
   - Example value:
-    - `COMMBASE` (Default): When set to COMMBASE, the name is shown as "COMMBASE".
+    - `ASSISTANT:` (Default): When set to ASSISTANT, the name is shown as "ASSISTANT".
 
 - **SECRETS_FILE_PATH**:
   - Example value:
