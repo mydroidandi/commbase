@@ -31,7 +31,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# tailor_chat_log.sh
+# tail_chat_log.sh
 # Provides a real-time, colored representation of log entries, making it
 # visually distinguishable between entries related to the assistant and those
 # related to the end user in a chat log. The script uses ANSI escape codes for
