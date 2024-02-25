@@ -25,4 +25,18 @@ ASSISTANT: What is going on?
 END USER: Everything seems alright.
 END USER: What's the meaning of life?
 END USER: Where's your favorite song?
-END USER: One more thing to say.
+END USER:
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Close the whip browser.
+END USER: Close the web browser.
+END USER: Close the web browser.
+END USER: Close the web browser.
+END USER: Close the web browser.
+END USER: Close the web browser.
