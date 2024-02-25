@@ -1,7 +1,42 @@
-END USER: Are you ready for this?
-END USER: Are you sure you finished?
-END USER: Are you sure you finished?
-END USER: Are you sure you finished?
-END USER: So let's continue with it.
+END USER: Forget our previous conversation.
+END USER: How old are you?
+END USER: What's your favorite color?
+ASSISTANT: What is going on?
+END USER: How old are you?
+END USER: What's your favorite color?
+ASSISTANT: What is going on?
+END USER: How old are you?
+END USER: What's your favorite color?
+ASSISTANT: What is going on?
+END USER: Everything seems alright.
+END USER: What's the meaning of life?
+END USER: Hey, how are you doing today?
+END USER: I'm a soloist on a soloist.
+END USER: Forget our previous conversation.
+END USER: How old are you?
+END USER: What's your favorite color?
+ASSISTANT: What is going on?
+END USER: How old are you?
+END USER: What's your favorite color?
+ASSISTANT: What is going on?
+END USER: How old are you?
+END USER: What's your favorite color?
+ASSISTANT: What is going on?
+END USER: Everything seems alright.
+END USER: What's the meaning of life?
+END USER: Where's your favorite song?
 END USER:
-END USER: Where are you?
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Open the web browser.
+END USER: Close the whip browser.
+END USER: Close the web browser.
+END USER: Close the web browser.
+END USER: Close the web browser.
+END USER: Close the web browser.
+END USER: Close the web browser.

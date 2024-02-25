@@ -82,19 +82,19 @@ def listen():
     """
     listener = sr.Recognizer()  # Create an instance of Recognizer
     with sr.Microphone() as source:
-        print("COMMBASE: Listening...")
+        print("ASSISTANT: Listening...")
         # for index, name in enumerate(sr.Microphone.list_microphone_names()):
         #     print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
         # listener.adjust_for_ambient_noise(source)
 
         try:
             audio = listener.listen(source, timeout=30)  # Set a timeout of 30 seconds
-            print("COMMBASE: Processing...")
+            print("ASSISTANT: Processing...")
             data = io.BytesIO(audio.get_wav_data())
             audio_clip = AudioSegment.from_file(data)
             audio_clip.export(save_path, format='wav')
         except sr.WaitTimeoutError:
-            print("COMMBASE: Speech stopped. Recognizing...")
+            print("ASSISTANT: Speech stopped. Recognizing...")
     return save_path
 
 

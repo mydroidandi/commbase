@@ -878,12 +878,12 @@ The default version of the file **commbase.conf** contains the next values:
 - **END_USER_BACKGROUND_COLOR_IN_CHAT_PANE**:
   - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
   - Example value:
-    - `blue` (Default): Turns blue the End User background color in the chat pane, based on the colors defined in other terminal variables. 
+    - `$TERMINAL_BLUE_BACKGROUND_COLOR_CODE_START` (Default): Turns blue the End User background color in the chat pane, based on the colors defined in other terminal variables.
 
 - **ASSISTANT_BACKGROUND_COLOR_IN_CHAT_PANE**:
   - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
   - Example value:
-    - `green` (Default): Turns green the Assistant background color in the chat pane, based on the colors defined in other terminal variables.
+    - `$TERMINAL_GREEN_BACKGROUND_COLOR_CODE_START` (Default): Turns green the Assistant background color in the chat pane, based on the colors defined in other terminal variables.
 
 - **SYSTEM_BACKGROUND_COLOR_IN_CHAT_PANE**:
   - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
@@ -900,11 +900,6 @@ The default version of the file **commbase.conf** contains the next values:
   - Example value:
     - `white` (Default): Turns white the Assistant text color in the chat pane, based on the colors defined in other terminal variables.
 
-- **SYSTEM_TEXT_COLOR_IN_CHAT_PANE**:
-  - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
-  - Example value:
-    - `red` (Default): Turns red the System text color in the chat pane, based on the colors defined in other terminal variables.
-
 - **ASSISTANT_AVATAR_COLOR_IN_CHAT_PANE**:
   - Possible values: The options are: red, green, yellow, blue, magenta, cyan, white, or black.
   - Example value:
@@ -913,27 +908,12 @@ The default version of the file **commbase.conf** contains the next values:
 - **END_USER_NAME_IN_CHAT_PANE**:
   - Description: It determines how the name of the End User is displayed in the chat pane.
   - Example value:
-    - `END USER` (Default): When set to END USER, the name is shown as "END USER".
+    - `END USER:` (Default): When set to END USER, the name is shown as "END USER".
 
 - **ASSISTANT_NAME_IN_CHAT_PANE**:
   - Description: It determines how the name of the Assistant is displayed in the chat pane.
   - Example value:
-    - `COMMBASE` (Default): When set to COMMBASE, the name is shown as "COMMBASE".
-
-- **SYSTEM_VISIBLE_IN_CHAT_PANE_ON**:
-  - Possible values: True or False.
-  - Example value:
-    - `False` (Default): When set to False, it means that the System's name, messages, and notifications will not be displayed in the chat pane.
-
-- **SYSTEM_NAME_IN_CHAT_PANE**:
-  - Description: It determines how the name of the System is displayed in the chat pane.
-  - Example value:
-    - `SYSTEM` (Default): When set to SYSTEM, the name is shown as "SYSTEM".
-
-- **MANAGE_RESULT_MESSAGE_ON_AND_OUTPUT_SKILL_ERRORS_IN_PANE_ON**:
-  - Possible values:
-    - `True` (Default): When set to True, the feature is enabled, and it manages the result message while also displaying skill errors in the specific the chat pane of the tmux Commbase session.
-    - `False`: Whe this value is set to False, the feature is disabled or turned off. In this case, the system would not manage the result message or display skill errors in the specific chat pane of the tmux Commbase session.
+    - `ASSISTANT:` (Default): When set to ASSISTANT, the name is shown as "ASSISTANT".
 
 - **SECRETS_FILE_PATH**:
   - Example value:

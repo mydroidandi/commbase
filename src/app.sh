@@ -37,6 +37,8 @@ app() {
 
   # Imports from libcommbase
   source $COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/check_data_exchange_server_connection.sh
+  #source $COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_chat_log.sh
+  tail_chat_log=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_chat_log.sh
 
   # Give .3 seconds to tmux to draw its content before continuing
   time=0.3;
@@ -75,7 +77,8 @@ app() {
   # Clear the screen, and set the prompt to an empty string
   (tmux select-pane -t 1 && tmux send-keys " clear && PS1=""" C-m);
   # Run the STT engine and then press the enter key
-  (tmux select-pane -t 1 && tmux send-keys " tail -f $COMMBASE_APP_DIR$CHAT_LOG_FILE" C-m && sleep $time);
+  #(tmux select-pane -t 1 && tmux send-keys " tail -f $COMMBASE_APP_DIR$CHAT_LOG_FILE" C-m && sleep $time);
+  (tmux select-pane -t 1 && tmux send-keys " bash $tail_chat_log" C-m && sleep $time);
 
   # Pane 3
   # On window 0, select pane 3, activate the conda environment if it exists,
