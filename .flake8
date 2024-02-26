@@ -9,7 +9,8 @@
 # W503: Line break before binary operator
 # F403: Imported name is undefined in the current module
 # F401: Imported but unused names
-ignore = E203, E226, E266, E501, W503, F403, F401
+# E501: Line too long (80 > 79 characters)
+ignore = E203, E226, E266, E501, W503, F403, F401, E501
 
 # Set the maximum line length (the project's preference is 80)
 max-line-length = 88
