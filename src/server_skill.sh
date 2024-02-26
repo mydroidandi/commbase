@@ -35,14 +35,14 @@
 # directory, and calls the updater in the server side.
 server_skill() {
   # The configuration files
-  source $COMMBASE_APP_DIR/config/commbase.conf
-  source $COMMBASE_APP_DIR/config/app.conf
-  source $COMMBASE_APP_DIR/config/secrets
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
+  source "$COMMBASE_APP_DIR"/config/app.conf
+  source "$COMMBASE_APP_DIR"/config/secrets
 
   # Read the new JSON data request stored in commbase-data-exchange/server/client_data
   data_exchange_client_data_file=/bundles/commbase-data-exchange/server/client_data/json_1.json
 
-  messages=$(<$COMMBASE_APP_DIR$data_exchange_client_data_file)
+  messages=$(<"$COMMBASE_APP_DIR"$data_exchange_client_data_file)
 
   # Extract and echo each message
   #echo "$messages" | jq -r '.messages[] | to_entries[] | "\(.key): \(.value)"'

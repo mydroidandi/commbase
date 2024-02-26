@@ -38,7 +38,7 @@
 # Uses the keyboard binding ALT + SHIFT + 1.
 toggle_capture_on_off() {
   # Imports
-  source $COMMBASE_APP_DIR/config/commbase.conf
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
 
   tts_engine="$TTS_ENGINE_STRING"
 

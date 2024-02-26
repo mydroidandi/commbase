@@ -33,11 +33,10 @@
 # Creates the Commbase application interface and enters the Commbase session.
 app() {
   # The configuration file
-  source $COMMBASE_APP_DIR/config/commbase.conf
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
 
   # Imports from libcommbase
-  source $COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/check_data_exchange_server_connection.sh
-  #source $COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_chat_log.sh
+  source "$COMMBASE_APP_DIR"/bundles/libcommbase/libcommbase/routines/check_data_exchange_server_connection.sh
   tail_chat_log=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_chat_log.sh
 
   # Give .3 seconds to tmux to draw its content before continuing

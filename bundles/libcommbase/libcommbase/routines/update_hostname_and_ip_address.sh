@@ -39,7 +39,7 @@ update_hostname_and_ip_address() {
   ENV_FILE="$COMMBASE_APP_DIR/env/.env";
 
   # The configuration file
-  source $COMMBASE_APP_DIR/config/commbase.conf
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
 
   # Capture the current host name and host IP address and storing them
   NEW_HOST_NAME=$(hostname | awk '{print $1}');
