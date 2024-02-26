@@ -6,8 +6,6 @@ Module and library bundler, and flexible development framework for building AI-P
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 [![flake8 Lint](https://github.com/mydroidandi/commbase/actions/workflows/python-flake8-lint.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-flake8-lint.yml)
 [![json-lint](https://github.com/mydroidandi/commbase/actions/workflows/jq-json-lint.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/jq-json-lint.yml)
-[![Shell Linter](https://github.com/mydroidandi/commbase/actions/workflows/shell-linter.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/shell-linter.yml)
-
 
 ## Introduction
 
