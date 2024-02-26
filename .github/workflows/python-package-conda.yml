@@ -20,8 +20,11 @@ jobs:
         echo $CONDA/bin >> $GITHUB_PATH
     - name: Install dependencies
       run: |
-        #conda env update --file commbase_env.yaml --name commbase_env --skip pyaudio
-        conda env create --file commbase_env.yaml --name commbase_env --skip pyaudio
+        # Conda doesn't currently offer a built-in way to specifically skip a
+        # single package during environment creation, like:
+        # conda env create --file commbase_env.yaml --name commbase_env --skip pyaudio
+        #conda env update --file commbase_env.yaml --name commbase_env
+
     - name: Lint with flake8
       run: |
         conda install flake8
