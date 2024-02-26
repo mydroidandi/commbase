@@ -69,6 +69,36 @@ def get_xyz_directory():
     return None
 
 
+def get_messaging_file():
+    """
+    Retrieves the value of the MESSAGING_FILE variable from the
+    configuration file.
+
+    Returns:
+        str or None: The value of the variable if found, or None if not found.
+    """
+    # Initialize variable
+    recording_file = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "MESSAGING_FILE":
+                # Remove the quotes from the value of the variable
+                recording_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+
+    # Check if the variable was found
+    if recording_file is not None:
+        return recording_file
+
+    # If the variable was not found, return None
+    return None
+
+
 def get_server_crt_file_path():
     """
     Retrieves the value of the CERTS_AND_KEYS_SERVER_CRT_FILE variable from the

@@ -37,9 +37,9 @@
 # are missing.
 client_skill() {
   # Configuration files
-  source $COMMBASE_APP_DIR/config/commbase.conf
-  source $COMMBASE_APP_DIR/config/app.conf
-  source $COMMBASE_APP_DIR/config/secrets
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
+  source "$COMMBASE_APP_DIR"/config/app.conf
+  source "$COMMBASE_APP_DIR"/config/secrets
 
   # Tmux session
   session_name="Commbase-0"
@@ -53,7 +53,7 @@ client_skill() {
   fi
 
   # Data files
-  json_data=$(cat $COMMBASE_APP_DIR/data/.messages.json)
+  json_data=$(cat "$COMMBASE_APP_DIR"/data/.messages.json)
 
   # Extract values from JSON object
   source_code=$(echo "$json_data" | jq -r '.messages[] | select(has("source_code")).source_code')
@@ -68,22 +68,20 @@ client_skill() {
   fi
 
   # Save source code to a temporary file
-  echo "$source_code" > $COMMBASE_APP_DIR/data/.skill_runner
+  echo "$source_code" > "$COMMBASE_APP_DIR"/data/.skill_runner
 
   # Check if the specified runtime is available
   case "$runtime" in
     "bash")
       if ! command -v bash &> /dev/null; then
         echo "Bash is not installed. Please install it before running this script."
-        rm $COMMBASE_APP_DIR/data/.skill_runner
+        rm "$COMMBASE_APP_DIR"/data/.skill_runner
         exit 1
       fi
-      # TODO: The echoes for the pane 1, chatroom, must include string of the
-      # Assistant name with tag and colors, something like
-      # printf "\e[1;41mCOMMBASE:\e[1;m I don't understand: %s\n" "$current_request""."   ----> but using the config file variables.
-      tmux has-session -t $session_name 2>/dev/null
 
-      if [ $? != 0 ]; then
+      # TODO: Append echoes using assistant name in confir contants file, to
+      # write ASSISTANT: blablabla, in chat_log.txt
+      if ! tmux has-session -t $session_name 2>/dev/null; then
         echo "Session does not exist. Please create or start the session first."
       else
         if [ "$source_code_display" = "session_pane_six" ]; then
@@ -141,12 +139,11 @@ client_skill() {
     "nodejs")
       if ! command -v node &> /dev/null; then
         echo "Node.js is not installed. Please install it before running this script."
-        rm $COMMBASE_APP_DIR/data/.skill_runner
+        rm "$COMMBASE_APP_DIR"/data/.skill_runner
         exit 1
       fi
-      tmux has-session -t $session_name 2>/dev/null
 
-      if [ $? != 0 ]; then
+      if ! tmux has-session -t $session_name 2>/dev/null; then
         echo "Session does not exist. Please create or start the session first."
       else
         if [ "$source_code_display" = "session_pane_six" ]; then
@@ -204,12 +201,11 @@ client_skill() {
     "python")
       if ! command -v python &> /dev/null; then
         echo "Python is not installed. Please install it before running this script."
-        rm $COMMBASE_APP_DIR/data/.skill_runner
+        rm "$COMMBASE_APP_DIR"/data/.skill_runner
         exit 1
       fi
-      tmux has-session -t $session_name 2>/dev/null
 
-      if [ $? != 0 ]; then
+      if ! tmux has-session -t $session_name 2>/dev/null; then
         echo "Session does not exist. Please create or start the session first."
       else
         if [ "$source_code_display" = "session_pane_six" ]; then
@@ -267,7 +263,7 @@ client_skill() {
     # Add custom runtimes here ...
     *)
       echo "Unsupported runtime: $runtime"
-      rm $COMMBASE_APP_DIR/data/.skill_runner
+      rm "$COMMBASE_APP_DIR"/data/.skill_runner
       exit 1
       ;;
   esac

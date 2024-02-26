@@ -70,6 +70,4 @@ recreate_conda_env(){
   exit 99
 }
 
-recreate_conda_env || exit 99;
-
-exit 99
+recreate_conda_env;

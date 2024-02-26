@@ -39,7 +39,7 @@ import json
 
 from config import CONFIG_FILE_PATH
 from file_paths import (
-    get_ca_pem_file_path
+    get_ca_pem_file_path,  # TODO: Verify if you really need this!
     get_messaging_file
 )
 

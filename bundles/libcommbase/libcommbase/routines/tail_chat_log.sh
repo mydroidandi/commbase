@@ -38,7 +38,7 @@
 # color formatting.
 tail_chat_log() {
   # Imports
-  source $COMMBASE_APP_DIR/config/commbase.conf
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
 
   # Define the strings as variables
   assistant_string="$ASSISTANT_NAME_IN_CHAT_PANE"
