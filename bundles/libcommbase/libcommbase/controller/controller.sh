@@ -69,7 +69,7 @@ controller() {
   for property in $(echo "$patterns_file" | jq -r 'keys_unsorted[]'); do
     # Braces '{[]}' wrap the array expansion without changing the behavior of the code.
     # To protect against the possibility that .items is not an array use "?"
-    values=$(echo "$patterns_file" | jq -r ".$property{[]}?" | tr '\n' '|')
+    values=$(echo "$patterns_file" | jq -r ".$property[]?" | tr '\n' '|')
     values=${values%|}  # Remove the trailing "|"
 
     IFS='|' read -ra values_array <<< "$values"
