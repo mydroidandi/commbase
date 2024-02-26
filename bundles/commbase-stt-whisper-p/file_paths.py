@@ -37,6 +37,7 @@
 # Requirements
 from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
 
+
 def get_chat_log_file():
     """
     Retrieves the value of the CHAT_LOG_FILE variable from the configuration
