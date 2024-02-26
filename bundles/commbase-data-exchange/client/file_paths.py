@@ -38,17 +38,16 @@
 from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
 
 
-def get_xyz_directory():
+def get_messaging_file():
     """
-    Retrieves the directory path of xyz from the configuration
-    file.
+    Retrieves the value of the MESSAGING_FILE variable from the
+    configuration file.
 
     Returns:
-        str or None: The directory path of the xyz if found, or None
-        if not found.
+        str or None: The value of the variable if found, or None if not found.
     """
     # Initialize variable
-    xyz_directory = None
+    recording_file = None
 
     # Open the file and read its contents
     with open(CONFIG_FILE_PATH, "r") as f:
@@ -57,13 +56,13 @@ def get_xyz_directory():
             variable_name, value = line.strip().split("=")
 
             # Check if the variable we are looking for exists in the line
-            if variable_name == "XYZZZZZ_DIRECTORY":
+            if variable_name == "MESSAGING_FILE":
                 # Remove the quotes from the value of the variable
-                xyz_directory = CONFIG_FILE_DIR + value.strip()[1:-1]
+                recording_file = CONFIG_FILE_DIR + value.strip()[1:-1]
 
     # Check if the variable was found
-    if xyz_directory is not None:
-        return xyz_directory
+    if recording_file is not None:
+        return recording_file
 
     # If the variable was not found, return None
     return None
@@ -94,36 +93,6 @@ def get_ca_pem_file_path():
     # Check if the variable was found
     if ca_pem_file is not None:
         return ca_pem_file
-
-    # If the variable was not found, return None
-    return None
-
-
-def get_messaging_file():
-    """
-    Retrieves the value of the MESSAGING_FILE variable from the
-    configuration file.
-
-    Returns:
-        str or None: The value of the variable if found, or None if not found.
-    """
-    # Initialize variable
-    recording_file = None
-
-    # Open the file and read its contents
-    with open(CONFIG_FILE_PATH, "r") as f:
-        for line in f:
-            # Split the line into variable name and value
-            variable_name, value = line.strip().split("=")
-
-            # Check if the variable we are looking for exists in the line
-            if variable_name == "MESSAGING_FILE":
-                # Remove the quotes from the value of the variable
-                recording_file = CONFIG_FILE_DIR + value.strip()[1:-1]
-
-    # Check if the variable was found
-    if recording_file is not None:
-        return recording_file
 
     # If the variable was not found, return None
     return None
