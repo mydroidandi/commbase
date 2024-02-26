@@ -38,7 +38,7 @@
 # through the commbase-data-exchange client.
 controller() {
   # Imports
-  source $COMMBASE_APP_DIR/config/commbase.conf
+  source "$COMMBASE_APP_DIR/config/commbase.conf"
 
   # Imports from libcommbase
   update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
@@ -46,12 +46,12 @@ controller() {
 
   # Extract the JSON object property value current_request from the file
   # messages json.
-  messages_json=$(<$COMMBASE_APP_DIR$MESSAGING_FILE)
+  messages_json=$(<"$COMMBASE_APP_DIR""$MESSAGING_FILE")
   # Read the value of current_request property from JSON
   current_request=$(jq -r '.messages[1].current_request' <<< "$messages_json")
 
   # Extract the JSON object control patterns from file and process them
-  patterns_file=$(<$COMMBASE_APP_DIR$CONTROL_PATTERNS_FILE)
+  patterns_file=$(<"$COMMBASE_APP_DIR""$CONTROL_PATTERNS_FILE")
   #cat $COMMBASE_APP_DIR$CONTROL_PATTERNS_FILE | jq 'to_entries[] | .key, .value[]'
 
   matching_property=""
@@ -67,6 +67,7 @@ controller() {
 
   # Search for exactly equal string matches
   for property in $(echo "$patterns_file" | jq -r 'keys_unsorted[]'); do
+    # Braces '{[]}' wrap the array expansion without changing the behavior of the code.
     # To protect against the possibility that .items is not an array use "?"
     values=$(echo "$patterns_file" | jq -r ".$property[]?" | tr '\n' '|')
     values=${values%|}  # Remove the trailing "|"

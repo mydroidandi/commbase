@@ -37,7 +37,7 @@
 check_data_exchange_server_connection() {
 
   # The configuration file
-  source $COMMBASE_APP_DIR/config/commbase.conf
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
 
   # Data exchange server IP address and port
   SERVER_HOST=$COMMBASE_DATA_EXCHANGE_SERVER_HOST_ADDRESS
