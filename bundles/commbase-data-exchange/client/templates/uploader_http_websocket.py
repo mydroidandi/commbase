@@ -41,6 +41,7 @@ from file_paths import get_messaging_file
 
 import subprocess
 
+
 def read_json_file(json_file_path):
     try:
         with open(json_file_path, 'r') as json_file:
@@ -123,6 +124,7 @@ def main():
                     print(f"Error executing subprocess command: {e}")
                 except Exception as e:
                     print(f"Other error occurred: {e}")
+
 
 if __name__ == "__main__":
     main()
