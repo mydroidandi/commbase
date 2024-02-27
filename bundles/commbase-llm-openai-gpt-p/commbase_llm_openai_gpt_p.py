@@ -37,11 +37,11 @@
 # You can access ChatGPT by going to https://chat.openai.com/
 
 # Imports
+import openai
+import os
 import rich
 from rich import print
 from rich.table import Table
-import openai
-import os
 import typer
 
 
