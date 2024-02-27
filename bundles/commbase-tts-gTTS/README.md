@@ -7,8 +7,6 @@ A Commbase-ready TTS executable using gTTS (Google Text-to-Speech), a Python lib
 
 <img alt="commbase-tts-gTTS" src="commbase-tts-gTTS.png?raw=true" width="512" height="512" />
 
-commbase-tts-gTTS
-
 ## Contributors
 
 Thanks to the following people who have contributed to this project:
