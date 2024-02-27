@@ -36,3 +36,17 @@ libcommbase comes with 24 reliable and mutually exclusive control messages that 
 ## Examples
 
 Detailed information about examples can be found in the corresponding [`examples`](./examples) directory.
+
+## Contributors
+
+Thanks to the following people who have contributed to this project:
+
+* [@estebanways](https://github.com/estebanways)
+
+## Contact
+
+If you want to contact us you can reach us at <stv.herrera@gmail.com>.
+
+## License
+
+This project uses the following license: [`License`](./COPYING).
