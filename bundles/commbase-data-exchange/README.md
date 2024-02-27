@@ -7,6 +7,8 @@ commbase-data-exchange is an application for exchanging JSON data over HTTP and 
 
 <img alt="commbase-data-exchange" src="commbase-data-exchange.jpg?raw=true" width="512" height="512" />
 
+## Data Exchange Operating
+
 Its client component fetches initial data from the server component through HTTP and receives real-time updates via WebSocket, specifically handling the 'update_saved_data' event.
 
 When the client receives a Commbase application message from the user, it sends the message to the server for processing. The server manages to process the message, and upon receiving the processing result, it sends it back to the client. Finally, the client executes the result. Results can encompass various types of Commbase commands.
