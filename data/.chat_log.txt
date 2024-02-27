@@ -1,2 +1,1 @@
-END USER: Can you hear me?
-END USER: Okay, thank you for the prompt answer.
+END USER: Listen to me.
