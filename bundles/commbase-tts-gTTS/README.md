@@ -5,6 +5,10 @@
 
 A Commbase-ready TTS executable using gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Google Translate text-to-speech API
 
+<img alt="commbase-tts-gTTS" src="commbase-tts-gTTS.jpg?raw=true" width="512" height="512" />
+
+commbase-tts-gTTS
+
 ## Contributors
 
 Thanks to the following people who have contributed to this project:
