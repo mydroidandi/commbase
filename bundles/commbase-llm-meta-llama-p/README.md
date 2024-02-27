@@ -5,7 +5,7 @@
 
 A terminal version of Meta's Llama. This app allows you to interact with Llama, a large language model known for its factual language understanding and reasoning abilities. Ask questions, get help with research, or gain insights from complex information - all through a user-friendly interface. Whether you're a student, researcher, or simply curious about the world, this app can be a valuable tool for understanding and analyzing information.
 
-<img alt="commbase-stt-whisper-p" src="commbase-llm-meta-llama-p.jpg?raw=true" width="512" height="512" />
+<img alt="commbase-llm-meta-llama-p" src="commbase-llm-meta-llama-p.jpg?raw=true" width="512" height="512" />
 
 ## Unleash the Power of Factual Exploration with commbase-llm-meta-llama-p
 

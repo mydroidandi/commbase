@@ -5,7 +5,7 @@
 
 A terminal version of Google's Gemini. This app allows you to chat with Gemini, a powerful large language model. Ask questions, get creative writing inspiration, or receive help with tasks - all through a user-friendly interface. Whether you're a student, writer, or simply curious, this app is your gateway to unlocking the potential of AI language models.
 
-<img alt="commbase-stt-whisper-p" src="commbase-llm-google-gemini-p.jpg?raw=true" width="512" height="512" />
+<img alt="commbase-llm-google-gemini-p" src="commbase-llm-google-gemini-p.jpg?raw=true" width="512" height="512" />
 
 ## Unleash the Power of Language with commbase-llm-google-gemini-p
 

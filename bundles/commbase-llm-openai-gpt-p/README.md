@@ -7,7 +7,7 @@ A terminal version of ChatGPT designed to facilitate seamless interaction with t
 
 ChatGPT is a chatbot built using the GPT (Generative Pre-trained Transformer) architecture developed by OpenAI. To use ChatGPT, simply visit the website at <https://chat.openai.com/>. This is the online platform where you can access and interact with the ChatGPT service.
 
-<img alt="commbase-stt-whisper-p" src="commbase-llm-openai-gpt-p.jpg?raw=true" width="512" height="640" />
+<img alt="commbase-llm-openai-gpt-p" src="commbase-llm-openai-gpt-p.jpg?raw=true" width="512" height="640" />
 
 ## Unleash the Power of Creativity with commbase-llm-openai-gpt-p
 
