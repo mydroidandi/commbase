@@ -651,7 +651,7 @@ It is an alternative to festival.
 
 - gnome-terminal:
 
-Actually, it can be any of these Linux terminals: gnome-terminal, konsole, lxterminal, kitty, alacritty, xterm.
+Actually, it can be any of these Linux terminals: gnome-terminal, konsole, lxterminal, kitty, alacritty, wezterm, xterm, lxterm.
 
 Note: More terminals can be added in the file src/client_skill.sh.
 
