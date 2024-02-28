@@ -73,6 +73,8 @@ EOT
 
 # Prints help
 display_help() {
+    # Imports
+    source $COMMBASE_APP_DIR/config/commbase.conf
 
 cat <<EOT
 Commbase (v0.0.1)
@@ -96,45 +98,33 @@ Start/Stop:
 Control:
   Usage: commbase [options]
   options:
+EOT
 
-    "[Okay|Ok] stop."                     Stop the previous command
-    "[Okay|Ok] run it again."             Re-run the previous command
+    # Read the controls JSON file into a variable
+    json_data=$(cat "$COMMBASE_APP_DIR/$CONTROL_PATTERNS_FILE")
 
-    "[Okay|Ok] repeat."                   Reproduce the previous discourse by speaking it
-    "[Okay|Ok] remind me in [five|ten|twenty|thirty] minutes."
-                                          Start a question reminder countdown timer
-    "[Okay|Ok] what is the next task."    Remind of a prior question put on hold in a queue
+    # Load every first value and its key into a single variable
+    key_value_pairs=$(jq -r 'to_entries | .[] | "\(.value[0]): \(.key)"' <<< "$json_data")
 
-    "[Okay|Ok] accept."                   Accept a Y/N question
-    "[Okay|Ok] deny."                     Deny/Cancel a Y/N question
-    "[Okay|Ok] confirm with the code <four number code>."
-                                          Confirm a confirmation request
+    # Echo each key value  with underscores removed and only the first word
+    # capitalized, and the values inside double quotes.
+    while read -r key_value_pair; do
+        key=$(echo "$key_value_pair" | cut -d ':' -f 2 | sed -e 's/_/ /g' -e 's/\b\(.\)/\u\1/')
+        value=$(echo "$key_value_pair" | cut -d ':' -f 1 | sed 's/^[[:space:]]*//')
+        echo "    \"$value\":" "$key"
+    done <<< "$key_value_pairs"
 
-    "[Okay|Ok] select the option number [one|two|three|four]."
-                                          Select a multi-choice question option
-
-    "[Okay|Ok] what mode are you in."     Confirm the current mode
-    "[Okay|Ok] enter the normal mode."    Enter the normal mode
-    "[Okay|Ok] enter the conversation mode."
-                                          Enter the conversation mode
-    "[Okay|Ok] enter the follow mode."    Enter the follow mode
-    "[Okay|Ok] enter the car mode."       Enter the car mode
-    "[Okay|Ok] enter the boat mode."      Enter the boat mode
-    "[Okay|Ok] enter the plane mode."     Enter the plane mode
-    "[Okay|Ok] enter the starship mode."  Enter the starship mode
-    "[Okay|Ok] enter the refrigerator mode."
-                                          Enter the refrigerator mode
+cat <<EOT
 
 Skills and Skillsets:
   Usage: commbase [options]
   options:
     Checkout the User's Guide for a complete list of options
   Examples:
-    "Tell me about yourself."             Run Commbase introduction
-    "Start the math test number one zero one."
-                                         Run the mentioned multi-choice test interactively
-    "Let me know when the internet is back." Receive the 'event' alert and notification
-    "Set a timer of <minutes> minutes."   Start a countdown timer
+    "Tell me about yourself.": Run Commbase introduction
+    "Start the math test number one zero one.": Run the mentioned multi-choice test interactively
+    "Let me know when the internet is back.": Receive the 'event' alert and notification
+    "Set a timer of <minutes> minutes.": Start a countdown timer
         Examples:
             "Set a timer of twenty five minutes."
             Set a timer of one hundred one minutes.
@@ -156,7 +146,7 @@ route_option() {
 
     # Imports from libcommbase
     update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
-    controller=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/controller/controller.sh
+    controller=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/controller.sh
 
     # First tmux session
     SESSIONNAME="Commbase-0";

@@ -11,11 +11,11 @@ libcommbase comes with 24 reliable and mutually exclusive control messages that 
 * stop_previous_command
 * reproduce_previuos_discourse
 * rerun_previous_command
-* start_five_min_question_reminder_countdown
-* start_ten_min_question_reminder_countdown
-* start_twenty_min_question_reminder_countdown
-* start_thirty_min_question_reminder_countdown
-* remind_a_queued question put on hold
+* start_five_mins_question_reminder_countdown
+* start_ten_mins_question_reminder_countdown
+* start_twenty_mins_question_reminder_countdown
+* start_thirty_mins_question_reminder_countdown
+* remind_a_queued_question_put_on_hold
 * accept_changes
 * deny_changes
 * confirm_a_confirmation_request
