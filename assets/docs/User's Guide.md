@@ -908,12 +908,12 @@ The default version of the file **commbase.conf** contains the next values:
 - **END_USER_NAME_IN_CHAT_PANE**:
   - Description: It determines how the name of the End User is displayed in the chat pane.
   - Example value:
-    - `END USER:` (Default): When set to END USER, the name is shown as "END USER".
+    - `🧑 END USER:` (Default): When set to END USER, the name is shown as "END USER".
 
 - **ASSISTANT_NAME_IN_CHAT_PANE**:
   - Description: It determines how the name of the Assistant is displayed in the chat pane.
   - Example value:
-    - `ASSISTANT:` (Default): When set to ASSISTANT, the name is shown as "ASSISTANT".
+    - `✨ ASSISTANT:` (Default): When set to ASSISTANT, the name is shown as "ASSISTANT".
 
 - **SECRETS_FILE_PATH**:
   - Example value:
