@@ -106,7 +106,7 @@ EOT
     # Load every first value and its key into a single variable
     key_value_pairs=$(jq -r 'to_entries | .[] | "\(.value[0]): \(.key)"' <<< "$json_data")
 
-    # Echo each key-value pair with underscores removed and only the first word
+    # Echo each key value  with underscores removed and only the first word
     # capitalized, and the values inside double quotes.
     while read -r key_value_pair; do
         key=$(echo "$key_value_pair" | cut -d ':' -f 2 | sed -e 's/_/ /g' -e 's/\b\(.\)/\u\1/')
