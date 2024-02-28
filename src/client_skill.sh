@@ -101,7 +101,7 @@ client_skill() {
         if [ "$source_code_display" = "new_konsole_terminal" ]; then
           tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
-          tmux send-keys -t $session_name:$window_number.$pane_number "konsole --hold -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "konsole -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
         fi
@@ -122,7 +122,14 @@ client_skill() {
         if [ "$source_code_display" = "new_alacritty_terminal" ]; then
           tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
-          tmux send-keys -t $session_name:$window_number.$pane_number "alacritty --hold -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "alacritty -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
+        fi
+        if [ "$source_code_display" = "new_wezterm_terminal" ]; then
+          tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "wezterm -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
         fi
@@ -130,6 +137,13 @@ client_skill() {
           tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "xterm -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
+        fi
+        if [ "$source_code_display" = "new_lxterm_terminal" ]; then
+          tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "lxterm -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
         fi
@@ -163,7 +177,7 @@ client_skill() {
         if [ "$source_code_display" = "new_konsole_terminal" ]; then
           tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
-          tmux send-keys -t $session_name:$window_number.$pane_number "konsole --hold -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "konsole -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
         fi
@@ -184,7 +198,14 @@ client_skill() {
         if [ "$source_code_display" = "new_alacritty_terminal" ]; then
           tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
-          tmux send-keys -t $session_name:$window_number.$pane_number "alacritty --hold -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "alacritty -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
+        fi
+        if [ "$source_code_display" = "new_wezterm_terminal" ]; then
+          tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "wezterm -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
         fi
@@ -192,6 +213,13 @@ client_skill() {
           tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "xterm -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
+        fi
+        if [ "$source_code_display" = "new_lxterm_terminal" ]; then
+          tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "lxterm -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
         fi
@@ -225,7 +253,7 @@ client_skill() {
         if [ "$source_code_display" = "new_konsole_terminal" ]; then
           tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
-          tmux send-keys -t $session_name:$window_number.$pane_number "konsole --hold -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "konsole -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
         fi
@@ -246,7 +274,14 @@ client_skill() {
         if [ "$source_code_display" = "new_alacritty_terminal" ]; then
           tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
-          tmux send-keys -t $session_name:$window_number.$pane_number "alacritty --hold -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "alacritty -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
+        fi
+        if [ "$source_code_display" = "new_wezterm_terminal" ]; then
+          tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "wezterm -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
         fi
@@ -254,6 +289,13 @@ client_skill() {
           tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "xterm -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
+        fi
+        if [ "$source_code_display" = "new_lxterm_terminal" ]; then
+          tmux send-keys -t $session_name:$window_number.1 "$current_response" 2>/dev/null Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "echo \"$current_response\" | $TTS_ENGINE_STRING" Enter
+          tmux send-keys -t $session_name:$window_number.$pane_number "lxterm -e bash $COMMBASE_APP_DIR/data/.skill_runner &" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "sleep 0.1" Enter
           tmux send-keys -t $session_name:$window_number.$pane_number "clear" Enter
         fi
