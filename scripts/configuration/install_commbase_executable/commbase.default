@@ -73,8 +73,8 @@ EOT
 
 # Prints help
 display_help() {
-    # Imports
-    source $COMMBASE_APP_DIR/config/commbase.conf
+    # Imports from libcommbase
+    display_control_patterns=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/display_control_patterns.sh
 
 cat <<EOT
 Commbase (v0.0.1)
@@ -100,19 +100,8 @@ Control:
   options:
 EOT
 
-    # Read the controls JSON file into a variable
-    json_data=$(cat "$COMMBASE_APP_DIR/$CONTROL_PATTERNS_FILE")
-
-    # Load every first value and its key into a single variable
-    key_value_pairs=$(jq -r 'to_entries | .[] | "\(.value[0]): \(.key)"' <<< "$json_data")
-
-    # Echo each key value with underscores removed and only the first word
-    # capitalized, and the values inside double quotes.
-    while read -r key_value_pair; do
-        key=$(echo "$key_value_pair" | cut -d ':' -f 2 | sed -e 's/_/ /g' -e 's/\b\(.\)/\u\1/')
-        value=$(echo "$key_value_pair" | cut -d ':' -f 1 | sed 's/^[[:space:]]*//')
-        echo "    \"$value\":" "$key"
-    done <<< "$key_value_pairs"
+    # Display the control patterns file
+    (bash $display_control_patterns)
 
 cat <<EOT
 
@@ -121,10 +110,10 @@ Skills and Skillsets:
   options:
     Checkout the User's Guide for a complete list of options
   Examples:
-    "Tell me about yourself.": Run Commbase introduction
-    "Start the math test number one zero one.": Run the mentioned multi-choice test interactively
-    "Let me know when the internet is back.": Receive the 'event' alert and notification
-    "Set a timer of <minutes> minutes.": Start a countdown timer
+    "Tell me about yourself.":  Run Commbase introduction
+    "Start the math test number one zero one.":  Run the mentioned multi-choice test interactively
+    "Let me know when the internet is back.":  Receive the 'event' alert and notification
+    "Set a timer of <minutes> minutes.":  Start a countdown timer
         Examples:
             "Set a timer of twenty five minutes."
             Set a timer of one hundred one minutes.
