@@ -572,31 +572,25 @@ The script will remove any existent environment called commbase_env, recreate it
 Install OpenAI's Whisper
 -------------------------
 
+Install Whisper using a specific Git version tag. Replace <tag_name> with the actual tag name in git+https://github.com/openai/whisper.git@<tag_name>.
+
 To install Whisper for Python:
 
-$ pip3.12 install git+https://github.com/openai/whisper.git
+$ pip3.12 install git+https://github.com/openai/whisper.git@v20231117
 
-In an Anaconda Python environment, Whisper should be installed after recreating the Commbase environment. This is because it is directly installed from its GitHub repository using pip, rather than from the default Anaconda channel or from the Python Package Index (PyPI), also known as the Cheese Shop. PyPI is the official third-party software repository for Python.
-
-To install Whisper for the Anaconda Python environment commbase_env:
-
-$ conda activate commbase_env
-
-(commbase_env) $ pip install git+https://github.com/openai/whisper.git
-
-If you have already installed Whisper for Python, but want to change to the Anaconda Python environment alternative, uninstall Whisper for Python and then then reinstall it for the Anaconda environment:
+If you have already installed Whisper for Python, but want to change to the Anaconda Python environment alternative, uninstall Whisper for Python and then then install it for the Anaconda environment:
 
 $ pip3.12 list | grep  openai-whisper
 
 $ pip3.12 uninstall openai-whisper
 
+To install Whisper for the Anaconda Python environment commbase_env:
+
+In an Anaconda Python environment, Whisper must be installed from its GitHub repository using pip. It should not be installed from the default Anaconda channel or the Python Package Index (PyPI, the Cheese Shop). This should be done after recreating the Commbase environment.
+
+First, uninstall Whisper from the Anaconda Python's environment (this is just to remove the package listed in the commbase_env.yaml that comes with Commbase):
+
 $ conda activate commbase_env
-
-(commbase_env) $ conda install openai-whisper
-
-(commbase_env) $ conda list | grep openai-whisper
-
-Finally, you could need to uninstall Whisper from the Anaconda Python's environment:
 
 (commbase_env) $ conda uninstall openai-whisper
 
@@ -606,9 +600,17 @@ If you use 'pip uninstall package', it might not be aware of the dependencies ma
 
 To maintain consistency and avoid potential issues, it's best to stick with the package manager used for installation when uninstalling.
 
-If you want to verify the list of packages in the Commbase environment file:
+Second, verify the list of packages in the Commbase environment file:
 
-(commbase_env) $ nano commbase_env.yaml
+(commbase_env) $ cat commbase_env.yaml | grep whisper
+
+Or use:
+
+(commbase_env) $ conda list | grep openai-whisper
+
+Third, install Whisper using the conda pip.
+
+(commbase_env) $ pip install git+https://github.com/openai/whisper.git@v20231117
 
 Install the required system dependency packages
 ------------------------------------------------
