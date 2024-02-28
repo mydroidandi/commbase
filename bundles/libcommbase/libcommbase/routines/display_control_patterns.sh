@@ -34,7 +34,7 @@
 # Organizes and displays all the control patters from the controls patterns file
 display_control_patterns() {
   # Imports
-  source $COMMBASE_APP_DIR/config/commbase.conf
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
 
   # Read the controls JSON file into a variable
   json_data=$(cat "$COMMBASE_APP_DIR/$CONTROL_PATTERNS_FILE")
@@ -53,7 +53,7 @@ display_control_patterns() {
   exit 99
 }
 
-# Call tail_chat_log if the script is run directly (not sourced)
+# Call display_control_patterns if the script is run directly (not sourced)
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   (display_control_patterns)
 fi
