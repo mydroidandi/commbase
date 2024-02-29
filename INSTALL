@@ -569,6 +569,60 @@ $ bash scripts/configuration/build_conda_environment.sh
 
 The script will remove any existent environment called commbase_env, recreate it and install it from the beginning using the file commbase_env.yaml in one step.
 
+If your installation gets stuck when it is time to install the group of packages using pip (conda pip), do the following:
+
+Press Ctrl + c to exit the installation. You will see a message like:
+
+Installing pip dependencies: | failed
+
+Preserve the portion of the environment packages already installed.
+
+Verify the current status of the packages list:
+
+$ conda activate commbase_env
+
+Verify that there are conda packages but there are not pypi packages in the column that corresponds to the channel pypi.
+
+$ conda list
+
+$ conda list | grep pypi
+
+Proceed to install OpenAI Whisper by following the steps of "To install Whisper for the Anaconda Python environment commbase_env:" in the section Install OpenAI's Whisper of this document.
+
+Verify that Whisper is installed properly.
+
+$ conda list | grep openai-whisper
+
+Install the rest pip packages, manually, from the commmbase_env environment.
+
+$ pip install daal
+$ pip install daal4py
+$ pip install opencv-python
+$ pip install packaging
+$ pip install pillow
+$ pip install pyaudio
+$ pip install pydub
+$ pip install pytesseract
+$ pip install pyttsx3
+$ pip install schedule
+$ pip install scikit-learn-intelex
+$ pip install simple-websocket
+$ pip install sounddevice
+$ pip install speechrecognition
+$ pip install subprocess-run
+$ pip install tbb
+$ pip install wsproto
+
+Verify the new installed pypi packages in the conda environment:
+
+$ conda list | grep pypi
+
+And to count packages, you can use:
+
+$ conda list | grep pypi | wc -l
+
+$ conda list | wc -l
+
 Install OpenAI's Whisper
 -------------------------
 
@@ -709,7 +763,13 @@ To determine whether your system is using PipeWire or ALSA as the default audio 
 
 For PipeWire, you can check if the PipeWire service is running:
 
+$ systemctl --user restart pipewire
+
 $ systemctl --user status pipewire
+
+If the service is not working yet, this could require a system reboot.
+
+$ systemctl reboot
 
 For ALSA, you can check the status of the ALSA service or mixer. Note that ALSA doesn't have a centralized service like PipeWire or PulseAudio, but you can check the status of ALSA services or utilities:
 
