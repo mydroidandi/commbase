@@ -57,6 +57,7 @@ This project is coded and organized like this:
 │   ├── commbase-llm-meta-llama-p
 │   ├── commbase-llm-openai-gpt-p
 │   ├── commbase-stt-whisper-p
+│   ├── commbase-stt-whisper-remote-p
 │   │   └── examples
 │   ├── commbase-tts-gTTS
 │   ├── commbase-tts-pyttsx3
