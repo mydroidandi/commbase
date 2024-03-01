@@ -54,7 +54,10 @@ This project is coded and organized like this:
 ├── bundles  # External software bundle and external asset bundle
 │   ├── commbase-data-exchange
 │   │   ├── client
+│   │   │   └── templates
 │   │   └── server
+│   │   │   ├── client_data
+│   │   │   └── templates
 │   ├── commbase-llm-google-gemini-p
 │   ├── commbase-llm-meta-llama-p
 │   ├── commbase-llm-openai-gpt-p
