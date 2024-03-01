@@ -53,18 +53,21 @@ This project is coded and organized like this:
 │   └── images
 ├── bundles  # External software bundle and external asset bundle
 │   ├── commbase-data-exchange
+│   │   ├── client
+│   │   └── server
 │   ├── commbase-llm-google-gemini-p
 │   ├── commbase-llm-meta-llama-p
 │   ├── commbase-llm-openai-gpt-p
-│   ├── commbase-stt-whisper-p
-│   ├── commbase-stt-whisper-remote-p
+│   ├── commbase-stt-whisper-proactive-p
+│   │   └── examples
+│   ├── commbase-stt-whisper-reactive-remote-p
+│   │   ├── client_data
 │   │   └── examples
 │   ├── commbase-tts-gTTS
 │   ├── commbase-tts-pyttsx3
 │   ├── libcommbase
 │   │   ├── examples
 │   │   ├── libcommbase
-│   │   │   ├── controller
 │   │   │   ├── routines
 │   │   │   └── skills
 │   │   │       ├── parsers
