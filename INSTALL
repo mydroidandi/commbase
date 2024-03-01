@@ -697,6 +697,8 @@ List of required packages/commands:
 
 It contains the tools alsamixer and aplay.
 
+In Debian-based systems, including Debian itself and its derivatives like Ubuntu, the alsa-utils package typically provides the arecord command.
+
 - bash.
 
 - cpulimit.
@@ -742,6 +744,8 @@ It contains the nc command.
 - nmap.
 
 - openssh-client.
+
+The scp command is part of the OpenSSH package.
 
 - openssh-server.
 
