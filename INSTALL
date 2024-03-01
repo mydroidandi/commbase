@@ -593,24 +593,40 @@ Verify that Whisper is installed properly.
 
 $ conda list | grep openai-whisper
 
-Install the rest pip packages, manually, from the commmbase_env environment.
+Install the rest pip packages, individually, from the commmbase_env environment.
 
 $ pip install daal
+
 $ pip install daal4py
+
 $ pip install opencv-python
+
 $ pip install packaging
+
 $ pip install pillow
+
 $ pip install pyaudio
+
 $ pip install pydub
+
 $ pip install pytesseract
+
 $ pip install pyttsx3
+
 $ pip install schedule
+
 $ pip install scikit-learn-intelex
+
 $ pip install simple-websocket
+
 $ pip install sounddevice
+
 $ pip install speechrecognition
+
 $ pip install subprocess-run
+
 $ pip install tbb
+
 $ pip install wsproto
 
 Verify the new installed pypi packages in the conda environment:
@@ -619,9 +635,11 @@ $ conda list | grep pypi
 
 And to count packages, you can use:
 
-$ conda list | grep pypi | wc -l
+$ cat commbase_env.yaml | grep -v -e "channels:" -e "dependencies:" -e "- defaults" -e "pip:" -e "name: commbase_env" | wc -l
 
-$ conda list | wc -l
+$ conda list | grep -v -e "#" | wc -l
+
+The count of packages in your resultant commbase_env environment must be equal to the count of the file commbase_env.yaml packaged with Commbase.
 
 Install OpenAI's Whisper
 -------------------------
@@ -679,6 +697,8 @@ List of required packages/commands:
 
 It contains the tools alsamixer and aplay.
 
+In Debian-based systems, including Debian itself and its derivatives like Ubuntu, the alsa-utils package typically provides the arecord command.
+
 - bash.
 
 - cpulimit.
@@ -717,9 +737,15 @@ Note: More terminals can be added in the file src/client_skill.sh.
 
 - mplayer.
 
+- netcat-traditional.
+
+It contains the nc command.
+
 - nmap.
 
 - openssh-client.
+
+The scp command is part of the OpenSSH package.
 
 - openssh-server.
 

@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 ################################################################################
-#                            commbase-stt-whisper-p                            #
+#                         commbase-stt-whisper-remote-p                        #
 #                                                                              #
 # An ASR (Automatic Speech Recognition) engine.                                #
 #                                                                              #
 # Change History                                                               #
-# 04/29/2023  Esteban Herrera Original code.                                   #
+# 02/29/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -30,9 +30,9 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# commbase_stt_whisper_p.py
-# Records audio input from the microphone, performs speech recognition on the
-# recorded audio, and prints the recognized text.
+# commbase-stt-whisper-remote-p.py
+# Waits for the arrival of a WAV audio file, transcribes its content using the
+# Whisper library, and then writes the transcribed text to a temporary file.
 # Requires the Whisper model used in the code. The first execution of the
 # program downloads it automatically.
 # Requires to run redirecting the standard error output (stderr) to the null
@@ -41,82 +41,56 @@
 
 # Imports
 import io
-from pydub import AudioSegment
-import speech_recognition as sr
-import whisper
-import tempfile
 import os
+import time
+import tempfile
+import whisper
 
 from config import CONFIG_FILE_PATH
 from file_paths import get_chat_log_file
+from pydub import AudioSegment
 
-# A temporary directory and a file path within that directory
+# A temporary directory
 temp_file = tempfile.mkdtemp()
-save_path = os.path.join(temp_file, 'temp.wav')
 
 # A temporary file path
 temp_file_path = get_chat_log_file()
 
 
-def listen():
+def wait_for_wav_file(file_path, timeout=30):
     """
-    Initializes a speech recognizer, captures audio input from a microphone,
-    adjusts for ambient noise, saves the recorded audio as a WAV file, and
-    handles any exceptions that may occur during the process, and then returns
-    the path of the saved audio file.
-
-    Returns:
-    str: The path of the saved audio file.
-
-    Raises:
-    sr.WaitTimeoutError: If the speech recognition times out due to inactivity.
-
-    Dependencies:
-    - speech_recognition (imported as sr)
-    - io
-    - pydub (imported as AudioSegment)
-
-    Example:
-    save_path = listen()
-    print(f"Audio file saved at: {save_path}")
-    """
-    listener = sr.Recognizer()  # Create an instance of Recognizer
-    with sr.Microphone() as source:
-        print("ASSISTANT: Listening...")
-        # for index, name in enumerate(sr.Microphone.list_microphone_names()):
-        #     print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
-        # listener.adjust_for_ambient_noise(source)
-
-        try:
-            audio = listener.listen(source, timeout=30)  # Set a timeout of 30 seconds
-            print("ASSISTANT: Processing...")
-            data = io.BytesIO(audio.get_wav_data())
-            audio_clip = AudioSegment.from_file(data)
-            audio_clip.export(save_path, format='wav')
-        except sr.WaitTimeoutError:
-            print("ASSISTANT: Speech stopped. Recognizing...")
-    return save_path
-
-
-def recognize_audio(save_path):
-    """
-    Uses the Whisper library to load a pre-trained audio recognition model and
-    transcribes an audio file located at save_path using that model.
+    Waits for the arrival of a WAV file at the specified location.
 
     Parameters:
-    - save_path (str): The path to the audio file for transcription.
+    - file_path (str): The path to the WAV file.
+    - timeout (int): The maximum time to wait for the file (in seconds).
+
+    Returns:
+    - bool: True if the file is found within the timeout, False otherwise.
+    """
+    start_time = time.time()
+
+    while time.time() - start_time < timeout:
+        if os.path.exists(file_path):
+            return True
+        time.sleep(1)
+
+    return False
+
+
+def recognize_audio(file_path):
+    """
+    Uses the Whisper library to load a pre-trained audio recognition model and
+    transcribes an audio file located at file_path using that model.
+
+    Parameters:
+    - file_path (str): The path to the audio file for transcription.
 
     Returns:
     - str: The transcribed text extracted from the transcription result.
-
-    Example:
-    ```python
-    transcription_result = recognize_audio("path/to/audio/file.wav")
-    print(transcription_result)
-    ```
     """
     audio_model = whisper.load_model('base')
-    transcription = audio_model.transcribe(save_path, language='english', fp16=False)
+    transcription = audio_model.transcribe(file_path, language='english', fp16=False)
     return transcription['text']
 
 
@@ -127,11 +101,6 @@ def write_to_temp_file(text):
     Parameters:
     - text (str): The text to be appended to the temporary file.
 
-    Note:
-    - The function appends the formatted text to a temporary file specified by
-      `temp_file_path`.
-      If the file does not exist, it will be created.
-
     Example:
     >>> write_to_temp_file("Hello, this is a user message.")
     """
@@ -140,53 +109,36 @@ def write_to_temp_file(text):
         temp_file.write(end_user_text)
 
 
-# Closes the temporary file
 def close_temp_file():
     """
     Removes a temporary file if it exists.
-
-    This function checks if the temporary file specified by the variable
-    'temp_file_path' exists.
-    If it does, the file is removed using the 'os.remove' method. If the file
-    does not exist, the function does nothing.
-
-    Note:
-    - Ensure that 'temp_file_path' is properly defined before calling this
-      function.
-
-    Example:
-    >>> temp_file_path = '/path/to/temp/file.txt'
-    >>> close_temp_file()
-
-    :return: None
     """
     if os.path.exists(temp_file_path):
         os.remove(temp_file_path)
 
 
 def main():
-    """
-    The main function for audio recognition and transcription.
-
-    This function runs an infinite loop that continuously listens for audio
-    input, recognizes the audio using the `recognize_audio` function, prints
-    the response from the recognition process, and writes the transcribed text
-    to a temporary file using the `write_to_temp_file` function. It ensures
-    proper cleanup of the temporary file by closing it in the `finally` block.
-    """
     try:
         while True:
-            response = recognize_audio(listen())
-            print(f"END USER: {response}")
+            # Wait for the WAV file to arrive
+            print("ASSISTANT: Waiting for the WAV file...")
 
-            # Write the transcribed text to a temporary file
-            write_to_temp_file(response)
+            # Replace the placeholder with the actual path to your external WAV file
+            external_wav_path = "/home/commbase/Dev/mydroidandi/commbase/bundles/commbase-stt-whisper-remote-p/recording.wav"
+
+            if wait_for_wav_file(external_wav_path):
+                response = recognize_audio(external_wav_path)
+                print(f"END USER: {response}")
+
+                # Write the transcribed text to a temporary file
+                write_to_temp_file(response)
+            else:
+                print("ASSISTANT: Timeout waiting for the WAV file.")
+                break  # exit the loop on timeout
     finally:
         # Ensure the temporary file is closed and cleaned up
         close_temp_file()
 
 
-# Ensure that the main() function is executed only when the script is run
-# directly as the main program.
 if __name__ == '__main__':
     main()
