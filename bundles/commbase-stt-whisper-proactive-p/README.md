@@ -7,7 +7,7 @@ A proactive version of STT engine for Commbase.
 
 commbase-stt-whisper-proactive-p is an ASR (Automatic Speech Recognition) engine. It is capable of converting spoken language into written text without requiring an internet connection, making it a reliable and secure solution for any application that needs speech-to-text functionality.
 
-Proactive means the engine continuously changes among 4 strokes: listening, active, processing and stopped.
+Proactive means the engine continuously changes among 4 strokes: listening, active, processing, and stopped.
 
 <img alt="commbase-stt-whisper-proactive-p" src="commbase-stt-whisper-proactive-p.jpg?raw=true" width="512" height="512" />
 
