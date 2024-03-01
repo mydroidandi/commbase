@@ -593,7 +593,7 @@ Verify that Whisper is installed properly.
 
 $ conda list | grep openai-whisper
 
-Install the rest pip packages, manually, from the commmbase_env environment.
+Install the rest pip packages, individually, from the commmbase_env environment.
 
 $ pip install daal
 
