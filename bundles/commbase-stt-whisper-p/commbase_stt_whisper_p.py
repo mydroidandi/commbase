@@ -39,7 +39,7 @@
 # device (/dev/null) like this to avoid ALSA output messages:
 # shell> python commbase_stt_whisper_p.py 2>& /dev/null
 
-# Requirements
+# Imports
 import io
 from pydub import AudioSegment
 import speech_recognition as sr
