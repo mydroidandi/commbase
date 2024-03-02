@@ -54,7 +54,10 @@ This project is coded and organized like this:
 ├── bundles  # External software bundle and external asset bundle
 │   ├── commbase-data-exchange
 │   │   ├── client
+│   │   │   └── templates
 │   │   └── server
+│   │       ├── client_data
+│   │       └── templates
 │   ├── commbase-llm-google-gemini-p
 │   ├── commbase-llm-meta-llama-p
 │   ├── commbase-llm-openai-gpt-p
@@ -83,8 +86,7 @@ This project is coded and organized like this:
 │   │       └── skill_patterns
 │   │           └── en_us
 │   │               └── openai_whisper_model_base
-│   ├── PyAudio
-│   └── vu-meter
+│   └── PyAudio
 ├── config  # Stores the configuration file
 ├── data  # Stores the voice recognition model results and other data files
 ├── env  # Stores the environment file
@@ -98,6 +100,8 @@ This project is coded and organized like this:
 │   ├── deployment
 │   └── utilities
 │       ├── back-up
+│       ├── bundles
+│       │   └── vu-meter
 │       └── reset_commbase.conf
 ├── src  # This directory contains user-generated source code
 │   ├── bundles

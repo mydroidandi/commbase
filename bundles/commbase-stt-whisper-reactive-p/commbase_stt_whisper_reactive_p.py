@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 ################################################################################
-#                         commbase-stt-whisper-remote-p                        #
+#                        commbase-stt-whisper-reactive-p                       #
 #                                                                              #
-# An ASR (Automatic Speech Recognition) engine.                                #
+# A reactive version of STT ASR (Automatic Speech Recognition) engine.         #
 #                                                                              #
 # Change History                                                               #
 # 02/29/2024  Esteban Herrera Original code.                                   #
@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# commbase-stt-whisper-remote-p.py
+# commbase_stt_whisper_reactive_p.py
 # Waits for the arrival of a WAV audio file, transcribes its content using the
 # Whisper library, and then writes the transcribed text to a temporary file.
 # Requires the Whisper model used in the code. The first execution of the
@@ -45,7 +45,6 @@ import os
 import time
 import tempfile
 import whisper
-
 from config import CONFIG_FILE_PATH
 from file_paths import get_chat_log_file
 from pydub import AudioSegment

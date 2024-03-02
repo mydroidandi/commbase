@@ -1,11 +1,12 @@
-#!/usr/bin/env python
+#!usr//bin/env bash
 ################################################################################
-#                        commbase-stt-whisper-reactive-p                       #
+#                                  libcommbase                                 #
 #                                                                              #
-# A reactive version of STT ASR (Automatic Speech Recognition) engine.         #
+# A collection of libraries to centralize common functions that can be shared  #
+# across multiple conversational AI assistant projects                         #
 #                                                                              #
 # Change History                                                               #
-# 01/17/2024  Esteban Herrera Original code.                                   #
+# 02/13/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -13,7 +14,7 @@
 ################################################################################
 ################################################################################
 #                                                                              #
-#  Copyright (c) 2022-present Esteban Herrera C.                               #
+#  Copyright (c) 2023-present Esteban Herrera C.                               #
 #  stv.herrera@gmail.com                                                       #
 #                                                                              #
 #  This program is free software; you can redistribute it and/or modify        #
@@ -30,39 +31,33 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# file_paths.py
-# This file stores functions related to loading and managing file paths
-# Requires os.path already imported
+# text_animation.sh
+# Creates a simple text animation on the terminal.
+# Usage:
+# animation <"text"> <delay>
 
-# Requirements
-from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
+animate_text() {
+    local text="$1"
+    local delay="$2"
 
+    while true; do
+        clear
+        for ((i = 0; i < ${#text}; i++)); do
+            echo -n "${text:$i:1}"
+            sleep "$delay"
+        done
+        clear
+        echo
+    done
+}
 
-def get_chat_log_file():
-    """
-    Retrieves the value of the CHAT_LOG_FILE variable from the configuration
-    file.
+# Check if both text and delay are provided as arguments
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <text> <delay>"
+    exit 1
+fi
 
-    Returns:
-        str or None: The value of the variable if found, or None if not found.
-    """
-    # Initialize variable
-    chat_log_file = None
+text="$1"
+delay="$2"
 
-    # Open the file and read its contents
-    with open(CONFIG_FILE_PATH, "r") as f:
-        for line in f:
-            # Split the line into variable name and value
-            variable_name, value = line.strip().split("=")
-
-            # Check if the variable we are looking for exists in the line
-            if variable_name == "CHAT_LOG_FILE":
-                # Remove the quotes from the value of the variable
-                chat_log_file = CONFIG_FILE_DIR + value.strip()[1:-1]
-
-    # Check if the variable was found
-    if chat_log_file is not None:
-        return chat_log_file
-
-    # If the variable was not found, return None
-    return None
+animate_text "$text" "$delay"

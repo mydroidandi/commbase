@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 ################################################################################
-#                         commbase-stt-whisper-remote-p                        #
+#                        commbase-stt-whisper-reactive-p                       #
 #                                                                              #
-# An ASR (Automatic Speech Recognition) engine.                                #
+# A reactive version of STT ASR (Automatic Speech Recognition) engine.         #
 #                                                                              #
 # Change History                                                               #
 # 02/29/2024  Esteban Herrera Original code.                                   #
@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# commbase-stt-whisper-remote-p.sh
+# commbase_stt_whisper_reactive_p.sh
 # Records audio using the arecord command and sends the recorded audio file to a
 # remote host using scp when a specific key ('c') is pressed.
 # Requires the packages already installed:
