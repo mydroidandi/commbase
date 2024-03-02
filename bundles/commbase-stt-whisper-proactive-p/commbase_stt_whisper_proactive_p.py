@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 ################################################################################
-#                            commbase-stt-whisper-p                            #
+#                       commbase-stt-whisper-proactive-p                       #
 #                                                                              #
-# An ASR (Automatic Speech Recognition) engine.                                #
+# A proactive version of STT ASR (Automatic Speech Recognition) engine.        #
 #                                                                              #
 # Change History                                                               #
-# 04/29/2023  Esteban Herrera Original code.                                   #
+# 02/29/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -30,7 +30,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# commbase_stt_whisper_p.py
+# commbase_stt_whisper_proactive_p.py
 # Records audio input from the microphone, performs speech recognition on the
 # recorded audio, and prints the recognized text.
 # Requires the Whisper model used in the code. The first execution of the
@@ -41,12 +41,11 @@
 
 # Imports
 import io
+import os
 from pydub import AudioSegment
 import speech_recognition as sr
-import whisper
 import tempfile
-import os
-
+import whisper
 from config import CONFIG_FILE_PATH
 from file_paths import get_chat_log_file
 

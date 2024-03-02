@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ################################################################################
 #                                   Commbase                                   #
 #                                                                              #
@@ -35,9 +36,13 @@ app() {
   # The configuration file
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
+  # The environment file
+  source "$COMMBASE_APP_DIR"/env/.env
+
   # Imports from libcommbase
   source "$COMMBASE_APP_DIR"/bundles/libcommbase/libcommbase/routines/check_data_exchange_server_connection.sh
   tail_chat_log=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_chat_log.sh
+  text_animation=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/text_animation.sh
 
   # Give .3 seconds to tmux to draw its content before continuing
   time=0.3;
@@ -75,8 +80,7 @@ app() {
   (tmux select-pane -t 1 && tmux send-keys " touch $COMMBASE_APP_DIR$CHAT_LOG_FILE" C-m && sleep $time);
   # Clear the screen, and set the prompt to an empty string
   (tmux select-pane -t 1 && tmux send-keys " clear && PS1=""" C-m);
-  # Run the STT engine and then press the enter key
-  #(tmux select-pane -t 1 && tmux send-keys " tail -f $COMMBASE_APP_DIR$CHAT_LOG_FILE" C-m && sleep $time);
+  # Run tail_chat_log and then press the enter key
   (tmux select-pane -t 1 && tmux send-keys " bash $tail_chat_log" C-m && sleep $time);
 
   # Pane 3
@@ -85,7 +89,7 @@ app() {
   (tmux select-pane -t 3 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time);
   # Clear the screen, and set the prompt to an empty string
   (tmux select-pane -t 3 && tmux send-keys " clear && PS1=""" C-m);
-  # Run commbase-data-exchange server
+  # Run commbase-data-exchange server and then press enter
   (tmux select-pane -t 3 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_DATA_EXCHANGE_SERVER_CONNECTION_FILE_PATH" C-m && sleep $time);
   # Check the connection to the server before starting the client
   (check_data_exchange_server_connection)
@@ -96,17 +100,17 @@ app() {
   (tmux select-pane -t 2 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time);
   # Clear the screen, and set the prompt to an empty string
   (tmux select-pane -t 2 && tmux send-keys " clear && PS1=""" C-m);
-  # Run commbase-data-exchange client
+  # Run commbase-data-exchange client and then press enter
   (tmux select-pane -t 2 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_DATA_EXCHANGE_CLIENT_CONNECTION_FILE_PATH" C-m && sleep $time);
 
   # Pane 4
   # On window 0, select pane 4, activate the conda environment if it exists,
   # send the enter key, and sleep.
   (tmux select-pane -t 4 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time);
-  # Run the STT engine and then press the enter key
+  # Run the STT_ENGINE_STRING and then press the enter
   (tmux select-pane -t 4 && tmux send-keys " cpulimit --limit=$STT_PROCESS_CPU_LIMIT_PERCENTAGE -- $STT_ENGINE_STRING" C-m && sleep $time);
   # Clear the screen, and set the prompt to an empty string
-  (tmux select-pane -t 4 && tmux send-keys " clear && PS1=""" C-m);
+  #(tmux select-pane -t 4 && tmux send-keys " clear && PS1=""" C-m);
 
   # Split vertically the pane 4
   (tmux select-pane -t 4 && tmux split-pane -h && sleep $time);
@@ -117,8 +121,8 @@ app() {
   (tmux select-pane -t 5 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time);
   # Clear the screen, and set the prompt to an empty string
   (tmux select-pane -t 5 && tmux send-keys " cd $COMMBASE_APP_DIR ; clear && PS1=""" C-m);
-  # Run the VU meter
-  (tmux select-pane -t 5 && tmux send-keys " $PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/vu-meter/vu_meter.py" C-m);
+  # Run text_animation and then press enter
+  (tmux select-pane -t 5 && tmux send-keys " bash $text_animation 'Commbase' 0.5" C-m && sleep $time);
 
   # Pane 6
   # On window 0, select pane 6, activate the conda environment if it exists,
@@ -126,8 +130,8 @@ app() {
   (tmux select-pane -t 6 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time);
   # Clear the screen, and set the prompt to an empty string
   (tmux select-pane -t 6 && tmux send-keys " cd $COMMBASE_APP_DIR ; clear && PS1=""" C-m);
-  # Run alsamixer
-  (tmux select-pane -t 6 && tmux send-keys " alsamixer --view all" C-m);
+  # Run alsamixer and then press enter
+  (tmux select-pane -t 6 && tmux send-keys " alsamixer --view=capture" C-m);
 
   # In this section, activate/deactivate or add custom extra windows
 

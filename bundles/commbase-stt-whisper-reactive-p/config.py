@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 ################################################################################
-#                              commbase-stt-whisper-p                          #
+#                        commbase-stt-whisper-reactive-p                       #
 #                                                                              #
-# An ASR (Automatic Speech Recognition) engine.                                #
+# A reactive version of STT ASR (Automatic Speech Recognition) engine.         #
 #                                                                              #
 # Change History                                                               #
 # 01/17/2024  Esteban Herrera Original code.                                   #
