@@ -68,25 +68,24 @@ This project is coded and organized like this:
 │   │   └── examples
 │   ├── commbase-tts-gTTS
 │   ├── commbase-tts-pyttsx3
-│   ├── libcommbase
-│   │   ├── examples
-│   │   ├── libcommbase
-│   │   │   ├── routines
-│   │   │   └── skills
-│   │   │       ├── parsers
-│   │   │       └── runners
-│   │   └── resources
-│   │       ├── bundles
-│   │       │   └── sounds
-│   │       ├── control_patterns
-│   │       │   └── en_us
-│   │       │       └── openai_whisper_model_base
-│   │       ├── discourses
-│   │       │   └── en_us
-│   │       └── skill_patterns
-│   │           └── en_us
-│   │               └── openai_whisper_model_base
-│   └── PyAudio
+│   └── libcommbase
+│       ├── examples
+│       ├── libcommbase
+│       │   ├── routines
+│       │   └── skills
+│       │       ├── parsers
+│       │       └── runners
+│       └── resources
+│           ├── bundles
+│           │   └── sounds
+│           ├── control_patterns
+│           │   └── en_us
+│           │       └── openai_whisper_model_base
+│           ├── discourses
+│           │   └── en_us
+│           └── skill_patterns
+│               └── en_us
+│                   └── openai_whisper_model_base
 ├── config  # Stores the configuration file
 ├── data  # Stores the voice recognition model results and other data files
 ├── env  # Stores the environment file
