@@ -5,7 +5,7 @@
 # A reactive version of STT ASR (Automatic Speech Recognition) engine.         #
 #                                                                              #
 # Change History                                                               #
-# 01/17/2024  Esteban Herrera Original code.                                   #
+# 03/02/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -30,24 +30,31 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# file_paths.py
-# This file stores functions related to loading and managing file paths
-# Requires os.path already imported
+# functions.py
+# This file contains a collection of utility functions for various tasks. It
+# provides a set of commonly used functions related to data manipulation, file
+# handling, and mathematical operations.
 
 # Imports
-from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
+from config import CONFIG_FILE_PATH
 
 
-def get_chat_log_file():
+def get_chat_participant_names():
     """
-    Retrieves the value of the CHAT_LOG_FILE variable from the configuration
-    file.
+    Gets the chat participant names from the config file.
+
+    Reads the 'ASSISTANT_NAME_IN_CHAT_PANE' and 'END_USER_NAME_IN_CHAT_PANE'
+    variables from the environment configuration file. Returns a tuple
+    containing the string values of the variables if found, or None if any of
+    the variables are not present.
 
     Returns:
-        str or None: The value of the variable if found, or None if not found.
+        tuple or None: A tuple containing the assistant, system, and end user
+        names in the chat pane, or None, if any of the variables are not found.
     """
-    # Initialize variable
-    chat_log_file = None
+    # Initialize variables for the chat names
+    assistant_name = None
+    end_user_name = None
 
     # Open the file and read its contents
     with open(CONFIG_FILE_PATH, "r") as f:
@@ -56,43 +63,20 @@ def get_chat_log_file():
             variable_name, value = line.strip().split("=")
 
             # Check if the variable we are looking for exists in the line
-            if variable_name == "CHAT_LOG_FILE":
+            if variable_name == "END_USER_NAME_IN_CHAT_PANE":
                 # Remove the quotes from the value of the variable
-                chat_log_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+                end_user_name = value.strip()[1:-1]
 
-    # Check if the variable was found
-    if chat_log_file is not None:
-        return chat_log_file
-
-    # If the variable was not found, return None
-    return None
-
-
-def get_commbase_stt_whisper_reactive_p_client_data_file():
-    """
-    Retrieves the value of the COMMBASE_STT_WHISPER_REACTIVE_P_CLIENT_DATA_FILE
-    variable from the configuration file.
-
-    Returns:
-        str or None: The value of the variable if found, or None if not found.
-    """
-    # Initialize variable
-    recording_file = None
-
-    # Open the file and read its contents
-    with open(CONFIG_FILE_PATH, "r") as f:
-        for line in f:
-            # Split the line into variable name and value
-            variable_name, value = line.strip().split("=")
-
-            # Check if the variable we are looking for exists in the line
-            if variable_name == "COMMBASE_STT_WHISPER_REACTIVE_P_CLIENT_DATA_FILE":
+            elif variable_name == "ASSISTANT_NAME_IN_CHAT_PANE":
                 # Remove the quotes from the value of the variable
-                recording_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+                assistant_name = value.strip()[1:-1]
 
-    # Check if the variable was found
-    if recording_file is not None:
-        return recording_file
+    # Check if all two variables were found
+    if (
+        assistant_name is not None
+        and end_user_name is not None
+    ):
+        return end_user_name, assistant_name
 
-    # If the variable was not found, return None
+    # If any of the variables are not found, return None
     return None

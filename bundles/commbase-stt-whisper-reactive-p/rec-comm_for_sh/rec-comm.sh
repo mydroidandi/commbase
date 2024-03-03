@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env sh
 ################################################################################
 #                        commbase-stt-whisper-reactive-p                       #
 #                                                                              #
 # A reactive version of STT ASR (Automatic Speech Recognition) engine.         #
 #                                                                              #
 # Change History                                                               #
-# 01/17/2024  Esteban Herrera Original code.                                   #
+# 02/29/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -30,69 +30,63 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# file_paths.py
-# This file stores functions related to loading and managing file paths
-# Requires os.path already imported
+# rec-comm.sh
+# Records audio when specific key is pressed, using the arecord command. Sends
+# the recorded audio file to a remote host using scp when a specific key is
+# pressed again.
+# Requires the packages already installed:
+# alsa-utils
+# openssh-client
+# openssh server
 
-# Imports
-from config import CONFIG_FILE_DIR, CONFIG_FILE_PATH
+RECORDING=false
+RANDOM_DIR=$(mktemp -d /tmp/tmp.XXXXXX)
+FILENAME="$RANDOM_DIR/recording.wav"
 
+# Set up the following variables accordingly
+REMOTE_HOST="commbase@127.0.0.1"
+DEST_PATH="/home/commbase/Dev/mydroidandi/commbase/bundles/commbase-stt-whisper-reactive-p/client_data/recording.wav"
+AUDIO_CAPTURE_DEVICE="hw:CARD=Microphone,DEV=0"
+CHAR="c"
 
-def get_chat_log_file():
-    """
-    Retrieves the value of the CHAT_LOG_FILE variable from the configuration
-    file.
+# Ensures that the temporary directory created earlier is deleted when the
+# script exits.
+cleanup() {
+    echo "Cleaning up..."
+    rm -r "$RANDOM_DIR"
+    exit 0
+}
 
-    Returns:
-        str or None: The value of the variable if found, or None if not found.
-    """
-    # Initialize variable
-    chat_log_file = None
+trap cleanup EXIT
 
-    # Open the file and read its contents
-    with open(CONFIG_FILE_PATH, "r") as f:
-        for line in f:
-            # Split the line into variable name and value
-            variable_name, value = line.strip().split("=")
+# Repeat a loop, awaiting the next key press to initiate or stop the recording
+# and send the file with scp.
+while true; do
+    # Pass $CHAR as an argument to printf.
+    printf "Press '%s' to start/stop recording: " "$CHAR"
 
-            # Check if the variable we are looking for exists in the line
-            if variable_name == "CHAT_LOG_FILE":
-                # Remove the quotes from the value of the variable
-                chat_log_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+    # Set terminal to single character mode
+    stty -icanon min 1 time 0
 
-    # Check if the variable was found
-    if chat_log_file is not None:
-        return chat_log_file
+    key=$(dd bs=1 count=1 2>/dev/null)
 
-    # If the variable was not found, return None
-    return None
+    # Reset terminal to normal mode
+    stty sane
 
-
-def get_commbase_stt_whisper_reactive_p_client_data_file():
-    """
-    Retrieves the value of the COMMBASE_STT_WHISPER_REACTIVE_P_CLIENT_DATA_FILE
-    variable from the configuration file.
-
-    Returns:
-        str or None: The value of the variable if found, or None if not found.
-    """
-    # Initialize variable
-    recording_file = None
-
-    # Open the file and read its contents
-    with open(CONFIG_FILE_PATH, "r") as f:
-        for line in f:
-            # Split the line into variable name and value
-            variable_name, value = line.strip().split("=")
-
-            # Check if the variable we are looking for exists in the line
-            if variable_name == "COMMBASE_STT_WHISPER_REACTIVE_P_CLIENT_DATA_FILE":
-                # Remove the quotes from the value of the variable
-                recording_file = CONFIG_FILE_DIR + value.strip()[1:-1]
-
-    # Check if the variable was found
-    if recording_file is not None:
-        return recording_file
-
-    # If the variable was not found, return None
-    return None
+    if [ "$key" = "$CHAR" ]; then
+        if [ "$RECORDING" = false ]; then
+            echo "Start recording..."
+            arecord -D "$AUDIO_CAPTURE_DEVICE" -f cd -t wav -d 10 -r 44100 -c 2 -V stereo -v "$FILENAME" &
+            RECORDING=true
+        else
+            echo "Stop recording..."
+            kill -INT $!
+            wait $!  # Wait for the background process to finish
+            RECORDING=false
+            echo "Sending recording to remote host..."
+            scp "$FILENAME" "$REMOTE_HOST:$DEST_PATH"
+            rm "$FILENAME"
+            echo "Recording sent successfully."
+        fi
+    fi
+done
