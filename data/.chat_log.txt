@@ -1,0 +1,17 @@
+🧑 END USER:
+🧑 END USER: What is the meaning of life?
+🧑 END USER: Open the web browser.
+✨ ASSISTANT: Opening ...
+🧑 END USER: This is a test.
+🧑 END USER: This is a second test.
+🧑 END USER: recording a test
+🧑 END USER: Every rose has its tone.
+🧑 END USER: Everybody has Fountain 8.
+🧑 END USER: Everybody has fun tonight.
+🧑 END USER: I am testing the temp file.
+🧑 END USER: Recording for dash
+🧑 END USER: Passing the key as an argument.
+🧑 END USER: Start recording with BASH.
+🧑 END USER:
+🧑 END USER: I have changed the parts to the engine.
+🧑 END USER: Press a key to record.

@@ -35,109 +35,105 @@
 # Whisper library, and then writes the transcribed text to a temporary file.
 # Requires the Whisper model used in the code. The first execution of the
 # program downloads it automatically.
-# Requires to run redirecting the standard error output (stderr) to the null
-# device (/dev/null) like this to avoid ALSA output messages:
-# shell> python commbase_stt_whisper_p.py 2>& /dev/null
 
 # Imports
-import io
 import os
-import time
 import tempfile
+import time
+import wave
 import whisper
 from config import CONFIG_FILE_PATH
-from file_paths import get_chat_log_file
-from pydub import AudioSegment
+from file_paths import (
+    get_chat_log_file,
+    get_commbase_stt_whisper_reactive_p_client_data_file
+)
+from functions import get_chat_participant_names
 
-# A temporary directory
+# A temporary directory and a file path within that directory
 temp_file = tempfile.mkdtemp()
 
 # A temporary file path
 temp_file_path = get_chat_log_file()
 
+# Variable to store the last modification time
+last_modified_time = 0
 
-def wait_for_wav_file(file_path, timeout=30):
+
+def recognize_audio(save_path):
     """
-    Waits for the arrival of a WAV file at the specified location.
-
-    Parameters:
-    - file_path (str): The path to the WAV file.
-    - timeout (int): The maximum time to wait for the file (in seconds).
-
-    Returns:
-    - bool: True if the file is found within the timeout, False otherwise.
-    """
-    start_time = time.time()
-
-    while time.time() - start_time < timeout:
-        if os.path.exists(file_path):
-            return True
-        time.sleep(1)
-
-    return False
-
-
-def recognize_audio(file_path):
-    """
-    Uses the Whisper library to load a pre-trained audio recognition model and
-    transcribes an audio file located at file_path using that model.
-
-    Parameters:
-    - file_path (str): The path to the audio file for transcription.
-
-    Returns:
-    - str: The transcribed text extracted from the transcription result.
     """
     audio_model = whisper.load_model('base')
-    transcription = audio_model.transcribe(file_path, language='english', fp16=False)
+    transcription = audio_model.transcribe(save_path, language='english', fp16=False)
     return transcription['text']
 
 
 def write_to_temp_file(text):
     """
-    Appends the provided text to a temporary file, prefixed with 'END USER:'.
-
-    Parameters:
-    - text (str): The text to be appended to the temporary file.
-
-    Example:
-    >>> write_to_temp_file("Hello, this is a user message.")
     """
-    end_user_text = "END USER:" + text + "\n"
+    # Set the values returned by get_chat_participant_names()
+    end_user_name, assistant_name = get_chat_participant_names()
+    end_user_text = end_user_name + text + "\n"
     with open(temp_file_path, 'a') as temp_file:
         temp_file.write(end_user_text)
 
 
+# Closes the temporary file
 def close_temp_file():
     """
-    Removes a temporary file if it exists.
     """
     if os.path.exists(temp_file_path):
         os.remove(temp_file_path)
 
 
+def create_empty_file():
+    """
+    """
+    # Specify the file name and mode ('wb' for write binary)
+    file_name = get_commbase_stt_whisper_reactive_p_client_data_file()
+
+    # Open the file in write binary mode
+    with wave.open(file_name, 'wb') as wf:
+        # Set the audio file parameters
+        wf.setnchannels(1)  # 1 channel for mono, 2 for stereo
+        wf.setsampwidth(2)  # 2 bytes for 16-bit audio (adjust as needed)
+        wf.setframerate(44100)  # Sample rate, e.g., 44100 Hz
+        wf.setnframes(0)  # Set the number of frames to 0 for an empty file
+
+
 def main():
+    """
+    """
+    global last_modified_time
+
+    create_empty_file()
+
     try:
         while True:
-            # Wait for the WAV file to arrive
-            print("ASSISTANT: Waiting for the WAV file...")
+            audio_path = get_commbase_stt_whisper_reactive_p_client_data_file()
 
-            # Replace the placeholder with the actual path to your external WAV file
-            external_wav_path = "/home/commbase/Dev/mydroidandi/commbase/bundles/commbase-stt-whisper-remote-p/recording.wav"
+            # Set the values returned by get_chat_participant_names()
+            end_user_name, assistant_name = get_chat_participant_names()
 
-            if wait_for_wav_file(external_wav_path):
-                response = recognize_audio(external_wav_path)
-                print(f"END USER: {response}")
+            # Check if the file has been modified
+            current_modified_time = os.path.getmtime(audio_path)
+            if current_modified_time != last_modified_time:
+                last_modified_time = current_modified_time
+
+                response = recognize_audio(audio_path)
+                print(f"{end_user_name} {response}")
 
                 # Write the transcribed text to a temporary file
                 write_to_temp_file(response)
-            else:
-                print("ASSISTANT: Timeout waiting for the WAV file.")
-                break  # exit the loop on timeout
+
+            # Sleep for a while before checking again (adjust the time
+            # according to your needs)
+            time.sleep(1)
     finally:
         # Ensure the temporary file is closed and cleaned up
         close_temp_file()
 
 
+# Ensure that the main() function is executed only when the script is run
+# directly as the main program.
 if __name__ == '__main__':
     main()
