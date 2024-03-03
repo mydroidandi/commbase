@@ -753,12 +753,18 @@ The default version of the file **commbase.conf** contains the next values:
 
 - **VIDEO_CAPTURE_DEVICE_02_INDEX**:
   - Description: It is used to specify which video capture device should be utilized by the system or application.
-  - Possible values: Use a value between 0 and the maximum number of cameras installed.  
+  - Possible values: Use a value between 0 and the maximum number of cameras installed.
   - Example value:
     - `1`: It represents the index or identifier of a video capture device.
 
+- **STT_ENGINE_PATH**:
+  - Description: It specifies the path to the current STT engine's executable or script file bundled with Commbase. It is updated to one of following possible values (TODO: create a skill command and a Keybinding for this.)
+  - Possible values:
+    - `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-reactive-p/commbase_stt_whisper_reactive_p.py` (Default): Reactive means the engine is always lazily listening, processing the voice messages only when they arrive. Therefore, engine has 2 strokes: passive and processing.
+    - `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-proactive-p/commbase_stt_whisper_proactive_p.py`: Proactive means the engine continuously changes among 4 strokes: listening, active, processing, and stopped.
+
 - **STT_ENGINE_STRING**:
-  - Description: It represents a string that specifies the path to the current STT engine's executable or script file bundled with Commbase. Its second parameter points to the internal Commbase variable `STT_ENGINE_PATH`, which specifies the path to the current STT engine's executable or script file bundled with Commbase either. This is stored in the hidden file **env/.env** and is updated to one of following two values by means of (TODO: create a skill command and a Keybinding for this): `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-reactive-p/commbase_stt_whisper_reactive_p.py` (Default) or `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-proactive-p/commbase_stt_whisper_proactive_p.py`. Note that the variable values in **env/.env** are not inside quotes.
+  - Description: It represents a string that specifies the path to the current STT engine's executable or script file bundled with Commbase.
   - Possible values:
     - `$PYTHON_ENV_VERSION $STT_ENGINE_PATH 2> /dev/null` (Default): It specifies the Commbase STT engine's executable script.
 
