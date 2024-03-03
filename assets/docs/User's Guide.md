@@ -120,7 +120,7 @@ The window 1, "Commbase", contains 7 panes, where every pane runs a component:
 - Pane 2. It is the client component.
 - Pane 3. It is the server component.
 - Pane 4. It is the speech recognizer component.
-- Pane 5. It is the VU-meter component.
+- Pane 5. It is the animation component.
 - Pane 6. It is the audio mixer component.
 - Pane 7. It is the user terminal component. It is almost always focused, except when is used by Commbase for launching skill scripts.
 
@@ -753,19 +753,28 @@ The default version of the file **commbase.conf** contains the next values:
 
 - **VIDEO_CAPTURE_DEVICE_02_INDEX**:
   - Description: It is used to specify which video capture device should be utilized by the system or application.
-  - Possible values: Use a value between 0 and the maximum number of cameras installed.  
+  - Possible values: Use a value between 0 and the maximum number of cameras installed.
   - Example value:
     - `1`: It represents the index or identifier of a video capture device.
 
 - **STT_ENGINE_PATH**:
-  - Description: It specifies the path to the current STT engine's executable or script file bundled with Commbase.
+  - Description: It specifies the path to the current STT engine's executable or script file bundled with Commbase. It is updated to one of following possible values (TODO: create a skill command and a Keybinding for this.)
   - Possible values:
-    - `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-p/commbase_stt_whisper_p.py` (Default): It specifies the STT engine commbase-stt-whisper-p.py's executable script.
+    - `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-reactive-p/commbase_stt_whisper_reactive_p.py` (Default): Reactive means the engine is always lazily listening, processing the voice messages only when they arrive. Therefore, engine has 2 strokes: passive and processing.
+    - `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-proactive-p/commbase_stt_whisper_proactive_p.py`: Proactive means the engine continuously changes among 4 strokes: listening, active, processing, and stopped.
 
 - **STT_ENGINE_STRING**:
   - Description: It represents a string that specifies the path to the current STT engine's executable or script file bundled with Commbase.
   - Possible values:
-    - `$PYTHON_ENV_VERSION $STT_ENGINE_PATH 2> /dev/null` (Default): It specifies the STT engine commbase-stt-whisper-p.py's executable script.
+    - `$PYTHON_ENV_VERSION $STT_ENGINE_PATH 2> /dev/null` (Default): It specifies the Commbase STT engine's executable script.
+
+- **COMMBASE_STT_WHISPER_REACTIVE_P_CLIENT_DATA_FILE**:
+  - Possible values:
+    - `/bundles/commbase-stt-whisper-reactive-p/client_data/recording.wav` (Default): The Commbase STT Whisper reactive p client temporary audio recording file. The purpose of this file is for storing audio data obtained from the execution of the bash script **commrecorder.sh** in the directory **bundles/commbase-stt-whisper-reactive-p/**. **commbase_stt_whisper_reactive_p.py** monitors the modification time of this file and, upon detecting changes, transcribes the audio content using the Whisper ASR (Automatic Speech Recognition) model. The transcribed text is then printed and appended to the chatroom pane.
+
+- **CHAT_LOG_FILE**:
+  - Possible values:
+    - `/data/.chat_log.txt` (Default): The chat log file likely stores a record of interactions or conversations.
 
 - **TTS_ENGINE_STRING**:
   - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, TTS systems with the ability to use a clone/fake of your own voice, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.
@@ -776,10 +785,6 @@ The default version of the file **commbase.conf** contains the next values:
     - `espeak -v m3`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English male voice number 3. You can install Espeak-compatible extra voices from different internet sources.
     - `xargs swift`: It specifies the TTS command swift. The company Ceptral has high quality, natural speech OSS licensed voices can be purchased, installed and downloaded from the Ceptral web site.
     - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/commbase-tts-gTTS/commbase_tts_gTTS.py --param1 val1 --param2 val2 --param3 val3:`: It specifies the TTS executable commbase-tts-gTTS.py's script and its arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API.
-
-- **CHAT_LOG_FILE**:
-  - Possible values:
-    - `/data/.chat_log.txt` (Default): The chat log file likely stores a record of interactions or conversations.
 
 - **TMUX_EXTRA_WINDOWS_ON**:
   - Possible values:

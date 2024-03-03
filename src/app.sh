@@ -36,9 +36,6 @@ app() {
   # The configuration file
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
-  # The environment file
-  source "$COMMBASE_APP_DIR"/env/.env
-
   # Imports from libcommbase
   source "$COMMBASE_APP_DIR"/bundles/libcommbase/libcommbase/routines/check_data_exchange_server_connection.sh
   tail_chat_log=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_chat_log.sh
@@ -110,7 +107,7 @@ app() {
   # Run the STT_ENGINE_STRING and then press the enter
   (tmux select-pane -t 4 && tmux send-keys " cpulimit --limit=$STT_PROCESS_CPU_LIMIT_PERCENTAGE -- $STT_ENGINE_STRING" C-m && sleep $time);
   # Clear the screen, and set the prompt to an empty string
-  #(tmux select-pane -t 4 && tmux send-keys " clear && PS1=""" C-m);
+  (tmux select-pane -t 4 && tmux send-keys " clear && PS1=""" C-m);
 
   # Split vertically the pane 4
   (tmux select-pane -t 4 && tmux split-pane -h && sleep $time);
