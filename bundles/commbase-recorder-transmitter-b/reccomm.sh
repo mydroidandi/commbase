@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ################################################################################
-#                        commbase-stt-whisper-reactive-p                       #
+#                        commbase-recorder-transmitter-b                       #
 #                                                                              #
 # A reactive version of STT ASR (Automatic Speech Recognition) engine.         #
 #                                                                              #
@@ -30,11 +30,11 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# rec-comm.sh
+# reccomm.sh
 # Records audio when specific key is pressed, using the arecord command. Sends
 # the recorded audio file to a remote host using scp when a specific key is
 # pressed again.
-# Requires the packages already installed:
+# Required packages:
 # alsa-utils
 # openssh-client
 # openssh server
