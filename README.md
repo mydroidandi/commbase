@@ -65,7 +65,7 @@ This project is coded and organized like this:
 │   ├── commbase-recorder-transmitter-s
 │   ├── commbase-stt-whisper-proactive-p
 │   │   └── examples
-│   ├── commbase-stt-whisper-reactive-remote-p
+│   ├── commbase-stt-whisper-reactive-p
 │   │   ├── client_data
 │   │   └── examples
 │   ├── commbase-tts-gTTS
