@@ -37,24 +37,24 @@
 # animation <"text"> <delay>
 
 animate_text() {
-    local text="$1"
-    local delay="$2"
+  local text="$1"
+  local delay="$2"
 
-    while true; do
-        clear
-        for ((i = 0; i < ${#text}; i++)); do
-            echo -n "${text:$i:1}"
-            sleep "$delay"
-        done
-        clear
-        echo
+  while true; do
+    clear
+    for ((i = 0; i < ${#text}; i++)); do
+      echo -n "${text:$i:1}"
+      sleep "$delay"
     done
+    clear
+    echo
+  done
 }
 
 # Check if both text and delay are provided as arguments
 if [ $# -ne 2 ]; then
-    echo "Usage: $0 <text> <delay>"
-    exit 1
+  echo "Usage: $0 <text> <delay>"
+  exit 1
 fi
 
 text="$1"
