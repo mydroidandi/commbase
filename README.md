@@ -61,6 +61,8 @@ This project is coded and organized like this:
 │   ├── commbase-llm-google-gemini-p
 │   ├── commbase-llm-meta-llama-p
 │   ├── commbase-llm-openai-gpt-p
+│   ├── commbase-recorder-transmitter-b
+│   ├── commbase-recorder-transmitter-s
 │   ├── commbase-stt-whisper-proactive-p
 │   │   └── examples
 │   ├── commbase-stt-whisper-reactive-remote-p
