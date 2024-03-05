@@ -22,7 +22,7 @@ jobs:
       run: |
         # Conda doesn't currently offer a built-in way to specifically skip a
         # single package during environment creation, like:
-        # conda env create --file commbase_env.yaml --name commbase_env --skip pyaudio
+        conda env create --file commbase_env.yaml --name commbase_env
         #conda env update --file commbase_env.yaml --name commbase_env
 
     - name: Lint with flake8
@@ -36,4 +36,5 @@ jobs:
       run: |
         conda install pytest
         sudo apt install espeak
+        pip install pyttsx3
         pytest
