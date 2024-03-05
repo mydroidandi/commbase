@@ -1,54 +1,53 @@
 <div align="right">
 
-### Commbase User's Guide <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" />
+### Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" />
 
 </div>
 
+# Commbase User's Guide
+
+Commbase is a module and library bundler, and a flexible ✨ development framework ✨ designed to empower computers and other devices with advanced conversational AI capabilities. It incorporates third-party LLMs to enable features such as  "distributed AIs" or "multi-agent systems" (MAS).  Commbase extends its reach to applications and diverse devices, including droids, smart appliances, and various types of vehicles. It runs on a single machine or a set of two machines in a client-server architecture. It was originally developed by the Computer Scientist Esteban Herrera, in 2022.
+
 # Content
 
-- [1 Introduction](#1-introduction)
-- [2 Start, Stop, and Teleport the Application](#2-start-stop-and-teleport-the-application)
+- [1 Start, Stop, and Teleport the Application](#2-start-stop-and-teleport-the-application)
   - [commbase start](#commbase-start)
   - [commbase stop](#commbase-stop)
   - [commbase teleport](#commbase-teleport)
-- [3 The User Interface](#3-the-user-interface)
-- [4 Useful Tmux Actions](#4-useful-tmux-actions)
+- [2 The User Interface](#3-the-user-interface)
+- [3 Useful Tmux Actions](#4-useful-tmux-actions)
   - [Moving Among Windows](#moving-among-windows)
   - [List All the Active Sessions](#list-all-the-active-sessions)
   - [Kill the Session](#kill-the-session)
   - [Display the Session Pane Numbers](#display-the-session-pane-numbers)
   - [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)
   - [More_Tmux_Commands](#more-tmux-commands)
-- [5 Set Up Microphones and Audio Keybindings](#5-set-up-microphones-and-audio-keybindings)
+- [4 Set Up Microphones and Audio Keybindings](#5-set-up-microphones-and-audio-keybindings)
   - [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
   - [To Prepare a Dedicated Sound Capture Device](#to-prepare-a-dedicated-sound-capture-device)
   - [Configure the File to Toggle the Active Capture Device](#configure-the-file-to-toggle-the-active-capture-device)
   - [Configure the File to Toggle the Capture On Off](#configure-the-file-to-toggle-the-capture-on-off)
   - [Configure the File Capture Mute](#configure-the-file-capture-mute)
   - [Configure the File Capture Unmute](#configure-the-file-capture-unmute)
-- [6 Keyboard Shortcuts](#6-keyboard-shortcuts)
+- [5 Keyboard Shortcuts](#6-keyboard-shortcuts)
   - [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
     - [Commbase Key Bindings](#commbase-key-bindings)
     - [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
   - [Input Remapper](#input-remapper)
-- [7 Execute the Client and Server on Separate Hosts](#7-execute-the-client-and-server-on-separate-hosts)
-- [8 Configuration Variables](#8-configuration-variables)
-- [9 Types of Commands](#9-types-of-commands)
+- [6 Execute the Client and Server on Separate Hosts](#7-execute-the-client-and-server-on-separate-hosts)
+- [7 Configuration Variables](#8-configuration-variables)
+- [8 Types of Commands](#9-types-of-commands)
   - [Terminal Commands](#terminal-commands)
   - [Terminal Voice Controls](#terminal-voice-controls)
   - [Terminal Voice Skills](#terminal-voice-skills)
   - [Terminal Voice Skillsets](#terminal-voice-skillsets)
-- [10 Terminal Voice Controls](#10-terminal-voice-controls)
+- [9 Terminal Voice Controls](#10-terminal-voice-controls)
   - [Undefined Controls](#undefined-controls)
   - [Hidden Controls and Control Chaining](#hidden-controls-and-control-chaining)
-- [11 Terminal Voice Skills](#11-terminal-voice-skills)
-- [12 Create new skills basics](#12-create-new-skills-basics)
+- [10 Terminal Voice Skills](#11-terminal-voice-skills)
+- [11 Create new skills basics](#12-create-new-skills-basics)
 	- [Verbosity Levels](#verbosity-levels)
-- [13 Training Commbase by Assembling Skillsets](#13-training-commbase-by-assembling-skillsets)
-
-# 1 Introduction
-
-Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance, originally developed by the Computer Scientist Esteban Herrera, in 2022. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in this document.
+- [12 Training Commbase by Assembling Skillsets](#13-training-commbase-by-assembling-skillsets)
 
 # 2 Start, Stop, and Teleport the Application
 
