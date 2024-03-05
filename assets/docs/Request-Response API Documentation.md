@@ -1,6 +1,10 @@
-# Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> Client-Server JSON Schema
+<div align="right">
 
-# Request-Response JSON Schema Documentation
+### Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" />
+
+</div>
+
+# Request-Response API Documentation
 
 This document provides a detailed explanation of the JSON schema used for communication between the client and server in our application.
 

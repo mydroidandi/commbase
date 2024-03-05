@@ -1,6 +1,10 @@
-# Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> Separate Commbase Client and Server
+<div align="right">
 
-# Separate Commbase client and server in commbase-data-exchange
+### Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" />
+
+</div>
+
+# Separate Commbase client and server
 
 The commbase-data-exchange single-server single-client design provides the capabilities of Centralized Control and Management, and Scalability to standalone applications.
 

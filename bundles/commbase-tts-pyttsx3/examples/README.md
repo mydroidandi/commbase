@@ -1,6 +1,6 @@
 ## Examples
 
-### Example 1: commbase-stt-whisper-proactive-p implementation
+### Example 1: commbase-tts-pyttsx3 implementation
 
 This example demonstrates the implementation of software. You can find the code in the [Commbase](https://github.com/mydroidandi/commbase) repository.
 

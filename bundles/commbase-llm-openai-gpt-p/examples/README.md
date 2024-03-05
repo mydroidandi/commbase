@@ -1,8 +1,8 @@
 ## Examples
 
-### Example 1: commbase-stt-whisper-proactive-p implementation
+### Example 1: commbase-llm-openai-gpt-p implementation
 
-This example demonstrates the implementation of software. You can find the code in the [Commbase](https://github.com/mydroidandi/commbase) repository.
+This example demonstrates the implementation of our software. You can find the code in the [Commbase](https://github.com/mydroidandi/commbase) repository.
 
 To run the example, follow these steps:
 1. Clone the repository.
