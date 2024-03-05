@@ -19,6 +19,10 @@ The server component can be executed in one host and the client component can be
 
 The commbase-data-exchange single-server single-client design provides the capabilities of Centralized Control and Management, and Scalability to standalone applications.
 
+## Examples
+
+Detailed information about examples can be found in the corresponding [`examples`](./examples) directory.
+
 ## Contributors
 
 Thanks to the following people who have contributed to this project:
