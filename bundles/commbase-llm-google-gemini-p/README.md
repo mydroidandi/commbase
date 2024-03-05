@@ -28,6 +28,10 @@ commbase-llm-google-gemini-p puts the power of Gemini right at your fingertips. 
 
 **With commbase-llm-google-gemini-p, the potential for communication, learning, and creative exploration is limitless.**
 
+## Examples
+
+Detailed information about examples can be found in the corresponding [`examples`](./examples) directory.
+
 ## Contributors
 
 Thanks to the following people who have contributed to this project:
