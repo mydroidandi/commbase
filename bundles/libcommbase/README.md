@@ -1,12 +1,15 @@
-# libcommbase
+[![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
+[![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 
-libcommbase is a collection of libraries to centralize common functions that can be shared across multiple conversational AI assistant projects. It operates offline and can be implemented with AI (ML/DS) and programming languages.
+# libcommbase
 
 <img alt="libcommbase" src="libcommbase.jpg?raw=true" width="512" height="512" />
 
+libcommbase is a collection of libraries to centralize common functions that can be shared across multiple conversational AI assistant projects. It operates offline and can be implemented with AI (ML/DS) and programming languages.
+
 ## controller
 
-libcommbase comes with 24 reliable and mutually exclusive control messages that can be recorded and sent forward together with the parsed messages and be used by skill applications to parameterize any skill option or be bypassed for message management/handling in any application subsequently. These control messages can also be changed or customized in its respective patterns file, and ultimately, increase or decrease in number preferably during your app designing phase. These out-of-the-box controls are:
+libcommbase comes with 26 reliable and mutually exclusive control messages that can be recorded and sent forward together with the parsed messages and be used by skill applications to parameterize any skill option or be bypassed for message management/handling in any application subsequently. These control messages can also be changed or customized in its respective patterns file, and ultimately, increase or decrease in number preferably during your app designing phase. These out-of-the-box controls are:
 
 * stop_previous_command
 * reproduce_previuos_discourse
@@ -24,14 +27,16 @@ libcommbase comes with 24 reliable and mutually exclusive control messages that 
 * select_option_number_three
 * select_option_number_four
 * request_the_current_mode
-* enter_the_normal_mode
-* enter_the_conversation_mode
-* enter_the_follow_mode
+* enter_the_computer_mode
+* enter_the_robot_mode
 * enter_the_car_mode
 * enter_the_boat_mode
 * enter_the_plane_mode
 * enter_the_starship_mode
 * enter_the_refrigerator_mode
+* enter_the_automatic_submode
+* enter_the_automated_submode
+* enter_the_autonomous_submode
 
 ## Examples
 

@@ -1,56 +1,59 @@
-# Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> User's Guide
+<div align="right">
 
-<p>
-<img align="center" alt="Commbase" width="100%" src="./images/commbase.png" />
-</p>
+### Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" />
 
-# Content
+</div>
 
-- [1 Introduction](#1-introduction)
-- [2 Start, Stop, and Teleport the Application](#2-start-stop-and-teleport-the-application)
+# Commbase User's Guide
+
+Welcome to the [Commbase](https://github.com/mydroidandi/commbase) User's Guide! This comprehensive guide is designed to assist you in making the most out of our powerful software. Whether you are a new user exploring the features for the first time or an experienced user seeking in-depth knowledge, this guide is here to support you.
+
+## What is Commbase?
+
+Commbase is a module and library bundler, and a flexible ✨ development framework ✨ designed to empower computers and other devices with advanced conversational AI capabilities. It incorporates third-party LLMs to enable features such as "distributed AIs" or "multi-agent systems" (MAS). Commbase extends its reach to applications and diverse devices, including droids, smart appliances, and various types of vehicles. It runs on a single machine or a set of two machines in a client-server architecture. Commbase was originally developed as a single-file script by the computer scientist Esteban Herrera in 2022.
+
+## Content
+
+- [1 Start, Stop, and Teleport the Application](#1-start-stop-and-teleport-the-application)
   - [commbase start](#commbase-start)
   - [commbase stop](#commbase-stop)
   - [commbase teleport](#commbase-teleport)
-- [3 The User Interface](#3-the-user-interface)
-- [4 Useful Tmux Actions](#4-useful-tmux-actions)
+- [2 The User Interface](#2-the-user-interface)
+- [3 Useful Tmux Actions](#3-useful-tmux-actions)
   - [Moving Among Windows](#moving-among-windows)
   - [List All the Active Sessions](#list-all-the-active-sessions)
   - [Kill the Session](#kill-the-session)
   - [Display the Session Pane Numbers](#display-the-session-pane-numbers)
   - [Close Duplicated Tmux Sessions](#close-duplicated-tmux-sessions)
   - [More_Tmux_Commands](#more-tmux-commands)
-- [5 Set Up Microphones and Audio Keybindings](#5-set-up-microphones-and-audio-keybindings)
+- [4 Set Up Microphones and Audio Keybindings](#4-set-up-microphones-and-audio-keybindings)
   - [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
   - [To Prepare a Dedicated Sound Capture Device](#to-prepare-a-dedicated-sound-capture-device)
   - [Configure the File to Toggle the Active Capture Device](#configure-the-file-to-toggle-the-active-capture-device)
   - [Configure the File to Toggle the Capture On Off](#configure-the-file-to-toggle-the-capture-on-off)
   - [Configure the File Capture Mute](#configure-the-file-capture-mute)
   - [Configure the File Capture Unmute](#configure-the-file-capture-unmute)
-- [6 Keyboard Shortcuts](#6-keyboard-shortcuts)
+- [5 Keyboard Shortcuts](#5-keyboard-shortcuts)
   - [Keyboard Shortcuts Cheat Sheet](#keyboard-shortcuts-cheat-sheet)
     - [Commbase Key Bindings](#commbase-key-bindings)
     - [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
   - [Input Remapper](#input-remapper)
-- [7 Execute the Client and Server on Separate Hosts](#7-execute-the-client-and-server-on-separate-hosts)
-- [8 Configuration Variables](#8-configuration-variables)
-- [9 Types of Commands](#9-types-of-commands)
+- [6 Execute Client And Server On Separate Hosts](#6-execute-client-and-server-on-separate-hosts)
+- [7 Configuration Variables](#7-configuration-variables)
+- [8 Types of Commands](#8-types-of-commands)
   - [Terminal Commands](#terminal-commands)
   - [Terminal Voice Controls](#terminal-voice-controls)
   - [Terminal Voice Skills](#terminal-voice-skills)
   - [Terminal Voice Skillsets](#terminal-voice-skillsets)
-- [10 Terminal Voice Controls](#10-terminal-voice-controls)
+- [9 Terminal Voice Controls](#9-terminal-voice-controls)
   - [Undefined Controls](#undefined-controls)
   - [Hidden Controls and Control Chaining](#hidden-controls-and-control-chaining)
-- [11 Terminal Voice Skills](#11-terminal-voice-skills)
-- [12 Create new skills basics](#12-create-new-skills-basics)
+- [10 Terminal Voice Skills](#10-terminal-voice-skills)
+- [11 Create new skills basics](#11-create-new-skills-basics)
 	- [Verbosity Levels](#verbosity-levels)
-- [13 Training Commbase by Assembling Skillsets](#13-training-commbase-by-assembling-skillsets)
+- [12 Training Commbase by Assembling Skillsets](#12-training-commbase-by-assembling-skillsets)
 
-# 1 Introduction
-
-Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance, originally developed by the Computer Scientist Esteban Herrera, in 2022. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in this document.
-
-# 2 Start, Stop, and Teleport the Application
+# 1 Start, Stop, and Teleport the Application
 
 These commands assume that the `commbase` command has been properly set up. If you haven't set it up yet, you can find instructions on how to do so in the **INSTALL** file.
 
@@ -102,7 +105,7 @@ Additionally, "teleport" can be used as a third alternative to start Commbase. T
 
 By utilizing the "teleport" command, you can conveniently manage and transition your Commbase session to suit your specific needs.
 
-# 3 The User Interface
+# 2 The User Interface
 
 Using Tmux to create multiple windows with panes can be beneficial for several reasons:
 1. Efficient Multitasking
@@ -142,7 +145,7 @@ You will find information about the variables in the section **8 Configuration V
 
 Like every file in the directory **src/**, **app.sh** hold a minimal default configuration and can be re-programmed, modularized, or replaced with GUIs to meet the app user needs.
 
-# 4 Useful Tmux Actions
+# 3 Useful Tmux Actions
 
 **Oh My Tmux** is a configuration framework for the Tmux terminal multiplexer. **Tmux** is a command-line tool that enables multiple virtual terminals within a single terminal window or session. It provides features like window splitting, session management, and detached sessions.
 
@@ -221,7 +224,7 @@ The full list of tmux commands is its man page.
 man tmux
 ```
 
-# 5 Set Up Microphones and Audio Keybindings
+# 4 Set Up Microphones and Audio Keybindings
 
 Microphones are the ears of your app assistant.
 
@@ -508,9 +511,13 @@ You can also set up this file using your favorite Desktop Environment or Window 
  - Then the new key binding appears on the list.
  - Finally, verify that the key binding works.
 
-# 6 Keyboard Shortcuts
+# 5 Keyboard Shortcuts
+
+Familiarizing yourself with these shortcuts will help you perform actions more swiftly, making your interaction with the app more enjoyable.
 
 ## Keyboard Shortcuts Cheat Sheet
+
+To use keyboard shortcuts in your app, simply press the designated key combinations listed below.
 
 ### Commbase Key Bindings
 
@@ -536,11 +543,11 @@ This application can help other Apps such as the AI Assistant "Commbase" execute
 
 Consider Input Remmaper to create new custom Commbase commands or, for example, replace our chosen Development editor with another editor or IDE enhanced with Commbase with this type of mappings. Include and document a back and restore procedure of your custom mapping files.
 
-# 7 Execute the Client and Server on Separate Hosts
+# 6 Execute Client and Server on Separate Hosts
 
 The commbase-data-exchange bundle enhances Commbase by providing the functionality of a localhost-based application with a single server and single client. This configuration operates similarly to any standalone application but introduces additional advantages.
 
-In Commbase, this feature is designed to function seamlessly by default. However, if you plan to run the client and server components on separate hosts, for any of the reasons mentioned earlier, please refer to [`this document.`](./Execute%20the%20Commbase%20client%20and%20server%20on%20separate%20hosts.md)
+In Commbase, this feature is designed to function seamlessly by default. However, if you plan to run the client and server components on separate hosts, for any of the reasons mentioned earlier, please refer to [`this document.`](./Execute%20Client%20And%20Server%20On%20Separate%20Hosts.md)
 
 In order for Commbase to work like this, it must be installed in both client and server.
 
@@ -557,7 +564,7 @@ Creating an application that separates client and server components is a common 
 | **Improved Maintenance**         | Updating the client or server independently without impact. |
 | **Reduced Network Load**         | Minimizing data transfer between client and server.         |
 
-# 8 Configuration Variables
+# 7 Configuration Variables
 
 The configuration variables can be accessed by going to the directory **config/** and opening the files **secrets**, **app.conf**, and **commbase.conf**.
 
@@ -659,7 +666,7 @@ The default version of the file **commbase.conf** contains the next values:
     - `python3`: This value also represents a custom Python version, but the exact version is not specified. For more details, check out the file **INSTALL**.
 
 - **STT_PROCESS_CPU_LIMIT_PERCENTAGE**:
-  - Description: The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity. For more details, check out the file **INSTALL**.
+  - Description: The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity. Running Commbase can over stress the Central Process Unit (CPU) depending on your CPU and hardware. You can verify the Commbase performance on your computer in many ways, for example, run the command `top` and verify the Python process row. If you experience problems with the engine commbase_stt_whisper_p performance when running Commbase, you can yet change the value of the variable to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs. Considerations on how to choose an optimal Python CPU limit percentage: The maximum CPU percentage usage that is accepted before the CPU gets hot depends on several factors, including the CPU model, its thermal design power (TDP), cooling system, and workload. In general, most modern CPUs are designed to operate at 100% usage for extended periods without overheating, provided that the cooling system can keep the temperature within safe limits. However, sustained high CPU usage can increase the temperature of the CPU and the surrounding components, which can reduce their lifespan and cause stability issues. To prevent overheating and ensure the longevity of the CPU, it is recommended to keep the temperature below its maximum operating temperature, which is typically specified by the CPU manufacturer. This temperature varies depending on the model and can range from 60 °C to 100 °C or higher. In practical terms, if you notice that the temperature of your CPU is consistently above 80 °C or that your system is becoming unstable or unresponsive during high CPU usage, you may want to reduce the CPU load or optimize the cooling system to avoid damage to the hardware.
   - Possible values: This variable should be a value between 0 and 100 or between 0 and 400 (for machines with 4 processing cores or more.)
   - Example value:
     - `90` (Default): The STT process is going to use up to 75% of the computer's processing power.
@@ -1057,7 +1064,7 @@ cd scripts/utilities
 bash reset-commbase.conf.sh
 ```
 
-# 9 Types of Commands
+# 8 Types of Commands
 
 You can display the types of commands and some examples using the help option like this:
 
@@ -1082,7 +1089,7 @@ Unlike terminal commands, terminal/voice commands can be typed in or said out lo
 
 Skillsets are commands grouped as a list of orders to be executed sequentially at once. They can be typed or said out loud.
 
-# 10 Terminal Voice Controls
+# 9 Terminal Voice Controls
 
 You can create extra controls if you want to, but you can do almost everything that is possible with the controls that come with Commbase. These out-of-the-box controls are:
 
@@ -1806,7 +1813,7 @@ Example of the terminal/voice command for the interactive sequence:
 
 > Start the math test number one zero one
 
-# 11 Terminal Voice Skills
+# 10 Terminal Voice Skills
 
 ## Skills unique for the command Line
 
@@ -1839,7 +1846,7 @@ capture_mute.sh  capture_unmute.sh  toggle_active_capture_device.sh  toggle_capt
 
 `{WRONG VOICE COMMANDS}`.
 
-# 12 Create new skills basics
+# 11 Create new skills basics
 
 ## Verbosity Levels Proposal
 
@@ -1886,7 +1893,7 @@ is used as a part of audio file transcription software in the Linux world.
 
 ## How to structure a command
 
-This [`document`](./Request-Response JSON Schema Documentation.md) contains the information on how to structure a command.
+This [`document`](./Request-Response API Documentation.md) contains the information on how to structure a command.
 
 
 ## Bake a command
@@ -2116,7 +2123,7 @@ commbase-process-vosk-suv-vehicle.sh
 commbase-process-vosk-spacecraft.sh
 commbase-process-vosk-virtual-mentor.sh
 
-# 13 Training Commbase by Assembling Skillsets
+# 12 Training Commbase by Assembling Skillsets
 
 Commbase can be trained in a variety of manners. For example, you can train the AI Model, which would directly affect the existent commands precision, and would require to verify every command afterwards. Furthermore, you can train any preffered/specialized AI (added kind of as a plugin), to be used by Commbase in talkative mode. Also, we can train Commbase scripts that use sensors such as face recognition, voice recognition, etc., or move servos, and so on, and so forth, depending on the device where Commbase runs on.
 

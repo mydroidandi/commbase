@@ -1,6 +1,12 @@
-# Commbase <img align="center" alt="Visual Studio Code" width="10%" src="./images/commbase.png" /> Keyboard Shortcuts
+<div align="right">
+
+### Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" />
+
+</div>
 
 # Keyboard Shortcuts Cheat Sheet
+
+This guide provides you with a comprehensive list of keyboard shortcuts to enhance your user experience. Keyboard shortcuts are a quick and efficient way to navigate through the app, perform tasks, and boost your productivity.
 
 ## Commbase Key Bindings
 
