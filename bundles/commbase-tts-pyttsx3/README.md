@@ -28,6 +28,10 @@ This command provides the input text "Hello World!" directly to the commbase_tts
 
 Make sure to have Python 3.x installed on your system and the required dependencies (fileinput, os.path, and pyttsx3) properly installed before running the commands above.
 
+## Examples
+
+Detailed information about examples can be found in the corresponding [`examples`](./examples) directory.
+
 ## Contributors
 
 Thanks to the following people who have contributed to this project:
