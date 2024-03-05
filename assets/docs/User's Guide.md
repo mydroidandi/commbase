@@ -4,10 +4,6 @@
 
 </div>
 
-<p>
-<img align="center" alt="Commbase" width="100%" src="./images/commbase.png" />
-</p>
-
 # Content
 
 - [1 Introduction](#1-introduction)
@@ -51,6 +47,10 @@
 - [13 Training Commbase by Assembling Skillsets](#13-training-commbase-by-assembling-skillsets)
 
 # 1 Introduction
+
+<p>
+<img align="center" alt="Commbase" width="100%" src="./images/commbase.png" />
+</p>
 
 Commbase is a programmable conversational AI assistant and "distributed AI" or "multi-agent system" (MAS) implemented as a set of separate processes or applications running on a single computer, droid, or smart appliance, originally developed by the Computer Scientist Esteban Herrera, in 2022. It works on general-purpose operating systems without requiring an internet connection. He/She can be improved by AI (Machine Learning and Data Science) and programming languages as described in this document.
 
