@@ -1,13 +1,13 @@
-# commbase-llm-openai-gpt-p
-
 [![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
+
+# commbase-llm-openai-gpt-p
+
+<img alt="commbase-llm-openai-gpt-p" src="commbase-llm-openai-gpt-p.jpg?raw=true" width="512" height="640" />
 
 A terminal version of ChatGPT designed to facilitate seamless interaction with the powerful Open AI's GPT language model. This app empowers users to engage in natural language conversations with the model, unlocking a wide range of possibilities for creative, informative, and dynamic interactions.
 
 ChatGPT is a chatbot built using the GPT (Generative Pre-trained Transformer) architecture developed by OpenAI. To use ChatGPT, simply visit the website at <https://chat.openai.com/>. This is the online platform where you can access and interact with the ChatGPT service.
-
-<img alt="commbase-llm-openai-gpt-p" src="commbase-llm-openai-gpt-p.jpg?raw=true" width="512" height="640" />
 
 ## Unleash the Power of Creativity with commbase-llm-openai-gpt-p
 

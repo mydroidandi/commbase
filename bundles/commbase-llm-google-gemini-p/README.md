@@ -1,11 +1,11 @@
-# commbase-llm-google-gemini-p
-
 [![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 
-A terminal version of Google's Gemini. This app allows you to chat with Gemini, a powerful large language model. Ask questions, get creative writing inspiration, or receive help with tasks - all through a user-friendly interface. Whether you're a student, writer, or simply curious, this app is your gateway to unlocking the potential of AI language models.
+# commbase-llm-google-gemini-p
 
 <img alt="commbase-llm-google-gemini-p" src="commbase-llm-google-gemini-p.jpg?raw=true" width="512" height="512" />
+
+A terminal version of Google's Gemini. This app allows you to chat with Gemini, a powerful large language model. Ask questions, get creative writing inspiration, or receive help with tasks - all through a user-friendly interface. Whether you're a student, writer, or simply curious, this app is your gateway to unlocking the potential of AI language models.
 
 ## Unleash the Power of Language with commbase-llm-google-gemini-p
 

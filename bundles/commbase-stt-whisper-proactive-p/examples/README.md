@@ -1,6 +1,7 @@
 ## Examples
 
 ### Example 1: commbase-stt-whisper-proactive-p implementation
+
 This example demonstrates the implementation of software. You can find the code in the [Commbase](https://github.com/mydroidandi/commbase) repository.
 
 To run the example, follow these steps:

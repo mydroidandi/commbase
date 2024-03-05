@@ -1,11 +1,11 @@
-# commbase-recorder-transmitter-b
-
 [![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 
-TODO: Desc.
+# commbase-recorder-transmitter-b
 
 <img alt="commbase-recorder-transmitter-b" src="commbase-recorder-transmitter-b.png?raw=true" width="512" height="640" />
+
+TODO: Short desc.
 
 ## TODO: Detailed description
 

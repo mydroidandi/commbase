@@ -1,11 +1,11 @@
-# commbase-llm-meta-llama-p
-
 [![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 
-A terminal version of Meta's Llama. This app allows you to interact with Llama, a large language model known for its factual language understanding and reasoning abilities. Ask questions, get help with research, or gain insights from complex information - all through a user-friendly interface. Whether you're a student, researcher, or simply curious about the world, this app can be a valuable tool for understanding and analyzing information.
+# commbase-llm-meta-llama-p
 
 <img alt="commbase-llm-meta-llama-p" src="commbase-llm-meta-llama-p.jpg?raw=true" width="512" height="512" />
+
+A terminal version of Meta's Llama. This app allows you to interact with Llama, a large language model known for its factual language understanding and reasoning abilities. Ask questions, get help with research, or gain insights from complex information - all through a user-friendly interface. Whether you're a student, researcher, or simply curious about the world, this app can be a valuable tool for understanding and analyzing information.
 
 ## Unleash the Power of Factual Exploration with commbase-llm-meta-llama-p
 
