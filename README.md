@@ -6,8 +6,6 @@
 
 # Commbase <img align="center" alt="Commbase" width="10%" src="./assets/docs/images/commbase.png" />
 
-## Introduction
-
 <img alt="Commbase" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
 
 Commbase is a module and library bundler, and a flexible ✨ development framework ✨ designed to empower computers and other devices with advanced conversational AI capabilities. It incorporates third-party LLMs to enable features such as  "distributed AIs" or "multi-agent systems" (MAS).  Commbase extends its reach to applications and diverse devices, including droids, smart appliances, and various types of vehicles. It runs on a single machine or a set of two machines in a client-server architecture.
