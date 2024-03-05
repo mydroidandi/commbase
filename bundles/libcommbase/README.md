@@ -24,9 +24,8 @@ libcommbase comes with 24 reliable and mutually exclusive control messages that 
 * select_option_number_three
 * select_option_number_four
 * request_the_current_mode
-* enter_the_normal_mode
-* enter_the_conversation_mode
-* enter_the_follow_mode
+* enter_the_computer_mode
+* enter_the_robot_mode
 * enter_the_car_mode
 * enter_the_boat_mode
 * enter_the_plane_mode
