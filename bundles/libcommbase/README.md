@@ -6,7 +6,7 @@ libcommbase is a collection of libraries to centralize common functions that can
 
 ## controller
 
-libcommbase comes with 24 reliable and mutually exclusive control messages that can be recorded and sent forward together with the parsed messages and be used by skill applications to parameterize any skill option or be bypassed for message management/handling in any application subsequently. These control messages can also be changed or customized in its respective patterns file, and ultimately, increase or decrease in number preferably during your app designing phase. These out-of-the-box controls are:
+libcommbase comes with 26 reliable and mutually exclusive control messages that can be recorded and sent forward together with the parsed messages and be used by skill applications to parameterize any skill option or be bypassed for message management/handling in any application subsequently. These control messages can also be changed or customized in its respective patterns file, and ultimately, increase or decrease in number preferably during your app designing phase. These out-of-the-box controls are:
 
 * stop_previous_command
 * reproduce_previuos_discourse
@@ -31,6 +31,9 @@ libcommbase comes with 24 reliable and mutually exclusive control messages that 
 * enter_the_plane_mode
 * enter_the_starship_mode
 * enter_the_refrigerator_mode
+* enter_the_automatic_submode
+* enter_the_automated_submode
+* enter_the_autonomous_submode
 
 ## Examples
 
