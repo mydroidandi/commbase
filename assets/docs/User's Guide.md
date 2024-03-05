@@ -1,4 +1,6 @@
-# Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> User's Guide
+## Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" />
+
+# User's Guide
 
 <p>
 <img align="center" alt="Commbase" width="100%" src="./images/commbase.png" />
@@ -510,7 +512,11 @@ You can also set up this file using your favorite Desktop Environment or Window 
 
 # 6 Keyboard Shortcuts
 
+Familiarizing yourself with these shortcuts will help you perform actions more swiftly, making your interaction with the app more enjoyable.
+
 ## Keyboard Shortcuts Cheat Sheet
+
+To use keyboard shortcuts in your app, simply press the designated key combinations listed below.
 
 ### Commbase Key Bindings
 
@@ -1886,7 +1892,7 @@ is used as a part of audio file transcription software in the Linux world.
 
 ## How to structure a command
 
-This [`document`](./Request-Response JSON Schema Documentation.md) contains the information on how to structure a command.
+This [`document`](./Request-Response API Documentation.md) contains the information on how to structure a command.
 
 
 ## Bake a command

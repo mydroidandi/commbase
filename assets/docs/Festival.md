@@ -1,8 +1,6 @@
-# Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" /> Festival
+## Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" />
 
 # Festival Installation and Basic Configuration for Commbase Applications
-
-## Introduction
 
 Festival is a Text-To-Speech synthesis system developed at the University of Edinburgh. It can be used with several different voices, which are the models and data it uses to convert typed text into audible speech.
 
