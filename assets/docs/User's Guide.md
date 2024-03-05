@@ -38,7 +38,7 @@ Commbase is a module and library bundler, and a flexible ✨ development framewo
     - [Commbase Key Bindings](#commbase-key-bindings)
     - [Keyboard Shortcuts Overlapping](#keyboard-shortcuts-overlapping)
   - [Input Remapper](#input-remapper)
-- [6 Execute the Client and Server on Separate Hosts](#7-execute-the-client-and-server-on-separate-hosts)
+- [6 Execute Client and Server on Separate Hosts](#7-execute-client-and-server-on-separate-hosts)
 - [7 Configuration Variables](#8-configuration-variables)
 - [8 Types of Commands](#9-types-of-commands)
   - [Terminal Commands](#terminal-commands)
@@ -543,11 +543,11 @@ This application can help other Apps such as the AI Assistant "Commbase" execute
 
 Consider Input Remmaper to create new custom Commbase commands or, for example, replace our chosen Development editor with another editor or IDE enhanced with Commbase with this type of mappings. Include and document a back and restore procedure of your custom mapping files.
 
-# 6 Execute the Client and Server on Separate Hosts
+# 6 Execute Client and Server on Separate Hosts
 
 The commbase-data-exchange bundle enhances Commbase by providing the functionality of a localhost-based application with a single server and single client. This configuration operates similarly to any standalone application but introduces additional advantages.
 
-In Commbase, this feature is designed to function seamlessly by default. However, if you plan to run the client and server components on separate hosts, for any of the reasons mentioned earlier, please refer to [`this document.`](./Execute%20the%20Commbase%20client%20and%20server%20on%20separate%20hosts.md)
+In Commbase, this feature is designed to function seamlessly by default. However, if you plan to run the client and server components on separate hosts, for any of the reasons mentioned earlier, please refer to [`this document.`](./Execute%20Client%20And%20Server%20On%20Separate%20Hosts.md)
 
 In order for Commbase to work like this, it must be installed in both client and server.
 
