@@ -4,7 +4,11 @@
 [![json-lint](https://github.com/mydroidandi/commbase/actions/workflows/jq-json-lint.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/jq-json-lint.yml)
 [![Shell Linter](https://github.com/mydroidandi/commbase/actions/workflows/shell-lint.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/shell-lint.yml)
 
+<div align="center">
+
 # Commbase <img align="center" alt="Commbase" width="10%" src="./assets/docs/images/commbase.png" />
+
+</div>
 
 <img alt="Commbase" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
 
