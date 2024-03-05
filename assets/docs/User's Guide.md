@@ -8,6 +8,8 @@
 
 Welcome to the [Commbase](https://github.com/mydroidandi/commbase) User's Guide! This comprehensive guide is designed to assist you in making the most out of our powerful software. Whether you are a new user exploring the features for the first time or an experienced user seeking in-depth knowledge, this guide is here to support you.
 
+## What is Commbase?
+
 Commbase is a module and library bundler, and a flexible ✨ development framework ✨ designed to empower computers and other devices with advanced conversational AI capabilities. It incorporates third-party LLMs to enable features such as  "distributed AIs" or "multi-agent systems" (MAS).  Commbase extends its reach to applications and diverse devices, including droids, smart appliances, and various types of vehicles. It runs on a single machine or a set of two machines in a client-server architecture. Commbase was originally developed as a single-file bash script by the computer scientist Esteban Herrera in 2022.
 
 ## Content
