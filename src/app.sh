@@ -111,7 +111,7 @@ app() {
   # send the enter key, and sleep.
   (tmux select-pane -t 5 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time);
   # Run text_animation and then press enter
-  (tmux select-pane -t 5 && tmux send-keys " clear; bash $text_animation 'Commbase' 0.5" C-m && sleep $time);
+  (tmux select-pane -t 5 && tmux send-keys " clear; bash $text_animation '$CURRENT_MODE ($CURRENT_SUB_MODE)' 0.3" C-m && sleep $time);
 
   # Pane 6
   # On window 0, select pane 6, activate the conda environment if it exists,
