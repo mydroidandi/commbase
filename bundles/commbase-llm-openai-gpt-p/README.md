@@ -25,6 +25,10 @@ commbase-llm-openai-gpt-p harnesses the capabilities of OpenAI's GPT models. Exp
 
 **With commbase-llm-openai-gpt-p, unlock the potential of GPT and embark on a journey of creative exploration, communication, and discovery.**
 
+## Examples
+
+Detailed information about examples can be found in the corresponding [`examples`](./examples) directory.
+
 ## Contributors
 
 Thanks to the following people who have contributed to this project:

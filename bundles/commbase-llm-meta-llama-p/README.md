@@ -29,6 +29,10 @@ commbase-llm-meta-llama-p empowers you to tap into the strengths of Llama, a lar
 
 **With commbase-llm-meta-llama-p and the power of Llama, the journey towards factual exploration and deeper understanding is limitless.**
 
+## Examples
+
+Detailed information about examples can be found in the corresponding [`examples`](./examples) directory.
+
 ## Contributors
 
 Thanks to the following people who have contributed to this project:
