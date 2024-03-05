@@ -140,7 +140,6 @@ dependencies:
       - opencv-python==4.9.0.80
       - packaging==23.2
       - pillow==10.2.0
-      - pyaudio==0.2.14
       - pydub==0.25.1
       - pytesseract==0.3.10
       - pyttsx3==2.90
