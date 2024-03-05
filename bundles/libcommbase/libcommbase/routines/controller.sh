@@ -38,7 +38,7 @@
 # through the commbase-data-exchange client.
 controller() {
   # Imports
-  source "$COMMBASE_APP_DIR/config/commbase.conf"
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
 
   # Imports from libcommbase
   update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
@@ -51,7 +51,7 @@ controller() {
   current_request=$(jq -r '.messages[1].current_request' <<< "$messages_json")
 
   # Extract the JSON object control patterns from file and process them
-  patterns_file=$(<"$COMMBASE_APP_DIR""$CONTROL_PATTERNS_FILE")
+  patterns_file=$(<"$COMMBASE_APP_DIR"/"$CONTROL_PATTERNS_FILE")
   #cat $COMMBASE_APP_DIR$CONTROL_PATTERNS_FILE | jq 'to_entries[] | .key, .value[]'
 
   matching_property=""
