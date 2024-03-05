@@ -6,7 +6,7 @@
 
 # Commbase User's Guide
 
-Commbase is a module and library bundler, and a flexible ✨ development framework ✨ designed to empower computers and other devices with advanced conversational AI capabilities. It incorporates third-party LLMs to enable features such as  "distributed AIs" or "multi-agent systems" (MAS).  Commbase extends its reach to applications and diverse devices, including droids, smart appliances, and various types of vehicles. It runs on a single machine or a set of two machines in a client-server architecture. It was originally developed by the Computer Scientist Esteban Herrera, in 2022.
+Commbase is a module and library bundler, and a flexible ✨ development framework ✨ designed to empower computers and other devices with advanced conversational AI capabilities. It incorporates third-party LLMs to enable features such as  "distributed AIs" or "multi-agent systems" (MAS).  Commbase extends its reach to applications and diverse devices, including droids, smart appliances, and various types of vehicles. It runs on a single machine or a set of two machines in a client-server architecture. Commbase was originally developed as a single-file bash script by the computer scientist Esteban Herrera in 2022.
 
 # Content
 
@@ -49,7 +49,7 @@ Commbase is a module and library bundler, and a flexible ✨ development framewo
 	- [Verbosity Levels](#verbosity-levels)
 - [12 Training Commbase by Assembling Skillsets](#13-training-commbase-by-assembling-skillsets)
 
-# 2 Start, Stop, and Teleport the Application
+# 1 Start, Stop, and Teleport the Application
 
 These commands assume that the `commbase` command has been properly set up. If you haven't set it up yet, you can find instructions on how to do so in the **INSTALL** file.
 
@@ -101,7 +101,7 @@ Additionally, "teleport" can be used as a third alternative to start Commbase. T
 
 By utilizing the "teleport" command, you can conveniently manage and transition your Commbase session to suit your specific needs.
 
-# 3 The User Interface
+# 2 The User Interface
 
 Using Tmux to create multiple windows with panes can be beneficial for several reasons:
 1. Efficient Multitasking
@@ -141,7 +141,7 @@ You will find information about the variables in the section **8 Configuration V
 
 Like every file in the directory **src/**, **app.sh** hold a minimal default configuration and can be re-programmed, modularized, or replaced with GUIs to meet the app user needs.
 
-# 4 Useful Tmux Actions
+# 3 Useful Tmux Actions
 
 **Oh My Tmux** is a configuration framework for the Tmux terminal multiplexer. **Tmux** is a command-line tool that enables multiple virtual terminals within a single terminal window or session. It provides features like window splitting, session management, and detached sessions.
 
@@ -220,7 +220,7 @@ The full list of tmux commands is its man page.
 man tmux
 ```
 
-# 5 Set Up Microphones and Audio Keybindings
+# 4 Set Up Microphones and Audio Keybindings
 
 Microphones are the ears of your app assistant.
 
@@ -507,7 +507,7 @@ You can also set up this file using your favorite Desktop Environment or Window 
  - Then the new key binding appears on the list.
  - Finally, verify that the key binding works.
 
-# 6 Keyboard Shortcuts
+# 5 Keyboard Shortcuts
 
 Familiarizing yourself with these shortcuts will help you perform actions more swiftly, making your interaction with the app more enjoyable.
 
@@ -539,7 +539,7 @@ This application can help other Apps such as the AI Assistant "Commbase" execute
 
 Consider Input Remmaper to create new custom Commbase commands or, for example, replace our chosen Development editor with another editor or IDE enhanced with Commbase with this type of mappings. Include and document a back and restore procedure of your custom mapping files.
 
-# 7 Execute the Client and Server on Separate Hosts
+# 6 Execute the Client and Server on Separate Hosts
 
 The commbase-data-exchange bundle enhances Commbase by providing the functionality of a localhost-based application with a single server and single client. This configuration operates similarly to any standalone application but introduces additional advantages.
 
@@ -560,7 +560,7 @@ Creating an application that separates client and server components is a common 
 | **Improved Maintenance**         | Updating the client or server independently without impact. |
 | **Reduced Network Load**         | Minimizing data transfer between client and server.         |
 
-# 8 Configuration Variables
+# 7 Configuration Variables
 
 The configuration variables can be accessed by going to the directory **config/** and opening the files **secrets**, **app.conf**, and **commbase.conf**.
 
@@ -1060,7 +1060,7 @@ cd scripts/utilities
 bash reset-commbase.conf.sh
 ```
 
-# 9 Types of Commands
+# 8 Types of Commands
 
 You can display the types of commands and some examples using the help option like this:
 
@@ -1085,7 +1085,7 @@ Unlike terminal commands, terminal/voice commands can be typed in or said out lo
 
 Skillsets are commands grouped as a list of orders to be executed sequentially at once. They can be typed or said out loud.
 
-# 10 Terminal Voice Controls
+# 9 Terminal Voice Controls
 
 You can create extra controls if you want to, but you can do almost everything that is possible with the controls that come with Commbase. These out-of-the-box controls are:
 
@@ -1809,7 +1809,7 @@ Example of the terminal/voice command for the interactive sequence:
 
 > Start the math test number one zero one
 
-# 11 Terminal Voice Skills
+# 10 Terminal Voice Skills
 
 ## Skills unique for the command Line
 
@@ -1842,7 +1842,7 @@ capture_mute.sh  capture_unmute.sh  toggle_active_capture_device.sh  toggle_capt
 
 `{WRONG VOICE COMMANDS}`.
 
-# 12 Create new skills basics
+# 11 Create new skills basics
 
 ## Verbosity Levels Proposal
 
@@ -2119,7 +2119,7 @@ commbase-process-vosk-suv-vehicle.sh
 commbase-process-vosk-spacecraft.sh
 commbase-process-vosk-virtual-mentor.sh
 
-# 13 Training Commbase by Assembling Skillsets
+# 12 Training Commbase by Assembling Skillsets
 
 Commbase can be trained in a variety of manners. For example, you can train the AI Model, which would directly affect the existent commands precision, and would require to verify every command afterwards. Furthermore, you can train any preffered/specialized AI (added kind of as a plugin), to be used by Commbase in talkative mode. Also, we can train Commbase scripts that use sensors such as face recognition, voice recognition, etc., or move servos, and so on, and so forth, depending on the device where Commbase runs on.
 
