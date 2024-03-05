@@ -1,4 +1,8 @@
-# Commbase User's Guide
+<div align="center">
+
+### Commbase User's Guide <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" />
+
+</div>
 
 <p>
 <img align="center" alt="Commbase" width="100%" src="./images/commbase.png" />
