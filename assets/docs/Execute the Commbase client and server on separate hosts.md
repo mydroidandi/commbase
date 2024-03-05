@@ -1,4 +1,8 @@
+<div style="text-align: right;">
+
 ## Commbase <img align="center" alt="Commbase" width="10%" src="./images/commbase.png" />
+
+</div>
 
 # Separate Commbase client and server
 
