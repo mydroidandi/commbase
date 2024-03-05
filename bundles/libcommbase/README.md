@@ -1,3 +1,6 @@
+[![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
+[![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
+
 # libcommbase
 
 libcommbase is a collection of libraries to centralize common functions that can be shared across multiple conversational AI assistant projects. It operates offline and can be implemented with AI (ML/DS) and programming languages.
