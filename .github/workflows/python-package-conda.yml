@@ -36,4 +36,5 @@ jobs:
       run: |
         conda install pytest
         sudo apt install espeak
+        pip install pyttsx3
         pytest
