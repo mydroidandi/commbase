@@ -9,7 +9,7 @@ libcommbase is a collection of libraries to centralize common functions that can
 
 ## controller
 
-libcommbase comes with 26 reliable and mutually exclusive control messages that can be recorded and sent forward together with the parsed messages and be used by skill applications to parameterize any skill option or be bypassed for message management/handling in any application subsequently. These control messages can also be changed or customized in its respective patterns file, and ultimately, increase or decrease in number preferably during your app designing phase. These out-of-the-box controls are:
+libcommbase comes with a number of possible reliable and mutually exclusive control messages that can be recorded and sent forward to get processed by skill applications. These control messages can also be changed or customized in its respective patterns file, and ultimately, increase or decrease in number preferably during your app designing phase. These out-of-the-box controls are:
 
 ### Cancel previous actions
 
@@ -28,7 +28,7 @@ libcommbase comes with 26 reliable and mutually exclusive control messages that 
 * start_thirty_mins_question_reminder_countdown
 * remind_a_queued_question_put_on_hold
 
-### Take decisions
+### Decision-Making
 
 * accept_changes
 * deny_changes
