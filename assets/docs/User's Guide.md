@@ -123,7 +123,7 @@ The window 1, "Commbase", contains 7 panes, where every pane runs a component:
 - Pane 2. It is the client component.
 - Pane 3. It is the server component.
 - Pane 4. It is the speech recognizer component.
-- Pane 5. It is the animation component.
+- Pane 5. It is the use mode component.
 - Pane 6. It is the audio mixer component.
 - Pane 7. It is the user terminal component. It is almost always focused, except when is used by Commbase for launching skill scripts.
 
@@ -680,6 +680,25 @@ The default version of the file **commbase.conf** contains the next values:
   - Description: This setting is used to determine the language and regional preferences for user interfaces, messages, and other communicative elements within the software. The components related to language settings include: the i18n directory (which covers the Commbase files themselves), control patterns, and skills patterns of libcommbase. Additionally, users can code custom Commbase app terminal/voice commands with skill/skillset scripts, which should come with internationalization support.
   - Example values:
     - `en_us` (Default): This setting designates the default locale as English (United States). Users with this locale will encounter the application in English, experiencing the predetermined language and formatting preferences specified by this setting.
+
+- **CURRENT_MODE**:
+  - Description: The current use mode your app is running on. Modes are defined in the control patterns file. The default location for this file is **bundles/libcommbase/resources/control_patterns/en_us/openai_whisper_model_base/control_patterns.json**. You can change from any mode to another by changing the value of this variable. The action will update the mode component status on screen.
+  - Example values:
+    - `COMPUTER` (Default): The computer mode. It is the only mode packaged with Commbase.
+    - `ROBOT`: The robot mode. If in your case, you are free to program this mode to meet your requirements.
+    - `CAR`: The car mode. If in your use case, you are free to program this mode to meet your requirements.
+    - `BOAT`: The boat mode. If in your use case, you are free to program this mode to meet your requirements.
+    - `PLANE`: The plane mode. If in your use case, you are free to program this mode to meet your requirements.
+    - `STARSHIP`: The starship mode. If in your use case, you are free to program this mode to meet your requirements.
+    - `IRON MAN`: The iron man mode. If in your use case, you are free to program this mode to meet your requirements.
+    - `REFRIGERATOR`: The refrigerator mode. If in your use case, you are free to program this mode to meet your requirements.
+
+- **CURRENT_SUB_MODE**:
+  - Description: The current use mode your app is running on. Modes are defined in the control patterns file. The default location for this file is **bundles/libcommbase/resources/control_patterns/en_us/openai_whisper_model_base/control_patterns.json**. You can trigger from any submode to another by changing the value of this variable. Every submode relies on its mode to work.
+  - Possible values:
+    - `AUTOMATIC` (Default): The automatic submode. It is the only mode packaged with Commbase.
+    - `AUTOMATED` (Default): The automated submode. If in your use case, you are free to program this mode to meet your requirements.
+    - `AUTONOMOUS` (Default): The autonomous submode. If in your use case, you are free to program this mode to meet your requirements.
 
 - **COMMBASE_DATA_EXCHANGE_SERVER_HOST_ADDRESS**:
   - Description: The host address for the Commbase Data Exchange Server.

@@ -9,23 +9,40 @@ libcommbase is a collection of libraries to centralize common functions that can
 
 ## controller
 
-libcommbase comes with 26 reliable and mutually exclusive control messages that can be recorded and sent forward together with the parsed messages and be used by skill applications to parameterize any skill option or be bypassed for message management/handling in any application subsequently. These control messages can also be changed or customized in its respective patterns file, and ultimately, increase or decrease in number preferably during your app designing phase. These out-of-the-box controls are:
+libcommbase comes with a number of possible reliable and mutually exclusive control messages that can be recorded and sent forward to get processed by skill applications. These control messages can also be changed or customized in its respective patterns file, and ultimately, increase or decrease in number preferably during your app designing phase. These out-of-the-box controls are:
+
+### Cancel previous actions
 
 * stop_previous_command
-* reproduce_previuos_discourse
+
+### Repetitions
+
 * rerun_previous_command
+* reproduce_previuos_discourse
+
+### Start Reminder Countdowns
+
 * start_five_mins_question_reminder_countdown
 * start_ten_mins_question_reminder_countdown
 * start_twenty_mins_question_reminder_countdown
 * start_thirty_mins_question_reminder_countdown
 * remind_a_queued_question_put_on_hold
+
+### Decision-Making
+
 * accept_changes
 * deny_changes
 * confirm_a_confirmation_request
+
+### Select Options
+
 * select_option_number_one
 * select_option_number_two
 * select_option_number_three
 * select_option_number_four
+
+### Use Modes
+
 * request_the_current_mode
 * enter_the_computer_mode
 * enter_the_robot_mode
@@ -33,7 +50,11 @@ libcommbase comes with 26 reliable and mutually exclusive control messages that 
 * enter_the_boat_mode
 * enter_the_plane_mode
 * enter_the_starship_mode
+* enter_the_iron_man_mode
 * enter_the_refrigerator_mode
+
+### Use Submodes
+
 * enter_the_automatic_submode
 * enter_the_automated_submode
 * enter_the_autonomous_submode
