@@ -144,7 +144,7 @@ This project is coded and organized like this:
 │   │   └── ...
 │   └── ...
 ├── user  # Stores previous conversations and other user files
-│   └── converstation_logs
+│   └── conversation_logs
 └── tests # Stores the Commbase tests
 ```
 
