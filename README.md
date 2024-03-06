@@ -16,7 +16,7 @@
 
 <div align="center">
 
-<img alt="Commbase" src="./screenshots/commbase.png?raw=true" width="550" height="291" />
+<img alt="Commbase" src="./screenshots/commbase.png?raw=true" width="737" height="527" />
 
 </div>
 
