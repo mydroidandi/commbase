@@ -3,7 +3,7 @@
 
 # commbase-recorder-transmitter-b
 
-<img alt="commbase-recorder-transmitter-b" src="commbase-recorder-transmitter-b.png?raw=true" width="512" height="640" />
+<img alt="commbase-recorder-transmitter-b" src="commbase-recorder-transmitter-b.png?raw=true" width="512" height="512" />
 
 TODO: Short desc.
 
