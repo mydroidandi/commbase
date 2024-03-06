@@ -3,7 +3,7 @@
 
 # commbase-recorder-transmitter-s
 
-<img alt="commbase-recorder-transmitter-s" src="commbase-recorder-transmitter-s.png?raw=true" width="512" height="640" />
+<img alt="commbase-recorder-transmitter-s" src="commbase-recorder-transmitter-s.png?raw=true" width="512" height="512" />
 
 TODO: Desc.
 

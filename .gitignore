@@ -138,6 +138,10 @@ logs
 # Ignore the directory tests/
 tests/
 
+# Ignore the contents of the "user/conversation_logs" directory
+user/conversation_logs/*
+!user/conversation_logs/.gitkeep
+
 # Ignore the contents of the "src/bundles" directory
 src/bundles/*
 
