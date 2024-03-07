@@ -142,10 +142,10 @@ This project is coded and organized like this:
 │   ├── tests
 │   │   └── ...
 │   └── ...
-├── user  # Stores previous chat conversations and other user files
-│   ├── analysis_zone
-│   └── conversation_logs
-└── tests  # Stores the Commbase tests
+├── tests  # Stores the Commbase tests
+└── user  # Stores previous chat conversations and other user files
+    ├── analysis_zone
+    └── conversation_logs
 ```
 
 ## Contributing
