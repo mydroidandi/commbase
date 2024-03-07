@@ -134,6 +134,7 @@ route_option() {
     source $COMMBASE_APP_DIR/src/app.sh
 
     # Imports from libcommbase
+    store_chat_log_copy=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/store_chat_log_copy.sh
     update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
     controller=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/controller.sh
 
@@ -198,13 +199,8 @@ route_option() {
           'stop')
             echo "Stopping application"
             echo "Saving conversation to the user directory..."
+            (bash "$store_chat_log_copy")
             sleep 2
-            # Generate a chat log file name with date and a random number
-            random_filename="chat_log_$(date +%Y%m%d%H%M%S)_$RANDOM.txt"
-            # Store a copy of the chat file in the user directory
-            cp "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" "$COMMBASE_APP_DIR/user/conversation_logs/$random_filename"
-            # Get rid of the chat content
-            rm "$COMMBASE_APP_DIR""$CHAT_LOG_FILE"
             # In this block, "pkill -f" the processes of the scripts that do not
             # respond to the interrupt signal or appear to duplicate once the
             # program stops and exits.
