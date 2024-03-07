@@ -130,6 +130,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Ignore the contents of the "certificates" directory
+certificates/*
+
 # Ignore Logs
 logs
 # Do not ignore skill-script log files
@@ -137,9 +140,6 @@ logs
 
 # Ignore the contents of the "src/bundles" directory
 src/bundles/*
-
-# Ignore the contents of the "src/certificates" directory
-src/certificates/*
 
 # Ignore the contents of the "src/config" directory
 src/config/*
