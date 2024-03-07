@@ -91,17 +91,17 @@ app() {
   # On window 0, select pane 2, activate the conda environment if it exists,
   # send the enter key, and sleep.
   (tmux select-pane -t 2 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time);
-  # Run commbase-data-exchange client and then press enter
-  (tmux select-pane -t 2 && tmux send-keys " clear; $PYTHON_ENV_VERSION $COMMBASE_DATA_EXCHANGE_CLIENT_CONNECTION_FILE_PATH" C-m && sleep $time);
+  # Run the STT_ENGINE_STRING and then press the enter
+  (tmux select-pane -t 2 && tmux send-keys " clear; cpulimit --limit=$STT_PROCESS_CPU_LIMIT_PERCENTAGE -- $STT_ENGINE_STRING" C-m && sleep $time);
+  # Clear the screen, and set the prompt to an empty string
+  (tmux select-pane -t 2 && tmux send-keys " clear && PS1=""" C-m);
 
   # Pane 4
   # On window 0, select pane 4, activate the conda environment if it exists,
   # send the enter key, and sleep.
   (tmux select-pane -t 4 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time);
-  # Run the STT_ENGINE_STRING and then press the enter
-  (tmux select-pane -t 4 && tmux send-keys " clear; cpulimit --limit=$STT_PROCESS_CPU_LIMIT_PERCENTAGE -- $STT_ENGINE_STRING" C-m && sleep $time);
-  # Clear the screen, and set the prompt to an empty string
-  (tmux select-pane -t 4 && tmux send-keys " clear && PS1=""" C-m);
+  # Run commbase-data-exchange client and then press enter
+  (tmux select-pane -t 4 && tmux send-keys " clear; $PYTHON_ENV_VERSION $COMMBASE_DATA_EXCHANGE_CLIENT_CONNECTION_FILE_PATH" C-m && sleep $time);
 
   # Split vertically the pane 4
   (tmux select-pane -t 4 && tmux split-pane -h && sleep $time);
