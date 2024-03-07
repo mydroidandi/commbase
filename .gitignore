@@ -135,13 +135,6 @@ logs
 # Do not ignore skill-script log files
 #*.log
 
-# Ignore the directory tests/
-tests/
-
-# Ignore the contents of the "user/conversation_logs" directory
-user/conversation_logs/*
-!user/conversation_logs/.gitkeep
-
 # Ignore the contents of the "src/bundles" directory
 src/bundles/*
 
@@ -161,6 +154,17 @@ src/skills_db/*
 
 # Ignore the contents of the "src/tests" directory
 src/tests/*
+
+# Ignore the directory tests/
+tests/
+
+# Ignore the contents of the "user/conversation_logs" directory
+user/conversation_logs/*
+!user/conversation_logs/.gitkeep
+
+# Ignore the contents of the "user/analysis_zone/" directory
+user/analysis_zone/*
+!user/analysis_zone/.gitkeep
 
 # Ignore IDE specific files
 .idea/
