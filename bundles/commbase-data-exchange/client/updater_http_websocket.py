@@ -85,7 +85,7 @@ def main():
     if response is not None:
         session_name = 'Commbase-0'
         window_number = '1'
-        pane_number = '2'
+        pane_number = '4'
         if response.status_code == 200:
             # Print "JSON data saved successfully."
             status = "JSON data updated successfully."
