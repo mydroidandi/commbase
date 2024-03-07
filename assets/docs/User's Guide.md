@@ -120,12 +120,12 @@ The windows from 2 to 5 are not required by the app to work, and can be disabled
 
 The window 1, "Commbase", contains 7 panes, where every pane runs a component:
 - Pane 1. It is the chatroom component.
-- Pane 2. It is the client component.
+- Pane 2. It is the speech recognizer component.
 - Pane 3. It is the server component.
-- Pane 4. It is the speech recognizer component.
+- Pane 4. It is the client component.
 - Pane 5. It is the use mode component.
 - Pane 6. It is the audio mixer component.
-- Pane 7. It is the user terminal component. It is almost always focused, except when is used by Commbase for launching skill scripts.
+- Pane 7. It is the voice recorder component and also the user terminal component. It's almost always focused, and it is used by Commbase for launching skills.
 
 The window 2, "Dashboard", contains a single pane that is disabled by default in the configuration file.
 
