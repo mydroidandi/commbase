@@ -132,6 +132,7 @@ dmypy.json
 
 # Ignore the contents of the "certificates" directory
 certificates/*
+!certificates/.gitkeep
 
 # Ignore Logs
 logs
