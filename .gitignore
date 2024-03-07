@@ -134,7 +134,7 @@ dmypy.json
 logs
 *.log
 
-# .bak extensions
+# Ignore .bak extensions
 *.bak
 
 # Ignore the contents of the "certificates" directory
