@@ -130,14 +130,14 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Ignore the contents of the "certificates" directory
-certificates/*
-!certificates/.gitkeep
-
 # Ignore Logs
 logs
 # Do not ignore skill-script log files
 #*.log
+
+# Ignore the contents of the "certificates" directory
+certificates/*
+!certificates/.gitkeep
 
 # Ignore the contents of the "src/bundles" directory
 src/bundles/*
