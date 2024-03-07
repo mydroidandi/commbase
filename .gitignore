@@ -132,8 +132,10 @@ dmypy.json
 
 # Ignore Logs
 logs
-# Do not ignore skill-script log files
-#*.log
+*.log
+
+# .bak extensions
+.bak
 
 # Ignore the contents of the "certificates" directory
 certificates/*
