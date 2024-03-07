@@ -38,6 +38,7 @@ app() {
 
   # Imports from libcommbase
   source "$COMMBASE_APP_DIR"/bundles/libcommbase/libcommbase/routines/check_data_exchange_server_connection.sh
+  store_chat_log_copy=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/store_chat_log_copy.sh
   tail_chat_log=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_chat_log.sh
   text_animation=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/text_animation.sh
 
@@ -73,7 +74,14 @@ app() {
   (tmux split-window -h && tmux select-pane -t 2 && sleep $time);
 
   # Pane 1
-  # On window 0, select pane 1, open or create the chatroom file
+  # On window 0, if the chat file exists and is not empty, save a copy to the
+  # CHAT_LOG_FILE. This is to keep a backup copy of the chat progress after
+  # events that might have prevented the application from closing gracefully
+  # with the 'commbase stop' command.
+  if [ -s "$COMMBASE_APP_DIR$CHAT_LOG_FILE" ]; then
+    (bash "$store_chat_log_copy")
+  fi
+  # Select pane 1, open or create the chatroom file
   (tmux select-pane -t 1 && tmux send-keys " touch $COMMBASE_APP_DIR$CHAT_LOG_FILE" C-m && sleep $time);
   # Run tail_chat_log and then press the enter key
   (tmux select-pane -t 1 && tmux send-keys " clear; bash $tail_chat_log" C-m && sleep $time);
