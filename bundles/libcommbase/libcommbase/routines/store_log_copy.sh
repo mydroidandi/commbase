@@ -51,7 +51,7 @@ store_log_copy() {
   exit 99
 }
 
-# Check if a store_chat_log_copy is provided as a command-line argument
+# Check if a store_log_copy is provided as a command-line argument
 if [ "$#" -ne 2 ]; then
   echo "Usage: $0 <prefix> <extension>"
   exit 1
