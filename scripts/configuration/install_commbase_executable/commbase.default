@@ -95,6 +95,11 @@ Start/Stop:
     client             Launch Commbase client on a client host
     stop               Stop Commbase
 
+Record:
+  Usage: commbase [options]
+  options:
+    recorder | rec     Run voice recorder locally
+
 Control:
   Usage: commbase [options]
   options:
