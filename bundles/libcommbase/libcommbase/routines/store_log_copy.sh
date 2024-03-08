@@ -32,8 +32,8 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # store_log_copy.sh
-# Creates a timestamped copy of the current chat log file, stores it in a
-# specific user directory, and then clears the original chat log content.
+# Creates a timestamped copy of the current log file, stores it in a specific
+# user directory, and then clears the original chat log content.
 store_log_copy() {
   # Imports
   source "$COMMBASE_APP_DIR"/config/commbase.conf
