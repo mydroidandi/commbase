@@ -135,6 +135,7 @@ route_option() {
 
     # Imports from libcommbase
     store_chat_log_copy=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/store_log_copy.sh
+    run_voice_recorder_in_pane=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/run_voice_recorder_in_pane.sh
     update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
     controller=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/controller.sh
 
@@ -212,7 +213,8 @@ route_option() {
             exit 99
             ;;
           'recorder' | 'rec')
-            echo "Hi ..."
+            # Run the voice recorder for bash locally
+            (bash "$run_voice_recorder_in_pane" "7")
             ;;
         esac
 

@@ -33,11 +33,13 @@
 
 # run_voice_recorder_in_pane.sh
 # Creates a simple text animation on the terminal.
-run_voice_recorder_in_panet() {
+run_voice_recorder_in_pane() {
+  # Imports
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
 
-  local pane="$1"
+  #local pane="$1"
 
-
+  (tmux select-window -t 1 && tmux select-pane -t "$pane" && tmux send-keys " clear; bash $COMMBASE_APP_DIR/$VOICE_RECORDER_TRANSMITTER_FILE" C-m);
 
 }
 
@@ -47,6 +49,7 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
+# Global declarations
 pane="$1"
 
-animate_text "$pane"
+(run_voice_recorder_in_pane "$pane")
