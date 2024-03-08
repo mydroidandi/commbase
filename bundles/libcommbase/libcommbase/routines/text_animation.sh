@@ -33,10 +33,8 @@
 
 # text_animation.sh
 # Creates a simple text animation on the terminal.
-# Usage:
-# animation <"text"> <delay>
-
 animate_text() {
+
   local text="$1"
   local delay="$2"
 
@@ -57,7 +55,8 @@ if [ $# -ne 2 ]; then
   exit 1
 fi
 
+# Global declarations
 text="$1"
 delay="$2"
 
-animate_text "$text" "$delay"
+(animate_text "$text" "$delay")

@@ -34,8 +34,6 @@
 # update_control_in_messages_json.sh
 # Updates any control in data/.messages.json and calls
 # request_commbase_data_exchange.sh.
-# Usage:
-# bash update_control_in_messages_json.sh <new_control_value>
 update_control_in_messages_json() {
   # Configuration file
   source "$COMMBASE_APP_DIR"/config/commbase.conf
