@@ -211,6 +211,9 @@ route_option() {
             pkill -f commbase
             exit 99
             ;;
+          'recorder' | 'rec')
+            echo "Hi ..."
+            ;;
         esac
 
         case "$terminal_voice_command" in

@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!usr//bin/env bash
 ################################################################################
 #                                  libcommbase                                 #
 #                                                                              #
@@ -6,7 +6,7 @@
 # across multiple conversational AI assistant projects                         #
 #                                                                              #
 # Change History                                                               #
-# 03/06/2024  Esteban Herrera Original code.                                   #
+# 02/13/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -31,33 +31,22 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# store_log_copy.sh
-# Creates a timestamped copy of the current log file, stores it in a specific
-# user directory, and then clears the original chat log content.
-store_log_copy() {
-  # Imports
-  source "$COMMBASE_APP_DIR"/config/commbase.conf
+# run_voice_recorder_in_pane.sh
+# Creates a simple text animation on the terminal.
+run_voice_recorder_in_panet() {
 
-  local prefix="$1"
-  local extension="$2"
+  local pane="$1"
 
-  # Generate a chat log file name with date and a random number
-  random_filename="$prefix$(date +%Y%m%d%H%M%S)_$RANDOM.$extension"
-  # Store a copy of the chat file in the user directory
-  cp "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" "$COMMBASE_APP_DIR$CONVERSATION_LOGS_PATH$random_filename"
-  # Get rid of the chat content
-  rm "$COMMBASE_APP_DIR""$CHAT_LOG_FILE"
 
-  exit 99
+
 }
 
-# Check if a store_log_copy is provided as a command-line argument
-if [ "$#" -ne 2 ]; then
-  echo "Usage: $0 <prefix> <extension>"
+# Check if both text and delay are provided as arguments
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <text> <delay>"
   exit 1
 fi
 
-# Call the function with the provided store_log_copy
-(store_log_copy "$1" "$2")
+pane="$1"
 
-exit 99
+animate_text "$pane"
