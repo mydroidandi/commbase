@@ -38,7 +38,7 @@ app() {
 
   # Imports from libcommbase
   source "$COMMBASE_APP_DIR"/bundles/libcommbase/libcommbase/routines/check_data_exchange_server_connection.sh
-  store_chat_log_copy=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/store_chat_log_copy.sh
+  store_chat_log_copy=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/store_log_copy.sh
   tail_chat_log=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_chat_log.sh
   text_animation=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/text_animation.sh
 
@@ -79,7 +79,7 @@ app() {
   # events that might have prevented the application from closing gracefully
   # with the 'commbase stop' command.
   if [ -s "$COMMBASE_APP_DIR$CHAT_LOG_FILE" ]; then
-    (bash "$store_chat_log_copy")
+    (bash "$store_chat_log_copy" "chat_log_" "txt")
   fi
   # Select pane 1, open or create the chatroom file
   (tmux select-pane -t 1 && tmux send-keys " touch $COMMBASE_APP_DIR$CHAT_LOG_FILE" C-m && sleep $time);

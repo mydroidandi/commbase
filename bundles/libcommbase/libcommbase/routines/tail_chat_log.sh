@@ -81,7 +81,7 @@ tail_chat_log() {
     fi
   done
 
-  exit 99
+  #exit 99
 }
 
 # Call tail_chat_log if the script is run directly (not sourced)
@@ -89,4 +89,4 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   (tail_chat_log)
 fi
 
-exit 99
+#exit 99
