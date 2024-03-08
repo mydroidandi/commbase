@@ -119,13 +119,13 @@ The default minimal app, renders its interface in the file src/app/.sh. This app
 The windows from 2 to 5 are not required by the app to work, and can be disabled (see below).
 
 The window 1, "Commbase", contains 7 panes, where every pane runs a component:
-- Pane 1. It is the chatroom component.
-- Pane 2. It is the speech recognizer component.
-- Pane 3. It is the server component.
-- Pane 4. It is the client component.
-- Pane 5. It is the use mode component.
-- Pane 6. It is the audio mixer component.
-- Pane 7. It is the voice recorder component and also the user terminal component. It's almost always focused, and it is used by Commbase for launching skills.
+- Pane 1: It is the chatroom component.
+- Pane 2: It is the speech recognizer component.
+- Pane 3: It is the server component.
+- Pane 4: It is the client component.
+- Pane 5: It is the use mode component.
+- Pane 6: It is the audio mixer component.
+- Pane 7: In its **default status** (using the **reactive STT engine**, when running locally), it is the voice recorder component. In this status you can exit the recorder by pressing the `q` key or `Ctrl + c`, to use the terminal for anything, and then run the command `commbase recorder` or `commbase rec` to return to the recorder. In its **alternative status** (using the **proactive STT engine**, which only runs locally) it is the terminal component. This panel/component is almost always focused, and it is used by Commbase for launching skills.
 
 The window 2, "Dashboard", contains a single pane that is disabled by default in the configuration file.
 
@@ -1841,6 +1841,7 @@ commbase start|teleport
 commbase server
 commbase client
 commbase stop
+commbase recorder
 commbase {TYPOS}
 ```
 

@@ -102,7 +102,7 @@ This project is coded and organized like this:
 │           └── skill_patterns
 │               └── en_us
 │                   └── openai_whisper_model_base
-├── certificates  # Stores the configuration and security certificates
+├── certificates  # Stores the security certificates
 ├── config  # Stores the configuration file
 ├── data  # Stores the voice recognition model results and other data files
 ├── env  # Stores the environment file
@@ -142,10 +142,10 @@ This project is coded and organized like this:
 │   ├── tests
 │   │   └── ...
 │   └── ...
-├── user  # Stores previous chat conversations and other user files
-│   ├── analysis_zone
-│   └── conversation_logs
-└── tests  # Stores the Commbase tests
+├── tests  # Stores the Commbase tests
+└── user  # Stores previous chat conversations and other user files
+    ├── analysis_zone
+    └── conversation_logs
 ```
 
 ## Contributing

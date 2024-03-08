@@ -31,26 +31,33 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# store_chat_log_copy.sh
-# Creates a timestamped copy of the current chat log file, stores it in a
-# specific user directory, and then clears the original chat log content.
-store_chat_log_copy() {
+# store_log_copy.sh
+# Creates a timestamped copy of the current log file, stores it in a specific
+# user directory, and then clears the original chat log content.
+store_log_copy() {
   # Imports
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
+  local prefix="$1"
+  local extension="$2"
+
   # Generate a chat log file name with date and a random number
-  random_filename="chat_log_$(date +%Y%m%d%H%M%S)_$RANDOM.txt"
+  random_filename="$prefix$(date +%Y%m%d%H%M%S)_$RANDOM.$extension"
   # Store a copy of the chat file in the user directory
-  cp "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" "$COMMBASE_APP_DIR/user/conversation_logs/$random_filename"
+  cp "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" "$COMMBASE_APP_DIR$CONVERSATION_LOGS_PATH$random_filename"
   # Get rid of the chat content
   rm "$COMMBASE_APP_DIR""$CHAT_LOG_FILE"
 
   exit 99
 }
 
-# Call store_copy_of_chat_log if the script is run directly (not sourced)
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  (store_chat_log_copy)
+# Check if a store_log_copy is provided as a command-line argument
+if [ "$#" -ne 2 ]; then
+  echo "Usage: $0 <prefix> <extension>"
+  exit 1
 fi
+
+# Call the function with the provided store_log_copy
+(store_log_copy "$1" "$2")
 
 exit 99

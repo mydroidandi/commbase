@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!usr//bin/env bash
 ################################################################################
 #                                  libcommbase                                 #
 #                                                                              #
@@ -6,7 +6,7 @@
 # across multiple conversational AI assistant projects                         #
 #                                                                              #
 # Change History                                                               #
-# 02/24/2024  Esteban Herrera Original code.                                   #
+# 02/13/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -31,62 +31,25 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# tail_chat_log.sh
-# Provides a real-time, colored representation of log entries, making it
-# visually distinguishable between entries related to the assistant and those
-# related to the end user in a chat log. The script uses ANSI escape codes for
-# color formatting.
-tail_chat_log() {
+# run_voice_recorder_in_pane.sh
+# Creates a simple text animation on the terminal.
+run_voice_recorder_in_pane() {
   # Imports
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
-  # Define the strings as variables
-  assistant_string="$ASSISTANT_NAME_IN_CHAT_PANE"
-  enduser_string="$END_USER_NAME_IN_CHAT_PANE"
+  #local pane="$1"
 
-  # Specify the path to your file
-  file_path=$COMMBASE_APP_DIR$CHAT_LOG_FILE
+  (tmux select-window -t 1 && tmux select-pane -t "$pane" && tmux send-keys " clear; bash $COMMBASE_APP_DIR/$VOICE_RECORDER_TRANSMITTER_FILE" C-m);
 
-  # Define color variables
-  assistant_color="\e[$ASSISTANT_BACKGROUND_COLOR_IN_CHAT_PANE"
-  enduser_color="\e[$END_USER_BACKGROUND_COLOR_IN_CHAT_PANE"
-  reset_color="\e[$TERMINAL_COLOR_CODE_END"
-
-  # Function to print colored text
-  print_colored() {
-    case $1 in
-      "$assistant_string")
-        echo -e "${assistant_color}$1${reset_color}$2"
-        ;;
-      "$enduser_string")
-        echo -e "${enduser_color}$1${reset_color}$2"
-        ;;
-      *)
-        echo "$1$2"
-        ;;
-    esac
-  }
-
-  # Monitor the file for changes
-  (tail -f "$file_path") | while read -r line; do
-    # Check if the substrings are present before extracting
-    if [[ $line == *"$assistant_string"* ]]; then
-      substring1=$(echo "$line" | awk -F"$assistant_string" '{print $2}')
-      print_colored "$assistant_string" "$substring1"
-    fi
-
-    if [[ $line == *"$enduser_string"* ]]; then
-      substring2=$(echo "$line" | awk -F"$enduser_string" '{print $2}')
-      print_colored "$enduser_string" "$substring2"
-    fi
-  done
-
-  #exit 99
 }
 
-# Call tail_chat_log if the script is run directly (not sourced)
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  (tail_chat_log)
+# Check if both text and delay are provided as arguments
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <text> <delay>"
+  exit 1
 fi
 
-#exit 99
+# Global declarations
+pane="$1"
+
+(run_voice_recorder_in_pane "$pane")
