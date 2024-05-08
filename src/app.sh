@@ -41,9 +41,10 @@ app() {
   store_chat_log_copy=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/store_log_copy.sh
   tail_chat_log=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_chat_log.sh
   text_animation=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/text_animation.sh
+  assistant_discourse=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/assistant_discourse.sh
 
   # Give .3 seconds to tmux to draw its content before continuing
-  time=0.3;
+  export time=0.3;
 
   # Kill any existent tmux Commbase session in order to avoid duplicates
   (tmux kill-session -t Commbase-0);
@@ -53,6 +54,10 @@ app() {
 
   # Activate the conda environment if it exists
   (tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time);
+
+  # Enable key bindings with xbindkeys
+  (killall xbindkeys && sleep $time)
+  (xbindkeys)
 
   # Create windows and panels
 
@@ -161,8 +166,32 @@ app() {
   # On window 0, select pane 7, activate the conda environment if it exists,
   # send the enter key, and sleep.
   (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " conda activate $CONDA_ENV_NAME_IF_EXISTS" C-m && sleep $time);
-  # Clean up the command line of Window 0, pane 7
-  (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear" C-m);
+
+  # Whether the SST engine is commbase-stt-whisper-reactive-p, set up the pane
+  # 7 accordingly.
+  if [ "$STT_ENGINE_PATH" = "$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-reactive-p/commbase_stt_whisper_reactive_p.py" ]; then
+
+    # Select the recorder-transmitter based on the configuration
+    if [ "$RECORDER_TRANSMITTER_FILE" = "bundles/commbase-recorder-transmitter-x/reccomm.sh" ]; then
+      # Any custom recorder-transmitter
+      (tmux select-pane -t 7 && tmux send-keys " clear; bash $COMMBASE_APP_DIR/bundles/commbase-recorder-transmitter-x/reccomm.sh" C-m && sleep $time);
+    elif [ "$RECORDER_TRANSMITTER_FILE" = "bundles/commbase-recorder-transmitter-s/reccomm.sh" ]; then
+      # recorder-transmitter for Shell
+      (tmux select-pane -t 7 && tmux send-keys " clear; bash $COMMBASE_APP_DIR/bundles/commbase-recorder-transmitter-s/reccomm.sh" C-m && sleep $time);
+    else
+      # recorder-transmitter for Bash
+      (tmux select-pane -t 7 && tmux send-keys " clear; bash $COMMBASE_APP_DIR/bundles/commbase-recorder-transmitter-b/reccomm.sh" C-m && sleep $time);
+    fi
+  fi
+
+  # Whether the SST engine is commbase-stt-whisper-proactive-p, set up the pane
+  # 1 accordingly.
+  if [ "$STT_ENGINE_PATH" = "$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-proactive-p/commbase_stt_whisper_proactive_p.py" ]; then
+
+    # Call assistant_discourse with the arguments: pane, i18n file path,
+    # log_severity_level, and discourse_key.
+    (tmux select-pane -t 7 && tmux send-keys " clear; bash \"$assistant_discourse\" \"7\" \"2\" \"$LOG_SEVERITY_LEVEL_2\" \"instruction_to_pause_recording\"" C-m && sleep $time);
+  fi
 
   # Enter the Commbase session
   (tmux attach-session -t Commbase-0);

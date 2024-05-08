@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 ################################################################################
-#                              commbase-client                                 #
+#                            commbase-data-exchange                            #
 #                                                                              #
-# Fetches commands from the commbase-data-exchange server and executes them    #
+# Server for exchanging data with clients over HTTP and WebSocket connections  #
 #                                                                              #
 # Change History                                                               #
 # 01/17/2024  Esteban Herrera Original code.                                   #
@@ -31,10 +31,13 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # client_http_websocket.py
-# Fetches commands from the commbase-data-exchange server and executes them
+# Fetches commands from the commbase-data-exchange server and executes them.
 
+# Imports
 import requests
 from socketio import Client
+from config import CONFIG_FILE_DIR
+from functions import discourse_data_exchange_client_error
 
 # Define the API endpoint to retrieve saved JSON data
 api_url = 'http://127.0.0.1:5000/api/get_saved_data'
@@ -47,12 +50,28 @@ sio = Client()
 
 @sio.on('update_saved_data')
 def handle_update_saved_data(saved_data):
+    """
+    Event handler function for updating saved data received from the WebSocket
+
+    Parameters:
+        saved_data (list): List of JSON data to be updated
+    """
     print("Updated Saved JSON data:")
     for data in saved_data:
         print(data)
 
 
 def main():
+    """
+    Main function to execute the script.
+
+    This function connects to a WebSocket for real-time updates, retrieves
+    saved JSON data from an API endpoint, handles responses, and waits for
+    updates. If any exception occurs within the main() function or its nested
+    blocks, it will be caught by the outer try-except block. Then, the
+    discourse_data_exchange_client_error() function is called to handle the
+    error.
+    """
     try:
         # Send a GET request to the API endpoint
         response = requests.get(api_url)
@@ -66,6 +85,10 @@ def main():
         else:
             print(f"Error: {response.status_code}")
             print("Response:", response.json())
+            # Uncomment to debug the function status
+            # execution_status = discourse_data_exchange_client_error()
+            # print(execution_status)
+            discourse_data_exchange_client_error()
 
         # Connect to the WebSocket for real-time updates
         sio.connect(socketio_url)
@@ -73,7 +96,9 @@ def main():
 
     except Exception as e:
         print(f"Request failed: {e}")
+        discourse_data_exchange_client_error()
 
 
+# Entry point for executing the script.
 if __name__ == '__main__':
     main()

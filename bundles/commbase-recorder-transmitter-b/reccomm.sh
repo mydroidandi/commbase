@@ -38,100 +38,63 @@
 # alsa-utils
 # openssh-client
 # openssh server
-# Setup steps:
-# 1. Have a copy of this file in the host that is going to work as remote for
-# Commbase. You do not need the Commbase repo installation, unless you are
-# installing Commbase and commbase-stt-whisper-remote-p.sh in a single computer.
-# 2. Install the script as executable:
-# cd /usr/bin
-# sudo ln -s /path/to/commbase-stt-whisper-remote-p.sh ./commbase-remote
-# 3. Set the value of the variable REMOTE_HOST to the host that runs Commbase or
-# Commbase client. If installing in the localhost, use the localhost IP address:
-# REMOTE_HOST="commbase@127.0.0.1"
-# 4. Set the value of the variable DEST_PATH. Its value should be the path to
-# send FILENAME="recording.wav" to in the host that is going to work as Commbase
-# or Commbase client.
-# 5. Set the audio capture variable, for example:
-# AUDIO_CAPTURE_DEVICE="hw:CARD=Microphone,DEV=0"
-# To find out the audio capture, list the available audio capture (recording)
-# devices and their corresponding configurations with the next command:
-# arecord -L
-# Then select the input device parameter based on the output, for example:
-# hw:CARD=Device_0,DEV=0
-#     USB Audio Device, USB Audio
-#     Direct hardware device without any conversions
-#     ...
-# Hw:CARD=Device_1,DEV=0
-#     USB Audio Device, USB Audio 1
-#     Direct hardware device without any conversions
-#     ...
-# 6. Setup the SSH connection from the ssh client (the host that is going to
-# work as a remote for Commbase) to the ssh server host (the host that is going
-# to work as Commbase or Commbase client).
-# ssh 127.0.0.1
-# 7. To avoid entering the password every time scp is executed, you can use SSH
-# keys for authentication. Here's how you can set it up:
-# 7.1. Generate SSH Key Pair (if not already done).
-# Run the following command on the machine where the script is running:
-# ssh-keygen -t rsa
-# Press Enter for each prompt to use the default values (empty passphrase).
-# 7.2. Copy Public Key to Remote Host.
-# Copy the public key to the remote host by running:
-# ssh-copy-id commbase@127.0.0.1
-# If ssh-copy-id is not available on your system, you can manually copy the
-# contents of the public key (~/.ssh/id_rsa.pub) to the remote host's
-# ~/.ssh/authorized_keys file.
-# 7.3. Ensure Proper Permissions on Remote Host.
-# Make sure the ~/.ssh directory on the remote host has the correct permissions:
-# chmod 700 ~/.ssh
-# chmod 600 ~/.ssh/authorized_keys
-# Now, when your script uses scp, it should not prompt for a password.
-# 7.4. Additionally, you may want to check the following:
-# Ensure that the user running the script has the correct permissions to read
-# the private key file (typically ~/.ssh/id_rsa).
-# Verify that the script is executed by the same user who owns the SSH key pair.
-# By setting up SSH key authentication, you should be able to perform
-# passwordless scp transfers.
 
-RECORDING=false
+recording=false
+
 RANDOM_DIR=$(mktemp -d /tmp/tmp.XXXXXX)
 FILENAME="$RANDOM_DIR/recording.wav"
 
 # Set up the following variables accordingly
 REMOTE_HOST="commbase@127.0.0.1"
-DEST_PATH="/home/commbase/Dev/mydroidandi/commbase/bundles/commbase-stt-whisper-reactive-p/client_data/recording.wav"
+DEST_PATH="/home/commbase/Dev/commbase/bundles/commbase-stt-whisper-reactive-p/client_data/recording.wav"
 AUDIO_CAPTURE_DEVICE="hw:CARD=Microphone,DEV=0"
-CHAR="c"
+RECORDING_CHAR="c"
+QUIT_CHAR="q"
 
 # Ensures that the temporary directory created earlier is deleted when the
 # script exits.
 cleanup() {
-    echo "Cleaning up..."
-    rm -r "$RANDOM_DIR"
-    exit 0
+  echo "Cleaning up..."
+  rm -r "$RANDOM_DIR"
+  exit 0
 }
 
-trap cleanup EXIT
+# Repeats a loop, awaiting the next key press to initiate or stop the recording
+# and sends the file with scp.
+reccomm() {
 
-# Repeat a loop, awaiting the next key press to initiate or stop the recording
-# and send the file with scp.
-while true; do
-    # Pass $CHAR as an argument to printf.
-    printf "Press '%s' to start/stop recording: " "$CHAR"
+  while true; do
+    # Pass $RECORDING_CHAR as an argument to printf.
+    printf "Press '%s' to start/stop recording: \\n" "$RECORDING_CHAR"
     read -r -n 1 -s key
-    if [ "$key" == $CHAR ]; then
-        if [ "$RECORDING" == false ]; then
-            echo "Start recording..."
-            arecord -D "$AUDIO_CAPTURE_DEVICE" -f cd -t wav -d 10 -r 44100 -c 2 -V stereo -v "$FILENAME" &
-            RECORDING=true
-        else
-            echo "Stop recording..."
-            kill -SIGINT $!
-            RECORDING=false
-            echo "Sending recording to remote host..."
-            scp "$FILENAME" "$REMOTE_HOST:$DEST_PATH"
-            rm "$FILENAME"
-            echo "Recording sent successfully."
-        fi
+    if [ "$key" == $RECORDING_CHAR ]; then
+      if [ "$recording" == false ]; then
+        echo "Start recording..."
+        arecord -D "$AUDIO_CAPTURE_DEVICE" -f cd -t wav -d 10 -r 44100 -c 2 -V stereo -v "$FILENAME" &
+        recording=true
+      else
+        echo ""
+        echo "Stop recording..."
+        kill -SIGINT $!
+        recording=false
+        echo "Sending recording to remote host..."
+        scp "$FILENAME" "$REMOTE_HOST:$DEST_PATH"
+        rm "$FILENAME"
+        echo "Recording sent successfully."
+      fi
     fi
-done
+
+    if [ "$key" == $QUIT_CHAR ]; then
+      echo "Exiting..."
+      exit
+    fi
+  done
+}
+
+main () {
+trap cleanup EXIT
+reccomm
+}
+
+# Main call
+(main || exit 99)

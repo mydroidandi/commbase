@@ -32,20 +32,20 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
 # run_voice_recorder_in_pane.sh
-# Creates a simple text animation on the terminal.
+# Run the recorder-transmitter for Bash or for Shell, as specified in the
+# variable RECORDER_TRANSMITTER_FILE.
 run_voice_recorder_in_pane() {
   # Imports
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
-  #local pane="$1"
-
-  (tmux select-window -t 1 && tmux select-pane -t "$pane" && tmux send-keys " clear; bash $COMMBASE_APP_DIR/$VOICE_RECORDER_TRANSMITTER_FILE" C-m);
+  # Run the recorder-transmitter
+  (tmux select-window -t 1 && tmux select-pane -t "$pane" && tmux send-keys " clear; bash $COMMBASE_APP_DIR/$RECORDER_TRANSMITTER_FILE" C-m);
 
 }
 
 # Check if both text and delay are provided as arguments
 if [ $# -ne 1 ]; then
-  echo "Usage: $0 <text> <delay>"
+  echo "Usage: $0 <pane>"
   exit 1
 fi
 

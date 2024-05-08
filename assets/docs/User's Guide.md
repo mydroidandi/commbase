@@ -29,7 +29,7 @@ Commbase is a module and library bundler, and a flexible ✨ development framewo
 - [4 Set Up Microphones and Audio Keybindings](#4-set-up-microphones-and-audio-keybindings)
   - [Input Audio and Audio Quality Requirements](#input-audio-and-audio-quality-requirements)
   - [To Prepare a Dedicated Sound Capture Device](#to-prepare-a-dedicated-sound-capture-device)
-  - [Configure the File to Toggle the Active Capture Device](#configure-the-file-to-toggle-the-active-capture-device)
+  - [Configure the File to Toggle the Default Capture Device](#configure-the-file-to-toggle-the-default-capture-device)
   - [Configure the File to Toggle the Capture On Off](#configure-the-file-to-toggle-the-capture-on-off)
   - [Configure the File Capture Mute](#configure-the-file-capture-mute)
   - [Configure the File Capture Unmute](#configure-the-file-capture-unmute)
@@ -226,65 +226,87 @@ man tmux
 
 # 4 Set Up Microphones and Audio Keybindings
 
-Microphones are the ears of your app assistant.
+The microphones is the ears of your app assistant.
 
 ## Input Audio and Audio Quality Requirements
 
-Your app requires a minimum of 2 high-quality USB microphones with integrated noise cancellation. Preferably, the microphones will be digital. That ensures quality communication between the user and the STT engine, making it recognize speech as well as possible.
+Your app requires a minimum of 1 high-quality USB microphones with integrated noise cancellation. Preferably, the microphone will be digital. That ensures quality communication between the user and the STT engine, making it recognize speech as well as possible.
 
 For example, we access a system **audio settings** GUI that shows the following **input devices**:
-* Digital INput (S/-PDIF) FHD Camera Microphone
+
+* Digital Input (S/-PDIF) FHD Camera Microphone
 * Microphone FHD Camera Microphone
 * Analog Input Webcam C170
 * Internal Microphone Built-in Audio
 
-The second option is currently the best option available, but the third option yet has a pretty decent quality 16-bit mono voice-capturing mic with integrated noise cancellation.
+The second option from this list is currently the best option available, but the third option yet has a pretty decent quality 16-bit mono voice-capturing mic with integrated noise cancellation.
 
-Let's use the two camera microphones (second and third options from the list), which comply the audio setup requirements.
+Let's use the two camera microphones (second and third options from the list) as examples, which comply the audio setup requirements.
 
 ## To Prepare a Dedicated Sound Capture Device
 
-Your assistant's app does not need to work with the default device but with an active device.
+In Linux desktops, the default configuration always has a single capture device set as active, despite the number of devices installed or listening on the operating system, and it is not necessarily the Commbase default device set up during its installation.
 
-In Linux desktops, the default configuration always has a single active capture device, despite the number of devices installed on the operating system.
+A dedicated sound capture device has been set up during the Commbase installation steps followed from the **INSTALL** file in the section **3. Set up audio capture**. It's the default configuration that uses **commbase-stt-whisper-reactive-p** as the default STT engine.
 
-The Linux package Jack lets you connect multiple sound devices to a common virtual sound bus, boosting the number of active devices.
+In that way, your assistant's app dedicated audio input is not going to interact with/affect audio inputs used by other applications, such as: chat/video conference software, DAWs, voice note recorders, etc.
 
-Jack is able to replace and also interact with PulseAudio, the sound server system for POSIX OSes, including Linux, or any other replacement for PulseAudio. However, that enhancement requires installing professional audio packages or studios, such as KXStudio, running on the operating system.
+If you want to use the STT engine **commbase-stt-whisper-proactive-p** instead of the default STT engine, consider that the **proactive** version listens using all and every unmuted microphone, instead of using a single active device set up by its index. It works similarly to the popular Linux server called Jack.
 
-The easiest way to be able to use Commbase without requiring to route multiple sound capture devices to a common virtual bus is to set up your assistant's app to make it work with a dedicated device.
+Jack lets you connect multiple sound devices to a common virtual sound bus, boosting the number of active devices. Jack is able to replace and also interact with PulseAudio, the sound server system for POSIX OSes, including Linux, or any other replacement for PulseAudio. However, that enhancement requires installing professional audio packages or studios, such as KXStudio, running on the operating system.
 
-That device can be selected as the only active input when Commbase is required to talk or receive orders.
+So, from the perspective of the number of capturing devices used by Commbase, **commbase-stt-whisper-proactive-p** is the to-go way to configure Commbase to listen using a group of microphones without requiring to route multiple sound capture devices to a common virtual bus.
 
-In that way, your assistant's app dedicated audio input is not going to interact with/affect the normal audio input(s) used by the rest of the applications, such as AI assistant chatbots, chat/video conference software, DAWs, etc.
+If you want the opposite, which is make **commbase-stt-whisper-proactive-p** listen using a single capturing device, you have to just **mute all the other capturing devices available** on your system. Additionally, you can mute the active capture to make the engine process the captured sound before the next engine (customizable) countdown time is up, which relays on user intervention but making the user-assistant interaction work faster.
 
-Configuration steps for a dedicated capture device for your assistant's with PulseAudio:
+All these also means that **a dedicated capture device will work only with commbase-stt-whisper-reactive-p**. With this, the device is set up to record the capturing using a single keyboard key (already default to the key `c`), but we can also set it up to record using a keybinding provided by Commbase. With this setup you will be able to send requests to the application running on local, in the background, and unfocused, without requiring to use the single keyboard key method mentioned previously. What you need to set up the keybinding, is to define a capture device as dedicated for Commbase.
 
-- Identify the internal sound card in the computer: 
+The next are the configuration steps to dedicate a capture device for Commbase (using just `pactl`, or `pacmd` from PulseAudio):
+
+- List and display information about the audio sinks (output devices) in a PulseAudio sound server.
+
+Using pactl:
 
 ```shell
-pacmd list-sinks | more
+pactl list sinks | less
 
 ```
 
-Verify that there is an index for the devices you want to use as Commbase capture and as alternative capture. 
+Using PulseAudio:
 
-```output
-1 sink(s) available.
-   * index: 0
-          name: <alsa_output.pci-0000_00_1b.0.analog-stereo>
+```shell
+pacmd list-sinks | less
 
 ```
 
-- Filter the name of the sound devices to identify the capture device that will be used as the dedicated Commbase capture device:
+The order in which the devices are attached to the computer and the timing of their activation/recognition by the operating system also contribute to their indexation.
+
+- Filter the name of the sound devices to identify the input that will be used as the dedicated Commbase capture device:
+
+Using pactl:
+
+```shell
+pactl list sources | grep 'Name:'
+```
+
+Example of the output. It shows 3 input devices and 1 output device.
+
+```bash
+	Name: alsa_input.usb-_Webcam_C170-02.mono-fallback.2
+	Name: alsa_input.usb-SunplusIT_Inc_FHD_Camera_Microphone_01.00.00-02.analog-stereo.2
+	Name: alsa_output.pci-0000_00_1b.0.analog-stereo.2.monitor
+	Name: alsa_input.pci-0000_00_1b.0.analog-stereo.2
+```
+
+Using PulseAudio:
 
 ```shell
 pacmd list-sources | grep name
 ```
 
-For example, the next output shows a webcam of the brand Logitech and an Intel internal sound card with a capture device:
+The next output shows a webcam of the brand Logitech with an input:
 
-```output
+```bash
 	name: <alsa_input.usb-_Webcam_C170-02.mono-fallback>
 		alsa.name = "USB Audio"
 		alsa.subdevice_name = "subdevice #0"
@@ -305,31 +327,64 @@ For example, the next output shows a webcam of the brand Logitech and an Intel i
 
 ```
 
-- Test that switching to and activating the chosen dedicated Commbase capture device just works. Open the GUI of pavucontrol, or, for example, in Cinnamon go to System Settings > Sound. That will help to identify the active capture device every time the testing command is run:
+- Test that switching to and activating the chosen dedicated Commbase capture device just works. Open the GUI of `pavucontrol`, or, for example, in the Cinnamon desktop environment go to `System Settings` > `Sound`. That will help to identify the active capture device every time the command is run:
+
+Using pactl:
+
+Copy paste the desired input devices as argument in double quotes.
+
+```shell
+pactl set-default-source "alsa_input.usb-_Webcam_C170-02.mono-fallback.2"
+pactl set-default-source "alsa_input.usb-SunplusIT_Inc_FHD_Camera_Microphone_01.00.00-02.analog-stereo.2"
+```
+
+Using PulseAudio:
+
+Copy paste the desired input devices as argument in double quotes.
 
 ```shell
 pacmd set-default-source "alsa_input.usb-_Webcam_C170-02.mono-fallback"
-pacmd set-default-source "alsa_output.pci-0000_00_1b.0.analog-stereo.monitor"
-pacmd set-default-source "alsa_input.pci-0000_00_1b.0.analog-stereo"
 pacmd set-default-source "alsa_input.usb-SunplusIT_Inc_FHD_Camera_Microphone_01.00.00-02.analog-stereo"
 ```
 
-- The selected Commbase and alternative capture devices must be updated in the correspondent local host environment variables stored in the file **config/commbase.conf**. This is an example of the customized variables:
+- The chosen Commbase and alternative capture devices must be updated in the correspondent local host environment variables stored in the file **config/commbase.conf**. If you do not have more than one input, put its name in both variables.
 
 ```shell
+nano conf/commbase.conf
+```
+
+This is an example of the customized variables with the device inputs found out using pactl:
+
+```bash
+COMMBASE_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback.2"
+ALTERNATIVE_CAPTURE_DEVICE_NAME="alsa_input.usb-SunplusIT_Inc_FHD_Camera_Microphone_01.00.00-02.analog-stereo.2"
+```
+
+This is an example of the customized variables with the device inputs found out using PulseAudio:
+
+```bash
 COMMBASE_CAPTURE_DEVICE_NAME="alsa_input.usb-_Webcam_C170-02.mono-fallback"
 ALTERNATIVE_CAPTURE_DEVICE_NAME="alsa_input.usb-SunplusIT_Inc_FHD_Camera_Microphone_01.00.00-02.analog-stereo"
 ```
 
 Note that those variables are used in the toggle keybinding script files.
 
-The selected devices are added manually, due to their names changing from device to device in the market, also depending on the order they were attached to the computer and/or when they were activated/recognized on/by the OS.
+The alternative input can be used to quickly switch to another microphone that should not be reachable by/available for Commbase. For example, you have an alternative microphone set up for a specific video/phone calls or broadcasting software, but both, the Commbase dedicated microphone and the alternative microphone are physically next to each other. You need to talk, but don't want Commbase to misunderstand the situation and assist you. You just go ahead and switch to the alternative microphone, then talk. Commbase is not going to react this time, because of the next reasons:
 
-Everybody is allowed to create additional keybinding scripts to suit other needs, like having multi-switch keyboard shortcuts rather than a simple toggle switch like this.
+1. The current STT engine is **commbase-stt-whisper-reactive-p**. Remember that the other STT engine works continuously, listening and stopping only from time to time.
+2. You are not using the **recorder-transmitter** keyboard key to start recording your voice.
+3. Even if you press the key to start recording with the **recorder-transmitter** on the local host, it is attached to a specific capture device set up during the initial Commbase installation (check out the file **INSTALL**), which should be the same device set up in the variable `MY_APP_AUDIO_CAPTURE_DEVICE_NAME`.
+4. You are not using any **recorder-transmitter** script **reccomm.sh** remotely at a distance that the Commbase microphone is able to capture your voice talking to the alternative microphone.
 
-## Configure the File to Toggle the Active Capture Device
+Anyway, in case you have an only microphone, use the **recorder-transmitter** to activate Commbase when talking at the mic, and just press the button whenever you want Commbase to do something or talk and there is no noise or voiced interruptions that potentially alter your messaging/functioning.
 
-The file **scripts/configuration/key_bindings/toggle_active_capture_device.sh** toggles and activates the current active and default capture device to another device in a group of two devices, turning it active and default.
+When finish the capturing configuration, you can configure the audio keybinding files packaged with Commbase.
+
+Everybody is not only allowed but also encouraged to create additional keybinding scripts to suit other needs, like having multi-switch keyboard shortcuts rather than a simple toggle switch like this.
+
+## Configure the File to Toggle the Default Capture Device
+
+The script **bundles/libcommbase/libcommbase/routines/toggle_default_capture_device.sh** switches the current default capture device to another device within a predefined pair and unmutes the newly selected default device.
 
 To bind the script to a key combination in Linux, you can use a utility like **xbindkeys** or **xmodmap**. Here's how you can set up a keybinding for your script using **xbindkeys**:
 
@@ -339,7 +394,7 @@ Create a configuration file for **xbindkeys** if it doesn't already exist. You c
 xbindkeys --defaults > ~/.xbindkeysrc
 ```
 
-Open the ~/.xbindkeysrc file in a text editor. You can use any text editor you prefer, such as nano, vim, or gedit.
+Open the ~/.xbindkeysrc file in the text editor of your preference, for example, such as nano, vim, or gedit.
 
 ```shell
 nano ~/.xbindkeysrc
@@ -348,8 +403,8 @@ nano ~/.xbindkeysrc
 Add a keybinding for your script to the ~/.xbindkeysrc file. 
 
 ```plaintext
-# Toggle active capture device
-"bash $COMMBASE_APP_DIR/scripts/configuration/key_bindings/toggle_active_capture_device.sh"
+# Toggle default capture device
+"bash $COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/toggle_default_capture_device.sh"
   Control+Shift+z
 ```
 
@@ -363,8 +418,9 @@ Reload **xbindkeys** to apply the changes to your keybindings:
 xbindkeys -p
 ```
 
-You can also set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
- - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
+You can also set up this file using your favorite desktop environment or window manager key binding configuration. For example, in Cinnamon, a Gnome based desktop environment, the keybinding steps are:
+
+- Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut.
  - Next, give the new shortcut a new name, like `toggle active capture device`.
  - Next, select the route to this file.
  - Next, click or tap on the button `Add the keyboard shortcut`. The shortcut appears in the list.
@@ -375,7 +431,7 @@ You can also set up this file using your favorite Desktop Environment or Window 
 
 ## Configure the File to Toggle the Capture On Off
 
-The file **scripts/configuration/key_bindings/toggle_capture_on-off.sh** is a parameter to toggle ON/OFF the sound capture.
+The file **bundles/libcommbase/libcommbase/routines/toggle_capture_on-off.sh** is a parameter to toggle ON/OFF the sound capture.
 
 To bind the script to a key combination in Linux, you can use a utility like **xbindkeys** or **xmodmap**. Here's how you can set up a keybinding for your script using **xbindkeys**:
 
@@ -395,7 +451,7 @@ Add a keybinding for your script to the ~/.xbindkeysrc file.
 
 ```plaintext
 # Toggle capture on-off
-"bash $COMMBASE_APP_DIR/scripts/configuration/key_bindings/toggle_capture_on-off.sh"
+"bash $COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/toggle_capture_on-off.sh"
   Alt+Shift+1
 ```
 
@@ -409,7 +465,7 @@ Reload **xbindkeys** to apply the changes to your keybindings:
 xbindkeys -p
 ```
 
-You can also set up this file using your favorite Desktop Environment or Window Manager key binding configuration. For example, in Cinnamon, a Gnome based Desktop Environment, the keybinding steps are:
+You can also set up this file using your favorite desktop environment or window manager key binding configuration. For example, in Cinnamon, a Gnome based desktop environment, the keybinding steps are:
  - Go to Menu ⇾ System Settings ⇾ Keyboard ⇾ shortcuts ⇾ Categories ⇾ Sound and Media ⇾ Add custom shortcut. 
  - Next, give the new shortcut a new name, like `toggle capture ON or OFF`.
  - Next, select the route to this file.
@@ -421,7 +477,7 @@ You can also set up this file using your favorite Desktop Environment or Window 
 
 ## Configure the File Capture Mute
 
-The file **scripts/configuration/key_bindings/capture_mute.sh** a parameter to mute the sound capture.
+The file **bundles/libcommbase/libcommbase/routines/capture_mute.sh** a parameter to mute the sound capture.
 
 To bind the script to a key combination in Linux, you can use a utility like **xbindkeys** or **xmodmap**. Here's how you can set up a keybinding for your script using **xbindkeys**:
 
@@ -441,7 +497,7 @@ Add a keybinding for your script to the ~/.xbindkeysrc file.
 
 ```plaintext
 # Mute capture
-"bash $COMMBASE_APP_DIR/scripts/configuration/key_bindings/capture_mute.sh"
+"bash $COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/capture_mute.sh"
   Alt+Shift+2
 ```
 
@@ -467,7 +523,7 @@ You can also set up this file using your favorite Desktop Environment or Window 
 
 ## Configure the File Capture Unmute
 
-The file **scripts/configuration/key_bindings/capture_unmute.sh** a parameter to mute the sound capture.
+The file **bundles/libcommbase/libcommbase/routines/capture_unmute.sh** a parameter to mute the sound capture.
 
 To bind the script to a key combination in Linux, you can use a utility like **xbindkeys** or **xmodmap**. Here's how you can set up a keybinding for your script using **xbindkeys**:
 
@@ -487,7 +543,7 @@ Add a keybinding for your script to the ~/.xbindkeysrc file.
 
 ```plaintext
 # Unmute capture
-"bash $COMMBASE_APP_DIR/scripts/configuration/key_bindings/capture_unmute.sh"
+"bash $COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/capture_unmute.sh"
   Alt+Shift+3
 ```
 
@@ -521,12 +577,12 @@ To use keyboard shortcuts in your app, simply press the designated key combinati
 
 ### Commbase Key Bindings
 
-`CTRL` + `SHIFT` + `Z` : Toggle active capture device.
+`CTRL` + `SHIFT` + `Z` : Toggle default capture device.
 <br />`ALT` + `SHIFT` + `1` : Toggle ON/OFF sound capturing.
 <br />`ALT` + `SHIFT` + `2` : Stop sound capturing.
 <br />`ALT` + `SHIFT` + `3` : Start sound capturing.
 
-These group of shortcuts are defined in the directory **scripts/configuration/key_bindings/**.
+These group of shortcuts are defined in the directory **bundles/libcommbase/libcommbase/routines/**.
 
 ### Keyboard Shortcuts Overlapping
 
@@ -676,13 +732,57 @@ The default version of the file **commbase.conf** contains the next values:
     - `commbase_env` (Default): The default Commbase environment name that is logged in the file commmbase_env.yaml to build the Anaconda Python environment. For more details, check out the file **INSTALL**.
     - `my_env_name`: An alternative name for creating the Commbase virtual environment.
 
-- **COMMBASE_LOCALE**:
-  - Description: This setting is used to determine the language and regional preferences for user interfaces, messages, and other communicative elements within the software. The components related to language settings include: the i18n directory (which covers the Commbase files themselves), control patterns, and skills patterns of libcommbase. Additionally, users can code custom Commbase app terminal/voice commands with skill/skillset scripts, which should come with internationalization support.
+- **COMMBASE_LANG**:
+  - Description: This setting is used to determine the voice, language, and regional preferences for user interfaces, messages, and other communicative elements within the software. The components related to language settings include: the i18n directory (which covers the Commbase files themselves), control patterns, and skill patterns of libcommbase. Additionally, users can code custom Commbase app terminal/voice commands with skill/skillset scripts, which should come with internationalization support (check the directory **src/client/i18n/** in the project structure). For more details, check out the file **INSTALL**.
+  - Possible values: The value must match the voice and language configuration set in the variables: `STT_ENGINE_LANGUAGE`, `TTS_PYTTSX3_LANGUAGE_INDEX`, `LLM_GOOGLE_GEMINI_LANGUAGE`, `LLM_OPENAI_GPT_LANGUAGE`. You will find the list of supported languages in the file: assets/docs/Supported_languages.md.
   - Example values:
     - `en_us` (Default): This setting designates the default locale as English (United States). Users with this locale will encounter the application in English, experiencing the predetermined language and formatting preferences specified by this setting.
+    - `en_gb`: This setting designates the default locale as English (Great Britain). Users with this locale will encounter the application in English, experiencing the predetermined language and formatting preferences specified by this setting.
+
+- **STT_ENGINE_LANGUAGE**:
+  - Description: This setting is used to determine the language preferences for the STT engines: commbase-stt-whisper-proactive-p and commbase-stt-whisper-reactive-p. OpenAI's Whisper supports a wide range of languages for both transcription and translation. Some of the languages it can handle are: Afrikaans, Arabic, Armenian, Chinese, English, French, German, Hindi, Italian, Japanese, Korean, Portuguese, Russian, Spanish, Swahili. In total, Whisper  supports over 99 languages.  You can find a full list of supported languages in the OpenAI API documentation. For more details, check out the file **INSTALL**.
+  - Possible values: The value must match the voice and language configuration set in the variables: `COMMBASE_LANG`, `TTS_PYTTSX3_LANGUAGE_INDEX`, `LLM_GOOGLE_GEMINI_LANGUAGE`, `LLM_OPENAI_GPT_LANGUAGE`. You will find the list of supported languages in the file: assets/docs/Supported_languages.md.
+  - Example values:
+    - `english` (Default): Sets the language preferences for the STT engines to English.
+    - `spanish`: Sets the language preferences for the STT engines to Spanish.
+
+- **TTS_PYTTSX3_LANGUAGE_INDEX**:
+  - Description: The index for language and dialect used by the commbase-tts-pyttsx3 TTS engine. The values change from system to system and must be found out by using the command `commbase --list-pyttsx3-voices`. For more details, check out the file **INSTALL**. This variable is used in the variable `TTS_ENGINE_STRING`.
+  - Possible values: The value must match the voice and language configuration set in the variables: `STT_ENGINE_LANGUAGE`, `COMMBASE_LANG`, `LLM_GOOGLE_GEMINI_LANGUAGE`, `LLM_OPENAI_GPT_LANGUAGE`. You will find the list of supported languages in the file: assets/docs/Supported_languages.md.
+  - Example values:
+    - `17` (Default): The index number of the current language and dialect/accent used by the commbase-tts-pyttsx3 TTS engine.
+    - `4`: An index number of one of the languages that can be used by the commbase-tts-pyttsx3 TTS engine.
+
+- **TTS_PYTTSX3_RATE**:
+  - Description: Sets the speed of the voice used by the commbase-tts-pyttsx3 TTS engine. This variable is used in the variable `TTS_ENGINE_STRING`.
+  - Example value:
+    - `150`: A given rate value for the speed of the voice used by the TTS engine.
+
+- **STT_WHISPER_PROACTIVE_TIMEOUT**:
+  - Description: This parameter sets the maximum amount of time (in seconds) that the listen() function will wait for speech input from the microphone before raising a sr.WaitTimeoutError. This allows the program to handle cases where the user might not provide input promptly, preventing it from waiting indefinitely for input that might never come. Check out the variable `STT_ENGINE_STRING`.
+  - Example value:
+    - `15`: A value of 15 seconds before raising the timeout error and display the message: "Speech stopped. Recognizing...".
+
+- **LLM_GOOGLE_GEMINI_LANGUAGE**:
+  - Description: This parameter sets the default language used by the LLM (Large Language Model). Note: In Gemini, a parameter language is not required for all interactions. Gemini can understand and respond to your requests in English by default. Overall, while not required, specifying the language can provide additional context and potentially improve the quality of your interaction with Gemini.
+  - Possible values: The value must match the voice and language configuration set in the variables: `COMMBASE_LANG`, `STT_ENGINE_LANGUAGE`, `TTS_PYTTSX3_LANGUAGE_INDEX`, `LLM_META_LLAMA_LANGUAGE`, `LLM_OPENAI_GPT_LANGUAGE`. You will find the list of supported languages in the file: assets/docs/Supported_languages.md. For more details, check out the file **INSTALL**.
+  - Example value:
+    - `english` (Default): When chosen, sets the default LLM language to English.
+
+- **LLM_META_LLAMA_LANGUAGE**:
+  - Description: This parameter sets the default language used by the LLM (Large Language Model). Note: Llama2's proficiency in languages is currently limited. You don't really have to fine tune the model for it to understand other languages than English. You can use tools like Google Translate to translate the model results from english to your selected language (which delays the commbase-llm responses).
+  - Possible values: The value must match the voice and language configuration set in the variables: `COMMBASE_LANG`, `STT_ENGINE_LANGUAGE`, `TTS_PYTTSX3_LANGUAGE_INDEX`, `LLM_GOOGLE_GEMINI_LANGUAGE`, `LLM_OPENAI_GPT_LANGUAGE`. You will find the list of supported languages in the file: assets/docs/Supported_languages.md. For more details, check out the file **INSTALL**.
+  - Example value:
+    - `english` (Default): When chosen, sets the default LLM language to English.
+
+- **LLM_OPENAI_GPT_LANGUAGE**:
+  - Description: This parameter sets the default language used by the LLM (Large Language Model). Note: In OpenAI's GPT language models like GPT-3, etc., there isn't a built-in parameter for specifying the language explicitly. These models are designed to generate text based on the context provided in the prompt, rather than being explicitly instructed to generate text in a specific language. For more details, check out the file **INSTALL**.
+  - Possible values: The value must match the voice and language configuration set in the variables: `COMMBASE_LANG`, `STT_ENGINE_LANGUAGE`, `TTS_PYTTSX3_LANGUAGE_INDEX`, `LLM_META_LLAMA_LANGUAGE`, `LLM_GOOGLE_GEMINI_LANGUAGE`. You will find the list of supported languages in the file: assets/docs/Supported_languages.md.
+  - Example value:
+    - `english` (Default): When chosen, sets the default LLM language to English.
 
 - **CURRENT_MODE**:
-  - Description: The current use mode your app is running on. Modes are defined in the control patterns file. The default location for this file is **bundles/libcommbase/resources/control_patterns/en_us/openai_whisper_model_base/control_patterns.json**. You can change from any mode to another by changing the value of this variable. The action will update the mode component status on screen.
+  - Description: The current use mode your app is running on. Modes are defined in the control patterns file. The default location for this file is **bundles/libcommbase/resources/i18n/control_patterns/$STT_ENGINE_MODEL_DIRECTORY/$STT_ENGINE_MODEL_SUBDIRECTORY/$COMMBASE_LANG.json**. You can change from any mode to another by changing the value of this variable. The action will update the mode component status on screen.
   - Example values:
     - `COMPUTER` (Default): The computer mode. It is the only mode packaged with Commbase.
     - `ROBOT`: The robot mode. If in your case, you are free to program this mode to meet your requirements.
@@ -694,7 +794,7 @@ The default version of the file **commbase.conf** contains the next values:
     - `REFRIGERATOR`: The refrigerator mode. If in your use case, you are free to program this mode to meet your requirements.
 
 - **CURRENT_SUB_MODE**:
-  - Description: The current use mode your app is running on. Modes are defined in the control patterns file. The default location for this file is **bundles/libcommbase/resources/control_patterns/en_us/openai_whisper_model_base/control_patterns.json**. You can trigger from any submode to another by changing the value of this variable. Every submode relies on its mode to work.
+  - Description: The current use mode your app is running on. Modes are defined in the control patterns file. The default location for this file is **bundles/libcommbase/resources/i18n/control_patterns/$STT_ENGINE_MODEL_DIRECTORY/$STT_ENGINE_MODEL_SUBDIRECTORY/$COMMBASE_LANG.json**. You can trigger from any submode to another by changing the value of this variable. Every submode relies on its mode to work.
   - Possible values:
     - `AUTOMATIC` (Default): The automatic submode. It is the only mode packaged with Commbase.
     - `AUTOMATED` (Default): The automated submode. If in your use case, you are free to program this mode to meet your requirements.
@@ -762,12 +862,12 @@ The default version of the file **commbase.conf** contains the next values:
 
 - **MY_APP_AUDIO_CAPTURE_DEVICE_NAME**:
   - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input.
-  - Possible values: Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
+  - Possible values: Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **4 Set Up Microphones and Audio Keybindings**.
   - Example value:
     - `alsa_input.usb-_Webcam_C170-02.mono-fallback`: This value represents an ALSA input device connected via USB, specifically a webcam named "C170-02," configured to provide mono audio input, using a fallback configuration.
 
 - **SYSTEM_AUDIO_CAPTURE_DEVICE_NAME**:
-  - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input.   - Possible values: Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **key bindings**.
+  - Description: This value corresponds to a specific audio capture device using the Advanced Linux Sound Architecture (ALSA) framework for audio input.   - Possible values: Different devices may have distinct names or identifiers, and by setting the appropriate device name, the application can direct the audio capture process to the desired device. For more details, check out the topic **4 Set Up Microphones and Audio Keybindings**.
   - Example value:
     - `alsa_input.pci-0000_00_1b.0.analog-stereo`: This value represents an ALSA input device connected via a PCI bus, specifically an analog stereo audio input device.
 
@@ -783,6 +883,26 @@ The default version of the file **commbase.conf** contains the next values:
   - Example value:
     - `1`: It represents the index or identifier of a video capture device.
 
+- **RECORDER_TRANSMITTER_FILE**:
+  - Description: It is used to specify which recorder-transmitter should be utilized by the application. It only works with the STT engine **commbase-stt-whisper-reactive-p**. Check out the variable `STT_ENGINE_PATH`.
+  - Possible values: Any route to one of the recorder-transmitter files.
+  - Example value:
+    - `bundles/commbase-recorder-transmitter-b/reccomm.sh` (Default): The route to the Bash version of the recorder-transmitter. The Bash script can be set up to run simultaneously as a remote recorder-transmitter despite this configuration.
+    - `bundles/commbase-recorder-transmitter-s/reccomm.sh`: The route to the Shell version of the recorder-transmitter. The Shell (POSIX) script can be set up to run simultaneously as a remote recorder-transmitter despite this configuration.
+
+- **STT_ENGINE_MODEL_DIRECTORY**:
+  - Description: It specifies the path to the directory of the current STT engine's model in use. In order to facilitate internationalization, the directory resides in **bundles/libcommbase/resources/i18n/** and **src/client/i18n/**. Check out the variable `STT_ENGINE_MODEL_SUBDIRECTORY`.
+  - Possible values:
+    - `openai_whisper_models` (Default): If set to this value, the STT engine uses the OpenAI Whisper Models.
+
+- **STT_ENGINE_MODEL_SUBDIRECTORY**:
+  - Description: It specifies the path to the subdirectory of the current STT engine's model in use.  In order to facilitate internationalization, the subdirectory resides in the directories **bundles/libcommbase/resources/i18n/** and **src/client/i18n/**. Check out the variable `STT_ENGINE_MODEL_DIRECTORY`.
+  - Possible values:
+    - `base` (Default): If set to this value, the STT engine uses the OpenAI Whisper model "base".
+    - `small`: If set to this value, the STT engine uses the OpenAI Whisper model "small".
+    - `medium`: If set to this value, the STT engine uses the OpenAI Whisper model "medium".
+    - `large`: If set to this value, the STT engine uses the OpenAI Whisper model "large".
+
 - **STT_ENGINE_PATH**:
   - Description: It specifies the path to the current STT engine's executable or script file bundled with Commbase. It is updated to one of following possible values (TODO: create a skill command and a Keybinding for this.)
   - Possible values:
@@ -790,7 +910,7 @@ The default version of the file **commbase.conf** contains the next values:
     - `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-proactive-p/commbase_stt_whisper_proactive_p.py`: Proactive means the engine continuously changes among 4 strokes: listening, active, processing, and stopped.
 
 - **STT_ENGINE_STRING**:
-  - Description: It represents a string that specifies the path to the current STT engine's executable or script file bundled with Commbase.
+  - Description: It represents a string that specifies the path to the current STT engine's executable or script file bundled with Commbase. Check out the values of `PYTHON_ENV_VERSION` and `STT_ENGINE_PATH`.
   - Possible values:
     - `$PYTHON_ENV_VERSION $STT_ENGINE_PATH 2> /dev/null` (Default): It specifies the Commbase STT engine's executable script.
 
@@ -805,12 +925,59 @@ The default version of the file **commbase.conf** contains the next values:
 - **TTS_ENGINE_STRING**:
   - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, TTS systems with the ability to use a clone/fake of your own voice, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.
   - Possible values:
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate 150 --voice-index 18` (Default): It specifies the TTS engine commbase-tts-pyttsx3.py's executable script and arguments. It uses a specified speed rate and voice index to convert the text into speech and play it back. There is one voice index for every language or accent installed by or recognized by pyttsx3 in the system. You can modify those arguments in the string. To select a voice/accent by index, use the utility **list_all_voices_available_for_pyttsx3.py** that you will find out in the directory **scripts/utilities**.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/commbase-tts-pyttsx3/commbase_tts_pyttsx3.py --rate $TTS_PYTTSX3_RATE --voice-index $TTS_PYTTSX3_LANGUAGE_INDEX` (Default): It specifies the TTS engine commbase-tts-pyttsx3.py's executable script and arguments. It uses a specified speed rate and voice index to convert the text into speech and play it back. There is one voice index for every language or accent installed by or recognized by pyttsx3 in the system. You can modify those arguments in the string. To select a voice/accent by index, modify the variable `TTS_PYTTSX3_LANGUAGE_INDEX` index value. To select a rate modify the value of the variable `TTS_PYTTSX3_RATE`.
     - `festival --tts`: It specifies the TTS command Festival and its arguments. Festival comes with a unique and some basic English voice tone out of the box. You can install Festival-compatible extra voices from different internet sources. To know how to install Festival-compatible voices and set one as your custom application's voice, read [`this guide.`](./Festival.md)
     - `espeak -v f2`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English female voice number 2. You can install Espeak-compatible extra voices from different internet sources.
     - `espeak -v m3`: It specifies the TTS command Espeak and its arguments. The given argument means to speak using the default English male voice number 3. You can install Espeak-compatible extra voices from different internet sources.
     - `xargs swift`: It specifies the TTS command swift. The company Ceptral has high quality, natural speech OSS licensed voices can be purchased, installed and downloaded from the Ceptral web site.
-    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/commbase-tts-gTTS/commbase_tts_gTTS.py --param1 val1 --param2 val2 --param3 val3:`: It specifies the TTS executable commbase-tts-gTTS.py's script and its arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API.
+    - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/commbase-tts-gTTS/commbase_tts_gTTS.py --param1 val1 --param2 val2 --param3 val3:`: It specifies the TTS executable commbase-tts-gTTS.py's script and its arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API. (TODO:)
+
+- **AUDIBLE_ASSISTANT_LOGGING_ON**:
+  - Description: In regards to the variable `ASSISTANT_LOG_SEVERITY_LEVELS_ON`, there are four states in which the assistant logs discourses: 1. Audio Output = ON, Severity Log = ON. 2. Audio Output = ON, Severity Log = OFF. 3. Audio Output = OFF, Severity Log = ON. 4. Audio Output = OFF, Severity Log = OFF.
+  - Possible values:
+    - `True` (Default): Set to True, the assistant speaks the system logging messages out loud.
+    - `False`: Set to False, the assistant doesn't speak the system logging messages out loud.
+
+- **ASSISTANT_LOG_SEVERITY_LEVELS_ON**:
+  - Description: This variable determines whether the logging severity levels are enabled/disabled within the assistant's messages in the chatroom. The Log Severity Levels are used in software development and system administration to categorize the severity of events being logged. By utilizing these levels effectively, you can streamline the debugging process, improve system monitoring, and enhance the overall stability of your scripts. Assistant messages are called **discourses** in Commbase. Based on the nature of these messages, they generally fall into the informational category, hence the majority being classified as **INFO**. Instructions might sometimes warrant a **WARNING** level, especially if they are crucial and require attention. The next is a guide to log your assistant discourses appropriately, matching type of discourse and log severity level: 1. Answers: LOG_SEVERITY_LEVEL_2 (INFO), 2. Greetings: LOG_SEVERITY_LEVEL_2 (INFO), 3. Instructions: LOG_SEVERITY_LEVEL_3 (WARNING), 4. Introductions: LOG_SEVERITY_LEVEL_2 (INFO), 5. Jokes: LOG_SEVERITY_LEVEL_2 (INFO), 6. Phrases: LOG_SEVERITY_LEVEL_2 (INFO), 7. Questions: LOG_SEVERITY_LEVEL_2 (INFO), 8. Quotations: LOG_SEVERITY_LEVEL_2 (INFO), 9. Speeches: LOG_SEVERITY_LEVEL_2 (INFO), 10. Statements: LOG_SEVERITY_LEVEL_2 (INFO), 11. Talks: LOG_SEVERITY_LEVEL_2 (INFO). Don't forget to tailor the log messages to provide relevant details about scripts execution. Here's the default list of log level variables in the configuration file **/config/commbase.conf**: `LOG_SEVERITY_LEVEL_1`, `LOG_SEVERITY_LEVEL_2`, `LOG_SEVERITY_LEVEL_3`, `LOG_SEVERITY_LEVEL_4`, `LOG_SEVERITY_LEVEL_5`, `LOG_SEVERITY_LEVEL_6`, `LOG_SEVERITY_LEVEL_7`.
+  - Possible values:
+    - `True` (Default): Set to True, the assistant includes the log severity level in its chatroom messages.
+    - `False`: Set to False, the assistant does not include the log severity level in its chatroom messages.
+
+- **LOG_SEVERITY_LEVEL_1**:
+  - Description: It is used for detailed information, typically useful only for diagnosing problems.
+  - Possible values:
+    - `BEBUG` (Default): This variable is used to include the string "DEBUG" in a chatroom message.
+
+- **LOG_SEVERITY_LEVEL_2**:
+  - Description: It is used for general information about the operation of the system.
+  - Possible values:
+    - `INFO` (Default): This variable is used to include the string "INFO" in a chatroom message.
+
+- **LOG_SEVERITY_LEVEL_3**:
+  - Description: It is used for an indication that something unexpected happened or may be problematic in the future, but the system can still function.
+  - Possible values:
+    - `WARNING` (Default): This variable is used to include the string "WARNING" in a chatroom message.
+
+- **LOG_SEVERITY_LEVEL_4**:
+  - Description: It is used to log that a failure occurred, but it's usually recoverable, and the system can still operate.
+  - Possible values:
+    - `ERROR` (Default): This variable is used to include the string "ERROR" in a chatroom message.
+
+- **LOG_SEVERITY_LEVEL_5**:
+  - Description: Indicates a severe error that may prevent the system from functioning correctly. It often requires immediate attention.
+  - Possible values:
+    - `CRITICAL` (Default): This variable is used to include the string "CRITICAL" in a chatroom message.
+
+- **LOG_SEVERITY_LEVEL_6**:
+  - Description: It is used for very detailed debugging information.
+  - Possible values:
+    - `TRACE` (Default): This variable is used to include the string "TRACE" in a chatroom message.
+
+- **LOG_SEVERITY_LEVEL_7**:
+  - Description: It is used for critical errors that lead to system shutdown.
+  - Possible values:
+    - `FATAL` (Default): This variable is used to include the string "FATAL" in a chatroom message.
 
 - **TMUX_EXTRA_WINDOWS_ON**:
   - Possible values:
@@ -966,10 +1133,17 @@ The default version of the file **commbase.conf** contains the next values:
   - Possible values:
     - `/history/.messaging_history` (Default): This setting represents a default file path. The file allows users or developers to append result messages one after another, sequentially.
 
-- **CONTROL_PATTERNS_FILE**:
-  - Description: This file stores a set of key-value pairs. Each key corresponds to a specific control action trigger, and the associated values are arrays containing different variations or phrases that are recognized as valid expressions of that control. Controls are designed to respond to spoken or written control command, aka Terminal Voice Controls. You can carefully add/edit custom values for any value property in the file. You must verify that the values are well recognized by the STT engine when spoken to ensure that they will work as controls. Add new custom properties is possible but the earlier you add them the better, because the controls are hard coded in the skill scripts and adding a new property in the control patterns file could involve updating every existent skill in the skills catalog. For a description of the controls, use the command `commbase --help`.
+- **MAX_CONVERSATION_FILES_COUNT**:
+  - Description: This variable represents the maximum number of conversation files allowed to be stored at any given time.
+  - Possible values: Integer numbers.
   - Example value:
-    - `/bundles/libcommbase/resources/control_patterns/en_us/openai_whisper_model_base/control_patterns.json` (Default): This value represents a default file path.
+    - `30` (Default): This example value signifies that the system will ensure there are no more than 30 conversation files present at any time. It sets a threshold for the maximum number of conversation files that can be retained, helping to manage storage resources and prevent the accumulation of excessive files. Check out the variable `MAX_CONVERSATION_FILE_DAYS_STORED`.
+
+- **MAX_CONVERSATION_FILE_DAYS_STORED**:
+  - Description: This variable sets the maximum number of days for which conversation files are retained or considered valid before they are subject to deletion or archival.
+  - Possible values: Integer numbers.
+  - Example value:
+    - `30` (Default): This value indicates that conversation files will be retained or considered valid for a maximum period of 30 days. Check out the variable `MAX_CONVERSATION_FILES_COUNT`.
 
 - **ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON**:
   - Description: This variable is used in the function **bundles/libcommbase/libcommbase/routines/skills_else**.
@@ -1099,6 +1273,8 @@ These are commands limited to be executed in the terminal.
 ## Terminal Voice Controls
 
 A control command consists of a message that the previous skill or skillset command parser uses to execute parameterized options, affecting the default command behavior.
+
+Control patterns files define the controls used within the system. By default, these files are located at bundles/libcommbase/resources/i18n/control_patterns/$STT_ENGINE_MODEL_DIRECTORY/$STT_ENGINE_MODEL_SUBDIRECTORY/$COMMBASE_LANG.json. These files utilize JSON syntax. Each key within the file corresponds to a specific control action trigger, while the associated values are arrays containing various phrases or expressions recognized as valid inputs for that control. Controls are designed to respond to spoken or written commands, commonly known as Terminal Voice Controls. Users can meticulously add or edit custom values for any property within the file. However, it's crucial to verify that these values are accurately recognized by the Speech-to-Text (STT) engine when spoken, ensuring their functionality as controls. While adding new custom properties is feasible, it's advisable to do so early on, as controls are hardcoded in skill scripts. Adding a new property to the control patterns file may necessitate updating every existing skill in the skill catalog. For detailed descriptions of the controls, the command commbase --help can be used.
 
 ## Terminal Voice Skills
 

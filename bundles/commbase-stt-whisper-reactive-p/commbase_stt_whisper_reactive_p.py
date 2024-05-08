@@ -47,7 +47,10 @@ from file_paths import (
     get_chat_log_file,
     get_commbase_stt_whisper_reactive_p_client_data_file
 )
-from functions import get_chat_participant_names
+from functions import (
+    get_chat_participant_names,
+    get_stt_engine_language
+)
 
 # A temporary directory and a file path within that directory
 temp_file = tempfile.mkdtemp()
@@ -62,8 +65,10 @@ last_modified_time = 0
 def recognize_audio(save_path):
     """
     """
+    # Set the value returned by get_stt_engine_language()
+    stt_engine_language = get_stt_engine_language()
     audio_model = whisper.load_model('base')
-    transcription = audio_model.transcribe(save_path, language='english', fp16=False)
+    transcription = audio_model.transcribe(save_path, language=stt_engine_language, fp16=False)  # Syntax: language='english'
     return transcription['text']
 
 

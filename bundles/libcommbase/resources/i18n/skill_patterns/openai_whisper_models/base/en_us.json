@@ -1,0 +1,7 @@
+{
+  "deactivate_libcommbase": ["Okay, deactivate yourself.", "Okay, close yourself."],
+  "list_command_history": ["Okay, list your history."],
+  "reload_recognition": ["Okay, reload recognition.", "Okay, reload speech recognition.", "Okay, wake up."],
+  "stop_capturing_sound": ["Okay, stop capturing sound."],
+  "talk_libcommbase_introduction": ["Okay, tell me about yourself.", "Okay, introduce yourself."],
+}

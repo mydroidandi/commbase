@@ -1,0 +1,7 @@
+{
+  "deactivate_libcommbase": ["Okay, desactívate.", "Okay, ciérrate."],
+  "list_command_history": ["Okay, lista tu historial."],
+  "reload_recognition": ["Okay, reinicia el reconocimiento.", "Okay, reinicia el reconocimiento de voz.", "Okay, despierta."],
+  "stop_capturing_sound": ["Okay, detiene la captura de sonido."],
+  "talk_libcommbase_introduction": ["Okay, cuéntame acerca de ti.", "Okay, preséntate."]
+}

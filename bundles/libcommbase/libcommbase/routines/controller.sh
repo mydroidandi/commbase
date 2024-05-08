@@ -51,8 +51,8 @@ controller() {
   current_request=$(jq -r '.messages[1].current_request' <<< "$messages_json")
 
   # Extract the JSON object control patterns from file and process them
-  patterns_file=$(<"$COMMBASE_APP_DIR"/"$CONTROL_PATTERNS_FILE")
-  #cat $COMMBASE_APP_DIR$CONTROL_PATTERNS_FILE | jq 'to_entries[] | .key, .value[]'
+  patterns_file=$(<"$COMMBASE_APP_DIR/bundles/libcommbase/resources/i18n/control_patterns/$STT_ENGINE_MODEL_DIRECTORY/$STT_ENGINE_MODEL_SUBDIRECTORY/$COMMBASE_LANG.json")
+  #cat /path/to/control_patterns/file | jq 'to_entries[] | .key, .value[]'
 
   matching_property=""
 
