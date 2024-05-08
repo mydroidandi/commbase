@@ -1,8 +1,9 @@
-#!/usr/bin/env bash
+#!usr//bin/env bash
 ################################################################################
-#                                   Commbase                                   #
+#                                  libcommbase                                 #
 #                                                                              #
-# Conversational AI Assistant and AI Hub for Computers and Droids              #
+# A collection of libraries to centralize common functions that can be shared  #
+# across multiple conversational AI assistant projects                         #
 #                                                                              #
 # Change History                                                               #
 # 04/29/2023  Esteban Herrera Original code.                                   #
@@ -37,7 +38,7 @@
 # Stops capturing sound to avoid confusing the Commbase recognition.
 # Uses the keyboard binding ALT-SHIFT-2.
 capture_mute(){
-  (amixer set Capture nocap &>/dev/null || exit 99);
+  TODO: This skill should make use of the libcommbase routine capture_mute.sh
 }
 
 capture_mute || exit 99;

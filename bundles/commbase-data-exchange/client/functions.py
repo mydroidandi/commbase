@@ -36,7 +36,30 @@
 # handling, and mathematical operations.
 
 # Requirements
-from config import CONFIG_FILE_PATH
+import os
+import subprocess
+from config import (
+    CONFIG_FILE_DIR,
+    CONFIG_FILE_PATH
+)
+
+
+def discourse_data_exchange_client_error():
+    # Construct the path to the Bash script
+    bash_script = os.path.join(CONFIG_FILE_DIR, "bundles/libcommbase/libcommbase/routines/discourse_data_exchange_client_error.sh")
+
+    try:
+        # Construct the tmux command as a list of arguments
+        tmux_command = [
+            "bash", bash_script
+        ]
+
+        # Run the tmux command
+        subprocess.run(tmux_command)
+
+        return "Script executed successfully."
+    except subprocess.CalledProcessError as e:
+        return f"Error executing script: {e}"
 
 
 def get_client_polling_interval_in_secs():

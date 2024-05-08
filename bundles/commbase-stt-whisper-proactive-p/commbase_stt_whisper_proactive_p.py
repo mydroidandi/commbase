@@ -43,11 +43,18 @@
 import io
 import os
 from pydub import AudioSegment
-import speech_recognition as sr
+import speech_recognition as sr  # Requires pyaudio
 import tempfile
 import whisper
 from config import CONFIG_FILE_PATH
 from file_paths import get_chat_log_file
+from functions import (
+    get_assistant_log_severity_levels_on,
+    get_chat_participant_names,
+    get_log_severity_level_2,
+    get_stt_engine_language,
+    get_stt_whisper_proactive_timeout
+)
 
 # A temporary directory and a file path within that directory
 temp_file = tempfile.mkdtemp()
@@ -56,6 +63,9 @@ save_path = os.path.join(temp_file, 'temp.wav')
 # A temporary file path
 temp_file_path = get_chat_log_file()
 
+# Set the values returned by get_chat_participant_names()
+end_user_name, assistant_name = get_chat_participant_names()
+
 
 def listen():
     """
@@ -63,6 +73,9 @@ def listen():
     adjusts for ambient noise, saves the recorded audio as a WAV file, and
     handles any exceptions that may occur during the process, and then returns
     the path of the saved audio file.
+
+    The timeout for speech input is determined by the duration allowed for
+    the user to provide speech input before raising a WaitTimeoutError.
 
     Returns:
     str: The path of the saved audio file.
@@ -79,21 +92,26 @@ def listen():
     save_path = listen()
     print(f"Audio file saved at: {save_path}")
     """
+    # Set the values returned by get_stt_whisper_proactive_timeout().
+    stt_engine_timeout = get_stt_whisper_proactive_timeout()
     listener = sr.Recognizer()  # Create an instance of Recognizer
     with sr.Microphone() as source:
-        print("ASSISTANT: Listening...")
+        discourse = "Listening..."
+        print(f"{assistant_name} {discourse}")
         # for index, name in enumerate(sr.Microphone.list_microphone_names()):
         #     print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
         # listener.adjust_for_ambient_noise(source)
 
         try:
-            audio = listener.listen(source, timeout=30)  # Set a timeout of 30 seconds
-            print("ASSISTANT: Processing...")
+            audio = listener.listen(source, timeout=int(stt_engine_timeout))  # Set a timeout=15 (in seconds)
+            discourse = "Processing..."
+            print(f"{assistant_name} {discourse}")
             data = io.BytesIO(audio.get_wav_data())
             audio_clip = AudioSegment.from_file(data)
             audio_clip.export(save_path, format='wav')
         except sr.WaitTimeoutError:
-            print("ASSISTANT: Speech stopped. Recognizing...")
+            discourse = "Speech stopped. Recognizing..."
+            print(f"{assistant_name} {discourse}")
     return save_path
 
 
@@ -114,29 +132,45 @@ def recognize_audio(save_path):
     print(transcription_result)
     ```
     """
+    # Set the value returned by get_stt_engine_language()
+    stt_engine_language = get_stt_engine_language()
     audio_model = whisper.load_model('base')
-    transcription = audio_model.transcribe(save_path, language='english', fp16=False)
+    transcription = audio_model.transcribe(save_path, language=stt_engine_language, fp16=False)  # Syntax: language='english'
     return transcription['text']
 
 
 def write_to_temp_file(text):
     """
-    Appends the provided text to a temporary file, prefixed with 'END USER:'.
+    Writes the provided text to a temporary file.
 
     Parameters:
-    - text (str): The text to be appended to the temporary file.
+        text (str): The text to be written to the temporary file.
+
+    Returns:
+        None
+
+    Raises:
+        IOError: If there is an issue writing to the temporary file.
 
     Note:
-    - The function appends the formatted text to a temporary file specified by
-      `temp_file_path`.
-      If the file does not exist, it will be created.
-
-    Example:
-    >>> write_to_temp_file("Hello, this is a user message.")
+        If logging severity levels are enabled, the severity level is appended
+        to the end user's name along with the text. If not enabled, only the
+        end user's name and the text are appended.
     """
-    end_user_text = "END USER:" + text + "\n"
-    with open(temp_file_path, 'a') as temp_file:
-        temp_file.write(end_user_text)
+    # Set the value returned by get_assistant_log_severity_levels_on()
+    assistant_log_severity_levels_on = get_assistant_log_severity_levels_on()
+    # Set the value returned by get_log_severity_level_2()
+    log_severity_level_2 = get_log_severity_level_2()
+
+    if assistant_log_severity_levels_on == "True":
+        severity_level = log_severity_level_2
+        end_user_text = end_user_name + " [" + severity_level + "]:" + text + "\n"
+        with open(temp_file_path, 'a') as temp_file:
+            temp_file.write(end_user_text)
+    else:
+        end_user_text = end_user_name + text + "\n"
+        with open(temp_file_path, 'a') as temp_file:
+            temp_file.write(end_user_text)
 
 
 # Closes the temporary file
@@ -156,8 +190,6 @@ def close_temp_file():
     Example:
     >>> temp_file_path = '/path/to/temp/file.txt'
     >>> close_temp_file()
-
-    :return: None
     """
     if os.path.exists(temp_file_path):
         os.remove(temp_file_path)
@@ -176,7 +208,7 @@ def main():
     try:
         while True:
             response = recognize_audio(listen())
-            print(f"END USER: {response}")
+            print(f"{end_user_name} {response}")
 
             # Write the transcribed text to a temporary file
             write_to_temp_file(response)
