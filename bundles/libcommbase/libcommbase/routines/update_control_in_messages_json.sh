@@ -49,7 +49,9 @@ update_control_in_messages_json() {
   # New value for "control"
   new_control_value="$1"
 
-  # Update the "control" value in the JSON file while keeping it in one line
+  # messages[0] refers to the first element of the messages array in the JSON
+  # data, and the code modifies the control field of that element while keeping
+  # the JSON data in one line.
   jq --arg new_value "$new_control_value" '.messages[0].control = $new_value' "$json_file" | jq -c '.' > "$json_file.tmp" && mv "$json_file.tmp" "$json_file"
 
   # Send the messages request through commbase-data-exchange client

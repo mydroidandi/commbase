@@ -80,3 +80,35 @@ def get_chat_participant_names():
 
     # If any of the variables are not found, return None
     return None
+
+
+def get_stt_engine_language():
+    """
+    Reads the 'STT_ENGINE_LANGUAGE' variable from the environment configuration
+    file. Returns the string value of the variables if found, or None if the
+    variable is not present.
+
+    Returns:
+        str or None: The string if found in the configuration file, otherwise
+    None.
+    """
+    # Initialize variable
+    stt_engine_language = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "STT_ENGINE_LANGUAGE":
+                # Remove the quotes from the value of the variable
+                stt_engine_language = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if stt_engine_language is not None:
+        return stt_engine_language
+
+    # If the variable was not found, return None
+    return None

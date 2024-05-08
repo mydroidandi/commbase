@@ -33,14 +33,32 @@
 # updater_http_websocket.py
 # Send a PUT request to update JSON data on a server
 
+# Imports
 import json
 import requests
 import subprocess
 from config import CONFIG_FILE_PATH
 from file_paths import get_messaging_file
+from functions import discourse_data_exchange_client_error
 
 
 def read_json_file(json_file_path):
+    """
+    Reads JSON data from the specified file path.
+
+    Parameters:
+        json_file_path (str): The path to the JSON file to be read.
+
+    Returns:
+        dict or None: The JSON data read from the file, or None if an error
+        occurs.
+
+    Raises:
+        FileNotFoundError: If the specified JSON file is not found.
+        json.JSONDecodeError: If there is an error decoding JSON data from the
+        file.
+        Exception: If any other error occurs during file reading.
+    """
     try:
         with open(json_file_path, 'r') as json_file:
             data = json.load(json_file)
@@ -57,16 +75,40 @@ def read_json_file(json_file_path):
 
 
 def update_json(api_url, json_id, json_data):
+    """
+    Updates JSON data by sending a PUT request to the specified API endpoint.
+
+    Parameters:
+        api_url (str): The URL of the API endpoint.
+        json_id (int): The ID of the JSON data to be updated.
+        json_data (dict): The updated JSON data to be sent in the request.
+
+    Returns:
+        requests.Response or None: The response object from the PUT request, or
+        None if an error occurs.
+    """
     try:
         response = requests.put(f"{api_url}/{json_id}", json=json_data)
         return response
     except requests.exceptions.RequestException as e:
         print(f"Request failed: {e}")
+        discourse_data_exchange_client_error()
         return None
 
 
 def main():
-    # Define the API endpoint for update
+    """
+    Main function to execute the script.
+
+    This function performs various tasks such as fetching data, updating JSON,
+    handling responses, and executing subprocess commands. If any exception
+    occurs within the main() function or its nested blocks, it will be caught
+    by the outer try-except block. Then, the discourse_data_exchange_client_error()
+    function is called to handle the error.
+
+    Returns:
+        None
+    """
     api_url = 'http://127.0.0.1:5000/api/update_json'
 
     # Get the JSON file path
@@ -100,6 +142,7 @@ def main():
         else:
             # Print "Error: ..."
             status = f"Error: {response.status_code}"
+            discourse_data_exchange_client_error()
             try:
                 subprocess.run(f'tmux send-keys -t {session_name}:{window_number}.{pane_number} -l "{status}" 2>/dev/null', check=True, shell=True)
             except subprocess.CalledProcessError as e:
@@ -118,5 +161,6 @@ def main():
                 print(f"Other error occurred: {e}")
 
 
+# Entry point for executing the script.
 if __name__ == "__main__":
     main()

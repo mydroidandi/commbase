@@ -35,12 +35,14 @@
 # WebSocket connections, allowing clients to save and retrieve JSON data in
 # real-time.
 
-import os
-from flask import Flask, jsonify, request, render_template  # pip install flask flask-socketio
-from flask_socketio import SocketIO  # pip install flask-socketio
+# Imports
 import json
-
+import os
 import subprocess
+import traceback
+from flask import Flask, jsonify, request, render_template  # pip install flask
+from flask_socketio import SocketIO  # pip install flask-socketio
+from functions import discourse_data_exchange_server_error
 
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -68,7 +70,7 @@ def save_json():
 
         # Calls src/_server_skill.sh
         subprocess.run(
-            ["bash", os.environ["COMMBASE_APP_DIR"] + "/src/server_skill.sh"]
+            ["bash", os.environ["COMMBASE_APP_DIR"] + "/src/server/skill.sh"]
         )
 
         # Emit real-time update to connected clients
@@ -76,13 +78,19 @@ def save_json():
 
         return jsonify({"message": "JSON data saved successfully", "filename": filename})
 
+    # Returns only the exception message in the JSON response, omitting the
+    # traceback information.
     # except Exception as e:
     #    return jsonify({"error": str(e)}), 500
 
+    # Prints the full traceback to the standard error stream
     except Exception as e:
-        import traceback
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
+        # Uncomment to debug the function status
+        # execution_status = discourse_data_exchange_server_error()
+        # print(execution_status)
+        discourse_data_exchange_server_error()
 
 
 # API endpoint to retrieve saved JSON data
@@ -99,6 +107,7 @@ def get_saved_data():
         return jsonify(saved_data)
 
     except Exception as e:
+        discourse_data_exchange_server_error()
         return jsonify({"error": str(e)}), 500
 
 
@@ -109,11 +118,13 @@ def update_json(json_id):
         json_data = request.get_json()
 
         if not json_data:
+            discourse_data_exchange_server_error()
             return jsonify({"error": "Empty JSON payload"}), 400
 
         filename = os.path.join(CLIENT_DATA_DIR, f"json_{json_id}.json")
 
         if not os.path.exists(filename):
+            discourse_data_exchange_server_error()
             return jsonify({"error": f"JSON file with ID {json_id} not found"}), 404
 
         with open(filename, 'w') as file:
@@ -121,7 +132,7 @@ def update_json(json_id):
 
         # Calls src/_server_skill.sh
         subprocess.run(
-            ["bash", os.environ["COMMBASE_APP_DIR"] + "/src/server_skill.sh"]
+            ["bash", os.environ["COMMBASE_APP_DIR"] + "/src/server/skill.sh"]
         )
 
         # Emit real-time update to connected clients
@@ -130,8 +141,8 @@ def update_json(json_id):
         return jsonify({"message": f"JSON data updated successfully for ID {json_id}", "filename": filename})
 
     except Exception as e:
-        import traceback
         traceback.print_exc()
+        discourse_data_exchange_server_error()
         return jsonify({"error": str(e)}), 500
 
 

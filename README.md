@@ -24,7 +24,7 @@
 
 <div align="center">
 
-Commbase is a module and library bundler, and a flexible ✨ development framework ✨ designed to empower computers and other devices with advanced conversational AI capabilities. It incorporates third-party LLMs to enable features such as  "distributed AIs" or "multi-agent systems" (MAS).  Commbase extends its reach to applications and diverse devices, including droids, smart appliances, and various types of vehicles. It runs on a single machine or a set of two machines in a client-server architecture.
+Commbase is a flexible and extensible ✨ development framework ✨ designed to empower computers and other devices with cutting-edge conversational AI capabilities. It serves as both a module and library bundler, incorporating third-party LLMs to enable features such as "distributed AIs" or "multi-agent systems" (MAS). Commbase extends its reach to applications and diverse devices, including droids, smart appliances, and various types of vehicles. Operating effortlessly on either a single machine or a pair of machines in a client-server architecture, Commbase offers unparalleled adaptability and scalability.
 
 </div>
 
@@ -94,25 +94,27 @@ This project is coded and organized like this:
 │       └── resources
 │           ├── bundles
 │           │   └── sounds
-│           ├── control_patterns
-│           │   └── en_us
-│           │       └── openai_whisper_model_base
-│           ├── discourses
-│           │   └── en_us
-│           └── skill_patterns
-│               └── en_us
-│                   └── openai_whisper_model_base
+│           └── i18n
+│               ├── control_patterns
+│               │   └── openai_whisper_models
+│               │       ├── base
+│               │       └── ...
+│               ├── discourses
+│               └── skill_patterns
+│                   └── openai_whisper_models
+│                       ├── base
+│                       └── ...
 ├── certificates  # Stores the security certificates
 ├── config  # Stores the configuration file
 ├── data  # Stores the voice recognition model results and other data files
 ├── env  # Stores the environment file
 ├── history  # Stores the app commands history files
 ├── i18n  # Stores resources related to localization and internationalization
+│   └── discourses
 ├── screenshots  # Stores the image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
 │   ├── configuration
-│   │   ├── install_commbase_executable
-│   │   └── key_bindings
+│   │   └── install_commbase_executable
 │   ├── deployment
 │   └── utilities
 │       ├── back-up
@@ -120,28 +122,34 @@ This project is coded and organized like this:
 │       │   └── vu-meter
 │       └── reset_commbase.conf
 ├── src  # This directory contains user-generated source code
-│   ├── bundles
-│   │   ├── audiobooks
-│   │   │   └── Robinson_Crusoe
-│   │   └── ...
-│   ├── config
-│   ├── skills_db
-│   │   ├── arduino
-│   │   ├── bash
-│   │   │   ├── f
-│   │   │   │   ├── firefox
-│   │   │   │   └── ...
+│   ├── client
+│   │   ├── bundles
+│   │   │   ├── audiobooks
+│   │   │   │   └── Robinson_Crusoe
 │   │   │   └── ...
-│   │   ├── c++
-│   │   ├── java
-│   │   ├── multi-lang
-│   │   ├── nodejs
-│   │   ├── python
-│   │   ├── rust
-│   │   └── ...
-│   ├── tests
-│   │   └── ...
-│   └── ...
+│   │   ├── config
+│   │   ├── i18n
+│   │   │   ├── discourses
+│   │   │   └── skill_patterns
+│   │   │       └── openai_whisper_models
+│   │   │           ├── base
+│   │   │           └── ...
+│   │   └── log
+│   ├── server
+│   │   └── skills_db
+│   │       ├── arduino
+│   │       ├── bash
+│   │       │   └── f
+│   │       │       ├── firefox
+│   │       │       └── ...
+│   │       ├── c++
+│   │       ├── java
+│   │       ├── multi-lang
+│   │       ├── nodejs
+│   │       ├── python
+│   │       ├── rust
+│   │       └── ...
+│   └── tests
 ├── tests  # Stores the Commbase tests
 └── user  # Stores previous chat conversations and other user files
     ├── analysis_zone

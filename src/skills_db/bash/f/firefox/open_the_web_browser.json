@@ -1,1 +1,0 @@
-{"messages":[{"control":""},{"current_request":"Open the web browser"},{"previous_request":"Open the web browser"},{"current_response":"Opening the web browser."},{"runtime":"bash"},{"source_code_display":"session_pane_six"},{"source_code":"#!/usr/bin/env bash\n(echo \"Launching firefox ...\")\n(firefox)"}]}
