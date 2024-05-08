@@ -1,0 +1,5 @@
+{
+  "data_exchange_client_error": "Se produjo un error durante el intercambio de datos, con el registro iniciado desde el lado del cliente.",
+  "data_exchange_server_error": "Se produjo un error durante el intercambio de datos, con el registro iniciado desde el lado del servidor.",
+  "instruction_to_pause_recording": "Silencia el micrófono para pausar la grabación."
+}
