@@ -1,4 +1,4 @@
-#!usr//bin/env bash
+#!/usr/bin/env bash
 ################################################################################
 #                                  libcommbase                                 #
 #                                                                              #
@@ -6,7 +6,7 @@
 # across multiple conversational AI assistant projects                         #
 #                                                                              #
 # Change History                                                               #
-# 02/13/2024  Esteban Herrera Original code.                                   #
+# 05/12/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -14,7 +14,7 @@
 ################################################################################
 ################################################################################
 #                                                                              #
-#  Copyright (c) 2023-present Esteban Herrera C.                               #
+#  Copyright (c) 2022-present Esteban Herrera C.                               #
 #  stv.herrera@gmail.com                                                       #
 #                                                                              #
 #  This program is free software; you can redistribute it and/or modify        #
@@ -31,11 +31,14 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# set_language.sh
+# terminal_only_set_language.sh
 # Sets up the Commbase language and the Commbase app language
-set_language() {
+terminal_only_set_language() {
   # The configuration file
   source "$COMMBASE_APP_DIR"/config/commbase.conf
+
+  # Imports from libcommbase
+  restart_stt_engine_no_recorder=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/restart_stt_engine_no_recorder.sh
 
   # Display the system locale info
   echo "Current system locale information:"
@@ -97,8 +100,29 @@ set_language() {
 
     # Add more en_us variables here ...
 
-    echo "Your new language code is:" "$new_lang_code""."
-    echo "Remember to set up your app voice accordingly."
+    # Restart STT engines here ...
+
+    # Restart the running STT engine
+    (bash "$restart_stt_engine_no_recorder")
+
+    # Restart LLMs here ...
+
+    # Restart the running LLM
+    # TODO: Come back here after coding every LLM bundle.
+
+    # Retrieve the real final value of the language variable from the
+    # configuration file instead of from $new_lang_code.
+    source "$COMMBASE_APP_DIR"/config/commbase.conf # Re-sources the configuration file to apply the changes
+
+    # Inform the user
+    if [ "$STT_ENGINE_PATH" = "$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-reactive-p/commbase_stt_whisper_reactive_p.py" ]; then
+      (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear; echo -e 'Your new language code is: " "$COMMBASE_LANG.\\nRun the voice recorder with the command: commbase recorder'" C-m);
+    else
+      (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear; echo 'Your new language code is: " "$COMMBASE_LANG.'" C-m);
+    fi
+
+    # Gracefully terminate the recorder-transmitter PID, and if that fails, use kill -9.
+    pkill -f "$COMMBASE_APP_DIR/$RECORDER_TRANSMITTER_FILE"
 
   # new_lang_code = es_es
   elif [ "$new_lang_code" = "es_es" ]; then
@@ -135,8 +159,29 @@ set_language() {
 
     # Add more es_es variables here ...
 
-    echo "Your new language code is:" "$new_lang_code""."
-    echo "Remember to set up your app voice accordingly."
+    # Restart STT engines here ...
+
+    # Restart the running STT engine
+    (bash "$restart_stt_engine_no_recorder")
+
+    # Restart LLMs here ...
+
+    # Restart the running LLM
+    # TODO: Come back here after coding every LLM bundle.
+
+    # Retrieve the real final value of the language variable from the
+    # configuration file instead of from $new_lang_code.
+    source "$COMMBASE_APP_DIR"/config/commbase.conf # Re-sources the configuration file to apply the changes
+
+    # Inform the user
+    if [ "$STT_ENGINE_PATH" = "$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-reactive-p/commbase_stt_whisper_reactive_p.py" ]; then
+      (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear; echo -e 'Your new language code is: " "$COMMBASE_LANG.\\nRun the voice recorder with the command: commbase recorder'" C-m);
+    else
+      (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear; echo 'Your new language code is: " "$COMMBASE_LANG.'" C-m);
+    fi
+
+    # Gracefully terminate the recorder-transmitter PID, and if that fails, use kill -9.
+    pkill -f "$COMMBASE_APP_DIR/$RECORDER_TRANSMITTER_FILE"
 
   else
    echo "Your code does not correspond to any language available."
@@ -147,12 +192,11 @@ set_language() {
   # Add more new_lang_code language code blocks here ...
 
   exit 99
-
 }
 
-# Call set_language if the script is run directly (not sourced)
+# Call terminal_only_set_language if the script is run directly (not sourced)
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  (set_language)
+  (terminal_only_set_language)
 fi
 
 exit 99

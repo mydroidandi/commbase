@@ -111,8 +111,14 @@ Sound:
 Voice:
   Usage: commbase [options]
   options:
-    --list-pyttsx3-voices     List the commbase-tts-pyttsx3 voices available
+    --list-pyttsx3-voices               List the commbase-tts-pyttsx3 voices available
     --filter-pyttsx3-english-voices     Filter pyttsx3 English language voices
+
+Shutdown and Restart:
+  Usage: commbase [options]
+  options:
+    --restart-stt-engine      Shutdown running STT engine and restart it
+    --disconnect-yourself     Shutdown Commbase
 
 Control:
   Usage: commbase [options]
@@ -124,20 +130,35 @@ EOT
 
 cat <<EOT
 
-Skills and Skillsets:
+Built-in Skill and Skillset:
+  Usage: commbase [options]
+  options:
+    --select-stt-engine     (Interactive) List and select STT engines available
+    --set-language          (Interactive) List and set languages available
+
+Skill and Skillset:
   Usage: commbase [options]
   options:
     Checkout the User's Guide for a complete list of options
-  Examples:
-    "Tell me about yourself.":  Run Commbase introduction
-    "Start the math test number one zero one.":  Run the mentioned multi-choice test interactively
-    "Let me know when the internet is back.":  Receive the 'event' alert and notification
-    "Set a timer of <minutes> minutes.":  Start a countdown timer
+  Examples (Double quotes are optional):
+    "Okay, tell me about yourself.":  Run Commbase introduction
+    "Okay, start the math test number one zero one.":  Run mentioned multi-choice test interactively
+    "Okay, let me know when the internet is back.":  (Interactive) Receive 'event' alert and notification
+    "Okay, set a timer of <minutes> minutes.":  Start a countdown timer
         Examples:
-            "Set a timer of twenty five minutes."
-            Set a timer of one hundred one minutes.
+            "Okay, set a timer of twenty five minutes."
+            Okay, set a timer of one hundred one minutes.
 
-**Double quotes are optional
+Misspelled/Misspoken/Inexistent Terminal/Voice Commbase Command. Alternatively, Discourse:
+  Usage: [commbase] [discourse]
+  Examples:
+    commbase --i-misspell-this-command:  Pass mentioned wrong terminal Commbase command as conversation message to data exchange.
+    commbase I misspelled this command:  Pass mentioned wrong terminal Commbase command as conversation message to data exchange.
+    commbase "I misspelled this command":  Pass mentioned wrong terminal Commbase command as conversation message to data exchange.
+    "Okay, I misspoke this command":  Pass mentioned misspoken voice Commbase command as conversation message to data exchange.
+    "Okay, this command doesn't exist":  Pass mentioned inexistent voice Commbase command as conversation message to data exchange.
+    "What's the meaning of life?.":  Pass mentioned discourse as conversation message to data exchange.
+
 EOT
 }
 
@@ -152,19 +173,24 @@ route_option() {
     source $COMMBASE_APP_DIR/config/commbase.conf
     source $COMMBASE_APP_DIR/src/app.sh
 
-    # Imports from libcommbase
-    store_chat_log_copy=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/store_log_copy.sh
-    run_voice_recorder_in_pane=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/run_voice_recorder_in_pane.sh
-    toggle_default_capture_device=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/toggle_default_capture_device.sh
-    toggle_capture_on_off=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/toggle_capture_on-off.sh
+    # Imports from libcommbase routines
     capture_mute=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/capture_mute.sh
     capture_unmute=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/capture_unmute.sh
     cleanup_directory_by_age=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/cleanup_directory_by_age.sh
     cleanup_directory_by_file_count=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/cleanup_directory_by_file_count.sh
+    controller=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/controller.sh
     filter_pyttsx3_voices_by_language=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/filter_pyttsx3_voices_by_language.sh
     list_all_voices_available_for_pyttsx3=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/list_all_voices_available_for_pyttsx3.py
+    restart_stt_engine=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/restart_stt_engine.sh
+    run_voice_recorder_in_pane=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/run_voice_recorder_in_pane.sh
+    store_chat_log_copy=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/store_log_copy.sh
+    toggle_default_capture_device=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/toggle_default_capture_device.sh
+    toggle_capture_on_off=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/toggle_capture_on-off.sh
     update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
-    controller=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/controller.sh
+
+    # Imports from libcommbase built-in skills
+    terminal_only_select_stt_engine=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/skills/skills_db/terminal_only_select_stt_engine.sh
+    terminal_only_set_language=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/skills/skills_db/terminal_only_set_language.sh
 
     # First tmux session
     SESSIONNAME="Commbase-0";
@@ -231,9 +257,11 @@ route_option() {
             (bash "$cleanup_directory_by_file_count" "$MAX_CONVERSATION_FILES_COUNT" "$COMMBASE_APP_DIR"/user/conversation_logs/)
             (bash "$cleanup_directory_by_age" "$MAX_CONVERSATION_FILE_DAYS_STORED" "$COMMBASE_APP_DIR"/user/conversation_logs/)
             (sleep 2)  # Time in seconds to read messages on pane before the app shutdown
-            # "pkill -f" the processes of the scripts that do not respond to the
+            # Kill the processes of the scripts that do not respond to the
             # interrupt signal or appear to duplicate once the program stops and
             # exits.
+            # Gracefully terminate the STT engine PID, and if that fails, use
+            # kill -9.
             pkill -f "$STT_ENGINE_PATH"
             #pkill -f python  # This will kill all the running 'python' processes
             conda deactivate  # This is redundant
@@ -268,6 +296,22 @@ route_option() {
           '--filter-pyttsx3-english-voices')
             # Filter English language voices for commbase-tts-pyttsx3
             (bash "$filter_pyttsx3_voices_by_language" "english")
+            ;;
+          '--restart-stt-engine')
+            # Shutdown running STT engine and restart it
+            (bash "$restart_stt_engine")
+            ;;
+          '--disconnect-yourself')
+            # Shutdown Commbase
+            (commbase stop)
+            ;;
+          '--select-stt-engine')
+            # Run an interactive terminal only built-in skill to select an stt engine
+            (bash "$terminal_only_select_stt_engine")
+            ;;
+          '--set-language')
+            # Run an interactive terminal only built-in skill to set a language
+            (bash "$terminal_only_set_language")
             ;;
         esac
 
