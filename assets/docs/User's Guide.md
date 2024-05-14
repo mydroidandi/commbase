@@ -890,6 +890,12 @@ The default version of the file **commbase.conf** contains the next values:
     - `bundles/commbase-recorder-transmitter-b/reccomm.sh` (Default): The route to the Bash version of the recorder-transmitter. The Bash script can be set up to run simultaneously as a remote recorder-transmitter despite this configuration.
     - `bundles/commbase-recorder-transmitter-s/reccomm.sh`: The route to the Shell version of the recorder-transmitter. The Shell (POSIX) script can be set up to run simultaneously as a remote recorder-transmitter despite this configuration.
 
+**CUSTOM_RECORDER_TRANSMITTER_FILE**:
+  - Description: It allows to replace the default recorder-transmitter chosen with the route to a new custom one. Other custom recorder-transmitter applications can be set up in a different path and executed remotely (for example, this app can be an Android or iPhone app for smartphones), but in those cases you do not need to provide any path to a custom transmitter executable file here.
+  - Possible values: Any route to a custom recorder-transmitter file.
+  - Example value:
+    -`bundles/commbase-recorder-transmitter-x/reccomm.sh` (Default): The path to a custom recorder-transmitter executable.
+
 - **STT_ENGINE_MODEL_DIRECTORY**:
   - Description: It specifies the path to the directory of the current STT engine's model in use. In order to facilitate internationalization, the directory resides in **bundles/libcommbase/resources/i18n/** and **src/client/i18n/**. Check out the variable `STT_ENGINE_MODEL_SUBDIRECTORY`.
   - Possible values:
@@ -904,7 +910,7 @@ The default version of the file **commbase.conf** contains the next values:
     - `large`: If set to this value, the STT engine uses the OpenAI Whisper model "large".
 
 - **STT_ENGINE_PATH**:
-  - Description: It specifies the path to the current STT engine's executable or script file bundled with Commbase. It is updated to one of following possible values (TODO: create a skill command and a Keybinding for this.)
+  - Description: It specifies the path to the current STT engine's executable or script file bundled with Commbase. Just change this path to switch from one STT engine to another. The change can be perfectly done with a skill command and/or a keybinding.
   - Possible values:
     - `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-reactive-p/commbase_stt_whisper_reactive_p.py` (Default): Reactive means the engine is always lazily listening, processing the voice messages only when they arrive. Therefore, engine has 2 strokes: passive and processing.
     - `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-proactive-p/commbase_stt_whisper_proactive_p.py`: Proactive means the engine continuously changes among 4 strokes: listening, active, processing, and stopped.
@@ -917,6 +923,11 @@ The default version of the file **commbase.conf** contains the next values:
 - **COMMBASE_STT_WHISPER_REACTIVE_P_CLIENT_DATA_FILE**:
   - Possible values:
     - `/bundles/commbase-stt-whisper-reactive-p/client_data/recording.wav` (Default): The Commbase STT Whisper reactive p client temporary audio recording file. The purpose of this file is for storing audio data obtained from the execution of the bash script **commrecorder.sh** in the directory **bundles/commbase-stt-whisper-reactive-p/**. **commbase_stt_whisper_reactive_p.py** monitors the modification time of this file and, upon detecting changes, transcribes the audio content using the Whisper ASR (Automatic Speech Recognition) model. The transcribed text is then printed and appended to the chatroom pane.
+
+- **STT_ENGINE_PROCESSING_TIME_VISIBLE_ON**:
+  - Description: It specifies whether yes or not the running STT displays the speech processing time in the STT engine pane after every processing is complete.
+  - Possible values: True or False.
+  - Default value: `False` (Default): Set to false, the STT engine does not display the speech processing time in the STT engine pane after every processing is complete.
 
 - **CHAT_LOG_FILE**:
   - Possible values:
@@ -1231,17 +1242,65 @@ The default version of the file **commbase.conf** contains the next values:
   - Example value:
     - `3600` (Default): Set to 3600 seconds (equivalent to 1 hour and 0 minutes), indicates that the system checks for pending tasks approximately every 60 minutes.
 
-- **EXTERNAL_STORAGE_DRIVE_01_TAG**:
+- **COMMBASE_HARDWARE_NOTIFICATIONS_ON**:
+  - Description: Indicates whether Commbase hardware notifications are enabled or disabled. If set to "True", hardware notifications are enabled; otherwise, they are disabled.
+  - Possible values: "True" or "False". Set to "True" only if you are making Commbase hardware, such as: hardware interfaces, a speech to text engine component, or any other hardware device based on Commbase (droids, smart appliances, vehicles, etc.) Check out the existent Commbase hardware variables.
   - Example value:
-    - `WD1` (Default): This tag is used to distinguish or label the specific external storage drive, allowing easy identification and referencing within a system and/or application.
+    - `False` (Default): Hardware notifications are disabled.
 
-- **EXTERNAL_STORAGE_DRIVE_02_TAG**:
+- **COMMBASE_HARDWARE_NOTIFICATION_LISTENING_START_ON**:
+  - Description: Indicates whether Commbase hardware notifications for the start of the STT engines listening process are enabled or disabled. Check out the other existent Commbase hardware variables.
+  - Possible values: "True" or "False".
   - Example value:
-    - `WD2` (Default): This tag is used to distinguish or label the specific external storage drive, allowing easy identification and referencing within a system and/or application.
+    - `True` (Default): Notifications for the start of the listening process are enabled.
 
-- **DEV_PROJECT_DIRECTORY_NAME**:
+- **COMMBASE_HARDWARE_NOTIFICATION_LISTENING_STOP_ON**:
+  - Description: Indicates whether Commbase hardware notifications for the stop of the STT engines listening process are enabled or disabled. Check out the other existent Commbase hardware variables.
+  - Possible values: "True" or "False".
   - Example value:
-    - `YOUR_DEV_PROJECT_DIRECTORY_NAME_HERE` (Default): It can be used to indicate the specific directory or folder where a custom development project is located.
+    - `True` (Default): Notifications for the stop of the listening process are enabled.
+
+- **COMMBASE_HARDWARE_NOTIFICATION_PROCESSING_START_ON**:
+  - Description: Indicates whether Commbase hardware notifications for the start of the STT engines processing are enabled or disabled. Check out the other existent Commbase hardware variables.
+  - Possible values: "True" or "False".
+  - Example value:
+    - `True` (Default): Notifications for the start of the processing are enabled.
+
+- **COMMBASE_HARDWARE_NOTIFICATION_PROCESSING_STOP_ON**:
+  - Description: Indicates whether Commbase hardware notifications for the stop of the STT engines processing are enabled or disabled. Check out the other existent Commbase hardware variables.
+  - Possible values: "True" or "False".
+  - Example value:
+    - `True` (Default): Notifications for the stop of the processing are enabled.
+
+- **COMBASE_HARDWARE_DEVICE_0**:
+  - Description: The path of the hardware device used for communication, for example, an Arduino or any other microcontroller. Check out the other existent Commbase hardware variables.
+  - Possible values: A valid path to a hardware device.
+  - Example value:
+    - `/dev/ttyACM0`: Path to hardware device 0.
+
+- **COMMBASE_HARDWARE_COMMAND_LISTENING_START_FILE**:
+  - Description: The path to the file containing the command to start STT engines listening on the Commbase hardware. Check out the other existent Commbase hardware variables.
+  - Possible values: A valid file path.
+  - Example value:
+    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/listening_start.dat`: Path to the file for starting the working STT engine listening process.
+
+- **COMMBASE_HARDWARE_COMMAND_LISTENING_STOP_FILE**:
+  - Description: The path to the file containing the command to stop STT engines listening on the Commbase hardware. Check out the other existent Commbase hardware variables.
+  - Possible values: A valid file path.
+  - Example value:
+    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/listening_stop.dat`: Path to the file for stopping the working STT engine listening process.
+
+- **COMMBASE_HARDWARE_COMMAND_PROCESSING_START_FILE**:
+  - Description: The path to the file containing the command to start STT engines processing on the Commbase hardware. Check out the other existent Commbase hardware variables.
+  - Possible values: A valid file path.
+  - Example value:
+    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/processing_start.dat`: Path to the file for starting the working STT engine processing.
+
+- **COMMBASE_HARDWARE_COMMAND_PROCESSING_STOP_FILE**:
+  - Description: The path to the file containing the command to stop STT engines processing on the Commbase hardware. Check out the other existent Commbase hardware variables.
+  - Possible values: A valid file path.
+  - Example value:
+    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/processing_stop.dat`: Path to the file for stopping the working STT engine processing.
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 

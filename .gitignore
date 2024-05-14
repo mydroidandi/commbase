@@ -141,6 +141,9 @@ logs
 certificates/*
 !certificates/.gitkeep
 
+# Ignore the contents of the "src/client/assets" directory
+src/client/assets/*
+
 # Ignore the contents of the "src/client/bundles" directory
 src/client/bundles/*
 
@@ -151,6 +154,9 @@ src/client/config/*
 
 # Ignore the contents of the "src/client/log" directory
 src/client/log/*
+
+# Ignore the contents of the "src/client/serial_communication" directory
+src/client/serial_communication/*
 
 # Ignore the contents of the "src/server/skills_db" directory except for the file
 # named "open_the_web_browser.json".
