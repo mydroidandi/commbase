@@ -89,8 +89,7 @@ This project is coded and organized like this:
 │       ├── libcommbase
 │       │   ├── routines
 │       │   └── skills
-│       │       ├── parsers
-│       │       └── runners
+│       │       └── skills_db
 │       └── resources
 │           ├── bundles
 │           │   └── sounds
@@ -123,6 +122,9 @@ This project is coded and organized like this:
 │       └── reset_commbase.conf
 ├── src  # This directory contains user-generated source code
 │   ├── client
+│   │   ├── assets  # Stores different types of assets, such as images, fonts, and ASCII art
+│   │   │   ├── ascii
+│   │   │   └── docs  # Stores your app User's Guide
 │   │   ├── bundles
 │   │   │   ├── audiobooks
 │   │   │   │   └── Robinson_Crusoe
@@ -134,7 +136,16 @@ This project is coded and organized like this:
 │   │   │       └── openai_whisper_models
 │   │   │           ├── base
 │   │   │           └── ...
-│   │   └── log
+│   │   ├── log
+│   │   └── serial_communication
+│   │       ├── arduino
+│   │       │   ├── arduino_0
+│   │       │   │   ├── commbase_hardware_notifications
+│   │       │   │   │   ├── speech_to_text_engine_component
+│   │       │   │   │   └── ...
+│   │       │   │   └── ...
+│   │       │   └── ...
+│   │       └── ...
 │   ├── server
 │   │   └── skills_db
 │   │       ├── arduino

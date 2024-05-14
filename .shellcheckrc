@@ -12,7 +12,8 @@ shell=bash
 # Enable specific checks (comma-separated)
 # To disable a check, prefix it with "no"
 #enable=SC1000,noSC2000
-disable=SC1090,SC1091,SC1087
+#disable=SC1090,SC1091,SC1087
+disable=SC1090,SC1091,SC1087,SC2016,SC2154
 
 # Ignore specific errors in certain lines
 # Example: Ignore SC1000 and SC2000 in lines 5 and 10

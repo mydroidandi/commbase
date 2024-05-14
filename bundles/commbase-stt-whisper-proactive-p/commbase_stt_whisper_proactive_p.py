@@ -42,19 +42,34 @@
 # Imports
 import io
 import os
-from pydub import AudioSegment
 import speech_recognition as sr  # Requires pyaudio
+import subprocess
 import tempfile
+import time
 import whisper
 from config import CONFIG_FILE_PATH
-from file_paths import get_chat_log_file
+from file_paths import (
+    get_chat_log_file,
+    get_commbase_hardware_command_listening_start_file,
+    get_commbase_hardware_command_listening_stop_file,
+    get_commbase_hardware_command_processing_start_file,
+    get_commbase_hardware_command_processing_stop_file,
+    get_commbase_hardware_device_0
+)
 from functions import (
     get_assistant_log_severity_levels_on,
     get_chat_participant_names,
+    get_commbase_hardware_notifications_on,
+    get_commbase_hardware_notification_listening_start_on,
+    get_commbase_hardware_notification_listening_stop_on,
+    get_commbase_hardware_notification_processing_start_on,
+    get_commbase_hardware_notification_processing_stop_on,
     get_log_severity_level_2,
     get_stt_engine_language,
-    get_stt_whisper_proactive_timeout
+    get_stt_whisper_proactive_timeout,
+    stt_engine_processing_time_visible_on
 )
+from pydub import AudioSegment
 
 # A temporary directory and a file path within that directory
 temp_file = tempfile.mkdtemp()
@@ -65,6 +80,198 @@ temp_file_path = get_chat_log_file()
 
 # Set the values returned by get_chat_participant_names()
 end_user_name, assistant_name = get_chat_participant_names()
+
+
+def notify_hardware_about_listening_start():
+    """
+    Notifies the hardware about the start of the listening process.
+
+    This function sends a signal to the hardware to indicate that the
+    listening process has started. It constructs a command to be executed,
+    which involves reading a command from a file and redirecting its output to
+    a hardware device. If the hardware is connected and accessible, the
+    command is executed successfully.
+
+    Returns:
+        None
+
+    Raises:
+        subprocess.CalledProcessError: If the subprocess command fails.
+        Exception: If any other error occurs during the execution.
+
+    Note:
+        Ensure that the paths retrieved by
+        `get_commbase_hardware_command_listening_start_file()` and
+        `get_commbase_hardware_device_0()` functions are correctly configured.
+    """
+    # Define the paths
+    hardware_command = get_commbase_hardware_command_listening_start_file()
+    hardware_device = get_commbase_hardware_device_0()
+
+    # If any hardware is connected to the device
+    if os.path.exists(hardware_device):
+
+        try:
+            # Construct the command and its arguments
+            command = ['cat', hardware_command]
+            redirect_to_device = ['>', hardware_device]
+
+            # Run the command
+            subprocess.run(command + redirect_to_device, check=True)
+            for item in command:
+                print(item, end=' ')
+
+        except subprocess.CalledProcessError as e:
+            print(f"Error executing subprocess command: {e}")
+        except Exception as e:
+            print(f"Other error occurred: {e}")
+            # discourse_data_exchange_client_error()
+    else:
+        print(f"The device file {hardware_device} does not exist, or it is not connected.")
+
+
+def notify_hardware_about_listening_stop():
+    """
+    Notifies the hardware about the stop of the listening process.
+
+    This function sends a signal to the hardware to indicate that the
+    listening process has stopped. It constructs a command to be executed,
+    which involves reading a command from a file and redirecting its output to
+    a hardware device. If the hardware is connected and accessible, the
+    command is executed successfully.
+
+    Returns:
+        None
+
+    Raises:
+        subprocess.CalledProcessError: If the subprocess command fails.
+        Exception: If any other error occurs during the execution.
+
+    Note:
+        Ensure that the paths retrieved by
+        `get_commbase_hardware_command_listening_stop_file()` and
+        `get_commbase_hardware_device_0()` functions are correctly configured.
+    """
+    # Define the paths
+    hardware_command = get_commbase_hardware_command_listening_stop_file()
+    hardware_device = get_commbase_hardware_device_0()
+
+    # If any hardware is connected to the device
+    if os.path.exists(hardware_device):
+
+        try:
+            # Construct the command and its arguments
+            command = ['cat', hardware_command]
+            redirect_to_device = ['>', hardware_device]
+
+            # Run the command
+            subprocess.run(command + redirect_to_device, check=True)
+            for item in command:
+                print(item, end=' ')
+
+        except subprocess.CalledProcessError as e:
+            print(f"Error executing subprocess command: {e}")
+        except Exception as e:
+            print(f"Other error occurred: {e}")
+            # discourse_data_exchange_client_error()
+    else:
+        print(f"The device file {hardware_device} does not exist, or it is not connected.")
+
+
+def notify_hardware_about_processing_start():
+    """
+    Notifies the hardware about the start of the processing process.
+
+    This function sends a signal to the hardware to indicate that the
+    processing process has started. It constructs a command to be executed,
+    which involves reading a command from a file and redirecting its output to
+    a hardware device. If the hardware is connected and accessible, the
+    command is executed successfully.
+
+    Returns:
+        None
+
+    Raises:
+        subprocess.CalledProcessError: If the subprocess command fails.
+        Exception: If any other error occurs during the execution.
+
+    Note:
+        Ensure that the paths retrieved by
+        `get_commbase_hardware_command_processing_start_file()` and
+        `get_commbase_hardware_device_0()` functions are correctly configured.
+    """
+    # Define the paths
+    hardware_command = get_commbase_hardware_command_processing_start_file()
+    hardware_device = get_commbase_hardware_device_0()
+
+    # If any hardware is connected to the device
+    if os.path.exists(hardware_device):
+
+        try:
+            # Construct the command and its arguments
+            command = ['cat', hardware_command]
+            redirect_to_device = ['>', hardware_device]
+
+            # Run the command
+            subprocess.run(command + redirect_to_device, check=True)
+            for item in command:
+                print(item, end=' ')
+
+        except subprocess.CalledProcessError as e:
+            print(f"Error executing subprocess command: {e}")
+        except Exception as e:
+            print(f"Other error occurred: {e}")
+            # discourse_data_exchange_client_error()
+    else:
+        print(f"The device file {hardware_device} does not exist, or it is not connected.")
+
+
+def notify_hardware_about_processing_stop():
+    """
+    Notifies the hardware about the stop of the processing process.
+
+    This function sends a signal to the hardware to indicate that the
+    processing process has started. It constructs a command to be executed,
+    which involves reading a command from a file and redirecting its output to
+    a hardware device. If the hardware is connected and accessible, the
+    command is executed successfully.
+
+    Returns:
+        None
+
+    Raises:
+        subprocess.CalledProcessError: If the subprocess command fails.
+        Exception: If any other error occurs during the execution.
+
+    Note:
+        Ensure that the paths retrieved by
+        `get_commbase_hardware_command_processing_stop_file()` and
+        `get_commbase_hardware_device_0()` functions are correctly configured.
+    """
+    # Define the paths
+    hardware_command = get_commbase_hardware_command_processing_stop_file()
+    hardware_device = get_commbase_hardware_device_0()
+
+    # If any hardware is connected to the device
+    if os.path.exists(hardware_device):
+
+        try:
+            # Construct the command and its arguments
+            command = ['cat', hardware_command]
+            redirect_to_device = ['>', hardware_device]
+
+            # Run the command
+            subprocess.run(command + redirect_to_device, check=True)
+            for item in command:
+                print(item, end=' ')
+
+        except subprocess.CalledProcessError as e:
+            print(f"Error executing subprocess command: {e}")
+        except Exception as e:
+            print(f"Other error occurred: {e}")
+            # discourse_data_exchange_client_error()
+    else:
+        print(f"The device file {hardware_device} does not exist, or it is not connected.")
 
 
 def listen():
@@ -92,6 +299,13 @@ def listen():
     save_path = listen()
     print(f"Audio file saved at: {save_path}")
     """
+    # Set the values of the commbase hardware notification configuration
+    # variables
+    commbase_hardware_notifications_on = get_commbase_hardware_notifications_on()
+    commbase_hardware_notification_listening_start_on = get_commbase_hardware_notification_listening_start_on()
+    commbase_hardware_notification_listening_stop_on = get_commbase_hardware_notification_listening_stop_on()
+    commbase_hardware_notification_processing_start_on = get_commbase_hardware_notification_processing_start_on()
+    commbase_hardware_notification_processing_stop_on = get_commbase_hardware_notification_processing_stop_on()
     # Set the values returned by get_stt_whisper_proactive_timeout().
     stt_engine_timeout = get_stt_whisper_proactive_timeout()
     listener = sr.Recognizer()  # Create an instance of Recognizer
@@ -101,17 +315,32 @@ def listen():
         # for index, name in enumerate(sr.Microphone.list_microphone_names()):
         #     print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
         # listener.adjust_for_ambient_noise(source)
+        if commbase_hardware_notifications_on == "True":
+            if commbase_hardware_notification_processing_stop_on == "True":
+                notify_hardware_about_processing_stop()
+            if commbase_hardware_notification_listening_start_on == "True":
+                notify_hardware_about_listening_start()
 
         try:
             audio = listener.listen(source, timeout=int(stt_engine_timeout))  # Set a timeout=15 (in seconds)
             discourse = "Processing..."
             print(f"{assistant_name} {discourse}")
+            if commbase_hardware_notifications_on == "True":
+                if commbase_hardware_notification_listening_stop_on == "True":
+                    notify_hardware_about_listening_stop()
+                if commbase_hardware_notification_processing_start_on == "True":
+                    notify_hardware_about_processing_start()
             data = io.BytesIO(audio.get_wav_data())
             audio_clip = AudioSegment.from_file(data)
             audio_clip.export(save_path, format='wav')
         except sr.WaitTimeoutError:
             discourse = "Speech stopped. Recognizing..."
             print(f"{assistant_name} {discourse}")
+            if commbase_hardware_notifications_on == "True":
+                if commbase_hardware_notification_processing_stop_on == "True":
+                    notify_hardware_about_processing_stop()
+                if commbase_hardware_notification_listening_stop_on == "True":
+                    notify_hardware_about_listening_stop()
     return save_path
 
 
@@ -205,10 +434,19 @@ def main():
     to a temporary file using the `write_to_temp_file` function. It ensures
     proper cleanup of the temporary file by closing it in the `finally` block.
     """
+    processing_time_visible_on = stt_engine_processing_time_visible_on()
     try:
         while True:
-            response = recognize_audio(listen())
-            print(f"{end_user_name} {response}")
+            if processing_time_visible_on == "True":
+                start_time = time.time()  # Record the start time
+                response = recognize_audio(listen())
+                print(f"{end_user_name} {response}")
+                end_time = time.time()  # Record the end time
+                elapsed_time = end_time - start_time  # Calculate the elapsed time
+                print(f"Elapsed time from listening to processing: {elapsed_time} seconds")
+            else:
+                response = recognize_audio(listen())
+                print(f"{end_user_name} {response}")
 
             # Write the transcribed text to a temporary file
             write_to_temp_file(response)

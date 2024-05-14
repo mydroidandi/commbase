@@ -172,9 +172,9 @@ app() {
   if [ "$STT_ENGINE_PATH" = "$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-reactive-p/commbase_stt_whisper_reactive_p.py" ]; then
 
     # Select the recorder-transmitter based on the configuration
-    if [ "$RECORDER_TRANSMITTER_FILE" = "bundles/commbase-recorder-transmitter-x/reccomm.sh" ]; then
+    if [ "$RECORDER_TRANSMITTER_FILE" = "$CUSTOM_RECORDER_TRANSMITTER_FILE" ]; then
       # Any custom recorder-transmitter
-      (tmux select-pane -t 7 && tmux send-keys " clear; bash $COMMBASE_APP_DIR/bundles/commbase-recorder-transmitter-x/reccomm.sh" C-m && sleep $time);
+      (tmux select-pane -t 7 && tmux send-keys " clear; bash $COMMBASE_APP_DIR/$CUSTOM_RECORDER_TRANSMITTER_FILE" C-m && sleep $time);
     elif [ "$RECORDER_TRANSMITTER_FILE" = "bundles/commbase-recorder-transmitter-s/reccomm.sh" ]; then
       # recorder-transmitter for Shell
       (tmux select-pane -t 7 && tmux send-keys " clear; bash $COMMBASE_APP_DIR/bundles/commbase-recorder-transmitter-s/reccomm.sh" C-m && sleep $time);
