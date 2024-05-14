@@ -1,5 +1,0 @@
-{
-  "data_exchange_client_error": "An error occurred during the data exchange, with logging initiated from the client side.",
-  "data_exchange_server_error": "An error occurred during the data exchange, with logging initiated from the server side.",
-  "instruction_to_pause_recording": "Mute the microphone to pause recording."
-}
