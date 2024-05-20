@@ -1,9 +1,7 @@
-#!usr//bin/env bash
 ################################################################################
-#                                  libcommbase                                 #
+#                                   Commbase                                   #
 #                                                                              #
-# A collection of libraries to centralize common functions that can be shared  #
-# across multiple conversational AI assistant projects                         #
+# AI Powered Conversational Assistant for Computers and Droids                 #
 #                                                                              #
 # Change History                                                               #
 # 04/29/2023  Esteban Herrera Original code.                                   #
@@ -31,16 +29,50 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# capture_mute.sh
-# A key binding, or an association between a physical key on a keyboard and a 
-# parameter to mute the sound capture.
+# server_skill.sh
+# Reads the new JSON data request stored in commbase-data-exchange/server/client_data,
+# searches for a Commbase skill or skillset that matches the request in the
+# directory, and calls the updater in the server side.
+server_skill() {
+  # The configuration files
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
+  source "$COMMBASE_APP_DIR"/src/client/config/app.conf
+  source "$COMMBASE_APP_DIR"/src/client/config/secrets
 
-# Stops capturing sound to avoid confusing the Commbase recognition.
-# Uses the keyboard binding ALT-SHIFT-2.
-capture_mute(){
-  TODO: This skill should make use of the libcommbase routine capture_mute.sh
+  # Read the new JSON data request stored in commbase-data-exchange/server/client_data
+  data_exchange_client_data_file=/bundles/commbase-data-exchange/server/client_data/json_1.json
+
+  messages=$(<"$COMMBASE_APP_DIR"$data_exchange_client_data_file)
+
+  # Extract and echo each message
+  #echo "$messages" | jq -r '.messages[] | to_entries[] | "\(.key): \(.value)"'
+
+  # Extract and echo the entry corresponding to "control"
+  #echo "$messages" | jq -r '.messages[] | select(.control != null) | to_entries[] | "\(.key): \(.value)"'
+
+  # Store only the value of "current_request" without the key
+  current_request=$(echo "$messages" | jq -r '.messages[] | select(.current_request != null) | .current_request')
+
+  echo "Current request:" "$current_request"
+
+  # Search for a Commbase skill or skillset that matches the request in the
+  # directory.
+  # TODO:
+  echo "SEARCHING FOR SKILL OR SKILLSET IN THE DIRECTORY ..."
+
+
+  # Call the uploader in the server
+  # TODO:
+
+  # Store only the value of "current_request" without the key
+  current_request=$(echo "$messages" | jq -r '.messages[] | select(.current_request != null) | .current_request')
+
+  exit 99
 }
 
-capture_mute || exit 99;
+# Call server_skill if the script is run directly (not sourced)
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  (server_skill)
+fi
 
 exit 99

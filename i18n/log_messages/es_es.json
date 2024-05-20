@@ -1,0 +1,8 @@
+{
+  "commbase_session_exist": "La sesión de Commbase existe.",
+  "starting_application": "Iniciando aplicación...",
+  "stopping_application": "Deteniendo la aplicación...",
+  "saving_application_to_user_directory": "Guardando la conversación en el directorio del usuario...",
+  "cleaning_up_directories_and_files": "Limpiando directorios y archivos...",
+  "commbase_session_does_not_exist": "La sesión de Commbase no existe. Uso: /usr/bin/commbase [start|stop]."
+}

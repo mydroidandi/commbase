@@ -108,17 +108,29 @@ Sound:
     --capture-mute                      Stop sound capturing
     --capture-unmute                    Start sound capturing
 
+Language:
+  Usage: commbase [options]
+  options:
+    --set-language     (Interactive) List and set languages available
+
 Voice:
   Usage: commbase [options]
   options:
     --list-pyttsx3-voices               List the commbase-tts-pyttsx3 voices available
     --filter-pyttsx3-english-voices     Filter pyttsx3 English language voices
 
-Shutdown and Restart:
+STT engine:
   Usage: commbase [options]
   options:
-    --restart-stt-engine      Shutdown running STT engine and restart it
-    --disconnect-yourself     Shutdown Commbase
+    --select-stt-engine      (Interactive) List and select STT engines available
+    --restart-stt-engine     Shutdown running STT engine and restart it
+
+Shutdown and Power Off:
+  Usage: commbase [options]
+  options:
+    --stop-commbase        (Interactive) Request user password and stop Commbase
+    --reboot-system        (Interactive) Request user password and reboot system
+    --power-off-system     (Interactive) Request user password and power off system
 
 Control:
   Usage: commbase [options]
@@ -129,12 +141,6 @@ EOT
     (bash $display_control_patterns)
 
 cat <<EOT
-
-Built-in Skill and Skillset:
-  Usage: commbase [options]
-  options:
-    --select-stt-engine     (Interactive) List and select STT engines available
-    --set-language          (Interactive) List and set languages available
 
 Skill and Skillset:
   Usage: commbase [options]
@@ -174,6 +180,7 @@ route_option() {
     source $COMMBASE_APP_DIR/src/app.sh
 
     # Imports from libcommbase routines
+    append_message_to_log_file=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/append_message_to_log_file.sh
     capture_mute=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/capture_mute.sh
     capture_unmute=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/capture_unmute.sh
     cleanup_directory_by_age=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/cleanup_directory_by_age.sh
@@ -189,8 +196,9 @@ route_option() {
     update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
 
     # Imports from libcommbase built-in skills
-    terminal_only_select_stt_engine=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/skills/skills_db/terminal_only_select_stt_engine.sh
-    terminal_only_set_language=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/skills/skills_db/terminal_only_set_language.sh
+    terminal_request_user_password_and_execute=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/interactive/terminal_request_user_password_and_execute.sh
+    terminal_select_stt_engine=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/interactive/terminal_select_stt_engine.sh
+    terminal_set_language=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/interactive/terminal_set_language.sh
 
     # First tmux session
     SESSIONNAME="Commbase-0";
@@ -204,7 +212,11 @@ route_option() {
                 echo "Session '$SESSIONNAME' exists.";
                 tmux attach-session -t Commbase-0;
             else
-                echo "Starting application";
+                # Clean up the log file
+                truncate -s 0 "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE"
+                # Output the message and write it in the log file
+                echo "Starting application...";
+                (bash "$append_message_to_log_file" "commbase" "$LOG_SEVERITY_LEVEL_2" "starting_application" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
                 app;
             fi
             ;;
@@ -213,7 +225,7 @@ route_option() {
                 echo "Session '$SESSIONNAME' exists.";
                 tmux attach-session -t Commbase-0;
             else
-                echo "Starting application";
+                echo "Starting application...";
                 # Give .3 seconds to tmux to draw its content before continuing
                 time=0.3;
                 # Kill any existent tmux Commbase session in order to avoid duplicates
@@ -251,9 +263,10 @@ route_option() {
         case "$1" in
 
           'stop')
-            echo "Stopping application"
+            echo "Stopping application..."
             echo "Saving conversation to the user directory..."
             (bash "$store_chat_log_copy" "chat_log_" "txt")
+            echo "Cleaning up directories and files..."
             (bash "$cleanup_directory_by_file_count" "$MAX_CONVERSATION_FILES_COUNT" "$COMMBASE_APP_DIR"/user/conversation_logs/)
             (bash "$cleanup_directory_by_age" "$MAX_CONVERSATION_FILE_DAYS_STORED" "$COMMBASE_APP_DIR"/user/conversation_logs/)
             (sleep 2)  # Time in seconds to read messages on pane before the app shutdown
@@ -289,7 +302,11 @@ route_option() {
             # Run the key binding capture_unmute
             (bash "$capture_unmute")
             ;;
-          '--list-pyttsx3-voices')
+          '--set-language')
+            # Run an interactive terminal only built-in skill to set a language
+            (bash "$terminal_set_language")
+            ;;
+            '--list-pyttsx3-voices')
             # Run nano with the list of voices available for commbase-tts-pyttsx3
             ($PYTHON_ENV_VERSION "$list_all_voices_available_for_pyttsx3")
             ;;
@@ -297,21 +314,25 @@ route_option() {
             # Filter English language voices for commbase-tts-pyttsx3
             (bash "$filter_pyttsx3_voices_by_language" "english")
             ;;
+          '--select-stt-engine')
+            # Run an interactive terminal only built-in skill to select an stt engine
+            (bash "$terminal_select_stt_engine")
+            ;;
           '--restart-stt-engine')
             # Shutdown running STT engine and restart it
             (bash "$restart_stt_engine")
             ;;
-          '--disconnect-yourself')
-            # Shutdown Commbase
-            (commbase stop)
+          '--stop-commbase')
+            # Interactively request the user password and stop Commbase
+            (bash "$terminal_request_user_password_and_execute" "commbase" "stop")
             ;;
-          '--select-stt-engine')
-            # Run an interactive terminal only built-in skill to select an stt engine
-            (bash "$terminal_only_select_stt_engine")
+          '--reboot-system')
+            # Interactively request the user password and reboot the system
+            (bash "$terminal_request_user_password_and_execute" "$INIT_SYSTEM_COMMAND" "reboot")
             ;;
-          '--set-language')
-            # Run an interactive terminal only built-in skill to set a language
-            (bash "$terminal_only_set_language")
+          '--power-off-system')
+            # Interactively request the user password and power off the system
+            (bash "$terminal_request_user_password_and_execute" "$INIT_SYSTEM_COMMAND" "poweroff")
             ;;
         esac
 

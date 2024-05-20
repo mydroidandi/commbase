@@ -2,7 +2,7 @@
 ################################################################################
 #                        commbase-recorder-transmitter-b                       #
 #                                                                              #
-# A reactive version of STT ASR (Automatic Speech Recognition) engine.         #
+# A voice recorder and recording transmitter for Commbase.                     #
 #                                                                              #
 # Change History                                                               #
 # 02/29/2024  Esteban Herrera Original code.                                   #
