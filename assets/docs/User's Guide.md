@@ -715,6 +715,17 @@ Please ensure that these environment variables are correctly set with the approp
 
 The default version of the file **commbase.conf** contains the next values:
 
+- **INIT_SYSTEM_COMMAND**:
+  - Description: This variable is used to specify the command for interacting with the init system, which is responsible for initializing the system during boot.
+  - Possible values: systemctl (systemd), /etc/init.d/ (SysVinit, init.d, OpenWrt's procd), initctl (Upstart), rc-service (OpenRC), sv (runit), s6-rc (s6-rc).
+  - Example value:
+    - `systemctl` (Default): In this case, it is set to "systemctl", which indicates that the system uses systemd as its init system. systemctl is the primary command-line interface for managing systemd services.
+
+- **SERVICE_MANAGER_COMMAND**:
+  - Description: This variable is used to specify the command for managing system services.
+  - Possible values: systemctl (systemd), /etc/init.d/ (SysVinit, init.d, OpenWrt's procd), service (Upstart), rc-service (OpenRC), sv (runit), s6-rc (s6-rc), supervisorctl (Supervisor).
+  - `systemctl` (Default): Like the `INIT_SYSTEM_COMMAND`, it is set to "systemctl", indicating that systemd is also being used for managing services. systemctl allows you to start, stop, enable, disable, and check the status of services.
+
 - **PYTHON_ENV_VERSION**:
   - Example values:
     - `python` (Default): Choosing this value implies that the virtual environment will use the Python version associated with the default system Python interpreter. Choose this value whether your application uses a virtual environment such as commbase_env. For more details, check out the file **INSTALL**.
@@ -725,7 +736,7 @@ The default version of the file **commbase.conf** contains the next values:
   - Description: The percentage value represents the proportion of CPU resources that the STT process can consume relative to the total available CPU capacity. Running Commbase can over stress the Central Process Unit (CPU) depending on your CPU and hardware. You can verify the Commbase performance on your computer in many ways, for example, run the command `top` and verify the Python process row. If you experience problems with the engine commbase_stt_whisper_p performance when running Commbase, you can yet change the value of the variable to a higher value. Usually 1 - 100, but can be higher than 400 on multicore CPUs. Considerations on how to choose an optimal Python CPU limit percentage: The maximum CPU percentage usage that is accepted before the CPU gets hot depends on several factors, including the CPU model, its thermal design power (TDP), cooling system, and workload. In general, most modern CPUs are designed to operate at 100% usage for extended periods without overheating, provided that the cooling system can keep the temperature within safe limits. However, sustained high CPU usage can increase the temperature of the CPU and the surrounding components, which can reduce their lifespan and cause stability issues. To prevent overheating and ensure the longevity of the CPU, it is recommended to keep the temperature below its maximum operating temperature, which is typically specified by the CPU manufacturer. This temperature varies depending on the model and can range from 60 °C to 100 °C or higher. In practical terms, if you notice that the temperature of your CPU is consistently above 80 °C or that your system is becoming unstable or unresponsive during high CPU usage, you may want to reduce the CPU load or optimize the cooling system to avoid damage to the hardware.
   - Possible values: This variable should be a value between 0 and 100 or between 0 and 400 (for machines with 4 processing cores or more.)
   - Example value:
-    - `90` (Default): The STT process is going to use up to 75% of the computer's processing power.
+    - `90` (Default): The STT process is going to use up to 90% of the computer's processing power.
 
 - **CONDA_ENV_NAME_IF_EXISTS**:
   - Example values:
@@ -910,7 +921,7 @@ The default version of the file **commbase.conf** contains the next values:
     - `large`: If set to this value, the STT engine uses the OpenAI Whisper model "large".
 
 - **STT_ENGINE_PATH**:
-  - Description: It specifies the path to the current STT engine's executable or script file bundled with Commbase. Just change this path to switch from one STT engine to another. The change can be perfectly done with a skill command and/or a keybinding.
+  - Description: It specifies the path to the current STT engine's executable or script file bundled with Commbase. STT engines are interchangeable, which can be done from your app code, using keybindings, or custom terminal/voice command similar to the existent command `commbase --select-stt-engine`.
   - Possible values:
     - `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-reactive-p/commbase_stt_whisper_reactive_p.py` (Default): Reactive means the engine is always lazily listening, processing the voice messages only when they arrive. Therefore, engine has 2 strokes: passive and processing.
     - `$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-proactive-p/commbase_stt_whisper_proactive_p.py`: Proactive means the engine continuously changes among 4 strokes: listening, active, processing, and stopped.
@@ -927,11 +938,21 @@ The default version of the file **commbase.conf** contains the next values:
 - **STT_ENGINE_PROCESSING_TIME_VISIBLE_ON**:
   - Description: It specifies whether yes or not the running STT displays the speech processing time in the STT engine pane after every processing is complete.
   - Possible values: True or False.
-  - Default value: `False` (Default): Set to false, the STT engine does not display the speech processing time in the STT engine pane after every processing is complete.
+  - Example value: `False` (Default): Set to false, the STT engine does not display the speech processing time in the STT engine pane after every processing is complete.
 
 - **CHAT_LOG_FILE**:
   - Possible values:
     - `/data/.chat_log.txt` (Default): The chat log file likely stores a record of interactions or conversations.
+
+- **CONVERSATION_LOGS_PATH**:
+  - Description: It specifies the directory path where conversation logs are stored.
+  - Possible values: Any valid directory path.
+  - Example value: `/user/conversation_logs/` (Default): Set to this directory path by default for storing conversation logs.
+
+- **LOG_MESSAGES_FILE**:
+  - Description: It specifies the file path where log messages for the Commbase application are stored.
+  - Possible values: Any valid file path.
+  - Example value: `log/commbase.log` (Default): Set to this file path by default for storing log messages related to the Commbase application.
 
 - **TTS_ENGINE_STRING**:
   - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, TTS systems with the ability to use a clone/fake of your own voice, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.
