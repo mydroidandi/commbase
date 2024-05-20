@@ -69,7 +69,7 @@ assistant_discourse() {
 
   # Read the translation file based on the language passed as parameter
   # Extract the message from JSON
-  discourse=$(echo "$translation" | jq -r ".$discourse_key")  # Syntax: jq -r '.INSTRUCTION_TO_PAUSE_RECORDING'
+  discourse=$(echo "$translation" | jq -r ".$discourse_key")  # Syntax: jq -r '.instruction_to_pause_recording'
 
   # Check if the assistant configuration is set to make it speak out loud
   if [ "$AUDIBLE_ASSISTANT_LOGGING_ON" = "True" ]; then
@@ -83,7 +83,7 @@ assistant_discourse() {
       # Log the assistant message in the chatroom = ON
       # Make the assistant speak the message = ON
       # Log the severity level = OFF
-      (tmux select-pane -t "$pane_number" &&  tmux send-keys " clear; echo \"$ASSISTANT_NAME_IN_CHAT_PANE\" \"$discourse\" >> \"$COMMBASE_APP_DIR\"\"$CHAT_LOG_FILE\" && bash \"$mute_capture\"; echo \"$discourse\" | $TTS_ENGINE_STRING; bash \"$unmute_capture\"" C-m && sleep "$time");
+      (tmux select-pane -t "$pane_number" && tmux send-keys " clear; echo \"$ASSISTANT_NAME_IN_CHAT_PANE\" \"$discourse\" >> \"$COMMBASE_APP_DIR\"\"$CHAT_LOG_FILE\" && bash \"$mute_capture\"; echo \"$discourse\" | $TTS_ENGINE_STRING; bash \"$unmute_capture\"" C-m && sleep "$time");
     fi
   else
     # The audible assistant variable is set to false

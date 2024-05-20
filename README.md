@@ -87,9 +87,8 @@ This project is coded and organized like this:
 │   └── libcommbase
 │       ├── examples
 │       ├── libcommbase
-│       │   ├── routines
-│       │   └── skills
-│       │       └── skills_db
+│       │   ├── interactive
+│       │   └── routines
 │       └── resources
 │           ├── bundles
 │           │   └── sounds
@@ -107,9 +106,11 @@ This project is coded and organized like this:
 ├── config  # Stores the configuration file
 ├── data  # Stores the voice recognition model results and other data files
 ├── env  # Stores the environment file
-├── history  # Stores the app commands history files
+├── history  # Stores the Commbase commands history
 ├── i18n  # Stores resources related to localization and internationalization
-│   └── discourses
+│   ├── discourses
+│   └── log_messages
+├── log  # Stores the log messages
 ├── screenshots  # Stores the image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
 │   ├── configuration
@@ -132,6 +133,7 @@ This project is coded and organized like this:
 │   │   ├── config
 │   │   ├── i18n
 │   │   │   ├── discourses
+│   │   │   ├── log_messages
 │   │   │   └── skill_patterns
 │   │   │       └── openai_whisper_models
 │   │   │           ├── base
