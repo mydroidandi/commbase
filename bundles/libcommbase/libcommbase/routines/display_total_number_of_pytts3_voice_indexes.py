@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!usr//bin/env python
 ################################################################################
 #                                  libcommbase                                 #
 #                                                                              #
@@ -6,7 +6,7 @@
 # across multiple conversational AI assistant projects                         #
 #                                                                              #
 # Change History                                                               #
-# 05/16/2024  Esteban Herrera Original code.                                   #
+# 05/25/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -31,45 +31,45 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# terminal_request_user_password_and_execute.sh
-# Description: This script prompts the user for their password and, if
-# validated, executes the given command with optional parameters.
+# display_total_number_of_pytts3_voice_indexes.py
+# Counts and displays the total number of voices available in the pyttsx3
+# library, which can be useful for applications that need to know how many
+# different voices are available for text-to-speech operations.
 
-# Function to request the user's password and validate it
-terminal_request_user_password_and_execute() {
-  local command="$1"
-  local parameter_1="$2"
-  local parameter_2="$3"
-  local username
+# Imports
+import pyttsx3
 
-  # Get the current username
-  username=$(whoami)
 
-  # Prompt for the user's password
-  echo -n "Please enter your password: "
-  read -r -s user_password
-  echo
+def count_total_indexes():
+    """
+    Counts the total number of available voices.
 
-  # Validate the password using 'su'
-  echo "$user_password" | su -c "exit" "$username" >/dev/null 2>&1
-  local su_exit_status=$?
+    This function initializes the pyttsx3 engine, retrieves the list of
+    available voices, and returns the total number of voices.
 
-  if [ $su_exit_status -eq 0 ]; then
-    echo "Password validated."
-    # Execute the command with parameters
-    (eval "$command" "$parameter_1" "$parameter_2")
-  else
-    echo "Incorrect password or permission denied."
-    exit 1
-  fi
+    Returns:
+        int: The total number of available voices.
+    """
+    engine = pyttsx3.init()
+    voices = engine.getProperty("voices")
+    return len(voices)
 
-  exit 99
-}
 
-# Call terminal_request_user_password_and_execute if the script is run directly
-# (not sourced)
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  (terminal_request_user_password_and_execute "$1" "$2" "$3")
-fi
+def main():
+    """
+    Main function to execute the program.
 
-exit 99
+    Parameters:
+        None
+
+    Returns:
+        None
+    """
+    total_indexes = count_total_indexes()
+    print(f"Total number of available voice indexes: {total_indexes}")
+
+
+# Ensure that the main() function is executed only when the script is run
+# directly as the main program.
+if __name__ == '__main__':
+    main()

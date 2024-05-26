@@ -82,6 +82,102 @@ def get_chat_participant_names():
     return None
 
 
+def get_commbase_hardware_notifications_on():
+    """
+    Reads the 'COMMBASE_HARDWARE_NOTIFICATIONS_ON' variable from the
+    environment configuration file. Returns the string value of the variables
+    if found, or None if the variable is not present.
+
+    Returns:
+        str or None: The string if found in the configuration file, otherwise
+    None.
+    """
+    # Initialize variable
+    commbase_hardware_notifications = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "COMMBASE_HARDWARE_NOTIFICATIONS_ON":
+                # Remove the quotes from the value of the variable
+                commbase_hardware_notifications = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if commbase_hardware_notifications is not None:
+        return commbase_hardware_notifications
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_commbase_hardware_notification_processing_start_on():
+    """
+    Reads the 'COMMBASE_HARDWARE_NOTIFICATION_PROCESSING_START_ON' variable
+    from the environment configuration file. Returns the string value of the
+    variables if found, or None if the variable is not present.
+
+    Returns:
+        str or None: The string if found in the configuration file, otherwise
+    None.
+    """
+    # Initialize variable
+    commbase_hardware_notification = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "COMMBASE_HARDWARE_NOTIFICATION_PROCESSING_START_ON":
+                # Remove the quotes from the value of the variable
+                commbase_hardware_notification = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if commbase_hardware_notification is not None:
+        return commbase_hardware_notification
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_commbase_hardware_notification_processing_stop_on():
+    """
+    Reads the 'COMMBASE_HARDWARE_NOTIFICATION_PROCESSING_STOP_ON' variable from
+    the environment configuration file. Returns the string value of the
+    variables if found, or None if the variable is not present.
+
+    Returns:
+        str or None: The string if found in the configuration file, otherwise
+    None.
+    """
+    # Initialize variable
+    commbase_hardware_notification = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "COMMBASE_HARDWARE_NOTIFICATION_PROCESSING_STOP_ON":
+                # Remove the quotes from the value of the variable
+                commbase_hardware_notification = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if commbase_hardware_notification is not None:
+        return commbase_hardware_notification
+
+    # If the variable was not found, return None
+    return None
+
+
 def get_stt_engine_language():
     """
     Reads the 'STT_ENGINE_LANGUAGE' variable from the environment configuration
@@ -109,6 +205,38 @@ def get_stt_engine_language():
     # Check if the variable was found
     if stt_engine_language is not None:
         return stt_engine_language
+
+    # If the variable was not found, return None
+    return None
+
+
+def stt_engine_processing_time_visible_on():
+    """
+    Reads the 'STT_ENGINE_PROCESSING_TIME_VISIBLE_ON' variable from
+    the environment configuration file. Returns the string value of the
+    variables if found, or None if the variable is not present.
+
+    Returns:
+        str or None: The string if found in the configuration file, otherwise
+    None.
+    """
+    # Initialize variable
+    processing_time_visible = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "STT_ENGINE_PROCESSING_TIME_VISIBLE_ON":
+                # Remove the quotes from the value of the variable
+                processing_time_visible = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if processing_time_visible is not None:
+        return processing_time_visible
 
     # If the variable was not found, return None
     return None

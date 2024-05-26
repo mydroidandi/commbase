@@ -39,38 +39,6 @@
 from config import CONFIG_FILE_PATH
 
 
-def get_assistant_log_severity_levels_on():
-    """
-    Reads the 'ASSISTANT_LOG_SEVERITY_LEVELS_ON' variable from the environment
-    configuration file. Returns the string value of the variables if found, or
-    None if the variable is not present.
-
-    Returns:
-        str or None: The string if found in the configuration file, otherwise
-    None.
-    """
-    # Initialize variable
-    severity_levels_on = None
-
-    # Open the file and read its contents
-    with open(CONFIG_FILE_PATH, "r") as f:
-        for line in f:
-            # Split the line into variable name and value
-            variable_name, value = line.strip().split("=")
-
-            # Check if the variable we are looking for exists in the line
-            if variable_name == "ASSISTANT_LOG_SEVERITY_LEVELS_ON":
-                # Remove the quotes from the value of the variable
-                severity_levels_on = value.strip()[1:-1]
-
-    # Check if the variable was found
-    if severity_levels_on is not None:
-        return severity_levels_on
-
-    # If the variable was not found, return None
-    return None
-
-
 def get_chat_participant_names():
     """
     Gets the chat participant names from the config file.
@@ -114,9 +82,9 @@ def get_chat_participant_names():
     return None
 
 
-def get_log_severity_level_2():
+def get_log_severity_level_1():
     """
-    Reads the 'LOG_SEVERITY_LEVEL_2' variable from the environment
+    Reads the 'LOG_SEVERITY_LEVEL_1' variable from the environment
     configuration file. Returns the string value of the variables if found, or
     None if the variable is not present.
 
@@ -125,7 +93,7 @@ def get_log_severity_level_2():
     None.
     """
     # Initialize variable
-    log_severity_level_2 = None
+    log_severity_level_1 = None
 
     # Open the file and read its contents
     with open(CONFIG_FILE_PATH, "r") as f:
@@ -134,13 +102,13 @@ def get_log_severity_level_2():
             variable_name, value = line.strip().split("=")
 
             # Check if the variable we are looking for exists in the line
-            if variable_name == "LOG_SEVERITY_LEVEL_2":
+            if variable_name == "LOG_SEVERITY_LEVEL_1":
                 # Remove the quotes from the value of the variable
-                log_severity_level_2 = value.strip()[1:-1]
+                log_severity_level_1 = value.strip()[1:-1]
 
     # Check if the variable was found
-    if log_severity_level_2 is not None:
-        return log_severity_level_2
+    if log_severity_level_1 is not None:
+        return log_severity_level_1
 
     # If the variable was not found, return None
     return None

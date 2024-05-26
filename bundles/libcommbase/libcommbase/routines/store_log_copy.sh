@@ -44,9 +44,9 @@ store_log_copy() {
   # Generate a chat log file name with date and a random number
   random_filename="$prefix$(date +%Y%m%d%H%M%S)_$RANDOM.$extension"
   # Store a copy of the chat file in the user directory
-  cp "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" "$COMMBASE_APP_DIR$CONVERSATION_LOGS_PATH$random_filename"
+  cp "$COMMBASE_APP_DIR/$CHAT_LOG_FILE" "$COMMBASE_APP_DIR$CONVERSATION_LOGS_PATH$random_filename"
   # Get rid of the chat content
-  rm "$COMMBASE_APP_DIR""$CHAT_LOG_FILE"
+  rm "$COMMBASE_APP_DIR/$CHAT_LOG_FILE"
 
   exit 99
 }

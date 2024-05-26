@@ -48,6 +48,7 @@ import tempfile
 import time
 import whisper
 from config import CONFIG_FILE_PATH
+from datetime import datetime
 from file_paths import (
     get_chat_log_file,
     get_commbase_hardware_command_listening_start_file,
@@ -57,14 +58,13 @@ from file_paths import (
     get_commbase_hardware_device_0
 )
 from functions import (
-    get_assistant_log_severity_levels_on,
     get_chat_participant_names,
     get_commbase_hardware_notifications_on,
     get_commbase_hardware_notification_listening_start_on,
     get_commbase_hardware_notification_listening_stop_on,
     get_commbase_hardware_notification_processing_start_on,
     get_commbase_hardware_notification_processing_stop_on,
-    get_log_severity_level_2,
+    get_log_severity_level_1,
     get_stt_engine_language,
     get_stt_whisper_proactive_timeout,
     stt_engine_processing_time_visible_on
@@ -386,20 +386,15 @@ def write_to_temp_file(text):
         to the end user's name along with the text. If not enabled, only the
         end user's name and the text are appended.
     """
-    # Set the value returned by get_assistant_log_severity_levels_on()
-    assistant_log_severity_levels_on = get_assistant_log_severity_levels_on()
-    # Set the value returned by get_log_severity_level_2()
-    log_severity_level_2 = get_log_severity_level_2()
+    # Set the value returned by get_log_severity_level_1()
+    log_severity_level_1 = get_log_severity_level_1()
 
-    if assistant_log_severity_levels_on == "True":
-        severity_level = log_severity_level_2
-        end_user_text = end_user_name + " [" + severity_level + "]:" + text + "\n"
-        with open(temp_file_path, 'a') as temp_file:
-            temp_file.write(end_user_text)
-    else:
-        end_user_text = end_user_name + text + "\n"
-        with open(temp_file_path, 'a') as temp_file:
-            temp_file.write(end_user_text)
+    current_timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    severity_level = log_severity_level_1
+    end_user_text = "[" + current_timestamp + "]" + " stt-whisper-proactive: " + severity_level + ": " + end_user_name + text + "\n"
+    with open(temp_file_path, 'a') as temp_file:
+        temp_file.write(end_user_text)
 
 
 # Closes the temporary file

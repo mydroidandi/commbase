@@ -38,10 +38,10 @@ app() {
 
   # Imports from libcommbase
   source "$COMMBASE_APP_DIR"/bundles/libcommbase/libcommbase/routines/check_data_exchange_server_connection.sh
+  assistant_discourse=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/assistant_discourse.sh
   store_chat_log_copy=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/store_log_copy.sh
   tail_chat_log=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_chat_log.sh
   text_animation=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/text_animation.sh
-  assistant_discourse=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/assistant_discourse.sh
 
   # Give .3 seconds to tmux to draw its content before continuing
   export time=0.3;
@@ -83,11 +83,11 @@ app() {
   # CHAT_LOG_FILE. This is to keep a backup copy of the chat progress after
   # events that might have prevented the application from closing gracefully
   # with the 'commbase stop' command.
-  if [ -s "$COMMBASE_APP_DIR$CHAT_LOG_FILE" ]; then
+  if [ -s "$COMMBASE_APP_DIR/$CHAT_LOG_FILE" ]; then
     (bash "$store_chat_log_copy" "chat_log_" "txt")
   fi
   # Select pane 1, open or create the chatroom file
-  (tmux select-pane -t 1 && tmux send-keys " touch $COMMBASE_APP_DIR$CHAT_LOG_FILE" C-m && sleep $time);
+  (tmux select-pane -t 1 && tmux send-keys " touch $COMMBASE_APP_DIR/$CHAT_LOG_FILE" C-m && sleep $time);
   # Run tail_chat_log and then press the enter key
   (tmux select-pane -t 1 && tmux send-keys " clear; bash $tail_chat_log" C-m && sleep $time);
 
@@ -188,9 +188,9 @@ app() {
   # 1 accordingly.
   if [ "$STT_ENGINE_PATH" = "$COMMBASE_APP_DIR/bundles/commbase-stt-whisper-proactive-p/commbase_stt_whisper_proactive_p.py" ]; then
 
-    # Call assistant_discourse with the arguments: pane, i18n file path,
-    # log_severity_level, and discourse_key.
-    (tmux select-pane -t 7 && tmux send-keys " clear; bash \"$assistant_discourse\" \"7\" \"2\" \"$LOG_SEVERITY_LEVEL_2\" \"instruction_to_pause_recording\"" C-m && sleep $time);
+    # Call assistant_discourse with the arguments: pane, i18n, origin,
+    # log_severity_level_1, discourse_key.
+    (tmux select-pane -t 7 && tmux send-keys " clear; bash \"$assistant_discourse\" \"7\" \"2\" \"app\" \"$LOG_SEVERITY_LEVEL_1\" \"instruction_to_pause_recording\"" C-m && sleep $time);
   fi
 
   # Enter the Commbase session

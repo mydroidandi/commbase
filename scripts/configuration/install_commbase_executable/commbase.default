@@ -79,29 +79,28 @@ display_help() {
 cat <<EOT
 Commbase (v0.0.1)
 
+Commands:
+Usage: commbase [option]
+
 Print:
-  Syntax: commbase [-g|h|V]
   options:
     g, --license       Print the GPL license notification
     h, --help          Print this Help
     V, v, --version    Print software version and exit
 
 Start/Stop:
-  Usage: commbase [options]
   options:
     start              Start Commbase
     teleport           Teleport Commbase
-    server             Start Commbase server on a server host
-    client             Launch Commbase client on a client host
+    server             Start Commbase server on server host
+    client             Launch Commbase client on client host
     stop               Stop Commbase
 
 Record:
-  Usage: commbase [options]
   options:
     recorder | rec     Run voice recorder locally
 
 Sound:
-  Usage: commbase [options]
   options:
     --toggle-default-capture-device     Toggle the sound capture
     --toggle-capture-on-off             Toggle ON/OFF sound capturing
@@ -109,31 +108,35 @@ Sound:
     --capture-unmute                    Start sound capturing
 
 Language:
-  Usage: commbase [options]
   options:
     --set-language     (Interactive) List and set languages available
 
-Voice:
-  Usage: commbase [options]
+TTS engine (pytts3):
   options:
     --list-pyttsx3-voices               List the commbase-tts-pyttsx3 voices available
     --filter-pyttsx3-english-voices     Filter pyttsx3 English language voices
+    --set-pyttsx3-voice-index           Set pyttsx3 TTS engine voice index / Show current voice index
 
 STT engine:
-  Usage: commbase [options]
   options:
     --select-stt-engine      (Interactive) List and select STT engines available
     --restart-stt-engine     Shutdown running STT engine and restart it
 
-Shutdown and Power Off:
-  Usage: commbase [options]
+Shutdown:
   options:
     --stop-commbase        (Interactive) Request user password and stop Commbase
     --reboot-system        (Interactive) Request user password and reboot system
     --power-off-system     (Interactive) Request user password and power off system
 
+Log:
+  options:
+    --show-chatroom              Display chatroom in apps pane
+    --show-log-commands          Display log commands in apps pane
+    --show-log-messages          Display log messages in apps pane
+    --show-log-chat-log          Display log chat-log in apps pane
+    --show-full-commbase-log     Display full Commbase log in apps pane
+
 Control:
-  Usage: commbase [options]
   options:
 EOT
 
@@ -143,7 +146,6 @@ EOT
 cat <<EOT
 
 Skill and Skillset:
-  Usage: commbase [options]
   options:
     Checkout the User's Guide for a complete list of options
   Examples (Double quotes are optional):
@@ -155,12 +157,12 @@ Skill and Skillset:
             "Okay, set a timer of twenty five minutes."
             Okay, set a timer of one hundred one minutes.
 
-Misspelled/Misspoken/Inexistent Terminal/Voice Commbase Command. Alternatively, Discourse:
-  Usage: [commbase] [discourse]
+Conversation discourse:
+  Misspelled, misspoken, or nonexistent terminal/voice commands are routed to the data exchange server as conversation discourses unless configured otherwise
   Examples:
     commbase --i-misspell-this-command:  Pass mentioned wrong terminal Commbase command as conversation message to data exchange.
-    commbase I misspelled this command:  Pass mentioned wrong terminal Commbase command as conversation message to data exchange.
-    commbase "I misspelled this command":  Pass mentioned wrong terminal Commbase command as conversation message to data exchange.
+    commbase I misspell this command:  Pass mentioned wrong terminal Commbase command as conversation message to data exchange.
+    commbase "I misspell this command":  Pass mentioned wrong terminal Commbase command as conversation message to data exchange.
     "Okay, I misspoke this command":  Pass mentioned misspoken voice Commbase command as conversation message to data exchange.
     "Okay, this command doesn't exist":  Pass mentioned inexistent voice Commbase command as conversation message to data exchange.
     "What's the meaning of life?.":  Pass mentioned discourse as conversation message to data exchange.
@@ -180,7 +182,6 @@ route_option() {
     source $COMMBASE_APP_DIR/src/app.sh
 
     # Imports from libcommbase routines
-    append_message_to_log_file=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/append_message_to_log_file.sh
     capture_mute=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/capture_mute.sh
     capture_unmute=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/capture_unmute.sh
     cleanup_directory_by_age=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/cleanup_directory_by_age.sh
@@ -188,9 +189,13 @@ route_option() {
     controller=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/controller.sh
     filter_pyttsx3_voices_by_language=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/filter_pyttsx3_voices_by_language.sh
     list_all_voices_available_for_pyttsx3=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/list_all_voices_available_for_pyttsx3.py
+    log_command_with_timestamp=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/log_command_with_timestamp.sh
+    log_message_with_timestamp=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/log_message_with_timestamp.sh
     restart_stt_engine=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/restart_stt_engine.sh
     run_voice_recorder_in_pane=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/run_voice_recorder_in_pane.sh
     store_chat_log_copy=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/store_log_copy.sh
+    tail_chat_log=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_chat_log.sh
+    tail_log_file=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/tail_log_file.sh
     toggle_default_capture_device=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/toggle_default_capture_device.sh
     toggle_capture_on_off=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/toggle_capture_on-off.sh
     update_control_in_messages_json=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/update_control_in_messages_json.sh
@@ -199,6 +204,7 @@ route_option() {
     terminal_request_user_password_and_execute=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/interactive/terminal_request_user_password_and_execute.sh
     terminal_select_stt_engine=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/interactive/terminal_select_stt_engine.sh
     terminal_set_language=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/interactive/terminal_set_language.sh
+    terminal_set_pytts3_voice_index=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/interactive/terminal_set_pytts3_voice_index.sh
 
     # First tmux session
     SESSIONNAME="Commbase-0";
@@ -209,23 +215,46 @@ route_option() {
 
         'start' | 'teleport' | 'client')
             if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-                echo "Session '$SESSIONNAME' exists.";
+                # Log the command
+                (bash "$log_command_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_4" "commbase start" "$COMMBASE_APP_DIR/$LOG_COMMANDS_FILE")
+
+                # echo "Session '$SESSIONNAME' exists.";
+                # Output the message and write it to the log file
+                (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_4" "2" "commbase_session_exist" "False" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+                (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_4" "2" "commbase_session_exist" "True" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+
+                # Attach tmux session
                 tmux attach-session -t Commbase-0;
             else
                 # Clean up the log file
+                truncate -s 0 "$COMMBASE_APP_DIR/$LOG_COMMANDS_FILE"
+                # Log the command
+                (bash "$log_command_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "commbase start" "$COMMBASE_APP_DIR/$LOG_COMMANDS_FILE")
+
+                # Clean up the log file
                 truncate -s 0 "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE"
-                # Output the message and write it in the log file
-                echo "Starting application...";
-                (bash "$append_message_to_log_file" "commbase" "$LOG_SEVERITY_LEVEL_2" "starting_application" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+                # Output the message
+                (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "starting_application" "False" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+                # Write the message to the log file
+                (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "starting_application" "True" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+
+                # Start app
                 app;
             fi
             ;;
         'server')
             if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-                echo "Session '$SESSIONNAME' exists.";
+                # echo "Session '$SESSIONNAME' exists.";
+                # Output the message
+                (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_4" "2" "commbase_session_exist" "False" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+                # Write the message to the log file
+                (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_4" "2" "commbase_session_exist" "True" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
                 tmux attach-session -t Commbase-0;
             else
-                echo "Starting application...";
+                # Output the message
+                (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "starting_application" "False" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+                # Write the message to the log file
+                (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "starting_application" "True" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
                 # Give .3 seconds to tmux to draw its content before continuing
                 time=0.3;
                 # Kill any existent tmux Commbase session in order to avoid duplicates
@@ -258,18 +287,32 @@ route_option() {
 
     # Make sure that the tmux session is running
     if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-        echo "Session '$SESSIONNAME' exists." > /dev/null;
+        # echo "Session '$SESSIONNAME' exists." > /dev/null;
 
         case "$1" in
 
           'stop')
-            echo "Stopping application..."
-            echo "Saving conversation to the user directory..."
+            # Output the message
+            (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "stopping_application" "False" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+            # Write the message to the log file
+            (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "stopping_application" "True" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+
+            # Output the message
+            (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "saving_conversation_to_user_directory" "False" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+            # Write the message to the log file
+            (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "saving_conversation_to_user_directory" "True" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+
             (bash "$store_chat_log_copy" "chat_log_" "txt")
-            echo "Cleaning up directories and files..."
+
+            # Output the message
+            (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "cleaning_up_directories_and_files" "False" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+            # Write the message to the log file
+            (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "cleaning_up_directories_and_files" "True" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+
             (bash "$cleanup_directory_by_file_count" "$MAX_CONVERSATION_FILES_COUNT" "$COMMBASE_APP_DIR"/user/conversation_logs/)
             (bash "$cleanup_directory_by_age" "$MAX_CONVERSATION_FILE_DAYS_STORED" "$COMMBASE_APP_DIR"/user/conversation_logs/)
             (sleep 2)  # Time in seconds to read messages on pane before the app shutdown
+
             # Kill the processes of the scripts that do not respond to the
             # interrupt signal or appear to duplicate once the program stops and
             # exits.
@@ -314,6 +357,11 @@ route_option() {
             # Filter English language voices for commbase-tts-pyttsx3
             (bash "$filter_pyttsx3_voices_by_language" "english")
             ;;
+            # Set pyttsx3 TTS engine voice index / Show current voice index
+          '--set-pyttsx3-voice-index')
+            # Filter English language voices for commbase-tts-pyttsx3
+            (bash "$terminal_set_pytts3_voice_index")
+            ;;
           '--select-stt-engine')
             # Run an interactive terminal only built-in skill to select an stt engine
             (bash "$terminal_select_stt_engine")
@@ -334,6 +382,31 @@ route_option() {
             # Interactively request the user password and power off the system
             (bash "$terminal_request_user_password_and_execute" "$INIT_SYSTEM_COMMAND" "poweroff")
             ;;
+          '--show-chatroom')
+            # Display chatroom in apps pane
+            (tmux select-window -t 1 && tmux select-pane -t 1 && tmux send-keys C-c);  # Sends Ctrl-c
+            (tmux select-window -t 1 && tmux select-pane -t 1 && tmux send-keys " clear; bash $tail_chat_log" C-m && sleep "$time");
+            (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear" C-m);
+            ;;
+          '--show-log-commands')
+            # Display log commands in apps pane
+            (tmux select-window -t 1 && tmux select-pane -t 1 && tmux send-keys C-c);  # Sends Ctrl-c
+            (tmux select-window -t 1 && tmux select-pane -t 1 && tmux send-keys " clear; bash $tail_log_file $LOG_COMMANDS_FILE" C-m && sleep "$time");
+            (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear" C-m);
+            ;;
+          '--show-log-messages')
+            # Display log messages in apps pane
+            (tmux select-window -t 1 && tmux select-pane -t 1 && tmux send-keys C-c);  # Sends Ctrl-c
+            (tmux select-window -t 1 && tmux select-pane -t 1 && tmux send-keys " clear; bash $tail_log_file $LOG_MESSAGES_FILE" C-m && sleep "$time");
+            (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear" C-m);
+            ;;
+          '--show-log-chat-log')
+            # Display log chat-log in apps pane
+            (tmux select-window -t 1 && tmux select-pane -t 1 && tmux send-keys C-c);  # Sends Ctrl-c
+            (tmux select-window -t 1 && tmux select-pane -t 1 && tmux send-keys " clear; bash $tail_log_file $CHAT_LOG_FILE" C-m && sleep "$time");
+            (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear" C-m);
+            ;;
+
         esac
 
         case "$terminal_voice_command" in
@@ -372,7 +445,10 @@ route_option() {
         esac
 
     else
-        echo "Session '$SESSIONNAME' does not exists. Usage: /usr/bin/commbase [start|stop]";
+        # Output the message
+        (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "commbase_session_does_not_exist" "False" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
+        # Write the message to the log file
+        (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "commbase_session_does_not_exist" "True" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
     fi
 }
 

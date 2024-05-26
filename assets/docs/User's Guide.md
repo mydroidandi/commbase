@@ -119,7 +119,8 @@ The default minimal app, renders its interface in the file src/app/.sh. This app
 The windows from 2 to 5 are not required by the app to work, and can be disabled (see below).
 
 The window 1, "Commbase", contains 7 panes, where every pane runs a component:
-- Pane 1: It is the chatroom component.
+- Pane 1: It is the chatroom component and the apps component. Its content changes due to commbase terminal/voice commands such as:   `commbase --show-chatroom`, `commbase --show-log-commands`, or any custom command that programmers code to load in this pane.
+
 - Pane 2: It is the speech recognizer component.
 - Pane 3: It is the server component.
 - Pane 4: It is the client component.
@@ -952,7 +953,17 @@ The default version of the file **commbase.conf** contains the next values:
 - **LOG_MESSAGES_FILE**:
   - Description: It specifies the file path where log messages for the Commbase application are stored.
   - Possible values: Any valid file path.
-  - Example value: `log/commbase.log` (Default): Set to this file path by default for storing log messages related to the Commbase application.
+  - Example value: `log/messages.log` (Default): Set to this file path by default for storing log messages related to the Commbase application.
+
+- **LOG_COMMANDS_TO_FILE_ON**:
+  - Description: It specifies whether logging of commands to a file is enabled.
+  - Possible values: "True" or "False".
+  - Example value: "True" (Default): Set to "True" to enable logging of commands to a file.
+
+- **LOG_COMMANDS_FILE**:
+  - Description: It specifies the file path where command logs for the application are stored.
+  - Possible values: Any valid file path.
+  - Example value: `log/commands.log` (Default): Set to this file path by default for storing command logs related to the application.
 
 - **TTS_ENGINE_STRING**:
   - Description: It represents a string that specifies the configuration or command to invoke the TTS engine. You can set up a third-party engine here, including proprietary engines with proprietary voices or voices from other operating systems, TTS systems with the ability to use a clone/fake of your own voice, or API-connection-based TTS services tied to paid subscriptions. Every TTS has its features, advantages, and disadvantages, so its selection is your decision.
@@ -965,49 +976,43 @@ The default version of the file **commbase.conf** contains the next values:
     - `$PYTHON_ENV_VERSION $COMMBASE_APP_DIR/bundles/commbase-tts-gTTS/commbase_tts_gTTS.py --param1 val1 --param2 val2 --param3 val3:`: It specifies the TTS executable commbase-tts-gTTS.py's script and its arguments. gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API. (TODO:)
 
 - **AUDIBLE_ASSISTANT_LOGGING_ON**:
-  - Description: In regards to the variable `ASSISTANT_LOG_SEVERITY_LEVELS_ON`, there are four states in which the assistant logs discourses: 1. Audio Output = ON, Severity Log = ON. 2. Audio Output = ON, Severity Log = OFF. 3. Audio Output = OFF, Severity Log = ON. 4. Audio Output = OFF, Severity Log = OFF.
+  - Description: It specifies whether the assistant discourses are spoken out loud or not.
   - Possible values:
-    - `True` (Default): Set to True, the assistant speaks the system logging messages out loud.
-    - `False`: Set to False, the assistant doesn't speak the system logging messages out loud.
-
-- **ASSISTANT_LOG_SEVERITY_LEVELS_ON**:
-  - Description: This variable determines whether the logging severity levels are enabled/disabled within the assistant's messages in the chatroom. The Log Severity Levels are used in software development and system administration to categorize the severity of events being logged. By utilizing these levels effectively, you can streamline the debugging process, improve system monitoring, and enhance the overall stability of your scripts. Assistant messages are called **discourses** in Commbase. Based on the nature of these messages, they generally fall into the informational category, hence the majority being classified as **INFO**. Instructions might sometimes warrant a **WARNING** level, especially if they are crucial and require attention. The next is a guide to log your assistant discourses appropriately, matching type of discourse and log severity level: 1. Answers: LOG_SEVERITY_LEVEL_2 (INFO), 2. Greetings: LOG_SEVERITY_LEVEL_2 (INFO), 3. Instructions: LOG_SEVERITY_LEVEL_3 (WARNING), 4. Introductions: LOG_SEVERITY_LEVEL_2 (INFO), 5. Jokes: LOG_SEVERITY_LEVEL_2 (INFO), 6. Phrases: LOG_SEVERITY_LEVEL_2 (INFO), 7. Questions: LOG_SEVERITY_LEVEL_2 (INFO), 8. Quotations: LOG_SEVERITY_LEVEL_2 (INFO), 9. Speeches: LOG_SEVERITY_LEVEL_2 (INFO), 10. Statements: LOG_SEVERITY_LEVEL_2 (INFO), 11. Talks: LOG_SEVERITY_LEVEL_2 (INFO). Don't forget to tailor the log messages to provide relevant details about scripts execution. Here's the default list of log level variables in the configuration file **/config/commbase.conf**: `LOG_SEVERITY_LEVEL_1`, `LOG_SEVERITY_LEVEL_2`, `LOG_SEVERITY_LEVEL_3`, `LOG_SEVERITY_LEVEL_4`, `LOG_SEVERITY_LEVEL_5`, `LOG_SEVERITY_LEVEL_6`, `LOG_SEVERITY_LEVEL_7`.
-  - Possible values:
-    - `True` (Default): Set to True, the assistant includes the log severity level in its chatroom messages.
-    - `False`: Set to False, the assistant does not include the log severity level in its chatroom messages.
+    - `True` (Default): Set to True, the assistant speaks messages out loud.
+    - `False`: Set to False, the assistant doesn't speak messages out loud.
 
 - **LOG_SEVERITY_LEVEL_1**:
-  - Description: It is used for detailed information, typically useful only for diagnosing problems.
+  - Description: It is used for detailed information, typically useful only for diagnosing problems. For logging all AI assistant voice speeches, you would typically use a lower severity log level because these events are routine and not indicative of any issues. That is why we use **DEBUG** when printing logs with assistant discourses in the chatroom pane. Severity Levels are used in software development and system administration to categorize the severity of events being logged. By utilizing these levels effectively, you can streamline the debugging process, improve system monitoring, and enhance the overall stability of your scripts. The appropriate severity levels for this purpose would be: `LOG_SEVERITY_LEVEL_1` = "DEBUG": This level is suitable for detailed information that is mainly useful for developers when diagnosing problems. `LOG_SEVERITY_LEVEL_2` = "INFO": This level is appropriate for informational messages that highlight the progress of the application at a coarse-grained level. Assistant discourses can be: 1. Answers, 2. Greetings, 3. Instructions, 4. Introductions, 5. Jokes, 6. Phrases, 7. Questions, 8. Quotations, 9. Speeches, 10. Statements, or 11. Talks. Here's the default list of log level variables in the configuration file **/config/commbase.conf**: `LOG_SEVERITY_LEVEL_1`, `LOG_SEVERITY_LEVEL_2`, `LOG_SEVERITY_LEVEL_3`, `LOG_SEVERITY_LEVEL_4`, `LOG_SEVERITY_LEVEL_5`, `LOG_SEVERITY_LEVEL_6`, `LOG_SEVERITY_LEVEL_7`.
   - Possible values:
     - `BEBUG` (Default): This variable is used to include the string "DEBUG" in a chatroom message.
 
 - **LOG_SEVERITY_LEVEL_2**:
-  - Description: It is used for general information about the operation of the system.
+  - Description: It is used for general information about the operation of the system. Here's the default list of log level variables in the configuration file **/config/commbase.conf**: `LOG_SEVERITY_LEVEL_1`, `LOG_SEVERITY_LEVEL_2`, `LOG_SEVERITY_LEVEL_3`, `LOG_SEVERITY_LEVEL_4`, `LOG_SEVERITY_LEVEL_5`, `LOG_SEVERITY_LEVEL_6`, `LOG_SEVERITY_LEVEL_7`.
   - Possible values:
     - `INFO` (Default): This variable is used to include the string "INFO" in a chatroom message.
 
 - **LOG_SEVERITY_LEVEL_3**:
-  - Description: It is used for an indication that something unexpected happened or may be problematic in the future, but the system can still function.
+  - Description: It is used for an indication that something unexpected happened or may be problematic in the future, but the system can still function. Here's the default list of log level variables in the configuration file **/config/commbase.conf**: `LOG_SEVERITY_LEVEL_1`, `LOG_SEVERITY_LEVEL_2`, `LOG_SEVERITY_LEVEL_3`, `LOG_SEVERITY_LEVEL_4`, `LOG_SEVERITY_LEVEL_5`, `LOG_SEVERITY_LEVEL_6`, `LOG_SEVERITY_LEVEL_7`.
   - Possible values:
     - `WARNING` (Default): This variable is used to include the string "WARNING" in a chatroom message.
 
 - **LOG_SEVERITY_LEVEL_4**:
-  - Description: It is used to log that a failure occurred, but it's usually recoverable, and the system can still operate.
+  - Description: It is used to log that a failure occurred, but it's usually recoverable, and the system can still operate. Here's the default list of log level variables in the configuration file **/config/commbase.conf**: `LOG_SEVERITY_LEVEL_1`, `LOG_SEVERITY_LEVEL_2`, `LOG_SEVERITY_LEVEL_3`, `LOG_SEVERITY_LEVEL_4`, `LOG_SEVERITY_LEVEL_5`, `LOG_SEVERITY_LEVEL_6`, `LOG_SEVERITY_LEVEL_7`.
   - Possible values:
     - `ERROR` (Default): This variable is used to include the string "ERROR" in a chatroom message.
 
 - **LOG_SEVERITY_LEVEL_5**:
-  - Description: Indicates a severe error that may prevent the system from functioning correctly. It often requires immediate attention.
+  - Description: Indicates a severe error that may prevent the system from functioning correctly. It often requires immediate attention. Here's the default list of log level variables in the configuration file **/config/commbase.conf**: `LOG_SEVERITY_LEVEL_1`, `LOG_SEVERITY_LEVEL_2`, `LOG_SEVERITY_LEVEL_3`, `LOG_SEVERITY_LEVEL_4`, `LOG_SEVERITY_LEVEL_5`, `LOG_SEVERITY_LEVEL_6`, `LOG_SEVERITY_LEVEL_7`.
   - Possible values:
     - `CRITICAL` (Default): This variable is used to include the string "CRITICAL" in a chatroom message.
 
 - **LOG_SEVERITY_LEVEL_6**:
-  - Description: It is used for very detailed debugging information.
+  - Description: It is used for very detailed debugging information. Here's the default list of log level variables in the configuration file **/config/commbase.conf**: `LOG_SEVERITY_LEVEL_1`, `LOG_SEVERITY_LEVEL_2`, `LOG_SEVERITY_LEVEL_3`, `LOG_SEVERITY_LEVEL_4`, `LOG_SEVERITY_LEVEL_5`, `LOG_SEVERITY_LEVEL_6`, `LOG_SEVERITY_LEVEL_7`.
   - Possible values:
     - `TRACE` (Default): This variable is used to include the string "TRACE" in a chatroom message.
 
 - **LOG_SEVERITY_LEVEL_7**:
-  - Description: It is used for critical errors that lead to system shutdown.
+  - Description: It is used for critical errors that lead to system shutdown. Here's the default list of log level variables in the configuration file **/config/commbase.conf**: `LOG_SEVERITY_LEVEL_1`, `LOG_SEVERITY_LEVEL_2`, `LOG_SEVERITY_LEVEL_3`, `LOG_SEVERITY_LEVEL_4`, `LOG_SEVERITY_LEVEL_5`, `LOG_SEVERITY_LEVEL_6`, `LOG_SEVERITY_LEVEL_7`.
   - Possible values:
     - `FATAL` (Default): This variable is used to include the string "FATAL" in a chatroom message.
 
