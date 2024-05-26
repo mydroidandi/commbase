@@ -98,6 +98,7 @@ This project is coded and organized like this:
 │               │       ├── base
 │               │       └── ...
 │               ├── discourses
+│               ├── log_messages
 │               └── skill_patterns
 │                   └── openai_whisper_models
 │                       ├── base
@@ -114,13 +115,13 @@ This project is coded and organized like this:
 ├── screenshots  # Stores the image commbase.png
 ├── scripts  # Stores the scripts for deploying and configuring Commbase, and a few utils
 │   ├── configuration
-│   │   └── install_commbase_executable
+│   │   ├── install_commbase_executable
+│   │   └── reset_commbase.conf
 │   ├── deployment
 │   └── utilities
 │       ├── back-up
-│       ├── bundles
-│       │   └── vu-meter
-│       └── reset_commbase.conf
+│       └── bundles
+│           └── vu-meter
 ├── src  # This directory contains user-generated source code
 │   ├── client
 │   │   ├── assets  # Stores different types of assets, such as images, fonts, and ASCII art

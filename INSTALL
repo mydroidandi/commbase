@@ -713,6 +713,8 @@ In Debian-based systems, including Debian itself and its derivatives like Ubuntu
 
 - bash.
 
+- bc.
+
 - cpulimit.
 
 - curl.
@@ -855,7 +857,7 @@ It is similar to xmodmap.
 
 Install these packages from the official repositories for your distro. In summary, for Debian it would be like this:
 
-$ sudo apt-get update; sudo apt-get install alsa-utils bash cpulimit curl dash espeak festival ffmpeg figlet gawk gdebi git jq mpv mplayer nmap openssh-client openssh-server openssl portaudio19-dev procps pulseaudio python3-opencv rsync sed sox sudo tar tasksel tesseract-ocr tmux unzip uuid-runtime wget xbindkeys
+$ sudo apt-get update; sudo apt-get install alsa-utils bash bc cpulimit curl dash espeak festival ffmpeg figlet gawk gdebi git jq mpv mplayer nmap openssh-client openssh-server openssl portaudio19-dev procps pulseaudio python3-opencv rsync sed sox sudo tar tasksel tesseract-ocr tmux unzip uuid-runtime wget xbindkeys
 
 $ sudo apt-get install pipewire pipewire-pulse
 
@@ -1027,7 +1029,11 @@ REMOTE_HOST="commbase@127.0.0.1"
 
 DEST_PATH="/home/<your_user_home>/commbase/bundles/commbase-stt-whisper-reactive-p/client_data/recording.wav"
 
-5. Set the audio capture variable, for example:
+5. Set the audio capture variables:
+
+AUDIO_CAPTURE_DEVICE:
+
+Example:
 
 AUDIO_CAPTURE_DEVICE="hw:CARD=Microphone,DEV=0"
 
@@ -1044,6 +1050,38 @@ Then select the input device parameter based on the output, for example:
      USB Audio Device, USB Audio 1
      Direct hardware device without any conversions
      ...
+
+CARD_INDEX:
+
+This variable is exclusively found in the commbase-recorder-transmitter-b/reccomm.sh file.
+
+To obtain your card index, use the following command:
+
+$ cat /proc/asound/cards
+
+Look for the index of the card with a microphone (The same of the variable AUDIO_CAPTURE_DEVICE)
+
+Example:
+
+CARD_INDEX="0"
+
+DEVICE_INDEX:
+
+This variable is exclusively found in the commbase-recorder-transmitter-b/reccomm.sh file.
+
+To obtain your device index, use the following command:
+
+$ arecord -L
+
+Example:
+
+DEVICE_INDEX="0"
+
+Checking Device Status:
+
+If you want to verify which devices are in use, meaning those recording at the moment, you can use the following command to obtain a list of busy devices:
+
+$ lsof /dev/snd/*
 
 6. Setup the SSH connection from the ssh client (the host that is going to work as a remote for Commbase) to the ssh server host (the host that is going to work as Commbase or Commbase client) using the appropriate IP address. If installing in the localhost, use the localhost IP address:
 

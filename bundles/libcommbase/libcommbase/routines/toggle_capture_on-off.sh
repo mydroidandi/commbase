@@ -41,6 +41,10 @@ toggle_capture_on_off() {
   # The configuration file
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
+  # Imports from libcommbase
+  assistant_discourse=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/assistant_discourse.sh
+  assistant_discourse_with_external_capture_driving=$COMMBASE_APP_DIR/bundles/libcommbase/libcommbase/routines/assistant_discourse_with_external_capture_driving.sh
+
   # First tmux session
   SESSIONNAME="Commbase-0";
 
@@ -53,89 +57,28 @@ toggle_capture_on_off() {
     (amixer set Capture cap &>/dev/null || exit 99);  # The default keyboard binding for this is Alt-Shift-3.
   elif (echo "$amixer_status" | grep -q 'on' || exit 99); then
     # Stop capturing sound that alters Commbase recognition.
-    #(amixer set Capture nocap &>/dev/null || exit 99);  # The default keyboard binding for this is ALT-SHIFT-2.
     (amixer set Capture nocap &>/dev/null);  # The default keyboard binding for this is ALT-SHIFT-2.
     # Check if there is a running Commbase session
     if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-      # Check if the assistant configuration is set to make it speak out loud.
-      # TTS_ENGINE_STRING needs Python to function. Speaking won't work if you
-      # use coommnase_env, and it is outside the environment.
-      if [ "$AUDIBLE_ASSISTANT_LOGGING_ON" = "True" ]; then
-        # If true, show the log severity level in the assistant message
-        if [ "$ASSISTANT_LOG_SEVERITY_LEVELS_ON" = "True" ]; then
-          # Log the assistant message in the chatroom = ON
-          # Make the assistant speak the message = ON
-          # Log the severity level = ON
-          (echo "$ASSISTANT_NAME_IN_CHAT_PANE" "[$LOG_SEVERITY_LEVEL_3]: The default microphone is mute now." >> "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" && echo "The default microphone is mute now." | $TTS_ENGINE_STRING || exit 99);
-        else
-          # Log the assistant message in the chatroom = ON
-          # Make the assistant speak the message = ON
-          # Log the severity level = OFF
-          (echo "$ASSISTANT_NAME_IN_CHAT_PANE" "The default microphone is mute now." >> "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" && echo "The default microphone is mute now." | $TTS_ENGINE_STRING || exit 99);
-        fi
-      else
-        # The audible assistant variable is set to False
-        # If true, show the log severity level in the assistant message
-        if [ "$ASSISTANT_LOG_SEVERITY_LEVELS_ON" = "True" ]; then
-          # Log the assistant message in the chatroom = ON
-          # Make the assistant speak the message = OFF
-          # Log the severity level = ON
-          (echo "$ASSISTANT_NAME_IN_CHAT_PANE" "[$LOG_SEVERITY_LEVEL_3]: The default microphone is mute now." >> "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" || exit 99);
-        else
-          # Log the assistant message in the chatroom = ON
-          # Make the assistant speak the message = OFF
-          # Log the severity level = OFF
-          (echo "$ASSISTANT_NAME_IN_CHAT_PANE" "The default microphone is mute now." >> "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" || exit 99);
-        fi
-      fi
+      # Call assistant_discourse_with_external_capture_driving with the
+      # arguments: pane, i18n, origin, log_severity_level_1, discourse_key.
+      (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear; bash \"$assistant_discourse_with_external_capture_driving\" \"7\" \"1\" \"toggle_capture_on-off\" \"$LOG_SEVERITY_LEVEL_1\" \"default_microphone_is_mute_now\"" C-m);
     else
-      # The key binding script is executed when Commbase is off.
-      # Log the assistant message in the chatroom = OFF
-      # Make the assistant speak the message = OFF
-      # Log the severity level = ON
-      (echo "[$LOG_SEVERITY_LEVEL_3]: The default microphone is mute now." || exit 99);
+      # The key binding script is executed when Commbase is off. No
+      # configuration variables are available.
+      (echo "The default microphone is mute now." || exit 99);
     fi
   else
     # amixer is unable to retrieve the capture device status
     # Check if there is a running Commbase session
     if (tmux has-session -t "$SESSIONNAME" 2> /dev/null); then
-      # Check if the assistant configuration is set to make it speak out loud.
-      # TTS_ENGINE_STRING needs Python to function. Speaking won't work if you
-      # use coommnase_env, and it is outside the environment.
-      if [ "$AUDIBLE_ASSISTANT_LOGGING_ON" = "True" ]; then
-        # If true, show the log severity level in the assistant message
-        if [ "$ASSISTANT_LOG_SEVERITY_LEVELS_ON" = "True" ]; then
-          # Log the assistant message in the chatroom = ON
-          # Make the assistant speak the message = ON
-          # Log the severity level = ON
-          (echo "$ASSISTANT_NAME_IN_CHAT_PANE" "[$LOG_SEVERITY_LEVEL_5]: There is an issue with the microphone." >> "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" && echo "There is an issue with the microphone." | $TTS_ENGINE_STRING || exit 99);
-        else
-          # Log the assistant message in the chatroom = ON
-          # Make the assistant speak the message = ON
-          # Log the severity level = OFF
-          (echo "$ASSISTANT_NAME_IN_CHAT_PANE" "There is an issue with the microphone." >> "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" && echo "There is an issue with the microphone." | $TTS_ENGINE_STRING || exit 99);
-        fi
-      else
-        # The audible assistant variable is set to false
-        # If true, show the log severity level in the assistant message
-        if [ "$ASSISTANT_LOG_SEVERITY_LEVELS_ON" = "True" ]; then
-          # Log the assistant message in the chatroom = ON
-          # Make the assistant speak the message = OFF
-          # Log the severity level = ON
-          (echo "$ASSISTANT_NAME_IN_CHAT_PANE" "[$LOG_SEVERITY_LEVEL_5]: There is an issue with the microphone." >> "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" || exit 99);
-        else
-          # Log the assistant message in the chatroom = ON
-          # Make the assistant speak the message = OFF
-          # Log the severity level = OFF
-          (echo "$ASSISTANT_NAME_IN_CHAT_PANE" "There is an issue with the microphone." >> "$COMMBASE_APP_DIR""$CHAT_LOG_FILE" || exit 99);
-        fi
-      fi
+      # Call assistant_discourse with the arguments: pane, i18n, origin,
+      # log_severity_level_1, discourse_key.
+      (tmux select-window -t 1 && tmux select-pane -t 7 && tmux send-keys " clear; bash \"$assistant_discourse\" \"7\" \"1\" \"toggle_capture_on-off\" \"$LOG_SEVERITY_LEVEL_1\" \"issue_with_the_microphone\"" C-m);
     else
-      # The key binding script is executed when Commbase is off.
-      # Log the assistant message in the chatroom = OFF
-      # Make the assistant speak the message = OFF
-      # Log the severity level = ON
-      (echo "[$LOG_SEVERITY_LEVEL_5]: There an issue with the microphone." || exit 99);
+      # The key binding script is executed when Commbase is off. No
+      # configuration variables are available.
+      (echo "There an issue with the microphone." || exit 99);
     fi
   fi
 }

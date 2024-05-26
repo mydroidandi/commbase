@@ -1,5 +1,7 @@
 {
   "confirmation": "Sí señor.",
+  "default_microphone_is_mute_now": "El micrófono predeterminado está silenciado ahora.",
+  "issue_with_the_microphone": "Hay un problema con el micrófono.",
   "libcommbase_introduction": "Hola, soy libcommbase. Soy una colección de bibliotecas para centralizar funciones comunes que se pueden compartir entre múltiples proyectos de asistentes conversacionales impulsados por Inteligencia Artificial. Puedo ser implementado con A I ( M L / D S ) y lenguajes de programación. Asimismo, normalmente uso Commbase, un marco de desarrollo extensible y flexible, y un empaquetador de módulos y bibliotecas.",
   "task_completion": "Hecho.",
   "task_completion_2": "Tarea completada."
