@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/env bash
 ################################################################################
 #                                  libcommbase                                 #
 #                                                                              #
@@ -6,7 +6,7 @@
 # across multiple conversational AI assistant projects                         #
 #                                                                              #
 # Change History                                                               #
-# 05/16/2024  Esteban Herrera Original code.                                   #
+# 05/22/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -14,7 +14,7 @@
 ################################################################################
 ################################################################################
 #                                                                              #
-#  Copyright (c) 2022-present Esteban Herrera C.                               #
+#  Copyright (c) 2023-present Esteban Herrera C.                               #
 #  stv.herrera@gmail.com                                                       #
 #                                                                              #
 #  This program is free software; you can redistribute it and/or modify        #
@@ -31,45 +31,44 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# terminal_request_user_password_and_execute.sh
-# Description: This script prompts the user for their password and, if
-# validated, executes the given command with optional parameters.
+# tail_log_file.sh
+# Monitors a specified log file in real-time, printing each new entry without
+# prefix. It loads configuration settings, ensures the log file path is defined,
+# and uses the tail -f command to watch the file for updates.
+tail_log_file() {
+  # Imports
+  source "$COMMBASE_APP_DIR"/config/commbase.conf
 
-# Function to request the user's password and validate it
-terminal_request_user_password_and_execute() {
-  local command="$1"
-  local parameter_1="$2"
-  local parameter_2="$3"
-  local username
+  local log_file_path="$1"
 
-  # Get the current username
-  username=$(whoami)
+  # Specify the path to your file
+  file_path="$COMMBASE_APP_DIR/$log_file_path"
 
-  # Prompt for the user's password
-  echo -n "Please enter your password: "
-  read -r -s user_password
-  echo
-
-  # Validate the password using 'su'
-  echo "$user_password" | su -c "exit" "$username" >/dev/null 2>&1
-  local su_exit_status=$?
-
-  if [ $su_exit_status -eq 0 ]; then
-    echo "Password validated."
-    # Execute the command with parameters
-    (eval "$command" "$parameter_1" "$parameter_2")
-  else
-    echo "Incorrect password or permission denied."
+ # Ensure file_path is defined
+  if [[ -z "$file_path" ]]; then
+    echo "Error: file_path is not defined in the configuration."
     exit 1
   fi
+
+  # Monitor the file for changes
+  (tail -f "$file_path") | while read -r line; do
+    # Process each line
+    echo "$line"
+  done
 
   exit 99
 }
 
-# Call terminal_request_user_password_and_execute if the script is run directly
-# (not sourced)
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  (terminal_request_user_password_and_execute "$1" "$2" "$3")
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <log_file_path>"
+  exit 1
 fi
+
+# Global declarations
+
+# Extract origin, log severity level, and message from command line arguments
+log_file_path="$1"
+
+(tail_log_file "$log_file_path")
 
 exit 99

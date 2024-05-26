@@ -46,9 +46,9 @@ discourse_data_exchange_server_error() {
 
   time=0.1
 
-  # Call assistant_discourse with the arguments: pane, i18n file path,
-  # log_severity_level, and discourse_key.
-  (clear; bash "$assistant_discourse" 7 2 "$LOG_SEVERITY_LEVEL_5" data_exchange_server_error && sleep "$time");
+  # Call assistant_discourse with the arguments: pane, i18n, origin,
+  # log_severity_level_1, discourse_key.
+  (clear; bash "$assistant_discourse" 7 2 "data-exchange-server" "$LOG_SEVERITY_LEVEL_1" data_exchange_server_error && sleep "$time");
 
   exit 99
 }

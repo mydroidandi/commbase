@@ -58,7 +58,7 @@ def get_chat_log_file():
             # Check if the variable we are looking for exists in the line
             if variable_name == "CHAT_LOG_FILE":
                 # Remove the quotes from the value of the variable
-                chat_log_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+                chat_log_file = CONFIG_FILE_DIR + "/" + value.strip()[1:-1]
 
     # Check if the variable was found
     if chat_log_file is not None:

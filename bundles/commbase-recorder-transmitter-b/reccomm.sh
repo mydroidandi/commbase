@@ -47,13 +47,25 @@ FILENAME="$RANDOM_DIR/recording.wav"
 # Set up the following variables accordingly
 REMOTE_HOST="commbase@127.0.0.1"
 DEST_PATH="/home/commbase/Dev/commbase/bundles/commbase-stt-whisper-reactive-p/client_data/recording.wav"
-AUDIO_CAPTURE_DEVICE="hw:CARD=Microphone,DEV=0"
+AUDIO_CAPTURE_DEVICE="hw:CARD=Microphone,DEV=0"  # arecord -L
+CARD_INDEX="0"  # cat /proc/asound/cards
+DEVICE_INDEX="0"  # arecord -L
 RECORDING_CHAR="c"
 QUIT_CHAR="q"
+
+device_file="/dev/snd/pcmC${CARD_INDEX}D${DEVICE_INDEX}c"
+
+# Function to check if the device is busy
+is_device_busy() {
+
+  lsof "$device_file" > /dev/null 2>&1
+  return $?  # When the device is busy: $? is 0.
+}
 
 # Ensures that the temporary directory created earlier is deleted when the
 # script exits.
 cleanup() {
+
   echo "Cleaning up..."
   rm -r "$RANDOM_DIR"
   exit 0
@@ -70,6 +82,10 @@ reccomm() {
     if [ "$key" == $RECORDING_CHAR ]; then
       if [ "$recording" == false ]; then
         echo "Start recording..."
+          while is_device_busy; do
+            echo "Device is busy, waiting..."
+            sleep 1
+          done
         arecord -D "$AUDIO_CAPTURE_DEVICE" -f cd -t wav -d 10 -r 44100 -c 2 -V stereo -v "$FILENAME" &
         recording=true
       else
@@ -92,7 +108,10 @@ reccomm() {
 }
 
 main () {
+
 trap cleanup EXIT
+
+# Recording logic
 reccomm
 }
 

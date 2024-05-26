@@ -58,11 +58,101 @@ def get_chat_log_file():
             # Check if the variable we are looking for exists in the line
             if variable_name == "CHAT_LOG_FILE":
                 # Remove the quotes from the value of the variable
-                chat_log_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+                chat_log_file = CONFIG_FILE_DIR + "/" + value.strip()[1:-1]
 
     # Check if the variable was found
     if chat_log_file is not None:
         return chat_log_file
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_commbase_hardware_command_processing_start_file():
+    """
+    Retrieves the value of the COMMBASE_HARDWARE_COMMAND_PROCESSING_START_FILE
+    variable from the configuration file.
+
+    Returns:
+        str or None: The value of the variable if found, or None if not found.
+    """
+    # Initialize variable
+    processing_start_file = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "COMMBASE_HARDWARE_COMMAND_PROCESSING_START_FILE":
+                # Remove the quotes from the value of the variable
+                processing_start_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+
+    # Check if the variable was found
+    if processing_start_file is not None:
+        return processing_start_file
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_commbase_hardware_command_processing_stop_file():
+    """
+    Retrieves the value of the COMMBASE_HARDWARE_COMMAND_PROCESSING_STOP_FILE
+    variable from the configuration file.
+
+    Returns:
+        str or None: The value of the variable if found, or None if not found.
+    """
+    # Initialize variable
+    processing_stop_file = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "COMMBASE_HARDWARE_COMMAND_PROCESSING_STOP_FILE":
+                # Remove the quotes from the value of the variable
+                processing_stop_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+
+    # Check if the variable was found
+    if processing_stop_file is not None:
+        return processing_stop_file
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_commbase_hardware_device_0():
+    """
+    Retrieves the value of the COMBASE_HARDWARE_DEVICE_0 variable from the
+    configuration file.
+
+    Returns:
+        str or None: The value of the variable if found, or None if not found.
+    """
+    # Initialize variable
+    hardware_device_0 = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "COMBASE_HARDWARE_DEVICE_0":
+                # Remove the quotes from the value of the variable
+                hardware_device_0 = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if hardware_device_0 is not None:
+        return hardware_device_0
 
     # If the variable was not found, return None
     return None

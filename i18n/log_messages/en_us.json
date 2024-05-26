@@ -1,8 +1,8 @@
 {
-  "commbase_session_exist": "The Commbase session exists.",
-  "starting_application": "Starting application...",
-  "stopping_application": "Stopping application...",
-  "saving_application_to_user_directory": "Saving conversation to the user directory...",
   "cleaning_up_directories_and_files": "Cleaning up directories and files...",
-  "commbase_session_does_not_exist": "The Commbase session does not exists. Usage: /usr/bin/commbase [start|stop]."
+  "commbase_session_does_not_exist": "The Commbase session does not exists. Usage: /usr/bin/commbase [start|stop].",
+  "commbase_session_exist": "The Commbase session exists.",
+  "saving_conversation_to_user_directory": "Saving conversation to the user directory...",
+  "starting_application": "Starting application...",
+  "stopping_application": "Stopping application..."
 }

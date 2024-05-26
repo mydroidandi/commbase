@@ -45,7 +45,7 @@ tail_chat_log() {
   enduser_string="$END_USER_NAME_IN_CHAT_PANE"
 
   # Specify the path to your file
-  file_path=$COMMBASE_APP_DIR$CHAT_LOG_FILE
+  file_path="$COMMBASE_APP_DIR/$CHAT_LOG_FILE"
 
   # Define color variables
   assistant_color="\e[$ASSISTANT_BACKGROUND_COLOR_IN_CHAT_PANE"
