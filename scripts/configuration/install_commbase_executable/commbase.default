@@ -111,7 +111,7 @@ Language:
   options:
     --set-language     (Interactive) List and set languages available
 
-TTS engine (pytts3):
+TTS engine (pyttsx3):
   options:
     --list-pyttsx3-voices               List the commbase-tts-pyttsx3 voices available
     --filter-pyttsx3-english-voices     Filter pyttsx3 English language voices
