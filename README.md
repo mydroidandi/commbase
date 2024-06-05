@@ -24,30 +24,21 @@
 
 <div align="center">
 
-Commbase is a flexible and extensible ✨ development framework ✨ designed to empower computers and other devices with cutting-edge conversational AI capabilities. It serves as both a module and library bundler, incorporating third-party LLMs to enable features such as "distributed AIs" or "multi-agent systems" (MAS). Commbase adapts across a diverse range of devices, from computers to robots, smart appliances, vehicles, Iron Man like suits, starships, and beyond, ensuring universal accessibility and functionality. Operating effortlessly on either a single machine or a pair of machines in a client-server architecture, Commbase offers unparalleled adaptability and scalability.
+Commbase, short for Communicative Commands Base, is a comprehensive platform designed to empower computers and computer-based devices with cutting-edge conversational AI capabilities. While it includes a flexible and extensible ✨ development framework ✨ at its core, Commbase goes beyond mere development tools. It serves as both a module and library bundler, incorporating third-party Large Language Models (LLMs) to enable advanced features such as "distributed AIs" or "multi-agent systems" (MAS). Commbase adapts across a diverse range of devices, from computers to smart appliances, robots, vehicles, Iron Man-like suits, starships, and beyond, ensuring universal accessibility and functionality. Operating effortlessly on either a single machine or a pair of machines in a client-server architecture, Commbase offers unparalleled adaptability and scalability.
 
 </div>
 
-## Detailed Feature Overview
+## Features
 
-| Topic                   | Features                                                                                                                                                                        |
-|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 🛠️ Installation & Setup    | * Detailed installation steps, structure, and contribution guidelines are available on the GitHub repository, ensuring secure and transparent setup processes.                    |
-| 💻 Commands & Interfaces   | * Help option to see available built-in commands for terminal use or development. <br> * Built-in commands support both voice and terminal command calls.                        |
-| ⚙️ Control & Accessibility | * Easy to start and stop using init systems, cron jobs, terminal commands, or voice commands. <br> * Terminal-based interface, with the option to create custom UIs.            |
-| 🔀 Navigation              | * Seamlessly switch among windows using keybindings to access dashboards, server connections, etc.                                                                            |
-| 🖥️ Multi-pane Support      | * Multiple panes are provided, covering functionalities like the chat room, STT engine (Speech-to-Text), server pane, client pane, and additional options. |
-| 📂 Custom Applications     | * Load custom terminal applications and seamlessly switch back to the chat room in the same pane.                                                                             |
-| 🎨 Personalization         | * Customizable application, user, and assistant names.                                                                                                                                       |
-| 📝 Logging & Recording     | * Terminal and voice command recorder-transmitter area easy to install even in other hosts for remote control through networks, with enabled secure access control and logging.  |
-| 🔧 Configuration           | * Effortlessly adjust and customize your settings with our platform's centralized configuration files. No code is required to configure built-in options.                        |
-| 🗣️ STT & TTS Engines       | * The STT Engine operates in Whisper reactive mode by default, with the ability to switch to Whisper proactive mode at any time. <br> * TTS Engines are dedicated for text-to-speech functionalities, so projects can effectively speak in various languages, enhancing accessibility and global reach.      |
-| 🌍 Internationalization    | * Support to global audiences with seamless internationalization. <br> * Tailor your user experience by modifying i18n files to customize voice commands.                        |
-| 📜 Custom Scripting        | * Effortlessly create custom server-side command scripts with a single file catalog database (scalable to any RDBMS), our up-to-date well-documented API, and JSON simplicity. <br> * Write command scripts in any programming language.             |
-| ♻️ Reusable Functions      | * Access to a comprehensive library of reusable functions to enhance custom command scripts with streamlined efficiency and tailored functionalities.                           |
-| 🤖 Advanced Capabilities   | * LLMs (Large Language Models) integration. <br> * Enhanced assistant capabilities with advanced language understanding, including additional features like vision.               |
-| 📊 Activity Management     | * Efficiently manage your system's activity and user interactions by seamlessly integrating Commbase logs with custom app logs.  <br> * Logs include customizable backups of past assistant-user conversations.                                              |
-| 🛡️ Platform Stability      | * The use of Linux enhances the stability, reliability, and security of our software, ensuring robust and flexible performance in various environments.                        |
+| Topic                   | Description                                                                                                                                                          |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ⚙️ Control & Accessibility | Offers multiple methods to start and stop Commbase, including init systems, cron jobs, terminal commands, or voice commands. Provides a terminal-based interface and option for custom UIs.      |
+| 🖥️ Multi-pane Support      | Facilitates multitasking and organization within Commbase by providing a versatile workspace with options for navigating between different functionalities.                  |
+| 📝 Logging & Recording     | Enables transparent monitoring of system activity, troubleshooting, and security maintenance through the recording of terminal and voice commands, along with secure access control.   |
+| 🔧 Configuration           | Simplifies customization of Commbase to meet specific user needs and preferences by offering easy-to-adjust centralized configuration files for built-in options.               |
+| 🤖 Advanced Capabilities   | Demonstrates sophistication and cutting-edge AI functionalities by integrating Large Language Models (LLMs) and advanced assistant capabilities such as language understanding and vision. |
+
+For a detailed feature overview, follow this [`link.`](/assets/docs/Detailed%20Feature%20Overview.md)
 
 ## Usage
 
@@ -193,15 +184,13 @@ This project is coded and organized like this:
 
 ## Approach and Philosophy
 
-Our software embodies the minimalism and DRY (Don't Repeat Yourself) Unix philosophies, ensuring streamlined features and avoiding unnecessary repetition for enhanced efficiency and simplicity.
-
-The open-source nature of our project empowers developers to extend its capabilities by adding more bundles or writing their own code, fostering a collaborative and adaptable environment beyond voice commands.
-
-Additionally, our modular design facilitates flexible customization and extension of functionalities according to user needs.
+Our software embraces minimalism, the DRY (Don't Repeat Yourself) principle, and KISS (Keep It Simple, Stupid), ensuring streamlined features and eliminating unnecessary repetition for improved efficiency and simplicity, in line with the Unix philosophy.
 
 We adhere to industry-standard best practices in software engineering for design and architecture, ensuring the development of robust, scalable, and maintainable systems that meet the highest quality standards and user expectations.
 
-Moreover, you can incorporate your unique serial and wireless hardware into our platform, enabling tailored communication and interaction with devices, enhancing versatility and functionality.
+The open-source nature of our project empowers developers to extend its capabilities by adding more bundles or writing their own code, fostering a collaborative and adaptable environment beyond voice commands.
+
+Additionally, our modular design facilitates flexible customization and extension of functionalities according to user needs. You can also incorporate your unique serial and wireless hardware into our platform, enabling tailored communication and interaction with devices for enhanced versatility and functionality.
 
 ## Contributing
 
