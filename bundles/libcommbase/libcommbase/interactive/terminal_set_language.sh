@@ -31,9 +31,9 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# terminal_only_set_language.sh
+# terminal_set_language.sh
 # Sets up the Commbase language and the Commbase app language
-terminal_only_set_language() {
+terminal_set_language() {
   # The configuration file
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
@@ -194,9 +194,9 @@ terminal_only_set_language() {
   exit 99
 }
 
-# Call terminal_only_set_language if the script is run directly (not sourced)
+# Call terminal_set_language if the script is run directly (not sourced)
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  (terminal_only_set_language)
+  (terminal_set_language)
 fi
 
 exit 99

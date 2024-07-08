@@ -31,9 +31,9 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# terminal_only_select_stt_engine.sh
+# terminal_select_stt_engine.sh
 # Sets up the STT engine based on the value of the variable STT_ENGINE_PATH
-terminal_only_select_stt_engine() {
+terminal_select_stt_engine() {
   # The configuration file
   source "$COMMBASE_APP_DIR"/config/commbase.conf
 
@@ -134,9 +134,9 @@ terminal_only_select_stt_engine() {
   exit 99
 }
 
-# Call terminal_only_select_stt_engine if the script is run directly (not sourced)
+# Call terminal_select_stt_engine if the script is run directly (not sourced)
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  (terminal_only_select_stt_engine)
+  (terminal_select_stt_engine)
 fi
 
 exit 99

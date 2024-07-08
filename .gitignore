@@ -144,8 +144,11 @@ certificates/*
 # Ignore the contents of the "src/client/assets" directory
 src/client/assets/*
 
-# Ignore the contents of the "src/client/bundles" directory
+# Ignore the contents of the "src/client/bundles" directory except for
+# specific files.
 src/client/bundles/*
+!src/client/bundles/terminal-chat-gpt/
+!src/client/bundles/terminal-chat-gpt/terminal_chat_gpt.py
 
 # Ignore the contents of the "src/client/config" directory
 src/client/config/*
@@ -158,10 +161,16 @@ src/client/log/*
 # Ignore the contents of the "src/client/serial_communication" directory
 src/client/serial_communication/*
 
-# Ignore the contents of the "src/server/skills_db" directory except for the file
-# named "open_the_web_browser.json".
+# Ignore the contents of the "src/server/skills_db" directory except for
+# specific files.
 src/server/skills_db/*
+!src/server/skills_db/bash/
+!src/server/skills_db/bash/f/
+!src/server/skills_db/bash/f/firefox/
 !src/server/skills_db/bash/f/firefox/open_the_web_browser.json
+!src/server/skills_db/bash/o/
+!src/server/skills_db/bash/o/openai/
+!src/server/skills_db/bash/o/openai/open_terminal_chat_gpt.json
 
 # Ignore the contents of the "src/tests" directory
 src/tests/*

@@ -64,6 +64,7 @@ from functions import (
     get_commbase_hardware_notification_listening_stop_on,
     get_commbase_hardware_notification_processing_start_on,
     get_commbase_hardware_notification_processing_stop_on,
+    get_commbase_hardware_speech_to_text_engine_component_on,
     get_log_severity_level_1,
     get_stt_engine_language,
     get_stt_whisper_proactive_timeout,
@@ -306,6 +307,7 @@ def listen():
     commbase_hardware_notification_listening_stop_on = get_commbase_hardware_notification_listening_stop_on()
     commbase_hardware_notification_processing_start_on = get_commbase_hardware_notification_processing_start_on()
     commbase_hardware_notification_processing_stop_on = get_commbase_hardware_notification_processing_stop_on()
+    commbase_hardware_speech_to_text_engine_component_on = get_commbase_hardware_speech_to_text_engine_component_on()
     # Set the values returned by get_stt_whisper_proactive_timeout().
     stt_engine_timeout = get_stt_whisper_proactive_timeout()
     listener = sr.Recognizer()  # Create an instance of Recognizer
@@ -316,20 +318,22 @@ def listen():
         #     print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
         # listener.adjust_for_ambient_noise(source)
         if commbase_hardware_notifications_on == "True":
-            if commbase_hardware_notification_processing_stop_on == "True":
-                notify_hardware_about_processing_stop()
-            if commbase_hardware_notification_listening_start_on == "True":
-                notify_hardware_about_listening_start()
+            if commbase_hardware_speech_to_text_engine_component_on == "True":
+                if commbase_hardware_notification_processing_stop_on == "True":
+                    notify_hardware_about_processing_stop()
+                if commbase_hardware_notification_listening_start_on == "True":
+                    notify_hardware_about_listening_start()
 
         try:
             audio = listener.listen(source, timeout=int(stt_engine_timeout))  # Set a timeout=15 (in seconds)
             discourse = "Processing..."
             print(f"{assistant_name} {discourse}")
             if commbase_hardware_notifications_on == "True":
-                if commbase_hardware_notification_listening_stop_on == "True":
-                    notify_hardware_about_listening_stop()
-                if commbase_hardware_notification_processing_start_on == "True":
-                    notify_hardware_about_processing_start()
+                if commbase_hardware_speech_to_text_engine_component_on == "True":
+                    if commbase_hardware_notification_listening_stop_on == "True":
+                        notify_hardware_about_listening_stop()
+                    if commbase_hardware_notification_processing_start_on == "True":
+                        notify_hardware_about_processing_start()
             data = io.BytesIO(audio.get_wav_data())
             audio_clip = AudioSegment.from_file(data)
             audio_clip.export(save_path, format='wav')
@@ -337,10 +341,11 @@ def listen():
             discourse = "Speech stopped. Recognizing..."
             print(f"{assistant_name} {discourse}")
             if commbase_hardware_notifications_on == "True":
-                if commbase_hardware_notification_processing_stop_on == "True":
-                    notify_hardware_about_processing_stop()
-                if commbase_hardware_notification_listening_stop_on == "True":
-                    notify_hardware_about_listening_stop()
+                if commbase_hardware_speech_to_text_engine_component_on == "True":
+                    if commbase_hardware_notification_processing_stop_on == "True":
+                        notify_hardware_about_processing_stop()
+                    if commbase_hardware_notification_listening_stop_on == "True":
+                        notify_hardware_about_listening_stop()
     return save_path
 
 
@@ -392,6 +397,7 @@ def write_to_temp_file(text):
     current_timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     severity_level = log_severity_level_1
+
     end_user_text = "[" + current_timestamp + "]" + " stt-whisper-proactive: " + severity_level + ": " + end_user_name + text + "\n"
     with open(temp_file_path, 'a') as temp_file:
         temp_file.write(end_user_text)

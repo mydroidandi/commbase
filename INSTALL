@@ -497,13 +497,13 @@ $ pip3.12 install pytest
 Install Python in an Anaconda Python environment
 -------------------------------------------------
 
-Alternatively, you can replace Python 3.12 with Anaconda Python. Anaconda Python includes some well-optimized Python packages, so the speech recognition AI is supposed to work faster with Anaconda Python than with the official running Python, but everything depends on many factors, such as package versions and system resource availability.
+With this alternative, you can skip using your current system Python (for example, Python 3.11) by installing 3.12 in an Anaconda Python environment for Commbase. Anaconda Python includes some well-optimized Python packages, so the speech recognition AI is supposed to work faster with Anaconda Python than with the official running Python. However, everything depends on many factors, such as package versions and system resource availability.
 
 More information on Anaconda: https://www.anaconda.com/
 
 After the installation of Anaconda Python, you should see the string "(base)" in the foobar.
 
-In case your system has a single Python installation using Anaconda Python if it is set up for running only in the Bash shell, you must enter the Bash shell before starting Commbase, starting anaconda-navigator, or starting any other Python script/program incapable of starting with the current Python's runtime that is preinstalled within your Operating System distribution:
+If your system has a single Python installation using Anaconda Python, and it is set up to run only in the Bash shell, you must enter the Bash shell before starting Commbase, anaconda-navigator, or any other Python script/program that cannot start with the current Python runtime preinstalled within your Operating System distribution.
 
 Example of foobar before entering Bash:
 
@@ -511,7 +511,7 @@ USER-NAME@HOSTNAME:~$ bash
 
 Example of foobar with Anaconda Python, identified by the string "(base)", after entering Bash:
 
-(base) USER-NAME@shark:~$
+(base) USER-NAME@HOSTNAME:~$
 
 To install PyPi-like packages in the (base) in Anaconda Python, use the command "conda":
 
@@ -548,8 +548,6 @@ To verify the package was installed, in your terminal window or an Anaconda Pyth
 (commbase_env) $ conda list | more
 
 (commbase_env) $ conda list | grep ipython
-
-Note: This documentation and Commbase code would be updated for future releases of Python to make everything Commbase compatible.
 
 To deactivate the current environment and go back to (base) use:
 
@@ -605,7 +603,7 @@ Verify that Whisper is installed properly.
 
 $ conda list | grep openai-whisper
 
-Install the rest pip packages, individually, from the commmbase_env environment.
+Install the rest pip packages, individually, within the commmbase_env environment.
 
 $ pip install daal
 
@@ -725,7 +723,7 @@ It contains the sh command.
 
 - espeak:
 
-It is an alternative to festival.
+Espeak is an alternative to Festival and is required by pyttsx3 on Linux.
 
 - festival.
 
@@ -1160,4 +1158,4 @@ The output should be the Commbase introduction.
 
 From here, you can program new custom skills to customize your voice assistant or to create J.A.R.V.I.S. from Iron Man.
 
-Check out the document User's Guide in the directory docs/ for a complete list of options.
+Check out the document User's Guide in the directory assets/docs/ for a complete list of options.

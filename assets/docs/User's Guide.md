@@ -10,7 +10,7 @@ Welcome to the [Commbase](https://github.com/mydroidandi/commbase) User's Guide!
 
 ## What is Commbase?
 
-Commbase is a module and library bundler, and a flexible ✨ development framework ✨ designed to empower computers and other devices with advanced conversational AI capabilities. It incorporates third-party LLMs to enable features such as "distributed AIs" or "multi-agent systems" (MAS). Commbase extends its reach to applications and diverse devices, including droids, smart appliances, and various types of vehicles. It runs on a single machine or a set of two machines in a client-server architecture. Commbase was originally developed as a single-file script by the computer scientist Esteban Herrera in 2022.
+Commbase, short for Communicative Commands Base, is a comprehensive platform designed to empower computers and computer-based devices with cutting-edge conversational AI capabilities. While it includes a flexible and extensible ✨ development framework ✨ at its core, Commbase goes beyond mere development tools. It serves as both a module and library bundler, incorporating third-party Language Models (LLMs, etc.) to enable advanced features such as "distributed AIs" or "multi-agent systems" (MAS). Commbase adapts across a diverse range of devices, from computers to smart appliances, robots, vehicles, Iron Man-like suits, starships, and beyond, ensuring universal accessibility and functionality. Operating effortlessly on either a single machine or a pair of machines in a client-server architecture, Commbase offers unparalleled adaptability and scalability. Commbase was originally developed as a single-file script by computer scientist Esteban Herrera and was committed to GitHub in 2022.
 
 ## Content
 
@@ -908,6 +908,16 @@ The default version of the file **commbase.conf** contains the next values:
   - Example value:
     -`bundles/commbase-recorder-transmitter-x/reccomm.sh` (Default): The path to a custom recorder-transmitter executable.
 
+- **RUN_VOICE_RECORDER_IN_PANE_PATH**:
+  - **Description**: This variable specifies the path to the script that runs the voice recorder within a tmux pane. The script is located within the **bundles/libcommbase/libcommbase/routines/** directory.
+  - **Possible values**:
+    - `bundles/libcommbase/libcommbase/routines/run_voice_recorder_in_pane.sh` (Default): The default and typical value, indicating the relative path to the voice recorder script.
+
+- **COMMBASE_RECORDER_TRANSMITTER_QUIT_CHAR**:
+  - **Description**: This variable specifies the character used to quit the voice recorder or transmitter process. This character is sent as an input to signal the process to terminate. This variable value is used only fo reference in scripts like **bundles/commbase-genai-slm-ollama-phi3-mini-nomemory/commbase-genai-slm-ollama-phi3-mini-nomemory.py**. Change it only if you change the value of the constant `QUIT_CHAR="q"` of the commbase recorder in the files **bundles/commbase-recorder-transmitter-b/reccom.sh**, **bundles/commbase-recorder-transmitter-s/reccom.sh**, or a custom file somewhere like **bundles/commbase-recorder-transmitter-x/**. Checkout the variables `CUSTOM_RECORDER_TRANSMITTER_FILE` and `RECORDER_TRANSMITTER_FILE`.
+  - **Possible values**:
+    - `q` (Default): If set to this value, the character `q` is used to quit the voice recorder or transmitter process.
+
 - **STT_ENGINE_MODEL_DIRECTORY**:
   - Description: It specifies the path to the directory of the current STT engine's model in use. In order to facilitate internationalization, the directory resides in **bundles/libcommbase/resources/i18n/** and **src/client/i18n/**. Check out the variable `STT_ENGINE_MODEL_SUBDIRECTORY`.
   - Possible values:
@@ -935,6 +945,11 @@ The default version of the file **commbase.conf** contains the next values:
 - **COMMBASE_STT_WHISPER_REACTIVE_P_CLIENT_DATA_FILE**:
   - Possible values:
     - `/bundles/commbase-stt-whisper-reactive-p/client_data/recording.wav` (Default): The Commbase STT Whisper reactive p client temporary audio recording file. The purpose of this file is for storing audio data obtained from the execution of the bash script **commrecorder.sh** in the directory **bundles/commbase-stt-whisper-reactive-p/**. **commbase_stt_whisper_reactive_p.py** monitors the modification time of this file and, upon detecting changes, transcribes the audio content using the Whisper ASR (Automatic Speech Recognition) model. The transcribed text is then printed and appended to the chatroom pane.
+
+- **COMMBASE_STT_WHISPER_REACTIVE_P_AUTO_OPEN_RECORDER_AFTER_COMMAND**:
+  - Description: It determines whether the recorder should automatically open after a command is given when using the reactive Whisper STT engine. In this case, commands refers to any user command or Commbase internal command run in the recorder-transmitter terminal when it runs in the local host.
+  - Possible values: True or False.
+  - Example value: `True` (Default): Set to true, the recorder will automatically open after a command is given.
 
 - **STT_ENGINE_PROCESSING_TIME_VISIBLE_ON**:
   - Description: It specifies whether yes or not the running STT displays the speech processing time in the STT engine pane after every processing is complete.
@@ -1182,6 +1197,18 @@ The default version of the file **commbase.conf** contains the next values:
   - Example value:
     - `30` (Default): This value indicates that conversation files will be retained or considered valid for a maximum period of 30 days. Check out the variable `MAX_CONVERSATION_FILES_COUNT`.
 
+CHAT_MEMORY_FILE="data/.chat_memory.txt"
+
+- **CHAT_MEMORY_FILE**:
+  - Description: This variable represents the path to the file where chat memory is stored. It is used to persist the history of prompts and responses across interactions within the chat system.
+  - Example value:
+    - `"data/.chat_memory.txt"` (Default): The current session chat log memory file path.
+
+- **ASSISTANT_DISCOURSE_FROM_LANGUAGE_MODEL_FILE**:
+  - Description: This variable specifies the path to the script that generates audible discourses from text that comes from the language model. The script is located within the **bundles/libcommbase/libcommbase/routines/** directory.
+  - Possible values:
+    - `bundles/libcommbase/libcommbase/routines/assistant_discourse_from_language_model.sh` (Default): The default and typical value, indicating the relative path to the assistant discourse script.
+
 - **ANSWER_UNKNOWN_COMMANDS_USING_AI_CHATBOT_ON**:
   - Description: This variable is used in the function **bundles/libcommbase/libcommbase/routines/skills_else**.
   - Possible values: True or False.
@@ -1268,65 +1295,107 @@ The default version of the file **commbase.conf** contains the next values:
   - Example value:
     - `3600` (Default): Set to 3600 seconds (equivalent to 1 hour and 0 minutes), indicates that the system checks for pending tasks approximately every 60 minutes.
 
+- **ASSISTANT_RESPONSE_SENTIMENT_ANALYSIS_ON**:
+  - Description: A flag that determines whether the sentiment analysis feature for assistant responses is enabled or not. When set to `True`, the sentiment analysis is active, allowing the system to evaluate and act upon the emotional tone of the assistant's responses. Using Motors: If sentiment is positive, activate motors to simulate a hugging action. For example, robotic arms could move to embrace the user. Using Screens: Display a smiling face on a screen. For example, showing an animated smiley face on a digital display.
+  - Possible values:
+    - `True`: Enables sentiment analysis for assistant responses.
+    - `False`: Disables sentiment analysis for assistant responses.
+  - Example value:
+    - `True` (Default): Set to `True`, indicating that the system will perform sentiment analysis on the assistant's responses, facilitating actions based on the detected sentiment.
+
 - **COMMBASE_HARDWARE_NOTIFICATIONS_ON**:
   - Description: Indicates whether Commbase hardware notifications are enabled or disabled. If set to "True", hardware notifications are enabled; otherwise, they are disabled.
   - Possible values: "True" or "False". Set to "True" only if you are making Commbase hardware, such as: hardware interfaces, a speech to text engine component, or any other hardware device based on Commbase (droids, smart appliances, vehicles, etc.) Check out the existent Commbase hardware variables.
   - Example value:
     - `False` (Default): Hardware notifications are disabled.
 
+- **COMMBASE_HARDWARE_DEVICE_0**:
+  - Description: The path of the hardware device used for communication, for example, an Arduino or any other microcontroller. Check out the other existent Commbase hardware variables.
+  - Possible values: A valid path to a hardware device.
+  - Example value:
+    - `/dev/ttyACM0` (Default): Path to hardware device 0.
+
+- **COMMBASE_HARDWARE_SPEECH_TO_TEXT_ENGINE_COMPONENT_ON**:
+  - Description: A flag that indicates whether the speech-to-text engine component of the Commbase hardware is enabled (if present). Relies on the value of the variable `COMMBASE_HARDWARE_NOTIFICATIONS_ON`.
+  - Possible values:
+    - `"True"`: The speech-to-text engine is enabled and operational.
+    - `"False"`: The speech-to-text engine is disabled and not in use.
+  - Example value:
+    - `"True"` (Default): Indicates that the speech-to-text engine component is currently enabled and functioning.
+
 - **COMMBASE_HARDWARE_NOTIFICATION_LISTENING_START_ON**:
-  - Description: Indicates whether Commbase hardware notifications for the start of the STT engines listening process are enabled or disabled. Check out the other existent Commbase hardware variables.
+  - Description: Indicates whether Commbase hardware notifications for the start of the STT engines listening process are enabled or disabled. Check out the other existent Commbase hardware variables. Relies on the value of the variables `COMMBASE_HARDWARE_NOTIFICATIONS_ON` and `COMMBASE_HARDWARE_SPEECH_TO_TEXT_ENGINE_COMPONENT_ON`.
   - Possible values: "True" or "False".
   - Example value:
     - `True` (Default): Notifications for the start of the listening process are enabled.
 
 - **COMMBASE_HARDWARE_NOTIFICATION_LISTENING_STOP_ON**:
-  - Description: Indicates whether Commbase hardware notifications for the stop of the STT engines listening process are enabled or disabled. Check out the other existent Commbase hardware variables.
+  - Description: Indicates whether Commbase hardware notifications for the stop of the STT engines listening process are enabled or disabled. Check out the other existent Commbase hardware variables. Relies on the value of the variables `COMMBASE_HARDWARE_NOTIFICATIONS_ON` and `COMMBASE_HARDWARE_SPEECH_TO_TEXT_ENGINE_COMPONENT_ON`.
   - Possible values: "True" or "False".
   - Example value:
     - `True` (Default): Notifications for the stop of the listening process are enabled.
 
 - **COMMBASE_HARDWARE_NOTIFICATION_PROCESSING_START_ON**:
-  - Description: Indicates whether Commbase hardware notifications for the start of the STT engines processing are enabled or disabled. Check out the other existent Commbase hardware variables.
+  - Description: Indicates whether Commbase hardware notifications for the start of the STT engines processing are enabled or disabled. Check out the other existent Commbase hardware variables. Relies on the value of the variables `COMMBASE_HARDWARE_NOTIFICATIONS_ON` and `COMMBASE_HARDWARE_SPEECH_TO_TEXT_ENGINE_COMPONENT_ON`.
   - Possible values: "True" or "False".
   - Example value:
     - `True` (Default): Notifications for the start of the processing are enabled.
 
 - **COMMBASE_HARDWARE_NOTIFICATION_PROCESSING_STOP_ON**:
-  - Description: Indicates whether Commbase hardware notifications for the stop of the STT engines processing are enabled or disabled. Check out the other existent Commbase hardware variables.
+  - Description: Indicates whether Commbase hardware notifications for the stop of the STT engines processing are enabled or disabled. Check out the other existent Commbase hardware variables. Relies on the value of the variables `COMMBASE_HARDWARE_NOTIFICATIONS_ON` and `COMMBASE_HARDWARE_SPEECH_TO_TEXT_ENGINE_COMPONENT_ON`.
   - Possible values: "True" or "False".
   - Example value:
     - `True` (Default): Notifications for the stop of the processing are enabled.
-
-- **COMBASE_HARDWARE_DEVICE_0**:
-  - Description: The path of the hardware device used for communication, for example, an Arduino or any other microcontroller. Check out the other existent Commbase hardware variables.
-  - Possible values: A valid path to a hardware device.
-  - Example value:
-    - `/dev/ttyACM0`: Path to hardware device 0.
 
 - **COMMBASE_HARDWARE_COMMAND_LISTENING_START_FILE**:
   - Description: The path to the file containing the command to start STT engines listening on the Commbase hardware. Check out the other existent Commbase hardware variables.
   - Possible values: A valid file path.
   - Example value:
-    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/listening_start.dat`: Path to the file for starting the working STT engine listening process.
+    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/listening_start.dat` (Default): Path to the file for starting the working STT engine listening process.
 
 - **COMMBASE_HARDWARE_COMMAND_LISTENING_STOP_FILE**:
   - Description: The path to the file containing the command to stop STT engines listening on the Commbase hardware. Check out the other existent Commbase hardware variables.
   - Possible values: A valid file path.
   - Example value:
-    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/listening_stop.dat`: Path to the file for stopping the working STT engine listening process.
+    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/listening_stop.dat` (Default): Path to the file for stopping the working STT engine listening process.
 
 - **COMMBASE_HARDWARE_COMMAND_PROCESSING_START_FILE**:
   - Description: The path to the file containing the command to start STT engines processing on the Commbase hardware. Check out the other existent Commbase hardware variables.
   - Possible values: A valid file path.
   - Example value:
-    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/processing_start.dat`: Path to the file for starting the working STT engine processing.
+    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/processing_start.dat` (Default): Path to the file for starting the working STT engine processing.
 
 - **COMMBASE_HARDWARE_COMMAND_PROCESSING_STOP_FILE**:
   - Description: The path to the file containing the command to stop STT engines processing on the Commbase hardware. Check out the other existent Commbase hardware variables.
   - Possible values: A valid file path.
   - Example value:
-    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/processing_stop.dat`: Path to the file for stopping the working STT engine processing.
+    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/speech_to_text_engine_component/processing_stop.dat` (Default): Path to the file for stopping the working STT engine processing.
+
+- **COMMBASE_HARDWARE_SENTIMENT_COMPONENT_ON**:
+  - Description: A flag indicating whether the sentiment (from sentiment analysis) component of the Commbase hardware is enabled or disabled. Relies on the value of the variable `COMMBASE_HARDWARE_NOTIFICATIONS_ON`.
+  - Possible values:
+    - `True`: The sentiment component is enabled.
+    - `False`: The sentiment component is disabled.
+  - Example value:
+    - `True` (Default): The sentiment component is turned on, meaning that the hardware will perform sentiment actions. For example, the assistant response will include a sentiment action based on a response sentiment analysis.
+
+- **COMMBASE_HARDWARE_COMMAND_RANDOM_NEGATIVE_FILE**:
+  - Description: The file path to the dat file used by the Commbase hardware for random negative sentiment actions. This file contains data that the hardware uses to simulate negative sentiments. Check out the value of the variables `COMMBASE_HARDWARE_NOTIFICATIONS_ON` and `COMMBASE_HARDWARE_SENTIMENT_COMPONENT_ON`.
+  - Possible values: A valid file path.
+  - Example value:
+    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/sentiment_component/random_negative.dat` (Default): Specifies the location of the dat file for negative sentiment actions.
+
+- **COMMBASE_HARDWARE_COMMAND_RANDOM_NEUTRAL_FILE**:
+  - Description: The file path to the dat file used by the Commbase hardware for random neutral sentiment actions. This file contains data that the hardware uses to simulate neutral sentiments. Check out the value of the variables `COMMBASE_HARDWARE_NOTIFICATIONS_ON` and `COMMBASE_HARDWARE_SENTIMENT_COMPONENT_ON`.
+  - Possible values: A valid file path.
+  - Example value:
+    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/sentiment_component/random_neutral.dat` (Default): Specifies the location of the dat file for neutral sentiment actions.
+
+- **COMMBASE_HARDWARE_COMMAND_RANDOM_POSITIVE_FILE**:
+  - Description: The file path to the dat file used by the Commbase hardware for random positive sentiment actions. This file contains data that the hardware uses to simulate positive sentiments. Check out the value of the variables `COMMBASE_HARDWARE_NOTIFICATIONS_ON` and `COMMBASE_HARDWARE_SENTIMENT_COMPONENT_ON`.
+  - Possible values: A valid file path.
+  - Example value:
+    - `/src/client/serial_communication/arduino/arduino_0/commbase_hardware_notifications/sentiment_component/random_positive.dat` (Default): Specifies the location of the dat file for positive sentiment actions.
 
 Please ensure that these environment variables are correctly set with the appropriate values before running the application.
 
