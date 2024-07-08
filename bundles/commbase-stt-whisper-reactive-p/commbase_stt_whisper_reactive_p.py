@@ -44,6 +44,7 @@ import time
 import wave
 import whisper
 from config import CONFIG_FILE_PATH
+from datetime import datetime
 from file_paths import (
     get_chat_log_file,
     get_commbase_hardware_command_processing_start_file,
@@ -56,6 +57,8 @@ from functions import (
     get_commbase_hardware_notifications_on,
     get_commbase_hardware_notification_processing_start_on,
     get_commbase_hardware_notification_processing_stop_on,
+    get_commbase_hardware_speech_to_text_engine_component_on,
+    get_log_severity_level_1,
     get_stt_engine_language,
     stt_engine_processing_time_visible_on
 )
@@ -181,7 +184,15 @@ def write_to_temp_file(text):
     """
     # Set the values returned by get_chat_participant_names()
     end_user_name, assistant_name = get_chat_participant_names()
-    end_user_text = end_user_name + text + "\n"
+
+    # Set the value returned by get_log_severity_level_1()
+    log_severity_level_1 = get_log_severity_level_1()
+
+    current_timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    severity_level = log_severity_level_1
+
+    end_user_text = "[" + current_timestamp + "]" + " stt-whisper-reactive: " + severity_level + ": " + end_user_name + text + "\n"
     with open(temp_file_path, 'a') as temp_file:
         temp_file.write(end_user_text)
 
@@ -219,6 +230,7 @@ def main():
     commbase_hardware_notifications_on = get_commbase_hardware_notifications_on()
     commbase_hardware_notification_processing_start_on = get_commbase_hardware_notification_processing_start_on()
     commbase_hardware_notification_processing_stop_on = get_commbase_hardware_notification_processing_stop_on()
+    commbase_hardware_speech_to_text_engine_component_on = get_commbase_hardware_speech_to_text_engine_component_on()
 
     processing_time_visible_on = stt_engine_processing_time_visible_on()
 
@@ -237,10 +249,11 @@ def main():
                 last_modified_time = current_modified_time
 
                 if commbase_hardware_notifications_on == "True":
-                    if commbase_hardware_notification_processing_stop_on == "True":
-                        notify_hardware_about_processing_stop()
-                    if commbase_hardware_notification_processing_start_on == "True":
-                        notify_hardware_about_processing_start()
+                    if commbase_hardware_speech_to_text_engine_component_on == "True":
+                        if commbase_hardware_notification_processing_stop_on == "True":
+                            notify_hardware_about_processing_stop()
+                        if commbase_hardware_notification_processing_start_on == "True":
+                            notify_hardware_about_processing_start()
 
                 if processing_time_visible_on == "True":
                     start_time = time.time()  # Record the start time
@@ -254,8 +267,9 @@ def main():
                     print(f"Elapsed processing time: {elapsed_time} seconds")
 
                 if commbase_hardware_notifications_on == "True":
-                    if commbase_hardware_notification_processing_stop_on == "True":
-                        notify_hardware_about_processing_stop()
+                    if commbase_hardware_speech_to_text_engine_component_on == "True":
+                        if commbase_hardware_notification_processing_stop_on == "True":
+                            notify_hardware_about_processing_stop()
 
                 # Write the transcribed text to a temporary file
                 write_to_temp_file(response)

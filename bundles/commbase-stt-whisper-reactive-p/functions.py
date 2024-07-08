@@ -178,6 +178,70 @@ def get_commbase_hardware_notification_processing_stop_on():
     return None
 
 
+def get_commbase_hardware_speech_to_text_engine_component_on():
+    """
+    Reads the 'COMMBASE_HARDWARE_SPEECH_TO_TEXT_ENGINE_COMPONEN_ON' variable
+    from the environment configuration file. Returns the string value of the
+    variables if found, or None if the variable is not present.
+
+    Returns:
+        str or None: The string if found in the configuration file, otherwise
+    None.
+    """
+    # Initialize variable
+    commbase_hardware_notification_component = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "COMMBASE_HARDWARE_SPEECH_TO_TEXT_ENGINE_COMPONENT_ON":
+                # Remove the quotes from the value of the variable
+                commbase_hardware_notification_component = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if commbase_hardware_notification_component is not None:
+        return commbase_hardware_notification_component
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_log_severity_level_1():
+    """
+    Reads the 'LOG_SEVERITY_LEVEL_1' variable from the environment
+    configuration file. Returns the string value of the variables if found, or
+    None if the variable is not present.
+
+    Returns:
+        str or None: The string if found in the configuration file, otherwise
+    None.
+    """
+    # Initialize variable
+    log_severity_level_1 = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "LOG_SEVERITY_LEVEL_1":
+                # Remove the quotes from the value of the variable
+                log_severity_level_1 = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if log_severity_level_1 is not None:
+        return log_severity_level_1
+
+    # If the variable was not found, return None
+    return None
+
+
 def get_stt_engine_language():
     """
     Reads the 'STT_ENGINE_LANGUAGE' variable from the environment configuration

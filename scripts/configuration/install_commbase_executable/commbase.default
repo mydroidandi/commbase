@@ -309,8 +309,13 @@ route_option() {
             # Write the message to the log file
             (bash "$log_message_with_timestamp" "commbase" "$LOG_SEVERITY_LEVEL_2" "2" "cleaning_up_directories_and_files" "True" "$COMMBASE_APP_DIR/$LOG_MESSAGES_FILE")
 
+            # Clean up the conversation files
             (bash "$cleanup_directory_by_file_count" "$MAX_CONVERSATION_FILES_COUNT" "$COMMBASE_APP_DIR"/user/conversation_logs/)
             (bash "$cleanup_directory_by_age" "$MAX_CONVERSATION_FILE_DAYS_STORED" "$COMMBASE_APP_DIR"/user/conversation_logs/)
+
+            # Clean up the current session memory file
+            (truncate -s 0 "$COMMBASE_APP_DIR"/"$CHAT_MEMORY_FILE")
+
             (sleep 2)  # Time in seconds to read messages on pane before the app shutdown
 
             # Kill the processes of the scripts that do not respond to the

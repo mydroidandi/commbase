@@ -206,7 +206,7 @@ def get_commbase_hardware_device_0():
             variable_name, value = line.strip().split("=")
 
             # Check if the variable we are looking for exists in the line
-            if variable_name == "COMBASE_HARDWARE_DEVICE_0":
+            if variable_name == "COMMBASE_HARDWARE_DEVICE_0":
                 # Remove the quotes from the value of the variable
                 hardware_device_0 = value.strip()[1:-1]
 
