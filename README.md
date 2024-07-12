@@ -170,6 +170,14 @@ This is an OpenAI's Whisper-based proactive ASR (Automatic Speech Recognition) e
 
 This is an OpenAI's Whisper-based reactive ASR (Automatic Speech Recognition) engine designed to convert spoken language into written text without requiring an internet connection, making it a reliable and secure solution for any application that needs speech-to-text functionality. [More Info](/bundles/commbase-stt-whisper-reactive-p/)
 
+<a href="./bundles/commbase-text-translator-phi3-mini/">
+    <img align="center" alt="commbase-text-translator-phi3-mini" width="5%" src="./bundles/commbase-text-translator-phi3-mini/commbase-text-translator-phi3-mini.jpg"/>
+</a>
+
+**commbase-text-translator-phi3-mini**
+
+Translates text from one language to another using the Ollama API with a specific Phi3 mini language model from Microsoft. [More Info](/bundles/commbase-text-translator-phi3-mini)
+
 <a href="./bundles/commbase-tts-gTTS/">
     <img align="center" alt="commbase-tts-gTTS" width="5%" src="./bundles/commbase-tts-gTTS/commbase-tts-gTTS.png"/>
 </a>
@@ -179,7 +187,7 @@ This is an OpenAI's Whisper-based reactive ASR (Automatic Speech Recognition) en
 A Commbase-ready TTS executable using gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Google Translate text-to-speech API. [More Info](/bundles/commbase-tts-gTTS/)
 
 <a href="./bundles/commbase-tts-pyttsx3/">
-    <img align="center" alt="commbase-tts-pyttsx3" width="5%" src="./bundles/commbase-tts-pyttsx3/commbase-tts-pyttsx3.jpg"/>
+    <img align="center" alt="commbase-tts-gTTS" width="5%" src="./bundles/commbase-tts-pyttsx3/commbase-tts-pyttsx3.jpg"/>
 </a>
 
 **commbase-tts-pyttsx3**
