@@ -88,7 +88,7 @@ assistant_discourse() {
 
 # Check if all the required values are provided as arguments
 if [ $# -ne 5 ]; then
-  echo "Usage: $0 <pane_number> <i18n_number> <log_severity_level_1> <discourse_key>"
+  echo "Usage: $0 <pane_number> <i18n_number> <origin> <log_severity_level_1> <discourse_key>"
   exit 1
 fi
 

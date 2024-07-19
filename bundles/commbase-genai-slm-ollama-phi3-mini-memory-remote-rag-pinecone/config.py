@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 ################################################################################
-#                 commbase-genai-slm-ollama-phi3-mini-nomemory                 #
+#        commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone        #
 #                                                                              #
-# A simple generative AI assistant using the Phi3 Small Language Model (SLM).  #
+# A sophisticated AI assistant's Small Language Model (Phi3), enhanced by      #
+# Retrieval-Augmented Generation (RAG) for improved response accuracy, and     #
+# supported by a Pinecone semantic vector database.                            #
 #                                                                              #
 # Change History                                                               #
-# 06/18/2024  Esteban Herrera Original code.                                   #
+# 06/25/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #

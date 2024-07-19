@@ -1,6 +1,6 @@
 ## Examples
 
-### Example 1: commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone implementation
+### Example 1: commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone implementation
 
 This example demonstrates the implementation of our software. You can find the code in the [Commbase](https://github.com/mydroidandi/commbase) repository.
 

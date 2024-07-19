@@ -793,6 +793,11 @@ The default version of the file **commbase.conf** contains the next values:
   - Example value:
     - `english` (Default): When chosen, sets the default LLM language to English.
 
+- **SLM_MS_PHI3_MINI_SENTIMENT_ANALYSIS_MODEL**:
+  - Description: Describes the model used for sentiment analysis by the **transformers** library from Hugging Face in the commbase-genai-slm-ollama-phi3-mini bundles.
+  - Possible values:
+    - `distilbert/distilbert-base-uncased-finetuned-sst-2-english` (Default): When this Text Classification model is selected, it is used to analyze the sentiment of the assistant's response. This model is a fine-tuned checkpoint of DistilBERT-base-uncased, specifically fine-tuned on the SST-2 dataset. It achieves an accuracy of 91.3% on the development set. For comparison, the BERT-base-uncased model achieves an accuracy of 92.7% on the same set.
+
 - **CURRENT_MODE**:
   - Description: The current use mode your app is running on. Modes are defined in the control patterns file. The default location for this file is **bundles/libcommbase/resources/i18n/control_patterns/$STT_ENGINE_MODEL_DIRECTORY/$STT_ENGINE_MODEL_SUBDIRECTORY/$COMMBASE_LANG.json**. You can change from any mode to another by changing the value of this variable. The action will update the mode component status on screen.
   - Example values:
@@ -955,6 +960,12 @@ The default version of the file **commbase.conf** contains the next values:
   - Description: It specifies whether yes or not the running STT displays the speech processing time in the STT engine pane after every processing is complete.
   - Possible values: True or False.
   - Example value: `False` (Default): Set to false, the STT engine does not display the speech processing time in the STT engine pane after every processing is complete.
+
+- **CHATROOM_PARAGRAPHS_FORMAT**:
+  - Description: Specifies whether the chat participant paragraphs are displayed in the chatroom.
+  - Possible values:
+    - **`one_participant_per_paragraph` (Default):** Each separate paragraph or sentence in the response is logged individually with new participant name tags in the chatroom for enhanced clarity.
+    - **`single_paragraphs_string`:** The entire response is logged as a single paragraph string with a single participant name tag in the chatroom, regardless of the quantity of paragraphs or sentences, to save space.
 
 - **CHAT_LOG_FILE**:
   - Possible values:
@@ -1295,19 +1306,19 @@ CHAT_MEMORY_FILE="data/.chat_memory.txt"
   - Example value:
     - `3600` (Default): Set to 3600 seconds (equivalent to 1 hour and 0 minutes), indicates that the system checks for pending tasks approximately every 60 minutes.
 
-- **ASSISTANT_RESPONSE_SENTIMENT_ANALYSIS_ON**:
-  - Description: A flag that determines whether the sentiment analysis feature for assistant responses is enabled or not. When set to `True`, the sentiment analysis is active, allowing the system to evaluate and act upon the emotional tone of the assistant's responses. Using Motors: If sentiment is positive, activate motors to simulate a hugging action. For example, robotic arms could move to embrace the user. Using Screens: Display a smiling face on a screen. For example, showing an animated smiley face on a digital display.
-  - Possible values:
-    - `True`: Enables sentiment analysis for assistant responses.
-    - `False`: Disables sentiment analysis for assistant responses.
-  - Example value:
-    - `True` (Default): Set to `True`, indicating that the system will perform sentiment analysis on the assistant's responses, facilitating actions based on the detected sentiment.
-
 - **COMMBASE_HARDWARE_NOTIFICATIONS_ON**:
   - Description: Indicates whether Commbase hardware notifications are enabled or disabled. If set to "True", hardware notifications are enabled; otherwise, they are disabled.
   - Possible values: "True" or "False". Set to "True" only if you are making Commbase hardware, such as: hardware interfaces, a speech to text engine component, or any other hardware device based on Commbase (droids, smart appliances, vehicles, etc.) Check out the existent Commbase hardware variables.
   - Example value:
     - `False` (Default): Hardware notifications are disabled.
+
+- **ASSISTANT_RESPONSE_SENTIMENT_ANALYSIS_ON**:
+  - Description: A flag that determines whether the sentiment analysis feature for assistant responses is enabled or not. When set to `True`, the sentiment analysis is active, allowing the system to evaluate and act upon the emotional tone of the assistant's responses. Using Motors: If sentiment is positive, activate motors to simulate a hugging action. For example, robotic arms could move to embrace the user. Using Screens: Display a smiling face on a screen. For example, showing an animated smiley face on a digital display. Relies on the value of the variable `COMMBASE_HARDWARE_NOTIFICATIONS_ON`.
+  - Possible values:
+    - `True`: Enables sentiment analysis for assistant responses.
+    - `False`: Disables sentiment analysis for assistant responses.
+  - Example value:
+    - `True` (Default): Set to `True`, indicating that the system will perform sentiment analysis on the assistant's responses, facilitating actions based on the detected sentiment.
 
 - **COMMBASE_HARDWARE_DEVICE_0**:
   - Description: The path of the hardware device used for communication, for example, an Arduino or any other microcontroller. Check out the other existent Commbase hardware variables.

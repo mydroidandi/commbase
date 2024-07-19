@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 ################################################################################
-#         commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone         #
+#        commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone        #
 #                                                                              #
 # A sophisticated AI assistant's Small Language Model (Phi3), enhanced by      #
 # Retrieval-Augmented Generation (RAG) for improved response accuracy, and     #
-# supported by a Picone semantic vector database.                              #
+# supported by a Pinecone semantic vector database.                            #
 #                                                                              #
 # Change History                                                               #
 # 06/25/2024  Esteban Herrera Original code.                                   #
@@ -32,19 +32,58 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# load_a_dataset_with_pandas.py
-# Uses Wikipedia articles from the SQuAD dataset (squad_dataset.csv
+# making_queries.py
+# Desc
 
 # Imports
-import pandas as pd
+import functions
+import json
+import sentence_transformers
+# import time
+from pinecone import Pinecone, ServerlessSpec
 
-df = pd.read_csv('chat_log_dataset.csv')
 
-# Print the top 10 rows (or all rows if there are less than 10)
-print(df.head(10))
+# Call test_embedding_model()
+model, xq = functions.test_embedding_model()
 
-# Get the total number of rows
-total_rows = len(df)
 
-# Print the total number of rows
-print(f"Total rows in the DataFrame: {total_rows}")
+# Initialize the Pinecone client with your API key
+pc = Pinecone(api_key="")
+
+index_name = 'commbase-log-chats'
+
+# Connect to index and print the index statistics
+index = pc.Index(index_name)
+
+
+# query = "Who is Eva?"
+query = "What happened at 20:35:08?"
+# query = "What is the meaning of zero day?"
+
+
+# ----
+# create the query vector
+xq = model.encode(query).tolist()
+
+# now query
+xc = index.query(vector=xq, top_k=5, include_metadata=True)
+print(xc)
+
+print("")
+print(query)
+
+# In the returned response xc we can see the most relevant questions to our particular query. We can reformat this response to be a little easier to read
+# for result in xc['matches']:
+#     print(f"{round(result['score'], 2)}: {result['metadata']['text']}")
+
+# Print the 'speaker' and 'text' along with the score
+for result in xc['matches']:
+    score = round(result['score'], 2)
+    timestamp = result['metadata']['timestamp']
+    speaker = result['metadata']['speaker']
+    text = result['metadata']['text']
+    print(f"{score}: {timestamp} {speaker}: {text}")
+
+
+# ## Add this to the prompt:
+# ## Please keep your responses to a maximum of three to four sentences.

@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 ################################################################################
-#         commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone         #
+#        commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone        #
 #                                                                              #
 # A sophisticated AI assistant's Small Language Model (Phi3), enhanced by      #
 # Retrieval-Augmented Generation (RAG) for improved response accuracy, and     #
-# supported by a Picone semantic vector database.                              #
+# supported by a Pinecone semantic vector database.                            #
 #                                                                              #
 # Change History                                                               #
 # 06/25/2024  Esteban Herrera Original code.                                   #
@@ -32,7 +32,7 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# 02_create_and_configure_pinecone_index.py
+# create_and_configure_pinecone_index.py
 # Creates and configures a new Pinecone index named 'new-pinecone-index'
 
 # Imports

@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 ################################################################################
-#         commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone         #
+#                  commbase-genai-slm-ollama-phi3-mini-memory                  #
 #                                                                              #
-# A sophisticated AI assistant's Small Language Model (Phi3), enhanced by      #
-# Retrieval-Augmented Generation (RAG) for improved response accuracy, and     #
-# supported by a Picone semantic vector database.                              #
+# A midweight implementation of the AI assistant's Small Language Model        #
+# (Phi3), with session or short-term memory for language generation.           #
 #                                                                              #
 # Change History                                                               #
-# 06/25/2024  Esteban Herrera Original code.                                   #
+# 07/14/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -32,13 +31,32 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# config.py
-# This files makes a variable available throughout the entire Python
-# application, including all modules, submodules, and functions.
+# phi3_mini_translate_language.py
+# Translates text from one language to another using the Ollama API with a
+# specific model ('commbase-phi3-mini').
 
-# Requirements
-import os
+# Imports
+import ollama
 
-# The path to the .env configuration file
-CONFIG_FILE_DIR = os.environ["COMMBASE_APP_DIR"]
-CONFIG_FILE_PATH = os.path.join(CONFIG_FILE_DIR, "config/commbase.conf")
+
+def generate_translation(text_to_translate, from_language, to_language):
+    """
+    Generate translated response using the provided text and languages.
+
+    Constructs a prompt for translation and retrieves the response from the
+    Ollama API using the 'commbase-phi3-mini' model.
+
+    Args:
+        text_to_translate (str): Text to be translated.
+        from_language (str): Source language code.
+        to_language (str): Target language code.
+
+    Returns:
+        str: Translated text response.
+    """
+    # Generate the response using the provided text and languages
+    order = f"Translate this from {from_language} to {to_language} (but do not include any explanation): "
+    response = ollama.generate(model='commbase-phi3-mini', prompt=order + text_to_translate)
+
+    # Extract the text response
+    return response['response']
