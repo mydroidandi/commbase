@@ -122,13 +122,13 @@ An app designed to facilitate seamless interaction with the powerful OpenAI's GP
 
 Interacts with the Commbase platform by generating AI-driven responses using the Ollama API with the Phi3 mini model from Microsoft. This is a midweight implementation with session or short-term memory for language generation. [More Info](/bundles/commbase-genai-slm-ollama-phi3-mini-memory/)
 
-<a href="./bundles/commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone/">
-    <img align="center" alt="commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone" width="5%" src="./bundles/commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone/commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone.jpg"/>
+<a href="./bundles/commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone/">
+    <img align="center" alt="commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone" width="5%" src="./bundles/commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone/commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone.jpg"/>
 </a>
 
-**commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone**
+**commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone**
 
-Interacts with the Commbase platform by generating AI-driven responses using the Ollama API with the Phi3 mini model from Microsoft. This is a heavyweight implementation with memory for language generation, featuring remote RAG and Picone for persistent memory. [More Info](/bundles/commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone/)
+Interacts with the Commbase platform by generating AI-driven responses using the Ollama API with the Phi3 mini model from Microsoft. This is a heavyweight implementation with memory for language generation, featuring remote RAG and Pinecone for persistent memory. [More Info](/bundles/commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone/)
 
 <a href="./bundles/commbase-genai-slm-ollama-phi3-mini-nomemory/">
     <img align="center" alt="commbase-genai-slm-ollama-phi3-mini-nomemory" width="5%" src="./bundles/commbase-genai-slm-ollama-phi3-mini-nomemory/commbase-genai-slm-ollama-phi3-mini-nomemory.jpg"/>
@@ -263,7 +263,7 @@ This project is coded and organized like this:
 │   │   └── examples
 │   ├── commbase-genai-slm-ollama-phi3-mini-memory
 │   │   └── examples
-│   ├── commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone
+│   ├── commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone
 │   │   ├── examples
 │   │   └── resources
 │   │       └── src
@@ -277,6 +277,8 @@ This project is coded and organized like this:
 │   │   └── examples
 │   ├── commbase-stt-whisper-reactive-p
 │   │   ├── client_data
+│   │   └── examples
+│   ├── commbase-text-translator-phi3-mini
 │   │   └── examples
 │   ├── commbase-tts-gTTS
 │   │   └── examples
@@ -372,7 +374,7 @@ This project is coded and organized like this:
     ├── conversation_logs
     ├── knowledge_base
     ├── memory_store
-    │   ├── commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone
+    │   ├── commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone
     │   │   ├── build
     │   │   └── src
     │   └── ...
@@ -385,7 +387,7 @@ Core technologies directly involved in the application's functionality.
 
 ### Required in The Default Installation
 
-[OpenAI Whisper](https://openai.com/research/whisper) | [Ollama](https://ollama.com) | [Microsoft Phi3](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct) | [Picone](https://www.pinecone.io/) | [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/) |  [Awk](https://www.gnu.org/software/gawk/) | [Git](https://git-scm.com) | [Jq](https://stedolan.github.io/jq/) | [SSH](https://www.openssh.com) | [Flask](https://flask.palletsprojects.com)| [NumPy](https://numpy.org) | [Pandas](https://pandas.pydata.org) | [Pyttsx3](https://pypi.org/project/pyttsx3/) | [FFmpeg](https://ffmpeg.org) | [GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.html) | [Systemd](https://systemd.io/) | [Bash](https://www.gnu.org/software/bash/) | [Bc](https://www.gnu.org/software/bc/) | [Python](https://python.org) | [Oh My Tmux](https://github.com/gpakosz/.tmux) | [Tmux](https://github.com/tmux/tmux)
+[OpenAI Whisper](https://openai.com/research/whisper) | [Ollama](https://ollama.com) | [Microsoft Phi3](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct) | [Pinecone](https://www.pinecone.io/) | [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/) |  [Awk](https://www.gnu.org/software/gawk/) | [Git](https://git-scm.com) | [Jq](https://stedolan.github.io/jq/) | [SSH](https://www.openssh.com) | [Flask](https://flask.palletsprojects.com)| [NumPy](https://numpy.org) | [Pandas](https://pandas.pydata.org) | [Pyttsx3](https://pypi.org/project/pyttsx3/) | [FFmpeg](https://ffmpeg.org) | [GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.html) | [Systemd](https://systemd.io/) | [Bash](https://www.gnu.org/software/bash/) | [Bc](https://www.gnu.org/software/bc/) | [Python](https://python.org) | [Oh My Tmux](https://github.com/gpakosz/.tmux) | [Tmux](https://github.com/tmux/tmux)
 
 ### Optional
 

@@ -2,9 +2,8 @@
 ################################################################################
 #                  commbase-genai-slm-ollama-phi3-mini-memory                  #
 #                                                                              #
-# A sophisticated AI assistant's Small Language Model (Phi3), enhanced by      #
-# Retrieval-Augmented Generation (RAG) for improved response accuracy, and     #
-# supported by a Picone semantic vector database.                              #
+# A midweight implementation of the AI assistant's Small Language Model        #
+# (Phi3), with session or short-term memory for language generation.           #
 #                                                                              #
 # Change History                                                               #
 # 06/25/2024  Esteban Herrera Original code.                                   #
@@ -125,6 +124,126 @@ def get_chat_memory_file():
     # Check if the variable was found
     if chat_memory_file is not None:
         return chat_memory_file
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_commbase_hardware_command_random_negative_file():
+    """
+    Retrieves the value of the COMMBASE_HARDWARE_COMMAND_RANDOM_NEGATIVE_FILE
+    variable from the configuration file.
+
+    Returns:
+        str or None: The value of the variable if found, or None if not found.
+    """
+    # Initialize variable
+    random_negative_file = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "COMMBASE_HARDWARE_COMMAND_RANDOM_NEGATIVE_FILE":
+                # Remove the quotes from the value of the variable
+                random_negative_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+
+    # Check if the variable was found
+    if random_negative_file is not None:
+        return random_negative_file
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_commbase_hardware_command_random_neutral_file():
+    """
+    Retrieves the value of the COMMBASE_HARDWARE_COMMAND_RANDOM_NEUTRAL_FILE
+    variable from the configuration file.
+
+    Returns:
+        str or None: The value of the variable if found, or None if not found.
+    """
+    # Initialize variable
+    random_neutral_file = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "COMMBASE_HARDWARE_COMMAND_RANDOM_NEUTRAL_FILE":
+                # Remove the quotes from the value of the variable
+                random_neutral_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+
+    # Check if the variable was found
+    if random_neutral_file is not None:
+        return random_neutral_file
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_commbase_hardware_command_random_positive_file():
+    """
+    Retrieves the value of the COMMBASE_HARDWARE_COMMAND_RANDOM_POSITIVE_FILE
+    variable from the configuration file.
+
+    Returns:
+        str or None: The value of the variable if found, or None if not found.
+    """
+    # Initialize variable
+    random_positive_file = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "COMMBASE_HARDWARE_COMMAND_RANDOM_POSITIVE_FILE":
+                # Remove the quotes from the value of the variable
+                random_positive_file = CONFIG_FILE_DIR + value.strip()[1:-1]
+
+    # Check if the variable was found
+    if random_positive_file is not None:
+        return random_positive_file
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_commbase_hardware_device_0():
+    """
+    Retrieves the value of the COMMBASE_HARDWARE_DEVICE_0 variable from the
+    configuration file.
+
+    Returns:
+        str or None: The value of the variable if found, or None if not found.
+    """
+    # Initialize variable
+    hardware_device_0 = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "COMMBASE_HARDWARE_DEVICE_0":
+                # Remove the quotes from the value of the variable
+                hardware_device_0 = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if hardware_device_0 is not None:
+        return hardware_device_0
 
     # If the variable was not found, return None
     return None

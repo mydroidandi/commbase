@@ -1,29 +1,11 @@
 [![Python Package using Conda](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/mydroidandi/commbase/actions/workflows/python-package-conda.yml)
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 
-# commbase-genai-llm-openai-gpt-p
+# commbase-genai-slm-ollama-phi3-mini-nomemory
 
-<img alt="commbase-genai-llm-openai-gpt-p" src="commbase-genai-llm-openai-gpt-p.jpg?raw=true" width="512" height="640" />
+<img alt="commbase-genai-slm-ollama-phi3-mini-nomemory" src="commbase-genai-slm-ollama-phi3-mini-nomemory.jpg?raw=true" width="512" height="640" />
 
-A terminal version of ChatGPT designed to facilitate seamless interaction with the powerful Open AI's GPT language model. This app empowers users to engage in natural language conversations with the model, unlocking a wide range of possibilities for creative, informative, and dynamic interactions.
-
-ChatGPT is a chatbot built using the GPT (Generative Pre-trained Transformer) architecture developed by OpenAI. To use ChatGPT, simply visit the website at <https://chat.openai.com/>. This is the online platform where you can access and interact with the ChatGPT service.
-
-## Unleash the Power of Creativity with commbase-genai-llm-openai-gpt-p
-
-commbase-genai-llm-openai-gpt-p harnesses the capabilities of OpenAI's GPT models. Explore the world of storytelling, code exploration, and language manipulation through intuitive interaction with GPT's advanced features.
-
-**Key strengths:**
-
-* **Creative text formats:** Generate poems, code, scripts, musical pieces, emails, letters, and more, finding inspiration, exploring different communication styles, or aiding in content creation.
-* **Storytelling and world-building:** Craft captivating narratives and build intricate fictional worlds, empowering writers and game designers to bring their imaginations to life.
-* **Humor and wit:** Engage in stimulating and enjoyable interactions as GPT incorporates humor and wit into its responses, fostering a sense of connection and amusement.
-* **Multilingual capabilities:** Break down language barriers and access information across cultures with GPT's ability to understand and respond in multiple languages.
-* **Code generation:** Get a head start on coding projects or explore different programming languages with GPT's basic code generation capabilities.
-* **Accessibility and user-friendliness:** Interact with GPT easily through various APIs and interfaces, making the technology readily available to a diverse audience.
-* **Constant evolution and improvement:** Stay at the forefront of language processing advancements as OpenAI continuously refines and improves GPT models.
-
-**With commbase-genai-llm-openai-gpt-p, unlock the potential of GPT and embark on a journey of creative exploration, communication, and discovery.**
+commbase-genai-slm-ollama-phi3-mini-nomemory interacts with the Commbase platform to generate AI-driven responses using the Ollama API with the 'commbase-phi3-mini' model from Microsoft. This implementation is lightweight and does not include memory for language generation, focusing on immediate response generation without context retention.
 
 ## Examples
 

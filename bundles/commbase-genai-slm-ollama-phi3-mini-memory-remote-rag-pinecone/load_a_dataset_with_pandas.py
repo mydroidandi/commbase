@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 ################################################################################
-#                 commbase-genai-slm-ollama-phi3-mini-nomemory                 #
+#        commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone        #
 #                                                                              #
-# A simple generative AI assistant using the Phi3 Small Language Model (SLM).  #
+# A sophisticated AI assistant's Small Language Model (Phi3), enhanced by      #
+# Retrieval-Augmented Generation (RAG) for improved response accuracy, and     #
+# supported by a Pinecone semantic vector database.                            #
 #                                                                              #
 # Change History                                                               #
-# 06/18/2024  Esteban Herrera Original code.                                   #
+# 06/25/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -30,13 +32,19 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# config.py
-# This files makes a variable available throughout the entire Python
-# application, including all modules, submodules, and functions.
+# load_a_dataset_with_pandas.py
+# Uses Wikipedia articles from the SQuAD dataset (squad_dataset.csv)
 
-# Requirements
-import os
+# Imports
+import pandas as pd
 
-# The path to the .env configuration file
-CONFIG_FILE_DIR = os.environ["COMMBASE_APP_DIR"]
-CONFIG_FILE_PATH = os.path.join(CONFIG_FILE_DIR, "config/commbase.conf")
+df = pd.read_csv('chat_log_dataset.csv')
+
+# Print the top 10 rows (or all rows if there are less than 10)
+print(df.head(10))
+
+# Get the total number of rows
+total_rows = len(df)
+
+# Print the total number of rows
+print(f"Total rows in the DataFrame: {total_rows}")

@@ -54,7 +54,7 @@ assistant_discourse_from_language_model() {
   # Check if the log file exists
   if [ -f "$log_file" ]; then
     # Extract the last log entry by the assistant
-    last_log=$(grep "$ASSISTANT_NAME_IN_CHAT_PANE" "$log_file" | tail -n 1)
+    last_log=$(grep "$ASSISTANT_NAME_IN_CHAT_PANE" "$log_file" | tail -n "$total_paragraphs")
     (bash "$mute_capture")
     # Extract only the text after the assistant name and pass it to the TTS_ENGINE_STRING command
     echo "$last_log" | awk -v name="$ASSISTANT_NAME_IN_CHAT_PANE" '{n=split($0, a, name); for (i=2; i<=n; i++) print a[i]}' | $TTS_ENGINE_STRING
@@ -68,9 +68,15 @@ assistant_discourse_from_language_model() {
 
 }
 
-# Call assistant_discourse_from_language_model if the script is run directly (not sourced)
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  (assistant_discourse_from_language_model)
+# Check if all the required values are provided as arguments
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <total_paragraphs>"
+  exit 1
 fi
+
+# Global declarations
+total_paragraphs="$1"
+
+(assistant_discourse_from_language_model "$total_paragraphs")
 
 exit 99
