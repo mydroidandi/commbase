@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 ################################################################################
-#                    commbase-slm-ollama-phi3-mini-nomemory                    #
+#                 commbase-genai-slm-ollama-phi3-mini-nomemory                 #
 #                                                                              #
 # A simple generative AI assistant using the Phi3 Small Language Model (SLM).  #
 #                                                                              #
@@ -30,16 +30,21 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# commbase-genai-slm-ollama-phi3-mini-nomemory.py
+# commbase_genai_slm_ollama_phi3_mini_nomemory.py
 # Interacts with the Commbase platform by generating AI-driven responses using
 # the Ollama API with the 'commbase-phi3-mini' model.
 
-# Imports
+# Standard library
 from datetime import datetime
-import ollama
 import os
 import subprocess
 import sys
+
+# Third-party
+import ollama
+from transformers import pipeline
+
+# Local application/library-specific
 from file_paths import (
     get_assistant_discourse_from_language_model_file,
     get_chat_log_file,
@@ -54,11 +59,15 @@ from functions import (
     get_assistant_response_sentiment_analysis_on,
     get_audible_assistant_logging_on,
     get_chat_participant_names,
+    get_chatroom_paragraphs_format,
     get_commbase_hardware_notifications_on,
     get_commbase_recorder_transmitter_quit_char,
     get_commbase_stt_whisper_reactive_p_auto_open_recorder_after_command,
-    get_log_severity_level_1
+    get_log_severity_level_1,
+    get_slm_ms_phi3_mini_sentiment_analysis_model,
+    get_stt_engine_language
 )
+from phi3_mini_translate_language import generate_translation
 
 
 def notify_hardware_about_negative_sentiment_action():
@@ -106,7 +115,7 @@ def notify_hardware_about_negative_sentiment_action():
             print(f"Other error occurred: {e}")
             # discourse_data_exchange_client_error()
     else:
-        print(f"The device file {hardware_device} does not exist, or it is not connected.")
+        print(f"The device file {hardware_device} does not exist, or it is not connected. Sentiment: Negative.")
 
 
 def notify_hardware_about_neutral_sentiment_action():
@@ -154,7 +163,7 @@ def notify_hardware_about_neutral_sentiment_action():
             print(f"Other error occurred: {e}")
             # discourse_data_exchange_client_error()
     else:
-        print(f"The device file {hardware_device} does not exist, or it is not connected.")
+        print(f"The device file {hardware_device} does not exist, or it is not connected. Sentiment: Neutral.")
 
 
 def notify_hardware_about_positive_sentiment_action():
@@ -202,7 +211,7 @@ def notify_hardware_about_positive_sentiment_action():
             print(f"Other error occurred: {e}")
             # discourse_data_exchange_client_error()
     else:
-        print(f"The device file {hardware_device} does not exist, or it is not connected.")
+        print(f"The device file {hardware_device} does not exist, or it is not connected. Sentiment: Positive.")
 
 
 def check_arguments():
@@ -253,38 +262,58 @@ def generate_response(prompt):
         str: The generated text response from the model.
     """
     response = ollama.generate(model='commbase-phi3-mini', prompt=prompt)
-    return response['response']
+    # return response['response']
+    return response['response'].strip()
 
 
 def print_response(response):
     """
-    Logs a response from an assistant or system to a specified log file.
+    Processes and logs a given response into a specified file format.
 
-    Args:
-    - response (str): The response message to log.
+    This function takes a response string, formats it according to the chatroom
+    paragraph format setting, and appends it to a log file with a timestamp,
+    severity level, and participant name. The formatting includes handling
+    paragraph delimiters and writing to the log file based on the specified
+    format.
+
+    Parameters:
+    - response (str): The response text to be formatted and logged.
 
     Returns:
-    None
+    - int: The total number of paragraphs processed from the response.
 
-    Description:
-    This function logs the given response message along with current timestamp,
-    severity level, and system identifier to a designated log file. The
-    severity level is obtained from `get_log_severity_level_1()` function. The
-    logged format is: "[YYYY-MM-DD HH:MM:SS] phi-mini-nomemory:
-    <severity_level>: <response>\n".
-    The logged message is appended to the file specified by `temp_file_path`.
+    Processing Steps:
+    1. Get the current timestamp in 'YYYY-MM-DD HH:MM:SS' format.
+    2. Retrieve the log severity level and chat participant names.
+    3. Obtain the path for the log file and the chatroom paragraph format
+       setting.
+    4. Split the response into paragraphs based on double or single newline
+       characters.
+    5. Format each paragraph by replacing newlines with spaces and stripping
+       whitespace.
+    6. Format the paragraphs according to the specified chatroom format:
+        - "single_paragraphs_string": All paragraphs are joined into a single
+        string.
+        - "one_participant_per_paragraph": Each paragraph is formatted
+        individually.
+    7. Append the formatted text to the log file.
+    8. Return the total number of paragraphs.
+
+    File Operations:
+    - Appends the formatted text to the log file specified by
+    `get_chat_log_file()`.
 
     Notes:
-    - Ensure `get_log_severity_level_1()` returns an appropriate severity level
-    string.
-    - `temp_file_path` should point to the file where the logs are to be
-    appended.
+    - The function uses helper functions `get_log_severity_level_1()`,
+    `get_chat_participant_names()`, `get_chat_log_file()`, and
+    `get_chatroom_paragraphs_format()` to obtain necessary information.
+    - The actual formatting and writing to the file depend on the chatroom
+    paragraph format setting.
     """
     current_timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     # Set the value returned by get_log_severity_level_1()
     log_severity_level_1 = get_log_severity_level_1()
-
     severity_level = log_severity_level_1
 
     # Set the values returned by get_chat_participant_names()
@@ -293,9 +322,65 @@ def print_response(response):
     # A temporary file path
     temp_file_path = get_chat_log_file()
 
-    assistant_text = "[" + current_timestamp + "]" + " phi3-mini-nomemory: " + severity_level + ": " + assistant_name + response + "\n"
-    with open(temp_file_path, 'a') as temp_file:
-        temp_file.write(assistant_text)
+    # Set the value returned by get_chatroom_paragraphs_format()
+    chatroom_paragraphs_format = get_chatroom_paragraphs_format()
+
+    # Split the response using double newline characters. If the response isn't
+    # split into multiple parts (indicating the absence of double newlines), it
+    # then splits the response using single newline characters. This approach
+    # should better handle different paragraph delimiters and ensure each
+    # paragraph is correctly formatted and logged.
+    paragraphs_list = response.strip().split("\n\n")
+    if len(paragraphs_list) == 1:
+        paragraphs_list = response.strip().split("\n")
+
+    # Debug: Print split paragraphs
+    # print("Split paragraphs:", paragraphs_list)
+
+    # Process each paragraph: replace newlines with spaces, strip whitespace,
+    # and join non-empty paragraphs with a single space.
+    non_empty_paragraphs = " ".join(response.replace("\n", " ").strip() for response in paragraphs_list if response.strip())
+
+    # Debug: Print non-empty paragraphs
+    # print("Non-empty paragraphs:", non_empty_paragraphs)
+
+    # Count total paragraphs
+    total_paragraphs = len(paragraphs_list)
+
+    # Initialize a list to store formatted paragraphs
+    formatted_paragraphs = []
+
+    if chatroom_paragraphs_format == "single_paragraphs_string":
+        # Join paragraphs into a single string without numbering
+        assistant_text = "[" + current_timestamp + "]" + " phi3-mini-nomemory: " + severity_level + ": " + assistant_name + " " + non_empty_paragraphs + "\n"
+        formatted_paragraphs.append(assistant_text)
+
+        # Join all formatted paragraphs into a single string
+        assistant_text = "".join(formatted_paragraphs)
+
+        # Write the formatted text to the log file
+        with open(temp_file_path, 'a') as temp_file:
+            temp_file.write(assistant_text)
+
+    if chatroom_paragraphs_format == "one_participant_per_paragraph":
+        for index, paragraph in enumerate(paragraphs_list, start=1):
+            # Format each paragraph individually
+            formatted_paragraph = (
+                f"[{current_timestamp}] phi3-mini-nomemory: {severity_level}: {assistant_name} "
+                # f"{index}. {paragraph.strip()}\n"
+                f"{paragraph.strip()}\n"
+            )
+            formatted_paragraphs.append(formatted_paragraph)
+
+        # Debug: Print formatted paragraphs
+        # print("Formatted paragraphs:", formatted_paragraphs)
+
+        # Write each formatted paragraph to the log file individually
+        with open(temp_file_path, 'a') as temp_file:
+            for formatted_paragraph in formatted_paragraphs:
+                temp_file.write(formatted_paragraph)
+
+    return total_paragraphs
 
 
 def response_sentiment_action(response):
@@ -304,22 +389,37 @@ def response_sentiment_action(response):
     hardware actions based on the sentiment.
 
     Parameters:
-    response (str): The input text whose sentiment needs to be analyzed.
+    - response (str): The input text whose sentiment needs to be analyzed.
 
-    The function uses a sentiment analysis pipeline from the transformers
+    Description:
+    This function uses a sentiment analysis pipeline from the transformers
     library to classify the sentiment of the input text as either 'POSITIVE',
     'NEGATIVE', or 'NEUTRAL'. Depending on the classification, it triggers one
     of three hardware notification functions:
-        - notify_hardware_about_positive_sentiment_action() for positive sentiments
-        - notify_hardware_about_negative_sentiment_action() for negative sentiments
-        - notify_hardware_about_neutral_sentiment_action() for neutral sentiments
+        - `notify_hardware_about_positive_sentiment_action()` for positive
+          sentiments.
+        - `notify_hardware_about_negative_sentiment_action()` for negative
+          sentiments.
+        - `notify_hardware_about_neutral_sentiment_action()` for neutral
+          sentiments.
+
+    The function uses the "distilbert/distilbert-base-uncased-finetuned-sst-2-english"
+    model for sentiment analysis. The sentiment label is extracted from the
+    model's output and the appropriate hardware action is triggered based on
+    the label.
 
     Returns:
     None
-    """
-    from transformers import pipeline
 
-    classifier = pipeline("sentiment-analysis")
+    Example:
+    >>> response_sentiment_action("I am very happy with the service.")
+    """
+    # Load the topic classification model
+    # Set the value returned by get_slm_ms_phi3_mini_sentiment_analysis_model()
+    model_id = get_slm_ms_phi3_mini_sentiment_analysis_model()
+
+    # Sentiment pipe
+    classifier = pipeline("sentiment-analysis", model=model_id)
 
     json_response = classifier(response)  # [{'label': 'POSITIVE', 'score': 0.9998795986175537}]
 
@@ -334,7 +434,7 @@ def response_sentiment_action(response):
         notify_hardware_about_neutral_sentiment_action()
 
 
-def text_to_speech(window_number, pane_number, time):
+def text_to_speech(window_number, pane_number, time, returned_total_paragraphs):
     """
     Sends a command to tmux to open a language model discourse in a specified
     tmux window and pane, allowing text-to-speech synthesis.
@@ -343,16 +443,36 @@ def text_to_speech(window_number, pane_number, time):
     - window_number (int): The number of the tmux window to select.
     - pane_number (int): The number of the tmux pane to select.
     - time (int or float): Time in seconds to wait after sending the command.
+    - returned_total_paragraphs (int): The total number of paragraphs returned
+    by the language model.
 
     Returns:
     None
 
+    Description:
+    This function interacts with tmux to control windows and panes for
+    executing text-to-speech synthesis using a language model. It performs the
+    following steps:
+    1. Selects the specified tmux window and pane.
+    2. If the STT engine is Whisper reactive, it attempts to close the
+       recorder-transmitter app.
+    3. Sends a command to run the language model discourse and waits for the
+       specified time.
+    4. If configured, reopens the recorder-transmitter app after running the
+       command.
+
     Notes:
     - Requires tmux to be installed and accessible from the command line.
-    - Uses subprocess module to execute tmux commands.
+    - Uses the subprocess module to execute tmux commands.
+    - Ensure that the necessary paths and configurations are correctly set by
+      the helper functions (`get_stt_engine_path()`,
+      `get_commbase_recorder_transmitter_quit_char()`,
+      `get_assistant_discourse_from_language_model_file()`,
+      `get_commbase_stt_whisper_reactive_p_auto_open_recorder_after_command()`,
+      and `get_run_voice_recorder_in_pane_path()`).
 
     Example:
-    >>> text_to_speech(1, 0, 2)
+    >>> text_to_speech(1, 0, 2, 3)
     This will select window 1, pane 0 in tmux, send a clear and bash command
     to run the language model discourse, and wait for 2 seconds before
     returning.
@@ -394,7 +514,7 @@ def text_to_speech(window_number, pane_number, time):
     command = (
         f"tmux select-window -t {window_number} && "
         f"tmux select-pane -t {pane_number} && "
-        f"tmux send-keys \'clear; bash {assistant_discourse_from_language_model}\' C-m && "
+        f"tmux send-keys \'clear; bash {assistant_discourse_from_language_model} {returned_total_paragraphs}\' C-m && "
         f"sleep {time}"
     )
 
@@ -426,22 +546,42 @@ def main():
     - Retrieves the user-provided prompt.
     - Generates a response using the commbase-phi3-mini model via the Ollama
     API.
+    - Sends hardware notifications if enabled.
     - Logs the generated response to a designated log file with timestamp and
     severity level.
     - Initiates text-to-speech synthesis of the response in a specific tmux
     window and pane.
 
     Args:
-    None
+        None
 
     Returns:
-    None
+        None
+
+    Description:
+    This function serves as the entry point for the script, performing the
+    following tasks:
+    1. Validates command line arguments.
+    2. Retrieves the prompt provided by the user.
+    3. Generates a response using the `combase-phi3-mini` model via the Ollama
+       API.
+    4. If hardware notifications are enabled, performs sentiment analysis and
+       sends appropriate notifications.
+    5. Logs the generated response, including a timestamp and severity level,
+       to a specified log file.
+    6. If audible assistant logging is enabled, executes text-to-speech
+       synthesis of the response in a designated tmux window and pane.
 
     Notes:
     - Requires the Ollama API, tmux, and other dependencies as specified.
     - Uses functions from 'file_paths' and 'functions' modules for file paths
     and helper functions.
     - Assumes correct configuration and availability of the tmux session.
+    - The `combase-phi3-mini` model only supports English for sentiment analysis.
+    - Hardware notifications involve translation and sentiment analysis of the
+    response.
+    - Text-to-speech synthesis is performed in a specific tmux window and pane
+    if audible assistant logging is enabled.
 
     Example:
     >>> main()
@@ -449,7 +589,7 @@ def main():
     generation, logging, and text-to-speech synthesis in the specified tmux
     window and pane.
     """
-    # Set the value returned by et_assistant_response_sentiment_analysis_on()
+    # Set the value returned by get_assistant_response_sentiment_analysis_on()
     assistant_response_sentiment_analysis_on = get_assistant_response_sentiment_analysis_on()
 
     # Set the value returned by get_audible_assistant_logging_on()
@@ -458,15 +598,59 @@ def main():
     # Set the value returned by get_commbase_hardware_notifications_on()
     commbase_hardware_notifications_on = get_commbase_hardware_notifications_on()
 
+    # Set the value returned by get_stt_engine_language()
+    stt_engine_language = get_stt_engine_language()
+
+    # Ensure the script has the correct number of arguments
     check_arguments()
+
+    # Retrieve the prompt
     prompt = get_prompt()
+
+    # Generate a model's response based on the provided prompt
     response = generate_response(prompt)
-    print_response(response)
+
+    # Send hardware notifications if enabled
     if commbase_hardware_notifications_on == "True":
+        # Perform sentiment analysis if enabled
         if assistant_response_sentiment_analysis_on == "True":
-            response_sentiment_action(response)
+            # Split the response into a list of words
+            words = response.split()
+
+            # Count the number of words
+            number_of_words = len(words)
+
+            # Check if the number of words is lower than 175. This threshold is
+            # based on the sentiment-analysis token limit of 512 tokens. The
+            # calculation is as follows:
+            # Token-to-word ratio: 1.2 to 3 tokens per word.
+            # 3 (max tokens per word) * 175 (words) = 525 (tokens).
+            # For larger texts, consider truncating to process shorter chunks
+            # and then combining the results.
+            if number_of_words < 175:
+                # The to_language parameter will always be English, as it is
+                # the only language supported by the Phi3 SLM model and the
+                # sentiment analyzer.
+                if stt_engine_language.lower() != "english":
+                    # Translate the response if the STT engine language is not
+                    # English.
+                    translated_response = generate_translation(response, stt_engine_language, "English")
+                    response_sentiment_action(translated_response)
+                else:
+                    # No translation needed if the STT engine language is
+                    # already English.
+                    response_sentiment_action(response)
+            else:
+                # For text that exceeds the limit, notify hardware to handle
+                # neutral sentiment.
+                notify_hardware_about_neutral_sentiment_action()
+
+    # Print the response
+    returned_total_paragraphs = print_response(response)
+
+    # If audible assistant logging is enabled, use text-to-speech
     if audible_assistant_logging_on == "True":
-        text_to_speech(1, 7, 0.1)
+        text_to_speech(1, 7, 0.1, returned_total_paragraphs)
 
 
 if __name__ == "__main__":

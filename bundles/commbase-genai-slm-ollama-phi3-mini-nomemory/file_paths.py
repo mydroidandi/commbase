@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 ################################################################################
-#                    commbase-slm-ollama-phi3-mini-nomemory                    #
+#                 commbase-genai-slm-ollama-phi3-mini-nomemory                 #
 #                                                                              #
 # A simple generative AI assistant using the Phi3 Small Language Model (SLM).  #
 #                                                                              #
