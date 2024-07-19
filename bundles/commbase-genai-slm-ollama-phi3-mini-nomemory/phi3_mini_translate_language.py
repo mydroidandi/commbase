@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 ################################################################################
-#         commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone         #
+#                 commbase-genai-slm-ollama-phi3-mini-nomemory                 #
 #                                                                              #
-# A sophisticated AI assistant's Small Language Model (Phi3), enhanced by      #
-# Retrieval-Augmented Generation (RAG) for improved response accuracy, and     #
-# supported by a Picone semantic vector database.                              #
+# A simple generative AI assistant using the Phi3 Small Language Model (SLM).  #
 #                                                                              #
 # Change History                                                               #
-# 06/25/2024  Esteban Herrera Original code.                                   #
+# 07/14/2024  Esteban Herrera Original code.                                   #
 #                           Add new history entries as needed.                 #
 #                                                                              #
 #                                                                              #
@@ -32,58 +30,32 @@
 #  along with this program; if not, write to the Free Software                 #
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA   #
 
-# 04_making_queries.py
-# Desc
+# phi3_mini_translate_language.py
+# Translates text from one language to another using the Ollama API with a
+# specific model ('commbase-phi3-mini').
 
 # Imports
-import functions
-import json
-import sentence_transformers
-# import time
-from pinecone import Pinecone, ServerlessSpec
+import ollama
 
 
-# Call test_embedding_model()
-model, xq = functions.test_embedding_model()
+def generate_translation(text_to_translate, from_language, to_language):
+    """
+    Generate translated response using the provided text and languages.
 
+    Constructs a prompt for translation and retrieves the response from the
+    Ollama API using the 'commbase-phi3-mini' model.
 
-# Initialize the Pinecone client with your API key
-pc = Pinecone(api_key="")
+    Args:
+        text_to_translate (str): Text to be translated.
+        from_language (str): Source language code.
+        to_language (str): Target language code.
 
-index_name = 'commbase-log-chats'
+    Returns:
+        str: Translated text response.
+    """
+    # Generate the response using the provided text and languages
+    order = f"Translate this from {from_language} to {to_language} (but do not include any explanation): "
+    response = ollama.generate(model='commbase-phi3-mini', prompt=order + text_to_translate)
 
-# Connect to index and print the index statistics
-index = pc.Index(index_name)
-
-
-# query = "Who is Eva?"
-query = "What happened at 20:35:08?"
-# query = "What is the meaning of zero day?"
-
-
-# ----
-# create the query vector
-xq = model.encode(query).tolist()
-
-# now query
-xc = index.query(vector=xq, top_k=5, include_metadata=True)
-print(xc)
-
-print("")
-print(query)
-
-# In the returned response xc we can see the most relevant questions to our particular query. We can reformat this response to be a little easier to read
-# for result in xc['matches']:
-#     print(f"{round(result['score'], 2)}: {result['metadata']['text']}")
-
-# Print the 'speaker' and 'text' along with the score
-for result in xc['matches']:
-    score = round(result['score'], 2)
-    timestamp = result['metadata']['timestamp']
-    speaker = result['metadata']['speaker']
-    text = result['metadata']['text']
-    print(f"{score}: {timestamp} {speaker}: {text}")
-
-
-# ## Add this to the prompt:
-# ## Please keep your responses to a maximum of three to four sentences.
+    # Extract the text response
+    return response['response']

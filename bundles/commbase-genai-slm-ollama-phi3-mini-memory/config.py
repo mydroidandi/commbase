@@ -2,9 +2,8 @@
 ################################################################################
 #                  commbase-genai-slm-ollama-phi3-mini-memory                  #
 #                                                                              #
-# A sophisticated AI assistant's Small Language Model (Phi3), enhanced by      #
-# Retrieval-Augmented Generation (RAG) for improved response accuracy, and     #
-# supported by a Picone semantic vector database.                              #
+# A midweight implementation of the AI assistant's Small Language Model        #
+# (Phi3), with session or short-term memory for language generation.           #
 #                                                                              #
 # Change History                                                               #
 # 06/25/2024  Esteban Herrera Original code.                                   #

@@ -1,0 +1,2 @@
+"""Your text containing "quotes" and 'single quotes'."""
+"Your text containing \"quotes\" and 'single quotes'."

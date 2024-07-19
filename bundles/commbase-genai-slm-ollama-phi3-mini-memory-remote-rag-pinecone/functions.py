@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 ################################################################################
-#         commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-picone         #
+#        commbase-genai-slm-ollama-phi3-mini-memory-remote-rag-pinecone        #
 #                                                                              #
 # A sophisticated AI assistant's Small Language Model (Phi3), enhanced by      #
 # Retrieval-Augmented Generation (RAG) for improved response accuracy, and     #
-# supported by a Picone semantic vector database.                              #
+# supported by a Pinecone semantic vector database.                            #
 #                                                                              #
 # Change History                                                               #
 # 06/25/2024  Esteban Herrera Original code.                                   #
@@ -260,3 +260,35 @@ def test_embedding_model():
     xq = model.encode(query)
 
     return model, xq
+
+
+def get_stt_engine_language():
+    """
+    Reads the 'STT_ENGINE_LANGUAGE' variable from the environment configuration
+    file. Returns the string value of the variables if found, or None if the
+    variable is not present.
+
+    Returns:
+        str or None: The string if found in the configuration file, otherwise
+    None.
+    """
+    # Initialize variable
+    stt_engine_language = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "STT_ENGINE_LANGUAGE":
+                # Remove the quotes from the value of the variable
+                stt_engine_language = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if stt_engine_language is not None:
+        return stt_engine_language
+
+    # If the variable was not found, return None
+    return None

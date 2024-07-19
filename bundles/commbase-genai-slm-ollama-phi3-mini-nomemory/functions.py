@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 ################################################################################
-#                    commbase-slm-ollama-phi3-mini-nohistory                   #
+#                 commbase-genai-slm-ollama-phi3-mini-nomemory                 #
 #                                                                              #
 # A simple generative AI assistant using the Phi3 Small Language Model (SLM).  #
 #                                                                              #
@@ -146,6 +146,38 @@ def get_chat_participant_names():
     return None
 
 
+def get_chatroom_paragraphs_format():
+    """
+    Reads the 'CHATROOM_PARAGRAPHS_FORMAT' variable from the
+    environment configuration file. Returns the string value of the variables
+    if found, or None if the variable is not present.
+
+    Returns:
+        str or None: The string if found in the configuration file, otherwise
+    None.
+    """
+    # Initialize variable
+    paragraphs_format = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "CHATROOM_PARAGRAPHS_FORMAT":
+                # Remove the quotes from the value of the variable
+                paragraphs_format = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if paragraphs_format is not None:
+        return paragraphs_format
+
+    # If the variable was not found, return None
+    return None
+
+
 def get_commbase_hardware_notifications_on():
     """
     Reads the 'COMMBASE_HARDWARE_NOTIFICATIONS_ON' variable from the
@@ -269,6 +301,70 @@ def get_log_severity_level_1():
     # Check if the variable was found
     if log_severity_level_1 is not None:
         return log_severity_level_1
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_slm_ms_phi3_mini_sentiment_analysis_model():
+    """
+    Reads the 'SLM_MS_PHI3_MINI_SENTIMENT_ANALYSIS_MODEL' variable from the
+    environment configuration file. Returns the string value of the variables
+    if found, or None if the variable is not present.
+
+    Returns:
+        str or None: The string if found in the configuration file, otherwise
+    None.
+    """
+    # Initialize variable
+    sentiment_analysis_model = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "SLM_MS_PHI3_MINI_SENTIMENT_ANALYSIS_MODEL":
+                # Remove the quotes from the value of the variable
+                sentiment_analysis_model = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if sentiment_analysis_model is not None:
+        return sentiment_analysis_model
+
+    # If the variable was not found, return None
+    return None
+
+
+def get_stt_engine_language():
+    """
+    Reads the 'STT_ENGINE_LANGUAGE' variable from the environment configuration
+    file. Returns the string value of the variables if found, or None if the
+    variable is not present.
+
+    Returns:
+        str or None: The string if found in the configuration file, otherwise
+    None.
+    """
+    # Initialize variable
+    stt_engine_language = None
+
+    # Open the file and read its contents
+    with open(CONFIG_FILE_PATH, "r") as f:
+        for line in f:
+            # Split the line into variable name and value
+            variable_name, value = line.strip().split("=")
+
+            # Check if the variable we are looking for exists in the line
+            if variable_name == "STT_ENGINE_LANGUAGE":
+                # Remove the quotes from the value of the variable
+                stt_engine_language = value.strip()[1:-1]
+
+    # Check if the variable was found
+    if stt_engine_language is not None:
+        return stt_engine_language
 
     # If the variable was not found, return None
     return None
